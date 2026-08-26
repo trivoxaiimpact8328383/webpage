@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>TrivoxAI Impact</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: #ffffff;
+      overflow: hidden;
+    }
+
+    .trainer {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background:
+        radial-gradient(
+          circle at 50% 45%,
+          rgba(99, 102, 241, 0.06),
+          transparent 35%
+        ),
+        #ffffff;
+    }
+
+    .trainer-content {
+      width: 92%;
+      max-width: 1000px;
+      text-align: center;
+      position: relative;
+    }
+
+    .brand {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #6366f1;
+      margin-bottom: 25px;
+
+      opacity: 0;
+      animation: brandIn 0.8s ease forwards;
+    }
+
+    @keyframes brandIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .text-window {
+      position: relative;
+      width: 100%;
+      height: 130px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slide-text {
+      position: absolute;
+      width: 100%;
+      padding: 0 15px;
+
+      font-size: clamp(34px, 6vw, 76px);
+      line-height: 1.08;
+      font-weight: 800;
+      letter-spacing: -3px;
+      color: #111827;
+
+      opacity: 0;
+      transform: translateY(90px);
+      filter: blur(8px);
+
+      transition:
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.55s ease,
+        filter 0.6s ease;
+    }
+
+    .slide-text.show {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+
+    .slide-text.hide {
+      opacity: 0;
+      transform: translateY(-90px);
+      filter: blur(7px);
+    }
+
+    .subtitle {
+      margin-top: 20px;
+
+      font-size: clamp(14px, 2vw, 17px);
+      color: #6b7280;
+      font-weight: 500;
+
+      opacity: 0;
+      animation: subtitleIn 0.8s ease 0.25s forwards;
+    }
+
+    @keyframes subtitleIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .line {
+      width: 38px;
+      height: 3px;
+      border-radius: 50px;
+      background: #6366f1;
+      margin: 28px auto 0;
+
+      transform: scaleX(0);
+      animation: lineIn 0.7s ease 0.5s forwards;
+    }
+
+    @keyframes lineIn {
+      to {
+        transform: scaleX(1);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .brand {
+        font-size: 11px;
+        letter-spacing: 2.3px;
+        margin-bottom: 18px;
+      }
+
+      .text-window {
+        height: 100px;
+      }
+
+      .slide-text {
+        font-size: clamp(32px, 11vw, 48px);
+        letter-spacing: -1.8px;
+      }
+
+      .subtitle {
+        font-size: 14px;
+        padding: 0 20px;
+        line-height: 1.6;
+      }
+
+      .line {
+        margin-top: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="trainer">
+
+    <div class="trainer-content">
+
+      <div class="brand">
+        TRIVOXAI IMPACT
+      </div>
+
+      <div class="text-window">
+        <div class="slide-text" id="slideText">
+          Welcome.
+        </div>
+      </div>
+
+      <div class="subtitle">
+        Education powered by ideas, technology and AI.
+      </div>
+
+      <div class="line"></div>
+
+    </div>
+
+  </main>
+
+
+  <script>
+    const messages = [
+      "Welcome.",
+      "Learn differently.",
+      "Think smarter.",
+      "Create boldly.",
+      "Build your future.",
+      "Welcome to TrivoxAI."
+    ];
+
+    const slideText = document.getElementById("slideText");
+
+    let currentIndex = 0;
+    let isAnimating = false;
+
+
+    function showFirstText() {
+      slideText.textContent = messages[currentIndex];
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          slideText.classList.add("show");
+        });
+      });
+    }
+
+
+    function nextSlide() {
+
+      if (isAnimating) return;
+
+      isAnimating = true;
+
+      slideText.classList.remove("show");
+      slideText.classList.add("hide");
+
+
+      setTimeout(() => {
+
+        currentIndex++;
+
+        if (currentIndex >= messages.length) {
+          currentIndex = 0;
+        }
+
+        slideText.textContent = messages[currentIndex];
+
+        slideText.classList.remove("hide");
+
+        slideText.style.transition = "none";
+        slideText.style.transform = "translateY(90px)";
+        slideText.style.opacity = "0";
+        slideText.style.filter = "blur(8px)";
+
+
+        requestAnimationFrame(() => {
+
+          requestAnimationFrame(() => {
+
+            slideText.style.transition = "";
+
+            slideText.style.transform = "";
+            slideText.style.opacity = "";
+            slideText.style.filter = "";
+
+            slideText.classList.add("show");
+
+            isAnimating = false;
+
+          });
+
+        });
+
+      }, 650);
+
+    }
+
+
+    showFirstText();
+
+    setInterval(() => {
+      nextSlide();
+    }, 2300);
+  </script>
+
+</body>
+</html>
