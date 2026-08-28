@@ -6,10 +6,10 @@
   <title>TRIVOX AI IMPACT</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  
 
   <style>
-    *{
+*{
       margin:0;
       padding:0;
       box-sizing:border-box;
@@ -1155,8 +1155,6 @@
     }
 
 
-
-
 /* =========================================================
    TRIVOX MODEL — HOW IT WORKS
 ========================================================= */
@@ -1663,8 +1661,6 @@
     margin-top:3px;
   }
 }
-
-
 
 
 /* =========================================================
@@ -2306,7 +2302,6 @@
 @media(prefers-reduced-motion:reduce){.return-icon{animation:none!important;opacity:.35;top:130px}.intro-word{transition:none!important}}
 
 
-
 /* =========================================================
    NEW TEMPLATE INSPIRED SECTION — WHITE BACKGROUND
    Existing navbar / dropdowns are untouched.
@@ -2478,7 +2473,6 @@
   .template-dot-grid{width:100px;height:70px;background-size:18px 18px;bottom:0}
   .template-mini-tag{right:0;bottom:2px;font-size:9px;padding:9px 11px}
 }
-
 
 
 /* =========================================================
@@ -2923,7 +2917,784 @@
  .muc-nav,.muc-dots{display:none}
 }
 
-</style>
+/* ===== TRUE CENTERED COVERFLOW CAROUSEL FIX ===== */
+.monthly-unlock-carousel .muc-stage{
+  max-width:1180px;
+  margin:0 auto;
+  padding:18px 70px 42px;
+}
+.monthly-unlock-carousel .muc-viewport{
+  position:relative;
+  height:390px;
+  overflow:hidden;
+  padding:0;
+}
+.monthly-unlock-carousel .muc-track{
+  position:relative;
+  width:100%;
+  height:100%;
+  display:block;
+  transform:none !important;
+}
+.monthly-unlock-carousel .muc-card{
+  position:absolute;
+  top:38px;
+  left:50%;
+  width:205px;
+  height:315px;
+  margin:0;
+  opacity:0;
+  pointer-events:none;
+  transform:translateX(-50%) scale(.78);
+  transition:
+    transform .55s cubic-bezier(.22,.75,.25,1),
+    opacity .45s ease,
+    filter .45s ease;
+  z-index:0;
+}
+.monthly-unlock-carousel .muc-card.active{
+  opacity:1;
+  pointer-events:auto;
+  transform:translateX(-50%) scale(1.12);
+  z-index:6;
+  filter:none;
+}
+.monthly-unlock-carousel .muc-card.pos-left-1{
+  opacity:.96;
+  pointer-events:auto;
+  transform:translateX(calc(-50% - 225px)) scale(.96) rotateY(7deg);
+  z-index:5;
+}
+.monthly-unlock-carousel .muc-card.pos-left-2{
+  opacity:.78;
+  pointer-events:auto;
+  transform:translateX(calc(-50% - 410px)) scale(.84) rotateY(10deg);
+  z-index:4;
+  filter:saturate(.88);
+}
+.monthly-unlock-carousel .muc-card.pos-right-1{
+  opacity:.96;
+  pointer-events:auto;
+  transform:translateX(calc(-50% + 225px)) scale(.96) rotateY(-7deg);
+  z-index:5;
+}
+.monthly-unlock-carousel .muc-card.pos-right-2{
+  opacity:.78;
+  pointer-events:auto;
+  transform:translateX(calc(-50% + 410px)) scale(.84) rotateY(-10deg);
+  z-index:4;
+  filter:saturate(.88);
+}
+.monthly-unlock-carousel .muc-card.pos-hidden{
+  opacity:0;
+  transform:translateX(-50%) scale(.7);
+  z-index:0;
+}
+.monthly-unlock-carousel .muc-nav{top:50%}
+.monthly-unlock-carousel .muc-dots{margin-top:4px}
+
+@media(max-width:900px) and (min-width:601px){
+  .monthly-unlock-carousel .muc-viewport{height:355px}
+  .monthly-unlock-carousel .muc-card{width:185px;height:290px;top:34px}
+  .monthly-unlock-carousel .muc-card.active{transform:translateX(-50%) scale(1.08)}
+  .monthly-unlock-carousel .muc-card.pos-left-1{transform:translateX(calc(-50% - 185px)) scale(.9)}
+  .monthly-unlock-carousel .muc-card.pos-right-1{transform:translateX(calc(-50% + 185px)) scale(.9)}
+  .monthly-unlock-carousel .muc-card.pos-left-2{transform:translateX(calc(-50% - 320px)) scale(.76)}
+  .monthly-unlock-carousel .muc-card.pos-right-2{transform:translateX(calc(-50% + 320px)) scale(.76)}
+}
+@media(max-width:600px){
+  .monthly-unlock-carousel .muc-stage{padding:8px 0 22px}
+  .monthly-unlock-carousel .muc-viewport{
+    height:390px;
+    overflow:hidden;
+  }
+  .monthly-unlock-carousel .muc-track{
+    position:relative;
+    overflow:visible;
+    padding:0;
+  }
+  .monthly-unlock-carousel .muc-card{
+    position:absolute;
+    top:25px;
+    left:50%;
+    width:245px;
+    height:340px;
+    opacity:0;
+    transform:translateX(-50%) scale(.78) !important;
+    scroll-snap-align:none;
+  }
+  .monthly-unlock-carousel .muc-card.active{
+    opacity:1;
+    transform:translateX(-50%) scale(1) !important;
+    z-index:6;
+  }
+  .monthly-unlock-carousel .muc-card.pos-left-1{
+    opacity:.38;
+    transform:translateX(calc(-50% - 205px)) scale(.84) !important;
+    z-index:3;
+  }
+  .monthly-unlock-carousel .muc-card.pos-right-1{
+    opacity:.38;
+    transform:translateX(calc(-50% + 205px)) scale(.84) !important;
+    z-index:3;
+  }
+  .monthly-unlock-carousel .muc-card.pos-left-2,
+  .monthly-unlock-carousel .muc-card.pos-right-2,
+  .monthly-unlock-carousel .muc-card.pos-hidden{opacity:0}
+  .monthly-unlock-carousel .muc-nav{
+    display:flex;
+    width:38px;height:38px;
+    top:52%;
+  }
+  .monthly-unlock-carousel .muc-prev{left:2px}
+  .monthly-unlock-carousel .muc-next{right:2px}
+  .monthly-unlock-carousel .muc-dots{display:flex}
+}
+
+/* =========================================================
+   TRIVOX RESPONSIVE FOOTER
+   Desktop and mobile intentionally use different layouts.
+========================================================= */
+.trivox-footer{
+  background:#111116;
+  color:#fff;
+  margin-top:0;
+}
+
+/* ---------- DESKTOP FOOTER ---------- */
+.footer-desktop{
+  display:block;
+  padding:78px 24px 28px;
+}
+.footer-desktop-wrap{
+  width:min(1180px,100%);
+  margin:auto;
+}
+.footer-desktop-top{
+  display:grid;
+  grid-template-columns:1.15fr .85fr .85fr .85fr;
+  gap:55px;
+  padding-bottom:50px;
+  border-bottom:1px solid rgba(255,255,255,.10);
+}
+.footer-brand{
+  max-width:360px;
+}
+.footer-logo{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  font-size:24px;
+  font-weight:900;
+  letter-spacing:-1px;
+}
+.footer-logo-main{
+  color:#fff;
+}
+.footer-logo-impact{
+  color:#9d84ff;
+}
+.footer-brand p{
+  margin-top:18px;
+  font-size:13px;
+  line-height:1.75;
+  color:rgba(255,255,255,.58);
+}
+.footer-social{
+  display:flex;
+  gap:9px;
+  margin-top:24px;
+}
+.footer-social a{
+  width:38px;
+  height:38px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:10px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.09);
+  color:#fff;
+  transition:.25s;
+}
+.footer-social a:hover{
+  transform:translateY(-3px);
+  background:#7450e8;
+  border-color:#7450e8;
+}
+.footer-col h4{
+  margin-bottom:17px;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:1.4px;
+  text-transform:uppercase;
+  color:#fff;
+}
+.footer-col a{
+  display:block;
+  width:max-content;
+  margin-top:11px;
+  font-size:12.5px;
+  color:rgba(255,255,255,.58);
+  transition:.2s;
+}
+.footer-col a:hover{
+  color:#a88fff;
+  transform:translateX(3px);
+}
+.footer-desktop-bottom{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding-top:24px;
+}
+.footer-desktop-bottom p{
+  font-size:11px;
+  color:rgba(255,255,255,.42);
+}
+.footer-bottom-links{
+  display:flex;
+  gap:20px;
+}
+.footer-bottom-links a{
+  font-size:11px;
+  color:rgba(255,255,255,.46);
+}
+.footer-bottom-links a:hover{color:#fff}
+
+/* ---------- MOBILE FOOTER ---------- */
+.footer-mobile{
+  display:none;
+  padding:54px 18px 22px;
+}
+.footer-mobile-card{
+  position:relative;
+  overflow:hidden;
+  padding:24px 20px;
+  border-radius:22px;
+  background:linear-gradient(145deg,#1b1727,#17171d 70%,#251b42);
+  border:1px solid rgba(255,255,255,.08);
+}
+.footer-mobile-card::before{
+  content:"";
+  position:absolute;
+  width:160px;
+  height:160px;
+  border-radius:50%;
+  right:-70px;
+  top:-75px;
+  background:radial-gradient(circle,rgba(116,80,232,.34),transparent 68%);
+}
+.footer-mobile-brand{
+  position:relative;
+  z-index:2;
+}
+.footer-mobile-brand .footer-logo{
+  font-size:20px;
+}
+.footer-mobile-brand p{
+  margin-top:12px;
+  font-size:12px;
+  line-height:1.65;
+  color:rgba(255,255,255,.58);
+}
+.footer-mobile-actions{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+  margin-top:18px;
+}
+.footer-mobile-actions a{
+  min-height:44px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  border-radius:12px;
+  font-size:11.5px;
+  font-weight:800;
+}
+.footer-mobile-actions .primary{
+  background:#7450e8;
+  color:#fff;
+}
+.footer-mobile-actions .secondary{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.09);
+  color:#fff;
+}
+.mobile-footer-accordion{
+  margin-top:16px;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.mobile-footer-item{
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.mobile-footer-toggle{
+  width:100%;
+  padding:16px 2px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  border:0;
+  background:transparent;
+  color:#fff;
+  font-size:12px;
+  font-weight:800;
+  text-align:left;
+  cursor:pointer;
+}
+.mobile-footer-toggle i{
+  color:#9d84ff;
+  transition:.25s;
+}
+.mobile-footer-item.open .mobile-footer-toggle i{
+  transform:rotate(45deg);
+}
+.mobile-footer-links{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .3s ease,padding .3s ease;
+}
+.mobile-footer-item.open .mobile-footer-links{
+  max-height:260px;
+  padding:0 0 14px;
+}
+.mobile-footer-links a{
+  display:block;
+  padding:7px 2px;
+  font-size:11.5px;
+  color:rgba(255,255,255,.55);
+}
+.footer-mobile-social{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-top:20px;
+}
+.footer-mobile-social a{
+  width:37px;
+  height:37px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.08);
+  color:#fff;
+}
+.footer-mobile-copy{
+  margin-top:18px;
+  text-align:center;
+  font-size:10px;
+  line-height:1.6;
+  color:rgba(255,255,255,.38);
+}
+
+/* Tablet/mobile switch */
+@media(max-width:760px){
+  .footer-desktop{display:none}
+  .footer-mobile{display:block}
+}
+
+/* =========================================================
+   PREMIUM TRIVOX FOOTER — ATTRACTIVE REFRESH
+========================================================= */
+.trivox-footer{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 12% 18%,rgba(116,80,232,.24),transparent 26%),
+    radial-gradient(circle at 88% 8%,rgba(49,95,204,.17),transparent 24%),
+    linear-gradient(180deg,#111116 0%,#0c0c11 100%);
+}
+.trivox-footer::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:48px 48px;
+  pointer-events:none;
+}
+.footer-desktop,
+.footer-mobile{
+  position:relative;
+  z-index:2;
+}
+
+/* Desktop visual upgrades */
+.footer-desktop{
+  padding-top:88px;
+}
+.footer-desktop-wrap{
+  position:relative;
+}
+.footer-desktop-wrap::before{
+  content:"TRIVOX";
+  position:absolute;
+  right:-12px;
+  top:-48px;
+  font-size:120px;
+  line-height:1;
+  font-weight:900;
+  letter-spacing:-8px;
+  color:rgba(255,255,255,.022);
+  pointer-events:none;
+}
+.footer-brand{
+  padding:24px 24px 24px 0;
+}
+.footer-logo{
+  position:relative;
+}
+.footer-logo::after{
+  content:"";
+  width:7px;
+  height:7px;
+  margin-left:3px;
+  border-radius:50%;
+  background:#8d70ee;
+  box-shadow:0 0 20px rgba(141,112,238,.85);
+}
+.footer-brand p{
+  max-width:330px;
+}
+.footer-social a{
+  position:relative;
+  overflow:hidden;
+}
+.footer-social a::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,.12),transparent);
+  opacity:0;
+  transition:.25s;
+}
+.footer-social a:hover::before{
+  opacity:1;
+}
+.footer-col{
+  position:relative;
+  padding-top:4px;
+}
+.footer-col h4{
+  position:relative;
+  padding-bottom:11px;
+}
+.footer-col h4::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:26px;
+  height:2px;
+  border-radius:999px;
+  background:linear-gradient(90deg,#7450e8,#9d84ff);
+}
+.footer-col a{
+  position:relative;
+  padding-left:0;
+}
+.footer-col a::before{
+  content:"";
+  position:absolute;
+  left:-13px;
+  top:50%;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:#8d70ee;
+  opacity:0;
+  transform:translateY(-50%) scale(.5);
+  transition:.2s;
+}
+.footer-col a:hover{
+  transform:translateX(8px);
+}
+.footer-col a:hover::before{
+  opacity:1;
+  transform:translateY(-50%) scale(1);
+}
+.footer-desktop-bottom{
+  margin-top:2px;
+}
+.footer-bottom-links a{
+  position:relative;
+}
+.footer-bottom-links a + a::before{
+  content:"•";
+  position:absolute;
+  left:-12px;
+  color:rgba(255,255,255,.18);
+}
+
+/* Mobile premium card */
+.footer-mobile{
+  padding-top:50px;
+}
+.footer-mobile-card{
+  padding:26px 20px 20px;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.025)),
+    linear-gradient(145deg,#17131f,#15151b 68%,#211836);
+  border:1px solid rgba(157,132,255,.20);
+  box-shadow:0 22px 60px rgba(0,0,0,.28);
+}
+.footer-mobile-card::after{
+  content:"";
+  position:absolute;
+  width:110px;
+  height:110px;
+  left:-45px;
+  bottom:-45px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(49,95,204,.22),transparent 70%);
+}
+.footer-mobile-brand{
+  text-align:center;
+}
+.footer-mobile-brand .footer-logo{
+  justify-content:center;
+}
+.footer-mobile-brand p{
+  max-width:290px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.footer-mobile-actions a{
+  position:relative;
+  overflow:hidden;
+  transition:.25s;
+}
+.footer-mobile-actions a::after{
+  content:"";
+  position:absolute;
+  top:-40%;
+  left:-35%;
+  width:35%;
+  height:180%;
+  background:rgba(255,255,255,.13);
+  transform:rotate(18deg);
+  transition:.45s;
+}
+.footer-mobile-actions a:hover::after{
+  left:120%;
+}
+.footer-mobile-actions .primary{
+  background:linear-gradient(135deg,#7450e8,#5a35d6);
+  box-shadow:0 10px 24px rgba(116,80,232,.28);
+}
+.footer-mobile-actions .secondary{
+  background:rgba(255,255,255,.055);
+  backdrop-filter:blur(10px);
+}
+.mobile-footer-toggle{
+  font-size:12.5px;
+}
+.mobile-footer-item.open .mobile-footer-toggle{
+  color:#b7a5ff;
+}
+.footer-mobile-social a{
+  transition:.25s;
+}
+.footer-mobile-social a:hover{
+  transform:translateY(-3px);
+  background:#7450e8;
+  border-color:#7450e8;
+}
+.footer-mobile-copy{
+  padding-top:2px;
+}
+
+/* subtle top separator glow */
+.trivox-footer::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:0;
+  width:min(760px,78%);
+  height:1px;
+  transform:translateX(-50%);
+  background:linear-gradient(90deg,transparent,rgba(157,132,255,.75),transparent);
+  box-shadow:0 0 22px rgba(116,80,232,.38);
+}
+
+/* =========================================================
+   SAME PREMIUM FOOTER FOR DESKTOP + MOBILE
+========================================================= */
+@media(max-width:760px){
+
+  /* Use desktop footer design on mobile too */
+  .footer-desktop{
+    display:block !important;
+    padding:54px 18px 22px !important;
+  }
+
+  .footer-mobile{
+    display:none !important;
+  }
+
+  .footer-desktop-wrap::before{
+    font-size:70px;
+    right:-8px;
+    top:-18px;
+    letter-spacing:-5px;
+  }
+
+  .footer-desktop-top{
+    grid-template-columns:1fr !important;
+    gap:34px !important;
+    padding-bottom:34px !important;
+  }
+
+  .footer-brand{
+    max-width:none !important;
+    padding:0 !important;
+    text-align:left;
+  }
+
+  .footer-logo{
+    font-size:21px !important;
+  }
+
+  .footer-brand p{
+    max-width:100% !important;
+    font-size:12.5px !important;
+    line-height:1.7 !important;
+  }
+
+  .footer-social{
+    margin-top:20px !important;
+    gap:8px !important;
+  }
+
+  .footer-social a{
+    width:36px !important;
+    height:36px !important;
+    border-radius:10px !important;
+  }
+
+  .footer-col{
+    padding-top:0 !important;
+  }
+
+  .footer-col h4{
+    margin-bottom:12px !important;
+    font-size:11px !important;
+  }
+
+  .footer-col a{
+    margin-top:9px !important;
+    font-size:12px !important;
+  }
+
+  .footer-desktop-bottom{
+    flex-direction:column !important;
+    align-items:flex-start !important;
+    gap:12px !important;
+    padding-top:20px !important;
+  }
+
+  .footer-bottom-links{
+    flex-wrap:wrap !important;
+    gap:15px !important;
+  }
+
+  .footer-desktop-bottom p,
+  .footer-bottom-links a{
+    font-size:10.5px !important;
+  }
+}
+
+/* ===== MOBILE FOOTER: TAP ARROW TO OPEN FULL FOOTER ===== */
+.footer-mobile-expander{display:none}
+
+@media(max-width:760px){
+  .trivox-footer{
+    padding-top:0;
+  }
+
+  .footer-desktop{
+    padding:0 18px 22px !important;
+  }
+
+  .footer-mobile-expander{
+    display:flex;
+    width:calc(100% - 36px);
+    margin:0 auto;
+    padding:22px 2px 18px;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    border:0;
+    border-bottom:1px solid rgba(255,255,255,.10);
+    background:transparent;
+    color:#fff;
+    cursor:pointer;
+    position:relative;
+    z-index:5;
+  }
+
+  .footer-mobile-expander .fme-brand{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    font-size:18px;
+    font-weight:900;
+    letter-spacing:-.7px;
+  }
+
+  .footer-mobile-expander .fme-brand span:last-child{
+    color:#9d84ff;
+  }
+
+  .footer-mobile-expander .fme-icon{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(116,80,232,.16);
+    border:1px solid rgba(157,132,255,.25);
+    color:#b8a6ff;
+    transition:transform .35s ease, background .25s ease;
+  }
+
+  .trivox-footer.mobile-footer-open .footer-mobile-expander .fme-icon{
+    transform:rotate(180deg);
+    background:#7450e8;
+    color:#fff;
+  }
+
+  .footer-desktop-wrap{
+    max-height:0;
+    opacity:0;
+    overflow:hidden;
+    transform:translateY(-10px);
+    transition:max-height .65s cubic-bezier(.22,.75,.25,1),
+               opacity .35s ease,
+               transform .45s ease,
+               padding .45s ease;
+    pointer-events:none;
+  }
+
+  .trivox-footer.mobile-footer-open .footer-desktop-wrap{
+    max-height:1800px;
+    opacity:1;
+    transform:translateY(0);
+    padding-top:34px;
+    pointer-events:auto;
+  }
+}
+  </style>
 </head>
 
 <body>
@@ -3229,7 +4000,6 @@
 </section>
 
 
-
 <section class="trivox-model" id="how-it-works">
   <div class="model-wrap">
 
@@ -3393,7 +4163,6 @@
 </section>
 
 
-
 <section class="take-forward">
   <div class="take-forward-wrap">
 
@@ -3536,20 +4305,6 @@
 </section>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- =========================================================
      NEW TEMPLATE-INSPIRED SECTION — WHITE VERSION
      Added below existing sections. Navbar/dropdowns unchanged.
@@ -3582,7 +4337,6 @@
     </div>
   </div>
 </section>
-
 
 
 <!-- =========================================================
@@ -3803,10 +4557,166 @@
 </div>
 
 
+<footer class="trivox-footer">
 
-<script>
+<button class="footer-mobile-expander" type="button" aria-expanded="false" aria-label="Open footer">
+  <span class="fme-brand">
+    <span>TRIVOX</span>
+    <span>AI IMPACT</span>
+  </span>
+  <span class="fme-icon"><i class="fa-solid fa-chevron-down"></i></span>
+</button>
 
-  const menuToggle =
+
+  <!-- DESKTOP / TABLET FOOTER -->
+  <div class="footer-desktop">
+    <div class="footer-desktop-wrap">
+
+      <div class="footer-desktop-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <span class="footer-logo-main">TRIVOX</span>
+            <span class="footer-logo-impact">AI IMPACT</span>
+          </div>
+
+          <p>
+            Learn through focused classes, unlock new modules through eligible
+            monthly purchases, build practical skills and keep moving forward.
+          </p>
+
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Learning</h4>
+          <a href="#">AI Learning</a>
+          <a href="#">Programming</a>
+          <a href="#">Web Development</a>
+          <a href="#">App Development</a>
+          <a href="#videoClasses">Video Classes</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>TRIVOX</h4>
+          <a href="#">About Us</a>
+          <a href="#">Our Mission</a>
+          <a href="#">Student Impact</a>
+          <a href="#">Careers</a>
+          <a href="#">Contact</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="#">Tutorials</a>
+          <a href="#">Student Projects</a>
+          <a href="#">Success Stories</a>
+          <a href="#">FAQs</a>
+          <a href="#monthlyLearning">12 Month Journey</a>
+        </div>
+      </div>
+
+      <div class="footer-desktop-bottom">
+        <p>© 2026 TRIVOX AI IMPACT. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms</a>
+          <a href="#">Support</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MOBILE FOOTER — intentionally different design -->
+  <div class="footer-mobile">
+    <div class="footer-mobile-card">
+      <div class="footer-mobile-brand">
+        <div class="footer-logo">
+          <span class="footer-logo-main">TRIVOX</span>
+          <span class="footer-logo-impact">AI IMPACT</span>
+        </div>
+        <p>Learn. Unlock. Build. Grow — one month at a time.</p>
+      </div>
+
+      <div class="footer-mobile-actions">
+        <a href="#videoClasses" class="primary">
+          <i class="fa-solid fa-circle-play"></i> Video Classes
+        </a>
+        <a href="#monthlyLearning" class="secondary">
+          <i class="fa-solid fa-lock-open"></i> Modules
+        </a>
+      </div>
+
+      <div class="mobile-footer-accordion">
+
+        <div class="mobile-footer-item">
+          <button class="mobile-footer-toggle" type="button">
+            <span>Learning</span>
+            <i class="fa-solid fa-plus"></i>
+          </button>
+          <div class="mobile-footer-links">
+            <a href="#">AI Learning</a>
+            <a href="#">Programming</a>
+            <a href="#">Web Development</a>
+            <a href="#">App Development</a>
+            <a href="#videoClasses">Video Classes</a>
+          </div>
+        </div>
+
+        <div class="mobile-footer-item">
+          <button class="mobile-footer-toggle" type="button">
+            <span>Company</span>
+            <i class="fa-solid fa-plus"></i>
+          </button>
+          <div class="mobile-footer-links">
+            <a href="#">About TRIVOX</a>
+            <a href="#">Our Mission</a>
+            <a href="#">Student Impact</a>
+            <a href="#">Careers</a>
+            <a href="#">Contact</a>
+          </div>
+        </div>
+
+        <div class="mobile-footer-item">
+          <button class="mobile-footer-toggle" type="button">
+            <span>Resources</span>
+            <i class="fa-solid fa-plus"></i>
+          </button>
+          <div class="mobile-footer-links">
+            <a href="#">Tutorials</a>
+            <a href="#">Student Projects</a>
+            <a href="#">Success Stories</a>
+            <a href="#">FAQs</a>
+            <a href="#monthlyLearning">12 Month Journey</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-mobile-social">
+      <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+      <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+    </div>
+
+    <div class="footer-mobile-copy">
+      © 2026 TRIVOX AI IMPACT<br>
+      Privacy · Terms · Support
+    </div>
+  </div>
+
+</footer>
+
+
+  <script>
+const menuToggle =
     document.getElementById("menuToggle");
 
   const navMenu =
@@ -3869,13 +4779,6 @@
     }
   );
 
-</script>
-
-
-
-
-
-<script>
 (function(){
   const words=Array.from(document.querySelectorAll('#introReveal .intro-word'));
   if(!words.length) return;
@@ -3886,11 +4789,7 @@
     words[index].classList.add('show');
   },3200);
 })();
-</script>
 
-
-
-<script>
 (function(){
   const modal = document.getElementById('trivoxVideoModal');
   const video = document.getElementById('trivoxClassVideo');
@@ -3931,10 +4830,7 @@
     }
   });
 })();
-</script>
 
-
-<script>
 (function(){
  const section=document.querySelector('.monthly-unlock-carousel');
  if(!section) return;
@@ -3977,7 +4873,124 @@
  setTimeout(()=>go(0,false),100);
  restart();
 })();
-</script>
 
+/* ===== TRUE COVERFLOW CAROUSEL CONTROLLER ===== */
+(function(){
+  const section=document.querySelector('.monthly-unlock-carousel');
+  if(!section) return;
+
+  const cards=[...section.querySelectorAll('.muc-card')];
+  const prev=section.querySelector('.muc-prev');
+  const next=section.querySelector('.muc-next');
+  const dotsBox=section.querySelector('.muc-dots');
+  if(!cards.length) return;
+
+  /* Remove dots/listeners created by the earlier carousel script visually;
+     rebuild a fresh controller after DOM is ready. */
+  let current=0;
+  let timer=null;
+
+  function circularDiff(i,c,n){
+    let d=i-c;
+    if(d>n/2)d-=n;
+    if(d<-n/2)d+=n;
+    return d;
+  }
+
+  function render(){
+    cards.forEach((card,i)=>{
+      card.classList.remove('active','pos-left-1','pos-left-2','pos-right-1','pos-right-2','pos-hidden');
+      const d=circularDiff(i,current,cards.length);
+      if(d===0) card.classList.add('active');
+      else if(d===-1) card.classList.add('pos-left-1');
+      else if(d===-2) card.classList.add('pos-left-2');
+      else if(d===1) card.classList.add('pos-right-1');
+      else if(d===2) card.classList.add('pos-right-2');
+      else card.classList.add('pos-hidden');
+    });
+
+    if(dotsBox){
+      [...dotsBox.children].forEach((dot,i)=>dot.classList.toggle('active',i===current));
+    }
+  }
+
+  function go(n){
+    current=(n+cards.length)%cards.length;
+    render();
+  }
+  function restart(){
+    clearInterval(timer);
+    timer=setInterval(()=>go(current+1),3000);
+  }
+
+  /* Capture phase blocks old handlers from causing track translation. */
+  if(prev) prev.addEventListener('click',e=>{
+    e.stopImmediatePropagation();
+    go(current-1);restart();
+  },true);
+  if(next) next.addEventListener('click',e=>{
+    e.stopImmediatePropagation();
+    go(current+1);restart();
+  },true);
+
+  cards.forEach((card,i)=>{
+    card.addEventListener('click',()=>{
+      if(i!==current){go(i);restart();}
+    });
+  });
+
+  if(dotsBox){
+    [...dotsBox.children].forEach((dot,i)=>{
+      dot.addEventListener('click',e=>{
+        e.stopImmediatePropagation();
+        go(i);restart();
+      },true);
+    });
+  }
+
+  let sx=0;
+  section.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
+  section.addEventListener('touchend',e=>{
+    const dx=e.changedTouches[0].clientX-sx;
+    if(Math.abs(dx)>45){go(current+(dx<0?1:-1));restart();}
+  },{passive:true});
+
+  render();
+  restart();
+})();
+
+(function(){
+  const items = document.querySelectorAll('.mobile-footer-item');
+
+  items.forEach(item=>{
+    const btn = item.querySelector('.mobile-footer-toggle');
+    if(!btn) return;
+
+    btn.addEventListener('click',()=>{
+      const wasOpen = item.classList.contains('open');
+
+      items.forEach(other=>{
+        if(other !== item) other.classList.remove('open');
+      });
+
+      item.classList.toggle('open', !wasOpen);
+    });
+  });
+})();
+
+(function(){
+  const footer=document.querySelector('.trivox-footer');
+  if(!footer) return;
+
+  const button=footer.querySelector('.footer-mobile-expander');
+  if(!button) return;
+
+  button.addEventListener('click',function(){
+    const open=footer.classList.toggle('mobile-footer-open');
+    button.setAttribute('aria-expanded',open ? 'true' : 'false');
+    button.setAttribute('aria-label',open ? 'Close footer' : 'Open footer');
+  });
+})();
+  </script>
 </body>
 </html>
