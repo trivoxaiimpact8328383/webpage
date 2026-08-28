@@ -3,305 +3,3981 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TRIVOX AI IMPACT</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-  <title>TrivoxAI Impact</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  >
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
 
-    html,
-    body {
-      width: 100%;
-      height: 100%;
+    html{
+      scroll-behavior:smooth;
     }
 
-    body {
-      font-family: "Inter", sans-serif;
-      background: #ffffff;
-      overflow: hidden;
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      background:#fff;
+      color:#111;
+      overflow-x:hidden;
     }
 
-    .trainer {
-      width: 100%;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .navbar{
+      width:100%;
+      height:76px;
+      position:fixed;
+      top:0;
+      left:0;
+      z-index:9999;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 4%;
+      background:rgba(255,255,255,.86);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(0,0,0,.06);
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      white-space:nowrap;
+      font-size:23px;
+      font-weight:900;
+      letter-spacing:-1px;
+    }
+
+    .logo-main{
+      background:linear-gradient(
+        to bottom,
+        #111 0%,
+        #111 50%,
+        #7450e8 50%,
+        #7450e8 100%
+      );
+      -webkit-background-clip:text;
+      background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .logo-impact{
+      margin-left:7px;
+      background:linear-gradient(
+        to bottom,
+        #7450e8 0%,
+        #7450e8 50%,
+        #222 50%,
+        #222 100%
+      );
+      -webkit-background-clip:text;
+      background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .nav-menu{
+      display:flex;
+      align-items:center;
+      gap:3px;
+      list-style:none;
+    }
+
+    .nav-item{
+      position:relative;
+    }
+
+    .nav-link{
+      padding:28px 10px;
+      display:flex;
+      align-items:center;
+      gap:6px;
+      font-size:13.5px;
+      font-weight:600;
+      color:#37373d;
+      cursor:pointer;
+      white-space:nowrap;
+      transition:.2s;
+    }
+
+    .nav-link:hover{
+      color:#7450e8;
+    }
+
+    .arrow{
+      width:6px;
+      height:6px;
+      border-right:1.5px solid currentColor;
+      border-bottom:1.5px solid currentColor;
+      transform:rotate(45deg) translateY(-2px);
+      transition:.2s;
+    }
+
+    .nav-item:hover .arrow{
+      transform:rotate(225deg);
+    }
+
+    .dropdown{
+      position:absolute;
+      top:68px;
+      left:0;
+      width:245px;
+      padding:10px;
+      background:#fff;
+      border:1px solid #ededf2;
+      border-radius:15px;
+      box-shadow:0 18px 50px rgba(0,0,0,.10);
+      opacity:0;
+      visibility:hidden;
+      transform:translateY(12px);
+      transition:.22s;
+    }
+
+    .nav-item:hover > .dropdown{
+      opacity:1;
+      visibility:visible;
+      transform:translateY(0);
+    }
+
+    .dropdown > a{
+      display:block;
+      padding:12px 13px;
+      border-radius:10px;
+      font-size:13.5px;
+      color:#444;
+      transition:.2s;
+    }
+
+    .dropdown > a:hover{
+      background:#f6f3ff;
+      color:#7450e8;
+      padding-left:17px;
+    }
+
+    .mega-dropdown{
+      width:620px;
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:7px;
+      padding:15px;
+    }
+
+    .mega-box{
+      padding:14px;
+      border-radius:12px;
+    }
+
+    .mega-box:hover{
+      background:#f7f5ff;
+    }
+
+    .mega-box strong{
+      display:block;
+      margin-bottom:5px;
+      font-size:14px;
+    }
+
+    .mega-box p{
+      color:#777;
+      font-size:12px;
+      line-height:1.5;
+    }
+
+    .nav-actions{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .login-btn{
+      padding:10px 14px;
+      font-size:13.5px;
+      font-weight:600;
+      border-radius:9px;
+    }
+
+    .get-started{
+      padding:11px 17px;
+      background:#111;
+      color:#fff;
+      border-radius:10px;
+      font-size:13.5px;
+      font-weight:700;
+    }
+
+    .menu-toggle{
+      display:none;
+      width:42px;
+      height:42px;
+      border:0;
+      background:#f3f3f5;
+      border-radius:10px;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+      gap:4px;
+      cursor:pointer;
+    }
+
+    .menu-toggle span{
+      width:20px;
+      height:2px;
+      background:#111;
+    }
+
+    .hero{
+      min-height:72vh;
+      position:relative;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:96px 24px 44px;
       background:
-        radial-gradient(
-          circle at 50% 45%,
-          rgba(99, 102, 241, 0.06),
-          transparent 35%
+        linear-gradient(
+          180deg,
+          #ffffff 0%,
+          #fafafe 55%,
+          #ffffff 100%
+        );
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image:
+        linear-gradient(
+          rgba(30,30,50,.045) 1px,
+          transparent 1px
         ),
-        #ffffff;
+        linear-gradient(
+          90deg,
+          rgba(30,30,50,.045) 1px,
+          transparent 1px
+        );
+      background-size:55px 55px;
+      mask-image:linear-gradient(
+        to bottom,
+        black 0%,
+        rgba(0,0,0,.8) 60%,
+        transparent 100%
+      );
+      -webkit-mask-image:linear-gradient(
+        to bottom,
+        black 0%,
+        rgba(0,0,0,.8) 60%,
+        transparent 100%
+      );
+      pointer-events:none;
     }
 
-    .trainer-content {
-      width: 92%;
-      max-width: 1000px;
-      text-align: center;
-      position: relative;
+    .hero-content{
+      width:100%;
+      max-width:1200px;
+      position:relative;
+      z-index:3;
+      text-align:center;
     }
 
-    .brand {
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: #6366f1;
-      margin-bottom: 25px;
-
-      opacity: 0;
-      animation: brandIn 0.8s ease forwards;
+    .hero-title{
+      max-width:1000px;
+      margin:auto;
+      font-size:clamp(48px,7vw,92px);
+      font-weight:900;
+      line-height:.92;
+      letter-spacing:-5px;
+      color:#111116;
     }
 
-    @keyframes brandIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
+    .hero-title span{
+      display:block;
+    }
+
+    .hero-title .impact{
+      margin-top:7px;
+      background:linear-gradient(
+        90deg,
+        #6d28d9,
+        #805be5,
+        #315fcc
+      );
+      -webkit-background-clip:text;
+      background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .hero-description{
+      width:max-content;
+      max-width:none;
+      margin:28px auto 0;
+      font-size:16px;
+      line-height:1.5;
+      color:#676772;
+      white-space:nowrap;
+    }
+
+    .hero-actions{
+      margin-top:32px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+    }
+
+    .hero-btn{
+      min-height:48px;
+      padding:0 22px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:12px;
+      font-size:14px;
+      font-weight:700;
+      transition:.2s;
+    }
+
+    .explore-btn{
+      background:#111116;
+      color:#fff;
+    }
+
+    .explore-btn:hover{
+      transform:translateY(-2px);
+    }
+
+    .program-btn{
+      background:#fff;
+      border:1px solid #e4e4e8;
+      color:#25252b;
+    }
+
+    .program-btn:hover{
+      transform:translateY(-2px);
+    }
+
+    @media(max-width:1000px){
+
+      .navbar{
+        height:70px;
+        padding:0 18px;
       }
 
-      to {
-        opacity: 1;
-        transform: translateY(0);
+      .logo{
+        font-size:18px;
+      }
+
+      .login-btn,
+      .get-started{
+        display:none;
+      }
+
+      .menu-toggle{
+        display:flex;
+      }
+
+      .nav-menu{
+        position:absolute;
+        top:70px;
+        left:0;
+        width:100%;
+        max-height:calc(100vh - 70px);
+        overflow:auto;
+        display:flex;
+        flex-direction:column;
+        align-items:stretch;
+        padding:12px 14px 18px;
+        background:#fff;
+        transform:translateY(-120%);
+        opacity:0;
+        pointer-events:none;
+        transition:.3s;
+      }
+
+      .nav-menu.active{
+        transform:translateY(0);
+        opacity:1;
+        pointer-events:auto;
+      }
+
+      .nav-item{
+        width:100%;
+      }
+
+      .nav-link{
+        width:100%;
+        padding:15px 13px;
+        justify-content:space-between;
+      }
+
+      .dropdown{
+        position:static;
+        width:100%;
+        max-height:0;
+        overflow:hidden;
+        padding:0 8px;
+        opacity:1;
+        visibility:visible;
+        transform:none;
+        background:#fafafa;
+        box-shadow:none;
+        border:none;
+        transition:.3s;
+      }
+
+      .nav-item.open > .dropdown{
+        max-height:900px;
+        padding:8px;
+      }
+
+      .mega-dropdown{
+        display:block;
+      }
+
+      .hero{
+        min-height:68svh;
+        padding:92px 20px 42px;
+      }
+
+      .hero-title{
+        font-size:clamp(46px,12vw,68px);
+        letter-spacing:-3.5px;
+      }
+
+      .hero-description{
+        width:auto;
+        max-width:700px;
+        white-space:normal;
+        font-size:15px;
       }
     }
 
-    .text-window {
-      position: relative;
-      width: 100%;
-      height: 130px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+    @media(max-width:600px){
 
-    .slide-text {
-      position: absolute;
-      width: 100%;
-      padding: 0 15px;
-
-      font-size: clamp(34px, 6vw, 76px);
-      line-height: 1.08;
-      font-weight: 800;
-      letter-spacing: -3px;
-      color: #111827;
-
-      opacity: 0;
-      transform: translateY(90px);
-      filter: blur(8px);
-
-      transition:
-        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-        opacity 0.55s ease,
-        filter 0.6s ease;
-    }
-
-    .slide-text.show {
-      opacity: 1;
-      transform: translateY(0);
-      filter: blur(0);
-    }
-
-    .slide-text.hide {
-      opacity: 0;
-      transform: translateY(-90px);
-      filter: blur(7px);
-    }
-
-    .subtitle {
-      margin-top: 20px;
-
-      font-size: clamp(14px, 2vw, 17px);
-      color: #6b7280;
-      font-weight: 500;
-
-      opacity: 0;
-      animation: subtitleIn 0.8s ease 0.25s forwards;
-    }
-
-    @keyframes subtitleIn {
-      from {
-        opacity: 0;
-        transform: translateY(8px);
+      .hero{
+        min-height:64svh;
+        padding:84px 16px 34px;
       }
 
-      to {
-        opacity: 1;
-        transform: translateY(0);
+      .navbar{
+        padding:0 14px;
+      }
+
+      .logo{
+        font-size:16px;
+      }
+
+      .hero-title{
+        font-size:clamp(42px,13vw,58px);
+        letter-spacing:-3px;
+      }
+
+      .hero-description{
+        max-width:350px;
+        font-size:14px;
+        line-height:1.65;
+      }
+
+      .hero-actions{
+        flex-direction:column;
+      }
+
+      .hero-btn{
+        width:100%;
+        max-width:320px;
       }
     }
 
-    .line {
-      width: 38px;
-      height: 3px;
-      border-radius: 50px;
-      background: #6366f1;
-      margin: 28px auto 0;
+  
+    /* =========================================================
+       INFINITE IMAGE SHOWCASE
+    ========================================================= */
 
-      transform: scaleX(0);
-      animation: lineIn 0.7s ease 0.5s forwards;
+    .showcase{
+      position:relative;
+      width:100%;
+      overflow:hidden;
+      padding:36px 0 44px;
+      background:#ffffff;
     }
 
-    @keyframes lineIn {
-      to {
-        transform: scaleX(1);
+    .showcase-head{
+      width:min(1180px,92%);
+      margin:0 auto 28px;
+      text-align:center;
+      color:#111116;
+    }
+
+    .showcase-head p{
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:2.4px;
+      text-transform:uppercase;
+      color:#9b7cff;
+      margin-bottom:12px;
+    }
+
+    .showcase-head h2{
+      font-size:clamp(34px,4.2vw,64px);
+      line-height:1;
+      letter-spacing:-2.5px;
+      font-weight:900;
+    }
+
+    .marquee-row{
+      width:100%;
+      overflow:hidden;
+      position:relative;
+      margin-top:18px;
+    }
+
+    .marquee-row + .marquee-row{
+      margin-top:22px;
+    }
+
+    .marquee-track{
+      width:max-content;
+      display:flex;
+      align-items:center;
+      will-change:transform;
+    }
+
+    .marquee-group{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      padding-right:18px;
+      flex-shrink:0;
+    }
+
+    .marquee-card{
+      width:340px;
+      height:215px;
+      flex:0 0 340px;
+      overflow:hidden;
+      border-radius:16px;
+      background:#f4f4f6;
+      box-shadow:0 12px 38px rgba(0,0,0,.22);
+    }
+
+    .marquee-card img{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;
+      transition:transform .5s ease;
+    }
+
+    .marquee-card:hover img{
+      transform:scale(1.045);
+    }
+
+    /* first row: moves to the right */
+    .marquee-right .marquee-track{
+      animation:scrollRight 42s linear infinite;
+    }
+
+    /* second row: moves to the left */
+    .marquee-left .marquee-track{
+      animation:scrollLeft 42s linear infinite;
+    }
+
+    .marquee-row:hover .marquee-track{
+      animation-play-state:paused;
+    }
+
+    @keyframes scrollLeft{
+      from{
+        transform:translateX(0);
+      }
+      to{
+        transform:translateX(-50%);
       }
     }
 
-    @media (max-width: 600px) {
-      .brand {
-        font-size: 11px;
-        letter-spacing: 2.3px;
-        margin-bottom: 18px;
+    @keyframes scrollRight{
+      from{
+        transform:translateX(-50%);
       }
-
-      .text-window {
-        height: 100px;
-      }
-
-      .slide-text {
-        font-size: clamp(32px, 11vw, 48px);
-        letter-spacing: -1.8px;
-      }
-
-      .subtitle {
-        font-size: 14px;
-        padding: 0 20px;
-        line-height: 1.6;
-      }
-
-      .line {
-        margin-top: 22px;
+      to{
+        transform:translateX(0);
       }
     }
-  </style>
+
+    @media(max-width:900px){
+      .showcase{
+        padding:42px 0 50px;
+      }
+
+      .showcase-head{
+        margin-bottom:30px;
+      }
+
+      .marquee-card{
+        width:280px;
+        height:178px;
+        flex-basis:280px;
+        border-radius:14px;
+      }
+
+      .marquee-group{
+        gap:14px;
+        padding-right:14px;
+      }
+
+      .marquee-right .marquee-track,
+      .marquee-left .marquee-track{
+        animation-duration:34s;
+      }
+    }
+
+    @media(max-width:600px){
+      .showcase{
+        padding:48px 0 58px;
+      }
+
+      .showcase-head{
+        width:88%;
+        margin-bottom:24px;
+      }
+
+      .showcase-head p{
+        font-size:10px;
+      }
+
+      .showcase-head h2{
+        font-size:34px;
+        letter-spacing:-1.5px;
+      }
+
+      .marquee-card{
+        width:235px;
+        height:150px;
+        flex-basis:235px;
+        border-radius:12px;
+      }
+
+      .marquee-group{
+        gap:12px;
+        padding-right:12px;
+      }
+
+      .marquee-row + .marquee-row{
+        margin-top:14px;
+      }
+
+      .marquee-right .marquee-track,
+      .marquee-left .marquee-track{
+        animation-duration:29s;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .marquee-track{
+        animation-play-state:paused !important;
+      }
+    }
+
+  
+    /* =========================================================
+       HERO FA ICONS — RISE FROM TEXT + FALL BACK TO TEXT
+    ========================================================= */
+
+    .hero-icon-field{
+      position:absolute;
+      left:50%;
+      top:50%;
+      width:min(980px,92vw);
+      height:330px;
+      transform:translate(-50%,-48%);
+      z-index:2;
+      pointer-events:none;
+      overflow:visible;
+    }
+
+    .hero-fa{
+      position:absolute;
+      left:var(--x);
+      top:62%;
+      font-size:var(--size);
+      color:rgba(116,80,232,.28);
+      opacity:0;
+      transform:translate(-50%,0) scale(.72) rotate(0deg);
+      animation:textIconLift var(--duration) cubic-bezier(.45,0,.25,1) var(--delay) infinite;
+      will-change:transform,opacity;
+    }
+
+    .hero-fa:nth-child(3n){
+      color:rgba(49,95,204,.24);
+    }
+
+    .hero-fa:nth-child(4n){
+      color:rgba(20,20,26,.17);
+    }
+
+    @keyframes textIconLift{
+      0%{
+        opacity:0;
+        transform:
+          translate(-50%,18px)
+          scale(.65)
+          rotate(-5deg);
+      }
+
+      10%{
+        opacity:.2;
+      }
+
+      22%{
+        opacity:.62;
+        transform:
+          translate(calc(-50% + var(--drift-small)),-34px)
+          scale(.88)
+          rotate(3deg);
+      }
+
+      48%{
+        opacity:.72;
+        transform:
+          translate(calc(-50% + var(--drift)),-135px)
+          scale(1)
+          rotate(9deg);
+      }
+
+      58%{
+        opacity:.68;
+        transform:
+          translate(calc(-50% + var(--drift)), -150px)
+          scale(1.02)
+          rotate(11deg);
+      }
+
+      76%{
+        opacity:.52;
+        transform:
+          translate(calc(-50% + var(--drift-small)),-58px)
+          scale(.92)
+          rotate(4deg);
+      }
+
+      92%{
+        opacity:.22;
+        transform:
+          translate(-50%,2px)
+          scale(.75)
+          rotate(0deg);
+      }
+
+      100%{
+        opacity:0;
+        transform:
+          translate(-50%,18px)
+          scale(.65)
+          rotate(-4deg);
+      }
+    }
+
+    @media(max-width:1000px){
+      .hero-icon-field{
+        width:92vw;
+        height:280px;
+        transform:translate(-50%,-45%);
+      }
+
+      .hero-fa{
+        top:64%;
+        font-size:calc(var(--size) * .86);
+      }
+    }
+
+    @media(max-width:600px){
+      .hero-icon-field{
+        width:94vw;
+        height:240px;
+        transform:translate(-50%,-42%);
+      }
+
+      .hero-fa{
+        top:66%;
+        font-size:calc(var(--size) * .72);
+      }
+
+      .hero-fa:nth-child(n+11){
+        display:none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .hero-fa{
+        animation:none;
+        opacity:.14;
+      }
+    }
+
+  
+    /* ===== FIXED TEXT-ORIGIN ICON ANIMATION ===== */
+    .hero-content{
+      position:relative;
+      isolation:isolate;
+    }
+
+    .hero-title,
+    .hero-description,
+    .hero-actions{
+      position:relative;
+      z-index:3;
+    }
+
+    .text-icon-layer{
+      position:absolute;
+      left:50%;
+      top:50%;
+      width:min(900px, 92vw);
+      height:260px;
+      transform:translate(-50%,-62%);
+      z-index:1;
+      pointer-events:none;
+      overflow:visible;
+    }
+
+    .text-fall-icon{
+      position:absolute;
+      left:var(--x);
+      bottom:18px;
+      font-size:var(--s);
+      color:rgba(116,80,232,.34);
+      opacity:0;
+      transform:translate(-50%,0) scale(.75);
+      animation:riseFromText var(--t) ease-in-out var(--d) infinite;
+      will-change:transform,opacity;
+    }
+
+    .text-fall-icon:nth-child(3n){
+      color:rgba(49,95,204,.28);
+    }
+
+    .text-fall-icon:nth-child(4n){
+      color:rgba(20,20,26,.20);
+    }
+
+    @keyframes riseFromText{
+      0%{
+        opacity:0;
+        transform:translate(-50%, 18px) scale(.7) rotate(-5deg);
+      }
+      15%{
+        opacity:.7;
+      }
+      45%{
+        opacity:.75;
+        transform:translate(calc(-50% + var(--dx)), -145px) scale(1) rotate(9deg);
+      }
+      55%{
+        opacity:.75;
+        transform:translate(calc(-50% + var(--dx)), -155px) scale(1.02) rotate(11deg);
+      }
+      82%{
+        opacity:.48;
+        transform:translate(calc(-50% + var(--dx2)), -45px) scale(.9) rotate(3deg);
+      }
+      100%{
+        opacity:0;
+        transform:translate(-50%, 18px) scale(.72) rotate(-4deg);
+      }
+    }
+
+    @media(max-width:1000px){
+      .text-icon-layer{
+        width:94vw;
+        height:220px;
+        transform:translate(-50%,-58%);
+      }
+      .text-fall-icon{
+        font-size:calc(var(--s) * .84);
+      }
+    }
+
+    @media(max-width:600px){
+      .text-icon-layer{
+        width:96vw;
+        height:190px;
+        transform:translate(-50%,-55%);
+      }
+      .text-fall-icon{
+        font-size:calc(var(--s) * .72);
+      }
+      .text-fall-icon:nth-child(n+10){
+        display:none;
+      }
+    }
+
+  
+    /* FINAL RELIABLE ICON MOTION */
+    .text-icon-layer{
+      position:absolute !important;
+      left:50% !important;
+      top:46% !important;
+      width:min(920px,92vw) !important;
+      height:240px !important;
+      transform:translate(-50%,-50%) !important;
+      z-index:2 !important;
+      pointer-events:none !important;
+      overflow:visible !important;
+    }
+
+    .text-fall-icon{
+      position:absolute !important;
+      left:var(--x) !important;
+      bottom:10px !important;
+      display:block !important;
+      font-size:var(--s) !important;
+      color:rgba(116,80,232,.42) !important;
+      opacity:0;
+      animation:trivoxIconBounce var(--t) ease-in-out var(--d) infinite !important;
+      will-change:transform,opacity;
+    }
+
+    @keyframes trivoxIconBounce{
+      0%{
+        opacity:0;
+        transform:translate(-50%, 18px) scale(.75);
+      }
+      18%{
+        opacity:.8;
+      }
+      50%{
+        opacity:.95;
+        transform:translate(calc(-50% + var(--dx)), -135px) scale(1.05);
+      }
+      72%{
+        opacity:.65;
+        transform:translate(calc(-50% + var(--dx2)), -62px) scale(.94);
+      }
+      100%{
+        opacity:0;
+        transform:translate(-50%, 18px) scale(.75);
+      }
+    }
+
+    @media(max-width:600px){
+      .text-icon-layer{
+        top:44% !important;
+        height:190px !important;
+      }
+
+      .text-fall-icon{
+        font-size:calc(var(--s) * .72) !important;
+      }
+    }
+
+
+    /* ===== BIG SIDE ICONS: BOTTOM -> UP/OUT -> FALL DOWN ===== */
+    .text-icon-layer{
+      position:absolute !important;
+      left:50% !important;
+      top:50% !important;
+      width:min(1120px, 98vw) !important;
+      height:360px !important;
+      transform:translate(-50%,-42%) !important;
+      z-index:2 !important;
+      overflow:visible !important;
+      pointer-events:none !important;
+    }
+
+    .text-fall-icon{
+      position:absolute !important;
+      left:50% !important;
+      bottom:0 !important;
+      display:block !important;
+      font-size:var(--big) !important;
+      color:rgba(116,80,232,.38) !important;
+      opacity:0;
+      filter:none !important;
+      animation:bigSideRiseFall var(--speed) cubic-bezier(.42,0,.28,1) var(--wait) infinite !important;
+      will-change:transform,opacity;
+    }
+
+    @keyframes bigSideRiseFall{
+      0%{
+        opacity:0;
+        transform:
+          translate(-50%,55px)
+          scale(.62)
+          rotate(0deg);
+      }
+
+      12%{
+        opacity:.72;
+      }
+
+      48%{
+        opacity:.92;
+        transform:
+          translate(
+            calc(-50% + var(--side)),
+            var(--up)
+          )
+          scale(1)
+          rotate(var(--rot));
+      }
+
+      62%{
+        opacity:.9;
+        transform:
+          translate(
+            calc(-50% + var(--side)),
+            calc(var(--up) - 12px)
+          )
+          scale(1.04)
+          rotate(var(--rot));
+      }
+
+      82%{
+        opacity:.62;
+        transform:
+          translate(
+            calc(-50% + (var(--side) * .45)),
+            -70px
+          )
+          scale(.86)
+          rotate(2deg);
+      }
+
+      100%{
+        opacity:0;
+        transform:
+          translate(-50%,55px)
+          scale(.62)
+          rotate(0deg);
+      }
+    }
+
+    @media(max-width:1000px){
+      .text-icon-layer{
+        width:100vw !important;
+        height:300px !important;
+        transform:translate(-50%,-38%) !important;
+      }
+
+      .text-fall-icon{
+        font-size:calc(var(--big) * .78) !important;
+      }
+    }
+
+    @media(max-width:600px){
+      .text-icon-layer{
+        width:100vw !important;
+        height:250px !important;
+        top:49% !important;
+        transform:translate(-50%,-34%) !important;
+      }
+
+      .text-fall-icon{
+        font-size:calc(var(--big) * .58) !important;
+      }
+
+      .text-fall-icon:nth-child(n+8){
+        display:none !important;
+      }
+    }
+
+
+    /* ===== FINAL STATIC SIDE ICON POSITIONS ===== */
+    .text-icon-layer{
+      position:absolute !important;
+      left:50% !important;
+      top:50% !important;
+      width:min(1120px, 98vw) !important;
+      height:360px !important;
+      transform:translate(-50%,-42%) !important;
+      z-index:2 !important;
+      pointer-events:none !important;
+      overflow:visible !important;
+    }
+
+    .text-fall-icon{
+      position:absolute !important;
+      display:block !important;
+      animation:none !important;
+      opacity:.34 !important;
+      color:rgba(116,80,232,.34) !important;
+      transform:none !important;
+      filter:none !important;
+      font-size:var(--big) !important;
+      left:var(--left) !important;
+      top:var(--top) !important;
+    }
+
+    .text-fall-icon:nth-child(3n){
+      color:rgba(49,95,204,.27) !important;
+    }
+
+    .text-fall-icon:nth-child(4n){
+      color:rgba(20,20,26,.18) !important;
+    }
+
+    @media(max-width:1000px){
+      .text-icon-layer{
+        width:100vw !important;
+        height:300px !important;
+        transform:translate(-50%,-38%) !important;
+      }
+
+      .text-fall-icon{
+        font-size:calc(var(--big) * .76) !important;
+      }
+    }
+
+    @media(max-width:600px){
+      .text-icon-layer{
+        width:100vw !important;
+        height:240px !important;
+        top:49% !important;
+        transform:translate(-50%,-34%) !important;
+      }
+
+      .text-fall-icon{
+        font-size:calc(var(--big) * .56) !important;
+        opacity:.26 !important;
+      }
+
+      .text-fall-icon:nth-child(n+8){
+        display:none !important;
+      }
+    }
+
+
+
+
+/* =========================================================
+   TRIVOX MODEL — HOW IT WORKS
+========================================================= */
+.trivox-model{
+  background:#fff;
+  padding:92px 24px 105px;
+  border-top:1px solid #f0f0f3;
+}
+.model-wrap{width:min(1180px,100%);margin:auto}
+.model-head{max-width:820px;margin-bottom:54px}
+.model-label{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:11px;font-weight:800;letter-spacing:2px;
+  text-transform:uppercase;color:#7450e8;margin-bottom:16px
+}
+.model-label:before{content:"";width:32px;height:1px;background:#7450e8}
+.model-head h2{
+  font-size:clamp(40px,5.2vw,72px);line-height:.96;
+  letter-spacing:-3.8px;font-weight:900;color:#111116
+}
+.model-head h2 span{
+  background:linear-gradient(90deg,#6d28d9,#805be5,#315fcc);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent
+}
+.model-head p{
+  max-width:680px;margin-top:20px;font-size:15.5px;
+  line-height:1.7;color:#72727b
+}
+.model-flow{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  border-top:1px solid #e9e7ee;border-bottom:1px solid #e9e7ee
+}
+.model-item{
+  min-height:235px;padding:28px 24px 26px;
+  position:relative;border-right:1px solid #e9e7ee;
+  transition:.25s ease
+}
+.model-item:last-child{border-right:0}
+.model-item:hover{background:#faf9fe}
+.model-no{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:40px;color:#aaa8b0;font-size:11px;
+  font-weight:800;letter-spacing:1px
+}
+.model-icon{
+  width:38px;height:38px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:#f2effc;color:#7450e8;font-size:14px
+}
+.model-item h3{
+  font-size:19px;line-height:1.15;letter-spacing:-.5px;
+  color:#17171c;margin-bottom:10px
+}
+.model-item p{font-size:13px;line-height:1.6;color:#7b7b84}
+.model-note{
+  margin-top:28px;display:flex;align-items:center;
+  justify-content:space-between;gap:24px
+}
+.model-note p{font-size:13px;line-height:1.6;color:#85858e}
+.model-note strong{color:#24242a}
+.model-btn{
+  flex:0 0 auto;padding:13px 18px;border-radius:10px;
+  background:#111116;color:#fff;font-size:13px;font-weight:700
+}
+@media(max-width:900px){
+  .trivox-model{padding:72px 20px 82px}
+  .model-flow{grid-template-columns:1fr 1fr}
+  .model-item{border-bottom:1px solid #e9e7ee}
+  .model-item:nth-child(2n){border-right:0}
+  .model-item:last-child{border-right:1px solid #e9e7ee}
+}
+@media(max-width:600px){
+  .trivox-model{padding:60px 18px 68px}
+  .model-head{margin-bottom:38px}
+  .model-head h2{font-size:42px;letter-spacing:-2.5px}
+  .model-flow{grid-template-columns:1fr}
+  .model-item,.model-item:last-child{
+    min-height:auto;border-right:0;padding:24px 5px
+  }
+  .model-no{margin-bottom:18px}
+  .model-note{align-items:flex-start;flex-direction:column}
+}
+
+
+/* =========================================================
+   NEXT SECTION — LEARNING EXPERIENCE
+========================================================= */
+.learning-experience{
+  position:relative;
+  overflow:hidden;
+  padding:105px 24px 115px;
+  background:#f8f7fc;
+}
+.learning-experience::before{
+  content:"";
+  position:absolute;
+  width:520px;height:520px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(116,80,232,.12),transparent 68%);
+  right:-180px;top:-190px;
+  pointer-events:none;
+}
+.learning-wrap{
+  position:relative;z-index:1;
+  width:min(1180px,100%);
+  margin:auto;
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:80px;
+  align-items:center;
+}
+.learning-copy h2{
+  max-width:530px;
+  font-size:clamp(44px,5.6vw,76px);
+  line-height:.95;
+  letter-spacing:-4px;
+  color:#111116;
+  font-weight:900;
+}
+.learning-copy h2 span{
+  background:linear-gradient(90deg,#6d28d9,#805be5,#315fcc);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.learning-copy>p{
+  max-width:510px;
+  margin-top:22px;
+  font-size:15.5px;
+  line-height:1.75;
+  color:#6f6f79;
+}
+.learning-points{
+  margin-top:34px;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+.learning-point{
+  display:flex;
+  align-items:flex-start;
+  gap:14px;
+}
+.learning-point i{
+  width:38px;height:38px;
+  flex:0 0 38px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:50%;
+  background:#fff;
+  border:1px solid #e6e1f6;
+  color:#7450e8;
+  font-size:13px;
+}
+.learning-point strong{
+  display:block;
+  margin:2px 0 4px;
+  font-size:14px;
+  color:#222228;
+}
+.learning-point p{
+  font-size:12.5px;
+  line-height:1.55;
+  color:#85858e;
+}
+.learning-ui{
+  position:relative;
+  min-height:520px;
+}
+.course-window{
+  position:absolute;
+  width:min(530px,100%);
+  right:0;top:0;
+  padding:18px;
+  border-radius:24px;
+  background:#fff;
+  border:1px solid #ebe9f0;
+  box-shadow:0 30px 80px rgba(34,26,62,.10);
+}
+.course-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:18px;
+}
+.course-user{
+  display:flex;align-items:center;gap:11px;
+}
+.course-avatar{
+  width:42px;height:42px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:#111116;color:#fff;
+  font-size:13px;font-weight:800;
+}
+.course-user strong{display:block;font-size:13px}
+.course-user span{display:block;margin-top:3px;font-size:10.5px;color:#9999a1}
+.course-percent{
+  font-size:12px;font-weight:800;color:#7450e8;
+}
+.course-hero{
+  padding:25px;
+  min-height:205px;
+  border-radius:18px;
+  background:linear-gradient(135deg,#17171d,#302455 65%,#7450e8);
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.course-hero small{
+  font-size:10px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  opacity:.65;
+}
+.course-hero h3{
+  max-width:340px;
+  margin-top:12px;
+  font-size:27px;
+  line-height:1.05;
+  letter-spacing:-1px;
+}
+.course-progress{
+  margin-top:24px;
+  height:5px;
+  border-radius:10px;
+  background:rgba(255,255,255,.18);
+  overflow:hidden;
+}
+.course-progress span{
+  display:block;width:68%;height:100%;
+  background:#fff;border-radius:inherit;
+}
+.course-lessons{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:12px;
+}
+.course-mini{
+  padding:16px;
+  border-radius:15px;
+  background:#faf9fc;
+  border:1px solid #efedf3;
+}
+.course-mini i{
+  margin-bottom:20px;
+  font-size:17px;
+  color:#7450e8;
+}
+.course-mini strong{
+  display:block;font-size:12px;color:#27272d;
+}
+.course-mini span{
+  display:block;margin-top:5px;font-size:10.5px;color:#9a9aa2;
+}
+.certificate-float{
+  position:absolute;
+  left:-55px;
+  bottom:10px;
+  width:230px;
+  padding:17px;
+  border-radius:18px;
+  background:#fff;
+  border:1px solid #ebe8f1;
+  box-shadow:0 22px 55px rgba(36,26,70,.13);
+}
+.certificate-float .cert-icon{
+  width:42px;height:42px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:12px;
+  background:#f0ebff;
+  color:#7450e8;
+  margin-bottom:16px;
+}
+.certificate-float small{
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:1.3px;
+  color:#aaa7b0;
+}
+.certificate-float h4{
+  margin-top:6px;
+  font-size:16px;
+  letter-spacing:-.4px;
+}
+.certificate-float p{
+  margin-top:6px;
+  font-size:10.5px;
+  line-height:1.5;
+  color:#8b8b94;
+}
+@media(max-width:900px){
+  .learning-experience{padding:80px 20px 95px}
+  .learning-wrap{grid-template-columns:1fr;gap:55px}
+  .learning-ui{width:min(620px,100%);margin:auto}
+}
+@media(max-width:600px){
+  .learning-experience{padding:65px 18px 75px}
+  .learning-copy h2{font-size:43px;letter-spacing:-2.7px}
+  .learning-ui{min-height:490px}
+  .course-window{width:100%;padding:14px;border-radius:20px}
+  .course-hero{padding:21px;min-height:190px}
+  .course-hero h3{font-size:24px}
+  .certificate-float{
+    left:12px;bottom:0;width:205px;
+  }
+}
+
+
+/* ===== LEARNING UI POLISH / TEXT CUT FIX ===== */
+.course-lessons{
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  gap:12px !important;
+}
+.course-mini{
+  min-width:0;
+  min-height:118px;
+  padding:16px 15px 15px !important;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:flex-start;
+  overflow:visible !important;
+}
+.course-mini i{
+  margin-bottom:16px !important;
+}
+.course-mini strong{
+  width:100%;
+  font-size:12.5px !important;
+  line-height:1.35;
+  white-space:normal;
+}
+.course-mini span{
+  width:100%;
+  margin-top:6px !important;
+  font-size:11px !important;
+  line-height:1.45 !important;
+  white-space:normal !important;
+  overflow:visible !important;
+  text-overflow:clip !important;
+}
+.course-window{
+  overflow:visible;
+}
+.course-top{
+  padding:2px 2px 0;
+}
+.course-percent{
+  padding:7px 10px;
+  border-radius:999px;
+  background:#f2effc;
+}
+.course-hero{
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+}
+.course-progress{
+  position:relative;
+}
+.course-progress::after{
+  content:"68% complete";
+  position:absolute;
+  right:0;
+  top:-22px;
+  font-size:9.5px;
+  font-weight:700;
+  letter-spacing:.3px;
+  color:rgba(255,255,255,.68);
+}
+@media(max-width:420px){
+  .course-lessons{
+    grid-template-columns:1fr !important;
+  }
+  .course-mini{
+    min-height:96px;
+  }
+  .learning-ui{
+    min-height:600px !important;
+  }
+}
+
+
+/* ===== CERTIFICATE LAYOUT FIX + AVATAR REMOVED ===== */
+.course-user{
+  gap:0 !important;
+}
+
+.course-user strong{
+  font-size:14px !important;
+}
+
+.course-user span{
+  font-size:11px !important;
+}
+
+.course-avatar,
+.certificate-float{
+  display:none !important;
+}
+
+.learning-ui{
+  min-height:auto !important;
+  padding-bottom:0 !important;
+}
+
+.course-window{
+  position:relative !important;
+  top:auto !important;
+  right:auto !important;
+  width:100% !important;
+  max-width:530px;
+  margin-left:auto;
+}
+
+.certificate-strip{
+  width:100%;
+  max-width:530px;
+  margin:14px 0 0 auto;
+  padding:15px 16px;
+  display:grid;
+  grid-template-columns:44px minmax(0,1fr) auto;
+  align-items:center;
+  gap:13px;
+  border:1px solid #ebe8f1;
+  border-radius:16px;
+  background:#fff;
+  box-shadow:0 12px 34px rgba(36,26,70,.07);
+}
+
+.certificate-strip-icon{
+  width:44px;
+  height:44px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:12px;
+  background:#f0ebff;
+  color:#7450e8;
+  font-size:16px;
+}
+
+.certificate-strip-copy{
+  min-width:0;
+}
+
+.certificate-strip-copy small{
+  display:block;
+  margin-bottom:3px;
+  font-size:8.5px;
+  font-weight:800;
+  letter-spacing:1.1px;
+  color:#aaa7b0;
+}
+
+.certificate-strip-copy strong{
+  display:block;
+  font-size:13px;
+  line-height:1.3;
+  color:#222228;
+}
+
+.certificate-strip-copy span{
+  display:block;
+  margin-top:3px;
+  font-size:10px;
+  line-height:1.4;
+  color:#8b8b94;
+  white-space:normal;
+}
+
+.certificate-strip-status{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  padding:7px 9px;
+  border-radius:999px;
+  background:#f7f6f9;
+  color:#777780;
+  font-size:9.5px;
+  font-weight:700;
+  white-space:nowrap;
+}
+
+@media(max-width:600px){
+  .course-window,
+  .certificate-strip{
+    max-width:none;
+    margin-left:0;
+  }
+
+  .certificate-strip{
+    grid-template-columns:40px minmax(0,1fr);
+    padding:13px;
+  }
+
+  .certificate-strip-icon{
+    width:40px;
+    height:40px;
+  }
+
+  .certificate-strip-status{
+    grid-column:2;
+    width:max-content;
+    margin-top:3px;
+  }
+}
+
+
+
+
+/* =========================================================
+   NEW SECTION — WHAT STUDENTS TAKE FORWARD
+========================================================= */
+.take-forward{
+  background:#ffffff;
+  padding:110px 24px 118px;
+  border-top:1px solid #f0f0f3;
+}
+
+.take-forward-wrap{
+  width:min(1180px,100%);
+  margin:auto;
+  display:grid;
+  grid-template-columns:.88fr 1.12fr;
+  gap:86px;
+  align-items:start;
+}
+
+.take-forward-left{
+  position:sticky;
+  top:120px;
+}
+
+.take-forward-eyebrow{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:18px;
+  font-size:10.5px;
+  font-weight:800;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#7450e8;
+}
+
+.take-forward-eyebrow::before{
+  content:"";
+  width:34px;
+  height:1px;
+  background:#7450e8;
+}
+
+.take-forward h2{
+  max-width:520px;
+  font-size:clamp(46px,5.8vw,78px);
+  line-height:.94;
+  letter-spacing:-4px;
+  font-weight:900;
+  color:#111116;
+}
+
+.take-forward h2 span{
+  display:block;
+  color:#7450e8;
+}
+
+.take-forward-left p{
+  max-width:480px;
+  margin-top:22px;
+  font-size:15px;
+  line-height:1.75;
+  color:#74747d;
+}
+
+.take-forward-link{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  margin-top:30px;
+  font-size:13px;
+  font-weight:800;
+  color:#17171d;
+}
+
+.take-forward-link span{
+  width:34px;
+  height:34px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:#f1edff;
+  color:#7450e8;
+}
+
+.take-forward-list{
+  border-top:1px solid #e9e8ed;
+}
+
+.forward-item{
+  display:grid;
+  grid-template-columns:70px 54px 1fr;
+  gap:18px;
+  align-items:start;
+  padding:34px 0;
+  border-bottom:1px solid #e9e8ed;
+  transition:.25s ease;
+}
+
+.forward-item:hover{
+  padding-left:10px;
+}
+
+.forward-no{
+  padding-top:8px;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:1.4px;
+  color:#aaa8b0;
+}
+
+.forward-icon{
+  width:48px;
+  height:48px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:#f4f1ff;
+  color:#7450e8;
+  font-size:16px;
+}
+
+.forward-copy h3{
+  font-size:22px;
+  line-height:1.15;
+  letter-spacing:-.6px;
+  color:#1a1a20;
+  margin-bottom:8px;
+}
+
+.forward-copy p{
+  max-width:510px;
+  font-size:13.5px;
+  line-height:1.65;
+  color:#7c7c85;
+}
+
+.forward-meta{
+  margin-top:12px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+}
+
+.forward-meta span{
+  font-size:10px;
+  font-weight:700;
+  color:#6f6f78;
+}
+
+.forward-meta span + span::before{
+  content:"•";
+  margin-right:7px;
+  color:#b5b2c0;
+}
+
+@media(max-width:900px){
+  .take-forward{
+    padding:82px 20px 90px;
+  }
+
+  .take-forward-wrap{
+    grid-template-columns:1fr;
+    gap:52px;
+  }
+
+  .take-forward-left{
+    position:static;
+  }
+
+  .take-forward h2{
+    max-width:680px;
+  }
+}
+
+@media(max-width:600px){
+  .take-forward{
+    padding:64px 18px 72px;
+  }
+
+  .take-forward h2{
+    font-size:44px;
+    letter-spacing:-2.8px;
+  }
+
+  .forward-item{
+    grid-template-columns:46px 1fr;
+    gap:14px;
+    padding:26px 0;
+  }
+
+  .forward-no{
+    display:none;
+  }
+
+  .forward-icon{
+    width:44px;
+    height:44px;
+    grid-row:1 / span 2;
+  }
+
+  .forward-copy h3{
+    font-size:19px;
+  }
+
+  .forward-copy p{
+    font-size:13px;
+  }
+
+  .forward-item:hover{
+    padding-left:0;
+  }
+}
+
+
+/* =========================================================
+   NEXT SECTION — CENTER MESSAGE + SIDE ICON MOTION
+========================================================= */
+.center-motion{
+  position:relative;
+  min-height:620px;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:105px 24px;
+  background:linear-gradient(180deg,#faf9fe 0%,#ffffff 100%);
+  border-top:1px solid #f0eef5;
+}
+
+.center-motion::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(116,80,232,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(116,80,232,.035) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:linear-gradient(to bottom,transparent,black 25%,black 75%,transparent);
+  -webkit-mask-image:linear-gradient(to bottom,transparent,black 25%,black 75%,transparent);
+}
+
+.center-motion-copy{
+  position:relative;
+  z-index:5;
+  width:min(850px,92%);
+  text-align:center;
+}
+
+.center-motion-copy h2{
+  font-size:clamp(48px,6.8vw,92px);
+  line-height:.91;
+  letter-spacing:-5px;
+  font-weight:900;
+  color:#111116;
+}
+
+.center-motion-copy h2 span{
+  display:block;
+  margin-top:8px;
+  background:linear-gradient(90deg,#6d28d9,#805be5,#315fcc);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.center-motion-copy p{
+  max-width:650px;
+  margin:25px auto 0;
+  font-size:15px;
+  line-height:1.75;
+  color:#73737d;
+}
+
+.center-motion-action{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin-top:29px;
+  padding:13px 19px;
+  border-radius:11px;
+  background:#111116;
+  color:#fff;
+  font-size:13px;
+  font-weight:800;
+}
+
+.motion-icons{
+  position:absolute;
+  inset:0;
+  z-index:3;
+  pointer-events:none;
+}
+
+.motion-icon{
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:var(--size);
+  height:var(--size);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:rgba(116,80,232,.38);
+  font-size:calc(var(--size) * .58);
+  opacity:0;
+  animation:sideToTopFall var(--time) cubic-bezier(.42,0,.25,1) var(--delay) infinite;
+  will-change:transform,opacity;
+}
+
+/* No icon card / no icon box */
+.motion-icon::before{
+  background:none !important;
+}
+
+.motion-icon:nth-child(3n){
+  color:rgba(49,95,204,.31);
+}
+
+.motion-icon:nth-child(4n){
+  color:rgba(18,18,24,.20);
+}
+
+@keyframes sideToTopFall{
+  0%{
+    opacity:0;
+    transform:
+      translate(calc(-50% + var(--start-x)),calc(-50% + var(--start-y)))
+      scale(.7)
+      rotate(0deg);
+  }
+
+  13%{
+    opacity:.78;
+  }
+
+  48%{
+    opacity:.82;
+    transform:
+      translate(calc(-50% + var(--top-x)),calc(-50% - 235px))
+      scale(1)
+      rotate(var(--rotate));
+  }
+
+  60%{
+    opacity:.78;
+    transform:
+      translate(calc(-50% + var(--top-x)),calc(-50% - 245px))
+      scale(1.04)
+      rotate(var(--rotate));
+  }
+
+  83%{
+    opacity:.48;
+    transform:
+      translate(calc(-50% + var(--fall-x)),calc(-50% + 135px))
+      scale(.88)
+      rotate(3deg);
+  }
+
+  100%{
+    opacity:0;
+    transform:
+      translate(calc(-50% + var(--fall-x)),calc(-50% + 245px))
+      scale(.68)
+      rotate(0deg);
+  }
+}
+
+@media(max-width:900px){
+  .center-motion{
+    min-height:570px;
+    padding:90px 20px;
+  }
+
+  .center-motion-copy h2{
+    font-size:clamp(47px,10vw,72px);
+    letter-spacing:-4px;
+  }
+
+  .motion-icon{
+    width:calc(var(--size) * .82);
+    height:calc(var(--size) * .82);
+    font-size:calc(var(--size) * .47);
+  }
+}
+
+@media(max-width:600px){
+  .center-motion{
+    min-height:540px;
+    padding:78px 18px;
+  }
+
+  .center-motion-copy{
+    width:94%;
+  }
+
+  .center-motion-copy h2{
+    font-size:44px;
+    letter-spacing:-2.8px;
+  }
+
+  .center-motion-copy p{
+    max-width:340px;
+    font-size:13.5px;
+  }
+
+  .motion-icon{
+    width:calc(var(--size) * .64);
+    height:calc(var(--size) * .64);
+    font-size:calc(var(--size) * .38);
+  }
+
+  .motion-icon:nth-child(n+9){
+    display:none;
+  }
+
+  @keyframes sideToTopFall{
+    0%{
+      opacity:0;
+      transform:translate(calc(-50% + var(--mobile-x)),calc(-50% + 180px)) scale(.7);
+    }
+    15%{opacity:.62}
+    52%{
+      opacity:.7;
+      transform:translate(calc(-50% + var(--mobile-top)),calc(-50% - 195px)) scale(1);
+    }
+    82%{
+      opacity:.42;
+      transform:translate(calc(-50% + var(--mobile-fall)),calc(-50% + 120px)) scale(.85);
+    }
+    100%{
+      opacity:0;
+      transform:translate(calc(-50% + var(--mobile-fall)),calc(-50% + 210px)) scale(.7);
+    }
+  }
+}
+
+
+/* =========================================================
+   EDGE ICON FALL + SINGLE CENTER WORD CHANGE
+========================================================= */
+.edge-motion-section{
+  position:relative;
+  min-height:570px;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:90px 24px;
+  background:#fff;
+  border-top:1px solid #f1f0f4;
+}
+
+.edge-center{
+  position:relative;
+  z-index:5;
+  width:min(900px,88%);
+  text-align:center;
+}
+
+.edge-center h2{
+  font-size:clamp(48px,6.5vw,88px);
+  line-height:.95;
+  letter-spacing:-5px;
+  font-weight:900;
+  color:#111116;
+}
+
+.edge-center .changing-word{
+  display:inline-block;
+  min-width:4.7em;
+  color:#7450e8;
+  transition:
+    opacity .32s ease,
+    transform .32s ease,
+    filter .32s ease;
+}
+
+.edge-center .changing-word.word-out{
+  opacity:0;
+  transform:translateY(-14px);
+  filter:blur(5px);
+}
+
+.edge-center .changing-word.word-in{
+  animation:wordEnter .45s ease both;
+}
+
+@keyframes wordEnter{
+  from{
+    opacity:0;
+    transform:translateY(15px);
+    filter:blur(5px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+    filter:blur(0);
+  }
+}
+
+.edge-center p{
+  max-width:620px;
+  margin:24px auto 0;
+  font-size:15px;
+  line-height:1.75;
+  color:#74747d;
+}
+
+/* Icons remain only at extreme left/right edges */
+.edge-icons{
+  position:absolute;
+  inset:0;
+  z-index:2;
+  pointer-events:none;
+}
+
+.edge-icon{
+  position:absolute;
+  top:0;
+  font-size:var(--icon-size);
+  color:rgba(116,80,232,.30);
+  opacity:0;
+  animation:edgeFall var(--duration) linear var(--delay) infinite;
+  will-change:transform,opacity;
+}
+
+.edge-icon.left{
+  left:var(--edge);
+}
+
+.edge-icon.right{
+  right:var(--edge);
+}
+
+.edge-icon:nth-child(3n){
+  color:rgba(49,95,204,.25);
+}
+
+.edge-icon:nth-child(4n){
+  color:rgba(17,17,22,.16);
+}
+
+@keyframes edgeFall{
+  0%{
+    opacity:0;
+    transform:translateY(-90px) rotate(-8deg) scale(.82);
+  }
+
+  12%{
+    opacity:.65;
+  }
+
+  48%{
+    opacity:.75;
+    transform:translateY(220px) rotate(8deg) scale(1);
+  }
+
+  78%{
+    opacity:.55;
+  }
+
+  100%{
+    opacity:0;
+    transform:translateY(640px) rotate(-6deg) scale(.88);
+  }
+}
+
+@media(max-width:900px){
+  .edge-motion-section{
+    min-height:520px;
+    padding:80px 20px;
+  }
+
+  .edge-center h2{
+    font-size:clamp(46px,9vw,70px);
+    letter-spacing:-3.8px;
+  }
+
+  .edge-icon{
+    font-size:calc(var(--icon-size) * .82);
+  }
+}
+
+@media(max-width:600px){
+  .edge-motion-section{
+    min-height:500px;
+    padding:70px 18px;
+  }
+
+  .edge-center{
+    width:82%;
+  }
+
+  .edge-center h2{
+    font-size:42px;
+    letter-spacing:-2.7px;
+  }
+
+  .edge-center p{
+    font-size:13px;
+  }
+
+  .edge-icon{
+    font-size:calc(var(--icon-size) * .65);
+  }
+
+  .edge-icon:nth-child(n+9){
+    display:none;
+  }
+}
+
+
+/* =========================================================
+   TRIVOX BLOX — FALLING ICONS + CHANGING CENTER CONTENT
+========================================================= */
+.intro-reveal{position:relative;width:100%;min-height:500px;overflow:hidden;padding:78px 28px 86px;background:#fff;border-top:1px solid #f0f0f3;}
+.intro-reveal-inner{width:100%;max-width:1180px;min-height:380px;margin:0 auto;display:grid;grid-template-columns:220px minmax(0,1fr) 220px;align-items:center;gap:28px;}
+.intro-side{position:relative;height:330px;overflow:hidden;}
+.return-icon{position:absolute;top:-90px;color:#7450e8;font-size:64px;line-height:1;opacity:0;filter:drop-shadow(0 12px 18px rgba(116,80,232,.12));animation:trivoxBloxFall 6s cubic-bezier(.2,.7,.25,1) infinite;}
+.intro-left .icon-one{left:12px;animation-delay:0s}.intro-left .icon-two{right:22px;animation-delay:2s}.intro-left .icon-three{left:70px;animation-delay:4s}
+.intro-right .icon-four{right:12px;animation-delay:1s}.intro-right .icon-five{left:22px;animation-delay:3s}.intro-right .icon-six{right:70px;animation-delay:5s}
+@keyframes trivoxBloxFall{0%{top:-90px;opacity:0;transform:rotate(-7deg) scale(.92)}14%{opacity:1}68%{top:190px;opacity:1;transform:rotate(4deg) scale(1)}100%{top:340px;opacity:0;transform:rotate(9deg) scale(.96)}}
+.intro-reveal-center{position:relative;z-index:5;min-width:0;text-align:center;}
+.intro-kicker{display:block;margin-bottom:17px;color:#7450e8;font-size:10px;font-weight:850;letter-spacing:2.1px;text-transform:uppercase;}
+.intro-copy-window{position:relative;min-height:190px;}
+.intro-word{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;visibility:hidden;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease,visibility .5s;}
+.intro-word.show{opacity:1;visibility:visible;transform:translateY(0);}
+.intro-word small{display:block;margin-bottom:11px;color:#a09da8;font-size:10px;font-weight:800;letter-spacing:1.7px;}
+.intro-word h2{margin:0;color:#111116;font-size:clamp(42px,5.2vw,72px);line-height:.96;letter-spacing:-3.6px;font-weight:900;}
+.intro-word h2 span{background:linear-gradient(90deg,#6d28d9,#805be5,#315fcc);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.intro-word p{max-width:570px;margin:16px auto 0;color:#777781;font-size:13px;line-height:1.65;}
+@media(max-width:700px){.intro-reveal{min-height:0;padding:58px 18px 64px}.intro-reveal-inner{grid-template-columns:58px minmax(0,1fr) 58px;min-height:350px;gap:8px}.intro-side{height:310px}.return-icon{font-size:34px}.intro-left .icon-one,.intro-left .icon-two,.intro-left .icon-three,.intro-right .icon-four,.intro-right .icon-five,.intro-right .icon-six{left:50%;right:auto;transform:translateX(-50%)}@keyframes trivoxBloxFall{0%{top:-70px;opacity:0;transform:translateX(-50%) rotate(-7deg) scale(.92)}14%{opacity:1}68%{top:180px;opacity:1;transform:translateX(-50%) rotate(4deg) scale(1)}100%{top:320px;opacity:0;transform:translateX(-50%) rotate(9deg) scale(.96)}}.intro-copy-window{min-height:205px}.intro-word h2{font-size:30px;letter-spacing:-1.5px}.intro-word p{font-size:11.5px}}
+@media(max-width:420px){.intro-reveal-inner{grid-template-columns:48px minmax(0,1fr) 48px}.return-icon{font-size:28px}.intro-word h2{font-size:26px}.intro-word p{font-size:10.8px}}
+@media(prefers-reduced-motion:reduce){.return-icon{animation:none!important;opacity:.35;top:130px}.intro-word{transition:none!important}}
+
+
+
+/* =========================================================
+   NEW TEMPLATE INSPIRED SECTION — WHITE BACKGROUND
+   Existing navbar / dropdowns are untouched.
+========================================================= */
+.trivox-template-showcase{
+  position:relative;
+  overflow:hidden;
+  background:#fff;
+  padding:105px 24px 115px;
+  border-top:1px solid #f0f0f3;
+}
+.trivox-template-showcase::before{
+  content:"";
+  position:absolute;
+  width:560px;height:560px;
+  right:-210px;top:-190px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(116,80,232,.10),transparent 68%);
+  pointer-events:none;
+}
+.template-showcase-wrap{
+  width:min(1180px,100%);
+  margin:auto;
+  min-height:610px;
+  display:grid;
+  grid-template-columns:.82fr 1.18fr;
+  gap:70px;
+  align-items:center;
+  position:relative;
+  z-index:2;
+}
+.template-showcase-copy{position:relative;z-index:5}
+.template-brand-card{
+  width:max-content;
+  max-width:100%;
+  padding:18px 22px;
+  background:#fff;
+  border:1px solid #e9e6f1;
+  box-shadow:0 16px 45px rgba(31,25,55,.08);
+  margin-bottom:34px;
+}
+.template-brand-main{
+  display:flex;align-items:center;gap:12px;
+  font-size:25px;font-weight:900;letter-spacing:-1.2px;color:#111116;
+}
+.template-brand-symbol{
+  width:45px;height:45px;
+  display:flex;align-items:center;justify-content:center;
+  background:#7450e8;color:#fff;
+  font-size:19px;
+  clip-path:polygon(50% 0,100% 100%,0 100%);
+  transform:rotate(180deg);
+}
+.template-brand-symbol i{transform:rotate(180deg)}
+.template-brand-main span{color:#7450e8}
+.template-brand-card small{
+  display:block;margin:7px 0 0 57px;
+  font-size:10px;font-weight:800;letter-spacing:2.5px;
+  color:#8c8b94;text-transform:uppercase;
+}
+.template-showcase-copy .template-kicker{
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:16px;
+  color:#7450e8;font-size:10.5px;font-weight:800;
+  letter-spacing:2px;text-transform:uppercase;
+}
+.template-showcase-copy .template-kicker::before{
+  content:"";width:32px;height:1px;background:#7450e8;
+}
+.template-showcase-copy h2{
+  max-width:520px;
+  font-size:clamp(48px,5.5vw,76px);
+  line-height:.94;letter-spacing:-4px;
+  font-weight:900;color:#111116;
+}
+.template-showcase-copy h2 span{
+  display:block;
+  background:linear-gradient(90deg,#6d28d9,#805be5,#315fcc);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.template-showcase-copy>p{
+  max-width:500px;margin-top:22px;
+  font-size:15px;line-height:1.75;color:#74747d;
+}
+.template-showcase-action{
+  display:inline-flex;align-items:center;gap:10px;
+  margin-top:28px;padding:13px 18px;
+  border-radius:10px;background:#111116;color:#fff;
+  font-size:13px;font-weight:800;
+  transition:.25s ease;
+}
+.template-showcase-action:hover{transform:translateY(-2px)}
+.template-collage{
+  position:relative;
+  min-height:600px;
+}
+.template-photo{
+  position:absolute;
+  overflow:hidden;
+  background:#f4f2fa;
+  box-shadow:0 25px 65px rgba(34,27,62,.15);
+  transform:rotate(45deg);
+}
+.template-photo img{
+  width:145%;height:145%;
+  position:absolute;left:50%;top:50%;
+  object-fit:cover;
+  transform:translate(-50%,-50%) rotate(-45deg);
+}
+.template-photo-one{
+  width:285px;height:285px;
+  left:12px;top:10px;
+  border-radius:58px;
+}
+.template-photo-two{
+  width:320px;height:320px;
+  right:-20px;top:15px;
+  border-radius:72px;
+}
+.template-photo-three{
+  width:355px;height:355px;
+  left:150px;bottom:4px;
+  border-radius:76px;
+  z-index:3;
+}
+.template-photo::after{
+  content:"";position:absolute;inset:0;
+  border:1px solid rgba(116,80,232,.13);
+  border-radius:inherit;pointer-events:none;
+}
+.template-dot-grid{
+  position:absolute;left:0;bottom:10px;
+  width:150px;height:90px;
+  opacity:.55;
+  background-image:radial-gradient(circle,#7450e8 2.5px,transparent 3px);
+  background-size:24px 24px;
+}
+.template-mini-tag{
+  position:absolute;right:18px;bottom:34px;z-index:6;
+  display:flex;align-items:center;gap:9px;
+  padding:11px 14px;border-radius:999px;
+  background:#fff;border:1px solid #ebe7f4;
+  box-shadow:0 12px 35px rgba(34,27,62,.10);
+  font-size:11px;font-weight:800;color:#33333a;
+}
+.template-mini-tag i{color:#7450e8}
+@media(max-width:1000px){
+  .trivox-template-showcase{padding:82px 20px 95px}
+  .template-showcase-wrap{grid-template-columns:1fr;gap:45px}
+  .template-showcase-copy{text-align:center}
+  .template-brand-card{margin:0 auto 30px}
+  .template-showcase-copy .template-kicker{justify-content:center}
+  .template-showcase-copy h2,.template-showcase-copy>p{margin-left:auto;margin-right:auto}
+  .template-collage{width:min(690px,100%);margin:auto;min-height:570px}
+}
+@media(max-width:650px){
+  .trivox-template-showcase{padding:64px 18px 76px}
+  .template-showcase-wrap{gap:38px;min-height:0}
+  .template-brand-card{padding:14px 16px;margin-bottom:25px}
+  .template-brand-main{font-size:20px;gap:9px}
+  .template-brand-symbol{width:38px;height:38px;font-size:15px}
+  .template-brand-card small{margin-left:47px;font-size:8px;letter-spacing:1.8px}
+  .template-showcase-copy h2{font-size:44px;letter-spacing:-2.8px}
+  .template-showcase-copy>p{font-size:14px}
+  .template-collage{min-height:440px;width:100%;max-width:390px}
+  .template-photo-one{width:175px;height:175px;left:2px;top:15px;border-radius:38px}
+  .template-photo-two{width:190px;height:190px;right:-5px;top:8px;border-radius:42px}
+  .template-photo-three{width:220px;height:220px;left:50%;bottom:10px;transform:translateX(-50%) rotate(45deg);border-radius:48px}
+  .template-dot-grid{width:100px;height:70px;background-size:18px 18px;bottom:0}
+  .template-mini-tag{right:0;bottom:2px;font-size:9px;padding:9px 11px}
+}
+
+
+
+/* =========================================================
+   TRIVOX VIDEO CLASSES — TEMPLATE INSPIRED / WHITE
+   Added as a new section only. Existing navbar is untouched.
+========================================================= */
+.trivox-video-learning{
+  position:relative;
+  overflow:hidden;
+  background:#fff;
+  padding:112px 24px 118px;
+  border-top:1px solid #f0f0f3;
+}
+.trivox-video-learning::before{
+  content:"";
+  position:absolute;
+  width:500px;
+  height:500px;
+  left:-220px;
+  bottom:-230px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(116,80,232,.09),transparent 68%);
+  pointer-events:none;
+}
+.video-learning-wrap{
+  position:relative;
+  z-index:2;
+  width:min(1180px,100%);
+  margin:auto;
+  display:grid;
+  grid-template-columns:1.12fr .88fr;
+  gap:82px;
+  align-items:center;
+}
+.video-preview-stage{
+  position:relative;
+  min-height:620px;
+}
+.video-page-card{
+  position:absolute;
+  overflow:hidden;
+  background:#fff;
+  border:1px solid #ebe8f2;
+  border-radius:20px;
+  box-shadow:0 28px 70px rgba(31,25,55,.13);
+  transition:transform .35s ease,box-shadow .35s ease;
+}
+.video-page-card:hover{
+  box-shadow:0 34px 85px rgba(31,25,55,.18);
+}
+.video-page-card.card-one{
+  width:390px;
+  height:250px;
+  left:4px;
+  top:62px;
+  transform:rotate(-8deg);
+  z-index:2;
+}
+.video-page-card.card-one:hover{transform:rotate(-5deg) translateY(-5px)}
+.video-page-card.card-two{
+  width:430px;
+  height:278px;
+  left:145px;
+  top:178px;
+  transform:rotate(5deg);
+  z-index:4;
+}
+.video-page-card.card-two:hover{transform:rotate(2deg) translateY(-5px)}
+.video-page-card.card-three{
+  width:365px;
+  height:235px;
+  left:52px;
+  bottom:10px;
+  transform:rotate(-3deg);
+  z-index:3;
+}
+.video-page-card.card-three:hover{transform:rotate(0deg) translateY(-5px)}
+.video-thumb{
+  position:relative;
+  height:68%;
+  overflow:hidden;
+  background:#eeeaf8;
+}
+.video-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform .45s ease;
+}
+.video-page-card:hover .video-thumb img{transform:scale(1.04)}
+.video-thumb::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top,rgba(15,15,22,.22),transparent 55%);
+  pointer-events:none;
+}
+.video-play{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:54px;
+  height:54px;
+  border:0;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#fff;
+  color:#7450e8;
+  font-size:16px;
+  box-shadow:0 12px 35px rgba(18,15,28,.18);
+  cursor:pointer;
+  z-index:3;
+  transition:.25s ease;
+}
+.video-play:hover{
+  transform:translate(-50%,-50%) scale(1.08);
+}
+.video-card-info{
+  height:32%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  padding:15px 17px;
+}
+.video-card-copy{
+  min-width:0;
+}
+.video-card-copy small{
+  display:block;
+  margin-bottom:5px;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:1.3px;
+  text-transform:uppercase;
+  color:#7450e8;
+}
+.video-card-copy strong{
+  display:block;
+  font-size:14px;
+  line-height:1.25;
+  color:#202026;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.video-duration{
+  flex:0 0 auto;
+  padding:7px 9px;
+  border-radius:999px;
+  background:#f4f1fd;
+  color:#6d52c7;
+  font-size:9.5px;
+  font-weight:800;
+}
+.video-stage-dots{
+  position:absolute;
+  left:4px;
+  top:4px;
+  width:126px;
+  height:76px;
+  opacity:.5;
+  background-image:radial-gradient(circle,#7450e8 2px,transparent 2.6px);
+  background-size:20px 20px;
+}
+.video-stage-arrow{
+  position:absolute;
+  right:15px;
+  bottom:54px;
+  color:#7450e8;
+  font-size:46px;
+  transform:rotate(16deg);
+  opacity:.72;
+}
+.video-learning-copy{
+  position:relative;
+  z-index:4;
+}
+.video-learning-kicker{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:17px;
+  color:#7450e8;
+  font-size:10.5px;
+  font-weight:800;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+.video-learning-kicker::before{
+  content:"";
+  width:33px;
+  height:1px;
+  background:#7450e8;
+}
+.video-learning-copy h2{
+  max-width:520px;
+  font-size:clamp(48px,5.5vw,76px);
+  line-height:.94;
+  letter-spacing:-4px;
+  font-weight:900;
+  color:#111116;
+}
+.video-learning-copy h2 span{
+  display:block;
+  background:linear-gradient(90deg,#6d28d9,#805be5,#315fcc);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.video-learning-copy>p{
+  max-width:500px;
+  margin-top:22px;
+  font-size:15px;
+  line-height:1.75;
+  color:#74747d;
+}
+.video-learning-points{
+  margin-top:29px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+}
+.video-learning-points span{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  padding:10px 12px;
+  border:1px solid #ece9f2;
+  border-radius:999px;
+  background:#fff;
+  color:#5f5f69;
+  font-size:10.5px;
+  font-weight:700;
+}
+.video-learning-points i{color:#7450e8}
+.video-explore-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  margin-top:28px;
+  padding:13px 18px;
+  border-radius:10px;
+  background:#111116;
+  color:#fff;
+  font-size:13px;
+  font-weight:800;
+  transition:.25s ease;
+}
+.video-explore-btn:hover{transform:translateY(-2px)}
+
+/* Video popup */
+.trivox-video-modal{
+  position:fixed;
+  inset:0;
+  z-index:20000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  background:rgba(10,10,16,.72);
+  backdrop-filter:blur(9px);
+  -webkit-backdrop-filter:blur(9px);
+}
+.trivox-video-modal.open{display:flex}
+.trivox-video-modal-box{
+  position:relative;
+  width:min(920px,96vw);
+  padding:12px;
+  border-radius:22px;
+  background:#fff;
+  box-shadow:0 35px 100px rgba(0,0,0,.28);
+}
+.trivox-video-modal video{
+  width:100%;
+  max-height:72vh;
+  display:block;
+  border-radius:14px;
+  background:#000;
+}
+.trivox-video-close{
+  position:absolute;
+  right:-13px;
+  top:-13px;
+  width:38px;
+  height:38px;
+  border:0;
+  border-radius:50%;
+  background:#111116;
+  color:#fff;
+  font-size:15px;
+  cursor:pointer;
+  box-shadow:0 8px 24px rgba(0,0,0,.25);
+}
+
+@media(max-width:1000px){
+  .trivox-video-learning{padding:84px 20px 96px}
+  .video-learning-wrap{
+    grid-template-columns:1fr;
+    gap:48px;
+  }
+  .video-learning-copy{
+    max-width:720px;
+    margin:auto;
+    text-align:center;
+  }
+  .video-learning-kicker{justify-content:center}
+  .video-learning-copy h2,
+  .video-learning-copy>p{margin-left:auto;margin-right:auto}
+  .video-learning-points{justify-content:center}
+  .video-preview-stage{
+    width:min(650px,100%);
+    min-height:600px;
+    margin:auto;
+    grid-row:2;
+  }
+}
+@media(max-width:650px){
+  .trivox-video-learning{padding:64px 18px 76px}
+  .video-learning-wrap{gap:38px}
+  .video-learning-copy h2{
+    font-size:44px;
+    letter-spacing:-2.8px;
+  }
+  .video-learning-copy>p{font-size:14px}
+  .video-preview-stage{
+    width:100%;
+    max-width:390px;
+    min-height:520px;
+  }
+  .video-page-card.card-one{
+    width:285px;
+    height:196px;
+    left:0;
+    top:50px;
+  }
+  .video-page-card.card-two{
+    width:300px;
+    height:208px;
+    left:58px;
+    top:178px;
+  }
+  .video-page-card.card-three{
+    width:270px;
+    height:188px;
+    left:15px;
+    bottom:0;
+  }
+  .video-play{
+    width:46px;
+    height:46px;
+    font-size:14px;
+  }
+  .video-card-info{padding:11px 12px}
+  .video-card-copy strong{font-size:12px}
+  .video-duration{font-size:8.5px}
+  .video-stage-arrow{right:0;font-size:34px}
+}
+@media(max-width:390px){
+  .video-preview-stage{min-height:475px}
+  .video-page-card.card-one{width:255px;height:180px}
+  .video-page-card.card-two{width:270px;height:190px;left:42px;top:166px}
+  .video-page-card.card-three{width:245px;height:174px;left:8px}
+}
+
+
+/* =========================================================
+   TRIVOX — 12 MONTH MODULE CAROUSEL
+   Added after Video Classes. Existing navbar/dropdowns untouched.
+========================================================= */
+.monthly-unlock-carousel{
+  position:relative;
+  overflow:hidden;
+  padding:100px 20px 110px;
+  background:#fff;
+  border-top:1px solid #f0f0f3;
+}
+.muc-wrap{width:min(1240px,100%);margin:auto}
+.muc-head{text-align:center;max-width:780px;margin:0 auto 46px}
+.muc-kicker{font-size:10px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#7450e8;margin-bottom:13px}
+.muc-head h2{font-size:clamp(40px,5vw,68px);line-height:.96;letter-spacing:-3.5px;font-weight:900;color:#111116}
+.muc-head h2 span{background:linear-gradient(90deg,#6d28d9,#805be5,#315fcc);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.muc-head p{max-width:650px;margin:18px auto 0;font-size:14px;line-height:1.7;color:#74747d}
+.muc-head p strong{color:#7450e8}
+
+.muc-stage{position:relative;padding:15px 58px 30px}
+.muc-viewport{overflow:hidden;padding:24px 0 34px}
+.muc-track{display:flex;align-items:center;gap:14px;transition:transform .55s cubic-bezier(.22,.75,.25,1);will-change:transform}
+.muc-card{
+  position:relative;flex:0 0 190px;height:300px;overflow:hidden;
+  border-radius:16px;background:#111;
+  box-shadow:0 18px 44px rgba(27,21,48,.14);
+  transform:scale(.91);opacity:.82;
+  transition:.45s ease;border:1px solid rgba(116,80,232,.12)
+}
+.muc-card.active{transform:scale(1.08);opacity:1;z-index:4;box-shadow:0 27px 65px rgba(64,43,120,.25);border-color:#8d70ee}
+.muc-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s ease}
+.muc-card:hover img{transform:scale(1.045)}
+.muc-card:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(5,7,18,.94) 0%,rgba(5,7,18,.22) 58%,rgba(5,7,18,.08) 100%)}
+.muc-card-copy{position:absolute;z-index:2;left:16px;right:16px;bottom:17px;color:#fff}
+.muc-month{display:inline-block;margin-bottom:7px;padding:5px 8px;border-radius:999px;background:rgba(116,80,232,.86);font-size:8px;font-weight:900;letter-spacing:.7px}
+.muc-card h3{font-size:17px;line-height:1.05;letter-spacing:-.5px}
+.muc-card p{margin-top:7px;font-size:9px;line-height:1.45;color:rgba(255,255,255,.7)}
+.muc-lock{margin-top:12px;display:flex;align-items:center;gap:6px;font-size:8.5px;font-weight:800;color:#d7cfff}
+.muc-card.active .muc-lock{color:#fff}
+.muc-card.active .muc-lock i{color:#a98cff}
+
+.muc-nav{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:43px;height:43px;border:1px solid #e7e4ec;border-radius:50%;
+  background:#fff;color:#1b1b21;display:flex;align-items:center;justify-content:center;
+  cursor:pointer;z-index:8;box-shadow:0 10px 30px rgba(20,20,30,.09);transition:.2s
+}
+.muc-nav:hover{transform:translateY(-50%) scale(1.06);color:#7450e8}
+.muc-prev{left:0}.muc-next{right:0}
+.muc-dots{display:flex;justify-content:center;gap:7px;margin-top:5px}
+.muc-dot{width:6px;height:6px;border:0;border-radius:50%;background:#c9c6cf;padding:0;cursor:pointer;transition:.25s}
+.muc-dot.active{width:18px;border-radius:999px;background:#7450e8}
+.muc-note{margin:28px auto 0;max-width:700px;text-align:center;font-size:11px;line-height:1.6;color:#898791}
+.muc-note i{margin-right:5px;color:#7450e8}
+
+@media(max-width:900px){
+ .monthly-unlock-carousel{padding:78px 18px 88px}
+ .muc-stage{padding-left:48px;padding-right:48px}
+ .muc-card{flex-basis:175px;height:280px}
+}
+@media(max-width:600px){
+ .monthly-unlock-carousel{padding:64px 14px 74px}
+ .muc-head{margin-bottom:28px}
+ .muc-head h2{font-size:42px;letter-spacing:-2.5px}
+ .muc-head p{font-size:13px}
+ .muc-stage{padding:8px 0 20px}
+ .muc-viewport{overflow:visible;padding:18px 0 26px}
+ .muc-track{overflow-x:auto;scroll-snap-type:x mandatory;gap:11px;padding:0 18px 10px;transform:none!important;scrollbar-width:none}
+ .muc-track::-webkit-scrollbar{display:none}
+ .muc-card{flex:0 0 72vw;max-width:270px;height:365px;transform:none!important;opacity:1;scroll-snap-align:center}
+ .muc-card.active{transform:none!important}
+ .muc-nav,.muc-dots{display:none}
+}
+
+</style>
 </head>
 
 <body>
 
-  <main class="trainer">
+<nav class="navbar">
 
-    <div class="trainer-content">
+  <a href="#" class="logo">
+    <span class="logo-main">TRIVOX</span>
+    <span class="logo-impact">AI IMPACT</span>
+  </a>
 
-      <div class="brand">
-        TRIVOXAI IMPACT
+  <ul class="nav-menu" id="navMenu">
+
+    <li class="nav-item has-dropdown">
+      <div class="nav-link">
+        Company
+        <span class="arrow"></span>
       </div>
 
-      <div class="text-window">
-        <div class="slide-text" id="slideText">
-          Welcome.
-        </div>
+      <div class="dropdown">
+        <a href="#">About TRIVOX</a>
+        <a href="#">Our Mission</a>
+        <a href="#">Our Vision</a>
+        <a href="#">Leadership</a>
+        <a href="#">Our Team</a>
+        <a href="#">Partners</a>
+        <a href="#">Impact</a>
+      </div>
+    </li>
+
+    <li class="nav-item has-dropdown">
+      <div class="nav-link">
+        Learning
+        <span class="arrow"></span>
       </div>
 
-      <div class="subtitle">
-        Education powered by ideas, technology and AI.
+      <div class="dropdown mega-dropdown">
+
+        <a href="#" class="mega-box">
+          <strong>AI Learning</strong>
+          <p>Learn AI concepts, tools and real-world applications.</p>
+        </a>
+
+        <a href="#" class="mega-box">
+          <strong>Programming</strong>
+          <p>Build strong coding and problem-solving skills.</p>
+        </a>
+
+        <a href="#" class="mega-box">
+          <strong>Web Development</strong>
+          <p>Build responsive modern websites.</p>
+        </a>
+
+        <a href="#" class="mega-box">
+          <strong>App Development</strong>
+          <p>Learn modern application development.</p>
+        </a>
+
+        <a href="#" class="mega-box">
+          <strong>Data Science</strong>
+          <p>Explore analytics and intelligent data.</p>
+        </a>
+
+        <a href="#" class="mega-box">
+          <strong>Cyber Security</strong>
+          <p>Understand security concepts and practices.</p>
+        </a>
+
+      </div>
+    </li>
+
+    <li class="nav-item has-dropdown">
+      <div class="nav-link">
+        Programs
+        <span class="arrow"></span>
       </div>
 
-      <div class="line"></div>
+      <div class="dropdown">
+        <a href="#">Student Programs</a>
+        <a href="#">College Programs</a>
+        <a href="#">Internships</a>
+        <a href="#">Workshops</a>
+        <a href="#">Bootcamps</a>
+        <a href="#">Career Programs</a>
+        <a href="#">Certification Programs</a>
+      </div>
+    </li>
+
+    <li class="nav-item has-dropdown">
+      <div class="nav-link">
+        Solutions
+        <span class="arrow"></span>
+      </div>
+
+      <div class="dropdown mega-dropdown">
+
+        <a href="#" class="mega-box">
+          <strong>For Students</strong>
+          <p>Skills, projects and career support.</p>
+        </a>
+
+        <a href="#" class="mega-box">
+          <strong>For Colleges</strong>
+          <p>Industry-ready learning programs.</p>
+        </a>
+
+        <a href="#" class="mega-box">
+          <strong>For Schools</strong>
+          <p>Modern technology and AI learning.</p>
+        </a>
+
+        <a href="#" class="mega-box">
+          <strong>For Companies</strong>
+          <p>Training and technology solutions.</p>
+        </a>
+
+      </div>
+    </li>
+
+    <li class="nav-item has-dropdown">
+      <div class="nav-link">
+        Resources
+        <span class="arrow"></span>
+      </div>
+
+      <div class="dropdown">
+        <a href="#">Blogs</a>
+        <a href="#">Tutorials</a>
+        <a href="#">Learning Resources</a>
+        <a href="#">Student Projects</a>
+        <a href="#">Success Stories</a>
+        <a href="#">Events</a>
+        <a href="#">FAQs</a>
+      </div>
+    </li>
+
+    <li class="nav-item has-dropdown">
+      <div class="nav-link">
+        Careers
+        <span class="arrow"></span>
+      </div>
+
+      <div class="dropdown">
+        <a href="#">Open Positions</a>
+        <a href="#">Internships</a>
+        <a href="#">Campus Hiring</a>
+        <a href="#">Join Our Team</a>
+        <a href="#">Life at TRIVOX</a>
+      </div>
+    </li>
+
+    <li class="nav-item">
+      <a href="#" class="nav-link">Contact</a>
+    </li>
+
+  </ul>
+
+  <div class="nav-actions">
+
+    <a href="#" class="login-btn">
+      Sign In
+    </a>
+
+    <a href="#" class="get-started">
+      Get Started
+    </a>
+
+    <button
+      class="menu-toggle"
+      id="menuToggle"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </div>
+
+</nav>
+
+<section class="hero">
+
+  <div class="hero-content">
+
+    <div class="text-icon-layer" aria-hidden="true">
+      <i class="fa-solid fa-code text-fall-icon" style="--big:54px;--left:7%;--top:58%;"></i>
+      <i class="fa-solid fa-laptop-code text-fall-icon" style="--big:62px;--left:15%;--top:20%;"></i>
+      <i class="fa-solid fa-brain text-fall-icon" style="--big:58px;--left:26%;--top:8%;"></i>
+      <i class="fa-solid fa-microchip text-fall-icon" style="--big:50px;--left:35%;--top:70%;"></i>
+      <i class="fa-solid fa-robot text-fall-icon" style="--big:66px;--left:60%;--top:7%;"></i>
+      <i class="fa-solid fa-lightbulb text-fall-icon" style="--big:55px;--left:70%;--top:65%;"></i>
+      <i class="fa-solid fa-gears text-fall-icon" style="--big:60px;--left:79%;--top:18%;"></i>
+      <i class="fa-solid fa-database text-fall-icon" style="--big:52px;--left:90%;--top:58%;"></i>
+      <i class="fa-solid fa-cloud text-fall-icon" style="--big:58px;--left:4%;--top:12%;"></i>
+      <i class="fa-solid fa-terminal text-fall-icon" style="--big:53px;--left:88%;--top:5%;"></i>
+    </div>
+
+
+    <h1 class="hero-title">
+
+      <span>
+        Don’t just learn.
+      </span>
+
+      <span class="impact">
+        Make an impact.
+      </span>
+
+    </h1>
+
+    <p class="hero-description">
+      Explore technology, build meaningful projects and turn your skills into real-world impact with TRIVOX AI IMPACT.
+    </p>
+
+    <div class="hero-actions">
+
+      <a href="#" class="hero-btn explore-btn">
+        Explore TRIVOX
+      </a>
+
+      <a href="#" class="hero-btn program-btn">
+        View Programs
+      </a>
 
     </div>
 
-  </main>
+  </div>
+
+</section>
 
 
-  <script>
-    const messages = [
-      "Welcome.",
-      "Learn differently.",
-      "Think smarter.",
-      "Create boldly.",
-      "Build your future.",
-      "Welcome to TrivoxAI."
-    ];
+<section class="showcase">
 
-    const slideText = document.getElementById("slideText");
+  <div class="showcase-head">
+    <p>Explore what we build</p>
+    <h2>Ideas moving into impact.</h2>
+  </div>
 
-    let currentIndex = 0;
-    let isAnimating = false;
+  <!-- ROW 1 — 9 IMAGES — MOVES RIGHT -->
+  <div class="marquee-row marquee-right">
+    <div class="marquee-track">
+
+      <div class="marquee-group">
+        <div class="marquee-card"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=85" alt="Technology workspace"></div>
+        <div class="marquee-card"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=85" alt="Students learning together"></div>
+        <div class="marquee-card"><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=900&q=85" alt="Programming code"></div>
+        <div class="marquee-card"><img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=85" alt="Team collaboration"></div>
+        <div class="marquee-card"><img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=900&q=85" alt="Developer working"></div>
+        <div class="marquee-card"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=85" alt="Project planning"></div>
+        <div class="marquee-card"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=85" alt="Creative team meeting"></div>
+        <div class="marquee-card"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900&q=85" alt="Team at work"></div>
+        <div class="marquee-card"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=85" alt="Laptop development"></div>
+      </div>
+
+      <!-- EXACT DUPLICATE FOR SEAMLESS LOOP -->
+      <div class="marquee-group" aria-hidden="true">
+        <div class="marquee-card"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=85" alt=""></div>
+        <div class="marquee-card"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=85" alt=""></div>
+        <div class="marquee-card"><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=900&q=85" alt=""></div>
+        <div class="marquee-card"><img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=85" alt=""></div>
+        <div class="marquee-card"><img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=900&q=85" alt=""></div>
+        <div class="marquee-card"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=85" alt=""></div>
+        <div class="marquee-card"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=85" alt=""></div>
+        <div class="marquee-card"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900&q=85" alt=""></div>
+        <div class="marquee-card"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=85" alt=""></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ROW 2 — 9 IMAGES — MOVES LEFT -->
+  <div class="marquee-row marquee-left">
+    <div class="marquee-track">
+
+      <div class="marquee-group">
+        <div class="marquee-card"><img src="https://images.unsplash.com/photo-1484417894907-623942c8ee29?auto=format&fit=crop&w=900&q=85" alt="Coding setup"></div>
+        <div class="marquee-card"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=85" alt="Technology team"></div>
+        <div class="marquee-card"><img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=900&q=85" alt="Modern laptop"></div>
+        <div class="marquee-card"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=85" alt="Office collaboration"></div>
+        <div class="marquee-card"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=900&q=85" alt="Students studying"></div>
+        <div class="marquee-card"><img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=900&q=85" alt="Team project"></div>
+        <div class="marquee-card"><img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=85" alt="Learning environment"></div>
+        <div class="marquee-card"><img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=900&q=85" alt="Focused learning"></div>
+        <div class="marquee-card"><img src="https://images.unsplash.com/photo-1516321165247-4aa89a48be28?auto=format&fit=crop&w=900&q=85" alt="Digital learning"></div>
+      </div>
+
+      <!-- EXACT DUPLICATE FOR SEAMLESS LOOP -->
+      <div class="marquee-group" aria-hidden="true">
+        <div class="marquee-card"><img src="https://images.unsplash.com/photo-1484417894907-623942c8ee29?auto=format&fit=crop&w=900&q=85" alt=""></div>
+        <div class="marquee-card"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=85" alt=""></div>
+        <div class="marquee-card"><img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=900&q=85" alt=""></div>
+        <div class="marquee-card"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=85" alt=""></div>
+        <div class="marquee-card"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=900&q=85" alt=""></div>
+        <div class="marquee-card"><img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=900&q=85" alt=""></div>
+        <div class="marquee-card"><img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=85" alt=""></div>
+        <div class="marquee-card"><img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=900&q=85" alt=""></div>
+        <div class="marquee-card"><img src="https://images.unsplash.com/photo-1516321165247-4aa89a48be28?auto=format&fit=crop&w=900&q=85" alt=""></div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
 
 
-    function showFirstText() {
-      slideText.textContent = messages[currentIndex];
 
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          slideText.classList.add("show");
-        });
-      });
+<section class="trivox-model" id="how-it-works">
+  <div class="model-wrap">
+
+    <div class="model-head">
+<h2>Learn more from what<br><span>you already spend on.</span></h2>
+      <p>
+        Eligible monthly purchases can unlock learning benefits inside TRIVOX —
+        combining everyday value with courses, quizzes, progress and certificates.
+      </p>
+    </div>
+
+    <div class="model-flow">
+
+      <article class="model-item">
+        <div class="model-no">
+          <span>01</span>
+          <span class="model-icon"><i class="fa-solid fa-bag-shopping"></i></span>
+        </div>
+        <h3>Make an eligible purchase</h3>
+        <p>Shop eligible products or services through participating TRIVOX partners.</p>
+      </article>
+
+      <article class="model-item">
+        <div class="model-no">
+          <span>02</span>
+          <span class="model-icon"><i class="fa-solid fa-tags"></i></span>
+        </div>
+        <h3>Get partner benefits</h3>
+        <p>Access applicable discounts and purchase benefits from participating partners.</p>
+      </article>
+
+      <article class="model-item">
+        <div class="model-no">
+          <span>03</span>
+          <span class="model-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+        </div>
+        <h3>Unlock your learning</h3>
+        <p>Eligible monthly activity keeps your TRIVOX course or learning module accessible.</p>
+      </article>
+
+      <article class="model-item">
+        <div class="model-no">
+          <span>04</span>
+          <span class="model-icon"><i class="fa-solid fa-list-check"></i></span>
+        </div>
+        <h3>Learn & complete</h3>
+        <p>Finish lessons, slides, quizzes and assignments while your progress is tracked.</p>
+      </article>
+
+      <article class="model-item">
+        <div class="model-no">
+          <span>05</span>
+          <span class="model-icon"><i class="fa-solid fa-award"></i></span>
+        </div>
+        <h3>Earn your certificate</h3>
+        <p>Complete the required learning conditions and move forward to your next module.</p>
+      </article>
+
+    </div>
+
+    <div class="model-note">
+      <p><strong>One connected experience:</strong> eligible purchases → benefits → learning → completion → certificate.</p>
+      <a href="#" class="model-btn">Explore TRIVOX</a>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="learning-experience">
+  <div class="learning-wrap">
+
+    <div class="learning-copy">
+      <h2>Your learning,<br><span>always moving.</span></h2>
+      <p>
+        Learn in focused modules, keep track of your progress and complete each
+        stage with quizzes, assignments and certificates — all inside one experience.
+      </p>
+
+      <div class="learning-points">
+        <div class="learning-point">
+          <i class="fa-solid fa-play"></i>
+          <div>
+            <strong>Short, focused learning</strong>
+            <p>Lessons and modules designed to keep learning clear and practical.</p>
+          </div>
+        </div>
+
+        <div class="learning-point">
+          <i class="fa-solid fa-chart-simple"></i>
+          <div>
+            <strong>Progress that stays visible</strong>
+            <p>See completed lessons, pending activities and overall course progress.</p>
+          </div>
+        </div>
+
+        <div class="learning-point">
+          <i class="fa-solid fa-certificate"></i>
+          <div>
+            <strong>Complete. Prove. Progress.</strong>
+            <p>Finish required learning and earn certificates as you move forward.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="learning-ui">
+
+      <div class="course-window">
+        <div class="course-top">
+          <div class="course-user">
+<div>
+              <strong>My Learning</strong>
+              <span>Continue where you left off</span>
+            </div>
+          </div>
+          <div class="course-percent">68%</div>
+        </div>
+
+        <div class="course-hero">
+          <div>
+            <small>Current learning module</small>
+            <h3>AI Foundations & Real-World Applications</h3>
+          </div>
+          <div class="course-progress"><span></span></div>
+        </div>
+
+        <div class="course-lessons">
+          <div class="course-mini">
+            <i class="fa-solid fa-book-open"></i>
+            <strong>Lessons</strong>
+            <span>8 of 12 lessons completed</span>
+          </div>
+          <div class="course-mini">
+            <i class="fa-solid fa-list-check"></i>
+            <strong>Quiz</strong>
+            <span>Quiz ready to continue</span>
+          </div>
+        </div>
+      </div>
+      <div class="certificate-strip">
+        <div class="certificate-strip-icon">
+          <i class="fa-solid fa-award"></i>
+        </div>
+
+        <div class="certificate-strip-copy">
+          <small>NEXT MILESTONE</small>
+          <strong>Course Certificate</strong>
+          <span>Complete the remaining lessons and quiz to unlock it.</span>
+        </div>
+
+        <div class="certificate-strip-status">
+          <i class="fa-solid fa-lock"></i>
+          Locked
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+
+<section class="take-forward">
+  <div class="take-forward-wrap">
+
+    <div class="take-forward-left">
+      
+
+      <h2>
+        Learning that stays
+        <span>with you.</span>
+      </h2>
+
+      <p>
+        TRIVOX is designed so every completed module adds something useful —
+        knowledge, proof of progress, practical experience and a clearer next step.
+      </p>
+
+      <a href="#" class="take-forward-link">
+        See the student journey
+        <span><i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+    </div>
+
+    <div class="take-forward-list">
+
+      <article class="forward-item">
+        <div class="forward-no">01</div>
+
+        <div class="forward-icon">
+          <i class="fa-solid fa-book-open-reader"></i>
+        </div>
+
+        <div class="forward-copy">
+          <h3>Knowledge you can build on</h3>
+          <p>
+            Every module adds a focused layer of learning, helping students move
+            from basics to more advanced topics without losing continuity.
+          </p>
+
+          <div class="forward-meta">
+            <span>Lessons</span>
+            <span>Modules</span>
+            <span>Progress</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="forward-item">
+        <div class="forward-no">02</div>
+
+        <div class="forward-icon">
+          <i class="fa-solid fa-laptop-code"></i>
+        </div>
+
+        <div class="forward-copy">
+          <h3>Practical experience, not just theory</h3>
+          <p>
+            Students can apply what they learn through tasks, projects and guided
+            activities that turn concepts into something they can actually use.
+          </p>
+
+          <div class="forward-meta">
+            <span>Projects</span>
+            <span>Assignments</span>
+            <span>Practice</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="forward-item">
+        <div class="forward-no">03</div>
+
+        <div class="forward-icon">
+          <i class="fa-solid fa-award"></i>
+        </div>
+
+        <div class="forward-copy">
+          <h3>Proof of what you completed</h3>
+          <p>
+            Completed learning stages can lead to certificates and milestones
+            that make student progress visible and easier to showcase.
+          </p>
+
+          <div class="forward-meta">
+            <span>Certificates</span>
+            <span>Milestones</span>
+            <span>Achievements</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="forward-item">
+        <div class="forward-no">04</div>
+
+        <div class="forward-icon">
+          <i class="fa-solid fa-route"></i>
+        </div>
+
+        <div class="forward-copy">
+          <h3>A clearer path to what comes next</h3>
+          <p>
+            TRIVOX connects one completed step to the next, helping students
+            continue learning instead of stopping after a single course.
+          </p>
+
+          <div class="forward-meta">
+            <span>Next Module</span>
+            <span>Skill Growth</span>
+            <span>Long-term Learning</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+
+<section class="intro-reveal" id="introReveal">
+  <div class="intro-reveal-inner">
+    <div class="intro-side intro-left" aria-hidden="true">
+      <i class="fa-solid fa-code return-icon icon-one"></i>
+      <i class="fa-solid fa-brain return-icon icon-two"></i>
+      <i class="fa-solid fa-laptop-code return-icon icon-three"></i>
+    </div>
+    <div class="intro-reveal-center">
+      <span class="intro-kicker">TRIVOX AI IMPACT</span>
+      <div class="intro-copy-window">
+        <div class="intro-word show"><small>LEARN</small><h2>Build skills that <span>matter.</span></h2><p>Learn practical technology, AI and career skills through focused learning experiences.</p></div>
+        <div class="intro-word"><small>ACHIEVE</small><h2>Turn learning into <span>progress.</span></h2><p>Complete lessons, quizzes, assignments and milestones while keeping your growth visible.</p></div>
+        <div class="intro-word"><small>GROW</small><h2>Move toward what comes <span>next.</span></h2><p>Build proof of your skills, unlock opportunities and keep moving forward with TRIVOX.</p></div>
+      </div>
+    </div>
+    <div class="intro-side intro-right" aria-hidden="true">
+      <i class="fa-solid fa-robot return-icon icon-four"></i>
+      <i class="fa-solid fa-lightbulb return-icon icon-five"></i>
+      <i class="fa-solid fa-graduation-cap return-icon icon-six"></i>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =========================================================
+     NEW TEMPLATE-INSPIRED SECTION — WHITE VERSION
+     Added below existing sections. Navbar/dropdowns unchanged.
+========================================================== -->
+<section class="trivox-template-showcase" id="trivoxExperience">
+  <div class="template-showcase-wrap">
+    <div class="template-showcase-copy">
+      
+
+      <div class="template-kicker">Built for what comes next</div>
+      <h2>Education that turns into <span>real impact.</span></h2>
+      <p>
+        
+      </p>
+      
+    </div>
+
+    <div class="template-collage" aria-label="TRIVOX student learning experience">
+      <div class="template-photo template-photo-one">
+        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=900&q=85" alt="Students learning together">
+      </div>
+      <div class="template-photo template-photo-two">
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=85" alt="Students collaborating">
+      </div>
+      <div class="template-photo template-photo-three">
+        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=900&q=85" alt="Student working on a project">
+      </div>
+      <div class="template-dot-grid" aria-hidden="true"></div>
+      <div class="template-mini-tag"><i class="fa-solid fa-graduation-cap"></i> Learn. Build. Impact.</div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- =========================================================
+     VIDEO CLASSES — WHITE TEMPLATE INSPIRED SECTION
+     White course-preview cards intentionally placed on LEFT.
+========================================================== -->
+<section class="trivox-video-learning" id="videoClasses">
+  <div class="video-learning-wrap">
+
+    <div class="video-preview-stage" aria-label="TRIVOX video class previews">
+      <div class="video-stage-dots" aria-hidden="true"></div>
+
+      <article class="video-page-card card-one">
+        <div class="video-thumb">
+          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=85" alt="AI and technology video class">
+          <button class="video-play" type="button" data-video-title="AI Foundations" aria-label="Play AI Foundations class">
+            <i class="fa-solid fa-play"></i>
+          </button>
+        </div>
+        <div class="video-card-info">
+          <div class="video-card-copy">
+            <small>Video Class</small>
+            <strong>AI Foundations</strong>
+          </div>
+          <span class="video-duration">18 min</span>
+        </div>
+      </article>
+
+      <article class="video-page-card card-two">
+        <div class="video-thumb">
+          <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=900&q=85" alt="Programming video class">
+          <button class="video-play" type="button" data-video-title="Programming Basics" aria-label="Play Programming Basics class">
+            <i class="fa-solid fa-play"></i>
+          </button>
+        </div>
+        <div class="video-card-info">
+          <div class="video-card-copy">
+            <small>Most Watched</small>
+            <strong>Programming Basics</strong>
+          </div>
+          <span class="video-duration">24 min</span>
+        </div>
+      </article>
+
+      <article class="video-page-card card-three">
+        <div class="video-thumb">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=85" alt="Project building video class">
+          <button class="video-play" type="button" data-video-title="Build Your First Project" aria-label="Play project building class">
+            <i class="fa-solid fa-play"></i>
+          </button>
+        </div>
+        <div class="video-card-info">
+          <div class="video-card-copy">
+            <small>Project Class</small>
+            <strong>Build Your First Project</strong>
+          </div>
+          <span class="video-duration">32 min</span>
+        </div>
+      </article>
+
+      <div class="video-stage-arrow" aria-hidden="true">
+        <i class="fa-solid fa-arrow-turn-down"></i>
+      </div>
+    </div>
+
+    <div class="video-learning-copy">
+      <div class="video-learning-kicker">TRIVOX Video Learning</div>
+      <h2>Learn. Watch. <span>Build.</span></h2>
+      <p>
+        
+      </p>
+
+      <div class="video-learning-points">
+        <span><i class="fa-solid fa-circle-play"></i> Focused lessons</span>
+        <span><i class="fa-solid fa-clock-rotate-left"></i> Learn anytime</span>
+        <span><i class="fa-solid fa-laptop-code"></i> Build projects</span>
+      </div>
+
+      <a class="video-explore-btn" href="#videoClasses">
+        Explore video classes
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="monthly-unlock-carousel" id="monthlyLearning">
+ <div class="muc-wrap">
+  <div class="muc-head">
+   <div class="muc-kicker">12 Month Learning Journey</div>
+   <h2>Every month unlocks <span>something new.</span></h2>
+   <p>Complete <strong>₹1,000 in eligible purchases each month</strong> to unlock that month’s module and access its video classes.</p>
+  </div>
+
+  <div class="muc-stage">
+   <button class="muc-nav muc-prev" type="button" aria-label="Previous module"><i class="fa-solid fa-chevron-left"></i></button>
+   <div class="muc-viewport">
+    <div class="muc-track">
+     <article class="muc-card active" data-index="0">
+      <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=700&q=85" alt="AI Foundations">
+      <div class="muc-card-copy">
+        <span class="muc-month">Month 01</span>
+        <h3>AI Foundations</h3>
+        <p>Start with core AI concepts.</p>
+        <div class="muc-lock"><i class="fa-solid fa-lock-open"></i>Module preview</div>
+      </div>
+    </article><article class="muc-card" data-index="1">
+      <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=700&q=85" alt="Programming Basics">
+      <div class="muc-card-copy">
+        <span class="muc-month">Month 02</span>
+        <h3>Programming Basics</h3>
+        <p>Build your coding foundation.</p>
+        <div class="muc-lock"><i class="fa-solid fa-lock"></i>₹1,000 monthly purchase to unlock</div>
+      </div>
+    </article><article class="muc-card" data-index="2">
+      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=700&q=85" alt="Web Development">
+      <div class="muc-card-copy">
+        <span class="muc-month">Month 03</span>
+        <h3>Web Development</h3>
+        <p>Create modern web experiences.</p>
+        <div class="muc-lock"><i class="fa-solid fa-lock"></i>₹1,000 monthly purchase to unlock</div>
+      </div>
+    </article><article class="muc-card" data-index="3">
+      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=700&q=85" alt="Data & Analytics">
+      <div class="muc-card-copy">
+        <span class="muc-month">Month 04</span>
+        <h3>Data & Analytics</h3>
+        <p>Understand data and insights.</p>
+        <div class="muc-lock"><i class="fa-solid fa-lock"></i>₹1,000 monthly purchase to unlock</div>
+      </div>
+    </article><article class="muc-card" data-index="4">
+      <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=700&q=85" alt="App Development">
+      <div class="muc-card-copy">
+        <span class="muc-month">Month 05</span>
+        <h3>App Development</h3>
+        <p>Turn ideas into applications.</p>
+        <div class="muc-lock"><i class="fa-solid fa-lock"></i>₹1,000 monthly purchase to unlock</div>
+      </div>
+    </article><article class="muc-card" data-index="5">
+      <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?auto=format&fit=crop&w=700&q=85" alt="UI / UX">
+      <div class="muc-card-copy">
+        <span class="muc-month">Month 06</span>
+        <h3>UI / UX</h3>
+        <p>Design useful digital products.</p>
+        <div class="muc-lock"><i class="fa-solid fa-lock"></i>₹1,000 monthly purchase to unlock</div>
+      </div>
+    </article><article class="muc-card" data-index="6">
+      <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=700&q=85" alt="Cloud Basics">
+      <div class="muc-card-copy">
+        <span class="muc-month">Month 07</span>
+        <h3>Cloud Basics</h3>
+        <p>Learn modern cloud concepts.</p>
+        <div class="muc-lock"><i class="fa-solid fa-lock"></i>₹1,000 monthly purchase to unlock</div>
+      </div>
+    </article><article class="muc-card" data-index="7">
+      <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=700&q=85" alt="Automation">
+      <div class="muc-card-copy">
+        <span class="muc-month">Month 08</span>
+        <h3>Automation</h3>
+        <p>Work smarter with technology.</p>
+        <div class="muc-lock"><i class="fa-solid fa-lock"></i>₹1,000 monthly purchase to unlock</div>
+      </div>
+    </article><article class="muc-card" data-index="8">
+      <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=700&q=85" alt="Cyber Awareness">
+      <div class="muc-card-copy">
+        <span class="muc-month">Month 09</span>
+        <h3>Cyber Awareness</h3>
+        <p>Understand safer technology.</p>
+        <div class="muc-lock"><i class="fa-solid fa-lock"></i>₹1,000 monthly purchase to unlock</div>
+      </div>
+    </article><article class="muc-card" data-index="9">
+      <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=700&q=85" alt="Project Building">
+      <div class="muc-card-copy">
+        <span class="muc-month">Month 10</span>
+        <h3>Project Building</h3>
+        <p>Apply skills to real projects.</p>
+        <div class="muc-lock"><i class="fa-solid fa-lock"></i>₹1,000 monthly purchase to unlock</div>
+      </div>
+    </article><article class="muc-card" data-index="10">
+      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=700&q=85" alt="Career Skills">
+      <div class="muc-card-copy">
+        <span class="muc-month">Month 11</span>
+        <h3>Career Skills</h3>
+        <p>Prepare your work and profile.</p>
+        <div class="muc-lock"><i class="fa-solid fa-lock"></i>₹1,000 monthly purchase to unlock</div>
+      </div>
+    </article><article class="muc-card" data-index="11">
+      <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=700&q=85" alt="Impact Project">
+      <div class="muc-card-copy">
+        <span class="muc-month">Month 12</span>
+        <h3>Impact Project</h3>
+        <p>Complete your learning journey.</p>
+        <div class="muc-lock"><i class="fa-solid fa-lock"></i>₹1,000 monthly purchase to unlock</div>
+      </div>
+    </article>
+    </div>
+   </div>
+   <button class="muc-nav muc-next" type="button" aria-label="Next module"><i class="fa-solid fa-chevron-right"></i></button>
+   <div class="muc-dots" aria-label="Module carousel navigation"></div>
+  </div>
+  <div class="muc-note"><i class="fa-solid fa-circle-info"></i>Each card represents one month of the 12-month TRIVOX learning journey.</div>
+ </div>
+</section>
+
+
+<div class="trivox-video-modal" id="trivoxVideoModal" aria-hidden="true">
+  <div class="trivox-video-modal-box">
+    <button class="trivox-video-close" id="trivoxVideoClose" type="button" aria-label="Close video">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <video id="trivoxClassVideo" controls playsinline preload="metadata">
+      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+      Your browser does not support HTML video.
+    </video>
+  </div>
+</div>
+
+
+
+<script>
+
+  const menuToggle =
+    document.getElementById("menuToggle");
+
+  const navMenu =
+    document.getElementById("navMenu");
+
+  const dropdownItems =
+    document.querySelectorAll(".has-dropdown");
+
+  menuToggle.addEventListener(
+    "click",
+    () => {
+      navMenu.classList.toggle("active");
     }
+  );
 
+  dropdownItems.forEach(item => {
 
-    function nextSlide() {
+    const navLink =
+      item.querySelector(".nav-link");
 
-      if (isAnimating) return;
+    navLink.addEventListener(
+      "click",
+      function(e){
 
-      isAnimating = true;
+        if(window.innerWidth <= 1000){
 
-      slideText.classList.remove("show");
-      slideText.classList.add("hide");
+          e.preventDefault();
 
+          dropdownItems.forEach(other => {
 
-      setTimeout(() => {
-
-        currentIndex++;
-
-        if (currentIndex >= messages.length) {
-          currentIndex = 0;
-        }
-
-        slideText.textContent = messages[currentIndex];
-
-        slideText.classList.remove("hide");
-
-        slideText.style.transition = "none";
-        slideText.style.transform = "translateY(90px)";
-        slideText.style.opacity = "0";
-        slideText.style.filter = "blur(8px)";
-
-
-        requestAnimationFrame(() => {
-
-          requestAnimationFrame(() => {
-
-            slideText.style.transition = "";
-
-            slideText.style.transform = "";
-            slideText.style.opacity = "";
-            slideText.style.filter = "";
-
-            slideText.classList.add("show");
-
-            isAnimating = false;
+            if(other !== item){
+              other.classList.remove("open");
+            }
 
           });
 
+          item.classList.toggle("open");
+
+        }
+
+      }
+    );
+
+  });
+
+  window.addEventListener(
+    "resize",
+    () => {
+
+      if(window.innerWidth > 1000){
+
+        navMenu.classList.remove("active");
+
+        dropdownItems.forEach(item => {
+          item.classList.remove("open");
         });
 
-      }, 650);
+      }
 
     }
+  );
+
+</script>
 
 
-    showFirstText();
 
-    setInterval(() => {
-      nextSlide();
-    }, 2300);
-  </script>
+
+
+<script>
+(function(){
+  const words=Array.from(document.querySelectorAll('#introReveal .intro-word'));
+  if(!words.length) return;
+  let index=0;
+  setInterval(function(){
+    words[index].classList.remove('show');
+    index=(index+1)%words.length;
+    words[index].classList.add('show');
+  },3200);
+})();
+</script>
+
+
+
+<script>
+(function(){
+  const modal = document.getElementById('trivoxVideoModal');
+  const video = document.getElementById('trivoxClassVideo');
+  const close = document.getElementById('trivoxVideoClose');
+  const buttons = document.querySelectorAll('.video-play');
+
+  if(!modal || !video || !close || !buttons.length) return;
+
+  function openVideo(){
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+    video.currentTime = 0;
+    const playPromise = video.play();
+    if(playPromise && typeof playPromise.catch === 'function'){
+      playPromise.catch(function(){});
+    }
+  }
+
+  function closeVideo(){
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+    video.pause();
+  }
+
+  buttons.forEach(function(button){
+    button.addEventListener('click', openVideo);
+  });
+
+  close.addEventListener('click', closeVideo);
+
+  modal.addEventListener('click', function(e){
+    if(e.target === modal) closeVideo();
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && modal.classList.contains('open')){
+      closeVideo();
+    }
+  });
+})();
+</script>
+
+
+<script>
+(function(){
+ const section=document.querySelector('.monthly-unlock-carousel');
+ if(!section) return;
+ const track=section.querySelector('.muc-track');
+ const cards=[...section.querySelectorAll('.muc-card')];
+ const prev=section.querySelector('.muc-prev');
+ const next=section.querySelector('.muc-next');
+ const dotsBox=section.querySelector('.muc-dots');
+ let current=0, timer;
+
+ cards.forEach((_,i)=>{
+   const b=document.createElement('button');
+   b.className='muc-dot'+(i===0?' active':'');
+   b.type='button'; b.setAttribute('aria-label','Show module '+(i+1));
+   b.addEventListener('click',()=>go(i,true));
+   dotsBox.appendChild(b);
+ });
+ const dots=[...dotsBox.children];
+
+ function go(index,userAction){
+   if(window.innerWidth<=600) return;
+   current=(index+cards.length)%cards.length;
+   cards.forEach((c,i)=>c.classList.toggle('active',i===current));
+   dots.forEach((d,i)=>d.classList.toggle('active',i===current));
+
+   const viewport=section.querySelector('.muc-viewport');
+   const card=cards[current];
+   const center=viewport.clientWidth/2;
+   const cardCenter=card.offsetLeft+card.offsetWidth/2;
+   track.style.transform='translateX('+(center-cardCenter)+'px)';
+   if(userAction) restart();
+ }
+ function restart(){
+   clearInterval(timer);
+   timer=setInterval(()=>go(current+1,false),3200);
+ }
+ prev.addEventListener('click',()=>go(current-1,true));
+ next.addEventListener('click',()=>go(current+1,true));
+ window.addEventListener('resize',()=>go(current,false));
+ setTimeout(()=>go(0,false),100);
+ restart();
+})();
+</script>
 
 </body>
 </html>
