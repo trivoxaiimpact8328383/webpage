@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <title>TRIVOX AI IMPACT</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
@@ -3694,7 +3694,36 @@
     pointer-events:auto;
   }
 }
-  </style>
+.footer-logo::after{
+  display:none !important;
+  content:none !important;
+}
+  
+
+/* =========================================================
+   ZOOM LOCK — DESKTOP + MOBILE
+========================================================= */
+html,
+body{
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden;
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+  touch-action:pan-x pan-y;
+}
+
+*{
+  -webkit-tap-highlight-color:transparent;
+}
+
+img,
+video,
+svg{
+  max-width:100%;
+}
+
+</style>
 </head>
 
 <body>
@@ -4314,7 +4343,7 @@
     <div class="template-showcase-copy">
       
 
-      <div class="template-kicker">Built for what comes next</div>
+     
       <h2>Education that turns into <span>real impact.</span></h2>
       <p>
         
@@ -4403,7 +4432,7 @@
     </div>
 
     <div class="video-learning-copy">
-      <div class="video-learning-kicker">TRIVOX Video Learning</div>
+      
       <h2>Learn. Watch. <span>Build.</span></h2>
       <p>
         
@@ -4417,7 +4446,7 @@
 
       <a class="video-explore-btn" href="#videoClasses">
         Explore video classes
-        <i class="fa-solid fa-arrow-right"></i>
+        
       </a>
     </div>
 
@@ -4619,6 +4648,12 @@
           <a href="#monthlyLearning">12 Month Journey</a>
         </div>
       </div>
+        <!-- ADD THIS -->
+  <a href="https://recognition-be.startupindia.gov.in/s3/download/document/RECOGNITION_CERTIFICATE/b5e62585-ae3e-4347-aa94-a7642fbb3c63.pdf"
+     target="_blank"
+     rel="noopener noreferrer">
+    Startup India Recognition Certificate
+  </a>
 
       <div class="footer-desktop-bottom">
         <p>© 2026 TRIVOX AI IMPACT. All rights reserved.</p>
@@ -4992,5 +5027,47 @@ const menuToggle =
   });
 })();
   </script>
+
+<script>
+
+/* =========================================================
+   ZOOM LOCK — DESKTOP + MOBILE
+========================================================= */
+(function () {
+  window.addEventListener("wheel", function (e) {
+    if (e.ctrlKey || e.metaKey) {
+      e.preventDefault();
+    }
+  }, { passive: false });
+
+  window.addEventListener("keydown", function (e) {
+    if ((e.ctrlKey || e.metaKey) && ["+", "-", "=", "0"].includes(e.key)) {
+      e.preventDefault();
+    }
+  });
+
+  ["gesturestart", "gesturechange", "gestureend"].forEach(function (eventName) {
+    document.addEventListener(eventName, function (e) {
+      e.preventDefault();
+    }, { passive: false });
+  });
+
+  document.addEventListener("touchmove", function (e) {
+    if (e.touches && e.touches.length > 1) {
+      e.preventDefault();
+    }
+  }, { passive: false });
+
+  let lastTouchEnd = 0;
+  document.addEventListener("touchend", function (e) {
+    const now = Date.now();
+    if (now - lastTouchEnd <= 300) {
+      e.preventDefault();
+    }
+    lastTouchEnd = now;
+  }, { passive: false });
+})();
+
+</script>
 </body>
 </html>
