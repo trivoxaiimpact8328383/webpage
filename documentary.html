@@ -4544,8 +4544,2161 @@ body{
   }
 }
 </style>
+
+<style id="trivox-embedded-login-styles">
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html,body{
+  width:100%;
+  min-height:100%;
+}
+
+body{
+  font-family:Arial, Helvetica, sans-serif;
+  background:#fff;
+  color:#111;
+  overflow-x:hidden;
+}
+
+button,input{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+/* =========================
+   PAGE
+========================= */
+
+.auth-page{
+  width:100%;
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  background:#fff;
+}
+
+/* =========================
+   LEFT
+========================= */
+
+.auth-left{
+  min-height:100vh;
+  position:relative;
+  overflow:hidden;
+
+  display:flex;
+  flex-direction:column;
+
+  padding:44px 58px 45px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fdfcff 0%,
+      #f8f6ff 48%,
+      #f4f6ff 100%
+    );
+
+  border-right:1px solid #ece9f2;
+}
+
+.auth-left::before{
+  content:"";
+  position:absolute;
+  inset:0;
+
+  background-image:
+    linear-gradient(
+      rgba(116,80,232,.045) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(116,80,232,.045) 1px,
+      transparent 1px
+    );
+
+  background-size:56px 56px;
+
+  -webkit-mask-image:
+    linear-gradient(to bottom,#000,transparent);
+
+  mask-image:
+    linear-gradient(to bottom,#000,transparent);
+
+  pointer-events:none;
+}
+
+.glow-one{
+  position:absolute;
+  width:540px;
+  height:540px;
+  top:-220px;
+  right:-180px;
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(116,80,232,.14),
+      transparent 68%
+    );
+
+  pointer-events:none;
+}
+
+.glow-two{
+  position:absolute;
+  width:480px;
+  height:480px;
+  left:-230px;
+  bottom:-220px;
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(49,95,204,.08),
+      transparent 68%
+    );
+
+  pointer-events:none;
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.logo{
+  position:relative;
+  z-index:10;
+
+  display:flex;
+  align-items:center;
+
+  width:max-content;
+
+  text-decoration:none;
+
+  font-size:23px;
+  font-weight:900;
+  letter-spacing:-1px;
+}
+
+.logo-main{
+  background:
+    linear-gradient(
+      to bottom,
+      #111 0%,
+      #111 50%,
+      #7450e8 50%,
+      #7450e8 100%
+    );
+
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.logo-impact{
+  margin-left:7px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #7450e8 0%,
+      #7450e8 50%,
+      #222 50%,
+      #222 100%
+    );
+
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+/* =========================
+   LEFT CONTENT
+========================= */
+
+.left-content{
+  position:relative;
+  z-index:5;
+
+  width:100%;
+  max-width:650px;
+
+  margin:auto 0;
+}
+
+.left-small{
+  margin-bottom:21px;
+
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:2.4px;
+  text-transform:uppercase;
+
+  color:#7450e8;
+}
+
+.left-title{
+  max-width:620px;
+
+  font-size:clamp(57px,5.8vw,88px);
+  line-height:.9;
+  letter-spacing:-5px;
+  font-weight:900;
+
+  color:#111116;
+}
+
+.left-title .purple{
+  display:block;
+  margin-top:8px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #6d28d9,
+      #805be5,
+      #315fcc
+    );
+
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.left-description{
+  max-width:500px;
+
+  margin-top:28px;
+
+  color:#74747d;
+
+  font-size:14.5px;
+  line-height:1.75;
+}
+
+.impact-message{
+  max-width:460px;
+  margin-top:42px;
+  padding-top:25px;
+
+  border-top:1px solid rgba(116,80,232,.13);
+}
+
+.impact-message p{
+  font-size:16px;
+  line-height:1.6;
+  letter-spacing:-.25px;
+  font-weight:700;
+
+  color:#29282f;
+}
+
+.impact-message span{
+  color:#7450e8;
+}
+
+.left-footer{
+  position:relative;
+  z-index:5;
+
+  color:#9c99a4;
+
+  font-size:10px;
+  letter-spacing:.4px;
+}
+
+/* =========================
+   RIGHT
+========================= */
+
+.auth-right{
+  min-height:100vh;
+
+  position:relative;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:50px 55px;
+
+  background:#fff;
+}
+
+.auth-right::before{
+  content:"";
+
+  position:absolute;
+
+  width:380px;
+  height:380px;
+
+  right:-180px;
+  top:-190px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(116,80,232,.055),
+      transparent 70%
+    );
+
+  pointer-events:none;
+}
+
+.auth-wrap{
+  position:relative;
+  z-index:5;
+
+  width:100%;
+  max-width:420px;
+}
+
+.mobile-logo{
+  display:none;
+}
+
+/* =========================
+   PANELS
+========================= */
+
+.auth-panel{
+  display:none;
+}
+
+.auth-panel.active{
+  display:block;
+  animation:panelIn .28s ease;
+}
+
+@keyframes panelIn{
+  from{
+    opacity:0;
+    transform:translateY(8px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.auth-header{
+  margin-bottom:30px;
+}
+
+.auth-header h1{
+  font-size:37px;
+  line-height:1;
+  letter-spacing:-2px;
+  font-weight:900;
+
+  color:#111116;
+}
+
+.auth-header h1 span{
+  color:#7450e8;
+}
+
+.auth-header p{
+  max-width:360px;
+
+  margin-top:12px;
+
+  color:#85858e;
+
+  font-size:12.5px;
+  line-height:1.6;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.form-group{
+  margin-bottom:15px;
+}
+
+.form-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  margin-bottom:8px;
+}
+
+.form-group label,
+.otp-area label{
+  display:block;
+
+  margin-bottom:8px;
+
+  font-size:11.5px;
+  font-weight:700;
+
+  color:#2d2d33;
+}
+
+.form-top label{
+  margin-bottom:0;
+}
+
+.input-wrap{
+  position:relative;
+}
+
+.input-wrap input{
+  width:100%;
+  height:52px;
+
+  padding:0 15px;
+
+  border:1px solid #e1dfe7;
+  border-radius:10px;
+
+  outline:none;
+
+  background:#fff;
+  color:#111116;
+
+  font-size:13px;
+
+  transition:.2s;
+}
+
+.input-wrap input::placeholder{
+  color:#aaa8b0;
+}
+
+.input-wrap input:focus{
+  border-color:#7450e8;
+
+  box-shadow:
+    0 0 0 3px rgba(116,80,232,.08);
+}
+
+.error{
+  display:block;
+
+  min-height:13px;
+
+  margin-top:5px;
+
+  color:#d93025;
+
+  font-size:10px;
+}
+
+/* =========================
+   PASSWORD
+========================= */
+
+.password-wrap input{
+  padding-right:65px;
+}
+
+.password-toggle{
+  position:absolute;
+
+  right:13px;
+  top:50%;
+
+  transform:translateY(-50%);
+
+  padding:4px;
+
+  border:0;
+  background:transparent;
+
+  color:#6f6f79;
+
+  font-size:10px;
+  font-weight:700;
+}
+
+.forgot-btn{
+  border:0;
+  background:transparent;
+
+  color:#7450e8;
+
+  font-size:10.5px;
+  font-weight:700;
+}
+
+/* =========================
+   OTP
+========================= */
+
+.gmail-row{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+
+  gap:9px;
+}
+
+.get-otp{
+  min-width:92px;
+  height:52px;
+
+  padding:0 14px;
+
+  border:0;
+  border-radius:10px;
+
+  background:#f1edff;
+  color:#7450e8;
+
+  font-size:10.5px;
+  font-weight:800;
+
+  white-space:nowrap;
+}
+
+.otp-area{
+  display:none;
+
+  margin-bottom:15px;
+}
+
+.otp-area.show{
+  display:block;
+
+  animation:panelIn .25s ease;
+}
+
+.otp-input input{
+  padding-right:88px;
+
+  letter-spacing:4px;
+  font-weight:800;
+}
+
+.verify-otp{
+  position:absolute;
+
+  right:8px;
+  top:50%;
+
+  transform:translateY(-50%);
+
+  height:34px;
+
+  padding:0 12px;
+
+  border:0;
+  border-radius:7px;
+
+  background:#111116;
+  color:#fff;
+
+  font-size:10px;
+  font-weight:700;
+}
+
+.otp-status{
+  display:block;
+
+  min-height:13px;
+
+  margin-top:5px;
+
+  font-size:10px;
+}
+
+.otp-status.success{
+  color:#238636;
+}
+
+.otp-status.error{
+  color:#d93025;
+}
+
+/* =========================
+   MAIN BUTTON
+========================= */
+
+.main-button{
+  width:100%;
+  height:52px;
+
+  margin-top:3px;
+
+  border:0;
+  border-radius:10px;
+
+  background:#111116;
+  color:#fff;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  gap:9px;
+
+  font-size:12.5px;
+  font-weight:800;
+
+  transition:.2s;
+}
+
+.main-button:hover{
+  transform:translateY(-2px);
+
+  box-shadow:
+    0 13px 30px rgba(17,17,22,.15);
+}
+
+.main-button:disabled{
+  opacity:.65;
+}
+
+/* =========================
+   DIVIDER
+========================= */
+
+.divider{
+  display:flex;
+  align-items:center;
+
+  gap:13px;
+
+  margin:23px 0;
+}
+
+.divider::before,
+.divider::after{
+  content:"";
+
+  flex:1;
+
+  height:1px;
+
+  background:#e9e7ed;
+}
+
+.divider span{
+  color:#aaa8b0;
+
+  font-size:9.5px;
+  font-weight:700;
+
+  text-transform:uppercase;
+  letter-spacing:.8px;
+}
+
+/* =========================
+   GOOGLE
+========================= */
+
+.google-button{
+  width:100%;
+  height:52px;
+
+  border:1px solid #e1dfe7;
+  border-radius:10px;
+
+  background:#fff;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  gap:11px;
+
+  color:#29292f;
+
+  font-size:12.5px;
+  font-weight:700;
+}
+
+.google-button:hover{
+  background:#faf9fe;
+}
+
+.google-icon{
+  width:19px;
+  height:19px;
+}
+
+/* =========================
+   SWITCH
+========================= */
+
+.auth-switch{
+  margin-top:24px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  gap:6px;
+
+  color:#85858e;
+
+  font-size:11.5px;
+}
+
+.auth-switch button{
+  border:0;
+  background:transparent;
+
+  color:#7450e8;
+
+  font-weight:800;
+}
+
+.auth-switch button:hover{
+  text-decoration:underline;
+}
+
+/* =========================
+   SPINNER
+========================= */
+
+.spinner{
+  display:none;
+
+  width:16px;
+  height:16px;
+
+  border-radius:50%;
+
+  border:2px solid rgba(255,255,255,.35);
+  border-top-color:#fff;
+
+  animation:spin .65s linear infinite;
+}
+
+.spinner.show{
+  display:block;
+}
+
+@keyframes spin{
+  to{
+    transform:rotate(360deg);
+  }
+}
+
+/* =========================
+   TOAST
+========================= */
+
+.toast{
+  position:fixed;
+
+  left:50%;
+  bottom:28px;
+
+  z-index:99999;
+
+  transform:translate(-50%,20px);
+
+  padding:11px 17px;
+
+  border-radius:9px;
+
+  background:#111116;
+  color:#fff;
+
+  font-size:11px;
+  font-weight:600;
+
+  opacity:0;
+  pointer-events:none;
+
+  transition:.25s;
+}
+
+.toast.show{
+  opacity:1;
+
+  transform:translate(-50%,0);
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media(max-width:900px){
+
+  .auth-page{
+    grid-template-columns:1fr;
+  }
+
+  .auth-left{
+    display:none;
+  }
+
+  .auth-right{
+    min-height:100svh;
+
+    align-items:flex-start;
+
+    padding:100px 24px 50px;
+  }
+
+  .auth-wrap{
+    max-width:430px;
+
+    margin:0 auto;
+  }
+
+  .mobile-logo{
+    display:flex;
+
+    margin-bottom:55px;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+  .auth-right{
+    min-height:100svh;
+
+    align-items:flex-start;
+
+    padding:100px 21px 38px;
+  }
+
+  .auth-wrap{
+    width:100%;
+    max-width:430px;
+
+    margin:0 auto;
+  }
+
+  .mobile-logo{
+    display:flex;
+
+    margin-bottom:48px;
+
+    font-size:17px;
+  }
+
+  .auth-header{
+    margin-bottom:27px;
+  }
+
+  .auth-header h1{
+    font-size:34px;
+
+    letter-spacing:-1.8px;
+  }
+
+  .auth-header p{
+    font-size:12.5px;
+  }
+
+  .gmail-row{
+    grid-template-columns:minmax(0,1fr) 88px;
+  }
+
+  .get-otp{
+    min-width:88px;
+
+    padding:0 9px;
+  }
+}
+
+@media(max-width:360px){
+
+  .gmail-row{
+    grid-template-columns:1fr;
+  }
+
+  .get-otp{
+    width:100%;
+  }
+}
+
+/* =========================
+   REGISTRATION CHOICE
+========================= */
+.choice-panel{
+  text-align:left;
+}
+
+.choice-list{
+  display:grid;
+  gap:12px;
+  margin-top:26px;
+}
+
+.choice-button{
+  width:100%;
+  min-height:76px;
+  padding:16px 18px;
+  border:1px solid #e1dfe7;
+  border-radius:12px;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  text-align:left;
+  transition:.2s;
+}
+
+.choice-button:hover{
+  border-color:#7450e8;
+  background:#faf9ff;
+  transform:translateY(-1px);
+}
+
+.choice-copy{
+  min-width:0;
+}
+
+.choice-title{
+  display:block;
+  color:#111116;
+  font-size:13px;
+  font-weight:800;
+  margin-bottom:5px;
+}
+
+.choice-desc{
+  display:block;
+  color:#85858e;
+  font-size:10.5px;
+  line-height:1.5;
+}
+
+.choice-arrow{
+  flex:0 0 auto;
+  color:#7450e8;
+  font-size:19px;
+  line-height:1;
+}
+
+.choice-user{
+  margin-top:18px;
+  color:#9a98a2;
+  font-size:10.5px;
+}
+
+
+/* STEP 1 CENTER MODE */
+.auth-right.choice-mode{
+  align-items:center !important;
+  justify-content:center !important;
+  padding-top:38px !important;
+  padding-bottom:38px !important;
+}
+
+.choice-panel{
+  text-align:center;
+}
+
+.choice-panel .auth-header p{
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.choice-panel .choice-button{
+  text-align:left;
+}
+
+.choice-panel .choice-user{
+  text-align:center;
+}
+
+@media(max-width:900px){
+  .auth-right.choice-mode{
+    min-height:100svh;
+    padding:38px 24px !important;
+  }
+
+  .choice-mode .mobile-logo{
+    display:none !important;
+  }
+}
+
+@media(max-width:600px){
+  .auth-right.choice-mode{
+    padding:30px 21px !important;
+  }
+}
+
+
+/* FULL STEP SCREEN: hide all login promotional content */
+.auth-page.step-mode{
+  display:block !important;
+  min-height:100vh;
+}
+
+.auth-page.step-mode .auth-left{
+  display:none !important;
+}
+
+.auth-page.step-mode .auth-right{
+  width:100% !important;
+  min-height:100vh !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  padding:38px 24px !important;
+  background:#fff !important;
+}
+
+.auth-page.step-mode .auth-wrap{
+  width:100% !important;
+  max-width:500px !important;
+  margin:0 auto !important;
+}
+
+.auth-page.step-mode .mobile-logo{
+  display:none !important;
+}
+
+.auth-page.step-mode #loginPanel,
+.auth-page.step-mode #registerPanel{
+  display:none !important;
+}
+
+.auth-page.step-mode #choicePanel.active{
+  display:block !important;
+}
+
+@media(max-width:600px){
+  .auth-page.step-mode .auth-right{
+    padding:28px 21px !important;
+  }
+}
+
+
+html.trivox-restoring .auth-page{
+  visibility:hidden;
+}
+
+html.trivox-restoring .auth-page.step-mode{
+  visibility:visible;
+}
+
+
+.single-panel{display:none;}
+.single-panel.active{display:block;}
+
+.auth-page.single-mode{
+  display:block !important;
+  min-height:100vh;
+}
+.auth-page.single-mode .auth-left{display:none !important;}
+.auth-page.single-mode .auth-right{
+  width:100% !important;
+  min-height:100vh !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  padding:38px 24px !important;
+  background:#fff !important;
+}
+.auth-page.single-mode .auth-wrap{
+  width:100% !important;
+  max-width:500px !important;
+  margin:0 auto !important;
+}
+.auth-page.single-mode .mobile-logo,
+.auth-page.single-mode #loginPanel,
+.auth-page.single-mode #registerPanel,
+.auth-page.single-mode #choicePanel{
+  display:none !important;
+}
+.auth-page.single-mode #singlePanel.active{display:block !important;}
+
+.field select{
+  width:100%;
+  height:52px;
+  border:1px solid #dcdcdc;
+  background:#fff;
+  padding:0 14px;
+  font:inherit;
+  color:#111;
+  outline:none;
+}
+.field select:focus{border-color:#7450e8;}
+
+@media(max-width:600px){
+  .auth-page.single-mode .auth-right{padding:28px 21px !important;}
+}
+
+
+/* ===== POLISHED SINGLE REGISTRATION ===== */
+#singlePanel{
+  width:100%;
+  max-width:500px;
+  margin:0 auto;
+}
+
+#singlePanel .auth-header{
+  margin-bottom:30px;
+}
+
+#singlePanel .auth-header h1{
+  margin:0 0 9px;
+  font-size:38px;
+  line-height:1.08;
+  letter-spacing:-1.4px;
+  font-weight:800;
+  color:#111;
+}
+
+#singlePanel .auth-header h1 span{
+  color:#7450e8;
+}
+
+#singlePanel .auth-header p{
+  margin:0;
+  font-size:14px;
+  line-height:1.6;
+  color:#777;
+}
+
+#singleRegistrationForm{
+  width:100%;
+}
+
+#singleRegistrationForm .field{
+  width:100%;
+  margin-bottom:19px;
+}
+
+#singleRegistrationForm .field label{
+  display:block;
+  margin:0 0 8px;
+  font-size:13px;
+  line-height:1;
+  font-weight:700;
+  color:#222;
+}
+
+#singleRegistrationForm .field input,
+#singleRegistrationForm .field select{
+  display:block;
+  width:100%;
+  height:54px;
+  margin:0;
+  padding:0 16px;
+  border:1px solid #dedede;
+  border-radius:10px;
+  outline:none;
+  background:#fff;
+  color:#111;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size:15px;
+  box-sizing:border-box;
+  transition:border-color .2s ease, box-shadow .2s ease;
+}
+
+#singleRegistrationForm .field input:focus,
+#singleRegistrationForm .field select:focus{
+  border-color:#7450e8;
+  box-shadow:0 0 0 3px rgba(116,80,232,.09);
+}
+
+#singleRegistrationForm #singleStudentName{
+  background:#f7f7f8;
+  color:#555;
+  cursor:default;
+}
+
+#singleRegistrationForm .field select{
+  appearance:auto;
+  cursor:pointer;
+}
+
+#singleRegisterButton{
+  position:relative;
+  width:100%;
+  height:54px;
+  margin-top:7px;
+  border:0;
+  border-radius:10px;
+  background:#111;
+  color:#fff;
+  font-size:15px;
+  font-weight:700;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:transform .15s ease, opacity .15s ease;
+}
+
+#singleRegisterButton:hover{
+  opacity:.92;
+}
+
+#singleRegisterButton:active{
+  transform:scale(.99);
+}
+
+#backToChoiceButton{
+  display:block;
+  width:100%;
+  margin:18px auto 0;
+  padding:5px;
+  border:0;
+  background:transparent;
+  color:#777;
+  font-size:13px;
+  font-weight:600;
+  text-align:center;
+  cursor:pointer;
+}
+
+#backToChoiceButton:hover{
+  color:#7450e8;
+}
+
+.auth-page.single-mode .auth-right{
+  padding:50px 24px !important;
+}
+
+@media(max-width:600px){
+  #singlePanel{
+    max-width:100%;
+  }
+
+  #singlePanel .auth-header{
+    margin-bottom:25px;
+  }
+
+  #singlePanel .auth-header h1{
+    font-size:31px;
+    letter-spacing:-1px;
+  }
+
+  #singleRegistrationForm .field{
+    margin-bottom:17px;
+  }
+
+  #singleRegistrationForm .field input,
+  #singleRegistrationForm .field select,
+  #singleRegisterButton{
+    height:52px;
+    border-radius:9px;
+  }
+
+  .auth-page.single-mode .auth-right{
+    align-items:flex-start !important;
+    padding:72px 21px 32px !important;
+  }
+}
+
+
+/* Other qualification + black Register button */
+#singleRegisterButton{
+  background:#000 !important;
+  color:#fff !important;
+}
+#singleRegisterButton:hover{
+  background:#000 !important;
+  opacity:.88;
+}
+#singleOtherQualificationField{
+  width:100%;
+}
+
+
+/* ===== GROUP REGISTRATION ===== */
+.group-panel{display:none;width:100%;max-width:560px;margin:0 auto;}
+.group-panel.active{display:block;}
+
+.auth-page.group-mode{display:block!important;min-height:100vh;}
+.auth-page.group-mode .auth-left{display:none!important;}
+.auth-page.group-mode .auth-right{
+  width:100%!important;min-height:100vh!important;display:flex!important;
+  align-items:center!important;justify-content:center!important;
+  padding:42px 24px!important;background:#fff!important;
+}
+.auth-page.group-mode .auth-wrap{width:100%!important;max-width:560px!important;margin:0 auto!important;}
+.auth-page.group-mode .mobile-logo,
+.auth-page.group-mode #loginPanel,
+.auth-page.group-mode #registerPanel,
+.auth-page.group-mode #choicePanel,
+.auth-page.group-mode #singlePanel{display:none!important;}
+.auth-page.group-mode #groupPanel.active{display:block!important;}
+
+#groupPanel .auth-header{margin-bottom:27px;}
+#groupPanel .auth-header h1{
+  margin:0 0 9px;font-size:38px;line-height:1.08;letter-spacing:-1.4px;
+  font-weight:800;color:#111;
+}
+#groupPanel .auth-header h1 span{color:#7450e8;}
+#groupPanel .auth-header p{margin:0;font-size:14px;line-height:1.6;color:#777;}
+
+.friend-search-wrap label{
+  display:block;margin-bottom:8px;font-size:13px;font-weight:700;color:#222;
+}
+.friend-search-box input{
+  width:100%;height:54px;padding:0 16px;border:1px solid #dedede;border-radius:10px;
+  background:#fff;color:#111;font:15px Arial,Helvetica,sans-serif;outline:none;box-sizing:border-box;
+}
+.friend-search-box input:focus{border-color:#7450e8;box-shadow:0 0 0 3px rgba(116,80,232,.09);}
+.friend-search-state{padding:13px 2px 8px;font-size:13px;color:#888;}
+.friend-results{display:flex;flex-direction:column;gap:9px;margin-top:4px;}
+
+.friend-result{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:13px 14px;border:1px solid #e8e8e8;border-radius:10px;background:#fff;
+}
+.friend-info{min-width:0;}
+.friend-name{display:block;font-size:14px;font-weight:700;color:#111;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.friend-id{display:block;margin-top:4px;font-size:12px;color:#888;}
+.friend-add{
+  flex:0 0 auto;border:0;border-radius:8px;background:#000;color:#fff;
+  min-width:64px;height:36px;padding:0 14px;font-size:12px;font-weight:700;cursor:pointer;
+}
+.friend-add:disabled{background:#ececec;color:#999;cursor:default;}
+
+.no-friend{
+  padding:18px 14px;border:1px solid #ececec;border-radius:10px;
+  text-align:center;font-size:13px;line-height:1.55;color:#777;background:#fafafa;
+}
+.no-friend strong{display:block;margin-bottom:3px;color:#111;font-size:14px;}
+
+.added-friends-section{margin-top:25px;}
+.added-friends-head{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:10px;font-size:13px;font-weight:700;color:#222;
+}
+#addedFriendsCount{
+  min-width:25px;height:25px;padding:0 7px;border-radius:20px;background:#f1effc;
+  color:#7450e8;display:flex;align-items:center;justify-content:center;font-size:12px;
+}
+.added-friends-list{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
+.empty-added{padding:14px;border:1px dashed #ddd;border-radius:10px;text-align:center;font-size:13px;color:#999;}
+.added-friend{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:12px 14px;border:1px solid #e7e7e7;border-radius:10px;background:#fff;
+}
+.remove-friend{border:0;background:transparent;color:#999;font-size:12px;font-weight:700;cursor:pointer;}
+.remove-friend:hover{color:#111;}
+
+#groupRegisterButton{
+  width:100%;height:54px;border:0;border-radius:10px;background:#000!important;
+  color:#fff;font-size:15px;font-weight:700;cursor:pointer;
+}
+#groupBackButton{
+  display:block;width:100%;margin:18px auto 0;padding:5px;border:0;background:transparent;
+  color:#777;font-size:13px;font-weight:600;text-align:center;cursor:pointer;
+}
+
+@media(max-width:600px){
+  .auth-page.group-mode .auth-right{align-items:flex-start!important;padding:60px 21px 32px!important;}
+  #groupPanel .auth-header h1{font-size:31px;letter-spacing:-1px;}
+  .friend-search-box input,#groupRegisterButton{height:52px;border-radius:9px;}
+}
+
+
+/* ===== JOIN GROUP ===== */
+.join-panel{display:none;width:100%;max-width:500px;margin:0 auto;}
+.join-panel.active{display:block;}
+
+.auth-page.join-mode{display:block!important;min-height:100vh;}
+.auth-page.join-mode .auth-left{display:none!important;}
+.auth-page.join-mode .auth-right{
+  width:100%!important;min-height:100vh!important;display:flex!important;
+  align-items:center!important;justify-content:center!important;
+  padding:42px 24px!important;background:#fff!important;
+}
+.auth-page.join-mode .auth-wrap{width:100%!important;max-width:500px!important;margin:0 auto!important;}
+.auth-page.join-mode .mobile-logo,
+.auth-page.join-mode #loginPanel,
+.auth-page.join-mode #registerPanel,
+.auth-page.join-mode #choicePanel,
+.auth-page.join-mode #singlePanel,
+.auth-page.join-mode #groupPanel{display:none!important;}
+.auth-page.join-mode #joinPanel.active{display:block!important;}
+
+#joinPanel .auth-header{margin-bottom:28px;}
+#joinPanel .auth-header h1{
+  margin:0 0 9px;font-size:38px;line-height:1.08;letter-spacing:-1.4px;
+  font-weight:800;color:#111;
+}
+#joinPanel .auth-header h1 span{color:#7450e8;}
+#joinPanel .auth-header p{margin:0;font-size:14px;line-height:1.6;color:#777;}
+
+.join-group-field label{
+  display:block;margin:0 0 8px;font-size:13px;font-weight:700;color:#222;
+}
+.join-group-field input{
+  width:100%;height:54px;padding:0 16px;border:1px solid #dedede;border-radius:10px;
+  background:#fff;color:#111;font:15px Arial,Helvetica,sans-serif;outline:none;
+}
+.join-group-field input:focus{
+  border-color:#7450e8;box-shadow:0 0 0 3px rgba(116,80,232,.09);
+}
+#joinGroupSubmitButton{
+  width:100%;height:54px;margin-top:18px;border:0;border-radius:10px;
+  background:#000;color:#fff;font-size:15px;font-weight:700;cursor:pointer;
+}
+#joinGroupBackButton{
+  display:block;width:100%;margin:18px auto 0;padding:5px;border:0;background:transparent;
+  color:#777;font-size:13px;font-weight:600;text-align:center;cursor:pointer;
+}
+.join-group-message{min-height:18px;margin-top:8px;font-size:12px;color:#777;}
+.join-group-message.error{color:#d93025;}
+
+@media(max-width:600px){
+  .auth-page.join-mode .auth-right{align-items:flex-start!important;padding:72px 21px 32px!important;}
+  #joinPanel .auth-header h1{font-size:31px;letter-spacing:-1px;}
+  .join-group-field input,#joinGroupSubmitButton{height:52px;border-radius:9px;}
+}
+
+
+
+#loggedUserIdBox{
+  position:fixed !important;
+  top:18px !important;
+  right:20px !important;
+  z-index:2147483647 !important;
+  display:none;
+  align-items:center;
+  gap:6px;
+  padding:10px 13px;
+  background:#fff;
+  border:1px solid #e5e5e5;
+  border-radius:9px;
+  box-shadow:0 5px 20px rgba(0,0,0,.08);
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:12px;
+  color:#777;
+  line-height:1;
+}
+#loggedUserIdBox b{
+  color:#111;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.4px;
+}
+@media(max-width:600px){
+  #loggedUserIdBox{
+    top:14px !important;
+    right:14px !important;
+    padding:9px 11px;
+  }
+}
+
+</style>
+
+<style id="trivox-embedded-login-gate">
+#trivoxEmbeddedAuth{
+  display:block;
+  min-height:100vh;
+  background:#fff;
+  position:relative;
+  z-index:99999;
+}
+body.trivox-auth-required > .top,
+body.trivox-auth-required > .wrap,
+body.trivox-auth-required > .bottom,
+body.trivox-auth-required > #docMoreMenu,
+body.trivox-auth-required > #mobileMoreSheet{
+  display:none !important;
+}
+body.trivox-auth-ok #trivoxEmbeddedAuth{
+  display:none !important;
+}
+</style>
+
 </head>
- <body>
+ <body class=\"trivox-auth-required\">
+<div id="trivoxEmbeddedAuth">
+
+
+<!-- ALWAYS VISIBLE LOGGED-IN USER ID -->
+<div id="loggedUserIdBox">
+  <span>ID :</span>
+  <b id="loggedUserIdValue">Loading...</b>
+</div>
+
+<style>
+#loggedUserIdBox{
+  position:fixed !important;
+  top:18px !important;
+  right:20px !important;
+  z-index:2147483647 !important;
+  display:none;
+  align-items:center;
+  gap:6px;
+  padding:10px 13px;
+  background:#fff;
+  border:1px solid #e5e5e5;
+  border-radius:9px;
+  box-shadow:0 5px 20px rgba(0,0,0,.08);
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:12px;
+  color:#777;
+  line-height:1;
+}
+#loggedUserIdBox b{
+  color:#111;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.4px;
+}
+@media(max-width:600px){
+  #loggedUserIdBox{
+    top:14px !important;
+    right:14px !important;
+    padding:9px 11px;
+  }
+}
+</style>
+
+
+<div class="auth-page">
+
+  <!-- LEFT -->
+  <section class="auth-left">
+
+    <div class="glow-one"></div>
+    <div class="glow-two"></div>
+
+    <a href="index.html" class="logo">
+      <span class="logo-main">TRIVOX</span>
+      <span class="logo-impact">AI IMPACT</span>
+    </a>
+
+    <div class="left-content">
+
+      <div class="left-small">
+        Beyond the classroom
+      </div>
+
+      <h1 class="left-title">
+        Turn learning
+        into
+        <span class="purple">real impact.</span>
+      </h1>
+
+      <p class="left-description">
+        Discover skills, take on real-world challenges
+        and turn what you learn into work that matters.
+      </p>
+
+      <div class="impact-message">
+        <p>
+          Your ideas can become
+          <span>projects.</span>
+          Your projects can become
+          <span>impact.</span>
+        </p>
+      </div>
+
+    </div>
+
+    <div class="left-footer">
+      Learn something. Build something. Change something.
+    </div>
+
+  </section>
+
+
+  <!-- RIGHT -->
+  <section class="auth-right">
+
+    <div class="auth-wrap">
+
+      <!-- MOBILE LOGO -->
+      <a href="index.html" class="logo mobile-logo">
+        <span class="logo-main">TRIVOX</span>
+        <span class="logo-impact">AI IMPACT</span>
+      </a>
+
+
+      <!-- ======================
+           LOGIN
+      ======================= -->
+
+      <div class="auth-panel active" id="loginPanel">
+
+        <div class="auth-header">
+          <h1>
+            Welcome <span>back.</span>
+          </h1>
+
+          <p>
+            Sign in to continue your journey with TRIVOX AI IMPACT.
+          </p>
+        </div>
+
+
+        <form id="loginForm" novalidate>
+
+          <div class="form-group">
+
+            <label for="loginEmail">
+              Email address
+            </label>
+
+            <div class="input-wrap">
+              <input
+                type="email"
+                id="loginEmail"
+                placeholder="Enter your email"
+                autocomplete="email"
+              >
+            </div>
+
+            <span class="error" id="loginEmailError"></span>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <div class="form-top">
+
+              <label for="loginPassword">
+                Password
+              </label>
+
+              <button
+                type="button"
+                class="forgot-btn"
+                id="forgotButton"
+              >
+                Forgot password?
+              </button>
+
+            </div>
+
+            <div class="input-wrap password-wrap">
+
+              <input
+                type="password"
+                id="loginPassword"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+              >
+
+              <button
+                type="button"
+                class="password-toggle"
+                data-password="loginPassword"
+              >
+                Show
+              </button>
+
+            </div>
+
+            <span class="error" id="loginPasswordError"></span>
+
+          </div>
+
+
+          <button
+            type="submit"
+            class="main-button"
+            id="loginButton"
+          >
+            <span id="loginButtonText">
+              Sign In
+            </span>
+
+            <span class="spinner" id="loginSpinner"></span>
+          </button>
+
+        </form>
+
+
+        <div class="divider">
+          <span>or continue with</span>
+        </div>
+
+
+        <button
+          type="button"
+          class="google-button"
+          id="googleButton"
+        >
+
+          <svg class="google-icon" viewBox="0 0 24 24">
+            <path
+              fill="#4285F4"
+              d="M21.35 11.1H12v3.8h5.35c-.23 1.22-.92 2.25-1.95 2.94v2.44h3.16c1.85-1.7 2.92-4.2 2.92-7.18 0-.69-.06-1.35-.13-2z"
+            />
+            <path
+              fill="#34A853"
+              d="M12 22c2.65 0 4.87-.88 6.49-2.39l-3.16-2.44c-.88.59-2 .94-3.33.94-2.56 0-4.73-1.73-5.5-4.06H3.24v2.5A9.99 9.99 0 0012 22z"
+            />
+            <path
+              fill="#FBBC05"
+              d="M6.5 14.05A5.99 5.99 0 016.18 12c0-.71.12-1.4.32-2.05v-2.5H3.24A10 10 0 002 12c0 1.61.38 3.14 1.24 4.55l3.26-2.5z"
+            />
+            <path
+              fill="#EA4335"
+              d="M12 5.89c1.44 0 2.73.49 3.75 1.46l2.81-2.81C16.86 2.96 14.65 2 12 2a9.99 9.99 0 00-8.76 5.45l3.26 2.5c.77-2.33 2.94-4.06 5.5-4.06z"
+            />
+          </svg>
+
+          Continue with Google
+        </button>
+
+
+        <div class="auth-switch">
+          <span>New to TRIVOX?</span>
+
+          <button
+            type="button"
+            id="openRegister"
+          >
+            Create account
+          </button>
+        </div>
+
+      </div>
+
+
+      <!-- ======================
+           REGISTER
+      ======================= -->
+
+      <div class="auth-panel" id="registerPanel">
+
+        <div class="auth-header">
+
+          <h1>
+            Create <span>account.</span>
+          </h1>
+
+          <p>
+            Enter your details to create your TRIVOX profile.
+          </p>
+
+        </div>
+
+
+        <form id="registerForm" novalidate>
+
+
+          <!-- NAME -->
+
+          <div class="form-group">
+
+            <label for="fullName">
+              Full name
+            </label>
+
+            <div class="input-wrap">
+              <input
+                type="text"
+                id="fullName"
+                placeholder="Enter your full name"
+                autocomplete="name"
+              >
+            </div>
+
+            <span class="error" id="nameError"></span>
+
+          </div>
+
+
+          <!-- GMAIL -->
+
+          <div class="form-group">
+
+            <label for="registerEmail">
+              Gmail address
+            </label>
+
+            <div class="gmail-row">
+
+              <div class="input-wrap">
+                <input
+                  type="email"
+                  id="registerEmail"
+                  placeholder="example@gmail.com"
+                  autocomplete="email"
+                >
+              </div>
+
+              <button
+                type="button"
+                class="get-otp"
+                id="getOtpButton"
+              >
+                Get OTP
+              </button>
+
+            </div>
+
+            <span class="error" id="registerEmailError"></span>
+
+          </div>
+
+
+          <!-- OTP -->
+
+          <div class="otp-area" id="otpArea">
+
+            <label for="otp">
+              Enter OTP
+            </label>
+
+            <div class="input-wrap otp-input">
+
+              <input
+                type="text"
+                inputmode="numeric"
+                maxlength="6"
+                id="otp"
+                placeholder="••••••"
+              >
+
+              <button
+                type="button"
+                class="verify-otp"
+                id="verifyOtpButton"
+              >
+                Verify
+              </button>
+
+            </div>
+
+            <span
+              class="otp-status"
+              id="otpStatus"
+            ></span>
+
+          </div>
+
+
+          <!-- VILLAGE -->
+
+          <div class="form-group">
+
+            <label for="village">
+              Village
+            </label>
+
+            <div class="input-wrap">
+              <input
+                type="text"
+                id="village"
+                placeholder="Enter your village"
+                autocomplete="address-level3"
+              >
+            </div>
+
+            <span class="error" id="villageError"></span>
+
+          </div>
+
+
+          <!-- PASSWORD -->
+
+          <div class="form-group">
+
+            <label for="registerPassword">
+              Password
+            </label>
+
+            <div class="input-wrap password-wrap">
+
+              <input
+                type="password"
+                id="registerPassword"
+                placeholder="Create password"
+                autocomplete="new-password"
+              >
+
+              <button
+                type="button"
+                class="password-toggle"
+                data-password="registerPassword"
+              >
+                Show
+              </button>
+
+            </div>
+
+            <span
+              class="error"
+              id="registerPasswordError"
+            ></span>
+
+          </div>
+
+
+          <!-- CONFIRM PASSWORD -->
+
+          <div class="form-group">
+
+            <label for="confirmPassword">
+              Confirm password
+            </label>
+
+            <div class="input-wrap password-wrap">
+
+              <input
+                type="password"
+                id="confirmPassword"
+                placeholder="Enter password again"
+                autocomplete="new-password"
+              >
+
+              <button
+                type="button"
+                class="password-toggle"
+                data-password="confirmPassword"
+              >
+                Show
+              </button>
+
+            </div>
+
+            <span
+              class="error"
+              id="confirmPasswordError"
+            ></span>
+
+          </div>
+
+
+          <button
+            type="submit"
+            class="main-button"
+            id="registerButton"
+          >
+
+            <span id="registerButtonText">
+              Create Account
+            </span>
+
+            <span
+              class="spinner"
+              id="registerSpinner"
+            ></span>
+
+          </button>
+
+        </form>
+
+
+        <div class="auth-switch">
+
+          <span>
+            Already have an account?
+          </span>
+
+          <button
+            type="button"
+            id="openLogin"
+          >
+            Sign in
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- ======================
+           REGISTRATION CHOICE
+      ======================= -->
+      <div class="auth-panel choice-panel" id="choicePanel">
+
+        <div class="auth-header">
+          <h1>
+            Choose <span>registration.</span>
+          </h1>
+          <p>
+            How would you like to continue with the TRIVOX challenge?
+          </p>
+        </div>
+
+        <div class="choice-list">
+
+          <button type="button" class="choice-button" id="singleRegistrationButton">
+            <span class="choice-copy">
+              <span class="choice-title">Single Registration</span>
+              <span class="choice-desc">Continue as an individual student.</span>
+            </span>
+            <span class="choice-arrow">›</span>
+          </button>
+          <button type="button" class="choice-button" id="groupRegistrationButton">
+            <span class="choice-copy">
+              <span class="choice-title">Group Registration</span>
+              <span class="choice-desc">Create a new student group.</span>
+            </span>
+            <span class="choice-arrow">›</span>
+          </button>
+
+          <button type="button" class="choice-button" id="joinGroupButton">
+            <span class="choice-copy">
+              <span class="choice-title">Join Group</span>
+              <span class="choice-desc">Join an existing student team.</span>
+            </span>
+            <span class="choice-arrow">›</span>
+          </button>
+
+        </div>
+
+        <div class="choice-user" id="choiceUserText"></div>
+
+      </div>
+
+        <div class="auth-panel single-panel" id="singlePanel">
+          <div class="auth-header">
+            <h1>Single <span>registration.</span></h1>
+            <p>Complete your student details to continue.</p>
+          </div>
+
+          <form id="singleRegistrationForm" novalidate>
+            <div class="field">
+              <label for="singleStudentName">Student name</label>
+              <input id="singleStudentName" type="text" readonly />
+            </div>
+
+            <div class="field">
+              <label for="singleQualification">Qualification</label>
+              <select id="singleQualification" required>
+                <option value="">Select qualification</option>
+                <option value="10th">10th</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Diploma">Diploma</option>
+                <option value="Degree">Degree</option>
+                <option value="B.Tech">B.Tech</option>
+                <option value="Post Graduation">Post Graduation</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="field" id="singleOtherQualificationField" style="display:none;">
+              <label for="singleOtherQualification">Other qualification</label>
+              <input id="singleOtherQualification" type="text" placeholder="Enter your qualification" />
+            </div>
+
+            <div class="field">
+              <label for="singleInstitution">School / College name</label>
+              <input id="singleInstitution" type="text" placeholder="Enter school or college name" required />
+            </div>
+
+            <button class="primary-btn" type="submit" id="singleRegisterButton">
+              <span id="singleRegisterButtonText">Register</span>
+              <span class="btn-spinner" id="singleRegisterSpinner"></span>
+            </button>
+
+            <button class="text-switch" type="button" id="backToChoiceButton">
+              Back to registration options
+            </button>
+          </form>
+        </div>
+
+        <div class="auth-panel group-panel" id="groupPanel">
+          <div class="auth-header">
+            <h1>Group <span>registration.</span></h1>
+            <p>Search your friends by their ID or name and add them to your group.</p>
+          </div>
+
+          <div class="friend-search-wrap">
+            <label for="friendSearchInput">Select your friend</label>
+            <div class="friend-search-box">
+              <input id="friendSearchInput" type="text" placeholder="Search name or ID" autocomplete="off" />
+            </div>
+          </div>
+
+          <div class="friend-search-state" id="friendSearchState">
+            Start typing a name or ID to search.
+          </div>
+
+          <div class="friend-results" id="friendResults"></div>
+
+          <div class="added-friends-section">
+            <div class="added-friends-head">
+              <span>Added friends</span>
+              <span id="addedFriendsCount">0</span>
+            </div>
+            <div class="added-friends-list" id="addedFriendsList">
+              <div class="empty-added">No friends added yet.</div>
+            </div>
+          </div>
+
+          <button class="primary-btn" type="button" id="groupRegisterButton">
+            <span id="groupRegisterButtonText">Register Group</span>
+          </button>
+
+          <div id="groupCreatedResult" style="display:none;margin-top:16px;padding:18px;border:1px solid #e5e5e5;border-radius:10px;background:#fafafa;text-align:center;">
+            <div style="font-size:12px;color:#777;margin-bottom:7px;">Your Group ID</div>
+            <div id="createdGroupId" style="font-size:25px;font-weight:900;letter-spacing:2px;color:#111;"></div>
+            <div style="font-size:12px;color:#777;margin-top:8px;line-height:1.5;">Share this ID with students who want to join your group.</div>
+          </div>
+
+          <button class="text-switch" type="button" id="groupBackButton">
+            Back to registration options
+          </button>
+        </div>
+
+        <div class="auth-panel join-panel" id="joinPanel">
+          <div class="auth-header">
+            <h1>Join <span>group.</span></h1>
+            <p>Enter the Group ID shared by your group creator to join the group.</p>
+          </div>
+
+          <div class="join-group-field">
+            <label for="joinGroupIdInput">Group ID</label>
+            <input
+              id="joinGroupIdInput"
+              type="text"
+              placeholder="Enter Group ID"
+              autocomplete="off"
+            />
+            <div class="join-group-message" id="joinGroupMessage"></div>
+          </div>
+
+          <button type="button" id="joinGroupSubmitButton">Join Group</button>
+
+          <button type="button" id="joinGroupBackButton">
+            Back to registration options
+          </button>
+        </div>
+
+
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<div class="toast" id="toast"></div>
+
+
+
+
+
+
+
+</div>
+
   <header class="top">
    <div class="logo">
     TRIVOX
@@ -5280,7 +7433,18 @@ body{
 </div>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-   let u=null;try{u=JSON.parse(localStorage.getItem("trivoxUser")||"null")}catch(e){}if(!u){location.href="login.html"}else{uid.textContent=u.trivox_id||"------";pname.textContent=u.full_name||"—";pid.textContent=u.trivox_id||"—";ptype.textContent=localStorage.getItem("trivoxRegistrationType")==="single"?"Single":"Group";pgid.textContent=localStorage.getItem("trivoxGroupId")||"—"}
+   let u=null;
+try{u=JSON.parse(localStorage.getItem("trivoxUser")||"null")}catch(e){}
+function trivoxApplyLoggedInUser(user){
+  u=user||null;
+  if(!u) return;
+  if(typeof uid!=="undefined"&&uid) uid.textContent=u.trivox_id||"------";
+  if(typeof pname!=="undefined"&&pname) pname.textContent=u.full_name||"—";
+  if(typeof pid!=="undefined"&&pid) pid.textContent=u.trivox_id||"—";
+  if(typeof ptype!=="undefined"&&ptype) ptype.textContent=localStorage.getItem("trivoxRegistrationType")==="single"?"Single":"Group";
+  if(typeof pgid!=="undefined"&&pgid) pgid.textContent=localStorage.getItem("trivoxGroupId")||"—";
+}
+if(u){trivoxApplyLoggedInUser(u);}
 function go(p){document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));document.getElementById(p).classList.add("active");document.querySelectorAll(".nav,.mnav").forEach(x=>x.classList.toggle("active",x.dataset.p===p));scrollTo(0,0)}document.querySelectorAll(".nav,.mnav").forEach(x=>x.onclick=()=>go(x.dataset.p));
   
 
@@ -7908,5 +10072,1261 @@ function viewVillageDocumentaryResult(){
   window.scrollTo(0,0);
 }
 </script>
+
+<script id="trivox-embedded-login-original-js">
+
+
+
+
+
+const SUPABASE_URL = "https://zuzhxugdibzetwoliwxm.supabase.co";
+const SUPABASE_KEY = "sb_publishable_RmJqiS4bPrDdhSxae_Qy8g_2ews0cW1";
+const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+const TEST_OTP = "123456";
+let otpSent = false;
+let otpVerified = false;
+
+const loginPanel = document.getElementById("loginPanel");
+const registerPanel = document.getElementById("registerPanel");
+const choicePanel = document.getElementById("choicePanel");
+const singlePanel = document.getElementById("singlePanel");
+const groupPanel = document.getElementById("groupPanel");
+const joinPanel = document.getElementById("joinPanel");
+const authRight = document.querySelector(".auth-right");
+const authPage = document.querySelector(".auth-page");
+const openRegister = document.getElementById("openRegister");
+const openLogin = document.getElementById("openLogin");
+const toast = document.getElementById("toast");
+
+function showToast(message){
+  toast.textContent = message;
+  toast.classList.add("show");
+  setTimeout(() => toast.classList.remove("show"), 2600);
+}
+
+function showPanel(panel){
+  document.documentElement.classList.remove("trivox-restoring");
+  loginPanel.classList.toggle("active", panel === "login");
+  registerPanel.classList.toggle("active", panel === "register");
+  choicePanel.classList.toggle("active", panel === "choice");
+  singlePanel.classList.toggle("active", panel === "single");
+  groupPanel.classList.toggle("active", panel === "group");
+  joinPanel.classList.toggle("active", panel === "join");
+  authRight.classList.toggle("choice-mode", panel === "choice");
+  authPage.classList.toggle("step-mode", panel === "choice");
+  authPage.classList.toggle("single-mode", panel === "single");
+  authPage.classList.toggle("group-mode", panel === "group");
+  authPage.classList.toggle("join-mode", panel === "join");
+
+  if(panel === "login"){
+    document.title = "Login | TRIVOX AI IMPACT";
+  }else if(panel === "register"){
+    document.title = "Create Account | TRIVOX AI IMPACT";
+  }else{
+    document.title = "Choose Registration | TRIVOX AI IMPACT";
+  }
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+
+function openRegistrationStep(){
+  const savedUser = JSON.parse(localStorage.getItem("trivoxUser") || "{}");
+  const choiceUserText = document.getElementById("choiceUserText");
+
+  if(choiceUserText){
+    choiceUserText.textContent = savedUser.full_name
+      ? "Signed in as " + savedUser.full_name
+      : "";
+  }
+
+  showPanel("choice");
+}
+
+openRegister.addEventListener("click", () => showPanel("register"));
+openLogin.addEventListener("click", () => showPanel("login"));
+
+document.querySelectorAll(".password-toggle").forEach((button) => {
+  button.addEventListener("click", () => {
+    const input = document.getElementById(button.dataset.password);
+    if (!input) return;
+    const hidden = input.type === "password";
+    input.type = hidden ? "text" : "password";
+    button.textContent = hidden ? "Hide" : "Show";
+  });
+});
+
+function validEmail(value){
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+function validGmail(value){
+  return /^[a-zA-Z0-9._%+-]+@gmail\.com$/i.test(value);
+}
+
+function dbMessage(error){
+  const message = error && error.message ? error.message : String(error || "");
+  const lower = message.toLowerCase();
+
+  if (lower.includes("duplicate key") || lower.includes("signup_details_email_key")){
+    return "This Gmail is already registered. Please sign in.";
+  }
+  if (lower.includes("row-level security") || lower.includes("permission denied")){
+    return "Database policy error. Run the supplied SQL query once.";
+  }
+  return message || "Something went wrong. Please try again.";
+}
+
+
+/* =========================
+   SESSION / STEP PERSISTENCE
+========================= */
+function setTrivoxCookie(name, value, days){
+  const maxAge = days * 24 * 60 * 60;
+  document.cookie =
+    name + "=" + encodeURIComponent(value) +
+    "; path=/; max-age=" + maxAge + "; SameSite=Lax";
+}
+
+function getTrivoxCookie(name){
+  const key = name + "=";
+  const parts = document.cookie.split(";");
+
+  for(const part of parts){
+    const item = part.trim();
+    if(item.indexOf(key) === 0){
+      return decodeURIComponent(item.substring(key.length));
+    }
+  }
+  return "";
+}
+
+
+async function showLoggedInUserId(){
+  const box = document.getElementById("loggedUserIdBox");
+  const value = document.getElementById("loggedUserIdValue");
+  if(!box || !value) return;
+
+  let user = null;
+
+  try{
+    const local = localStorage.getItem("trivoxUser");
+    const cookie = getTrivoxCookie("trivoxUser");
+
+    if(local){
+      user = JSON.parse(local);
+    }else if(cookie){
+      user = JSON.parse(cookie);
+      localStorage.setItem("trivoxUser", JSON.stringify(user));
+    }
+  }catch(e){
+    console.error("User session read error:", e);
+  }
+
+  const loggedIn =
+    localStorage.getItem("trivoxLoggedIn") === "true" ||
+    getTrivoxCookie("trivoxLoggedIn") === "true";
+
+  if(!loggedIn || !user){
+    box.style.display = "none";
+    return;
+  }
+
+  // Show saved ID instantly if available.
+  if(user.trivox_id){
+    value.textContent = user.trivox_id;
+    box.style.display = "flex";
+  }
+
+  // Fetch latest ID using database row ID.
+  try{
+    let filter = "";
+
+    if(user.id){
+      filter = "&id=eq." + encodeURIComponent(user.id);
+    }else if(user.email){
+      filter = "&email=eq." + encodeURIComponent(user.email);
+    }
+
+    if(!filter){
+      box.style.display = "none";
+      return;
+    }
+
+    const response = await fetch(
+      SUPABASE_URL +
+      "/rest/v1/signup_details?select=id,trivox_id,full_name,email,village" +
+      filter +
+      "&limit=1",
+      {
+        method:"GET",
+        headers:{
+          "apikey":SUPABASE_KEY,
+          "Authorization":"Bearer " + SUPABASE_KEY,
+          "Accept":"application/json"
+        }
+      }
+    );
+
+    if(!response.ok){
+      console.error("ID fetch failed:", await response.text());
+      return;
+    }
+
+    const rows = await response.json();
+
+    if(rows.length && rows[0].trivox_id){
+      const fresh = {...user, ...rows[0]};
+
+      localStorage.setItem("trivoxUser", JSON.stringify(fresh));
+      setTrivoxCookie("trivoxUser", JSON.stringify(fresh), 30);
+
+      value.textContent = rows[0].trivox_id;
+      box.style.display = "flex";
+    }else if(user.trivox_id){
+      box.style.display = "flex";
+    }else{
+      value.textContent = "Not assigned";
+      box.style.display = "flex";
+    }
+
+  }catch(error){
+    console.error("ID load error:", error);
+
+    if(user.trivox_id){
+      value.textContent = user.trivox_id;
+      box.style.display = "flex";
+    }
+  }
+}
+
+function saveCurrentStep(step){
+  localStorage.setItem("trivoxCurrentStep", step);
+  setTrivoxCookie("trivoxCurrentStep", step, 30);
+}
+
+function saveLoggedInState(user){
+  if(!user) return;
+
+  localStorage.setItem("trivoxUser", JSON.stringify(user));
+  localStorage.setItem("trivoxLoggedIn", "true");
+
+  setTrivoxCookie("trivoxLoggedIn", "true", 30);
+  setTrivoxCookie("trivoxUser", JSON.stringify(user), 30);
+
+  saveCurrentStep("choice");
+  setTimeout(showLoggedInUserId, 50);
+}
+
+
+function restoreTrivoxState(){
+  try{
+    const loggedIn =
+      localStorage.getItem("trivoxLoggedIn") === "true" ||
+      getTrivoxCookie("trivoxLoggedIn") === "true";
+
+    let savedUser = null;
+    const localUser = localStorage.getItem("trivoxUser");
+    const cookieUser = getTrivoxCookie("trivoxUser");
+
+    if(localUser){
+      savedUser = JSON.parse(localUser);
+    }else if(cookieUser){
+      savedUser = JSON.parse(cookieUser);
+      localStorage.setItem("trivoxUser", cookieUser);
+    }
+
+    if(loggedIn && savedUser && savedUser.id){
+      localStorage.setItem("trivoxLoggedIn", "true");
+      showLoggedInUserId();
+      const currentStep =
+        localStorage.getItem("trivoxCurrentStep") ||
+        getTrivoxCookie("trivoxCurrentStep") ||
+        "choice";
+
+      if(currentStep === "group"){
+        showPanel("group");
+        restoreAddedFriends();
+        restoreCreatedGroupId();
+      }else if(currentStep === "join"){
+        showPanel("join");
+        const savedJoinId = localStorage.getItem("trivoxJoinGroupId") || "";
+        const joinInput = document.getElementById("joinGroupIdInput");
+        if(joinInput) joinInput.value = savedJoinId;
+      }else if(currentStep === "single"){
+        const singleSaved = JSON.parse(localStorage.getItem("trivoxSingleRegistration") || "null");
+        document.getElementById("singleStudentName").value =
+          savedUser?.full_name || savedUser?.name || "";
+        if(singleSaved){
+          const knownQualifications = [
+            "10th","Intermediate","Diploma","Degree","B.Tech","Post Graduation"
+          ];
+          const savedQualification = singleSaved.qualification || "";
+
+          if(knownQualifications.includes(savedQualification)){
+            document.getElementById("singleQualification").value = savedQualification;
+          }else if(savedQualification){
+            document.getElementById("singleQualification").value = "Other";
+            document.getElementById("singleOtherQualification").value = savedQualification;
+          }
+
+          updateOtherQualificationField();
+
+          if(document.getElementById("singleQualification").value === "Other"){
+            document.getElementById("singleOtherQualification").value = savedQualification;
+          }
+
+          document.getElementById("singleInstitution").value = singleSaved.institution || "";
+        }
+        showPanel("single");
+      }else{
+        openRegistrationStep();
+      }
+      return true;
+    }
+  }catch(error){
+    console.error("TRIVOX restore error:", error);
+  }
+
+  document.documentElement.classList.remove("trivox-restoring");
+  return false;
+}
+
+
+async function continueAfterLogin(user){
+  try{
+    if(!user || !user.id){
+      openRegistrationStep();
+      return;
+    }
+
+    const [singleResult, groupMemberResult] = await Promise.all([
+      db
+        .from("single_registrations")
+        .select("id,user_id,status")
+        .eq("user_id", user.id)
+        .maybeSingle(),
+
+      db
+        .from("trivox_group_members")
+        .select("id,group_id,user_id,member_role")
+        .eq("user_id", user.id)
+        .limit(1)
+        .maybeSingle()
+    ]);
+
+    if(singleResult.error){
+      console.warn("Single registration check:", singleResult.error);
+    }
+
+    if(groupMemberResult.error){
+      console.warn("Group registration check:", groupMemberResult.error);
+    }
+
+    const hasSingle =
+      !!singleResult.data &&
+      String(singleResult.data.status || "").toLowerCase() === "registered";
+
+    const hasGroup =
+      !!groupMemberResult.data;
+
+    if(hasSingle || hasGroup){
+      localStorage.setItem(
+        "trivoxRegistrationType",
+        hasSingle ? "single" : "group"
+      );
+
+      setTrivoxCookie(
+        "trivoxRegistrationType",
+        hasSingle ? "single" : "group",
+        30
+      );
+
+      setTimeout(function(){
+        window.trivoxEnterDocumentary && window.trivoxEnterDocumentary();
+      }, 1000);
+
+      return;
+    }
+
+    openRegistrationStep();
+
+  }catch(error){
+    console.error("Post-login registration check failed:", error);
+    openRegistrationStep();
+  }
+}
+
+/* LOGIN
+   After successful login, Step 1 opens on this SAME page:
+   Single Registration or Group Registration.
+*/
+const loginForm = document.getElementById("loginForm");
+const loginEmail = document.getElementById("loginEmail");
+const loginPassword = document.getElementById("loginPassword");
+const loginEmailError = document.getElementById("loginEmailError");
+const loginPasswordError = document.getElementById("loginPasswordError");
+const loginButton = document.getElementById("loginButton");
+const loginButtonText = document.getElementById("loginButtonText");
+const loginSpinner = document.getElementById("loginSpinner");
+
+loginForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  loginEmailError.textContent = "";
+  loginPasswordError.textContent = "";
+
+  const email = loginEmail.value.trim().toLowerCase();
+  const password = loginPassword.value;
+  let valid = true;
+
+  if (!email){
+    loginEmailError.textContent = "Enter your email address.";
+    valid = false;
+  } else if (!validEmail(email)){
+    loginEmailError.textContent = "Enter a valid email address.";
+    valid = false;
+  }
+
+  if (!password){
+    loginPasswordError.textContent = "Enter your password.";
+    valid = false;
+  }
+
+  if (!valid) return;
+
+  loginButton.disabled = true;
+  loginButtonText.style.display = "none";
+  loginSpinner.classList.add("show");
+
+  try {
+    const result = await db
+      .from("signup_details")
+      .select("id, full_name, email, village, created_at")
+      .eq("email", email)
+      .eq("password", password)
+      .maybeSingle();
+
+    if (result.error) throw result.error;
+
+    if (!result.data){
+      loginPasswordError.textContent = "Incorrect email or password.";
+      return;
+    }
+
+    saveLoggedInState(result.data);
+
+    showToast("Login successful");
+
+    continueAfterLogin(result.data);
+
+  } catch (error) {
+    loginPasswordError.textContent = dbMessage(error);
+  } finally {
+    loginButton.disabled = false;
+    loginButtonText.style.display = "";
+    loginButtonText.textContent = "Sign In";
+    loginSpinner.classList.remove("show");
+  }
+});
+
+/* REGISTER + OTP */
+const registerForm = document.getElementById("registerForm");
+const fullName = document.getElementById("fullName");
+const registerEmail = document.getElementById("registerEmail");
+const village = document.getElementById("village");
+const registerPassword = document.getElementById("registerPassword");
+const confirmPassword = document.getElementById("confirmPassword");
+
+const nameError = document.getElementById("nameError");
+const registerEmailError = document.getElementById("registerEmailError");
+const villageError = document.getElementById("villageError");
+const registerPasswordError = document.getElementById("registerPasswordError");
+const confirmPasswordError = document.getElementById("confirmPasswordError");
+
+const getOtpButton = document.getElementById("getOtpButton");
+const otpArea = document.getElementById("otpArea");
+const otp = document.getElementById("otp");
+const verifyOtpButton = document.getElementById("verifyOtpButton");
+const otpStatus = document.getElementById("otpStatus");
+
+const registerButton = document.getElementById("registerButton");
+const registerButtonText = document.getElementById("registerButtonText");
+const registerSpinner = document.getElementById("registerSpinner");
+
+getOtpButton.addEventListener("click", () => {
+  registerEmailError.textContent = "";
+  const email = registerEmail.value.trim().toLowerCase();
+
+  if (!email){
+    registerEmailError.textContent = "Enter your Gmail address.";
+    return;
+  }
+
+  if (!validGmail(email)){
+    registerEmailError.textContent = "Enter a valid Gmail address.";
+    return;
+  }
+
+  otpSent = true;
+  otpVerified = false;
+  otp.value = "";
+  otpStatus.textContent = "";
+  otpStatus.className = "otp-status";
+  otpArea.classList.add("show");
+  getOtpButton.textContent = "Resend OTP";
+
+  showToast("OTP sent. Test OTP: 123456");
+});
+
+verifyOtpButton.addEventListener("click", () => {
+  otpStatus.className = "otp-status";
+
+  if (!otpSent){
+    showToast("Please request OTP first");
+    return;
+  }
+
+  if (otp.value.trim() !== TEST_OTP){
+    otpVerified = false;
+    otpStatus.textContent = "Incorrect OTP.";
+    otpStatus.classList.add("error");
+    return;
+  }
+
+  otpVerified = true;
+  otpStatus.textContent = "";
+  otpStatus.className = "otp-status";
+  showToast("OTP verified");
+});
+
+otp.addEventListener("input", function(){
+  this.value = this.value.replace(/\D/g, "").slice(0, 6);
+});
+
+registerEmail.addEventListener("input", () => {
+  if (!otpSent) return;
+
+  otpSent = false;
+  otpVerified = false;
+  otpArea.classList.remove("show");
+  otp.value = "";
+  otpStatus.textContent = "";
+  otpStatus.className = "otp-status";
+  getOtpButton.textContent = "Get OTP";
+});
+
+registerForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  nameError.textContent = "";
+  registerEmailError.textContent = "";
+  villageError.textContent = "";
+  registerPasswordError.textContent = "";
+  confirmPasswordError.textContent = "";
+
+  const name = fullName.value.trim();
+  const email = registerEmail.value.trim().toLowerCase();
+  const villageValue = village.value.trim();
+  const password = registerPassword.value;
+  const confirm = confirmPassword.value;
+
+  let valid = true;
+
+  if (name.length < 2){
+    nameError.textContent = "Enter your full name.";
+    valid = false;
+  }
+
+  if (!email){
+    registerEmailError.textContent = "Enter your Gmail address.";
+    valid = false;
+  } else if (!validGmail(email)){
+    registerEmailError.textContent = "Enter a valid Gmail address.";
+    valid = false;
+  }
+
+  if (!otpVerified){
+    otpArea.classList.add("show");
+    otpStatus.textContent = "Please verify your Gmail OTP.";
+    otpStatus.className = "otp-status error";
+    valid = false;
+  }
+
+  if (villageValue.length < 2){
+    villageError.textContent = "Enter your village.";
+    valid = false;
+  }
+
+  if (!password){
+    registerPasswordError.textContent = "Create a password.";
+    valid = false;
+  } else if (password.length < 6){
+    registerPasswordError.textContent = "Use at least 6 characters.";
+    valid = false;
+  }
+
+  if (!confirm){
+    confirmPasswordError.textContent = "Confirm your password.";
+    valid = false;
+  } else if (password !== confirm){
+    confirmPasswordError.textContent = "Passwords do not match.";
+    valid = false;
+  }
+
+  if (!valid) return;
+
+  registerButton.disabled = true;
+  registerButtonText.style.display = "none";
+  registerSpinner.classList.add("show");
+
+  try {
+    const existingResult = await db
+      .from("signup_details")
+      .select("id")
+      .eq("email", email)
+      .maybeSingle();
+
+    if (existingResult.error) throw existingResult.error;
+
+    if (existingResult.data){
+      registerEmailError.textContent = "This Gmail is already registered. Please sign in.";
+      return;
+    }
+
+    const insertResult = await db
+      .from("signup_details")
+      .insert({
+        full_name: name,
+        email: email,
+        village: villageValue,
+        password: password
+      })
+      .select("id, full_name, email, village, created_at")
+      .single();
+
+    if (insertResult.error) throw insertResult.error;
+
+    saveLoggedInState(insertResult.data);
+
+    showToast("Account created successfully");
+
+    setTimeout(() => {
+      openRegistrationStep();
+    }, 800);
+
+  } catch (error) {
+    registerEmailError.textContent = dbMessage(error);
+  } finally {
+    registerButton.disabled = false;
+    registerButtonText.style.display = "";
+    registerButtonText.textContent = "Create Account";
+    registerSpinner.classList.remove("show");
+  }
+});
+
+
+/* STEP 1: SAME-PAGE REGISTRATION CHOICE */
+document.getElementById("singleRegistrationButton").addEventListener("click", () => {
+  localStorage.setItem("trivoxRegistrationType", "single");
+  setTrivoxCookie("trivoxRegistrationType", "single", 30);
+  saveCurrentStep("single");
+
+  const savedUser = JSON.parse(localStorage.getItem("trivoxUser") || "null");
+  document.getElementById("singleStudentName").value =
+    savedUser?.full_name || savedUser?.name || "";
+
+  showPanel("single");
+});
+
+
+document.getElementById("groupRegistrationButton").addEventListener("click", () => {
+  localStorage.setItem("trivoxRegistrationType", "group");
+  setTrivoxCookie("trivoxRegistrationType", "group", 30);
+  saveCurrentStep("group");
+  showPanel("group");
+  restoreAddedFriends();
+});
+
+document.getElementById("backToChoiceButton").addEventListener("click", () => {
+  saveCurrentStep("choice");
+  openRegistrationStep();
+});
+
+
+const singleQualificationSelect = document.getElementById("singleQualification");
+const singleOtherQualificationField = document.getElementById("singleOtherQualificationField");
+const singleOtherQualificationInput = document.getElementById("singleOtherQualification");
+
+function updateOtherQualificationField(){
+  const isOther = singleQualificationSelect.value === "Other";
+  singleOtherQualificationField.style.display = isOther ? "block" : "none";
+  singleOtherQualificationInput.required = isOther;
+
+  if(!isOther){
+    singleOtherQualificationInput.value = "";
+  }
+}
+
+singleQualificationSelect.addEventListener("change", updateOtherQualificationField);
+
+document.getElementById("singleRegistrationForm").addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const savedUser = JSON.parse(localStorage.getItem("trivoxUser") || "null");
+  const qualificationChoice = document.getElementById("singleQualification").value.trim();
+  const otherQualification = document.getElementById("singleOtherQualification").value.trim();
+  const institution = document.getElementById("singleInstitution").value.trim();
+
+  if(!qualificationChoice){ showToast("Please select your qualification"); return; }
+  if(qualificationChoice === "Other" && !otherQualification){
+    showToast("Please enter your qualification");
+    document.getElementById("singleOtherQualification").focus(); return;
+  }
+  if(!institution){ showToast("Please enter school / college name"); return; }
+  if(!savedUser?.id){ showToast("Please login again"); return; }
+
+  const button=document.getElementById("singleRegisterButton");
+  const buttonText=document.getElementById("singleRegisterButtonText");
+  button.disabled=true; buttonText.textContent="Saving...";
+
+  try{
+    const payload={
+      user_id:savedUser.id,
+      qualification:qualificationChoice,
+      other_qualification:qualificationChoice==="Other" ? otherQualification : null,
+      institution:institution,
+      status:"registered"
+    };
+
+    const {data,error}=await db.from("single_registrations")
+      .upsert(payload,{onConflict:"user_id"}).select().single();
+
+    if(error) throw error;
+
+    localStorage.setItem("trivoxSingleRegistration",JSON.stringify(data));
+    localStorage.setItem("trivoxRegistrationType","single");
+    setTrivoxCookie("trivoxRegistrationType","single",30);
+    showToast("Registration completed");
+
+    setTimeout(()=>{ window.trivoxEnterDocumentary && window.trivoxEnterDocumentary(); },500);
+  }catch(error){
+    console.error("Single registration error:",error);
+    showToast(error?.message || "Unable to save registration");
+    button.disabled=false; buttonText.textContent="Register";
+  }
+});
+
+
+const friendSearchInput = document.getElementById("friendSearchInput");
+const friendResults = document.getElementById("friendResults");
+const friendSearchState = document.getElementById("friendSearchState");
+const addedFriendsList = document.getElementById("addedFriendsList");
+const addedFriendsCount = document.getElementById("addedFriendsCount");
+
+let addedFriends = [];
+let friendSearchTimer = null;
+
+function getTrivoxDisplayId(user){
+  return String(user.trivox_id || user.id || "");
+}
+
+function restoreCreatedGroupId(){
+  const groupId =
+    localStorage.getItem("trivoxGroupId") ||
+    getTrivoxCookie("trivoxGroupId") ||
+    "";
+
+  const resultBox = document.getElementById("groupCreatedResult");
+  const createdGroupId = document.getElementById("createdGroupId");
+  const button = document.getElementById("groupRegisterButton");
+  const buttonText = document.getElementById("groupRegisterButtonText");
+
+  if(groupId && resultBox && createdGroupId){
+    createdGroupId.textContent = groupId;
+    resultBox.style.display = "block";
+
+    if(button){
+      button.disabled = true;
+    }
+    if(buttonText){
+      buttonText.textContent = "Group Created";
+    }
+  }
+}
+
+function restoreAddedFriends(){
+  try{
+    addedFriends = JSON.parse(localStorage.getItem("trivoxGroupFriends") || "[]");
+    if(!Array.isArray(addedFriends)) addedFriends = [];
+  }catch(e){
+    addedFriends = [];
+  }
+  renderAddedFriends();
+}
+
+function saveAddedFriends(){
+  localStorage.setItem("trivoxGroupFriends", JSON.stringify(addedFriends));
+  setTrivoxCookie("trivoxGroupFriends", JSON.stringify(addedFriends), 30);
+  renderAddedFriends();
+}
+
+function renderAddedFriends(){
+  addedFriendsCount.textContent = String(addedFriends.length);
+
+  if(!addedFriends.length){
+    addedFriendsList.innerHTML = '<div class="empty-added">No friends added yet.</div>';
+    return;
+  }
+
+  addedFriendsList.innerHTML = addedFriends.map(friend => `
+    <div class="added-friend">
+      <div class="friend-info">
+        <span class="friend-name">${escapeHtml(friend.full_name || "")}</span>
+        <span class="friend-id">${escapeHtml(friend.trivox_id || String(friend.id || ""))}</span>
+      </div>
+      <button type="button" class="remove-friend" data-id="${friend.id}">Remove</button>
+    </div>
+  `).join("");
+
+  addedFriendsList.querySelectorAll(".remove-friend").forEach(button => {
+    button.addEventListener("click", () => {
+      const id = String(button.dataset.id);
+      addedFriends = addedFriends.filter(friend => String(friend.id) !== id);
+      saveAddedFriends();
+      searchFriends();
+    });
+  });
+}
+
+function escapeHtml(value){
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+async function searchFriends(){
+  const query = friendSearchInput.value.trim();
+
+  if(!query){
+    friendResults.innerHTML = "";
+    friendSearchState.textContent = "Start typing a name or ID to search.";
+    return;
+  }
+
+  friendSearchState.textContent = "Searching...";
+  friendResults.innerHTML = "";
+
+  try{
+    const savedUser = JSON.parse(localStorage.getItem("trivoxUser") || "null");
+
+    // Search BOTH fields with partial matching:
+    // "Sai" / "Sa" -> matches full_name
+    // "A7" / "K2M" / "A7K2M9" -> matches random alphanumeric trivox_id
+    const safeQuery = query.replace(/[%(),]/g, "").trim();
+
+    const url =
+      SUPABASE_URL +
+      "/rest/v1/signup_details" +
+      "?select=id,trivox_id,full_name,email,village" +
+      "&or=(" +
+        "full_name.ilike.*" + encodeURIComponent(safeQuery) + "*," +
+        "trivox_id.ilike.*" + encodeURIComponent(safeQuery) + "*" +
+      ")" +
+      "&limit=20";
+
+    const response = await fetch(url, {
+      headers:{
+        "apikey": SUPABASE_KEY,
+        "Authorization": "Bearer " + SUPABASE_KEY
+      }
+    });
+
+    if(!response.ok){
+      const errorText = await response.text();
+      console.error("Friend search response:", errorText);
+      throw new Error("Search failed");
+    }
+
+    let users = await response.json();
+
+    // Don't show currently logged-in user in friend results.
+    if(savedUser?.id){
+      users = users.filter(
+        user => String(user.id) !== String(savedUser.id)
+      );
+    }
+
+    friendSearchState.textContent = "";
+
+    if(!users.length){
+      friendResults.innerHTML = `
+        <div class="no-friend">
+          <strong>No friend found</strong>
+          Ask them to sign up on TRIVOX first.
+        </div>
+      `;
+      return;
+    }
+
+    friendResults.innerHTML = users.map(user => {
+      const alreadyAdded = addedFriends.some(
+        friend => String(friend.id) === String(user.id)
+      );
+
+      const displayId = user.trivox_id || String(user.id || "");
+
+      return `
+        <div class="friend-result">
+          <div class="friend-info">
+            <span class="friend-name">${escapeHtml(user.full_name || "")}</span>
+            <span class="friend-id">${escapeHtml(displayId)}</span>
+          </div>
+
+          <button
+            type="button"
+            class="friend-add"
+            data-id="${user.id}"
+            ${alreadyAdded ? "disabled" : ""}
+          >${alreadyAdded ? "Added" : "Add"}</button>
+        </div>
+      `;
+    }).join("");
+
+    friendResults.querySelectorAll(".friend-add:not(:disabled)").forEach(button => {
+      button.addEventListener("click", () => {
+        const user = users.find(
+          item => String(item.id) === String(button.dataset.id)
+        );
+
+        if(!user) return;
+
+        if(!addedFriends.some(friend => String(friend.id) === String(user.id))){
+          addedFriends.push(user);
+          saveAddedFriends();
+        }
+
+        searchFriends();
+      });
+    });
+
+  }catch(error){
+    console.error("Friend search error:", error);
+
+    friendSearchState.textContent = "";
+    friendResults.innerHTML = `
+      <div class="no-friend">
+        <strong>Unable to search right now</strong>
+        Please try again.
+      </div>
+    `;
+  }
+}
+
+friendSearchInput.addEventListener("input", () => {
+  clearTimeout(friendSearchTimer);
+  friendSearchTimer = setTimeout(searchFriends, 300);
+});
+
+document.getElementById("groupBackButton").addEventListener("click", () => {
+  saveCurrentStep("choice");
+  openRegistrationStep();
+});
+
+document.getElementById("groupRegisterButton").addEventListener("click", async () => {
+  const button = document.getElementById("groupRegisterButton");
+  const buttonText = document.getElementById("groupRegisterButtonText");
+  const resultBox = document.getElementById("groupCreatedResult");
+  const createdGroupId = document.getElementById("createdGroupId");
+
+  if(!addedFriends.length){
+    showToast("Add at least one friend");
+    return;
+  }
+
+  let savedUser = null;
+  try{
+    savedUser = JSON.parse(localStorage.getItem("trivoxUser") || "null");
+  }catch(e){}
+
+  if(!savedUser?.id){
+    showToast("Please login again");
+    return;
+  }
+
+  button.disabled = true;
+  buttonText.textContent = "Creating Group...";
+
+  try{
+    // 1. Create group. Database trigger automatically creates group_id.
+    const { data: groupData, error: groupError } = await db
+      .from("trivox_groups")
+      .insert({
+        creator_user_id: savedUser.id
+      })
+      .select("id,group_id,creator_user_id,created_at")
+      .single();
+
+    if(groupError) throw groupError;
+    if(!groupData?.group_id) throw new Error("Group ID was not generated.");
+
+    const groupId = groupData.group_id;
+
+    // 2. Creator is also a member of the group.
+    const members = [
+      {
+        group_id: groupId,
+        user_id: savedUser.id,
+        member_role: "creator"
+      },
+      ...addedFriends.map(friend => ({
+        group_id: groupId,
+        user_id: friend.id,
+        member_role: "member"
+      }))
+    ];
+
+    // Avoid duplicate user IDs.
+    const uniqueMembers = Array.from(
+      new Map(members.map(member => [String(member.user_id), member])).values()
+    );
+
+    const { error: memberError } = await db
+      .from("trivox_group_members")
+      .insert(uniqueMembers);
+
+    if(memberError){
+      console.error("Group members insert error:", memberError);
+      throw memberError;
+    }
+
+    // 3. Save created group locally for refresh/session use.
+    localStorage.setItem("trivoxGroupId", groupId);
+    localStorage.setItem("trivoxGroupFriends", JSON.stringify(addedFriends));
+    localStorage.setItem("trivoxRegistrationType", "group");
+    setTrivoxCookie("trivoxGroupId", groupId, 30);
+    setTrivoxCookie("trivoxRegistrationType", "group", 30);
+    saveCurrentStep("group");
+
+    // 4. Show generated Group ID.
+    createdGroupId.textContent = groupId;
+    resultBox.style.display = "block";
+
+    buttonText.textContent = "Group Created";
+    showToast("Group created successfully");
+    setTimeout(()=>{ window.trivoxEnterDocumentary && window.trivoxEnterDocumentary(); },900);
+
+  }catch(error){
+    console.error("Create group error:", error);
+
+    const message = String(error?.message || error || "").toLowerCase();
+
+    if(message.includes("row-level security") || message.includes("permission")){
+      showToast("Database policy error");
+    }else if(message.includes("trivox_groups") || message.includes("trivox_group_members")){
+      showToast("Run the Group SQL first");
+    }else{
+      showToast(error?.message || "Unable to create group");
+    }
+
+    button.disabled = false;
+    buttonText.textContent = "Register Group";
+  }
+});
+
+
+
+document.getElementById("googleButton").addEventListener("click", () => {
+  showToast("Google login is not connected yet");
+});
+
+document.getElementById("forgotButton").addEventListener("click", () => {
+  showToast("Password recovery is not connected yet");
+});
+
+/* Restore saved session after page setup */
+restoreTrivoxState();
+
+document.addEventListener("DOMContentLoaded", function(){
+  setTimeout(showLoggedInUserId, 100);
+});
+
+/* =========================
+   JOIN GROUP
+========================= */
+const joinGroupChoiceButton = document.getElementById("joinGroupButton");
+const joinGroupIdInput = document.getElementById("joinGroupIdInput");
+const joinGroupSubmitButton = document.getElementById("joinGroupSubmitButton");
+const joinGroupBackButton = document.getElementById("joinGroupBackButton");
+const joinGroupMessage = document.getElementById("joinGroupMessage");
+
+if(joinGroupChoiceButton){
+  joinGroupChoiceButton.addEventListener("click", () => {
+    localStorage.setItem("trivoxRegistrationType", "join-group");
+    setTrivoxCookie("trivoxRegistrationType", "join-group", 30);
+    saveCurrentStep("join");
+    showPanel("join");
+
+    const savedId = localStorage.getItem("trivoxJoinGroupId") || "";
+    joinGroupIdInput.value = savedId;
+    joinGroupMessage.textContent = "";
+    joinGroupMessage.className = "join-group-message";
+
+    setTimeout(() => joinGroupIdInput.focus(), 100);
+  });
+}
+
+if(joinGroupIdInput){
+  joinGroupIdInput.addEventListener("input", () => {
+    // Group IDs are displayed consistently in uppercase.
+    joinGroupIdInput.value = joinGroupIdInput.value.toUpperCase().replace(/\s+/g, "");
+    localStorage.setItem("trivoxJoinGroupId", joinGroupIdInput.value);
+    joinGroupMessage.textContent = "";
+    joinGroupMessage.className = "join-group-message";
+  });
+
+  joinGroupIdInput.addEventListener("keydown", (event) => {
+    if(event.key === "Enter"){
+      event.preventDefault();
+      joinGroupSubmitButton.click();
+    }
+  });
+}
+
+if(joinGroupSubmitButton){
+  joinGroupSubmitButton.addEventListener("click", async () => {
+    const groupId = joinGroupIdInput.value.trim().toUpperCase().replace(/\\s+/g, "");
+
+    joinGroupMessage.textContent = "";
+    joinGroupMessage.className = "join-group-message";
+
+    if(!groupId){
+      joinGroupMessage.textContent = "Please enter Group ID.";
+      joinGroupMessage.className = "join-group-message error";
+      joinGroupIdInput.focus();
+      return;
+    }
+
+    let savedUser = null;
+    try{
+      savedUser = JSON.parse(localStorage.getItem("trivoxUser") || "null");
+    }catch(e){}
+
+    if(!savedUser || !savedUser.id){
+      joinGroupMessage.textContent = "Please login again.";
+      joinGroupMessage.className = "join-group-message error";
+      return;
+    }
+
+    joinGroupSubmitButton.disabled = true;
+    joinGroupSubmitButton.textContent = "Checking...";
+
+    try{
+      const { data: group, error: groupError } = await db
+        .from("trivox_groups")
+        .select("id,group_id,creator_user_id,created_at")
+        .eq("group_id", groupId)
+        .maybeSingle();
+
+      if(groupError) throw groupError;
+
+      if(!group){
+        joinGroupMessage.textContent = "Group ID not found.";
+        joinGroupMessage.className = "join-group-message error";
+        joinGroupSubmitButton.disabled = false;
+        joinGroupSubmitButton.textContent = "Join Group";
+        return;
+      }
+
+      const { data: existingMember, error: existingError } = await db
+        .from("trivox_group_members")
+        .select("id,group_id,user_id,member_role")
+        .eq("group_id", groupId)
+        .eq("user_id", savedUser.id)
+        .maybeSingle();
+
+      if(existingError) throw existingError;
+
+      if(!existingMember){
+        const { error: joinError } = await db
+          .from("trivox_group_members")
+          .insert({
+            group_id: groupId,
+            user_id: savedUser.id,
+            member_role: "member"
+          });
+
+        if(joinError) throw joinError;
+      }
+
+      localStorage.setItem("trivoxGroupId", groupId);
+      localStorage.setItem("trivoxJoinGroupId", groupId);
+      localStorage.setItem("trivoxRegistrationType", "group");
+      setTrivoxCookie("trivoxGroupId", groupId, 30);
+      setTrivoxCookie("trivoxRegistrationType", "group", 30);
+      saveCurrentStep("join");
+
+      joinGroupIdInput.value = groupId;
+      joinGroupMessage.textContent = existingMember
+        ? "You are already a member of this group."
+        : "Joined successfully. Group ID: " + groupId;
+
+      joinGroupSubmitButton.textContent = existingMember
+        ? "Already Joined"
+        : "Joined Successfully";
+
+      showToast(existingMember ? "Already joined this group" : "Joined group successfully");
+      setTimeout(()=>{ window.trivoxEnterDocumentary && window.trivoxEnterDocumentary(); },900);
+
+    }catch(error){
+      console.error("Join group error:", error);
+      joinGroupMessage.textContent = error?.message || "Unable to join group.";
+      joinGroupMessage.className = "join-group-message error";
+      joinGroupSubmitButton.disabled = false;
+      joinGroupSubmitButton.textContent = "Join Group";
+    }
+  });
+}
+
+if(joinGroupBackButton){
+  joinGroupBackButton.addEventListener("click", () => {
+    saveCurrentStep("choice");
+    showPanel("choice");
+  });
+}
+
+
+
+</script>
+
+<script id="trivox-embedded-login-bridge">
+window.trivoxEnterDocumentary = function(){
+  let user=null;
+  try{ user=JSON.parse(localStorage.getItem("trivoxUser")||"null"); }catch(e){}
+  if(!user) return;
+  if(typeof trivoxApplyLoggedInUser==="function") trivoxApplyLoggedInUser(user);
+  document.body.classList.remove("trivox-auth-required");
+  document.body.classList.add("trivox-auth-ok");
+  const auth=document.getElementById("trivoxEmbeddedAuth");
+  if(auth) auth.style.display="none";
+  window.scrollTo(0,0);
+};
+
+document.addEventListener("DOMContentLoaded", function(){
+  let user=null;
+  try{ user=JSON.parse(localStorage.getItem("trivoxUser")||"null"); }catch(e){}
+  if(user){
+    window.trivoxEnterDocumentary();
+  }else{
+    document.body.classList.add("trivox-auth-required");
+    document.body.classList.remove("trivox-auth-ok");
+  }
+});
+</script>
+
+
 </body>
 </html>
