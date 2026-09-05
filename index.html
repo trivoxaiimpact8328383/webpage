@@ -3820,7 +3820,41 @@ svg{
   color:#8c8c95;
 }
 @media(max-width:1000px){
-  .signin-dropdown-wrap{display:none;}
+  .signin-dropdown-wrap{
+    display:block;
+    position:relative;
+  }
+
+  .signin-main-btn{
+    min-height:42px;
+    padding:0 11px;
+    border-radius:9px;
+    background:#f5f3fb;
+    color:#222;
+    font-size:12px;
+    font-weight:700;
+    white-space:nowrap;
+  }
+
+  .signin-dropdown{
+    position:fixed;
+    top:72px;
+    right:14px;
+    left:auto;
+    width:min(245px,calc(100vw - 28px));
+    z-index:10001;
+  }
+}
+
+@media(max-width:420px){
+  .signin-main-btn{
+    padding:0 9px;
+    font-size:11.5px;
+  }
+
+  .signin-main-btn i{
+    font-size:8px;
+  }
 }
 </style>
 </head>
