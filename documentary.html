@@ -4267,13 +4267,7 @@ body{
 </style>
 
 
-<style id="trivox-login-embedded-styles">
-#trivoxAuthGate{
-  --login-purple:#7450e8;
-}
-#trivoxAuthGate *{
-  box-sizing:border-box;
-}
+<style id="trivox-embedded-login-css">
 
 *{
   margin:0;
@@ -5735,44 +5729,36 @@ html.trivox-restoring .auth-page.step-mode{
 
 </style>
 
-
-<style id="trivox-one-file-auth-gate">
-/* LOGIN is the first screen. Documentary UI is hidden until session exists. */
+<style id="trivox-final-one-file-gate">
 #trivoxAuthGate{
   display:block;
   min-height:100vh;
+  background:#fff;
   position:relative;
   z-index:999999;
-  background:#fff;
 }
 
-body.trivox-login-first > header.top,
-body.trivox-login-first > main.wrap,
-body.trivox-login-first > nav.bottom,
-body.trivox-login-first > .mobile-more-sheet,
-body.trivox-login-first > .doc-more-menu,
-body.trivox-login-first > .trivox-submit-overlay{
+body.trivox-auth-mode > header.top,
+body.trivox-auth-mode > main.wrap,
+body.trivox-auth-mode > nav.bottom,
+body.trivox-auth-mode > .mobile-more-sheet,
+body.trivox-auth-mode > .trivox-submit-overlay{
   display:none !important;
 }
 
-body.trivox-dashboard-open #trivoxAuthGate{
+body.trivox-dashboard-mode #trivoxAuthGate{
   display:none !important;
-}
-
-/* Avoid login .logo rules permanently changing dashboard logo */
-#trivoxAuthGate .logo{
-  position:relative;
 }
 
 @media(max-width:760px){
-  body.trivox-login-first{
+  body.trivox-auth-mode{
     padding-bottom:0 !important;
   }
 }
 </style>
 
 </head>
- <body class="trivox-login-first">
+ <body class="trivox-auth-mode">
 
 <div id="trivoxAuthGate">
 
@@ -7187,29 +7173,15 @@ try{
 
 function applyTrivoxDashboardUser(user){
   if(!user) return;
-
   u=user;
 
-  if(typeof uid!=="undefined" && uid){
-    uid.textContent=user.trivox_id||"------";
-  }
+  if(typeof uid!=="undefined" && uid) uid.textContent=user.trivox_id||"------";
+  if(typeof pname!=="undefined" && pname) pname.textContent=user.full_name||"—";
+  if(typeof pid!=="undefined" && pid) pid.textContent=user.trivox_id||"—";
 
-  if(typeof pname!=="undefined" && pname){
-    pname.textContent=user.full_name||"—";
-  }
-
-  if(typeof pid!=="undefined" && pid){
-    pid.textContent=user.trivox_id||"—";
-  }
-
+  const registrationType=localStorage.getItem("trivoxRegistrationType")||"";
   if(typeof ptype!=="undefined" && ptype){
-    const registrationType=localStorage.getItem("trivoxRegistrationType");
-    ptype.textContent =
-      registrationType==="single"
-        ? "Single"
-        : registrationType
-          ? "Group"
-          : "—";
+    ptype.textContent=registrationType==="single"?"Single":registrationType==="group"?"Group":"—";
   }
 
   if(typeof pgid!=="undefined" && pgid){
@@ -7222,7 +7194,6 @@ function applyTrivoxDashboardUser(user){
 
   if(menuName) menuName.textContent=user.full_name||"User";
   if(menuEmail) menuEmail.textContent=user.email||"—";
-
   if(avatar){
     const n=String(user.full_name||"T").trim();
     avatar.textContent=(n.charAt(0)||"T").toUpperCase();
@@ -9391,26 +9362,9 @@ function viewVillageDocumentaryResult(){
 </script>
 
 
-<script id="trivox-logout-redirect-fix">
-function logoutTrivox(){
-  try{
-    localStorage.removeItem("trivoxUser");
-    localStorage.removeItem("trivoxRegistrationType");
-    localStorage.removeItem("trivoxGroupId");
-    localStorage.removeItem("trivoxActiveDocumentary");
-    localStorage.removeItem("trivoxDocumentaryVideo");
-  }catch(e){
-    console.error("Logout cleanup error:", e);
-  }
-  window.location.href = "documentary.html";
-}
-</script>
-
-
-<script id="trivox-login-dashboard-bridge">
+<script id="trivox-final-auth-bridge">
 (function(){
-
-  function readTrivoxUser(){
+  function readUser(){
     try{
       return JSON.parse(localStorage.getItem("trivoxUser")||"null");
     }catch(e){
@@ -9418,16 +9372,25 @@ function logoutTrivox(){
     }
   }
 
+  function registrationComplete(){
+    const type=localStorage.getItem("trivoxRegistrationType");
+    if(type==="single") return true;
+    if(type==="group") return true;
+    return false;
+  }
+
   window.trivoxEnterDocumentary=function(){
-    const user=readTrivoxUser();
+    const user=readUser();
     if(!user) return;
 
     if(typeof applyTrivoxDashboardUser==="function"){
       applyTrivoxDashboardUser(user);
     }
 
-    document.body.classList.remove("trivox-login-first");
-    document.body.classList.add("trivox-dashboard-open");
+    localStorage.setItem("trivoxLoggedIn","true");
+
+    document.body.classList.remove("trivox-auth-mode");
+    document.body.classList.add("trivox-dashboard-mode");
 
     const gate=document.getElementById("trivoxAuthGate");
     if(gate) gate.style.display="none";
@@ -9449,12 +9412,12 @@ function logoutTrivox(){
         "trivoxCurrentStep",
         "trivoxActiveDocumentary",
         "trivoxDocumentaryVideo",
-        "trivoxJoinGroupId"
-      ].forEach(function(key){
-        localStorage.removeItem(key);
+        "trivoxJoinGroupId",
+        "trivoxSingleRegistration"
+      ].forEach(function(k){
+        localStorage.removeItem(k);
       });
 
-      /* Clear TRIVOX cookies created by the login page. */
       [
         "trivoxUser",
         "trivoxLoggedIn",
@@ -9465,39 +9428,38 @@ function logoutTrivox(){
         document.cookie=name+"=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
       });
     }catch(e){
-      console.error("Logout cleanup error:",e);
+      console.error("Logout error:",e);
     }
 
-    /* User requested logout to return to documentary.html.
-       Since this final file should be uploaded AS documentary.html,
-       it comes back to this same file and shows Login first. */
     window.location.href="documentary.html";
   };
 
-  function boot(){
-    const user=readTrivoxUser();
-    const loggedIn=
-      localStorage.getItem("trivoxLoggedIn")==="true";
+  function initialGate(){
+    const user=readUser();
+    const loggedIn=localStorage.getItem("trivoxLoggedIn")==="true";
 
-    if(user && loggedIn){
+    /* IMPORTANT:
+       Only registration-complete users go straight to dashboard.
+       Logged-in but not registered users stay in the registration flow.
+    */
+    if(user && loggedIn && registrationComplete()){
       window.trivoxEnterDocumentary();
     }else{
-      document.body.classList.add("trivox-login-first");
-      document.body.classList.remove("trivox-dashboard-open");
+      document.body.classList.add("trivox-auth-mode");
+      document.body.classList.remove("trivox-dashboard-mode");
     }
   }
 
   if(document.readyState==="loading"){
-    document.addEventListener("DOMContentLoaded",boot);
+    document.addEventListener("DOMContentLoaded",initialGate);
   }else{
-    boot();
+    initialGate();
   }
-
 })();
 </script>
 
 
-<script id="trivox-login-embedded-logic">
+<script id="trivox-final-login-logic">
 (function(){
 
 const SUPABASE_URL = "https://zuzhxugdibzetwoliwxm.supabase.co";
@@ -9875,10 +9837,8 @@ loginForm.addEventListener("submit", async (event) => {
     showToast("Login successful");
 
     setTimeout(() => {
-      if(window.trivoxEnterDocumentary){
-        window.trivoxEnterDocumentary();
-      }
-    }, 450);
+      openRegistrationStep();
+    }, 700);
 
   } catch (error) {
     loginPasswordError.textContent = dbMessage(error);
@@ -10477,7 +10437,7 @@ document.getElementById("groupRegisterButton").addEventListener("click", async (
 
     buttonText.textContent = "Group Created";
     showToast("Group created successfully");
-    setTimeout(()=>{ if(window.trivoxEnterDocumentary){ window.trivoxEnterDocumentary(); } },900);
+    setTimeout(()=>{ if(window.trivoxEnterDocumentary){ window.trivoxEnterDocumentary(); } },500);
 
   }catch(error){
     console.error("Create group error:", error);
@@ -10639,7 +10599,7 @@ if(joinGroupSubmitButton){
         : "Joined Successfully";
 
       showToast(existingMember ? "Already joined this group" : "Joined group successfully");
-      setTimeout(()=>{ if(window.trivoxEnterDocumentary){ window.trivoxEnterDocumentary(); } },900);
+      setTimeout(()=>{ if(window.trivoxEnterDocumentary){ window.trivoxEnterDocumentary(); } },500);
 
     }catch(error){
       console.error("Join group error:", error);
