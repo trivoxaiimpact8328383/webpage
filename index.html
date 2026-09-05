@@ -3723,6 +3723,105 @@ svg{
   max-width:100%;
 }
 
+
+
+/* =========================================
+   SIGN IN DROPDOWN
+========================================= */
+.signin-dropdown-wrap{
+  position:relative;
+}
+.signin-main-btn{
+  border:0;
+  background:transparent;
+  color:#222;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  font-family:inherit;
+}
+.signin-main-btn i{
+  font-size:9px;
+  transition:transform .25s ease;
+}
+.signin-dropdown-wrap:hover .signin-main-btn i,
+.signin-dropdown-wrap:focus-within .signin-main-btn i{
+  transform:rotate(180deg);
+}
+.signin-dropdown{
+  position:absolute;
+  top:calc(100% + 12px);
+  right:0;
+  width:245px;
+  padding:8px;
+  background:#fff;
+  border:1px solid #ededf2;
+  border-radius:14px;
+  box-shadow:0 18px 50px rgba(0,0,0,.11);
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px);
+  transition:opacity .2s ease, transform .2s ease, visibility .2s ease;
+  z-index:10000;
+}
+.signin-dropdown::before{
+  content:"";
+  position:absolute;
+  top:-14px;
+  left:0;
+  width:100%;
+  height:14px;
+}
+.signin-dropdown-wrap:hover .signin-dropdown,
+.signin-dropdown-wrap:focus-within .signin-dropdown,
+.signin-dropdown-wrap.open .signin-dropdown{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+.signin-dropdown > a{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:12px;
+  border-radius:10px;
+  color:#222;
+  transition:.2s ease;
+}
+.signin-dropdown > a:hover{
+  background:#f6f3ff;
+}
+.signin-dropdown > a > i{
+  width:36px;
+  height:36px;
+  flex:0 0 36px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:10px;
+  background:#f2effc;
+  color:#7450e8;
+  font-size:13px;
+}
+.signin-dropdown > a div{min-width:0;}
+.signin-dropdown > a strong{
+  display:block;
+  font-size:13px;
+  font-weight:800;
+  color:#222228;
+}
+.signin-dropdown > a span{
+  display:block;
+  margin-top:3px;
+  font-size:10.5px;
+  line-height:1.35;
+  color:#8c8c95;
+}
+@media(max-width:1000px){
+  .signin-dropdown-wrap{display:none;}
+}
 </style>
 </head>
 
@@ -3762,32 +3861,32 @@ svg{
 
       <div class="dropdown mega-dropdown">
 
-        <a href="#" class="mega-box">
+        <a href="course.html" class="mega-box">
           <strong>AI Learning</strong>
           <p>Learn AI concepts, tools and real-world applications.</p>
         </a>
 
-        <a href="#" class="mega-box">
+        <a href="course.html" class="mega-box">
           <strong>Programming</strong>
           <p>Build strong coding and problem-solving skills.</p>
         </a>
 
-        <a href="#" class="mega-box">
+        <a href="course.html" class="mega-box">
           <strong>Web Development</strong>
           <p>Build responsive modern websites.</p>
         </a>
 
-        <a href="#" class="mega-box">
+        <a href="course.html" class="mega-box">
           <strong>App Development</strong>
           <p>Learn modern application development.</p>
         </a>
 
-        <a href="#" class="mega-box">
+        <a href="course.html" class="mega-box">
           <strong>Data Science</strong>
           <p>Explore analytics and intelligent data.</p>
         </a>
 
-        <a href="#" class="mega-box">
+        <a href="course.html" class="mega-box">
           <strong>Cyber Security</strong>
           <p>Understand security concepts and practices.</p>
         </a>
@@ -3802,13 +3901,13 @@ svg{
       </div>
 
       <div class="dropdown">
-        <a href="#">Student Programs</a>
-        <a href="#">College Programs</a>
+        <a href="course.html">Student Programs</a>
+        <a href="course.html">College Programs</a>
         <a href="#">Internships</a>
-        <a href="#">Workshops</a>
-        <a href="#">Bootcamps</a>
-        <a href="#">Career Programs</a>
-        <a href="#">Certification Programs</a>
+        <a href="course.html">Workshops</a>
+        <a href="course.html">Bootcamps</a>
+        <a href="course.html">Career Programs</a>
+        <a href="course.html">Certification Programs</a>
       </div>
     </li>
 
@@ -3851,9 +3950,9 @@ svg{
 
       <div class="dropdown">
         <a href="#">Blogs</a>
-        <a href="#">Tutorials</a>
-        <a href="#">Learning Resources</a>
-        <a href="#">Student Projects</a>
+        <a href="course.html">Tutorials</a>
+        <a href="course.html">Learning Resources</a>
+        <a href="course.html">Student Projects</a>
         <a href="#">Success Stories</a>
         <a href="#">Events</a>
         <a href="#">FAQs</a>
@@ -3883,11 +3982,32 @@ svg{
 
   <div class="nav-actions">
 
-    <a href="#" class="login-btn">
-      Sign In
-    </a>
+    <div class="signin-dropdown-wrap">
+      <button class="login-btn signin-main-btn" type="button">
+        Sign In
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
 
-    <a href="#" class="get-started">
+      <div class="signin-dropdown">
+        <a href="documentary-login.html">
+          <i class="fa-solid fa-video"></i>
+          <div>
+            <strong>Documentary</strong>
+            <span>Sign in for documentary</span>
+          </div>
+        </a>
+
+        <a href="course.html">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <div>
+            <strong>Course</strong>
+            <span>Sign in for courses</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <a href="course.html" class="get-started">
       Get Started
     </a>
 
@@ -3944,7 +4064,7 @@ svg{
         Explore TRIVOX
       </a>
 
-      <a href="#" class="hero-btn program-btn">
+      <a href="course.html" class="hero-btn program-btn">
         View Programs
       </a>
 
@@ -4623,10 +4743,10 @@ svg{
 
         <div class="footer-col">
           <h4>Learning</h4>
-          <a href="#">AI Learning</a>
-          <a href="#">Programming</a>
-          <a href="#">Web Development</a>
-          <a href="#">App Development</a>
+          <a href="course.html">AI Learning</a>
+          <a href="course.html">Programming</a>
+          <a href="course.html">Web Development</a>
+          <a href="course.html">App Development</a>
           <a href="#videoClasses">Video Classes</a>
         </div>
 
@@ -4641,8 +4761,8 @@ svg{
 
         <div class="footer-col">
           <h4>Resources</h4>
-          <a href="#">Tutorials</a>
-          <a href="#">Student Projects</a>
+          <a href="course.html">Tutorials</a>
+          <a href="course.html">Student Projects</a>
           <a href="#">Success Stories</a>
           <a href="#">FAQs</a>
           <a href="#monthlyLearning">12 Month Journey</a>
@@ -4695,10 +4815,10 @@ svg{
             <i class="fa-solid fa-plus"></i>
           </button>
           <div class="mobile-footer-links">
-            <a href="#">AI Learning</a>
-            <a href="#">Programming</a>
-            <a href="#">Web Development</a>
-            <a href="#">App Development</a>
+            <a href="course.html">AI Learning</a>
+            <a href="course.html">Programming</a>
+            <a href="course.html">Web Development</a>
+            <a href="course.html">App Development</a>
             <a href="#videoClasses">Video Classes</a>
           </div>
         </div>
@@ -4723,8 +4843,8 @@ svg{
             <i class="fa-solid fa-plus"></i>
           </button>
           <div class="mobile-footer-links">
-            <a href="#">Tutorials</a>
-            <a href="#">Student Projects</a>
+            <a href="course.html">Tutorials</a>
+            <a href="course.html">Student Projects</a>
             <a href="#">Success Stories</a>
             <a href="#">FAQs</a>
             <a href="#monthlyLearning">12 Month Journey</a>
@@ -5068,6 +5188,23 @@ const menuToggle =
   }, { passive: false });
 })();
 
+
+
+// SIGN IN DROPDOWN CLICK SUPPORT
+(function(){
+  const wrap=document.querySelector('.signin-dropdown-wrap');
+  if(!wrap) return;
+  const btn=wrap.querySelector('.signin-main-btn');
+  if(!btn) return;
+  btn.addEventListener('click',function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    wrap.classList.toggle('open');
+  });
+  document.addEventListener('click',function(e){
+    if(!wrap.contains(e.target)) wrap.classList.remove('open');
+  });
+})();
 </script>
 </body>
 </html>
