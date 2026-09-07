@@ -14787,6 +14787,169 @@ document.addEventListener("click", function(e){
     };
 
 
+
+/* ===== COURSE COMPLETION EMAIL NOTIFICATION ===== */
+async function sendCourseCompletionEmailNotification(course, courseType, activeUser){
+  try{
+    const savedUser = getSavedCourseUser() || {};
+    const user = activeUser || currentDatabaseUser || savedUser || {};
+
+    const payload = {
+      user_id: user.id || savedUser.id || null,
+      user_name: String(
+        user.full_name ||
+        savedUser.full_name ||
+        user.name ||
+        savedUser.name ||
+        "Student"
+      ).trim(),
+      user_email: String(
+        user.email ||
+        savedUser.email ||
+        ""
+      ).trim(),
+      qualification: String(
+        user.qualification ||
+        savedUser.qualification ||
+        ""
+      ).trim(),
+      course_id: Number(course?.id || 0) || null,
+      course_title: String(
+        course?.title || "Course"
+      ).trim(),
+      course_type: String(courseType || "free").toLowerCase(),
+      course_duration: String(
+        course?.duration || ""
+      ).trim(),
+      course_category: String(
+        course?.education_category ||
+        course?.category ||
+        ""
+      ).trim(),
+      completed_at: new Date().toISOString()
+    };
+
+    if(!payload.user_email || !payload.course_title){
+      console.error(
+        "Completion email skipped: missing student email or course title.",
+        payload
+      );
+
+      return {
+        ok:false,
+        message:"Missing student email or course title."
+      };
+    }
+
+    /* FIRST TRY: Supabase JS invoke */
+    const { data, error } = await db.functions.invoke(
+      "course-completion-email",
+      {
+        body: payload
+      }
+    );
+
+    if(!error && (!data || data.ok !== false)){
+      console.log(
+        "Completion email triggered successfully.",
+        data
+      );
+
+      return {
+        ok:true,
+        data:data || null
+      };
+    }
+
+    console.warn(
+      "Completion email invoke failed. Trying direct function request...",
+      error || data
+    );
+
+    /* FALLBACK: direct Edge Function request */
+    const {
+      data: sessionData
+    } = await db.auth.getSession();
+
+    const accessToken =
+      sessionData?.session?.access_token ||
+      SUPABASE_KEY;
+
+    const response = await fetch(
+      SUPABASE_URL +
+      "/functions/v1/course-completion-email",
+      {
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json",
+          "apikey":SUPABASE_KEY,
+          "Authorization":"Bearer " + accessToken
+        },
+        body:JSON.stringify(payload)
+      }
+    );
+
+    let responseData = null;
+
+    try{
+      responseData = await response.json();
+    }catch(e){
+      responseData = {
+        message:await response.text().catch(function(){
+          return "";
+        })
+      };
+    }
+
+    if(
+      !response.ok ||
+      (responseData && responseData.ok === false)
+    ){
+      console.error(
+        "Completion email Edge Function failed:",
+        {
+          status:response.status,
+          response:responseData,
+          firstError:error || data
+        }
+      );
+
+      return {
+        ok:false,
+        status:response.status,
+        message:
+          responseData?.error ||
+          responseData?.message ||
+          error?.message ||
+          "Completion email Edge Function failed."
+      };
+    }
+
+    console.log(
+      "Completion email triggered successfully using fallback.",
+      responseData
+    );
+
+    return {
+      ok:true,
+      data:responseData
+    };
+
+  }catch(error){
+    console.error(
+      "Completion email notification error:",
+      error
+    );
+
+    return {
+      ok:false,
+      message:
+        error?.message ||
+        "Unable to trigger completion email."
+    };
+  }
+}
+
   async function completeActiveLearningCourse(){
 
     const activeUser =
@@ -14841,7 +15004,7 @@ document.addEventListener("click", function(e){
         error: progressFindError
       } = await db
         .from("course_progress")
-        .select("id")
+        .select("id, progress_percent, status")
         .eq("user_id", userId)
         .eq("course_id", courseId)
         .maybeSingle();
@@ -14907,7 +15070,31 @@ document.addEventListener("click", function(e){
       }
 
       /*
-        3) Refresh local/database-backed UI.
+        3) Send completion email only the first time this course
+           changes to completed. Email failure must NOT undo completion.
+      */
+      const wasAlreadyCompleted =
+        String(existingProgress?.status || "").toLowerCase() === "completed" ||
+        Number(existingProgress?.progress_percent || 0) >= 100;
+
+      if(!wasAlreadyCompleted){
+        const completionEmailResult =
+          await sendCourseCompletionEmailNotification(
+            activeLearningCourse,
+            courseType,
+            activeUser
+          );
+
+        if(!completionEmailResult?.ok){
+          console.error(
+            "Course completed, but completion email failed:",
+            completionEmailResult
+          );
+        }
+      }
+
+      /*
+        4) Refresh local/database-backed UI.
       */
       try{
         await loadCourseEnrollments(
@@ -14928,7 +15115,9 @@ document.addEventListener("click", function(e){
       setLearningCompletedUI();
 
       showToast(
-        "Course completed successfully!"
+        wasAlreadyCompleted
+          ? "Course already completed."
+          : "Course completed successfully! Completion email triggered."
       );
 
     }catch(error){
