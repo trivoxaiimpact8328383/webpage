@@ -11122,6 +11122,9 @@ async function sendCourseEnrollmentEmailNotification(course, isFreeCourse, activ
     const savedUser = getSavedCourseUser() || {};
     const user = activeUser || currentDatabaseUser || savedUser || {};
 
+    const certificateAttachment =
+      buildCourseCertificate(false);
+
     const payload = {
       user_id: user.id || savedUser.id || null,
       user_name: String(
@@ -14153,8 +14156,7 @@ document.addEventListener("click", function(e){
   }
 
 
-  window.downloadCourseCertificate =
-    function(){
+  function buildCourseCertificate(downloadFile = false){
 
       try{
 
@@ -14761,15 +14763,24 @@ document.addEventListener("click", function(e){
               ""
             );
 
-        doc.save(
+        const certificateFileName =
           "TRIVOX_CERTIFICATE_" +
           safeTitle +
-          ".pdf"
-        );
+          ".pdf";
 
-        showToast(
-          "Certificate downloaded"
-        );
+        const certificateBase64 =
+          doc.output("datauristring")
+            .split(",")[1];
+
+        if(downloadFile){
+          doc.save(certificateFileName);
+          showToast("Certificate downloaded");
+        }
+
+        return {
+          file_name: certificateFileName,
+          base64: certificateBase64
+        };
 
       }catch(error){
 
@@ -14778,11 +14789,20 @@ document.addEventListener("click", function(e){
           error
         );
 
-        showToast(
-          "Unable to download certificate.",
-          "error"
-        );
+        if(downloadFile){
+          showToast(
+            "Unable to download certificate.",
+            "error"
+          );
+        }
+
+        return null;
       }
+    }
+
+  window.downloadCourseCertificate =
+    function(){
+      return buildCourseCertificate(true);
     };
 
 
@@ -14825,7 +14845,11 @@ async function sendCourseCompletionEmailNotification(course, courseType, activeU
         course?.category ||
         ""
       ).trim(),
-      completed_at: new Date().toISOString()
+      completed_at: new Date().toISOString(),
+      certificate_file_name:
+        certificateAttachment?.file_name || "",
+      certificate_base64:
+        certificateAttachment?.base64 || ""
     };
 
     if(!payload.user_email || !payload.course_title){
@@ -15116,7 +15140,7 @@ async function sendCourseCompletionEmailNotification(course, courseType, activeU
       showToast(
         wasAlreadyCompleted
           ? "Course already completed."
-          : "Course completed successfully! Completion email triggered."
+          : "Course completed successfully! Email and certificate sent."
       );
 
     }catch(error){
