@@ -11122,9 +11122,6 @@ async function sendCourseEnrollmentEmailNotification(course, isFreeCourse, activ
     const savedUser = getSavedCourseUser() || {};
     const user = activeUser || currentDatabaseUser || savedUser || {};
 
-    const certificateAttachment =
-      buildCourseCertificate(false);
-
     const payload = {
       user_id: user.id || savedUser.id || null,
       user_name: String(
@@ -14812,6 +14809,17 @@ async function sendCourseCompletionEmailNotification(course, courseType, activeU
   try{
     const savedUser = getSavedCourseUser() || {};
     const user = activeUser || currentDatabaseUser || savedUser || {};
+
+    // Generate the SAME certificate PDF used by the Download Certificate button.
+    // Do not download here; convert it to base64 for the email attachment.
+    const certificateAttachment =
+      buildCourseCertificate(false);
+
+    if(!certificateAttachment?.base64){
+      console.error(
+        "Certificate generation failed before completion email."
+      );
+    }
 
     const payload = {
       user_id: user.id || savedUser.id || null,
