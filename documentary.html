@@ -7357,6 +7357,59 @@ let selectedDocumentaryVideo = null;
 let activeDocumentary = null;
 let previewObjectUrl = null;
 
+/* =========================================================
+   DOCUMENTARY VIDEO UPLOAD CONFIRMATION EMAIL
+   The Edge Function resolves the recipient(s) from the database:
+   single -> signup_details
+   group  -> trivox_group_members -> signup_details
+========================================================= */
+async function sendDocumentaryUploadConfirmation(project){
+  try{
+    if(!project || !project.id){
+      return { ok:false, message:"Project ID missing." };
+    }
+
+    const {
+      data,
+      error
+    } = await db.functions.invoke(
+      "documentary-upload-email",
+      {
+        body:{
+          submission_id: Number(project.id)
+        }
+      }
+    );
+
+    if(error){
+      throw error;
+    }
+
+    console.log(
+      "Documentary upload confirmation email triggered:",
+      data
+    );
+
+    return {
+      ok:true,
+      data:data
+    };
+  }
+  catch(error){
+    console.error(
+      "Documentary upload confirmation email error:",
+      error
+    );
+
+    return {
+      ok:false,
+      message:
+        error?.message ||
+        "Unable to trigger upload confirmation email."
+    };
+  }
+}
+
 const documentaryVideo = document.getElementById("documentaryVideo");
 const videoPreviewWrap = document.getElementById("videoPreviewWrap");
 const videoPreview = document.getElementById("videoPreview");
@@ -7559,6 +7612,32 @@ uploadVideoBtn.addEventListener("click", async function(){
   submitReviewBtn.disabled = false;
 
   localStorage.setItem("trivoxDocumentaryVideo", publicUrl);
+
+  /*
+    Trigger confirmation email only AFTER:
+    1) storage upload succeeded
+    2) public URL was created
+    3) documentary_submissions.video_url was saved
+  */
+  const emailResult =
+    await sendDocumentaryUploadConfirmation(
+      updatedProject
+    );
+
+  if(emailResult.ok){
+    console.log(
+      "Upload confirmation email sent/queued successfully."
+    );
+  }else{
+    /*
+      IMPORTANT:
+      Email failure does not undo a successful video upload.
+    */
+    console.warn(
+      "Video uploaded, but confirmation email failed:",
+      emailResult.message
+    );
+  }
 });
 
 submitReviewBtn.addEventListener("click", async function(){
