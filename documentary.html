@@ -9402,8 +9402,11 @@ function viewVillageDocumentaryResult(){
     window.scrollTo(0,0);
   };
 
-  window.logoutTrivox=function(){
+  window.logoutTrivox=async function(){
     try{
+      if(window.trivoxAuthDb?.auth){
+        await window.trivoxAuthDb.auth.signOut();
+      }
       [
         "trivoxUser",
         "trivoxLoggedIn",
@@ -9466,9 +9469,12 @@ const SUPABASE_URL = "https://zuzhxugdibzetwoliwxm.supabase.co";
 const SUPABASE_KEY = "sb_publishable_RmJqiS4bPrDdhSxae_Qy8g_2ews0cW1";
 const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-const TEST_OTP = "123456";
+/* Same Supabase project used by the TRIVOX Course page. */
+window.trivoxAuthDb = db;
+
 let otpSent = false;
 let otpVerified = false;
+let otpEmail = "";
 
 const loginPanel = document.getElementById("loginPanel");
 const registerPanel = document.getElementById("registerPanel");
@@ -9874,7 +9880,7 @@ const registerButton = document.getElementById("registerButton");
 const registerButtonText = document.getElementById("registerButtonText");
 const registerSpinner = document.getElementById("registerSpinner");
 
-getOtpButton.addEventListener("click", () => {
+getOtpButton.addEventListener("click", async () => {
   registerEmailError.textContent = "";
   const email = registerEmail.value.trim().toLowerCase();
 
@@ -9888,36 +9894,117 @@ getOtpButton.addEventListener("click", () => {
     return;
   }
 
-  otpSent = true;
-  otpVerified = false;
-  otp.value = "";
-  otpStatus.textContent = "";
-  otpStatus.className = "otp-status";
-  otpArea.classList.add("show");
-  getOtpButton.textContent = "Resend OTP";
+  const oldText = getOtpButton.textContent;
+  getOtpButton.disabled = true;
+  getOtpButton.textContent = "Sending...";
 
-  showToast("OTP sent. Test OTP: 123456");
+  try{
+    /*
+      REAL SUPABASE EMAIL OTP.
+      This uses the same Supabase Auth project as your Course page.
+      shouldCreateUser:true allows a first-time email to receive an OTP.
+    */
+    const { error } = await db.auth.signInWithOtp({
+      email: email,
+      options: {
+        shouldCreateUser: true
+      }
+    });
+
+    if(error){
+      throw error;
+    }
+
+    otpEmail = email;
+    otpSent = true;
+    otpVerified = false;
+
+    otp.value = "";
+    otpStatus.textContent = "OTP sent to " + email;
+    otpStatus.className = "otp-status success";
+    otpArea.classList.add("show");
+    getOtpButton.textContent = "Resend OTP";
+
+    showToast("OTP sent to your Gmail");
+  }
+  catch(error){
+    console.error("OTP send error:", error);
+
+    otpEmail = "";
+    otpSent = false;
+    otpVerified = false;
+
+    registerEmailError.textContent =
+      error?.message || "Unable to send OTP. Please try again.";
+
+    getOtpButton.textContent = oldText || "Get OTP";
+    showToast("Unable to send OTP");
+  }
+  finally{
+    getOtpButton.disabled = false;
+
+    if(otpSent && otpEmail === email){
+      getOtpButton.textContent = "Resend OTP";
+    }
+  }
 });
 
-verifyOtpButton.addEventListener("click", () => {
+verifyOtpButton.addEventListener("click", async () => {
   otpStatus.className = "otp-status";
 
-  if (!otpSent){
+  const enteredOtp = otp.value.trim();
+  const currentEmail = registerEmail.value.trim().toLowerCase();
+
+  if(!otpSent || !otpEmail){
     showToast("Please request OTP first");
     return;
   }
 
-  if (otp.value.trim() !== TEST_OTP){
+  if(currentEmail !== otpEmail){
     otpVerified = false;
-    otpStatus.textContent = "Incorrect OTP.";
+    otpStatus.textContent = "Email changed. Request a new OTP.";
     otpStatus.classList.add("error");
     return;
   }
 
-  otpVerified = true;
-  otpStatus.textContent = "";
-  otpStatus.className = "otp-status";
-  showToast("OTP verified");
+  if(!/^\d{6}$/.test(enteredOtp)){
+    otpVerified = false;
+    otpStatus.textContent = "Enter the 6 digit OTP.";
+    otpStatus.classList.add("error");
+    return;
+  }
+
+  verifyOtpButton.disabled = true;
+  verifyOtpButton.textContent = "Verifying...";
+
+  try{
+    const { error } = await db.auth.verifyOtp({
+      email: otpEmail,
+      token: enteredOtp,
+      type: "email"
+    });
+
+    if(error){
+      throw error;
+    }
+
+    otpVerified = true;
+    otpStatus.textContent = "Email verified successfully.";
+    otpStatus.className = "otp-status success";
+    showToast("OTP verified");
+  }
+  catch(error){
+    console.error("OTP verification error:", error);
+
+    otpVerified = false;
+    otpStatus.textContent =
+      error?.message || "Incorrect or expired OTP.";
+    otpStatus.className = "otp-status error";
+  }
+  finally{
+    verifyOtpButton.disabled = false;
+    verifyOtpButton.textContent = "Verify";
+  }
 });
 
 otp.addEventListener("input", function(){
@@ -9927,6 +10014,7 @@ otp.addEventListener("input", function(){
 registerEmail.addEventListener("input", () => {
   if (!otpSent) return;
 
+  otpEmail = "";
   otpSent = false;
   otpVerified = false;
   otpArea.classList.remove("show");
@@ -10459,20 +10547,185 @@ document.getElementById("groupRegisterButton").addEventListener("click", async (
 
 
 
-document.getElementById("googleButton").addEventListener("click", () => {
-  showToast("Google login is not connected yet");
+/* =========================
+   REAL GOOGLE OAUTH
+========================= */
+async function finishGoogleDocumentaryLogin(){
+  try{
+    const { data, error } = await db.auth.getSession();
+
+    if(error){
+      throw error;
+    }
+
+    const session = data?.session || null;
+    const authUser = session?.user || null;
+
+    if(!authUser || !authUser.email){
+      return false;
+    }
+
+    const providers = Array.isArray(authUser.identities)
+      ? authUser.identities
+          .map(item => item?.provider)
+          .filter(Boolean)
+      : [];
+
+    const primaryProvider = authUser.app_metadata?.provider;
+    const isGoogle =
+      primaryProvider === "google" ||
+      providers.includes("google");
+
+    if(!isGoogle){
+      return false;
+    }
+
+    const email = authUser.email.trim().toLowerCase();
+
+    let { data: profile, error: profileError } =
+      await db
+        .from("signup_details")
+        .select("id, trivox_id, full_name, email, village, created_at")
+        .eq("email", email)
+        .maybeSingle();
+
+    if(profileError){
+      throw profileError;
+    }
+
+    /*
+      First Google login:
+      create a signup_details row so the documentary system can
+      keep using its existing database/user flow.
+    */
+    if(!profile){
+      const googleName =
+        authUser.user_metadata?.full_name ||
+        authUser.user_metadata?.name ||
+        email.split("@")[0] ||
+        "TRIVOX User";
+
+      const randomLegacyPassword =
+        "GOOGLE_" +
+        (
+          window.crypto?.randomUUID
+            ? crypto.randomUUID()
+            : Math.random().toString(36).slice(2) + Date.now().toString(36)
+        );
+
+      const { data: createdProfile, error: createError } =
+        await db
+          .from("signup_details")
+          .insert({
+            full_name: googleName,
+            email: email,
+            village: "Not specified",
+            password: randomLegacyPassword
+          })
+          .select("id, trivox_id, full_name, email, village, created_at")
+          .single();
+
+      if(createError){
+        throw createError;
+      }
+
+      profile = createdProfile;
+    }
+
+    saveLoggedInState(profile);
+    showToast("Google login successful");
+
+    setTimeout(() => {
+      openRegistrationStep();
+    }, 300);
+
+    return true;
+  }
+  catch(error){
+    console.error("Google login finish error:", error);
+    showToast(
+      error?.message ||
+      "Unable to continue with Google"
+    );
+    return false;
+  }
+}
+
+document.getElementById("googleButton").addEventListener("click", async () => {
+  const googleButton = document.getElementById("googleButton");
+
+  if(googleButton.disabled){
+    return;
+  }
+
+  const oldHtml = googleButton.innerHTML;
+  googleButton.disabled = true;
+  googleButton.innerHTML =
+    '<span style="width:17px;height:17px;border:2px solid #ddd;border-top-color:#7450e8;border-radius:50%;display:inline-block;animation:spin .65s linear infinite"></span><span>Connecting...</span>';
+
+  try{
+    /*
+      IMPORTANT:
+      Supabase Authentication -> URL Configuration must allow this URL.
+    */
+    const redirectTo =
+      "https://trivoxaiimpact.com/documentary.html";
+
+    const { error } = await db.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: redirectTo,
+        queryParams: {
+          access_type: "offline",
+          prompt: "select_account"
+        }
+      }
+    });
+
+    if(error){
+      throw error;
+    }
+  }
+  catch(error){
+    console.error("Google login start error:", error);
+
+    googleButton.disabled = false;
+    googleButton.innerHTML = oldHtml;
+
+    showToast(
+      error?.message ||
+      "Unable to continue with Google"
+    );
+  }
 });
 
 document.getElementById("forgotButton").addEventListener("click", () => {
   showToast("Password recovery is not connected yet");
 });
 
-/* Restore saved session after page setup */
-restoreTrivoxState();
+/*
+  OAuth returns to documentary.html.
+  Process the Supabase session BEFORE restoring the old local session.
+*/
+async function bootstrapTrivoxDocumentaryAuth(){
+  const googleFinished = await finishGoogleDocumentaryLogin();
 
-document.addEventListener("DOMContentLoaded", function(){
+  if(!googleFinished){
+    restoreTrivoxState();
+  }
+
   setTimeout(showLoggedInUserId, 100);
-});
+}
+
+if(document.readyState === "loading"){
+  document.addEventListener(
+    "DOMContentLoaded",
+    bootstrapTrivoxDocumentaryAuth,
+    { once:true }
+  );
+}else{
+  bootstrapTrivoxDocumentaryAuth();
+}
 
 /* =========================
    JOIN GROUP
