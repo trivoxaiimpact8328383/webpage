@@ -374,6 +374,1737 @@
       font-size:16px;
     }
   }
+
+
+
+  /* =====================================================
+   LEADERSHIP PAGE
+   NAVBAR IS NOT TOUCHED
+===================================================== */
+
+.leadership-page{
+  padding-top:76px;
+  background:#fff;
+  color:#111;
+  overflow:hidden;
+}
+
+/* HERO */
+.leadership-hero{
+  min-height:590px;
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  align-items:center;
+  gap:70px;
+  padding:90px 7%;
+  background:#faf9ff;
+}
+
+.leadership-hero-content{
+  max-width:650px;
+}
+
+.leadership-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  color:#7450e8;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-bottom:24px;
+}
+
+.leadership-eyebrow span{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#7450e8;
+}
+
+.leadership-hero h1{
+  margin:0;
+  font-size:clamp(48px,6vw,78px);
+  line-height:.98;
+  letter-spacing:-4px;
+  font-weight:900;
+}
+
+.leadership-hero h1 em{
+  color:#7450e8;
+  font-style:normal;
+}
+
+.leadership-hero-text{
+  max-width:600px;
+  margin-top:28px;
+  color:#6d6d76;
+  font-size:17px;
+  line-height:1.75;
+}
+
+/* HERO VISUAL */
+.leadership-visual{
+  position:relative;
+  min-height:410px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.leadership-orbit{
+  width:390px;
+  height:390px;
+  border-radius:50%;
+  border:1px solid rgba(116,80,232,.16);
+  position:absolute;
+}
+
+.leadership-orbit::before{
+  content:"";
+  position:absolute;
+  inset:35px;
+  border-radius:50%;
+  border:1px solid rgba(116,80,232,.12);
+}
+
+.leadership-center{
+  width:230px;
+  height:290px;
+  border-radius:28px;
+  background:linear-gradient(145deg,#171719,#29252f);
+  position:relative;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  box-shadow:0 25px 70px rgba(0,0,0,.16);
+}
+
+.leadership-center-content{
+  text-align:center;
+  color:#fff;
+  padding:25px;
+}
+
+.leadership-center-content i{
+  font-size:54px;
+  color:#a995ff;
+  margin-bottom:22px;
+}
+
+.leadership-center-content strong{
+  display:block;
+  font-size:22px;
+  letter-spacing:-.5px;
+}
+
+.leadership-center-content small{
+  display:block;
+  margin-top:8px;
+  color:#aaa8b0;
+  font-size:11px;
+  line-height:1.5;
+}
+
+/* FLOATING LABELS */
+.leadership-float{
+  position:absolute;
+  z-index:3;
+  padding:12px 15px;
+  background:#fff;
+  border:1px solid #ecebf1;
+  border-radius:13px;
+  box-shadow:0 12px 35px rgba(0,0,0,.08);
+  font-size:11px;
+  font-weight:700;
+}
+
+.leadership-float.one{
+  top:45px;
+  left:8%;
+}
+
+.leadership-float.two{
+  right:4%;
+  top:125px;
+}
+
+.leadership-float.three{
+  bottom:45px;
+  left:10%;
+}
+
+/* PHILOSOPHY */
+.leadership-philosophy{
+  padding:115px 7%;
+}
+
+.leadership-philosophy-inner{
+  max-width:1150px;
+  margin:auto;
+}
+
+.leadership-section-label{
+  color:#7450e8;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.leadership-philosophy-grid{
+  display:grid;
+  grid-template-columns:.9fr 1.5fr;
+  gap:90px;
+  margin-top:22px;
+}
+
+.leadership-philosophy h2{
+  margin:0;
+  font-size:clamp(36px,4.5vw,58px);
+  line-height:1.02;
+  letter-spacing:-3px;
+}
+
+.leadership-philosophy-copy{
+  color:#66666f;
+  font-size:16px;
+  line-height:1.8;
+}
+
+.leadership-philosophy-copy p{
+  margin:0 0 20px;
+}
+
+/* PRINCIPLES */
+.leadership-principles{
+  margin-top:70px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+.leadership-principle{
+  padding:30px;
+  min-height:220px;
+  border-radius:20px;
+  background:#f7f6fa;
+}
+
+.leadership-principle-number{
+  font-size:11px;
+  font-weight:800;
+  color:#7450e8;
+}
+
+.leadership-principle h3{
+  margin:48px 0 10px;
+  font-size:20px;
+}
+
+.leadership-principle p{
+  margin:0;
+  color:#777780;
+  font-size:13px;
+  line-height:1.65;
+}
+
+/* LEADERS */
+.leadership-team{
+  padding:110px 7%;
+  background:#111113;
+  color:#fff;
+}
+
+.leadership-team-inner{
+  max-width:1150px;
+  margin:auto;
+}
+
+.leadership-team-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:40px;
+  margin-bottom:55px;
+}
+
+.leadership-team-heading h2{
+  margin:14px 0 0;
+  font-size:clamp(38px,5vw,60px);
+  line-height:1;
+  letter-spacing:-3px;
+}
+
+.leadership-team-heading p{
+  max-width:360px;
+  margin:0;
+  color:#96969d;
+  font-size:14px;
+  line-height:1.7;
+}
+
+/* FEATURED LEADER */
+.leader-feature{
+  display:grid;
+  grid-template-columns:.85fr 1.15fr;
+  gap:35px;
+  padding:18px;
+  border-radius:26px;
+  background:#1a1a1d;
+  border:1px solid rgba(255,255,255,.07);
+}
+
+.leader-photo{
+  min-height:410px;
+  border-radius:19px;
+  background:
+    radial-gradient(circle at 50% 35%,#5b526c 0,#312d36 35%,#19191b 72%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.leader-photo i{
+  font-size:90px;
+  color:#a995ff;
+}
+
+.leader-info{
+  padding:45px 40px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.leader-role{
+  color:#a995ff;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.leader-info h3{
+  margin:13px 0 18px;
+  font-size:38px;
+  letter-spacing:-1.5px;
+}
+
+.leader-info p{
+  max-width:510px;
+  color:#a7a7ae;
+  font-size:15px;
+  line-height:1.8;
+}
+
+.leader-links{
+  display:flex;
+  gap:10px;
+  margin-top:25px;
+}
+
+.leader-links a{
+  padding:10px 15px;
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:9px;
+  color:#fff;
+  font-size:11px;
+}
+
+/* TEAM GRID */
+.leader-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-top:16px;
+}
+
+.leader-card{
+  padding:20px;
+  border-radius:20px;
+  background:#1a1a1d;
+  border:1px solid rgba(255,255,255,.07);
+}
+
+.leader-card-photo{
+  height:220px;
+  border-radius:15px;
+  background:#27262a;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.leader-card-photo i{
+  color:#a995ff;
+  font-size:55px;
+}
+
+.leader-card h4{
+  margin:20px 0 6px;
+  font-size:18px;
+}
+
+.leader-card span{
+  color:#a995ff;
+  font-size:11px;
+  font-weight:700;
+}
+
+.leader-card p{
+  color:#85858c;
+  font-size:12px;
+  line-height:1.6;
+  margin-top:10px;
+}
+
+/* HOW WE LEAD */
+.how-we-lead{
+  padding:115px 7%;
+  background:#fff;
+}
+
+.how-we-lead-inner{
+  max-width:1150px;
+  margin:auto;
+}
+
+.how-heading{
+  max-width:650px;
+}
+
+.how-heading h2{
+  margin:14px 0 20px;
+  font-size:clamp(38px,5vw,60px);
+  line-height:1;
+  letter-spacing:-3px;
+}
+
+.how-heading p{
+  color:#71717a;
+  font-size:15px;
+  line-height:1.7;
+}
+
+.lead-points{
+  margin-top:65px;
+  border-top:1px solid #e9e9ed;
+}
+
+.lead-point{
+  display:grid;
+  grid-template-columns:80px 1fr 1.4fr;
+  gap:30px;
+  align-items:center;
+  padding:27px 0;
+  border-bottom:1px solid #e9e9ed;
+}
+
+.lead-point-number{
+  color:#7450e8;
+  font-size:12px;
+  font-weight:800;
+}
+
+.lead-point h3{
+  margin:0;
+  font-size:20px;
+}
+
+.lead-point p{
+  margin:0;
+  color:#74747d;
+  font-size:13px;
+  line-height:1.65;
+}
+
+/* FINAL CTA */
+.leadership-final{
+  padding:110px 7%;
+  background:#7450e8;
+  color:#fff;
+  text-align:center;
+}
+
+.leadership-final-inner{
+  max-width:800px;
+  margin:auto;
+}
+
+.leadership-final h2{
+  margin:0;
+  font-size:clamp(40px,5.5vw,68px);
+  line-height:1;
+  letter-spacing:-3px;
+}
+
+.leadership-final p{
+  max-width:620px;
+  margin:24px auto 30px;
+  color:rgba(255,255,255,.82);
+  font-size:15px;
+  line-height:1.7;
+}
+
+.leadership-final a{
+  display:inline-flex;
+  padding:14px 22px;
+  border-radius:10px;
+  background:#fff;
+  color:#111;
+  font-size:12px;
+  font-weight:800;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+
+  .leadership-page{
+    padding-top:70px;
+  }
+
+  .leadership-hero{
+    grid-template-columns:1fr;
+    padding:75px 6%;
+    text-align:center;
+  }
+
+  .leadership-hero-content{
+    margin:auto;
+  }
+
+  .leadership-hero-text{
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .leadership-visual{
+    min-height:350px;
+  }
+
+  .leadership-orbit{
+    width:320px;
+    height:320px;
+  }
+
+  .leadership-philosophy-grid{
+    grid-template-columns:1fr;
+    gap:35px;
+  }
+
+  .leadership-principles{
+    grid-template-columns:1fr;
+  }
+
+  .leader-feature{
+    grid-template-columns:1fr;
+  }
+
+  .leader-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .leadership-team-heading{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .lead-point{
+    grid-template-columns:55px 1fr;
+  }
+
+  .lead-point p{
+    grid-column:2;
+  }
+}
+
+@media(max-width:600px){
+
+  .leadership-hero{
+    padding:65px 20px;
+  }
+
+  .leadership-hero h1{
+    letter-spacing:-2.5px;
+  }
+
+  .leadership-visual{
+    min-height:300px;
+  }
+
+  .leadership-orbit{
+    width:270px;
+    height:270px;
+  }
+
+  .leadership-center{
+    width:180px;
+    height:235px;
+  }
+
+  .leadership-float{
+    font-size:9px;
+    padding:9px 11px;
+  }
+
+  .leadership-float.one{
+    left:0;
+  }
+
+  .leadership-float.two{
+    right:0;
+  }
+
+  .leadership-float.three{
+    left:3%;
+  }
+
+  .leadership-philosophy,
+  .leadership-team,
+  .how-we-lead,
+  .leadership-final{
+    padding:75px 20px;
+  }
+
+  .leadership-philosophy h2,
+  .leadership-team-heading h2,
+  .how-heading h2{
+    letter-spacing:-2px;
+  }
+
+  .leader-info{
+    padding:30px 20px;
+  }
+
+  .leader-info h3{
+    font-size:30px;
+  }
+
+  .leader-grid{
+    grid-template-columns:1fr;
+  }
+
+  .lead-point{
+    grid-template-columns:45px 1fr;
+    gap:15px;
+  }
+
+  .lead-point h3{
+    font-size:17px;
+  }
+}
+
+/* =====================================================
+   LEADERSHIP TEMPLATE HERO - FIRST SECTION ONLY
+   Existing navbar styles are untouched.
+===================================================== */
+
+.leadership-template-hero{
+  min-height:720px;
+  margin-top:76px;
+  position:relative;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:39% 61%;
+  background:
+    radial-gradient(circle at 8% 26%, rgba(255,255,255,.055) 0 12%, transparent 12.4%),
+    radial-gradient(circle at 15% 24%, rgba(255,255,255,.035) 0 23%, transparent 23.4%),
+    linear-gradient(115deg,#303238 0%,#25272d 39%,#34242f 58%,#5b2938 100%);
+  color:#fff;
+}
+
+.leadership-template-hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.22;
+  background-image:
+    linear-gradient(rgba(255,255,255,.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.16) 1px, transparent 1px);
+  background-size:265px 120px;
+}
+
+.lt-hero-left{
+  position:relative;
+  z-index:3;
+  padding:52px 35px 44px 55px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+}
+
+.lt-brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:28px;
+  font-size:26px;
+  font-weight:900;
+  letter-spacing:-1px;
+}
+
+.lt-brand-mark{
+  width:44px;
+  height:44px;
+  position:relative;
+  transform:skewY(-5deg);
+}
+
+.lt-brand-mark::before,
+.lt-brand-mark::after{
+  content:"";
+  position:absolute;
+  border:5px solid #fff;
+}
+
+.lt-brand-mark::before{
+  width:29px;
+  height:34px;
+  left:0;
+  top:1px;
+  border-right:0;
+}
+
+.lt-brand-mark::after{
+  width:13px;
+  height:13px;
+  right:0;
+  top:7px;
+  background:#7450e8;
+  border:0;
+  box-shadow:
+    -17px 12px 0 #fff,
+    -3px 23px 0 #7450e8;
+}
+
+.lt-brand span:last-child{
+  color:#a995ff;
+}
+
+.lt-hero-title{
+  max-width:590px;
+  margin:0;
+  font-size:clamp(42px,4.25vw,66px);
+  line-height:1.08;
+  letter-spacing:-2.5px;
+  font-weight:800;
+}
+
+.lt-hero-points{
+  list-style:none;
+  margin:36px 0 0;
+  padding:0;
+}
+
+.lt-hero-points li{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin:23px 0;
+  font-size:18px;
+  color:#f3f3f5;
+}
+
+.lt-hero-points li::before{
+  content:"✓";
+  width:22px;
+  height:22px;
+  flex:0 0 22px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:#7450e8;
+  color:#fff;
+  font-size:11px;
+  font-weight:900;
+}
+
+.lt-hero-right{
+  position:relative;
+  z-index:2;
+  min-height:720px;
+}
+
+/* Website preview cards */
+.lt-preview{
+  position:absolute;
+  background:#fff;
+  box-shadow:0 24px 60px rgba(0,0,0,.30);
+  overflow:hidden;
+}
+
+.lt-preview-a{
+  width:42%;
+  height:465px;
+  left:3%;
+  top:245px;
+}
+
+.lt-preview-b{
+  width:43%;
+  height:515px;
+  left:37%;
+  top:196px;
+}
+
+.lt-preview-c{
+  width:32%;
+  height:675px;
+  right:1.5%;
+  top:22px;
+}
+
+/* Mini website inside previews */
+.lt-mini-page{
+  width:100%;
+  height:100%;
+  background:#fff;
+  color:#17171b;
+  overflow:hidden;
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+.lt-mini-nav{
+  height:28px;
+  padding:0 12px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid #eee;
+  font-size:6px;
+  color:#777;
+}
+
+.lt-mini-logo{
+  font-size:8px;
+  font-weight:900;
+  color:#111;
+}
+
+.lt-mini-logo b{
+  color:#7450e8;
+}
+
+.lt-mini-links{
+  display:flex;
+  gap:8px;
+}
+
+.lt-mini-hero{
+  min-height:132px;
+  padding:25px 18px 18px;
+  position:relative;
+  overflow:hidden;
+  background:#fbfbfe;
+}
+
+.lt-mini-hero h4{
+  width:55%;
+  margin:0;
+  font-size:17px;
+  line-height:1.05;
+  letter-spacing:-.6px;
+}
+
+.lt-mini-hero p{
+  width:50%;
+  margin-top:8px;
+  font-size:5.5px;
+  line-height:1.5;
+  color:#777;
+}
+
+.lt-mini-btn{
+  display:inline-block;
+  margin-top:9px;
+  padding:5px 8px;
+  border-radius:2px;
+  background:#7450e8;
+  color:#fff;
+  font-size:5px;
+  font-weight:700;
+}
+
+.lt-person{
+  position:absolute;
+  right:13px;
+  bottom:0;
+  width:74px;
+  height:102px;
+  border-radius:42px 42px 5px 5px;
+  background:
+    radial-gradient(circle at 50% 23%,#f0c7af 0 13%,transparent 13.5%),
+    radial-gradient(circle at 50% 22%,#2a2430 0 19%,transparent 19.5%),
+    linear-gradient(155deg,#ece9ff 0 48%,#7450e8 48% 100%);
+}
+
+.lt-shape{
+  position:absolute;
+  border-radius:50%;
+}
+
+.lt-shape.s1{
+  width:48px;
+  height:48px;
+  right:65px;
+  top:18px;
+  background:#ffb328;
+}
+
+.lt-shape.s2{
+  width:22px;
+  height:22px;
+  right:7px;
+  top:62px;
+  background:#7450e8;
+}
+
+.lt-mini-strip{
+  padding:14px 13px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:7px;
+}
+
+.lt-mini-stat{
+  height:33px;
+  border-radius:3px;
+  background:#faf9ff;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+.lt-mini-stat strong{
+  font-size:8px;
+  color:#7450e8;
+}
+
+.lt-mini-stat span{
+  margin-top:2px;
+  font-size:4px;
+  color:#888;
+}
+
+.lt-mini-section{
+  padding:16px 14px;
+}
+
+.lt-mini-section h5{
+  margin:0 0 10px;
+  text-align:center;
+  font-size:9px;
+}
+
+.lt-mini-cards{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:6px;
+}
+
+.lt-course{
+  min-height:65px;
+  border-radius:3px;
+  padding:6px;
+  background:#f6f4ff;
+  border:1px solid #eeeaff;
+}
+
+.lt-course .icon{
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  margin-bottom:5px;
+  background:#7450e8;
+  opacity:.85;
+}
+
+.lt-course b{
+  display:block;
+  font-size:4.7px;
+}
+
+.lt-course small{
+  display:block;
+  margin-top:2px;
+  font-size:3.8px;
+  color:#8b8b92;
+}
+
+.lt-mini-wide{
+  margin:8px 14px 0;
+  min-height:90px;
+  border-radius:4px;
+  background:linear-gradient(120deg,#f8f7ff,#eeeaff);
+  padding:15px;
+  position:relative;
+}
+
+.lt-mini-wide h5{
+  width:53%;
+  margin:0;
+  font-size:10px;
+  line-height:1.15;
+}
+
+.lt-mini-wide p{
+  width:50%;
+  margin-top:6px;
+  font-size:4.5px;
+  line-height:1.5;
+  color:#777;
+}
+
+.lt-mini-wide::after{
+  content:"";
+  position:absolute;
+  right:16px;
+  bottom:0;
+  width:70px;
+  height:80px;
+  border-radius:35px 35px 4px 4px;
+  background:linear-gradient(145deg,#232229,#7450e8);
+}
+
+.lt-mini-purple{
+  margin-top:14px;
+  height:43px;
+  background:#7450e8;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
+  font-size:5px;
+  font-weight:700;
+}
+
+.lt-mini-people{
+  padding:17px 14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+}
+
+.lt-avatar{
+  width:26px;
+  height:26px;
+  border-radius:50%;
+  background:linear-gradient(145deg,#29272d,#a995ff);
+  border:2px solid #fff;
+  box-shadow:0 2px 8px rgba(0,0,0,.12);
+}
+
+.lt-mini-footer-banner{
+  margin:5px 14px 0;
+  height:95px;
+  border-radius:4px;
+  background:linear-gradient(120deg,#111,#7450e8);
+  position:relative;
+  overflow:hidden;
+}
+
+.lt-mini-footer-banner::before{
+  content:"Leadership that creates impact";
+  position:absolute;
+  left:12px;
+  top:17px;
+  width:45%;
+  color:#fff;
+  font-size:9px;
+  line-height:1.15;
+  font-weight:800;
+}
+
+.lt-mini-footer-banner::after{
+  content:"";
+  position:absolute;
+  right:-10px;
+  bottom:-22px;
+  width:95px;
+  height:95px;
+  border-radius:50%;
+  background:#a995ff;
+}
+
+@media(max-width:1000px){
+  .leadership-template-hero{
+    margin-top:70px;
+    grid-template-columns:1fr;
+  }
+
+  .lt-hero-left{
+    padding:50px 28px;
+  }
+
+  .lt-hero-right{
+    min-height:620px;
+  }
+
+  .lt-preview-a{
+    width:48%;
+    left:2%;
+    top:180px;
+  }
+
+  .lt-preview-b{
+    width:47%;
+    left:29%;
+    top:120px;
+  }
+
+  .lt-preview-c{
+    width:34%;
+    right:1%;
+    top:25px;
+    height:570px;
+  }
+}
+
+@media(max-width:600px){
+  .lt-hero-left{
+    padding:40px 20px 34px;
+  }
+
+  .lt-brand{
+    font-size:21px;
+  }
+
+  .lt-hero-title{
+    font-size:38px;
+    letter-spacing:-1.8px;
+  }
+
+  .lt-hero-points li{
+    font-size:15px;
+    margin:18px 0;
+  }
+
+  .lt-hero-right{
+    min-height:430px;
+  }
+
+  .lt-preview-a{
+    width:59%;
+    height:310px;
+    left:0;
+    top:110px;
+  }
+
+  .lt-preview-b{
+    width:56%;
+    height:335px;
+    left:27%;
+    top:75px;
+  }
+
+  .lt-preview-c{
+    width:39%;
+    height:395px;
+    top:14px;
+    right:0;
+  }
+
+  .lt-mini-hero{
+    min-height:90px;
+    padding:14px 9px;
+  }
+
+  .lt-mini-hero h4{
+    font-size:10px;
+  }
+
+  .lt-person{
+    width:46px;
+    height:68px;
+  }
+
+  .lt-shape.s1{
+    width:28px;
+    height:28px;
+  }
+
+  .lt-mini-strip,
+  .lt-mini-section,
+  .lt-mini-people{
+    padding-left:8px;
+    padding-right:8px;
+  }
+
+  .lt-mini-wide,
+  .lt-mini-footer-banner{
+    margin-left:8px;
+    margin-right:8px;
+  }
+}
+
+
+/* =====================================================
+   SECOND SECTION - LEFT CONTENT + MOVING CARD CAROUSEL
+   White grid background, TRIVOX style
+===================================================== */
+
+.leadership-carousel-section{
+  position:relative;
+  overflow:hidden;
+  padding:110px 6%;
+  background:#fff;
+}
+
+.leadership-carousel-section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(116,80,232,.07), transparent 32%),
+    linear-gradient(to right, rgba(255,255,255,.92) 0%, rgba(255,255,255,.55) 48%, rgba(255,255,255,.18) 100%);
+}
+
+.leadership-carousel-inner{
+  position:relative;
+  z-index:2;
+  max-width:1240px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:42% 58%;
+  gap:70px;
+  align-items:center;
+}
+
+.leadership-carousel-copy{
+  max-width:500px;
+}
+
+.leadership-carousel-tag{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:7px 13px;
+  margin-bottom:20px;
+  border:1px solid #e8e2ff;
+  border-radius:999px;
+  background:#f7f5ff;
+  color:#7450e8;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+}
+
+.leadership-carousel-tag::before{
+  content:"";
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#7450e8;
+}
+
+.leadership-carousel-copy h2{
+  margin:0;
+  font-size:clamp(40px,4.6vw,64px);
+  line-height:1.02;
+  letter-spacing:-3px;
+  color:#111;
+  font-weight:900;
+}
+
+.leadership-carousel-copy h2 span{
+  color:#7450e8;
+}
+
+.leadership-carousel-copy p{
+  margin:24px 0 0;
+  color:#6f6f78;
+  font-size:16px;
+  line-height:1.8;
+}
+
+.leadership-carousel-points{
+  margin:30px 0 0;
+  display:grid;
+  gap:14px;
+}
+
+.leadership-carousel-point{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#24242a;
+  font-size:14px;
+  font-weight:700;
+}
+
+.leadership-carousel-point i{
+  width:34px;
+  height:34px;
+  flex:0 0 34px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:10px;
+  background:#f3efff;
+  color:#7450e8;
+  font-size:13px;
+}
+
+.leadership-carousel-actions{
+  display:flex;
+  gap:10px;
+  margin-top:34px;
+}
+
+.leadership-carousel-btn{
+  width:44px;
+  height:44px;
+  border:1px solid #e4e4eb;
+  border-radius:12px;
+  background:#fff;
+  color:#111;
+  cursor:pointer;
+  transition:.22s;
+  box-shadow:0 8px 24px rgba(0,0,0,.04);
+}
+
+.leadership-carousel-btn:hover{
+  border-color:#7450e8;
+  color:#7450e8;
+  transform:translateY(-2px);
+}
+
+/* RIGHT SIDE CAROUSEL */
+.leadership-carousel-wrap{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+  padding:24px 0 34px;
+}
+
+.leadership-carousel-track{
+  display:flex;
+  gap:18px;
+  width:max-content;
+  will-change:transform;
+  animation:leadershipAutoScroll 22s linear infinite;
+}
+
+.leadership-carousel-wrap:hover .leadership-carousel-track{
+  animation-play-state:paused;
+}
+
+@keyframes leadershipAutoScroll{
+  from{ transform:translateX(0); }
+  to{ transform:translateX(calc(-50% - 9px)); }
+}
+
+.leadership-slide-card{
+  width:270px;
+  min-height:350px;
+  flex:0 0 270px;
+  padding:24px;
+  border:1px solid #ececf2;
+  border-radius:22px;
+  background:rgba(255,255,255,.95);
+  box-shadow:0 18px 45px rgba(17,17,17,.07);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  transition:.25s;
+}
+
+.leadership-slide-card:hover{
+  transform:translateY(-7px);
+  border-color:#dcd4ff;
+  box-shadow:0 22px 55px rgba(116,80,232,.12);
+}
+
+.leadership-slide-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.leadership-slide-icon{
+  width:52px;
+  height:52px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:15px;
+  background:#f4f0ff;
+  color:#7450e8;
+  font-size:20px;
+}
+
+.leadership-slide-number{
+  color:#b0a5d9;
+  font-size:12px;
+  font-weight:800;
+}
+
+.leadership-slide-card h3{
+  margin:42px 0 12px;
+  font-size:23px;
+  line-height:1.15;
+  letter-spacing:-.7px;
+  color:#151518;
+}
+
+.leadership-slide-card p{
+  margin:0;
+  color:#767680;
+  font-size:13px;
+  line-height:1.7;
+}
+
+.leadership-slide-footer{
+  margin-top:28px;
+  padding-top:18px;
+  border-top:1px solid #efeff4;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  color:#7450e8;
+  font-size:11px;
+  font-weight:800;
+}
+
+.leadership-slide-footer i{
+  font-size:10px;
+}
+
+/* subtle fade on edges */
+.leadership-carousel-wrap::before,
+.leadership-carousel-wrap::after{
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:0;
+  width:70px;
+  z-index:3;
+  pointer-events:none;
+}
+
+.leadership-carousel-wrap::before{
+  left:0;
+  background:linear-gradient(to right,#fff,transparent);
+}
+
+.leadership-carousel-wrap::after{
+  right:0;
+  background:linear-gradient(to left,#fff,transparent);
+}
+
+@media(max-width:950px){
+  .leadership-carousel-inner{
+    grid-template-columns:1fr;
+    gap:45px;
+  }
+
+  .leadership-carousel-copy{
+    max-width:680px;
+  }
+
+  .leadership-carousel-wrap{
+    overflow:hidden;
+  }
+}
+
+@media(max-width:600px){
+  .leadership-carousel-section{
+    padding:75px 20px;
+    
+  }
+
+  .leadership-carousel-copy h2{
+    letter-spacing:-2px;
+  }
+
+  .leadership-slide-card{
+    width:235px;
+    flex-basis:235px;
+    min-height:320px;
+    padding:20px;
+  }
+
+  .leadership-carousel-wrap::before,
+  .leadership-carousel-wrap::after{
+    width:28px;
+  }
+}
+
+
+/* =====================================================
+   THIRD SECTION - LEARNING WITH LEADERSHIP
+   Professional animated image composition + compact copy
+===================================================== */
+.learning-leadership{
+  position:relative;
+  overflow:hidden;
+  padding:118px 6%;
+  background:#f8f8fb;
+  color:#151518;
+}
+
+.learning-leadership::before{
+  content:"";
+  position:absolute;
+  width:420px;
+  height:420px;
+  left:-160px;
+  top:-120px;
+  border-radius:50%;
+  background:rgba(116,80,232,.07);
+  filter:blur(10px);
+}
+
+.learning-leadership::after{
+  content:"";
+  position:absolute;
+  width:340px;
+  height:340px;
+  right:-130px;
+  bottom:-150px;
+  border-radius:50%;
+  background:rgba(116,80,232,.055);
+}
+
+.learning-leadership-inner{
+  position:relative;
+  z-index:2;
+  max-width:1240px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1.18fr .82fr;
+  gap:92px;
+  align-items:center;
+}
+
+/* LEFT: ONE IMAGE AT A TIME */
+.learning-leadership-visual{
+  position:relative;
+  min-height:560px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.learning-image-slider{
+  position:relative;
+  width:min(100%,680px);
+  height:500px;
+  overflow:hidden;
+  border-radius:30px;
+  background:#e9e8ee;
+  box-shadow:0 28px 75px rgba(28,25,38,.16);
+}
+
+.learning-image-slide{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  transform:scale(1.06) translateX(28px);
+  transition:opacity 1s cubic-bezier(.22,.61,.36,1),transform 1.15s cubic-bezier(.22,.61,.36,1);
+  pointer-events:none;
+}
+
+.learning-image-slide.active{
+  opacity:1;
+  transform:scale(1) translateX(0);
+  pointer-events:auto;
+  z-index:2;
+}
+
+.learning-image-slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.learning-image-slide::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,transparent 48%,rgba(15,13,20,.55));
+}
+
+.learning-image-chip{
+  position:absolute;
+  left:28px;
+  bottom:28px;
+  z-index:3;
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  padding:10px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(12px);
+  color:#222228;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.8px;
+  text-transform:uppercase;
+}
+.learning-image-chip i{color:#7450e8;}
+
+.learning-slider-progress{
+  position:absolute;
+  left:28px;
+  right:28px;
+  bottom:16px;
+  z-index:4;
+  display:flex;
+  gap:7px;
+}
+.learning-slider-progress span{
+  height:3px;
+  flex:1;
+  border-radius:20px;
+  background:rgba(255,255,255,.35);
+  overflow:hidden;
+}
+.learning-slider-progress span::after{
+  content:"";
+  display:block;
+  width:0;
+  height:100%;
+  background:#fff;
+}
+.learning-slider-progress span.active::after{
+  animation:learningProgress 4s linear forwards;
+}
+@keyframes learningProgress{from{width:0}to{width:100%}}
+
+/* RIGHT COMPACT CONTENT */
+.learning-leadership-copy{
+  max-width:470px;
+}
+
+.learning-leadership-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:20px;
+  color:#7450e8;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:1.8px;
+  text-transform:uppercase;
+}
+
+.learning-leadership-kicker::before{
+  content:"";
+  width:24px;
+  height:1px;
+  background:#7450e8;
+}
+
+.learning-leadership-copy h2{
+  margin:0;
+  font-size:clamp(42px,4.6vw,64px);
+  line-height:.99;
+  letter-spacing:-3.3px;
+  font-weight:900;
+  color:#151518;
+}
+
+.learning-leadership-copy h2 span{color:#7450e8;}
+
+.learning-leadership-copy > p{
+  margin:24px 0 0;
+  max-width:430px;
+  color:#707079;
+  font-size:15px;
+  line-height:1.8;
+}
+
+.learning-mini-points{
+  margin-top:30px;
+  display:grid;
+  gap:14px;
+}
+
+.learning-mini-point{
+  display:grid;
+  grid-template-columns:38px 1fr;
+  gap:12px;
+  align-items:center;
+  padding:13px 0;
+  border-bottom:1px solid #e6e6ec;
+}
+
+.learning-mini-icon{
+  width:38px;
+  height:38px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:11px;
+  background:#efeaff;
+  color:#7450e8;
+  font-size:13px;
+}
+
+.learning-mini-point strong{
+  display:block;
+  font-size:14px;
+  color:#202025;
+}
+
+.learning-mini-point span{
+  display:block;
+  margin-top:3px;
+  color:#85858d;
+  font-size:11px;
+  line-height:1.5;
+}
+
+.learning-leadership-note{
+  margin-top:26px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:#7450e8;
+  font-size:11px;
+  font-weight:800;
+}
+
+.learning-leadership-note i{font-size:10px;}
+
+@media(max-width:950px){
+  .learning-leadership-inner{
+    grid-template-columns:1fr;
+    gap:55px;
+  }
+  .learning-leadership-visual{min-height:520px;}
+  .learning-leadership-copy{max-width:650px;}
+}
+
+@media(max-width:600px){
+  .learning-leadership{padding:78px 20px;}
+  .learning-leadership-inner{gap:42px;}
+  .learning-leadership-visual{min-height:390px;}
+  .learning-image-slider{height:380px;border-radius:22px;}
+  .learning-image-chip{left:18px;bottom:24px;padding:8px 10px;font-size:8px;}
+  .learning-slider-progress{left:18px;right:18px;bottom:12px;}
+  .learning-leadership-copy h2{font-size:42px;letter-spacing:-2.3px;}
+  .learning-leadership-copy > p{font-size:14px;line-height:1.7;}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .learning-image-slide{transition:none;}
+  .learning-slider-progress span.active::after{animation:none;width:100%;}
+}
+
 </style>
 
 
@@ -593,6 +2324,514 @@
 
 </nav>
 
+<!-- =====================================================
+     LEADERSHIP PAGE
+===================================================== -->
+
+<main class="leadership-page">
+
+  <!-- HERO - TEMPLATE STYLE FIRST SECTION -->
+  <section class="leadership-template-hero">
+
+    <div class="lt-hero-left">
+
+      <div class="lt-brand">
+        <span class="lt-brand-mark"></span>
+        <span>TRIVOX</span>
+        <span>AI IMPACT</span>
+      </div>
+
+      <h1 class="lt-hero-title">
+        TRIVOX - Leadership<br>
+        Driving Vision Into Impact
+      </h1>
+
+      <ul class="lt-hero-points">
+        <li>Purpose-Driven Leadership</li>
+        <li>Strong Strategic Direction</li>
+        <li>People-First Culture</li>
+        <li>Innovation With Responsibility</li>
+        <li>Focused On Real Impact</li>
+      </ul>
+
+    </div>
+
+
+    <div class="lt-hero-right">
+
+      <!-- LEFT PREVIEW -->
+      <div class="lt-preview lt-preview-a">
+        <div class="lt-mini-page">
+          <div class="lt-mini-nav">
+            <div class="lt-mini-logo">TRIVOX <b>AI</b></div>
+            <div class="lt-mini-links">
+              <span>Company</span><span>Learning</span><span>Programs</span>
+            </div>
+          </div>
+
+          <div class="lt-mini-hero">
+            <h4>Leading ideas into meaningful action.</h4>
+            <p>Purpose, people and progress at the centre of every decision.</p>
+            <span class="lt-mini-btn">Meet Leadership</span>
+            <span class="lt-shape s1"></span>
+            <span class="lt-person"></span>
+          </div>
+
+          <div class="lt-mini-strip">
+            <div class="lt-mini-stat"><strong>01</strong><span>Vision</span></div>
+            <div class="lt-mini-stat"><strong>02</strong><span>Purpose</span></div>
+            <div class="lt-mini-stat"><strong>03</strong><span>People</span></div>
+            <div class="lt-mini-stat"><strong>04</strong><span>Impact</span></div>
+          </div>
+
+          <div class="lt-mini-section">
+            <h5>How we lead</h5>
+            <div class="lt-mini-cards">
+              <div class="lt-course"><div class="icon"></div><b>Clarity</b><small>Clear direction</small></div>
+              <div class="lt-course"><div class="icon"></div><b>Ownership</b><small>Take responsibility</small></div>
+              <div class="lt-course"><div class="icon"></div><b>Teamwork</b><small>Build together</small></div>
+              <div class="lt-course"><div class="icon"></div><b>Impact</b><small>Create outcomes</small></div>
+            </div>
+          </div>
+
+          <div class="lt-mini-footer-banner"></div>
+        </div>
+      </div>
+
+
+      <!-- CENTER PREVIEW -->
+      <div class="lt-preview lt-preview-b">
+        <div class="lt-mini-page">
+          <div class="lt-mini-nav">
+            <div class="lt-mini-logo">TRIVOX <b>AI</b></div>
+            <div class="lt-mini-links">
+              <span>About</span><span>Leadership</span><span>Impact</span>
+            </div>
+          </div>
+
+          <div class="lt-mini-hero">
+            <h4>People who turn vision into action.</h4>
+            <p>Leadership built around responsibility, innovation and long-term value.</p>
+            <span class="lt-mini-btn">Our Leaders</span>
+            <span class="lt-shape s2"></span>
+            <span class="lt-person"></span>
+          </div>
+
+          <div class="lt-mini-section">
+            <h5>Leadership philosophy</h5>
+            <div class="lt-mini-cards">
+              <div class="lt-course"><div class="icon"></div><b>Think Long Term</b><small>Build lasting value</small></div>
+              <div class="lt-course"><div class="icon"></div><b>Stay Human</b><small>People first</small></div>
+              <div class="lt-course"><div class="icon"></div><b>Lead With Purpose</b><small>Act with intent</small></div>
+              <div class="lt-course"><div class="icon"></div><b>Deliver</b><small>Make it real</small></div>
+            </div>
+          </div>
+
+          <div class="lt-mini-wide">
+            <h5>Leadership is a responsibility, not just a title.</h5>
+            <p>Creating direction and enabling people to move forward.</p>
+          </div>
+
+          <div class="lt-mini-purple">
+            <span>VISION</span>
+            <span>OWNERSHIP</span>
+            <span>COLLABORATION</span>
+            <span>IMPACT</span>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- RIGHT TALL PREVIEW -->
+      <div class="lt-preview lt-preview-c">
+        <div class="lt-mini-page">
+          <div class="lt-mini-nav">
+            <div class="lt-mini-logo">TRIVOX <b>AI</b></div>
+            <div class="lt-mini-links">
+              <span>Home</span><span>Team</span>
+            </div>
+          </div>
+
+          <div class="lt-mini-hero">
+            <h4>Leadership with purpose.</h4>
+            <p>Building stronger teams, opportunities and outcomes.</p>
+            <span class="lt-mini-btn">Explore</span>
+            <span class="lt-shape s1"></span>
+            <span class="lt-person"></span>
+          </div>
+
+          <div class="lt-mini-wide">
+            <h5>Building a culture where ideas can move forward.</h5>
+            <p>Clarity, trust and accountability shape the way we lead.</p>
+          </div>
+
+          <div class="lt-mini-section">
+            <h5>Our direction</h5>
+            <div class="lt-mini-cards">
+              <div class="lt-course"><div class="icon"></div><b>Strategy</b><small>Think ahead</small></div>
+              <div class="lt-course"><div class="icon"></div><b>Technology</b><small>Build smarter</small></div>
+              <div class="lt-course"><div class="icon"></div><b>Learning</b><small>Enable growth</small></div>
+              <div class="lt-course"><div class="icon"></div><b>Community</b><small>Expand impact</small></div>
+            </div>
+          </div>
+
+          <div class="lt-mini-purple">
+            <span>TRIVOX</span>
+            <span>LEADERSHIP</span>
+            <span>IMPACT</span>
+          </div>
+
+          <div class="lt-mini-section">
+            <h5>Meet the people who lead</h5>
+            <div class="lt-mini-people">
+              <span class="lt-avatar"></span>
+              <span class="lt-avatar"></span>
+              <span class="lt-avatar"></span>
+              <span class="lt-avatar"></span>
+            </div>
+          </div>
+
+          <div class="lt-mini-footer-banner"></div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SECOND SECTION - MOVING LEADERSHIP CARDS -->
+  <section class="leadership-carousel-section">
+
+    <div class="leadership-carousel-inner">
+
+      <!-- LEFT CONTENT -->
+      <div class="leadership-carousel-copy">
+
+        <div class="leadership-carousel-tag">
+          Leadership Philosophy
+        </div>
+
+        <h2>
+          How we lead<br>
+          <span>with purpose.</span>
+        </h2>
+
+        <p>
+          At TRIVOX, leadership is about creating clarity, enabling people
+          and turning ideas into meaningful outcomes. We believe strong
+          leadership combines vision with responsibility and action.
+        </p>
+
+        <div class="leadership-carousel-points">
+
+          <div class="leadership-carousel-point">
+            <i class="fa-solid fa-compass"></i>
+            Clear direction and long-term thinking
+          </div>
+
+          <div class="leadership-carousel-point">
+            <i class="fa-solid fa-people-group"></i>
+            People-first collaboration and trust
+          </div>
+
+          <div class="leadership-carousel-point">
+            <i class="fa-solid fa-bolt"></i>
+            Fast execution with strong ownership
+          </div>
+
+        </div>
+
+        <div class="leadership-carousel-actions">
+          <button class="leadership-carousel-btn leadership-prev" type="button" aria-label="Previous card">
+            <i class="fa-solid fa-arrow-left"></i>
+          </button>
+
+          <button class="leadership-carousel-btn leadership-next" type="button" aria-label="Next card">
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+
+      </div>
+
+
+      <!-- RIGHT CAROUSEL -->
+      <div class="leadership-carousel-wrap">
+
+        <div class="leadership-carousel-track" id="leadershipCarouselTrack">
+
+          <article class="leadership-slide-card">
+            <div>
+              <div class="leadership-slide-top">
+                <div class="leadership-slide-icon">
+                  <i class="fa-solid fa-eye"></i>
+                </div>
+                <span class="leadership-slide-number">01</span>
+              </div>
+
+              <h3>Vision</h3>
+
+              <p>
+                We look beyond immediate results and build with a clear,
+                long-term direction in mind.
+              </p>
+            </div>
+
+            <div class="leadership-slide-footer">
+              Think ahead
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </article>
+
+
+          <article class="leadership-slide-card">
+            <div>
+              <div class="leadership-slide-top">
+                <div class="leadership-slide-icon">
+                  <i class="fa-solid fa-handshake"></i>
+                </div>
+                <span class="leadership-slide-number">02</span>
+              </div>
+
+              <h3>Ownership</h3>
+
+              <p>
+                We encourage people to take responsibility, make decisions
+                and carry ideas through to execution.
+              </p>
+            </div>
+
+            <div class="leadership-slide-footer">
+              Take responsibility
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </article>
+
+
+          <article class="leadership-slide-card">
+            <div>
+              <div class="leadership-slide-top">
+                <div class="leadership-slide-icon">
+                  <i class="fa-solid fa-users"></i>
+                </div>
+                <span class="leadership-slide-number">03</span>
+              </div>
+
+              <h3>Collaboration</h3>
+
+              <p>
+                Better ideas come from different perspectives working
+                together with trust and openness.
+              </p>
+            </div>
+
+            <div class="leadership-slide-footer">
+              Build together
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </article>
+
+
+          <article class="leadership-slide-card">
+            <div>
+              <div class="leadership-slide-top">
+                <div class="leadership-slide-icon">
+                  <i class="fa-solid fa-lightbulb"></i>
+                </div>
+                <span class="leadership-slide-number">04</span>
+              </div>
+
+              <h3>Innovation</h3>
+
+              <p>
+                We encourage thoughtful experimentation, new ideas and
+                better ways to create useful outcomes.
+              </p>
+            </div>
+
+            <div class="leadership-slide-footer">
+              Create better
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </article>
+
+
+          <article class="leadership-slide-card">
+            <div>
+              <div class="leadership-slide-top">
+                <div class="leadership-slide-icon">
+                  <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <span class="leadership-slide-number">05</span>
+              </div>
+
+              <h3>Impact</h3>
+
+              <p>
+                We measure leadership by the progress, opportunity and
+                meaningful outcomes it helps create.
+              </p>
+            </div>
+
+            <div class="leadership-slide-footer">
+              Make it matter
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </article>
+
+
+          <!-- DUPLICATES FOR SEAMLESS LOOP -->
+
+          <article class="leadership-slide-card">
+            <div>
+              <div class="leadership-slide-top">
+                <div class="leadership-slide-icon">
+                  <i class="fa-solid fa-eye"></i>
+                </div>
+                <span class="leadership-slide-number">01</span>
+              </div>
+              <h3>Vision</h3>
+              <p>We look beyond immediate results and build with a clear, long-term direction in mind.</p>
+            </div>
+            <div class="leadership-slide-footer">Think ahead <i class="fa-solid fa-arrow-right"></i></div>
+          </article>
+
+          <article class="leadership-slide-card">
+            <div>
+              <div class="leadership-slide-top">
+                <div class="leadership-slide-icon">
+                  <i class="fa-solid fa-handshake"></i>
+                </div>
+                <span class="leadership-slide-number">02</span>
+              </div>
+              <h3>Ownership</h3>
+              <p>We encourage people to take responsibility, make decisions and carry ideas through to execution.</p>
+            </div>
+            <div class="leadership-slide-footer">Take responsibility <i class="fa-solid fa-arrow-right"></i></div>
+          </article>
+
+          <article class="leadership-slide-card">
+            <div>
+              <div class="leadership-slide-top">
+                <div class="leadership-slide-icon">
+                  <i class="fa-solid fa-users"></i>
+                </div>
+                <span class="leadership-slide-number">03</span>
+              </div>
+              <h3>Collaboration</h3>
+              <p>Better ideas come from different perspectives working together with trust and openness.</p>
+            </div>
+            <div class="leadership-slide-footer">Build together <i class="fa-solid fa-arrow-right"></i></div>
+          </article>
+
+          <article class="leadership-slide-card">
+            <div>
+              <div class="leadership-slide-top">
+                <div class="leadership-slide-icon">
+                  <i class="fa-solid fa-lightbulb"></i>
+                </div>
+                <span class="leadership-slide-number">04</span>
+              </div>
+              <h3>Innovation</h3>
+              <p>We encourage thoughtful experimentation, new ideas and better ways to create useful outcomes.</p>
+            </div>
+            <div class="leadership-slide-footer">Create better <i class="fa-solid fa-arrow-right"></i></div>
+          </article>
+
+          <article class="leadership-slide-card">
+            <div>
+              <div class="leadership-slide-top">
+                <div class="leadership-slide-icon">
+                  <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <span class="leadership-slide-number">05</span>
+              </div>
+              <h3>Impact</h3>
+              <p>We measure leadership by the progress, opportunity and meaningful outcomes it helps create.</p>
+            </div>
+            <div class="leadership-slide-footer">Make it matter <i class="fa-solid fa-arrow-right"></i></div>
+          </article>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- LEARNING WITH LEADERSHIP -->
+  <section class="learning-leadership">
+    <div class="learning-leadership-inner">
+
+      <!-- LEFT: ONE PROFESSIONAL IMAGE AT A TIME -->
+      <div class="learning-leadership-visual">
+        <div class="learning-image-slider" id="learningImageSlider">
+          <div class="learning-image-slide active">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=88" alt="Leadership mentoring session">
+            <div class="learning-image-chip"><i class="fa-solid fa-users"></i> Guided by experience</div>
+          </div>
+          <div class="learning-image-slide">
+            <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1400&q=88" alt="Team collaboration and learning">
+            <div class="learning-image-chip"><i class="fa-solid fa-comments"></i> Shared thinking</div>
+          </div>
+          <div class="learning-image-slide">
+            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1400&q=88" alt="Professional learning workshop">
+            <div class="learning-image-chip"><i class="fa-solid fa-lightbulb"></i> Real application</div>
+          </div>
+          <div class="learning-slider-progress" aria-hidden="true">
+            <span class="active"></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: SMALL PROFESSIONAL CONTENT -->
+      <div class="learning-leadership-copy">
+        
+
+        <h2>
+          Learn from people<br>
+          who <span>lead by doing.</span>
+        </h2>
+
+        
+
+        <div class="learning-mini-points">
+          <div class="learning-mini-point">
+            <div class="learning-mini-icon"><i class="fa-solid fa-compass"></i></div>
+            <div>
+              <strong>Practical Direction</strong>
+              <span>Clear guidance that connects learning with real-world choices.</span>
+            </div>
+          </div>
+
+          <div class="learning-mini-point">
+            <div class="learning-mini-icon"><i class="fa-solid fa-people-group"></i></div>
+            <div>
+              <strong>Collaborative Thinking</strong>
+              <span>Learn through discussion, feedback and shared problem-solving.</span>
+            </div>
+          </div>
+
+          <div class="learning-mini-point">
+            <div class="learning-mini-icon"><i class="fa-solid fa-bolt"></i></div>
+            <div>
+              <strong>Confidence to Act</strong>
+              <span>Turn insight into ownership, action and measurable progress.</span>
+            </div>
+          </div>
+        </div>
+
+        
+      </div>
+
+    </div>
+  </section>
+
+
+</main>
+
 
 <script>
   const menuToggle = document.getElementById("menuToggle");
@@ -638,4 +2877,65 @@
     });
 
   });
+
+  // Leadership card carousel controls
+  const leadershipTrack = document.getElementById("leadershipCarouselTrack");
+  const leadershipPrev = document.querySelector(".leadership-prev");
+  const leadershipNext = document.querySelector(".leadership-next");
+
+  if(leadershipTrack && leadershipPrev && leadershipNext){
+
+    let manualOffset = 0;
+    const cardStep = 288;
+
+    function moveLeadershipCards(direction){
+      leadershipTrack.style.animation = "none";
+      manualOffset += direction * cardStep;
+
+      const maxOffset = -(leadershipTrack.scrollWidth / 2);
+
+      if(manualOffset < maxOffset){
+        manualOffset = 0;
+      }
+
+      if(manualOffset > 0){
+        manualOffset = maxOffset + cardStep;
+      }
+
+      leadershipTrack.style.transition = "transform .45s ease";
+      leadershipTrack.style.transform = `translateX(${manualOffset}px)`;
+    }
+
+    leadershipPrev.addEventListener("click", function(){
+      moveLeadershipCards(1);
+    });
+
+    leadershipNext.addEventListener("click", function(){
+      moveLeadershipCards(-1);
+    });
+
+  }
+
+
+
+// Learning with Leadership: show one image after another
+(function(){
+  const slider = document.getElementById('learningImageSlider');
+  if(!slider) return;
+  const slides = [...slider.querySelectorAll('.learning-image-slide')];
+  const bars = [...slider.querySelectorAll('.learning-slider-progress span')];
+  let current = 0;
+  const showSlide = (index) => {
+    slides.forEach((slide,i)=>slide.classList.toggle('active',i===index));
+    bars.forEach((bar,i)=>{
+      bar.classList.remove('active');
+      void bar.offsetWidth;
+      if(i===index) bar.classList.add('active');
+    });
+  };
+  setInterval(()=>{
+    current=(current+1)%slides.length;
+    showSlide(current);
+  },4000);
+})();
 </script>
