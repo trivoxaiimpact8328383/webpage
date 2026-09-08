@@ -1,1 +1,779 @@
 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Blogs | TRIVOX AI IMPACT</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:Arial,Helvetica,sans-serif;background:#fff;color:#121217}a{text-decoration:none;color:inherit}
+.navbar{width:100%;height:76px;position:fixed;top:0;left:0;z-index:9999;display:flex;align-items:center;justify-content:space-between;padding:0 4%;background:rgba(255,255,255,.86);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(0,0,0,.06)}
+.logo{display:flex;align-items:center;white-space:nowrap;font-size:23px;font-weight:900;letter-spacing:-1px}.logo-main{background:linear-gradient(to bottom,#111 0%,#111 50%,#7450e8 50%,#7450e8 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}.logo-impact{margin-left:7px;background:linear-gradient(to bottom,#7450e8 0%,#7450e8 50%,#222 50%,#222 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.nav-menu{display:flex;align-items:center;gap:3px;list-style:none}.nav-item{position:relative}.nav-link{padding:28px 10px;display:flex;align-items:center;gap:6px;font-size:13.5px;font-weight:600;color:#37373d;cursor:pointer;white-space:nowrap;transition:.2s}.nav-link:hover{color:#7450e8}.arrow{width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:.2s}.nav-item:hover .arrow{transform:rotate(225deg)}
+.dropdown{position:absolute;top:68px;left:0;width:245px;padding:10px;background:#fff;border:1px solid #ededf2;border-radius:15px;box-shadow:0 18px 50px rgba(0,0,0,.10);opacity:0;visibility:hidden;transform:translateY(12px);transition:.22s}.nav-item:hover>.dropdown{opacity:1;visibility:visible;transform:translateY(0)}.dropdown>a{display:block;padding:12px 13px;border-radius:10px;font-size:13.5px;color:#444;transition:.2s}.dropdown>a:hover{background:#f6f3ff;color:#7450e8;padding-left:17px}.mega-dropdown{width:620px;display:grid;grid-template-columns:repeat(2,1fr);gap:7px;padding:15px}.mega-box{padding:14px;border-radius:12px}.mega-box:hover{background:#f7f5ff}.mega-box strong{display:block;margin-bottom:5px;font-size:14px}.mega-box p{color:#777;font-size:12px;line-height:1.5}
+.nav-actions{display:flex;align-items:center;gap:10px}.login-btn{padding:10px 14px;font-size:13.5px;font-weight:600;border-radius:9px;border:none;background:transparent;cursor:pointer}.get-started{padding:11px 17px;background:#111;color:#fff;border-radius:10px;font-size:13.5px;font-weight:700}.signin-dropdown-wrap{position:relative}.signin-main-btn{display:flex;align-items:center;gap:7px}.signin-dropdown{position:absolute;right:0;top:52px;width:230px;padding:9px;background:#fff;border:1px solid #ededf2;border-radius:14px;box-shadow:0 18px 50px rgba(0,0,0,.10);opacity:0;visibility:hidden;transform:translateY(10px);transition:.2s}.signin-dropdown-wrap:hover .signin-dropdown{opacity:1;visibility:visible;transform:translateY(0)}.signin-dropdown a{display:flex;align-items:center;gap:11px;padding:12px;border-radius:10px}.signin-dropdown a:hover{background:#f6f3ff}.signin-dropdown i{color:#7450e8}.signin-dropdown strong{display:block;font-size:13px}.signin-dropdown span{display:block;margin-top:3px;font-size:10.5px;color:#888}.menu-toggle{display:none;width:42px;height:42px;border:0;background:#f3f3f5;border-radius:10px;align-items:center;justify-content:center;flex-direction:column;gap:4px;cursor:pointer}.menu-toggle span{width:20px;height:2px;background:#111}
+.blog-page{padding-top:76px;overflow:hidden}.blog-hero{padding:86px 6% 54px;background:linear-gradient(180deg,#faf9ff 0%,#fff 100%);position:relative}.blog-hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 15%,rgba(116,80,232,.10),transparent 26%);pointer-events:none}.blog-hero-inner{max-width:1240px;margin:auto;position:relative;z-index:1}.blog-kicker{display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border-radius:999px;border:1px solid #e7e1ff;background:#f6f3ff;color:#7450e8;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase}.blog-kicker:before{content:"";width:7px;height:7px;border-radius:50%;background:#7450e8}.blog-hero h1{max-width:780px;margin-top:22px;font-size:clamp(46px,6vw,82px);line-height:.98;letter-spacing:-4px}.blog-hero h1 span{color:#7450e8}.blog-hero p{max-width:620px;margin-top:24px;color:#6f6f78;font-size:16px;line-height:1.8}
+.featured{padding:28px 6% 90px}.featured-inner{max-width:1240px;margin:auto;display:grid;grid-template-columns:1.25fr .75fr;gap:26px}.featured-card{min-height:520px;border-radius:28px;overflow:hidden;position:relative;background:#1d1d22;color:#fff;box-shadow:0 22px 55px rgba(0,0,0,.10)}.featured-card img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;transition:transform .7s ease}.featured-card:hover img{transform:scale(1.045)}.featured-card:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.72))}.featured-content{position:absolute;left:34px;right:34px;bottom:34px;z-index:2}.meta{display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:11px;font-weight:700;letter-spacing:.5px}.meta .tag{padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.16);backdrop-filter:blur(10px)}.featured-content h2{max-width:720px;margin:16px 0 12px;font-size:clamp(30px,3.7vw,52px);line-height:1.04;letter-spacing:-2px}.featured-content p{max-width:620px;color:rgba(255,255,255,.80);font-size:14px;line-height:1.7}.side-feature{display:grid;gap:18px}.mini-feature{min-height:251px;border:1px solid #ececf2;border-radius:24px;padding:26px;background:#fff;display:flex;flex-direction:column;justify-content:space-between;transition:.25s}.mini-feature:hover{transform:translateY(-5px);box-shadow:0 18px 42px rgba(116,80,232,.09);border-color:#ddd4ff}.mini-icon{width:48px;height:48px;border-radius:14px;background:#f3efff;color:#7450e8;display:flex;align-items:center;justify-content:center;font-size:18px}.mini-feature small{display:block;margin-top:26px;color:#7450e8;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1.3px}.mini-feature h3{margin-top:10px;font-size:24px;line-height:1.15;letter-spacing:-.7px}.mini-feature p{margin-top:9px;color:#777781;font-size:13px;line-height:1.65}
+.section{padding:100px 6%;background:#fff}.section.alt{background:#fafafa}.section-inner{max-width:1240px;margin:auto}.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:42px}.section-label{color:#7450e8;font-size:11px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase}.section-head h2{margin-top:12px;font-size:clamp(38px,4.5vw,60px);line-height:1;letter-spacing:-3px}.section-head p{max-width:430px;color:#777781;font-size:14px;line-height:1.7}.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.blog-card{border:1px solid #ececf2;border-radius:22px;overflow:hidden;background:#fff;transition:.28s}.blog-card:hover{transform:translateY(-7px);box-shadow:0 20px 50px rgba(0,0,0,.08)}.blog-thumb{height:215px;overflow:hidden;background:#eee}.blog-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .55s ease}.blog-card:hover .blog-thumb img{transform:scale(1.06)}.blog-body{padding:22px}.blog-category{color:#7450e8;font-size:10px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase}.blog-body h3{margin:10px 0 10px;font-size:21px;line-height:1.22;letter-spacing:-.6px}.blog-body p{color:#777781;font-size:13px;line-height:1.65}.blog-footer{margin-top:20px;padding-top:17px;border-top:1px solid #efeff3;display:flex;justify-content:space-between;color:#8a8a93;font-size:11px}.blog-footer strong{color:#2a2a2f}.categories{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.category-card{padding:26px;border-radius:20px;background:#fff;border:1px solid #eaeaf0;min-height:180px;transition:.25s}.category-card:hover{border-color:#d9d0ff;transform:translateY(-4px)}.category-card i{font-size:22px;color:#7450e8}.category-card h3{margin-top:38px;font-size:20px}.category-card p{margin-top:8px;color:#7b7b84;font-size:12px;line-height:1.55}.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}.reveal.show{opacity:1;transform:none}
+@media(max-width:1000px){.navbar{height:70px;padding:0 18px}.logo{font-size:18px}.login-btn,.get-started{display:none}.menu-toggle{display:flex}.nav-menu{position:absolute;top:70px;left:0;width:100%;max-height:calc(100vh - 70px);overflow:auto;display:flex;flex-direction:column;align-items:stretch;padding:12px 14px 18px;background:#fff;transform:translateY(-120%);opacity:0;pointer-events:none;transition:.3s}.nav-menu.active{transform:translateY(0);opacity:1;pointer-events:auto}.nav-item{width:100%}.nav-link{width:100%;padding:15px 13px;justify-content:space-between}.dropdown{position:static;width:100%;max-height:0;overflow:hidden;padding:0 8px;opacity:1;visibility:visible;transform:none;background:#fafafa;box-shadow:none;border:none;transition:.3s}.nav-item.open>.dropdown{max-height:1000px;padding:8px}.mega-dropdown{display:block}.blog-page{padding-top:70px}.featured-inner{grid-template-columns:1fr}.side-feature{grid-template-columns:1fr 1fr}.blog-grid{grid-template-columns:1fr 1fr}.categories{grid-template-columns:1fr 1fr}}
+@media(max-width:650px){.navbar{padding:0 14px}.logo{font-size:16px}.blog-hero{padding:64px 20px 38px}.blog-hero h1{letter-spacing:-2.6px}.featured{padding:20px 20px 70px}.featured-card{min-height:440px}.featured-content{left:22px;right:22px;bottom:24px}.side-feature{grid-template-columns:1fr}.section{padding:74px 20px}.section-head{flex-direction:column;align-items:flex-start;margin-bottom:30px}.section-head h2{letter-spacing:-2px}.blog-grid{grid-template-columns:1fr}.categories{grid-template-columns:1fr}}
+
+/* =====================================================
+   FEATURED IMAGE TEXT - ONE LINE AT A TIME
+   Only the text over the main image is animated
+===================================================== */
+.featured-motion{
+  position:relative;
+  min-height:1.15em;
+  overflow:hidden;
+}
+
+.featured-motion span{
+  position:absolute;
+  left:0;
+  top:0;
+  width:100%;
+  opacity:0;
+  transform:translateY(24px);
+  filter:blur(3px);
+  animation:featuredTextCycle 8.4s cubic-bezier(.22,1,.36,1) infinite;
+  will-change:opacity,transform,filter;
+}
+
+.featured-motion span:nth-child(1){animation-delay:0s;}
+.featured-motion span:nth-child(2){animation-delay:2.8s;}
+.featured-motion span:nth-child(3){animation-delay:5.6s;}
+
+@keyframes featuredTextCycle{
+  0%{
+    opacity:0;
+    transform:translateY(22px);
+    filter:blur(3px);
+  }
+  9%{
+    opacity:1;
+    transform:translateY(0);
+    filter:blur(0);
+  }
+  25%{
+    opacity:1;
+    transform:translateY(0);
+    filter:blur(0);
+  }
+  32%{
+    opacity:0;
+    transform:translateY(-20px);
+    filter:blur(2px);
+  }
+  100%{
+    opacity:0;
+    transform:translateY(-20px);
+    filter:blur(2px);
+  }
+}
+
+/* =====================================================
+   MOBILE / TABLET CLEANUP
+===================================================== */
+html,body{
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden;
+}
+
+img{
+  display:block;
+  max-width:100%;
+}
+
+@media(max-width:1000px){
+  .blog-hero{
+    padding:70px 24px 42px;
+  }
+
+  .featured{
+    padding:22px 24px 72px;
+  }
+
+  .section{
+    padding:78px 24px;
+  }
+
+  .featured-inner{
+    grid-template-columns:1fr;
+    gap:18px;
+  }
+
+  .side-feature{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:14px;
+  }
+
+  .blog-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:16px;
+  }
+
+  .categories{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:14px;
+  }
+}
+
+@media(max-width:650px){
+  .navbar{
+    padding:0 12px;
+  }
+
+  .logo{
+    font-size:15px;
+  }
+
+  .blog-page{
+    padding-top:70px;
+  }
+
+  .blog-hero{
+    padding:48px 14px 30px;
+  }
+
+  .blog-kicker{
+    font-size:9px;
+    padding:6px 10px;
+  }
+
+  .blog-hero h1{
+    margin-top:16px;
+    font-size:clamp(34px,10vw,44px);
+    line-height:1.02;
+    letter-spacing:-2px;
+  }
+
+  .blog-hero p{
+    margin-top:16px;
+    font-size:13px;
+    line-height:1.62;
+  }
+
+  .featured{
+    padding:12px 14px 54px;
+  }
+
+  .featured-inner{
+    gap:12px;
+  }
+
+  .featured-card{
+    min-height:350px;
+    border-radius:18px;
+  }
+
+  .featured-content{
+    left:16px;
+    right:16px;
+    bottom:18px;
+  }
+
+  .meta{
+    gap:6px;
+    font-size:9px;
+  }
+
+  .meta .tag{
+    padding:5px 8px;
+  }
+
+  .featured-content h2{
+    margin:12px 0 10px;
+    font-size:clamp(22px,7vw,29px);
+    line-height:1.08;
+    letter-spacing:-1px;
+  }
+
+  .featured-content p{
+    font-size:11.5px;
+    line-height:1.5;
+  }
+
+  .side-feature{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:9px;
+  }
+
+  .mini-feature{
+    min-height:200px;
+    padding:14px;
+    border-radius:14px;
+  }
+
+  .mini-icon{
+    width:36px;
+    height:36px;
+    border-radius:10px;
+    font-size:13px;
+  }
+
+  .mini-feature small{
+    margin-top:15px;
+    font-size:7.5px;
+    letter-spacing:.8px;
+  }
+
+  .mini-feature h3{
+    margin-top:7px;
+    font-size:14px;
+    line-height:1.2;
+  }
+
+  .mini-feature p{
+    margin-top:6px;
+    font-size:9.5px;
+    line-height:1.45;
+  }
+
+  .section{
+    padding:54px 14px;
+  }
+
+  .section-head{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:12px;
+    margin-bottom:22px;
+  }
+
+  .section-label{
+    font-size:8.5px;
+  }
+
+  .section-head h2{
+    margin-top:7px;
+    font-size:clamp(28px,8vw,36px);
+    line-height:1.04;
+    letter-spacing:-1.5px;
+  }
+
+  .section-head p{
+    font-size:10.5px;
+    line-height:1.5;
+  }
+
+  /* 2 cards per row on mobile */
+  .blog-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:9px;
+  }
+
+  .blog-card{
+    min-width:0;
+    border-radius:13px;
+  }
+
+  .blog-thumb{
+    height:112px;
+  }
+
+  .blog-body{
+    padding:10px;
+  }
+
+  .blog-category{
+    font-size:7px;
+    letter-spacing:.7px;
+  }
+
+  .blog-body h3{
+    margin:6px 0;
+    font-size:12px;
+    line-height:1.22;
+    letter-spacing:0;
+  }
+
+  .blog-body p{
+    font-size:9px;
+    line-height:1.42;
+  }
+
+  .blog-footer{
+    margin-top:9px;
+    padding-top:8px;
+    font-size:7.8px;
+    gap:5px;
+    flex-wrap:wrap;
+  }
+
+  .categories{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:9px;
+  }
+
+  .category-card{
+    min-height:135px;
+    padding:14px;
+    border-radius:13px;
+  }
+
+  .category-card i{
+    font-size:17px;
+  }
+
+  .category-card h3{
+    margin-top:20px;
+    font-size:14px;
+  }
+
+  .category-card p{
+    margin-top:5px;
+    font-size:9px;
+    line-height:1.4;
+  }
+}
+
+@media(max-width:380px){
+  .blog-hero,
+  .featured,
+  .section{
+    padding-left:11px;
+    padding-right:11px;
+  }
+
+  .blog-grid,
+  .categories,
+  .side-feature{
+    gap:7px;
+  }
+
+  .blog-body{
+    padding:9px;
+  }
+
+  .blog-body h3{
+    font-size:11.5px;
+  }
+
+  .blog-body p{
+    font-size:8.5px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .featured-motion{
+    min-height:auto;
+    overflow:visible;
+  }
+
+  .featured-motion span{
+    position:static;
+    display:block;
+    opacity:1;
+    transform:none;
+    filter:none;
+    animation:none;
+  }
+}
+
+
+/* MOBILE BLOG THUMB POLISH - ONE CARD PER ROW */
+@media(max-width:650px){
+  .blog-grid{
+    grid-template-columns:1fr !important;
+    gap:18px !important;
+  }
+
+  .blog-card{
+    border-radius:18px;
+    overflow:hidden;
+  }
+
+  .blog-thumb{
+    width:100%;
+    height:auto;
+    aspect-ratio:16 / 9;
+    overflow:hidden;
+    background:#f1f1f4;
+  }
+
+  .blog-thumb img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+    display:block;
+  }
+
+  .blog-body{
+    padding:18px;
+  }
+
+  .blog-category{
+    font-size:9px;
+    letter-spacing:1px;
+  }
+
+  .blog-body h3{
+    margin:9px 0 8px;
+    font-size:18px;
+    line-height:1.25;
+    letter-spacing:-.35px;
+  }
+
+  .blog-body p{
+    font-size:12px;
+    line-height:1.6;
+  }
+
+  .blog-footer{
+    margin-top:16px;
+    padding-top:13px;
+    font-size:10px;
+    gap:10px;
+    flex-wrap:nowrap;
+  }
+}
+
+@media(max-width:380px){
+  .blog-thumb{
+    aspect-ratio:16 / 9;
+  }
+
+  .blog-body{
+    padding:16px;
+  }
+
+  .blog-body h3{
+    font-size:17px;
+  }
+
+  .blog-body p{
+    font-size:11.5px;
+  }
+}
+@media(max-width:650px){
+
+  .blog-thumb{
+    width:100%;
+    height:auto !important;
+    aspect-ratio:auto !important;
+    background:#f5f5f5;
+    overflow:hidden;
+  }
+
+  .blog-thumb img{
+    width:100%;
+    height:auto !important;
+    object-fit:contain !important;
+    object-position:center;
+    transform:none !important;
+  }
+
+  .blog-card:hover .blog-thumb img{
+    transform:none !important;
+  }
+}
+
+
+/* MOBILE PAGE ZOOM LOCK */
+html{
+  touch-action:pan-x pan-y;
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+}
+
+body{
+  touch-action:pan-x pan-y;
+}
+
+</style>
+</head>
+<body>
+<nav class="navbar">
+
+  <a href="index.html" class="logo">
+    <span class="logo-main">TRIVOX</span>
+    <span class="logo-impact">AI IMPACT</span>
+  </a>
+
+  <ul class="nav-menu" id="navMenu">
+
+    <!-- COMPANY -->
+    <li class="nav-item has-dropdown">
+      <div class="nav-link">
+        Company
+        <span class="arrow"></span>
+      </div>
+
+      <div class="dropdown">
+        <a href="about.html">About TRIVOX</a>
+        <a href="mission.html">Our Mission</a>
+        <a href="vision.html">Our Vision</a>
+        <a href="leader.html">Leadership</a>
+        <a href="team.html">Our Team</a>
+        <a href="partners.html">Partners</a>
+        <a href="impact.html">Impact</a>
+      </div>
+    </li>
+
+
+    <!-- LEARNING -->
+    <li class="nav-item has-dropdown">
+      <div class="nav-link">
+        Learning
+        <span class="arrow"></span>
+      </div>
+
+      <div class="dropdown mega-dropdown">
+
+        <a href="learning/ailearning.html" class="mega-box">
+          <strong>AI Learning</strong>
+          <p>Learn AI concepts, tools and real-world applications.</p>
+        </a>
+
+        <a href="learning/programming.html" class="mega-box">
+          <strong>Programming</strong>
+          <p>Build strong coding and problem-solving skills.</p>
+        </a>
+
+        <a href="learning/webdevelopment.html" class="mega-box">
+          <strong>Web Development</strong>
+          <p>Build responsive modern websites.</p>
+        </a>
+
+        <a href="learning/appdevelopment.html" class="mega-box">
+          <strong>App Development</strong>
+          <p>Learn modern application development.</p>
+        </a>
+
+        <a href="learning/datascience.html" class="mega-box">
+          <strong>Data Science</strong>
+          <p>Explore analytics and intelligent data.</p>
+        </a>
+
+        <a href="learning/cybersecurity.html" class="mega-box">
+          <strong>Cyber Security</strong>
+          <p>Understand security concepts and practices.</p>
+        </a>
+
+      </div>
+    </li>
+
+
+    <!-- PROGRAMS -->
+    <li class="nav-item has-dropdown">
+      <div class="nav-link">
+        Programs
+        <span class="arrow"></span>
+      </div>
+
+      <div class="dropdown">
+        <a href="programs/student-programs.html">Student Programs</a>
+        <a href="programs/college-programs.html">College Programs</a>
+        <a href="programs/internships.html">Internships</a>
+        <a href="programs/workshops.html">Workshops</a>
+        <a href="programs/bootcamps.html">Bootcamps</a>
+        <a href="programs/career-programs.html">Career Programs</a>
+        <a href="programs/certification-programs.html">
+          Certification Programs
+        </a>
+      </div>
+    </li>
+
+
+    <!-- SOLUTIONS -->
+    <li class="nav-item has-dropdown">
+      <div class="nav-link">
+        Solutions
+        <span class="arrow"></span>
+      </div>
+
+      <div class="dropdown mega-dropdown">
+
+        <a href="solutions/students.html" class="mega-box">
+          <strong>For Students</strong>
+          <p>Skills, projects and career support.</p>
+        </a>
+
+        <a href="solutions/colleges.html" class="mega-box">
+          <strong>For Colleges</strong>
+          <p>Industry-ready learning programs.</p>
+        </a>
+
+        <a href="solutions/schools.html" class="mega-box">
+          <strong>For Schools</strong>
+          <p>Modern technology and AI learning.</p>
+        </a>
+
+        <a href="solutions/companies.html" class="mega-box">
+          <strong>For Companies</strong>
+          <p>Training and technology solutions.</p>
+        </a>
+
+      </div>
+    </li>
+
+
+    <!-- RESOURCES -->
+    <li class="nav-item has-dropdown">
+      <div class="nav-link">
+        Resources
+        <span class="arrow"></span>
+      </div>
+
+      <div class="dropdown">
+        <a href="resources/blogs.html">Blogs</a>
+        <a href="resources/tutorials.html">Tutorials</a>
+        <a href="resources/learning-resources.html">Learning Resources</a>
+        <a href="resources/student-projects.html">Student Projects</a>
+        <a href="resources/success-stories.html">Success Stories</a>
+        <a href="resources/events.html">Events</a>
+        <a href="resources/faqs.html">FAQs</a>
+      </div>
+    </li>
+
+
+    <!-- CAREERS -->
+    <li class="nav-item has-dropdown">
+      <div class="nav-link">
+        Careers
+        <span class="arrow"></span>
+      </div>
+
+      <div class="dropdown">
+        <a href="careers/open-positions.html">Open Positions</a>
+        <a href="careers/internships.html">Internships</a>
+        <a href="careers/campus-hiring.html">Campus Hiring</a>
+        <a href="careers/join-team.html">Join Our Team</a>
+        <a href="careers/life-at-trivox.html">Life at TRIVOX</a>
+      </div>
+    </li>
+
+
+    <!-- CONTACT -->
+    <li class="nav-item">
+      <a href="contact/contact.html" class="nav-link">Contact</a>
+    </li>
+
+  </ul>
+
+
+  <div class="nav-actions">
+
+    <div class="signin-dropdown-wrap">
+
+      <button class="login-btn signin-main-btn" type="button">
+        Sign In
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+
+      <div class="signin-dropdown">
+
+        <a href="documentary.html">
+          <i class="fa-solid fa-video"></i>
+
+          <div>
+            <strong>Documentary</strong>
+            <span>Sign in for documentary</span>
+          </div>
+        </a>
+
+        <a href="course.html">
+          <i class="fa-solid fa-graduation-cap"></i>
+
+          <div>
+            <strong>Course</strong>
+            <span>Sign in for courses</span>
+          </div>
+        </a>
+
+      </div>
+
+    </div>
+
+    <a href="course.html" class="get-started">
+      Get Started
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" type="button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </div>
+
+</nav>
+<main class="blog-page">
+  <section class="blog-hero">
+    <div class="blog-hero-inner reveal">
+      <div class="blog-kicker">TRIVOX Insights</div>
+      <h1>Ideas that help learners <span>think further.</span></h1>
+      <p>Explore practical perspectives on AI, technology, careers, leadership and student growth — written to turn curiosity into useful action.</p>
+    </div>
+  </section>
+
+  <section class="featured">
+    <div class="featured-inner">
+      <article class="featured-card reveal">
+        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=88" alt="Students learning with technology">
+        <div class="featured-content">
+          
+          <h2 class="featured-motion">
+            <span>How students can learn AI</span>
+            <span>without getting lost</span>
+            <span>in the hype.</span>
+          </h2>
+          <p>A practical framework for understanding tools, building foundational skills and using AI with purpose.</p>
+        </div>
+      </article>
+
+      <div class="side-feature">
+        <article class="mini-feature reveal">
+          <div><div class="mini-icon"><i class="fa-solid fa-compass"></i></div><small>Career Readiness</small><h3>From learning to real-world confidence.</h3><p>What students should practice before internships, projects and early career opportunities.</p></div>
+        </article>
+        <article class="mini-feature reveal">
+          <div><div class="mini-icon"><i class="fa-solid fa-people-group"></i></div><small>Leadership</small><h3>Why good leadership starts with listening.</h3><p>Simple leadership habits that make teams learn, communicate and act better.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <div><div class="section-label">Latest Articles</div><h2>Fresh thinking, made practical.</h2></div>
+        
+      </div>
+      <div class="blog-grid">
+        <article class="blog-card reveal"><div class="blog-thumb"><img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1000&q=85" alt="Collaborative student learning"></div><div class="blog-body"><div class="blog-category">Learning</div><h3>What makes project-based learning actually work?</h3><p>Move beyond assignments and create projects that build judgment, ownership and useful skills.</p><div class="blog-footer"><strong>TRIVOX Editorial</strong><span>6 min read</span></div></div></article>
+        <article class="blog-card reveal"><div class="blog-thumb"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1000&q=85" alt="Professional mentoring discussion"></div><div class="blog-body"><div class="blog-category">Leadership</div><h3>Mentorship is more than giving advice.</h3><p>The best mentors help learners ask stronger questions and make better decisions independently.</p><div class="blog-footer"><strong>TRIVOX Editorial</strong><span>5 min read</span></div></div></article>
+        <article class="blog-card reveal"><div class="blog-thumb"><img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1000&q=85" alt="Artificial intelligence and code"></div><div class="blog-body"><div class="blog-category">AI & Technology</div><h3>AI tools are changing. Foundations still matter.</h3><p>Why reasoning, communication and technical fundamentals become more valuable as tools evolve.</p><div class="blog-footer"><strong>TRIVOX Editorial</strong><span>7 min read</span></div></div></article>
+        <article class="blog-card reveal"><div class="blog-thumb"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=85" alt="Modern work environment"></div><div class="blog-body"><div class="blog-category">Careers</div><h3>Career readiness begins before the first interview.</h3><p>Build proof of work, communication habits and confidence long before applications begin.</p><div class="blog-footer"><strong>TRIVOX Editorial</strong><span>5 min read</span></div></div></article>
+        <article class="blog-card reveal"><div class="blog-thumb"><img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1000&q=85" alt="Classroom discussion"></div><div class="blog-body"><div class="blog-category">Education</div><h3>Students remember what they participate in.</h3><p>Design learning experiences around discussion, making, feedback and real contribution.</p><div class="blog-footer"><strong>TRIVOX Editorial</strong><span>4 min read</span></div></div></article>
+        <article class="blog-card reveal"><div class="blog-thumb"><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1000&q=85" alt="Team workshop"></div><div class="blog-body"><div class="blog-category">Growth</div><h3>Confidence grows through repeated small wins.</h3><p>A better way to help learners move from hesitation to consistent action and visible progress.</p><div class="blog-footer"><strong>TRIVOX Editorial</strong><span>5 min read</span></div></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-head reveal"><div><div class="section-label">Explore Topics</div><h2>Read by interest.</h2></div></div>
+      <div class="categories">
+        <div class="category-card reveal"><i class="fa-solid fa-brain"></i><h3>AI & Technology</h3><p>Tools, fundamentals, digital thinking and emerging technology.</p></div>
+        <div class="category-card reveal"><i class="fa-solid fa-graduation-cap"></i><h3>Learning</h3><p>Better ways to learn, practice, build and demonstrate skills.</p></div>
+        <div class="category-card reveal"><i class="fa-solid fa-briefcase"></i><h3>Careers</h3><p>Projects, readiness, communication, opportunities and workplace skills.</p></div>
+        <div class="category-card reveal"><i class="fa-solid fa-users-gear"></i><h3>Leadership</h3><p>Mentorship, ownership, decisions, teams and meaningful impact.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+const menuToggle=document.getElementById("menuToggle"),navMenu=document.getElementById("navMenu");
+if(menuToggle){menuToggle.addEventListener("click",()=>navMenu.classList.toggle("active"));}
+document.querySelectorAll(".has-dropdown > .nav-link").forEach(item=>item.addEventListener("click",e=>{if(window.innerWidth<=1000){e.preventDefault();const parent=item.parentElement;document.querySelectorAll(".has-dropdown").forEach(other=>{if(other!==parent)other.classList.remove("open")});parent.classList.toggle("open")}}));
+document.querySelectorAll(".dropdown a").forEach(link=>link.addEventListener("click",()=>{navMenu.classList.remove("active");document.querySelectorAll(".has-dropdown").forEach(item=>item.classList.remove("open"))}));
+const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('show');observer.unobserve(entry.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+</body></html>
