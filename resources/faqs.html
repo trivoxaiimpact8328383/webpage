@@ -1,1 +1,4153 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover"
+>
+
+<title>FAQs | TRIVOX AI IMPACT</title>
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+/>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+  overflow-x:hidden;
+  -webkit-text-size-adjust:100%;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  color:#121217;
+  background:#fff;
+  overflow-x:hidden;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar{
+  width:100%;
+  height:76px;
+
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:9999;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:0 4%;
+
+  background:rgba(255,255,255,.86);
+
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+
+  border-bottom:1px solid rgba(0,0,0,.06);
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+
+  white-space:nowrap;
+
+  font-size:23px;
+  font-weight:900;
+
+  letter-spacing:-1px;
+}
+
+.logo-main{
+  background:linear-gradient(
+    to bottom,
+    #111 0%,
+    #111 50%,
+    #7450e8 50%,
+    #7450e8 100%
+  );
+
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.logo-impact{
+  margin-left:7px;
+
+  background:linear-gradient(
+    to bottom,
+    #7450e8 0%,
+    #7450e8 50%,
+    #222 50%,
+    #222 100%
+  );
+
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.nav-menu{
+  display:flex;
+  align-items:center;
+
+  gap:3px;
+
+  list-style:none;
+}
+
+.nav-item{
+  position:relative;
+}
+
+.nav-link{
+  padding:28px 10px;
+
+  display:flex;
+  align-items:center;
+
+  gap:6px;
+
+  color:#37373d;
+
+  font-size:13.5px;
+  font-weight:600;
+
+  cursor:pointer;
+
+  white-space:nowrap;
+
+  transition:.2s;
+}
+
+.nav-link:hover{
+  color:#7450e8;
+}
+
+.arrow{
+  width:6px;
+  height:6px;
+
+  border-right:1.5px solid currentColor;
+  border-bottom:1.5px solid currentColor;
+
+  transform:rotate(45deg) translateY(-2px);
+
+  transition:.2s;
+}
+
+.nav-item:hover .arrow{
+  transform:rotate(225deg);
+}
+
+.dropdown{
+  position:absolute;
+
+  top:68px;
+  left:0;
+
+  width:245px;
+
+  padding:10px;
+
+  background:#fff;
+
+  border:1px solid #ededf2;
+  border-radius:15px;
+
+  box-shadow:0 18px 50px rgba(0,0,0,.10);
+
+  opacity:0;
+  visibility:hidden;
+
+  transform:translateY(12px);
+
+  transition:.22s;
+}
+
+.nav-item:hover > .dropdown{
+  opacity:1;
+  visibility:visible;
+
+  transform:translateY(0);
+}
+
+.dropdown > a{
+  display:block;
+
+  padding:12px 13px;
+
+  border-radius:10px;
+
+  color:#444;
+
+  font-size:13.5px;
+
+  transition:.2s;
+}
+
+.dropdown > a:hover{
+  background:#f6f3ff;
+
+  color:#7450e8;
+
+  padding-left:17px;
+}
+
+.mega-dropdown{
+  width:620px;
+
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+
+  gap:7px;
+
+  padding:15px;
+}
+
+.mega-box{
+  padding:14px;
+
+  border-radius:12px;
+}
+
+.mega-box:hover{
+  background:#f7f5ff;
+}
+
+.mega-box strong{
+  display:block;
+
+  margin-bottom:5px;
+
+  font-size:14px;
+}
+
+.mega-box p{
+  color:#777;
+
+  font-size:12px;
+
+  line-height:1.5;
+}
+
+.nav-actions{
+  display:flex;
+  align-items:center;
+
+  gap:10px;
+}
+
+.login-btn{
+  padding:10px 14px;
+
+  border:none;
+
+  background:transparent;
+
+  font-size:13.5px;
+  font-weight:600;
+
+  cursor:pointer;
+}
+
+.get-started{
+  padding:11px 17px;
+
+  background:#111;
+  color:#fff;
+
+  border-radius:10px;
+
+  font-size:13.5px;
+  font-weight:700;
+}
+
+.signin-dropdown-wrap{
+  position:relative;
+}
+
+.signin-main-btn{
+  display:flex;
+  align-items:center;
+
+  gap:7px;
+}
+
+.signin-dropdown{
+  position:absolute;
+
+  right:0;
+  top:52px;
+
+  width:230px;
+
+  padding:9px;
+
+  background:#fff;
+
+  border:1px solid #ededf2;
+  border-radius:14px;
+
+  box-shadow:0 18px 50px rgba(0,0,0,.10);
+
+  opacity:0;
+  visibility:hidden;
+
+  transform:translateY(10px);
+
+  transition:.2s;
+}
+
+.signin-dropdown-wrap:hover .signin-dropdown{
+  opacity:1;
+  visibility:visible;
+
+  transform:translateY(0);
+}
+
+.signin-dropdown a{
+  display:flex;
+  align-items:center;
+
+  gap:11px;
+
+  padding:12px;
+
+  border-radius:10px;
+}
+
+.signin-dropdown a:hover{
+  background:#f6f3ff;
+}
+
+.signin-dropdown i{
+  color:#7450e8;
+}
+
+.signin-dropdown strong{
+  display:block;
+
+  font-size:13px;
+}
+
+.signin-dropdown span{
+  display:block;
+
+  margin-top:3px;
+
+  color:#888;
+
+  font-size:10.5px;
+}
+
+.menu-toggle{
+  display:none;
+
+  width:42px;
+  height:42px;
+
+  border:0;
+
+  background:#f3f3f5;
+
+  border-radius:10px;
+
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+
+  gap:4px;
+
+  cursor:pointer;
+}
+
+.menu-toggle span{
+  width:20px;
+  height:2px;
+
+  background:#111;
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.faq-page{
+  padding-top:76px;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.faq-hero{
+  position:relative;
+
+  min-height:620px;
+
+  overflow:hidden;
+
+  display:flex;
+  align-items:center;
+
+  background:
+    radial-gradient(
+      circle at 78% 32%,
+      rgba(116,80,232,.16),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 15% 78%,
+      rgba(63,95,220,.07),
+      transparent 28%
+    ),
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #faf9ff 100%
+    );
+}
+
+.faq-hero::before{
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  background-image:
+    linear-gradient(
+      rgba(116,80,232,.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(116,80,232,.035) 1px,
+      transparent 1px
+    );
+
+  background-size:70px 70px;
+
+  mask-image:linear-gradient(
+    to bottom,
+    rgba(0,0,0,.65),
+    transparent
+  );
+}
+
+.faq-hero-inner{
+  width:100%;
+  max-width:1240px;
+
+  margin:auto;
+
+  padding:90px 6%;
+
+  display:grid;
+
+  grid-template-columns:1.05fr .95fr;
+
+  align-items:center;
+
+  gap:80px;
+
+  position:relative;
+  z-index:2;
+}
+
+.faq-kicker{
+  display:inline-flex;
+  align-items:center;
+
+  gap:8px;
+
+  padding:7px 13px;
+
+  border-radius:999px;
+
+  border:1px solid #e5dfff;
+
+  background:#f6f3ff;
+
+  color:#7450e8;
+
+  font-size:9px;
+  font-weight:800;
+
+  letter-spacing:1.5px;
+}
+
+.faq-kicker::before{
+  content:"";
+
+  width:6px;
+  height:6px;
+
+  border-radius:50%;
+
+  background:#7450e8;
+
+  box-shadow:0 0 14px rgba(116,80,232,.45);
+}
+
+.faq-hero h1{
+  max-width:720px;
+
+  margin-top:22px;
+
+  font-size:clamp(52px,6.3vw,88px);
+
+  line-height:.93;
+
+  letter-spacing:-4.5px;
+
+  font-weight:900;
+}
+
+.faq-hero h1 span{
+  color:#7450e8;
+}
+
+.faq-hero-copy{
+  max-width:560px;
+
+  margin-top:24px;
+
+  color:#75757f;
+
+  font-size:14px;
+
+  line-height:1.8;
+}
+
+.faq-search{
+  margin-top:30px;
+
+  max-width:560px;
+
+  display:flex;
+  align-items:center;
+
+  gap:12px;
+
+  padding:8px;
+
+  border:1px solid #e6e4ed;
+
+  border-radius:15px;
+
+  background:#fff;
+
+  box-shadow:0 16px 38px rgba(56,43,95,.06);
+}
+
+.faq-search i{
+  margin-left:10px;
+
+  color:#7450e8;
+}
+
+.faq-search input{
+  flex:1;
+
+  min-width:0;
+
+  border:0;
+  outline:0;
+
+  padding:11px 2px;
+
+  font:inherit;
+
+  font-size:12px;
+}
+
+.faq-search button{
+  min-height:40px;
+
+  padding:0 16px;
+
+  border:0;
+
+  border-radius:10px;
+
+  background:#111;
+  color:#fff;
+
+  font-size:10px;
+  font-weight:800;
+
+  cursor:pointer;
+}
+
+
+/* HERO RIGHT */
+
+.faq-visual{
+  min-height:440px;
+
+  position:relative;
+}
+
+.faq-orbit{
+  position:absolute;
+
+  width:360px;
+  height:360px;
+
+  right:30px;
+  top:30px;
+
+  border-radius:50%;
+
+  border:1px solid rgba(116,80,232,.15);
+
+  animation:faqRotate 26s linear infinite;
+}
+
+.faq-orbit::before{
+  content:"";
+
+  position:absolute;
+
+  inset:55px;
+
+  border-radius:50%;
+
+  border:1px dashed rgba(116,80,232,.18);
+}
+
+.faq-center{
+  width:210px;
+  height:250px;
+
+  position:absolute;
+
+  top:90px;
+  right:105px;
+
+  padding:25px;
+
+  border-radius:28px;
+
+  background:
+    radial-gradient(
+      circle at 85% 10%,
+      rgba(180,156,255,.45),
+      transparent 30%
+    ),
+    linear-gradient(
+      145deg,
+      #11132e,
+      #2f1a6f
+    );
+
+  color:#fff;
+
+  box-shadow:0 30px 70px rgba(52,34,102,.20);
+
+  animation:faqFloat 5s ease-in-out infinite;
+}
+
+.faq-center-icon{
+  width:55px;
+  height:55px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:17px;
+
+  background:rgba(255,255,255,.10);
+
+  font-size:22px;
+}
+
+.faq-center small{
+  display:block;
+
+  margin-top:36px;
+
+  color:#bbaaff;
+
+  font-size:7px;
+  font-weight:900;
+
+  letter-spacing:1.2px;
+}
+
+.faq-center h3{
+  margin-top:7px;
+
+  font-size:24px;
+}
+
+.faq-center p{
+  margin-top:9px;
+
+  color:rgba(255,255,255,.57);
+
+  font-size:9px;
+
+  line-height:1.55;
+}
+
+.faq-float{
+  position:absolute;
+
+  width:125px;
+  min-height:92px;
+
+  padding:14px;
+
+  border-radius:18px;
+
+  background:#fff;
+
+  border:1px solid #eceaf3;
+
+  box-shadow:0 18px 42px rgba(51,37,92,.08);
+
+  animation:faqMini 5s ease-in-out infinite;
+}
+
+.faq-float i{
+  color:#7450e8;
+
+  font-size:17px;
+}
+
+.faq-float strong{
+  display:block;
+
+  margin-top:9px;
+
+  font-size:10px;
+}
+
+.faq-float span{
+  display:block;
+
+  margin-top:4px;
+
+  color:#8a8a95;
+
+  font-size:7px;
+}
+
+.faq-float.one{
+  left:15px;
+  top:55px;
+}
+
+.faq-float.two{
+  right:-8px;
+  bottom:40px;
+
+  animation-delay:1s;
+}
+
+.faq-float.three{
+  left:35px;
+  bottom:25px;
+
+  animation-delay:2s;
+}
+
+@keyframes faqRotate{
+  to{
+    transform:rotate(360deg);
+  }
+}
+
+@keyframes faqFloat{
+  50%{
+    transform:translateY(-9px);
+  }
+}
+
+@keyframes faqMini{
+  50%{
+    transform:translateY(-7px);
+  }
+}
+
+
+/* =========================================================
+   CATEGORY STRIP
+========================================================= */
+
+.faq-categories{
+  padding:35px 6%;
+
+  border-top:1px solid #f0eef6;
+  border-bottom:1px solid #f0eef6;
+
+  background:#fff;
+}
+
+.faq-category-inner{
+  max-width:1240px;
+
+  margin:auto;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  overflow-x:auto;
+
+  scrollbar-width:none;
+}
+
+.faq-category-inner::-webkit-scrollbar{
+  display:none;
+}
+
+.faq-category{
+  flex-shrink:0;
+
+  padding:10px 14px;
+
+  border-radius:999px;
+
+  border:1px solid #e7e4ef;
+
+  background:#fff;
+
+  color:#62626c;
+
+  font-size:10px;
+  font-weight:700;
+
+  cursor:pointer;
+
+  transition:.2s;
+}
+
+.faq-category:hover,
+.faq-category.active{
+  background:#7450e8;
+
+  border-color:#7450e8;
+
+  color:#fff;
+}
+
+
+/* =========================================================
+   FAQ CONTENT
+========================================================= */
+
+.faq-section{
+  padding:105px 6%;
+
+  background:#fff;
+}
+
+.faq-section-inner{
+  max-width:1240px;
+
+  margin:auto;
+
+  display:grid;
+
+  grid-template-columns:.78fr 1.22fr;
+
+  gap:90px;
+
+  align-items:start;
+}
+
+.faq-intro{
+  position:sticky;
+
+  top:115px;
+}
+
+.section-label{
+  color:#7450e8;
+
+  font-size:10px;
+  font-weight:800;
+
+  letter-spacing:1.5px;
+}
+
+.faq-intro h2{
+  max-width:440px;
+
+  margin-top:13px;
+
+  font-size:clamp(42px,4.8vw,66px);
+
+  line-height:.98;
+
+  letter-spacing:-3.5px;
+}
+
+.faq-intro h2 span{
+  color:#7450e8;
+}
+
+.faq-intro p{
+  max-width:390px;
+
+  margin-top:20px;
+
+  color:#777781;
+
+  font-size:12px;
+
+  line-height:1.75;
+}
+
+.faq-help-card{
+  margin-top:30px;
+
+  max-width:390px;
+
+  padding:20px;
+
+  border-radius:20px;
+
+  background:#f7f4ff;
+
+  border:1px solid #e9e4ff;
+}
+
+.faq-help-card i{
+  width:38px;
+  height:38px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:11px;
+
+  background:#7450e8;
+  color:#fff;
+}
+
+.faq-help-card strong{
+  display:block;
+
+  margin-top:14px;
+
+  font-size:13px;
+}
+
+.faq-help-card p{
+  margin-top:7px;
+
+  font-size:10px;
+}
+
+.faq-help-card a{
+  display:inline-flex;
+
+  margin-top:14px;
+
+  color:#7450e8;
+
+  font-size:10px;
+  font-weight:800;
+}
+
+
+/* ACCORDION */
+
+.faq-list{
+  border-top:1px solid #e9e7ef;
+}
+
+.faq-item{
+  border-bottom:1px solid #e9e7ef;
+}
+
+.faq-question{
+  width:100%;
+
+  min-height:94px;
+
+  padding:0;
+
+  border:0;
+
+  background:transparent;
+
+  display:grid;
+
+  grid-template-columns:44px 1fr 42px;
+
+  align-items:center;
+
+  gap:18px;
+
+  text-align:left;
+
+  cursor:pointer;
+}
+
+.faq-number{
+  color:#7450e8;
+
+  font-size:9px;
+  font-weight:900;
+}
+
+.faq-question h3{
+  color:#1b1b21;
+
+  font-size:18px;
+
+  line-height:1.3;
+}
+
+.faq-toggle{
+  width:36px;
+  height:36px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:50%;
+
+  background:#f4f1fb;
+
+  color:#7450e8;
+
+  transition:.3s ease;
+}
+
+.faq-toggle i{
+  font-size:10px;
+}
+
+.faq-item.open .faq-toggle{
+  transform:rotate(45deg);
+
+  background:#7450e8;
+
+  color:#fff;
+}
+
+.faq-answer{
+  max-height:0;
+
+  overflow:hidden;
+
+  opacity:0;
+
+  transition:
+    max-height .35s ease,
+    opacity .25s ease;
+}
+
+.faq-answer-inner{
+  padding:
+    0
+    60px
+    25px
+    62px;
+
+  color:#777781;
+
+  font-size:12px;
+
+  line-height:1.75;
+}
+
+.faq-item.open .faq-answer{
+  max-height:260px;
+
+  opacity:1;
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.faq-cta{
+  padding:100px 6%;
+
+  background:
+    radial-gradient(
+      circle at 82% 20%,
+      rgba(116,80,232,.24),
+      transparent 28%
+    ),
+    linear-gradient(
+      135deg,
+      #0b0d24,
+      #11132f 58%,
+      #181239
+    );
+
+  color:#fff;
+}
+
+.faq-cta-inner{
+  max-width:1240px;
+
+  margin:auto;
+
+  display:grid;
+
+  grid-template-columns:1.1fr .9fr;
+
+  align-items:center;
+
+  gap:80px;
+}
+
+.faq-cta small{
+  color:#a991ff;
+
+  font-size:9px;
+  font-weight:800;
+
+  letter-spacing:1.6px;
+}
+
+.faq-cta h2{
+  margin-top:16px;
+
+  max-width:720px;
+
+  font-size:clamp(46px,5.7vw,78px);
+
+  line-height:.94;
+
+  letter-spacing:-4px;
+}
+
+.faq-cta h2 span{
+  color:#9b7fff;
+}
+
+.faq-cta p{
+  max-width:560px;
+
+  margin-top:22px;
+
+  color:rgba(255,255,255,.55);
+
+  font-size:12px;
+
+  line-height:1.75;
+}
+
+.faq-cta-actions{
+  margin-top:28px;
+
+  display:flex;
+
+  gap:10px;
+
+  flex-wrap:wrap;
+}
+
+.faq-cta-primary,
+.faq-cta-secondary{
+  min-height:48px;
+
+  padding:0 18px;
+
+  display:inline-flex;
+
+  align-items:center;
+  justify-content:center;
+
+  gap:8px;
+
+  border-radius:11px;
+
+  font-size:10px;
+  font-weight:800;
+}
+
+.faq-cta-primary{
+  background:#fff;
+
+  color:#111;
+}
+
+.faq-cta-secondary{
+  background:rgba(255,255,255,.08);
+
+  border:1px solid rgba(255,255,255,.12);
+
+  color:#fff;
+}
+
+.faq-cta-side{
+  padding-left:45px;
+
+  border-left:1px solid rgba(255,255,255,.12);
+}
+
+.faq-cta-side-item{
+  padding:18px 0;
+
+  display:flex;
+  align-items:center;
+
+  gap:14px;
+
+  border-bottom:1px solid rgba(255,255,255,.09);
+}
+
+.faq-cta-side-item:last-child{
+  border-bottom:none;
+}
+
+.faq-cta-side-item i{
+  width:38px;
+  height:38px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  flex-shrink:0;
+
+  border-radius:11px;
+
+  background:rgba(116,80,232,.18);
+
+  color:#a991ff;
+}
+
+.faq-cta-side-item strong{
+  display:block;
+
+  font-size:13px;
+}
+
+.faq-cta-side-item span{
+  display:block;
+
+  margin-top:4px;
+
+  color:rgba(255,255,255,.45);
+
+  font-size:9px;
+}
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal{
+  opacity:0;
+
+  transform:translateY(28px);
+
+  transition:
+    opacity .7s ease,
+    transform .7s ease;
+}
+
+.reveal.show{
+  opacity:1;
+
+  transform:none;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media(max-width:1000px){
+
+  .navbar{
+    height:70px;
+
+    padding:0 18px;
+  }
+
+  .logo{
+    font-size:18px;
+  }
+
+  .login-btn,
+  .get-started{
+    display:none;
+  }
+
+  .menu-toggle{
+    display:flex;
+  }
+
+  .nav-menu{
+    position:absolute;
+
+    top:70px;
+    left:0;
+
+    width:100%;
+
+    max-height:calc(100vh - 70px);
+
+    overflow:auto;
+
+    display:flex;
+    flex-direction:column;
+
+    align-items:stretch;
+
+    padding:12px 14px 18px;
+
+    background:#fff;
+
+    transform:translateY(-120%);
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.3s;
+  }
+
+  .nav-menu.active{
+    transform:translateY(0);
+
+    opacity:1;
+
+    pointer-events:auto;
+  }
+
+  .nav-item{
+    width:100%;
+  }
+
+  .nav-link{
+    width:100%;
+
+    padding:15px 13px;
+
+    justify-content:space-between;
+  }
+
+  .dropdown{
+    position:static;
+
+    width:100%;
+
+    max-height:0;
+
+    overflow:hidden;
+
+    padding:0 8px;
+
+    opacity:1;
+    visibility:visible;
+
+    transform:none;
+
+    background:#fafafa;
+
+    box-shadow:none;
+
+    border:none;
+
+    transition:.3s;
+  }
+
+  .nav-item.open > .dropdown{
+    max-height:1000px;
+
+    padding:8px;
+  }
+
+  .mega-dropdown{
+    display:block;
+  }
+
+  .faq-page{
+    padding-top:70px;
+  }
+
+  .faq-hero-inner{
+    grid-template-columns:1fr;
+
+    gap:45px;
+
+    padding:75px 24px;
+  }
+
+  .faq-visual{
+    max-width:580px;
+
+    width:100%;
+
+    margin:auto;
+  }
+
+  .faq-section-inner{
+    grid-template-columns:1fr;
+
+    gap:45px;
+  }
+
+  .faq-intro{
+    position:static;
+  }
+
+  .faq-cta-inner{
+    grid-template-columns:1fr;
+
+    gap:50px;
+  }
+
+  .faq-cta-side{
+    padding-left:0;
+
+    border-left:0;
+
+    border-top:1px solid rgba(255,255,255,.12);
+
+    padding-top:20px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:650px){
+
+  .navbar{
+    padding:0 14px;
+  }
+
+  .logo{
+    font-size:16px;
+  }
+
+  .faq-hero{
+    min-height:auto;
+  }
+
+  .faq-hero-inner{
+    padding:58px 14px 62px;
+
+    gap:30px;
+  }
+
+  .faq-kicker{
+    font-size:7px;
+
+    padding:6px 10px;
+  }
+
+  .faq-hero h1{
+    margin-top:16px;
+
+    font-size:clamp(41px,12vw,54px);
+
+    letter-spacing:-2.8px;
+  }
+
+  .faq-hero-copy{
+    margin-top:18px;
+
+    font-size:11px;
+
+    line-height:1.65;
+  }
+
+  .faq-search{
+    margin-top:22px;
+
+    border-radius:12px;
+  }
+
+  .faq-search input{
+    font-size:10px;
+  }
+
+  .faq-search button{
+    min-height:36px;
+
+    padding:0 11px;
+
+    font-size:8px;
+  }
+
+  .faq-visual{
+    min-height:330px;
+  }
+
+  .faq-orbit{
+    width:270px;
+    height:270px;
+
+    right:50%;
+    top:20px;
+
+    transform:translateX(50%);
+  }
+
+  .faq-center{
+    width:165px;
+    height:205px;
+
+    top:55px;
+    right:50%;
+
+    transform:translateX(50%);
+
+    padding:18px;
+  }
+
+  .faq-center-icon{
+    width:43px;
+    height:43px;
+
+    font-size:17px;
+  }
+
+  .faq-center small{
+    margin-top:25px;
+
+    font-size:5.5px;
+  }
+
+  .faq-center h3{
+    font-size:18px;
+  }
+
+  .faq-center p{
+    font-size:7px;
+  }
+
+  .faq-float{
+    width:86px;
+
+    min-height:70px;
+
+    padding:9px;
+
+    border-radius:12px;
+  }
+
+  .faq-float i{
+    font-size:12px;
+  }
+
+  .faq-float strong{
+    margin-top:6px;
+
+    font-size:7px;
+  }
+
+  .faq-float span{
+    font-size:5.5px;
+  }
+
+  .faq-float.one{
+    left:0;
+    top:35px;
+  }
+
+  .faq-float.two{
+    right:0;
+    bottom:18px;
+  }
+
+  .faq-float.three{
+    left:8px;
+    bottom:12px;
+  }
+
+  .faq-categories{
+    padding:25px 14px;
+  }
+
+  .faq-section{
+    padding:78px 14px;
+  }
+
+  .faq-intro h2{
+    font-size:clamp(37px,10vw,47px);
+
+    letter-spacing:-2.2px;
+  }
+
+  .faq-intro p{
+    font-size:11px;
+  }
+
+  .faq-question{
+    min-height:84px;
+
+    grid-template-columns:30px 1fr 34px;
+
+    gap:10px;
+  }
+
+  .faq-question h3{
+    font-size:14px;
+  }
+
+  .faq-toggle{
+    width:30px;
+    height:30px;
+  }
+
+  .faq-answer-inner{
+    padding:
+      0
+      38px
+      20px
+      40px;
+
+    font-size:10.5px;
+  }
+
+  .faq-cta{
+    padding:80px 14px;
+  }
+
+  .faq-cta h2{
+    font-size:clamp(40px,11vw,52px);
+
+    letter-spacing:-2.7px;
+  }
+
+  .faq-cta p{
+    font-size:11px;
+  }
+
+  .faq-cta-side-item strong{
+    font-size:11px;
+  }
+
+  .faq-cta-side-item span{
+    font-size:8px;
+  }
+
+}
+
+
+/* =========================================================
+   CREATIVE LAPTOP FAQ DESIGN
+========================================================= */
+
+.faq-hero{
+  min-height:690px;
+}
+
+.faq-hero-inner{
+  grid-template-columns:.88fr 1.12fr;
+  gap:55px;
+}
+
+.faq-hero-points{
+  margin-top:25px;
+
+  display:flex;
+  flex-wrap:wrap;
+
+  gap:8px;
+}
+
+.faq-hero-points div{
+  padding:9px 12px;
+
+  display:flex;
+  align-items:center;
+
+  gap:7px;
+
+  border:1px solid #e8e4f2;
+  border-radius:999px;
+
+  background:#fff;
+
+  color:#686871;
+
+  font-size:8px;
+  font-weight:700;
+}
+
+.faq-hero-points i{
+  color:#7450e8;
+}
+
+
+/* HERO LAPTOP */
+
+.faq-laptop-wrap{
+  position:relative;
+
+  min-height:470px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.faq-laptop-glow{
+  position:absolute;
+
+  width:390px;
+  height:230px;
+
+  border-radius:50%;
+
+  background:rgba(116,80,232,.16);
+
+  filter:blur(55px);
+}
+
+.faq-laptop{
+  width:570px;
+
+  position:relative;
+
+  transform:perspective(1200px) rotateY(-5deg) rotateX(2deg);
+
+  filter:drop-shadow(0 30px 35px rgba(45,33,88,.18));
+}
+
+.faq-screen{
+  width:100%;
+  height:360px;
+
+  padding:9px;
+
+  border-radius:17px 17px 5px 5px;
+
+  background:#24242b;
+
+  border:2px solid #35353e;
+}
+
+.laptop-topbar{
+  height:23px;
+
+  padding:0 8px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.laptop-brand{
+  display:flex;
+  align-items:center;
+
+  gap:5px;
+
+  color:#d9d9e1;
+
+  font-size:6px;
+  font-weight:800;
+}
+
+.laptop-dot{
+  width:6px;
+  height:6px;
+
+  border-radius:50%;
+
+  background:#7450e8;
+}
+
+.laptop-window-dots{
+  display:flex;
+
+  gap:4px;
+}
+
+.laptop-window-dots span{
+  width:5px;
+  height:5px;
+
+  border-radius:50%;
+
+  background:#575761;
+}
+
+.laptop-screen-content{
+  height:317px;
+
+  overflow:hidden;
+
+  border-radius:8px;
+
+  background:#f8f7fc;
+}
+
+.laptop-title-row{
+  padding:15px 18px 11px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  border-bottom:1px solid #e9e7ef;
+}
+
+.laptop-title-row small{
+  color:#7450e8;
+
+  font-size:5px;
+  font-weight:900;
+
+  letter-spacing:1px;
+}
+
+.laptop-title-row h3{
+  margin-top:4px;
+
+  font-size:13px;
+
+  letter-spacing:-.4px;
+}
+
+.laptop-live{
+  display:flex;
+  align-items:center;
+
+  gap:4px;
+
+  color:#777681;
+
+  font-size:5px;
+  font-weight:800;
+}
+
+.laptop-live span{
+  width:4px;
+  height:4px;
+
+  border-radius:50%;
+
+  background:#7450e8;
+
+  box-shadow:0 0 7px rgba(116,80,232,.5);
+}
+
+.laptop-faq-scroll{
+  height:253px;
+
+  padding:10px 15px 20px;
+
+  overflow-y:auto;
+
+  scrollbar-width:thin;
+
+  scrollbar-color:#c9c2e6 transparent;
+}
+
+.laptop-faq-scroll::-webkit-scrollbar{
+  width:4px;
+}
+
+.laptop-faq-scroll::-webkit-scrollbar-track{
+  background:transparent;
+}
+
+.laptop-faq-scroll::-webkit-scrollbar-thumb{
+  background:#c9c2e6;
+  border-radius:99px;
+}
+
+.laptop-faq-card{
+  margin-bottom:8px;
+
+  padding:11px 12px;
+
+  border:1px solid #e8e5ef;
+  border-radius:8px;
+
+  background:#fff;
+
+  box-shadow:0 5px 14px rgba(49,39,85,.04);
+}
+
+.laptop-faq-q{
+  display:flex;
+  align-items:center;
+
+  gap:8px;
+}
+
+.laptop-faq-q span{
+  color:#7450e8;
+
+  font-size:5px;
+  font-weight:900;
+}
+
+.laptop-faq-q strong{
+  color:#25252b;
+
+  font-size:8px;
+}
+
+.laptop-faq-card p{
+  margin-top:6px;
+
+  padding-left:18px;
+
+  color:#85848d;
+
+  font-size:6.2px;
+
+  line-height:1.6;
+}
+
+.laptop-scroll-hint{
+  height:29px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  gap:6px;
+
+  border-top:1px solid #e9e7ef;
+
+  background:#fff;
+
+  color:#92919a;
+
+  font-size:5.5px;
+}
+
+.laptop-scroll-hint span{
+  width:4px;
+  height:8px;
+
+  border-radius:999px;
+
+  background:#7450e8;
+
+  animation:faqScrollHint 1.4s ease-in-out infinite;
+}
+
+@keyframes faqScrollHint{
+  50%{
+    transform:translateY(3px);
+    opacity:.4;
+  }
+}
+
+.faq-laptop-base{
+  width:108%;
+
+  height:14px;
+
+  position:relative;
+  left:-4%;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #cfd0d5,
+      #aeb0b7
+    );
+
+  border-radius:2px 2px 14px 14px;
+
+  box-shadow:0 7px 10px rgba(0,0,0,.13);
+}
+
+.faq-laptop-notch{
+  width:80px;
+  height:4px;
+
+  position:absolute;
+
+  top:0;
+  left:50%;
+
+  transform:translateX(-50%);
+
+  border-radius:0 0 8px 8px;
+
+  background:#989aa1;
+}
+
+.faq-laptop-track{
+  width:150px;
+  height:2px;
+
+  position:absolute;
+
+  bottom:3px;
+  left:50%;
+
+  transform:translateX(-50%);
+
+  border-radius:99px;
+
+  background:#8f9198;
+}
+
+
+/* =========================================================
+   LARGE LAPTOP FAQ WINDOW
+========================================================= */
+
+.faq-section{
+  padding:110px 6%;
+
+  background:
+    radial-gradient(
+      circle at 80% 25%,
+      rgba(116,80,232,.08),
+      transparent 28%
+    ),
+    #fff;
+}
+
+.faq-section-inner{
+  grid-template-columns:.7fr 1.3fr;
+
+  gap:70px;
+}
+
+.faq-intro{
+  position:sticky;
+  top:110px;
+}
+
+.faq-intro h2{
+  font-size:clamp(43px,4.5vw,64px);
+}
+
+.faq-help-card{
+  background:#f7f5ff;
+}
+
+.faq-laptop-large{
+  min-width:0;
+
+  overflow:hidden;
+
+  border:1px solid #dcd9e6;
+
+  border-radius:16px;
+
+  background:#24242c;
+
+  box-shadow:
+    0 35px 80px rgba(43,31,79,.15);
+}
+
+.faq-large-top{
+  height:45px;
+
+  padding:0 15px;
+
+  display:grid;
+
+  grid-template-columns:1fr auto 1fr;
+
+  align-items:center;
+
+  border-bottom:1px solid #3b3b44;
+
+  color:#fff;
+}
+
+.large-brand{
+  display:flex;
+  align-items:center;
+
+  gap:7px;
+
+  color:#cfcbdc;
+
+  font-size:7px;
+  font-weight:800;
+}
+
+.large-brand span{
+  width:7px;
+  height:7px;
+
+  border-radius:50%;
+
+  background:#7450e8;
+}
+
+.large-top-title{
+  color:#858590;
+
+  font-size:7px;
+  font-weight:700;
+}
+
+.large-window-dots{
+  display:flex;
+  justify-content:flex-end;
+
+  gap:5px;
+}
+
+.large-window-dots span{
+  width:6px;
+  height:6px;
+
+  border-radius:50%;
+
+  background:#53535e;
+}
+
+.faq-large-body{
+  height:570px;
+
+  position:relative;
+
+  display:flex;
+
+  background:#f8f7fc;
+}
+
+.faq-large-scroll{
+  flex:1;
+
+  min-width:0;
+
+  padding:18px 20px 30px;
+
+  overflow-y:auto;
+
+  scroll-behavior:smooth;
+
+  scrollbar-width:none;
+}
+
+.faq-large-scroll::-webkit-scrollbar{
+  display:none;
+}
+
+.faq-visible-card{
+  min-height:138px;
+
+  margin-bottom:11px;
+
+  padding:20px;
+
+  display:grid;
+
+  grid-template-columns:45px 1fr 30px;
+
+  align-items:start;
+
+  gap:12px;
+
+  border:1px solid #e6e3ed;
+
+  border-radius:13px;
+
+  background:#fff;
+
+  box-shadow:0 8px 22px rgba(49,39,85,.045);
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    border-color .25s ease;
+}
+
+.faq-visible-card:hover{
+  transform:translateY(-2px);
+
+  border-color:#d9d0fa;
+
+  box-shadow:0 14px 30px rgba(76,53,141,.08);
+}
+
+.faq-visible-number{
+  color:#7450e8;
+
+  font-size:9px;
+  font-weight:900;
+
+  letter-spacing:.4px;
+}
+
+.faq-visible-content h3{
+  color:#202027;
+
+  font-size:15px;
+
+  line-height:1.3;
+}
+
+.faq-visible-content p{
+  margin-top:10px;
+
+  color:#7d7c86;
+
+  font-size:10px;
+
+  line-height:1.7;
+}
+
+.faq-visible-card > i{
+  color:#b2abc5;
+
+  font-size:9px;
+}
+
+.large-scrollbar{
+  width:4px;
+
+  position:absolute;
+
+  top:18px;
+  right:8px;
+  bottom:18px;
+
+  border-radius:999px;
+
+  background:#e3e0ea;
+}
+
+.large-scroll-thumb{
+  width:100%;
+  height:120px;
+
+  position:absolute;
+
+  top:0;
+
+  border-radius:999px;
+
+  background:#7450e8;
+
+  transition:top .08s linear;
+}
+
+.faq-large-bottom{
+  height:43px;
+
+  padding:0 17px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  border-top:1px solid #3b3b44;
+
+  color:#777782;
+
+  font-size:6px;
+}
+
+.faq-large-bottom span{
+  display:flex;
+  align-items:center;
+
+  gap:6px;
+}
+
+.faq-large-bottom i{
+  color:#9c89df;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:1000px){
+
+  .faq-hero{
+    min-height:auto;
+  }
+
+  .faq-hero-inner{
+    grid-template-columns:1fr;
+
+    gap:25px;
+  }
+
+  .faq-laptop-wrap{
+    min-height:420px;
+  }
+
+  .faq-section-inner{
+    grid-template-columns:1fr;
+
+    gap:45px;
+  }
+
+  .faq-intro{
+    position:static;
+  }
+
+  .faq-laptop-large{
+    width:100%;
+  }
+
+}
+
+@media(max-width:650px){
+
+  .faq-hero-inner{
+    padding:52px 14px 45px;
+
+    gap:8px;
+  }
+
+  .faq-hero h1{
+    font-size:clamp(42px,12vw,55px);
+
+    letter-spacing:-2.8px;
+  }
+
+  .faq-hero-copy{
+    font-size:10.5px;
+
+    line-height:1.65;
+  }
+
+  .faq-hero-points{
+    gap:5px;
+  }
+
+  .faq-hero-points div{
+    padding:7px 9px;
+
+    font-size:6.5px;
+  }
+
+  .faq-laptop-wrap{
+    min-height:280px;
+
+    margin-top:0;
+  }
+
+  .faq-laptop{
+    width:100%;
+
+    transform:
+      perspective(900px)
+      rotateY(-3deg)
+      rotateX(1deg);
+  }
+
+  .faq-screen{
+    height:210px;
+
+    padding:5px;
+
+    border-radius:10px 10px 3px 3px;
+  }
+
+  .laptop-topbar{
+    height:14px;
+  }
+
+  .laptop-brand{
+    font-size:4px;
+  }
+
+  .laptop-dot{
+    width:4px;
+    height:4px;
+  }
+
+  .laptop-window-dots{
+    gap:2px;
+  }
+
+  .laptop-window-dots span{
+    width:3px;
+    height:3px;
+  }
+
+  .laptop-screen-content{
+    height:186px;
+  }
+
+  .laptop-title-row{
+    padding:8px 9px 7px;
+  }
+
+  .laptop-title-row small{
+    font-size:3.5px;
+  }
+
+  .laptop-title-row h3{
+    font-size:7.5px;
+
+    margin-top:2px;
+  }
+
+  .laptop-live{
+    font-size:3.5px;
+  }
+
+  .laptop-live span{
+    width:3px;
+    height:3px;
+  }
+
+  .laptop-faq-scroll{
+    height:147px;
+
+    padding:6px 7px 10px;
+  }
+
+  .laptop-faq-card{
+    margin-bottom:5px;
+
+    padding:7px 8px;
+
+    border-radius:5px;
+  }
+
+  .laptop-faq-q{
+    gap:5px;
+  }
+
+  .laptop-faq-q span{
+    font-size:3.5px;
+  }
+
+  .laptop-faq-q strong{
+    font-size:5px;
+  }
+
+  .laptop-faq-card p{
+    margin-top:4px;
+
+    padding-left:11px;
+
+    font-size:4.2px;
+  }
+
+  .laptop-scroll-hint{
+    height:18px;
+
+    font-size:3.7px;
+
+    gap:3px;
+  }
+
+  .laptop-scroll-hint span{
+    width:3px;
+    height:5px;
+  }
+
+  .faq-laptop-base{
+    height:8px;
+  }
+
+  .faq-laptop-notch{
+    width:40px;
+    height:2px;
+  }
+
+  .faq-laptop-track{
+    width:80px;
+    height:1px;
+    bottom:2px;
+  }
+
+  .faq-section{
+    padding:72px 14px;
+  }
+
+  .faq-intro h2{
+    font-size:clamp(38px,10vw,48px);
+
+    letter-spacing:-2.2px;
+  }
+
+  .faq-intro p{
+    font-size:10.5px;
+  }
+
+  .faq-help-card{
+    max-width:100%;
+  }
+
+  .faq-laptop-large{
+    border-radius:11px;
+  }
+
+  .faq-large-top{
+    height:32px;
+
+    padding:0 9px;
+  }
+
+  .large-brand{
+    font-size:4.5px;
+  }
+
+  .large-brand span{
+    width:5px;
+    height:5px;
+  }
+
+  .large-top-title{
+    font-size:4.5px;
+  }
+
+  .large-window-dots{
+    gap:3px;
+  }
+
+  .large-window-dots span{
+    width:4px;
+    height:4px;
+  }
+
+  .faq-large-body{
+    height:475px;
+  }
+
+  .faq-large-scroll{
+    padding:10px 10px 18px;
+  }
+
+  .faq-visible-card{
+    min-height:0;
+
+    margin-bottom:7px;
+
+    padding:12px;
+
+    grid-template-columns:24px 1fr 18px;
+
+    gap:6px;
+
+    border-radius:8px;
+  }
+
+  .faq-visible-number{
+    font-size:6px;
+  }
+
+  .faq-visible-content h3{
+    font-size:10px;
+  }
+
+  .faq-visible-content p{
+    margin-top:6px;
+
+    font-size:7.5px;
+
+    line-height:1.6;
+  }
+
+  .faq-visible-card > i{
+    font-size:6px;
+  }
+
+  .large-scrollbar{
+    top:10px;
+    right:4px;
+    bottom:10px;
+  }
+
+  .large-scroll-thumb{
+    height:75px;
+  }
+
+  .faq-large-bottom{
+    height:30px;
+
+    padding:0 9px;
+
+    font-size:4px;
+  }
+
+}
+
+
+/* Desktop-only subtle automatic laptop movement */
+@media(min-width:1001px){
+
+  .faq-laptop{
+    animation:faqLaptopFloat 6s ease-in-out infinite;
+  }
+
+  @keyframes faqLaptopFloat{
+
+    50%{
+      transform:
+        perspective(1200px)
+        rotateY(-5deg)
+        rotateX(2deg)
+        translateY(-8px);
+    }
+
+  }
+
+}
+
+
+
+
+/* =========================================================
+   PROFESSIONAL / REALISTIC LAPTOP FAQ OVERRIDES
+   Crisp text, no blur, no artificial glow on the laptop UI.
+========================================================= */
+
+.faq-hero{
+  background:#f7f7f9;
+}
+
+.faq-hero::before{
+  background-image:none;
+}
+
+.faq-laptop-glow{
+  display:none;
+}
+
+.faq-laptop{
+  width:590px;
+
+  filter:
+    drop-shadow(0 24px 28px rgba(25,25,35,.16));
+
+  transform:
+    perspective(1400px)
+    rotateY(-2deg)
+    rotateX(1deg);
+}
+
+.faq-screen{
+  height:370px;
+
+  padding:8px;
+
+  border-radius:13px 13px 4px 4px;
+
+  background:#1b1b20;
+
+  border:1px solid #303038;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.05);
+}
+
+.laptop-topbar{
+  height:24px;
+}
+
+.laptop-brand{
+  color:#d7d7dc;
+  font-size:6.5px;
+}
+
+.laptop-screen-content{
+  height:328px;
+
+  background:#f6f6f8;
+
+  border-radius:6px;
+
+  /* IMPORTANT: no blur/backdrop filter inside laptop */
+  filter:none;
+  backdrop-filter:none;
+  -webkit-backdrop-filter:none;
+}
+
+.laptop-title-row{
+  padding:16px 19px 12px;
+
+  background:#fff;
+
+  border-bottom:1px solid #e4e4e8;
+}
+
+.laptop-title-row small{
+  color:#7450e8;
+
+  font-size:5.5px;
+
+  letter-spacing:1.2px;
+
+  font-weight:900;
+}
+
+.laptop-title-row h3{
+  color:#17171b;
+
+  font-size:14px;
+
+  font-weight:800;
+
+  letter-spacing:-.25px;
+
+  text-shadow:none;
+}
+
+.laptop-live{
+  color:#686870;
+
+  font-size:5.5px;
+}
+
+.laptop-faq-scroll{
+  height:264px;
+
+  padding:11px 16px 18px;
+
+  background:#f6f6f8;
+
+  filter:none;
+
+  scrollbar-color:#b9b9c2 transparent;
+}
+
+.laptop-faq-card{
+  margin-bottom:8px;
+
+  padding:12px 13px;
+
+  border:1px solid #dedee5;
+
+  border-radius:6px;
+
+  background:#fff;
+
+  box-shadow:0 3px 9px rgba(20,20,30,.035);
+
+  filter:none;
+}
+
+.laptop-faq-q strong{
+  color:#17171b;
+
+  font-size:8px;
+
+  font-weight:800;
+
+  text-shadow:none;
+}
+
+.laptop-faq-q span{
+  color:#7450e8;
+
+  font-size:5.5px;
+}
+
+.laptop-faq-card p{
+  color:#5f6068;
+
+  font-size:6.4px;
+
+  line-height:1.65;
+
+  text-shadow:none;
+
+  filter:none;
+}
+
+.laptop-scroll-hint{
+  height:29px;
+
+  background:#fff;
+
+  border-top:1px solid #e4e4e8;
+
+  color:#73747c;
+
+  font-size:5.5px;
+
+  text-shadow:none;
+}
+
+.faq-laptop-base{
+  background:
+    linear-gradient(
+      to bottom,
+      #d2d3d7 0%,
+      #b7b8bd 55%,
+      #a8a9ae 100%
+    );
+
+  box-shadow:
+    0 8px 13px rgba(20,20,25,.14);
+}
+
+
+/* Hero text: sharp, restrained */
+
+.faq-hero h1{
+  color:#111116;
+
+  text-shadow:none;
+}
+
+.faq-hero h1 span{
+  color:#7450e8;
+}
+
+.faq-hero-copy{
+  color:#65656d;
+
+  text-shadow:none;
+}
+
+.faq-hero-points div{
+  box-shadow:none;
+}
+
+
+/* Large FAQ laptop */
+
+.faq-laptop-large{
+  border:1px solid #d7d7de;
+
+  background:#1e1e24;
+
+  box-shadow:
+    0 25px 55px rgba(26,26,35,.13);
+
+  filter:none;
+}
+
+.faq-large-top{
+  background:#1e1e24;
+
+  border-bottom:1px solid #36363e;
+}
+
+.faq-large-body{
+  background:#f5f5f7;
+
+  filter:none;
+
+  backdrop-filter:none;
+  -webkit-backdrop-filter:none;
+}
+
+.faq-large-scroll{
+  background:#f5f5f7;
+
+  filter:none;
+}
+
+.faq-visible-card{
+  border:1px solid #ddddE4;
+
+  background:#fff;
+
+  box-shadow:
+    0 5px 15px rgba(25,25,35,.035);
+
+  filter:none;
+}
+
+.faq-visible-card:hover{
+  transform:none;
+
+  box-shadow:
+    0 7px 17px rgba(25,25,35,.05);
+}
+
+.faq-visible-number{
+  color:#7450e8;
+
+  text-shadow:none;
+}
+
+.faq-visible-content h3{
+  color:#17171b;
+
+  font-weight:800;
+
+  text-shadow:none;
+}
+
+.faq-visible-content p{
+  color:#62636b;
+
+  text-shadow:none;
+
+  filter:none;
+}
+
+.large-scrollbar{
+  background:#dfdfe5;
+}
+
+.large-scroll-thumb{
+  background:#7450e8;
+}
+
+.faq-large-bottom{
+  background:#1e1e24;
+
+  border-top:1px solid #36363e;
+
+  color:#8e8e97;
+}
+
+
+/* Remove unnecessary visual effects from all FAQ text */
+
+.faq-laptop *,
+.faq-laptop-large *{
+  text-shadow:none;
+  filter:none;
+}
+
+.faq-laptop{
+  filter:drop-shadow(0 24px 28px rgba(25,25,35,.16));
+}
+
+.faq-laptop-large{
+  filter:none;
+}
+
+
+/* Mobile crispness */
+
+@media(max-width:650px){
+
+  .faq-laptop{
+    transform:
+      perspective(900px)
+      rotateY(-1deg)
+      rotateX(1deg);
+  }
+
+  .faq-screen{
+    background:#1b1b20;
+  }
+
+  .laptop-title-row h3{
+    font-size:7.5px;
+  }
+
+  .laptop-faq-q strong{
+    font-size:5.2px;
+  }
+
+  .laptop-faq-card p{
+    font-size:4.3px;
+  }
+
+  .faq-visible-content h3{
+    font-size:10px;
+  }
+
+  .faq-visible-content p{
+    font-size:7.5px;
+  }
+
+}
+
+
+
+/* =========================================================
+   FIX: FIRST SECTION LAPTOP TEXT CRISPNESS
+   Remove 3D transform that causes browser text raster blur.
+========================================================= */
+
+.faq-laptop{
+  transform:none !important;
+  animation:none !important;
+  filter:none !important;
+  width:590px;
+}
+
+.faq-laptop-wrap{
+  transform:none !important;
+  filter:none !important;
+}
+
+.faq-screen,
+.laptop-screen-content,
+.laptop-title-row,
+.laptop-faq-scroll,
+.laptop-faq-card,
+.laptop-faq-q,
+.laptop-faq-q strong,
+.laptop-faq-card p{
+  transform:none !important;
+  filter:none !important;
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+  text-shadow:none !important;
+  opacity:1 !important;
+}
+
+.laptop-faq-q strong{
+  font-size:10px !important;
+  font-weight:700 !important;
+  line-height:1.35 !important;
+  color:#17171b !important;
+}
+
+.laptop-faq-card p{
+  font-size:8px !important;
+  line-height:1.55 !important;
+  color:#5b5b63 !important;
+}
+
+.laptop-faq-q span{
+  font-size:6px !important;
+}
+
+.laptop-title-row h3{
+  font-size:15px !important;
+  color:#15151a !important;
+}
+
+.laptop-title-row small{
+  font-size:6px !important;
+}
+
+@media(max-width:650px){
+
+  .faq-laptop{
+    width:100%;
+    transform:none !important;
+  }
+
+  .laptop-title-row h3{
+    font-size:9px !important;
+  }
+
+  .laptop-title-row small{
+    font-size:4.5px !important;
+  }
+
+  .laptop-faq-q strong{
+    font-size:6.5px !important;
+  }
+
+  .laptop-faq-q span{
+    font-size:4.5px !important;
+  }
+
+  .laptop-faq-card p{
+    font-size:5.5px !important;
+    line-height:1.5 !important;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav class="navbar">
+
+  <a href="index.html" class="logo">
+
+    <span class="logo-main">
+      TRIVOX
+    </span>
+
+    <span class="logo-impact">
+      AI IMPACT
+    </span>
+
+  </a>
+
+
+  <ul class="nav-menu" id="navMenu">
+
+    <li class="nav-item has-dropdown">
+
+      <a href="#" class="nav-link">
+        Company
+        <span class="arrow"></span>
+      </a>
+
+      <div class="dropdown">
+
+        <a href="about.html">About TRIVOX</a>
+        <a href="mission.html">Our Mission</a>
+        <a href="vision.html">Our Vision</a>
+        <a href="leadership.html">Leadership</a>
+        <a href="team.html">Our Team</a>
+        <a href="partners.html">Partners</a>
+        <a href="impact.html">Impact</a>
+
+      </div>
+
+    </li>
+
+
+    <li class="nav-item has-dropdown">
+
+      <a href="#" class="nav-link">
+        Learning
+        <span class="arrow"></span>
+      </a>
+
+      <div class="dropdown mega-dropdown">
+
+        <a href="ai-learning.html" class="mega-box">
+          <strong>AI Learning</strong>
+          <p>Understand artificial intelligence and its real-world applications.</p>
+        </a>
+
+        <a href="programming.html" class="mega-box">
+          <strong>Programming</strong>
+          <p>Build strong coding foundations through practical learning.</p>
+        </a>
+
+        <a href="web-development.html" class="mega-box">
+          <strong>Web Development</strong>
+          <p>Learn modern websites, interfaces and web technologies.</p>
+        </a>
+
+        <a href="app-development.html" class="mega-box">
+          <strong>App Development</strong>
+          <p>Create practical mobile experiences and applications.</p>
+        </a>
+
+        <a href="data-science.html" class="mega-box">
+          <strong>Data Science</strong>
+          <p>Learn data analysis, insights and decision-making.</p>
+        </a>
+
+        <a href="cyber-security.html" class="mega-box">
+          <strong>Cyber Security</strong>
+          <p>Explore digital security, systems and responsible technology.</p>
+        </a>
+
+      </div>
+
+    </li>
+
+
+    <li class="nav-item has-dropdown">
+
+      <a href="#" class="nav-link">
+        Programs
+        <span class="arrow"></span>
+      </a>
+
+      <div class="dropdown">
+
+        <a href="#">Student Programs</a>
+        <a href="#">College Programs</a>
+        <a href="#">Internships</a>
+        <a href="#">Workshops</a>
+        <a href="#">Bootcamps</a>
+        <a href="#">Career Programs</a>
+        <a href="#">Certification Programs</a>
+
+      </div>
+
+    </li>
+
+
+    <li class="nav-item has-dropdown">
+
+      <a href="#" class="nav-link">
+        Solutions
+        <span class="arrow"></span>
+      </a>
+
+      <div class="dropdown mega-dropdown">
+
+        <a href="#" class="mega-box">
+          <strong>For Students</strong>
+          <p>Learning, projects and career-focused experiences.</p>
+        </a>
+
+        <a href="#" class="mega-box">
+          <strong>For Colleges</strong>
+          <p>Programs that connect education with practical skills.</p>
+        </a>
+
+        <a href="#" class="mega-box">
+          <strong>For Schools</strong>
+          <p>Early technology and future skills experiences.</p>
+        </a>
+
+        <a href="#" class="mega-box">
+          <strong>For Companies</strong>
+          <p>Talent, training and collaborative initiatives.</p>
+        </a>
+
+      </div>
+
+    </li>
+
+
+    <li class="nav-item has-dropdown">
+
+      <a href="#" class="nav-link">
+        Resources
+        <span class="arrow"></span>
+      </a>
+
+      <div class="dropdown">
+
+        <a href="blogs.html">Blogs</a>
+        <a href="tutorials.html">Tutorials</a>
+        <a href="learning-resources.html">Learning Resources</a>
+        <a href="#">Student Projects</a>
+        <a href="#">Success Stories</a>
+        <a href="events.html">Events</a>
+        <a href="faqs.html">FAQs</a>
+
+      </div>
+
+    </li>
+
+
+    <li class="nav-item has-dropdown">
+
+      <a href="#" class="nav-link">
+        Careers
+        <span class="arrow"></span>
+      </a>
+
+      <div class="dropdown">
+
+        <a href="#">Open Positions</a>
+        <a href="#">Internships</a>
+        <a href="#">Campus Hiring</a>
+        <a href="#">Join Our Team</a>
+        <a href="#">Life at TRIVOX</a>
+
+      </div>
+
+    </li>
+
+
+    <li class="nav-item">
+
+      <a href="contact.html" class="nav-link">
+        Contact
+      </a>
+
+    </li>
+
+  </ul>
+
+
+  <div class="nav-actions">
+
+    <div class="signin-dropdown-wrap">
+
+      <button class="login-btn signin-main-btn">
+
+        Sign In
+
+        <span class="arrow"></span>
+
+      </button>
+
+      <div class="signin-dropdown">
+
+        <a href="#">
+
+          <i class="fa-solid fa-film"></i>
+
+          <div>
+            <strong>Documentary</strong>
+            <span>Documentary challenge login</span>
+          </div>
+
+        </a>
+
+        <a href="#">
+
+          <i class="fa-solid fa-graduation-cap"></i>
+
+          <div>
+            <strong>Course</strong>
+            <span>Learning portal login</span>
+          </div>
+
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <a href="#" class="get-started">
+      Get Started
+    </a>
+
+
+    <button
+      class="menu-toggle"
+      id="menuToggle"
+      aria-label="Open Menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </div>
+
+</nav>
+
+
+<main class="faq-page">
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="faq-hero">
+
+  <div class="faq-hero-inner">
+
+    <div class="reveal">
+
+      <div class="faq-kicker">
+        FREQUENTLY ASKED QUESTIONS
+      </div>
+
+      <h1>
+        Questions?
+        <span>We've got answers.</span>
+      </h1>
+
+      <p class="faq-hero-copy">
+        Everything students, colleges and communities need to know
+        about TRIVOX — presented simply, clearly and in one place.
+      </p>
+
+      <div class="faq-hero-points">
+
+        <div>
+          <i class="fa-solid fa-circle-check"></i>
+          <span>Clear answers</span>
+        </div>
+
+        <div>
+          <i class="fa-solid fa-circle-check"></i>
+          <span>Quick to understand</span>
+        </div>
+
+        <div>
+          <i class="fa-solid fa-circle-check"></i>
+          <span>All in one place</span>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="faq-laptop-wrap reveal">
+
+      <div class="faq-laptop-glow"></div>
+
+      <div class="faq-laptop">
+
+        <div class="faq-screen">
+
+          <div class="laptop-topbar">
+
+            <div class="laptop-brand">
+              <span class="laptop-dot"></span>
+              TRIVOX FAQ
+            </div>
+
+            <div class="laptop-window-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+
+          </div>
+
+
+          <div class="laptop-screen-content">
+
+            <div class="laptop-title-row">
+              <div>
+                <small>HELP CENTER</small>
+                <h3>Frequently Asked Questions</h3>
+              </div>
+
+              <div class="laptop-live">
+                <span></span>
+                LIVE
+              </div>
+            </div>
+
+
+            <div class="laptop-faq-scroll" id="heroFaqScroll">
+
+              <div class="laptop-faq-card">
+                <div class="laptop-faq-q">
+                  <span>01</span>
+                  <strong>What is TRIVOX AI Impact?</strong>
+                </div>
+                <p>
+                  TRIVOX AI Impact is a learning and impact platform
+                  that helps students build practical skills and
+                  participate in meaningful experiences.
+                </p>
+              </div>
+
+
+              <div class="laptop-faq-card">
+                <div class="laptop-faq-q">
+                  <span>02</span>
+                  <strong>What can students learn?</strong>
+                </div>
+                <p>
+                  Students can explore AI, programming, web development,
+                  app development, data science and cyber security.
+                </p>
+              </div>
+
+
+              <div class="laptop-faq-card">
+                <div class="laptop-faq-q">
+                  <span>03</span>
+                  <strong>Are programs available for colleges?</strong>
+                </div>
+                <p>
+                  Yes. Colleges can collaborate with TRIVOX for
+                  learning programs, workshops and student initiatives.
+                </p>
+              </div>
+
+
+              <div class="laptop-faq-card">
+                <div class="laptop-faq-q">
+                  <span>04</span>
+                  <strong>Are TRIVOX events online or offline?</strong>
+                </div>
+                <p>
+                  Events may be online, offline or hybrid depending
+                  on the event format and audience.
+                </p>
+              </div>
+
+
+              <div class="laptop-faq-card">
+                <div class="laptop-faq-q">
+                  <span>05</span>
+                  <strong>Can beginners use the resources?</strong>
+                </div>
+                <p>
+                  Yes. Resources are designed to support learners
+                  at different levels, including beginners.
+                </p>
+              </div>
+
+
+              <div class="laptop-faq-card">
+                <div class="laptop-faq-q">
+                  <span>06</span>
+                  <strong>Does TRIVOX offer career opportunities?</strong>
+                </div>
+                <p>
+                  Internship, campus hiring and career opportunities
+                  may be shared through the Careers section.
+                </p>
+              </div>
+
+            </div>
+
+
+            <div class="laptop-scroll-hint">
+              <span></span>
+              Scroll to explore all answers
+              <i class="fa-solid fa-arrow-down"></i>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="faq-laptop-base">
+
+          <div class="faq-laptop-notch"></div>
+
+          <div class="faq-laptop-track"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+
+
+<!-- =====================================================
+     FAQ ANSWERS
+===================================================== -->
+
+<section class="faq-section">
+
+  <div class="faq-section-inner">
+
+    <div class="faq-intro reveal">
+
+      <div class="section-label">
+        THE ANSWERS
+      </div>
+
+      <h2>
+        One screen.
+        <span>Every answer.</span>
+      </h2>
+
+      <p>
+        No searching. No opening and closing boxes.
+        Scroll through the complete FAQ experience
+        and find every answer right where you need it.
+      </p>
+
+
+      <div class="faq-help-card">
+
+        <i class="fa-solid fa-laptop"></i>
+
+        <strong>
+          Scroll the FAQ window
+        </strong>
+
+        <p>
+          All questions and answers are already loaded
+          inside the interactive screen.
+        </p>
+
+        <a href="contact.html">
+          Need personal help? →
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="faq-laptop-large reveal">
+
+      <div class="faq-large-top">
+
+        <div class="large-brand">
+          <span></span>
+          TRIVOX / FAQ
+        </div>
+
+        <div class="large-top-title">
+          Questions & Answers
+        </div>
+
+        <div class="large-window-dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+      </div>
+
+
+      <div class="faq-large-body">
+
+        <div class="faq-large-scroll" id="mainFaqScroll">
+
+
+          <article class="faq-visible-card">
+
+            <div class="faq-visible-number">
+              01
+            </div>
+
+            <div class="faq-visible-content">
+
+              <h3>
+                What is TRIVOX AI Impact?
+              </h3>
+
+              <p>
+                TRIVOX AI Impact is a learning and impact platform
+                focused on helping students build practical skills,
+                explore technology and participate in meaningful
+                learning experiences.
+              </p>
+
+            </div>
+
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+          </article>
+
+
+          <article class="faq-visible-card">
+
+            <div class="faq-visible-number">
+              02
+            </div>
+
+            <div class="faq-visible-content">
+
+              <h3>
+                What can students learn on TRIVOX?
+              </h3>
+
+              <p>
+                Students can explore areas such as AI, programming,
+                web development, app development, data science and
+                cyber security through learning resources, programs
+                and practical activities.
+              </p>
+
+            </div>
+
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+          </article>
+
+
+          <article class="faq-visible-card">
+
+            <div class="faq-visible-number">
+              03
+            </div>
+
+            <div class="faq-visible-content">
+
+              <h3>
+                Does TRIVOX provide student programs and workshops?
+              </h3>
+
+              <p>
+                Yes. TRIVOX can host student programs, workshops,
+                bootcamps and learning experiences designed around
+                practical skills and real-world participation.
+              </p>
+
+            </div>
+
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+          </article>
+
+
+          <article class="faq-visible-card">
+
+            <div class="faq-visible-number">
+              04
+            </div>
+
+            <div class="faq-visible-content">
+
+              <h3>
+                Are TRIVOX events online or offline?
+              </h3>
+
+              <p>
+                TRIVOX events may be online, offline or hybrid,
+                depending on the event format, location and audience.
+                Event details are provided on the Events page.
+              </p>
+
+            </div>
+
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+          </article>
+
+
+          <article class="faq-visible-card">
+
+            <div class="faq-visible-number">
+              05
+            </div>
+
+            <div class="faq-visible-content">
+
+              <h3>
+                Can beginners use TRIVOX learning resources?
+              </h3>
+
+              <p>
+                Yes. The learning resources are designed to support
+                different levels of learners, including students who
+                are just starting with a topic.
+              </p>
+
+            </div>
+
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+          </article>
+
+
+          <article class="faq-visible-card">
+
+            <div class="faq-visible-number">
+              06
+            </div>
+
+            <div class="faq-visible-content">
+
+              <h3>
+                Does TRIVOX offer internships or career opportunities?
+              </h3>
+
+              <p>
+                Internship, campus hiring and career opportunities
+                may be shared through the Careers section whenever
+                positions or programs are available.
+              </p>
+
+            </div>
+
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+          </article>
+
+
+          <article class="faq-visible-card">
+
+            <div class="faq-visible-number">
+              07
+            </div>
+
+            <div class="faq-visible-content">
+
+              <h3>
+                Can colleges work with TRIVOX?
+              </h3>
+
+              <p>
+                Yes. Colleges can collaborate with TRIVOX for
+                learning programs, workshops, student initiatives
+                and other educational experiences.
+              </p>
+
+            </div>
+
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+          </article>
+
+
+          <article class="faq-visible-card">
+
+            <div class="faq-visible-number">
+              08
+            </div>
+
+            <div class="faq-visible-content">
+
+              <h3>
+                How do I get started with TRIVOX?
+              </h3>
+
+              <p>
+                Start by exploring the Learning, Resources, Programs
+                or Events sections and choose the experience that
+                matches what you want to learn or participate in.
+              </p>
+
+            </div>
+
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+          </article>
+
+
+        </div>
+
+
+        <div class="large-scrollbar">
+
+          <div class="large-scroll-thumb" id="largeScrollThumb"></div>
+
+        </div>
+
+      </div>
+
+
+      <div class="faq-large-bottom">
+
+        <span>
+          <i class="fa-solid fa-mouse"></i>
+          Scroll inside the window
+        </span>
+
+        <span>
+          08 QUESTIONS
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     FINAL CTA
+===================================================== -->
+
+<section class="faq-cta">
+
+  <div class="faq-cta-inner">
+
+    <div class="reveal">
+
+      <small>
+        NEED MORE HELP?
+      </small>
+
+      <h2>
+        Still have a
+        <span>question?</span>
+      </h2>
+
+      <p>
+        Connect with TRIVOX and get help with programs,
+        learning, events or student opportunities.
+      </p>
+
+      <div class="faq-cta-actions">
+
+        <a href="contact.html" class="faq-cta-primary">
+          Contact TRIVOX
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+        <a href="learning-resources.html" class="faq-cta-secondary">
+          Explore Resources
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="faq-cta-side reveal">
+
+      <div class="faq-cta-side-item">
+
+        <i class="fa-solid fa-book-open"></i>
+
+        <div>
+          <strong>
+            Learning support
+          </strong>
+
+          <span>
+            Courses, resources and skills
+          </span>
+        </div>
+
+      </div>
+
+
+      <div class="faq-cta-side-item">
+
+        <i class="fa-solid fa-calendar-days"></i>
+
+        <div>
+          <strong>
+            Event questions
+          </strong>
+
+          <span>
+            Workshops, sessions and participation
+          </span>
+        </div>
+
+      </div>
+
+
+      <div class="faq-cta-side-item">
+
+        <i class="fa-solid fa-briefcase"></i>
+
+        <div>
+          <strong>
+            Career support
+          </strong>
+
+          <span>
+            Internships and opportunities
+          </span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+</main>
+
+
+<script>
+
+const menuToggle =
+document.getElementById("menuToggle");
+
+const navMenu =
+document.getElementById("navMenu");
+
+
+if(menuToggle){
+
+  menuToggle.addEventListener(
+    "click",
+    ()=>{
+
+      navMenu.classList.toggle("active");
+
+    }
+  );
+
+}
+
+
+document
+.querySelectorAll(".has-dropdown > .nav-link")
+.forEach(item=>{
+
+  item.addEventListener(
+    "click",
+    e=>{
+
+      if(window.innerWidth <= 1000){
+
+        e.preventDefault();
+
+        const parent =
+        item.parentElement;
+
+
+        document
+        .querySelectorAll(".has-dropdown")
+        .forEach(other=>{
+
+          if(other !== parent){
+
+            other.classList.remove("open");
+
+          }
+
+        });
+
+
+        parent.classList.toggle("open");
+
+      }
+
+    }
+  );
+
+});
+
+
+document
+.querySelectorAll(".dropdown a")
+.forEach(link=>{
+
+  link.addEventListener(
+    "click",
+    ()=>{
+
+      navMenu.classList.remove("active");
+
+      document
+      .querySelectorAll(".has-dropdown")
+      .forEach(item=>
+        item.classList.remove("open")
+      );
+
+    }
+  );
+
+});
+
+
+/* REVEAL */
+
+const observer =
+new IntersectionObserver(
+
+  entries=>
+  entries.forEach(entry=>{
+
+    if(entry.isIntersecting){
+
+      entry.target.classList.add("show");
+
+      observer.unobserve(entry.target);
+
+    }
+
+  }),
+
+  {
+    threshold:.12
+  }
+
+);
+
+
+document
+.querySelectorAll(".reveal")
+.forEach(el=>
+  observer.observe(el)
+);
+
+
+/* =========================================================
+   LAPTOP FAQ SCROLL INDICATOR
+========================================================= */
+
+const heroFaqScroll =
+document.getElementById("heroFaqScroll");
+
+if(heroFaqScroll){
+
+  heroFaqScroll.addEventListener(
+    "wheel",
+    ()=>{},
+    {passive:true}
+  );
+
+}
+
+
+/* Main laptop scrollbar follows actual scroll */
+
+const mainFaqScroll =
+document.getElementById("mainFaqScroll");
+
+const largeScrollThumb =
+document.getElementById("largeScrollThumb");
+
+
+function updateFaqScrollThumb(){
+
+  if(
+    !mainFaqScroll ||
+    !largeScrollThumb
+  ){
+    return;
+  }
+
+  const maxScroll =
+    mainFaqScroll.scrollHeight -
+    mainFaqScroll.clientHeight;
+
+  const track =
+    largeScrollThumb.parentElement.clientHeight;
+
+  const thumbHeight =
+    Math.max(
+      55,
+      track *
+      (
+        mainFaqScroll.clientHeight /
+        mainFaqScroll.scrollHeight
+      )
+    );
+
+  largeScrollThumb.style.height =
+    thumbHeight + "px";
+
+  const maxTop =
+    track - thumbHeight;
+
+  const progress =
+    maxScroll > 0
+    ? mainFaqScroll.scrollTop / maxScroll
+    : 0;
+
+  largeScrollThumb.style.top =
+    (maxTop * progress) + "px";
+
+}
+
+
+if(mainFaqScroll){
+
+  mainFaqScroll.addEventListener(
+    "scroll",
+    updateFaqScrollThumb,
+    {passive:true}
+  );
+
+  window.addEventListener(
+    "resize",
+    updateFaqScrollThumb
+  );
+
+  updateFaqScrollThumb();
+
+}
+
+</script>
+
+</body>
+</html>
