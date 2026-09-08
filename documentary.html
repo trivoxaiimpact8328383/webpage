@@ -5802,6 +5802,220 @@ body.trivox-dashboard-mode #trivoxAuthGate{
   }
 }
 </style>
+<style>
+
+/* =====================================================
+   TRIVOX REFERRAL CARD
+===================================================== */
+
+.trivox-referral-card{
+    margin-top:22px;
+    padding:26px;
+    border:1px solid #e5e5e8;
+    border-radius:10px;
+    background:#fff;
+    max-width:900px;
+}
+
+.referral-card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:20px;
+    padding-bottom:22px;
+    border-bottom:1px solid #ededf0;
+}
+
+.referral-small-title{
+    display:block;
+    color:#7450e8;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.4px;
+    margin-bottom:8px;
+}
+
+.referral-card-top h2{
+    margin:0;
+    color:#1f1f1f;
+    font-size:24px;
+    letter-spacing:-.7px;
+}
+
+.referral-card-top p{
+    max-width:520px;
+    margin-top:9px;
+    color:#777;
+    font-size:12px;
+    line-height:1.65;
+}
+
+.referral-percent{
+    width:82px;
+    height:82px;
+    min-width:82px;
+    border-radius:50%;
+    border:2px solid #7450e8;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    background:#f7f4ff;
+}
+
+.referral-percent strong{
+    color:#111;
+    font-size:24px;
+}
+
+.referral-percent span{
+    margin-top:3px;
+    color:#7450e8;
+    font-size:7px;
+    font-weight:900;
+    letter-spacing:.7px;
+}
+
+.referral-code-section{
+    margin-top:22px;
+}
+
+.referral-label{
+    display:block;
+    margin-bottom:8px;
+    color:#777;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.2px;
+}
+
+.referral-code-box{
+    width:100%;
+    min-height:54px;
+    padding:8px 9px 8px 16px;
+    border:1px solid #dedee3;
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    background:#fafafa;
+}
+
+.referral-code-box strong{
+    min-width:0;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    color:#111;
+    font-size:17px;
+    letter-spacing:1.3px;
+}
+
+.referral-copy-btn{
+    height:37px;
+    padding:0 15px;
+    border:1px solid #dedee3;
+    border-radius:6px;
+    background:#fff;
+    color:#111;
+    font-size:11px;
+    font-weight:800;
+}
+
+.referral-share-btn{
+    width:100%;
+    height:50px;
+    margin-top:13px;
+    border:0;
+    border-radius:7px;
+    background:#7450e8;
+    color:#fff;
+    font-size:13px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.referral-share-btn:hover{
+    background:#6241d3;
+}
+
+.referral-stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    margin-top:22px;
+    border:1px solid #ededf0;
+    border-radius:8px;
+    overflow:hidden;
+}
+
+.referral-stats > div{
+    padding:18px 12px;
+    text-align:center;
+    border-right:1px solid #ededf0;
+}
+
+.referral-stats > div:last-child{
+    border-right:0;
+}
+
+.referral-stats strong{
+    display:block;
+    color:#111;
+    font-size:20px;
+}
+
+.referral-stats span{
+    display:block;
+    margin-top:5px;
+    color:#777;
+    font-size:9px;
+    line-height:1.4;
+}
+
+.referral-note{
+    margin-top:14px;
+    color:#888;
+    font-size:10px;
+    line-height:1.5;
+}
+
+
+@media(max-width:600px){
+
+    .trivox-referral-card{
+        padding:19px;
+    }
+
+    .referral-card-top h2{
+        font-size:21px;
+    }
+
+    .referral-percent{
+        width:68px;
+        height:68px;
+        min-width:68px;
+    }
+
+    .referral-percent strong{
+        font-size:20px;
+    }
+
+    .referral-stats{
+        grid-template-columns:1fr;
+    }
+
+    .referral-stats > div{
+        border-right:0;
+        border-bottom:1px solid #ededf0;
+    }
+
+    .referral-stats > div:last-child{
+        border-bottom:0;
+    }
+
+}
+
+</style>
 
 
 <div class="auth-page">
@@ -7127,7 +7341,99 @@ body.trivox-dashboard-mode #trivoxAuthGate{
      <div class="row"><span>Best Score</span><b id="profileBestScore">—</b></div>
      <div class="profile-extra-actions"><button type="button" onclick="go('skillPassport')">Open Skill Passport</button><button type="button" onclick="go('villageChallenge')">View Village Challenge</button></div>
     </div>
+
+    <!-- =====================================================
+     TRIVOX REFERRAL PROGRAM
+===================================================== -->
+
+<div class="trivox-referral-card" id="trivoxReferralCard">
+
+    <div class="referral-card-top">
+
+        <div>
+            <span class="referral-small-title">
+                REFERRAL PROGRAM
+            </span>
+
+            <h2>Invite & Earn</h2>
+
+            <p>
+                Share TRIVOX with your friends.
+                Earn 5% referral incentive on eligible
+                verified registrations.
+            </p>
+        </div>
+
+        <div class="referral-percent">
+            <strong>5%</strong>
+            <span>INCENTIVE</span>
+        </div>
+
+    </div>
+
+
+    <div class="referral-code-section">
+
+        <span class="referral-label">
+            YOUR REFERRAL ID
+        </span>
+
+        <div class="referral-code-box">
+
+            <strong id="trivoxReferralCode">
+                ------
+            </strong>
+
+            <button
+                type="button"
+                id="copyReferralButton"
+                class="referral-copy-btn">
+                Copy
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <button
+        type="button"
+        class="referral-share-btn"
+        id="shareReferralButton">
+
+        Share Referral
+
+    </button>
+
+
+    <div class="referral-stats">
+
+        <div>
+            <strong id="referralVerifiedCount">0</strong>
+            <span>Verified Referrals</span>
+        </div>
+
+        <div>
+            <strong id="referralPendingCount">0</strong>
+            <span>Pending</span>
+        </div>
+
+        <div>
+            <strong id="referralEarnings">₹0</strong>
+            <span>Referral Earnings</span>
+        </div>
+
+    </div>
+
+
+    <div class="referral-note">
+        Only eligible verified registrations are counted
+        for referral incentives.
+    </div>
+
+</div>
    </section>
+
   </main>
   <nav class="bottom">
   <button class="mnav active" data-p="home" type="button">
@@ -10294,6 +10600,12 @@ document.getElementById("singleRegistrationForm").addEventListener("submit", asy
     localStorage.setItem("trivoxSingleRegistration",JSON.stringify(data));
     localStorage.setItem("trivoxRegistrationType","single");
     setTrivoxCookie("trivoxRegistrationType","single",30);
+
+    // REFERRAL: record the incoming referral only after registration succeeds.
+    if(typeof window.recordTrivoxReferralRegistration === "function"){
+      await window.recordTrivoxReferralRegistration(savedUser);
+    }
+
     showToast("Registration completed");
 
     setTimeout(()=>{ if(window.trivoxEnterDocumentary){ window.trivoxEnterDocumentary(); } },500);
@@ -10588,6 +10900,11 @@ document.getElementById("groupRegisterButton").addEventListener("click", async (
     if(memberError){
       console.error("Group members insert error:", memberError);
       throw memberError;
+    }
+
+    // REFERRAL: count the group leader's registration once after group creation succeeds.
+    if(typeof window.recordTrivoxReferralRegistration === "function"){
+      await window.recordTrivoxReferralRegistration(savedUser);
     }
 
     // 3. Save created group locally for refresh/session use.
@@ -10953,6 +11270,777 @@ if(joinGroupBackButton){
 
 })();
 </script>
+<script id="trivox-referral-feature">
 
+(function(){
+
+    /* ==============================================
+       SETTINGS
+    ============================================== */
+
+    const REFERRAL_PERCENTAGE = 5;
+
+    // Registration fee used only when the backend confirms a real payment.
+    const REFERRAL_REGISTRATION_AMOUNT = 300;
+
+    // Backend-only verification endpoint.
+    // IMPORTANT: frontend never changes pending -> verified directly.
+    const REFERRAL_VERIFY_FUNCTION_URL =
+        "https://zuzhxugdibzetwoliwxm.supabase.co/functions/v1/verify-referral-payment";
+
+    /*
+      IMPORTANT:
+      Change this URL to your actual registration page
+      if required.
+
+      Current page URL is used automatically.
+    */
+    const TRIVOX_REGISTER_URL =
+        "https://trivoxaiimpact.com/";
+
+
+    /* ==============================================
+       GET CURRENT USER
+    ============================================== */
+
+    function getReferralUser(){
+
+        try{
+
+            if(
+                typeof u !== "undefined" &&
+                u &&
+                u.id
+            ){
+                return u;
+            }
+
+            return JSON.parse(
+                localStorage.getItem("trivoxUser") || "null"
+            );
+
+        }catch(error){
+
+            console.error(
+                "Referral user read error:",
+                error
+            );
+
+            return null;
+        }
+    }
+
+
+    /* ==============================================
+       REFERRAL CODE
+
+       We use the existing TRIVOX ID.
+
+       Example:
+       User TRIVOX ID = A7K2M9
+       Referral ID    = TRV-A7K2M9
+
+       So NO second random user identity is needed.
+    ============================================== */
+
+    function createReferralCode(user){
+
+        if(!user){
+            return "";
+        }
+
+        const originalId =
+            String(
+                user.trivox_id ||
+                user.id ||
+                ""
+            )
+            .trim()
+            .toUpperCase();
+
+        if(!originalId){
+            return "";
+        }
+
+        return "TRV-" + originalId;
+    }
+
+
+    /* ==============================================
+       BUILD REFERRAL URL
+    ============================================== */
+
+    function createReferralLink(code){
+
+        if(!code){
+            return TRIVOX_REGISTER_URL;
+        }
+
+        try{
+
+            const url =
+                new URL(TRIVOX_REGISTER_URL);
+
+            url.searchParams.set(
+                "ref",
+                code
+            );
+
+            return url.toString();
+
+        }catch(error){
+
+            return (
+                TRIVOX_REGISTER_URL +
+                "?ref=" +
+                encodeURIComponent(code)
+            );
+        }
+    }
+
+
+    /* ==============================================
+       SHARE MESSAGE
+    ============================================== */
+
+  function createShareMessage(user, code, link){
+
+    const name =
+        user?.full_name ||
+        "TRIVOX Student";
+
+    return `Join TRIVOX AI IMPACT 🎓
+
+${name} invited you to join TRIVOX.
+
+Referral ID: ${code}
+
+Register Now 👇
+${link}
+
+Open the link above and complete your TRIVOX registration.`;
+}
+
+
+    /* ==============================================
+       SHOW REFERRAL CODE
+    ============================================== */
+
+    function showReferralCode(){
+
+        const user =
+            getReferralUser();
+
+        const element =
+            document.getElementById(
+                "trivoxReferralCode"
+            );
+
+        if(!element){
+            return;
+        }
+
+        if(!user){
+            element.textContent = "------";
+            return;
+        }
+
+        const code =
+            createReferralCode(user);
+
+        element.textContent =
+            code || "------";
+
+        element.dataset.code =
+            code || "";
+    }
+
+
+    /* ==============================================
+       COPY BUTTON
+    ============================================== */
+
+    async function copyReferralCode(){
+
+        const user =
+            getReferralUser();
+
+        if(!user){
+            if(typeof showToast === "function"){
+                showToast("Please login again");
+            }
+            return;
+        }
+
+        const code =
+            createReferralCode(user);
+
+        if(!code){
+            return;
+        }
+
+        try{
+
+            await navigator.clipboard.writeText(
+                code
+            );
+
+            const button =
+                document.getElementById(
+                    "copyReferralButton"
+                );
+
+            if(button){
+
+                const oldText =
+                    button.textContent;
+
+                button.textContent =
+                    "Copied";
+
+                setTimeout(()=>{
+
+                    button.textContent =
+                        oldText;
+
+                },1500);
+            }
+
+            if(typeof showToast === "function"){
+                showToast(
+                    "Referral ID copied"
+                );
+            }
+
+        }catch(error){
+
+            console.error(
+                "Referral copy error:",
+                error
+            );
+
+            window.prompt(
+                "Copy your Referral ID",
+                code
+            );
+        }
+    }
+
+
+    /* ==============================================
+       SHARE BUTTON
+    ============================================== */
+
+   async function shareReferral(){
+
+    const user = getReferralUser();
+
+    if(!user){
+
+        if(typeof showToast === "function"){
+            showToast("Please login again");
+        }
+
+        return;
+    }
+
+    const code = createReferralCode(user);
+
+    const link = createReferralLink(code);
+
+    const message =
+`Join TRIVOX AI IMPACT 🎓
+
+${user.full_name || "TRIVOX Student"} invited you to join TRIVOX.
+
+Referral ID: ${code}
+
+Click the link below to register 👇`;
+
+    /* MOBILE / SUPPORTED BROWSERS */
+
+    if(navigator.share){
+
+        try{
+
+            await navigator.share({
+
+                title: "Join TRIVOX AI IMPACT",
+
+                text: message,
+
+                // IMPORTANT:
+                // URL is shared separately so supported apps
+                // can recognise it as a clickable link.
+                url: link
+
+            });
+
+            return;
+
+        }catch(error){
+
+            if(
+                error &&
+                error.name === "AbortError"
+            ){
+                return;
+            }
+
+            console.error(
+                "Native share error:",
+                error
+            );
+        }
+    }
+
+
+    /* FALLBACK */
+
+    const fullMessage =
+`${message}
+
+${link}`;
+
+    try{
+
+        await navigator.clipboard.writeText(
+            fullMessage
+        );
+
+        if(typeof showToast === "function"){
+            showToast(
+                "Referral message copied"
+            );
+        }
+
+    }catch(error){
+
+        window.prompt(
+            "Copy and share this message",
+            fullMessage
+        );
+    }
+}
+
+    /* ==============================================
+       SAVE REFERRAL FROM URL
+
+       Example:
+       website.com/?ref=TRV-A7K2M9
+    ============================================== */
+
+    function captureIncomingReferral(){
+
+        try{
+
+            const params =
+                new URLSearchParams(
+                    window.location.search
+                );
+
+            const referralCode =
+                String(
+                    params.get("ref") || ""
+                )
+                .trim()
+                .toUpperCase();
+
+            if(!referralCode){
+                return;
+            }
+
+            /*
+              Store until user registration
+              is completed.
+            */
+
+            localStorage.setItem(
+                "trivoxIncomingReferral",
+                referralCode
+            );
+
+            /*
+              30 days referral attribution
+              if your existing cookie helper exists.
+            */
+
+            if(
+                typeof setTrivoxCookie ===
+                "function"
+            ){
+
+                setTrivoxCookie(
+                    "trivoxIncomingReferral",
+                    referralCode,
+                    30
+                );
+            }
+
+            console.log(
+                "Referral captured:",
+                referralCode
+            );
+
+        }catch(error){
+
+            console.error(
+                "Referral capture error:",
+                error
+            );
+        }
+    }
+
+
+    /* ==============================================
+       RECORD A SUCCESSFUL REFERRED REGISTRATION
+
+       Incoming link example:
+       ?ref=TRV-A7K2M9
+
+       Flow:
+       1. Read saved referral code.
+       2. Find the owner of that TRIVOX ID.
+       3. Prevent self-referral.
+       4. Insert one pending referral row.
+       5. Clear the incoming referral after success.
+    ============================================== */
+
+    async function recordIncomingReferralForUser(referredUser){
+
+        if(!referredUser || !referredUser.id || typeof db === "undefined"){
+            return false;
+        }
+
+        const incomingCode = String(
+            localStorage.getItem("trivoxIncomingReferral") ||
+            (typeof getTrivoxCookie === "function" ? getTrivoxCookie("trivoxIncomingReferral") : "") ||
+            ""
+        ).trim().toUpperCase();
+
+        if(!incomingCode){
+            return false;
+        }
+
+        const rawTrivoxId = incomingCode.replace(/^TRV-/, "").trim();
+
+        if(!rawTrivoxId){
+            return false;
+        }
+
+        try{
+
+            const { data: referrer, error: referrerError } = await db
+                .from("signup_details")
+                .select("id,trivox_id,full_name")
+                .eq("trivox_id", rawTrivoxId)
+                .maybeSingle();
+
+            if(referrerError){
+                throw referrerError;
+            }
+
+            if(!referrer || !referrer.id){
+                console.warn("Referral owner not found:", incomingCode);
+                return false;
+            }
+
+            if(String(referrer.id) === String(referredUser.id)){
+                console.warn("Self referral ignored");
+                localStorage.removeItem("trivoxIncomingReferral");
+                return false;
+            }
+
+            const { data: existing, error: existingError } = await db
+                .from("trivox_referrals")
+                .select("id")
+                .eq("referred_user_id", referredUser.id)
+                .maybeSingle();
+
+            if(existingError){
+                throw existingError;
+            }
+
+            if(existing){
+                localStorage.removeItem("trivoxIncomingReferral");
+                return true;
+            }
+
+            const referralPayload = {
+                referrer_user_id: referrer.id,
+                referrer_code: incomingCode,
+                referred_user_id: referredUser.id,
+                referred_name: referredUser.full_name || referredUser.name || null,
+                registration_amount: REFERRAL_REGISTRATION_AMOUNT,
+                incentive_percentage: 5,
+                incentive_amount: 0,
+                status: "pending"
+            };
+
+            const { error: insertError } = await db
+                .from("trivox_referrals")
+                .insert(referralPayload);
+
+            if(insertError){
+                // A unique referred_user_id constraint protects against duplicate credit.
+                if(String(insertError.code || "") !== "23505"){
+                    throw insertError;
+                }
+            }
+
+            localStorage.removeItem("trivoxIncomingReferral");
+
+            if(typeof setTrivoxCookie === "function"){
+                setTrivoxCookie("trivoxIncomingReferral", "", -1);
+            }
+
+            if(typeof window.refreshTrivoxReferral === "function"){
+                window.refreshTrivoxReferral();
+            }
+
+            console.log("Referral registration recorded:", incomingCode);
+            return true;
+
+        }catch(error){
+            console.error("Referral registration save error:", error);
+            // Do not block the student's normal registration if referral tracking fails.
+            return false;
+        }
+    }
+
+    window.recordTrivoxReferralRegistration = recordIncomingReferralForUser;
+
+
+    /* ==============================================
+       PAYMENT CONFIRMATION HOOK
+
+       IMPORTANT SECURITY RULE:
+       This does NOT mark a referral as verified in the browser.
+       A real payment gateway / trusted backend must call the
+       verify-referral-payment Edge Function after it verifies payment.
+
+       After your payment flow returns to this page, call:
+
+       window.trivoxReferralPaymentFinished();
+
+       That only refreshes the user's referral stats.
+    ============================================== */
+
+    window.trivoxReferralPaymentFinished = async function(){
+
+        try{
+            await loadReferralStats();
+            return true;
+        }catch(error){
+            console.error("Referral payment refresh error:", error);
+            return false;
+        }
+    };
+
+
+    /* ==============================================
+       LOAD REFERRAL STATS FROM SUPABASE
+    ============================================== */
+
+    async function loadReferralStats(){
+
+        const user =
+            getReferralUser();
+
+        if(
+            !user ||
+            !user.id ||
+            typeof db === "undefined"
+        ){
+            return;
+        }
+
+        const code =
+            createReferralCode(user);
+
+        try{
+
+            const {
+                data,
+                error
+            } = await db
+                .from(
+                    "trivox_referrals"
+                )
+                .select(
+                    "status,incentive_amount"
+                )
+                .eq(
+                    "referrer_user_id",
+                    user.id
+                );
+
+            if(error){
+                throw error;
+            }
+
+            const rows =
+                Array.isArray(data)
+                    ? data
+                    : [];
+
+
+            const verified =
+                rows.filter(
+                    row =>
+                        row.status ===
+                            "verified" ||
+                        row.status ===
+                            "paid"
+                );
+
+
+            const pending =
+                rows.filter(
+                    row =>
+                        row.status ===
+                        "pending"
+                );
+
+
+            const earnings =
+                verified.reduce(
+                    (total,row) =>
+                        total +
+                        Number(
+                            row.incentive_amount ||
+                            0
+                        ),
+                    0
+                );
+
+
+            const verifiedElement =
+                document.getElementById(
+                    "referralVerifiedCount"
+                );
+
+            const pendingElement =
+                document.getElementById(
+                    "referralPendingCount"
+                );
+
+            const earningsElement =
+                document.getElementById(
+                    "referralEarnings"
+                );
+
+
+            if(verifiedElement){
+                verifiedElement.textContent =
+                    verified.length;
+            }
+
+            if(pendingElement){
+                pendingElement.textContent =
+                    pending.length;
+            }
+
+            if(earningsElement){
+                earningsElement.textContent =
+                    "₹" +
+                    earnings.toFixed(0);
+            }
+
+
+        }catch(error){
+
+            console.error(
+                "Referral stats load error:",
+                error
+            );
+        }
+    }
+
+
+    /* ==============================================
+       BUTTON EVENTS
+    ============================================== */
+
+    function setupReferralButtons(){
+
+        const copyButton =
+            document.getElementById(
+                "copyReferralButton"
+            );
+
+        const shareButton =
+            document.getElementById(
+                "shareReferralButton"
+            );
+
+
+        if(copyButton){
+
+            copyButton.addEventListener(
+                "click",
+                copyReferralCode
+            );
+        }
+
+
+        if(shareButton){
+
+            shareButton.addEventListener(
+                "click",
+                shareReferral
+            );
+        }
+    }
+
+
+    /* ==============================================
+       INITIALIZE
+    ============================================== */
+
+    function initReferralFeature(){
+
+        captureIncomingReferral();
+
+        showReferralCode();
+
+        setupReferralButtons();
+
+        loadReferralStats();
+
+    }
+
+
+    if(
+        document.readyState === "loading"
+    ){
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            initReferralFeature
+        );
+
+    }else{
+
+        initReferralFeature();
+
+    }
+
+
+    /* Optional global refresh function */
+
+    window.refreshTrivoxReferral =
+        function(){
+
+            showReferralCode();
+
+            loadReferralStats();
+
+        };
+
+
+})();
+
+</script>
 </body>
 </html>
