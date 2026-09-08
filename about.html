@@ -2854,6 +2854,165 @@
   }
 
 }
+
+/* =========================================================
+   SECTION 01 — MOBILE SAFE FIX
+   Prevent image + text cutting
+========================================================= */
+@media(max-width:600px){
+
+  .about-beyond{
+    margin-top:70px;
+    padding:48px 16px 72px;
+    overflow:hidden;
+  }
+
+  .about-beyond-inner{
+    width:100%;
+    max-width:100%;
+    overflow:visible;
+  }
+
+  .about-beyond-top{
+    margin-bottom:46px;
+    gap:15px;
+  }
+
+  .about-beyond-label{
+    text-align:right;
+    line-height:1.35;
+  }
+
+  .about-beyond-title{
+    width:100%;
+    min-width:0;
+    margin-bottom:20px;
+    gap:10px;
+    overflow:visible;
+  }
+
+  /* LEARNING + first image */
+  .about-beyond-title:not(.second):not(.third){
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 92px;
+    align-items:center;
+  }
+
+  /* second image + BECOMES */
+  .about-beyond-title.second{
+    display:grid;
+    grid-template-columns:82px minmax(0,1fr);
+    align-items:center;
+    justify-content:initial;
+  }
+
+  .about-beyond-title h2{
+    min-width:0;
+    width:100%;
+    max-width:100%;
+    font-size:clamp(39px,13.2vw,56px);
+    line-height:.86;
+    letter-spacing:-3.2px;
+    white-space:nowrap;
+    overflow:visible;
+  }
+
+  .about-beyond-title.second h2{
+    text-align:right;
+  }
+
+  .about-beyond-image{
+    width:100% !important;
+    max-width:100%;
+    height:auto !important;
+    aspect-ratio:1.45 / 1;
+    overflow:hidden;
+    background:#ececf0;
+  }
+
+  .image-one{
+    transform:rotate(-2deg);
+  }
+
+  .image-two{
+    transform:rotate(2deg);
+  }
+
+  .about-beyond-image img{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    object-position:center;
+    transform:none !important;
+  }
+
+  .about-beyond-image:hover img{
+    transform:none;
+  }
+
+  .about-beyond-title.third{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:18px;
+    margin-top:30px;
+  }
+
+  .about-beyond-title.third h2{
+    flex:0 1 auto;
+    width:auto;
+    font-size:clamp(52px,17vw,68px);
+    white-space:nowrap;
+  }
+
+  .about-beyond-mini{
+    flex:0 0 118px;
+    width:118px;
+    margin:0 0 2px;
+  }
+
+  .about-beyond-mini p{
+    font-size:14px;
+    line-height:1.45;
+  }
+}
+
+/* Extra-small phones */
+@media(max-width:380px){
+
+  .about-beyond{
+    padding-left:14px;
+    padding-right:14px;
+  }
+
+  .about-beyond-title:not(.second):not(.third){
+    grid-template-columns:minmax(0,1fr) 78px;
+  }
+
+  .about-beyond-title.second{
+    grid-template-columns:72px minmax(0,1fr);
+  }
+
+  .about-beyond-title h2{
+    font-size:clamp(37px,12.5vw,48px);
+    letter-spacing:-2.8px;
+  }
+
+  .about-beyond-title.third h2{
+    font-size:52px;
+  }
+
+  .about-beyond-mini{
+    flex-basis:105px;
+    width:105px;
+  }
+
+  .about-beyond-mini p{
+    font-size:13px;
+  }
+}
+
 </style>
 
 
