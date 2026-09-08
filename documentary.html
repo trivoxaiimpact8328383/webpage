@@ -8789,7 +8789,7 @@ document.querySelectorAll('#home button, #home .start').forEach(btn=>{
   function addTrivoxImages(){
     /* HOME — existing image is kept */
     const home = document.querySelector("#home");
-    if(home && !home.querySelector(":scope > .trivox-generated-art")){
+    if(home && !home.querySelector(".trivox-generated-art")){
       home.prepend(makeImage("trivox-generated-art"));
     }
 
