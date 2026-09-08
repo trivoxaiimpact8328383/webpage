@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 
   <title>AI Learning | TRIVOX AI IMPACT</title>
   <meta name="description" content="Explore AI Learning at TRIVOX AI IMPACT. Learn AI foundations, machine learning, generative AI, prompt engineering and practical AI projects through a student-focused learning journey.">
@@ -9028,6 +9028,566 @@
 }
 
 </style>
+
+<style id="trivox-floating-nav-mobile-fix">
+/* =========================================================
+   SAME TRIVOX FLOATING ROUNDED NAVBAR
+========================================================= */
+html{
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+}
+
+body{
+  overflow-x:hidden;
+  touch-action:pan-y;
+}
+
+.navbar{
+  width:min(1480px,calc(100% - 44px)) !important;
+  height:70px !important;
+  top:14px !important;
+  left:50% !important;
+  right:auto !important;
+  transform:translateX(-50%) !important;
+  padding:0 20px !important;
+  border:1px solid rgba(35,31,45,.08) !important;
+  border-radius:20px !important;
+  background:rgba(255,255,255,.92) !important;
+  box-shadow:0 12px 40px rgba(32,27,45,.08) !important;
+  backdrop-filter:blur(18px) !important;
+  -webkit-backdrop-filter:blur(18px) !important;
+}
+
+.navbar .nav-link{
+  padding-top:25px !important;
+  padding-bottom:25px !important;
+}
+
+.navbar .dropdown{
+  top:61px !important;
+}
+
+.ai-page{
+  padding-top:98px !important;
+}
+
+/* Remove the "zoom" feel from the 03 scroll story */
+.za-scroll-icon,
+.za-scroll-step.is-active .za-scroll-icon{
+  transform:none !important;
+}
+
+.za-scroll-step{
+  transform:translateY(20px) !important;
+}
+
+.za-scroll-step.is-active{
+  transform:translateY(0) !important;
+}
+
+.za-scroll-step,
+.za-scroll-icon,
+.za-demo-card,
+.za-area-grid > *,
+.track-card,
+.ai-module,
+.outcome-card{
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+}
+
+/* no accidental scale animation on tap */
+@media (hover:none) and (pointer:coarse){
+  .za-scroll-icon,
+  .za-scroll-step.is-active .za-scroll-icon,
+  .za-demo-card,
+  .track-card,
+  .ai-module,
+  .outcome-card{
+    transform:none !important;
+  }
+}
+
+/* =========================================================
+   TABLET / MOBILE NAV
+========================================================= */
+@media(max-width:1000px){
+  .navbar{
+    width:calc(100% - 18px) !important;
+    height:64px !important;
+    top:8px !important;
+    padding:0 14px !important;
+    border-radius:16px !important;
+  }
+
+  .logo{
+    font-size:17px !important;
+  }
+
+  .menu-toggle{
+    width:40px !important;
+    height:40px !important;
+    border-radius:11px !important;
+    flex:0 0 40px;
+  }
+
+  .nav-menu{
+    position:fixed !important;
+    top:80px !important;
+    left:9px !important;
+    right:9px !important;
+    width:auto !important;
+    max-height:calc(100dvh - 92px) !important;
+    padding:10px !important;
+    border:1px solid #eceaf0 !important;
+    border-radius:18px !important;
+    background:rgba(255,255,255,.98) !important;
+    box-shadow:0 22px 60px rgba(28,23,40,.13) !important;
+    transform:translateY(-16px) scale(.985) !important;
+    transform-origin:top center;
+    opacity:0 !important;
+    pointer-events:none !important;
+    overflow-y:auto !important;
+    overscroll-behavior:contain;
+  }
+
+  .nav-menu.active{
+    transform:translateY(0) scale(1) !important;
+    opacity:1 !important;
+    pointer-events:auto !important;
+  }
+
+  .nav-link{
+    min-height:48px;
+    padding:13px 12px !important;
+    border-radius:11px;
+  }
+
+  .nav-item.open > .nav-link{
+    color:#7450e8;
+    background:#f7f4ff;
+  }
+
+  .dropdown{
+    position:static !important;
+    top:auto !important;
+    width:100% !important;
+    max-height:0 !important;
+    margin:0 !important;
+    padding:0 7px !important;
+    border:0 !important;
+    border-radius:12px !important;
+    background:#faf9fd !important;
+    box-shadow:none !important;
+    opacity:1 !important;
+    visibility:visible !important;
+    transform:none !important;
+    overflow:hidden !important;
+  }
+
+  .nav-item.open > .dropdown{
+    max-height:1200px !important;
+    margin-top:4px !important;
+    padding:7px !important;
+  }
+
+  .mega-dropdown{
+    display:block !important;
+  }
+
+  .dropdown > a,
+  .mega-box{
+    padding:11px 12px !important;
+    border-radius:9px !important;
+  }
+
+  .ai-page{
+    padding-top:82px !important;
+  }
+}
+
+@media(max-width:600px){
+  .navbar{
+    width:calc(100% - 16px) !important;
+    top:8px !important;
+    padding:0 12px !important;
+  }
+
+  .logo{
+    font-size:15px !important;
+    letter-spacing:-.6px !important;
+  }
+
+  .logo-impact{
+    margin-left:5px !important;
+  }
+
+  .nav-menu{
+    top:80px !important;
+    left:8px !important;
+    right:8px !important;
+    max-height:calc(100dvh - 90px) !important;
+  }
+
+  /* global mobile safety */
+  .wrap{
+    width:calc(100% - 28px) !important;
+  }
+
+  img,svg,video,canvas{
+    max-width:100%;
+  }
+
+  .za-scroll-track{
+    width:100%;
+  }
+
+  .za-scroll-step{
+    min-height:245px !important;
+  }
+}
+
+@media(max-width:380px){
+  .logo{
+    font-size:13px !important;
+  }
+}
+</style>
+
+
+<style id="ai-signal-footer-css">
+/* =========================================================
+   AI LEARNING — DIFFERENT LIGHT SIGNAL FOOTER
+========================================================= */
+.ai-signal-footer{
+  position:relative;
+  width:100%;
+  padding:18px;
+  background:#fff;
+  color:#151419;
+  overflow:hidden;
+}
+
+.ai-signal-shell{
+  max-width:1480px;
+  margin:auto;
+  padding:82px 6% 26px;
+  border-radius:34px;
+  background:
+    radial-gradient(circle at 82% 10%,rgba(116,80,232,.14),transparent 24%),
+    linear-gradient(180deg,#f5f2fd 0%,#efebf9 100%);
+}
+
+.ai-signal-head{
+  display:grid;
+  grid-template-columns:170px 1fr 132px;
+  gap:50px;
+  align-items:center;
+}
+
+.ai-signal-mark span{
+  display:block;
+  color:#7450e8;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+.ai-signal-mark small{
+  display:block;
+  margin-top:10px;
+  color:#9a95a2;
+  font-size:7.5px;
+  font-weight:800;
+  letter-spacing:1.5px;
+}
+
+.ai-signal-eyebrow{
+  display:block;
+  margin-bottom:17px;
+  color:#8f8998;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+.ai-signal-title h2{
+  margin:0;
+  max-width:720px;
+  font-size:clamp(48px,6.3vw,88px);
+  line-height:.88;
+  letter-spacing:-5.5px;
+  font-weight:900;
+}
+
+.ai-signal-title h2 strong{
+  color:#7450e8;
+  font-weight:900;
+}
+
+.ai-signal-cta{
+  width:122px;
+  height:122px;
+  border-radius:26px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  background:#7450e8;
+  color:#fff;
+  font-size:11px;
+  line-height:1.25;
+  font-weight:800;
+  text-align:center;
+  box-shadow:0 18px 38px rgba(116,80,232,.20);
+  transition:.3s ease;
+}
+
+.ai-signal-cta:hover{
+  transform:translateY(-5px) rotate(2deg);
+  border-radius:38px;
+}
+
+.ai-signal-cta i{
+  font-size:15px;
+}
+
+.ai-signal-mid{
+  margin-top:82px;
+  padding-top:34px;
+  border-top:1px solid rgba(30,25,40,.10);
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr 1.25fr;
+  gap:42px;
+}
+
+.ai-signal-index{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+}
+
+.ai-signal-index > span,
+.ai-signal-note > span{
+  display:block;
+  margin-bottom:20px;
+  color:#9d97a5;
+  font-size:7.5px;
+  font-weight:900;
+  letter-spacing:1.8px;
+}
+
+.ai-signal-index a{
+  margin-bottom:10px;
+  color:#4c4852;
+  font-size:12px;
+  font-weight:700;
+  transition:.2s ease;
+}
+
+.ai-signal-index a:hover{
+  color:#7450e8;
+  transform:translateX(5px);
+}
+
+.ai-signal-note{
+  max-width:290px;
+  justify-self:end;
+}
+
+.ai-signal-note p{
+  margin:0;
+  color:#67616e;
+  font-size:13px;
+  line-height:1.72;
+}
+
+.ai-signal-wordline{
+  margin-top:88px;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:22px;
+}
+
+.ai-signal-wordline span,
+.ai-signal-wordline strong{
+  font-size:clamp(47px,7vw,105px);
+  line-height:.8;
+  letter-spacing:-6px;
+  font-weight:900;
+}
+
+.ai-signal-wordline span{
+  color:#7450e8;
+}
+
+.ai-signal-wordline strong{
+  color:#cbc3df;
+}
+
+.ai-signal-wordline div{
+  height:1px;
+  background:linear-gradient(90deg,#7450e8,rgba(116,80,232,.12));
+}
+
+.ai-signal-bottom{
+  margin-top:48px;
+  min-height:62px;
+  padding-top:20px;
+  border-top:1px solid rgba(30,25,40,.10);
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  align-items:center;
+  gap:20px;
+  color:#938d9a;
+  font-size:7.5px;
+  font-weight:800;
+  letter-spacing:1.4px;
+}
+
+.ai-signal-bottom p{
+  margin:0;
+}
+
+.ai-signal-bottom > span{
+  text-align:center;
+}
+
+.ai-signal-bottom a{
+  justify-self:end;
+  display:flex;
+  align-items:center;
+  gap:7px;
+  color:#7450e8;
+}
+
+@media(max-width:900px){
+  .ai-signal-head{
+    grid-template-columns:1fr;
+    gap:30px;
+  }
+
+  .ai-signal-cta{
+    width:105px;
+    height:105px;
+  }
+
+  .ai-signal-mid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .ai-signal-note{
+    justify-self:start;
+  }
+}
+
+@media(max-width:600px){
+  .ai-signal-footer{
+    padding:8px;
+  }
+
+  .ai-signal-shell{
+    padding:58px 18px 22px;
+    border-radius:24px;
+  }
+
+  .ai-signal-head{
+    display:block;
+  }
+
+  .ai-signal-mark{
+    margin-bottom:35px;
+  }
+
+  .ai-signal-title h2{
+    max-width:320px;
+    font-size:48px;
+    line-height:.9;
+    letter-spacing:-3.7px;
+  }
+
+  .ai-signal-cta{
+    width:96px;
+    height:96px;
+    margin-top:32px;
+    border-radius:24px;
+    font-size:10px;
+  }
+
+  .ai-signal-mid{
+    margin-top:58px;
+    padding-top:28px;
+    grid-template-columns:1fr 1fr;
+    gap:36px 22px;
+  }
+
+  .ai-signal-index a{
+    font-size:11px;
+  }
+
+  .ai-signal-note{
+    grid-column:1 / -1;
+    max-width:300px;
+  }
+
+  .ai-signal-wordline{
+    margin-top:62px;
+    grid-template-columns:auto 1fr;
+    gap:14px;
+  }
+
+  .ai-signal-wordline span{
+    font-size:62px;
+    letter-spacing:-4px;
+  }
+
+  .ai-signal-wordline strong{
+    grid-column:1 / -1;
+    font-size:49px;
+    letter-spacing:-3.5px;
+  }
+
+  .ai-signal-bottom{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    gap:17px;
+    padding-top:22px;
+  }
+
+  .ai-signal-bottom > span{
+    width:100%;
+    order:3;
+    text-align:left;
+  }
+
+  .ai-signal-bottom a{
+    margin-left:auto;
+  }
+}
+
+@media(max-width:380px){
+  .ai-signal-title h2{
+    font-size:43px;
+  }
+
+  .ai-signal-mid{
+    grid-template-columns:1fr;
+  }
+
+  .ai-signal-note{
+    grid-column:auto;
+  }
+
+  .ai-signal-wordline strong{
+    font-size:42px;
+  }
+}
+</style>
+
 </head>
 
 <body>
@@ -10081,6 +10641,85 @@
 
 
 
+<!-- =========================================================
+     AI LEARNING — SIGNAL FOOTER
+========================================================= -->
+<footer class="ai-signal-footer" id="aiFooter">
+  <div class="ai-signal-shell">
+
+    <div class="ai-signal-head">
+      <div class="ai-signal-mark">
+        <span>TRIVOX AI IMPACT</span>
+        <small>AI LEARNING / 2026</small>
+      </div>
+
+      <div class="ai-signal-title">
+        <span class="ai-signal-eyebrow">KEEP THE SIGNAL MOVING</span>
+        <h2>
+          Learn the idea.<br>
+          <strong>Build the proof.</strong>
+        </h2>
+      </div>
+
+      <a href="../course.html" class="ai-signal-cta">
+        <span>Start<br>Learning</span>
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+      </a>
+    </div>
+
+    <div class="ai-signal-mid">
+
+      <div class="ai-signal-index">
+        <span>EXPLORE</span>
+        <a href="ailearning.html">AI Learning</a>
+        <a href="programming.html">Programming</a>
+        <a href="web-development.html">Web Development</a>
+      </div>
+
+      <div class="ai-signal-index">
+        <span>PROGRAMS</span>
+        <a href="../programs/student-programs.html">Student Programs</a>
+        <a href="../programs/internships.html">Internships</a>
+        <a href="../programs/workshops.html">Workshops</a>
+      </div>
+
+      <div class="ai-signal-index">
+        <span>TRIVOX</span>
+        <a href="../about.html">About</a>
+        <a href="../leader.html">Leadership</a>
+        <a href="../contact/contact.html">Contact</a>
+      </div>
+
+      <div class="ai-signal-note">
+        <span>THE IDEA</span>
+        <p>
+          Understand AI clearly, practice intentionally,
+          and build work you can actually demonstrate.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="ai-signal-wordline" aria-hidden="true">
+      <span>AI</span>
+      <div></div>
+      <strong>LEARNING</strong>
+    </div>
+
+    <div class="ai-signal-bottom">
+      <p>© 2026 TRIVOX AI IMPACT</p>
+
+      <span>
+        EDUCATION / TECHNOLOGY / IMPACT
+      </span>
+
+      <a href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
+        TOP <i class="fa-solid fa-arrow-up"></i>
+      </a>
+    </div>
+
+  </div>
+</footer>
 
 
 <script>
@@ -10315,6 +10954,25 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 });
+</script>
+
+
+<script id="trivox-no-zoom-tap-fix">
+(function(){
+  let lastTouchEnd = 0;
+
+  document.addEventListener("touchend", function(e){
+    const now = Date.now();
+    if(now - lastTouchEnd <= 300){
+      e.preventDefault();
+    }
+    lastTouchEnd = now;
+  }, {passive:false});
+
+  document.addEventListener("gesturestart", function(e){
+    e.preventDefault();
+  }, {passive:false});
+})();
 </script>
 
 </body>
