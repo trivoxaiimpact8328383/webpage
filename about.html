@@ -2416,6 +2416,444 @@
   }
 
 }
+/* =========================================================
+   SECTION 08
+   EDITORIAL STRIPE UI
+========================================================= */
+
+.about-shift{
+  width:100%;
+
+  background:#111;
+
+  color:#fff;
+
+  padding:90px 7% 0;
+
+  overflow:hidden;
+}
+
+
+.about-shift-inner{
+  max-width:1220px;
+  margin:auto;
+}
+
+
+/* TOP */
+
+.about-shift-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  margin-bottom:70px;
+}
+
+
+.about-shift-top span{
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:2px;
+
+  color:#666;
+}
+
+
+.about-shift-top strong{
+  font-size:9px;
+  font-weight:800;
+
+  letter-spacing:2.5px;
+
+  color:#a996f5;
+}
+
+
+/* =========================================================
+   MAIN LAYOUT
+========================================================= */
+
+.about-shift-layout{
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  gap:120px;
+
+  align-items:start;
+}
+
+
+/* LEFT */
+
+.about-shift-left{
+  position:sticky;
+  top:130px;
+}
+
+
+.about-shift-kicker{
+  display:block;
+
+  margin-bottom:25px;
+
+  font-size:8px;
+  font-weight:800;
+
+  letter-spacing:2.3px;
+
+  color:#74747c;
+}
+
+
+.about-shift-left h2{
+  margin:0;
+
+  max-width:560px;
+
+  font-size:clamp(58px,7vw,95px);
+
+  line-height:.9;
+
+  letter-spacing:-6px;
+
+  font-weight:900;
+}
+
+
+.about-shift-left h2 strong{
+  color:#a996f5;
+}
+
+
+/* =========================================================
+   RIGHT WORD LIST
+========================================================= */
+
+.about-shift-right{
+  padding-top:15px;
+}
+
+
+.shift-row{
+  position:relative;
+
+  min-height:135px;
+
+  display:grid;
+
+  grid-template-columns:45px 1fr;
+
+  align-items:center;
+
+  transition:padding-left .35s ease;
+}
+
+
+.shift-row span{
+  font-size:8px;
+
+  font-weight:800;
+
+  letter-spacing:1.5px;
+
+  color:#555;
+}
+
+
+.shift-row h3{
+  margin:0;
+
+  font-size:clamp(48px,5.5vw,76px);
+
+  line-height:.9;
+
+  letter-spacing:-4px;
+
+  font-weight:900;
+
+  transition:
+    color .3s ease,
+    transform .3s ease;
+}
+
+
+.shift-row small{
+  position:absolute;
+
+  right:0;
+  bottom:23px;
+
+  font-size:9px;
+
+  font-weight:700;
+
+  letter-spacing:1.2px;
+
+  color:#666;
+}
+
+
+/* HOVER */
+
+.shift-row:hover{
+  padding-left:12px;
+}
+
+
+.shift-row:hover h3{
+  color:#a996f5;
+
+  transform:translateX(8px);
+}
+
+
+/* =========================================================
+   MOVING STRIPE
+========================================================= */
+
+.about-shift-marquee{
+  width:calc(100% + 14vw);
+
+  margin-left:-7vw;
+
+  margin-top:90px;
+
+  padding:28px 0;
+
+  overflow:hidden;
+
+  background:#a996f5;
+
+  transform:rotate(-2deg);
+}
+
+
+.shift-track{
+  width:max-content;
+
+  white-space:nowrap;
+
+  font-size:clamp(38px,5vw,70px);
+
+  line-height:1;
+
+  letter-spacing:-3px;
+
+  font-weight:900;
+
+  color:#111;
+
+  animation:shiftMove 18s linear infinite;
+}
+
+
+@keyframes shiftMove{
+
+  from{
+    transform:translateX(0);
+  }
+
+  to{
+    transform:translateX(-50%);
+  }
+
+}
+
+
+/* =========================================================
+   END
+========================================================= */
+
+.about-shift-end{
+  display:flex;
+
+  align-items:flex-end;
+  justify-content:space-between;
+
+  gap:40px;
+
+  padding:115px 0 95px;
+}
+
+
+.about-shift-end span{
+  font-size:clamp(70px,13vw,170px);
+
+  line-height:.72;
+
+  letter-spacing:-10px;
+
+  font-weight:900;
+
+  color:#1c1c1f;
+}
+
+
+.about-shift-end h4{
+  margin:0 0 5px;
+
+  max-width:340px;
+
+  font-size:clamp(30px,3.5vw,47px);
+
+  line-height:.98;
+
+  letter-spacing:-2px;
+
+  text-align:right;
+
+  color:#fff;
+
+  font-weight:800;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media(max-width:900px){
+
+  .about-shift{
+    padding:75px 6% 0;
+  }
+
+
+  .about-shift-layout{
+    grid-template-columns:1fr;
+
+    gap:70px;
+  }
+
+
+  .about-shift-left{
+    position:relative;
+
+    top:auto;
+  }
+
+
+  .about-shift-left h2{
+    max-width:700px;
+  }
+
+
+  .shift-row{
+    min-height:115px;
+  }
+
+
+  .about-shift-marquee{
+    margin-top:70px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:600px){
+
+  .about-shift{
+    padding:55px 20px 0;
+  }
+
+
+  .about-shift-top{
+    margin-bottom:50px;
+  }
+
+
+  .about-shift-layout{
+    gap:55px;
+  }
+
+
+  .about-shift-left h2{
+    font-size:49px;
+
+    line-height:.93;
+
+    letter-spacing:-3.5px;
+  }
+
+
+  .shift-row{
+    min-height:90px;
+
+    grid-template-columns:32px 1fr;
+  }
+
+
+  .shift-row h3{
+    font-size:45px;
+
+    letter-spacing:-3px;
+  }
+
+
+  .shift-row small{
+    position:static;
+
+    grid-column:2;
+
+    margin-top:6px;
+
+    font-size:8px;
+  }
+
+
+  .about-shift-marquee{
+    width:calc(100% + 40px);
+
+    margin-left:-20px;
+
+    margin-top:60px;
+
+    padding:20px 0;
+
+    transform:rotate(-2deg);
+  }
+
+
+  .shift-track{
+    font-size:38px;
+
+    letter-spacing:-2px;
+  }
+
+
+  .about-shift-end{
+    display:block;
+
+    padding:85px 0 65px;
+  }
+
+
+  .about-shift-end span{
+    display:block;
+
+    margin-bottom:50px;
+
+    font-size:78px;
+
+    letter-spacing:-6px;
+  }
+
+
+  .about-shift-end h4{
+    max-width:290px;
+
+    text-align:left;
+
+    font-size:34px;
+  }
+
+}
 </style>
 
 
@@ -3098,6 +3536,90 @@
         </p>
 
       </div>
+
+    </div>
+
+  </div>
+
+</section>
+<!-- =========================================================
+     ABOUT PAGE — SECTION 08
+     DIFFERENT EDITORIAL STRIPE UI
+========================================================= -->
+
+<section class="about-shift">
+
+  <div class="about-shift-inner">
+
+    <div class="about-shift-top">
+      <span>08</span>
+      <strong>WHAT MOVES US</strong>
+    </div>
+
+
+    <div class="about-shift-layout">
+
+      <div class="about-shift-left">
+
+        <span class="about-shift-kicker">
+          BUILT TO KEEP MOVING
+        </span>
+
+        <h2>
+          We don't stop
+          at <strong>learning.</strong>
+        </h2>
+
+      </div>
+
+
+      <div class="about-shift-right">
+
+        <div class="shift-row">
+          <span>01</span>
+          <h3>ASK</h3>
+          <small>Question more</small>
+        </div>
+
+        <div class="shift-row">
+          <span>02</span>
+          <h3>TRY</h3>
+          <small>Practice often</small>
+        </div>
+
+        <div class="shift-row">
+          <span>03</span>
+          <h3>MAKE</h3>
+          <small>Build real things</small>
+        </div>
+
+        <div class="shift-row">
+          <span>04</span>
+          <h3>MOVE</h3>
+          <small>Keep progressing</small>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="about-shift-marquee">
+
+      <div class="shift-track">
+        LEARN • TRY • BUILD • CREATE • GROW • LEARN • TRY • BUILD • CREATE • GROW •
+      </div>
+
+    </div>
+
+
+    <div class="about-shift-end">
+
+      <span>TRIVOX</span>
+
+      <h4>
+        Progress is the point.
+      </h4>
 
     </div>
 
