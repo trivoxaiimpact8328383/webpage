@@ -5911,6 +5911,45 @@ body.trivox-dashboard-mode #trivoxAuthGate{
 }
 </style>
 
+
+<style id="force-more-logout-style-final">
+.doc-more-menu .doc-more-logout{
+  display:block !important;
+  width:100% !important;
+  margin-top:6px !important;
+  padding:12px !important;
+  border:0 !important;
+  border-top:1px solid #ededf0 !important;
+  border-radius:5px !important;
+  background:#fff7f7 !important;
+  color:#c73535 !important;
+  text-align:left !important;
+  font-size:11px !important;
+  font-weight:900 !important;
+}
+
+.doc-more-menu .doc-more-logout:hover{
+  background:#fdeeee !important;
+  color:#b92f2f !important;
+}
+
+.mobile-more-sheet .mobile-more-logout{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:100% !important;
+  height:44px !important;
+  margin-top:12px !important;
+  padding:0 14px !important;
+  border:1px solid #f0caca !important;
+  border-radius:10px !important;
+  background:#fff7f7 !important;
+  color:#c73535 !important;
+  font-size:11px !important;
+  font-weight:900 !important;
+}
+</style>
+
 </head>
  <body class="trivox-auth-mode">
 
@@ -9944,6 +9983,29 @@ function viewVillageDocumentaryResult(){
   };
 
   window.logoutTrivox=async function(){
+
+    /* Save only non-sensitive registration state per user so re-login
+       can restore the correct dashboard even after session cleanup. */
+    try{
+      const _logoutUser = readUser();
+      const _logoutType = localStorage.getItem("trivoxRegistrationType");
+      const _logoutGroupId = localStorage.getItem("trivoxGroupId");
+
+      if(
+        _logoutUser &&
+        _logoutUser.id &&
+        (_logoutType === "single" || _logoutType === "group")
+      ){
+        localStorage.setItem(
+          "trivoxRegistrationCache_" + _logoutUser.id,
+          JSON.stringify({
+            type:_logoutType,
+            groupId:_logoutType === "group" ? (_logoutGroupId || "") : ""
+          })
+        );
+      }
+    }catch(_logoutCacheError){}
+
     try{
       if(window.trivoxAuthDb?.auth){
         await window.trivoxAuthDb.auth.signOut();
@@ -10335,6 +10397,110 @@ const loginButton = document.getElementById("loginButton");
 const loginButtonText = document.getElementById("loginButtonText");
 const loginSpinner = document.getElementById("loginSpinner");
 
+/* =========================================================
+   RESTORE EXISTING USER AFTER LOGOUT -> LOGIN
+   ========================================================= */
+async function restoreExistingRegistrationAfterLogin(user){
+  if(!user || !user.id) return false;
+
+  /* Fast local per-user fallback, if this browser has seen the user before. */
+  try{
+    const cached = JSON.parse(
+      localStorage.getItem("trivoxRegistrationCache_" + user.id) || "null"
+    );
+
+    if(cached && (cached.type === "single" || cached.type === "group")){
+      localStorage.setItem("trivoxRegistrationType", cached.type);
+
+      if(cached.groupId){
+        localStorage.setItem("trivoxGroupId", cached.groupId);
+      }
+
+      if(typeof setTrivoxCookie === "function"){
+        setTrivoxCookie("trivoxRegistrationType", cached.type, 30);
+        if(cached.groupId){
+          setTrivoxCookie("trivoxGroupId", cached.groupId, 30);
+        }
+      }
+
+      return true;
+    }
+  }catch(_cacheError){}
+
+  try{
+    /* Existing single registration */
+    const { data: singleData, error: singleError } = await db
+      .from("single_registrations")
+      .select("*")
+      .eq("user_id", user.id)
+      .maybeSingle();
+
+    if(singleError){
+      console.error("Single registration restore error:", singleError);
+    }
+
+    if(singleData){
+      localStorage.setItem("trivoxRegistrationType", "single");
+      localStorage.setItem(
+        "trivoxSingleRegistration",
+        JSON.stringify(singleData)
+      );
+
+      localStorage.setItem(
+        "trivoxRegistrationCache_" + user.id,
+        JSON.stringify({ type:"single" })
+      );
+
+      if(typeof setTrivoxCookie === "function"){
+        setTrivoxCookie("trivoxRegistrationType", "single", 30);
+      }
+
+      return true;
+    }
+
+    /* Existing group creator/member registration */
+    const { data: memberRows, error: memberError } = await db
+      .from("trivox_group_members")
+      .select("id,group_id,user_id,member_role")
+      .eq("user_id", user.id)
+      .limit(1);
+
+    if(memberError){
+      console.error("Group registration restore error:", memberError);
+    }
+
+    const memberData =
+      Array.isArray(memberRows) && memberRows.length
+        ? memberRows[0]
+        : null;
+
+    if(memberData && memberData.group_id){
+      localStorage.setItem("trivoxRegistrationType", "group");
+      localStorage.setItem("trivoxGroupId", memberData.group_id);
+
+      localStorage.setItem(
+        "trivoxRegistrationCache_" + user.id,
+        JSON.stringify({
+          type:"group",
+          groupId:memberData.group_id
+        })
+      );
+
+      if(typeof setTrivoxCookie === "function"){
+        setTrivoxCookie("trivoxRegistrationType", "group", 30);
+        setTrivoxCookie("trivoxGroupId", memberData.group_id, 30);
+      }
+
+      return true;
+    }
+
+  }catch(error){
+    console.error("Existing registration restore error:", error);
+  }
+
+  return false;
+}
+
 loginForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
@@ -10367,7 +10533,7 @@ loginForm.addEventListener("submit", async (event) => {
   try {
     const result = await db
       .from("signup_details")
-      .select("id, full_name, email, village, created_at")
+      .select("id, trivox_id, full_name, email, village, created_at")
       .eq("email", email)
       .eq("password", password)
       .maybeSingle();
@@ -10381,11 +10547,29 @@ loginForm.addEventListener("submit", async (event) => {
 
     saveLoggedInState(result.data);
 
+    const hasExistingRegistration =
+      await restoreExistingRegistrationAfterLogin(result.data);
+
     showToast("Login successful");
 
     setTimeout(() => {
-      openRegistrationStep();
-    }, 700);
+      if(hasExistingRegistration){
+        if(typeof window.trivoxEnterDocumentary === "function"){
+          window.trivoxEnterDocumentary();
+        }
+      }else{
+        openRegistrationStep();
+      }
+
+      /* Referral script initializes before/at page load.
+         Refresh it after the new login user is stored. */
+      setTimeout(() => {
+        if(typeof window.refreshTrivoxReferral === "function"){
+          window.refreshTrivoxReferral();
+        }
+      }, 50);
+
+    }, 300);
 
   } catch (error) {
     loginPasswordError.textContent = dbMessage(error);
@@ -10651,7 +10835,7 @@ registerForm.addEventListener("submit", async (event) => {
         village: villageValue,
         password: password
       })
-      .select("id, full_name, email, village, created_at")
+      .select("id, trivox_id, full_name, email, village, created_at")
       .single();
 
     if (insertResult.error) throw insertResult.error;
@@ -10755,6 +10939,10 @@ document.getElementById("singleRegistrationForm").addEventListener("submit", asy
 
     localStorage.setItem("trivoxSingleRegistration",JSON.stringify(data));
     localStorage.setItem("trivoxRegistrationType","single");
+    localStorage.setItem(
+      "trivoxRegistrationCache_" + savedUser.id,
+      JSON.stringify({type:"single"})
+    );
     setTrivoxCookie("trivoxRegistrationType","single",30);
 
     // REFERRAL: record the incoming referral only after registration succeeds.
@@ -11065,6 +11253,10 @@ document.getElementById("groupRegisterButton").addEventListener("click", async (
 
     // 3. Save created group locally for refresh/session use.
     localStorage.setItem("trivoxGroupId", groupId);
+    localStorage.setItem(
+      "trivoxRegistrationCache_" + savedUser.id,
+      JSON.stringify({type:"group",groupId:groupId})
+    );
     localStorage.setItem("trivoxGroupFriends", JSON.stringify(addedFriends));
     localStorage.setItem("trivoxRegistrationType", "group");
     setTrivoxCookie("trivoxGroupId", groupId, 30);
@@ -12131,7 +12323,9 @@ ${link}`;
             );
 
 
-        if(copyButton){
+        if(copyButton && !copyButton.dataset.referralBound){
+
+            copyButton.dataset.referralBound = "1";
 
             copyButton.addEventListener(
                 "click",
@@ -12140,7 +12334,9 @@ ${link}`;
         }
 
 
-        if(shareButton){
+        if(shareButton && !shareButton.dataset.referralBound){
+
+            shareButton.dataset.referralBound = "1";
 
             shareButton.addEventListener(
                 "click",
@@ -12190,6 +12386,8 @@ ${link}`;
 
             showReferralCode();
 
+            setupReferralButtons();
+
             loadReferralStats();
 
         };
@@ -12198,5 +12396,62 @@ ${link}`;
 })();
 
 </script>
+
+<script id="force-more-logout-final">
+(function(){
+
+  function ensureMoreLogoutButtons(){
+
+    /* Desktop More menu */
+    const desktopMenu = document.getElementById("docMoreMenu");
+
+    if(desktopMenu && !desktopMenu.querySelector(".doc-more-logout")){
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "doc-more-logout";
+      btn.textContent = "Log Out";
+      btn.onclick = function(){
+        if(typeof window.logoutTrivox === "function"){
+          window.logoutTrivox();
+        }else{
+          window.location.href = "index.html";
+        }
+      };
+      desktopMenu.appendChild(btn);
+    }
+
+    /* Mobile More sheet */
+    const mobileMenu = document.getElementById("mobileMoreSheet");
+
+    if(mobileMenu && !mobileMenu.querySelector(".mobile-more-logout")){
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "mobile-more-logout";
+      btn.textContent = "Log Out";
+      btn.onclick = function(){
+        if(typeof window.logoutTrivox === "function"){
+          window.logoutTrivox();
+        }else{
+          window.location.href = "index.html";
+        }
+      };
+      mobileMenu.appendChild(btn);
+    }
+  }
+
+  if(document.readyState === "loading"){
+    document.addEventListener("DOMContentLoaded", ensureMoreLogoutButtons, {once:true});
+  }else{
+    ensureMoreLogoutButtons();
+  }
+
+  /* Run once more after all scripts finish, in case menus are rebuilt later */
+  window.addEventListener("load", function(){
+    ensureMoreLogoutButtons();
+  }, {once:true});
+
+})();
+</script>
+
 </body>
 </html>
