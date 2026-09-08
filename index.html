@@ -3970,392 +3970,6 @@ svg{
 
 
 /* =========================================================
-   NEW SECTION — VALUE BRIDGE
-========================================================= */
-
-.value-bridge{
-  position:relative;
-
-  width:100%;
-
-  padding:105px 24px 115px;
-
-  background:#f5f3fa;
-
-  color:#111116;
-
-  overflow:hidden;
-}
-
-
-.value-bridge-wrap{
-  width:min(1180px,100%);
-
-  margin:auto;
-}
-
-
-.value-bridge-top{
-  display:flex;
-
-  align-items:flex-start;
-  justify-content:space-between;
-
-  gap:50px;
-
-  padding-bottom:32px;
-
-  border-bottom:1px solid #ded9e8;
-}
-
-
-.value-bridge-tag span{
-  color:#7450e8;
-
-  font-size:9px;
-  font-weight:900;
-
-  letter-spacing:2px;
-}
-
-
-.value-bridge-top > p{
-  max-width:420px;
-
-  margin:0;
-
-  color:#77727e;
-
-  font-size:13px;
-  line-height:1.7;
-
-  text-align:right;
-}
-
-
-.value-bridge-main{
-  display:grid;
-
-  grid-template-columns:.92fr 1.08fr;
-
-  gap:95px;
-
-  align-items:center;
-
-  padding-top:75px;
-}
-
-
-/* LEFT */
-
-.value-bridge-kicker{
-  display:block;
-
-  margin-bottom:19px;
-
-  color:#9b95a1;
-
-  font-size:8px;
-  font-weight:900;
-
-  letter-spacing:2px;
-}
-
-
-.value-bridge-copy h2{
-  max-width:620px;
-
-  margin:0;
-
-  font-size:clamp(48px,6vw,82px);
-
-  line-height:.9;
-
-  letter-spacing:-5px;
-
-  font-weight:900;
-}
-
-
-.value-bridge-copy h2 strong{
-  color:#7450e8;
-
-  font-weight:900;
-}
-
-
-.value-bridge-copy > p{
-  max-width:520px;
-
-  margin:27px 0 0;
-
-  color:#6f6b75;
-
-  font-size:14px;
-
-  line-height:1.8;
-}
-
-
-.value-bridge-link{
-  display:inline-flex;
-
-  align-items:center;
-
-  gap:10px;
-
-  margin-top:30px;
-
-  color:#17171c;
-
-  font-size:12px;
-  font-weight:800;
-}
-
-
-.value-bridge-link > span{
-  width:34px;
-  height:34px;
-
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
-
-  border-radius:50%;
-
-  background:#fff;
-
-  color:#7450e8;
-
-  box-shadow:0 8px 22px rgba(38,29,64,.06);
-}
-
-
-/* RIGHT VISUAL */
-
-.value-bridge-visual{
-  position:relative;
-
-  min-height:520px;
-
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
-}
-
-
-.value-ledger{
-  position:relative;
-
-  width:min(100%,500px);
-
-  padding:24px;
-
-  border:1px solid #e3deeb;
-
-  border-radius:26px;
-
-  background:#fff;
-
-  box-shadow:0 28px 70px rgba(37,27,64,.09);
-
-  z-index:2;
-}
-
-
-.value-ledger-head{
-  display:flex;
-
-  align-items:center;
-  justify-content:space-between;
-
-  padding-bottom:20px;
-
-  border-bottom:1px solid #ece9f0;
-}
-
-
-.value-ledger-head span{
-  font-size:9px;
-  font-weight:900;
-
-  letter-spacing:1.7px;
-
-  color:#201e24;
-}
-
-
-.value-ledger-head small{
-  color:#7450e8;
-
-  font-size:7.5px;
-  font-weight:900;
-
-  letter-spacing:1.4px;
-}
-
-
-.value-ledger-row{
-  min-height:103px;
-
-  display:grid;
-
-  grid-template-columns:42px 1fr 42px;
-
-  gap:14px;
-
-  align-items:center;
-
-  border-bottom:1px solid #ece9f0;
-}
-
-
-.value-ledger-row > span{
-  color:#aaa4b0;
-
-  font-size:9px;
-  font-weight:900;
-}
-
-
-.value-ledger-row small{
-  display:block;
-
-  margin-bottom:5px;
-
-  color:#9f99a6;
-
-  font-size:7.5px;
-  font-weight:900;
-
-  letter-spacing:1.5px;
-}
-
-
-.value-ledger-row strong{
-  color:#242129;
-
-  font-size:19px;
-
-  letter-spacing:-.6px;
-}
-
-
-.value-ledger-row > i{
-  width:38px;
-  height:38px;
-
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
-
-  border-radius:12px;
-
-  background:#f1edff;
-
-  color:#7450e8;
-
-  font-size:12px;
-}
-
-
-.value-ledger-foot{
-  display:flex;
-
-  align-items:center;
-  justify-content:space-between;
-
-  gap:20px;
-
-  padding-top:20px;
-}
-
-
-.value-ledger-foot span{
-  color:#aaa4b0;
-
-  font-size:7px;
-  font-weight:900;
-
-  letter-spacing:1.5px;
-}
-
-
-.value-ledger-foot strong{
-  color:#7450e8;
-
-  font-size:10px;
-
-  letter-spacing:.7px;
-}
-
-
-.value-side-note{
-  position:absolute;
-
-  z-index:3;
-
-  min-width:130px;
-
-  padding:14px 16px;
-
-  border-radius:14px;
-
-  background:#ebe5ff;
-
-  box-shadow:0 15px 35px rgba(46,35,79,.08);
-}
-
-
-.value-side-note small{
-  display:block;
-
-  margin-bottom:4px;
-
-  color:#9b91bd;
-
-  font-size:7px;
-  font-weight:900;
-
-  letter-spacing:1.4px;
-}
-
-
-.value-side-note strong{
-  color:#5f43ce;
-
-  font-size:14px;
-}
-
-
-.note-a{
-  left:-15px;
-  top:80px;
-}
-
-
-.note-b{
-  right:-18px;
-  bottom:65px;
-
-  background:#17171c;
-}
-
-
-.note-b small{
-  color:#8f899a;
-}
-
-
-.note-b strong{
-  color:#fff;
-}
-
-
-/* =========================================================
    NEW FOOTER
 ========================================================= */
 
@@ -5028,6 +4642,445 @@ svg{
 
 </style>
 
+
+<style id="learning-real-and-nav-gap-fix">
+
+/* =========================================================
+   NAVBAR GAP FIX
+   Keeps the "Don't just learn..." content clearly below nav.
+========================================================= */
+.hero{
+  padding-top:128px !important;
+}
+
+@media(max-width:1000px){
+  .hero{
+    padding-top:118px !important;
+  }
+}
+
+@media(max-width:600px){
+  .hero{
+    padding-top:108px !important;
+  }
+}
+
+
+/* =========================================================
+   LEARNING BECOMES REAL — EDITORIAL IMAGE SECTION
+========================================================= */
+.learning-real{
+  width:100%;
+  padding:105px 24px 115px;
+  background:#f6f5f8;
+  color:#111116;
+  overflow:hidden;
+}
+
+.learning-real-wrap{
+  width:min(1240px,100%);
+  margin:auto;
+}
+
+.learning-real-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:50px;
+  padding-bottom:28px;
+  border-bottom:1px solid #dddbe2;
+}
+
+.learning-real-head > span{
+  color:#7450e8;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:2.4px;
+}
+
+.learning-real-head > p{
+  max-width:410px;
+  margin:0;
+  color:#77747d;
+  font-size:12.5px;
+  line-height:1.7;
+  text-align:right;
+}
+
+.learning-real-stage{
+  min-height:690px;
+  display:grid;
+  grid-template-columns:1fr .8fr 1fr;
+  gap:34px;
+  align-items:center;
+  padding-top:55px;
+}
+
+.learning-real-image{
+  position:relative;
+  margin:0;
+}
+
+.learning-real-image img{
+  width:100%;
+  height:430px;
+  display:block;
+  object-fit:cover;
+  border-radius:3px;
+  filter:saturate(.92);
+}
+
+.learning-real-image-one{
+  align-self:start;
+  margin-top:15px;
+}
+
+.learning-real-image-two{
+  align-self:end;
+  margin-bottom:15px;
+}
+
+.learning-real-image-two img{
+  height:360px;
+}
+
+.learning-real-image figcaption{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  padding-top:13px;
+}
+
+.learning-real-image figcaption span{
+  color:#aaa7af;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+.learning-real-image figcaption strong{
+  color:#3c3941;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:1.6px;
+}
+
+.learning-real-center{
+  position:relative;
+  z-index:2;
+  text-align:center;
+}
+
+.learning-real-small{
+  display:block;
+  margin-bottom:18px;
+  color:#9b96a1;
+  font-size:7.5px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+.learning-real-center h2{
+  margin:0;
+  font-size:clamp(58px,7vw,102px);
+  line-height:.76;
+  letter-spacing:-6px;
+  font-weight:900;
+}
+
+.learning-real-center h2 strong{
+  display:block;
+  margin-top:13px;
+  color:#7450e8;
+  font-weight:900;
+}
+
+.learning-real-center p{
+  max-width:280px;
+  margin:30px auto 0;
+  color:#77737d;
+  font-size:12px;
+  line-height:1.75;
+}
+
+.learning-real-bottom{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  gap:18px;
+  align-items:center;
+  margin-top:45px;
+  color:#9b97a0;
+  font-size:7.5px;
+  font-weight:900;
+  letter-spacing:1.5px;
+}
+
+.learning-real-bottom div{
+  height:1px;
+  background:#ddd9e2;
+}
+
+.learning-real-bottom strong{
+  color:#7450e8;
+  font-size:7.5px;
+}
+
+@media(max-width:900px){
+  .learning-real{
+    padding:82px 20px 90px;
+  }
+
+  .learning-real-stage{
+    min-height:auto;
+    grid-template-columns:1fr 1fr;
+    gap:28px;
+  }
+
+  .learning-real-center{
+    grid-column:1 / -1;
+    grid-row:1;
+    padding:30px 0 20px;
+  }
+
+  .learning-real-image-one,
+  .learning-real-image-two{
+    align-self:auto;
+    margin:0;
+  }
+
+  .learning-real-image img,
+  .learning-real-image-two img{
+    height:360px;
+  }
+}
+
+@media(max-width:600px){
+  .learning-real{
+    padding:65px 18px 72px;
+  }
+
+  .learning-real-head{
+    display:block;
+    padding-bottom:22px;
+  }
+
+  .learning-real-head > p{
+    max-width:300px;
+    margin-top:13px;
+    text-align:left;
+    font-size:11.5px;
+  }
+
+  .learning-real-stage{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+    padding-top:38px;
+  }
+
+  .learning-real-center{
+    order:1;
+    width:100%;
+    padding:10px 0 42px;
+  }
+
+  .learning-real-image-one{
+    order:2;
+    width:88%;
+    align-self:flex-start;
+  }
+
+  .learning-real-image-two{
+    order:3;
+    width:78%;
+    align-self:flex-end;
+    margin-top:40px;
+  }
+
+  .learning-real-image img{
+    height:360px;
+  }
+
+  .learning-real-image-two img{
+    height:300px;
+  }
+
+  .learning-real-center h2{
+    font-size:64px;
+    line-height:.78;
+    letter-spacing:-4.5px;
+  }
+
+  .learning-real-center p{
+    max-width:270px;
+    margin-top:24px;
+    font-size:11.5px;
+  }
+
+  .learning-real-image figcaption{
+    align-items:flex-start;
+  }
+
+  .learning-real-image figcaption strong{
+    max-width:145px;
+    text-align:right;
+    line-height:1.4;
+  }
+
+  .learning-real-bottom{
+    grid-template-columns:1fr;
+    gap:11px;
+    margin-top:48px;
+  }
+
+  .learning-real-bottom div{
+    width:100%;
+  }
+}
+
+@media(max-width:380px){
+  .learning-real-center h2{
+    font-size:57px;
+  }
+
+  .learning-real-image img{
+    height:325px;
+  }
+
+  .learning-real-image-two img{
+    height:270px;
+  }
+}
+</style>
+
+
+<style id="learning-real-image-full-fix">
+/* =========================================================
+   LEARNING REAL — FULL IMAGE VISIBILITY + EXTRA GAP
+========================================================= */
+
+.learning-real{
+  padding-top:120px !important;
+  padding-bottom:130px !important;
+}
+
+.learning-real-stage{
+  min-height:760px !important;
+  gap:48px !important;
+  padding-top:72px !important;
+}
+
+/* full image visible — no cropping */
+.learning-real-image{
+  background:#eceaf0;
+  border-radius:18px;
+  padding:14px;
+  overflow:hidden;
+}
+
+.learning-real-image img,
+.learning-real-image-two img{
+  width:100% !important;
+  height:auto !important;
+  max-height:none !important;
+  object-fit:contain !important;
+  object-position:center center !important;
+  border-radius:12px !important;
+  background:#f4f3f6;
+}
+
+/* give each image enough visual space */
+.learning-real-image-one{
+  margin-top:10px !important;
+}
+
+.learning-real-image-two{
+  margin-bottom:10px !important;
+}
+
+.learning-real-image figcaption{
+  padding:14px 4px 2px !important;
+}
+
+.learning-real-center{
+  padding-left:8px;
+  padding-right:8px;
+}
+
+.learning-real-center p{
+  margin-top:34px !important;
+}
+
+.learning-real-bottom{
+  margin-top:58px !important;
+}
+
+@media(max-width:900px){
+  .learning-real{
+    padding-top:95px !important;
+    padding-bottom:105px !important;
+  }
+
+  .learning-real-stage{
+    min-height:auto !important;
+    gap:34px !important;
+    padding-top:58px !important;
+  }
+
+  .learning-real-image{
+    padding:12px;
+  }
+
+  .learning-real-image img,
+  .learning-real-image-two img{
+    height:auto !important;
+    object-fit:contain !important;
+  }
+}
+
+@media(max-width:600px){
+  .learning-real{
+    padding-top:82px !important;
+    padding-bottom:88px !important;
+  }
+
+  .learning-real-stage{
+    padding-top:48px !important;
+  }
+
+  .learning-real-center{
+    padding-bottom:52px !important;
+  }
+
+  .learning-real-image-one{
+    width:92% !important;
+  }
+
+  .learning-real-image-two{
+    width:84% !important;
+    margin-top:52px !important;
+  }
+
+  .learning-real-image{
+    padding:10px;
+    border-radius:16px;
+  }
+
+  .learning-real-image img,
+  .learning-real-image-two img{
+    width:100% !important;
+    height:auto !important;
+    object-fit:contain !important;
+    border-radius:10px !important;
+  }
+
+  .learning-real-bottom{
+    margin-top:58px !important;
+  }
+}
+</style>
+
 </head>
 
 <body>
@@ -5355,119 +5408,61 @@ svg{
 
 
 
+
 <!-- =========================================================
-     NEW SECTION — VALUE BEFORE THE MODEL
-     Inserted directly above "Learn more from what you already spend on."
+     NEW SECTION — LEARNING BECOMES REAL
 ========================================================= -->
-<section class="value-bridge" id="valueBridge">
+<section class="learning-real" id="learningReal">
+  <div class="learning-real-wrap">
 
-  <div class="value-bridge-wrap">
+    <div class="learning-real-head">
+      <span>LEARNING</span>
+      <p>
+        From understanding an idea to building something that can be
+        seen, tested and shared.
+      </p>
+    </div>
 
-    <div class="value-bridge-top">
+    <div class="learning-real-stage">
 
-      <div class="value-bridge-tag">
-        <span>03 / VALUE LOOP</span>
+      <figure class="learning-real-image learning-real-image-one">
+        <img src="study1.png" alt="Learning at TRIVOX">
+        <figcaption>
+          <span>01</span>
+          <strong>LEARNING AT TRIVOX</strong>
+        </figcaption>
+      </figure>
+
+      <div class="learning-real-center">
+        <span class="learning-real-small">KNOWLEDGE IN MOTION</span>
+        <h2>
+          BECOMES
+          <strong>REAL.</strong>
+        </h2>
+        <p>
+          Learn the idea. Work with it. Build with it.
+          Turn understanding into something real.
+        </p>
       </div>
 
-      <p>
-        Learning should feel connected to real life —
-        not like one more disconnected expense.
-      </p>
+      <figure class="learning-real-image learning-real-image-two">
+        <img src="study2.png" alt="Building at TRIVOX">
+        <figcaption>
+          <span>02</span>
+          <strong>BUILDING AT TRIVOX</strong>
+        </figcaption>
+      </figure>
 
     </div>
 
-
-    <div class="value-bridge-main">
-
-      <!-- LEFT -->
-      <div class="value-bridge-copy">
-
-        <span class="value-bridge-kicker">
-          A SMARTER WAY TO KEEP LEARNING
-        </span>
-
-        <h2>
-          Everyday value.<br>
-          <strong>Long-term growth.</strong>
-        </h2>
-
-        <p>
-          TRIVOX connects regular participation, progress and eligible
-          monthly activity with a continuous learning journey — so students
-          keep moving instead of starting over every time.
-        </p>
-
-        <a href="#how-it-works" class="value-bridge-link">
-          See how the model works
-          <span>↘</span>
-        </a>
-
-      </div>
-
-
-      <!-- RIGHT VISUAL -->
-      <div class="value-bridge-visual">
-
-        <div class="value-ledger">
-
-          <div class="value-ledger-head">
-            <span>LEARNING LEDGER</span>
-            <small>TRIVOX / ACTIVE</small>
-          </div>
-
-          <div class="value-ledger-row row-one">
-            <span>01</span>
-            <div>
-              <small>ACTIVITY</small>
-              <strong>Learn consistently</strong>
-            </div>
-            <i class="fa-solid fa-arrow-right"></i>
-          </div>
-
-          <div class="value-ledger-row row-two">
-            <span>02</span>
-            <div>
-              <small>VALUE</small>
-              <strong>Unlock more</strong>
-            </div>
-            <i class="fa-solid fa-plus"></i>
-          </div>
-
-          <div class="value-ledger-row row-three">
-            <span>03</span>
-            <div>
-              <small>PROGRESS</small>
-              <strong>Build momentum</strong>
-            </div>
-            <i class="fa-solid fa-arrow-trend-up"></i>
-          </div>
-
-          <div class="value-ledger-foot">
-            <span>ONE JOURNEY</span>
-            <strong>LEARN → UNLOCK → GROW</strong>
-          </div>
-
-        </div>
-
-
-        <div class="value-side-note note-a">
-          <small>KEEP</small>
-          <strong>Learning</strong>
-        </div>
-
-        <div class="value-side-note note-b">
-          <small>KEEP</small>
-          <strong>Moving</strong>
-        </div>
-
-      </div>
-
+    <div class="learning-real-bottom">
+      <span>TRIVOX AI IMPACT</span>
+      <div></div>
+      <strong>LEARN → APPLY → BUILD</strong>
     </div>
 
   </div>
-
 </section>
-
 
 <section class="trivox-model" id="how-it-works">
   <div class="model-wrap">
