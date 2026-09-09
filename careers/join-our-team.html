@@ -2376,6 +2376,255 @@ button{cursor:pointer}
 }
 </style>
 
+
+<style id="career-next-step-css">
+.career-next-step{
+  position:relative;
+  padding:120px 0;
+  overflow:hidden;
+  background:#f7f7f9;
+}
+.career-next-step::before{
+  content:"";
+  position:absolute;
+  width:520px;height:520px;
+  right:-180px;top:-210px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(113,86,232,.09),rgba(113,86,232,0) 70%);
+  pointer-events:none;
+}
+.career-next-shell{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:78px;
+  align-items:center;
+  padding:72px;
+  border:1px solid #e7e7ed;
+  border-radius:30px;
+  background:#fff;
+  box-shadow:0 28px 80px rgba(31,24,56,.055);
+}
+.career-kicker{
+  display:block;
+  margin-bottom:22px;
+  color:#7156e8;
+  font-size:10px;
+  line-height:1;
+  font-weight:800;
+  letter-spacing:2px;
+}
+.career-next-copy h2{
+  max-width:590px;
+  margin:0 0 24px;
+  color:#111116;
+  font-size:clamp(48px,5vw,70px);
+  line-height:.98;
+  letter-spacing:-4px;
+}
+.career-next-copy h2 span{color:#7156e8;}
+.career-next-copy>p{
+  max-width:530px;
+  margin:0;
+  color:#6f7078;
+  font-size:14px;
+  line-height:1.85;
+}
+.career-next-actions{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:24px;
+  margin-top:34px;
+}
+.career-primary-btn{
+  min-height:52px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:11px;
+  padding:0 20px;
+  border-radius:11px;
+  background:#111116;
+  color:#fff;
+  font-size:12px;
+  font-weight:750;
+  transition:.28s ease;
+}
+.career-primary-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 14px 30px rgba(0,0,0,.14);
+}
+.career-primary-btn i{font-size:11px;}
+.career-text-link{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:#6b6b74;
+  font-size:11px;
+  font-weight:650;
+  transition:.25s ease;
+}
+.career-text-link:hover{color:#7156e8;}
+.career-text-link i{font-size:9px;}
+
+.career-path-panel{
+  position:relative;
+  padding:30px;
+  border:1px solid #e6e2f7;
+  border-radius:23px;
+  background:linear-gradient(145deg,#fbfaff,#fff);
+  overflow:hidden;
+}
+.career-path-panel::after{
+  content:"";
+  position:absolute;
+  width:190px;height:190px;
+  right:-80px;bottom:-95px;
+  border-radius:50%;
+  background:rgba(113,86,232,.06);
+  pointer-events:none;
+}
+.career-path-top{
+  position:relative;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding-bottom:24px;
+  border-bottom:1px solid #e9e7ef;
+}
+.career-path-top small{
+  display:block;
+  margin-bottom:6px;
+  color:#9a9aa3;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:1.5px;
+}
+.career-path-top strong{
+  color:#1b1b22;
+  font-size:14px;
+  letter-spacing:-.2px;
+}
+.career-status{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 11px;
+  border:1px solid #e3def8;
+  border-radius:999px;
+  background:#fff;
+  color:#7156e8;
+  font-size:9px;
+  font-weight:700;
+}
+.career-status i{
+  width:6px;height:6px;
+  border-radius:50%;
+  background:#36b36e;
+  box-shadow:0 0 0 4px rgba(54,179,110,.10);
+}
+.career-path-list{
+  position:relative;
+  z-index:2;
+  display:flex;
+  flex-direction:column;
+  padding:8px 0;
+}
+.career-path-item{
+  display:grid;
+  grid-template-columns:32px 48px 1fr;
+  gap:15px;
+  align-items:center;
+  padding:20px 0;
+  border-bottom:1px solid #eceaf1;
+}
+.career-path-item:last-child{border-bottom:0;}
+.career-path-no{
+  color:#aaa8b2;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:1px;
+}
+.career-path-icon{
+  width:46px;height:46px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:13px;
+  background:#f0ecff;
+  color:#7156e8;
+  font-size:15px;
+  transition:.3s ease;
+}
+.career-path-item:hover .career-path-icon{
+  background:#7156e8;
+  color:#fff;
+  transform:rotate(-5deg);
+}
+.career-path-item strong{
+  display:block;
+  margin-bottom:5px;
+  color:#1b1b22;
+  font-size:13px;
+}
+.career-path-item p{
+  max-width:440px;
+  margin:0;
+  color:#81818a;
+  font-size:10px;
+  line-height:1.65;
+}
+.career-path-bottom{
+  position:relative;
+  z-index:2;
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  padding-top:20px;
+  border-top:1px solid #e9e7ef;
+  color:#9b99a4;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:1.3px;
+}
+@media(max-width:1000px){
+  .career-next-shell{
+    grid-template-columns:1fr;
+    gap:48px;
+    padding:55px;
+  }
+}
+@media(max-width:650px){
+  .career-next-step{padding:78px 0;}
+  .career-next-shell{
+    gap:38px;
+    padding:38px 20px;
+    border-radius:21px;
+  }
+  .career-next-copy h2{
+    font-size:45px;
+    letter-spacing:-2.7px;
+  }
+  .career-next-actions{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:18px;
+  }
+  .career-path-panel{padding:20px;border-radius:18px;}
+  .career-path-top{align-items:flex-start;}
+  .career-path-item{
+    grid-template-columns:26px 42px 1fr;
+    gap:10px;
+  }
+  .career-path-icon{width:40px;height:40px;}
+  .career-path-bottom{flex-direction:column;gap:8px;}
+}
+</style>
+
 </head>
 <body>
 
@@ -3078,371 +3327,75 @@ button{cursor:pointer}
   <!-- =========================================================
        APPLICATION
   ========================================================== -->
-  <section class="join-application" id="application">
+  
+<section class="career-next-step" id="careerNextStep">
+  <div class="container">
+    <div class="career-next-shell reveal">
+      <div class="career-next-copy">
+        <span class="career-kicker">YOUR NEXT MOVE</span>
+        <h2>Find the work where your <span>strengths matter.</span></h2>
+        <p>
+          Explore focused opportunities across TRIVOX teams. Understand the work,
+          see where your skills fit and move forward only when the role feels right.
+        </p>
 
-    <div class="container">
-
-      <div class="join-application-shell reveal">
-
-        <div class="join-application-info">
-
-          <div class="eyebrow">
-            YOUR APPLICATION
-          </div>
-
-          <h2>
-            Tell us where you can
-            <span>make an impact.</span>
-          </h2>
-
-          <p>
-            Share your profile, interests and the kind of work you want
-            to contribute to. If there is a suitable match, our team can
-            continue the conversation.
-          </p>
-
-
-          <div class="join-info-points">
-
-            <div class="join-info-point">
-
-              <i class="fa-solid fa-user"></i>
-
-              <div>
-
-                <strong>
-                  Basic details
-                </strong>
-
-                <span>
-                  Name, contact and location
-                </span>
-
-              </div>
-
-            </div>
-
-
-            <div class="join-info-point">
-
-              <i class="fa-solid fa-layer-group"></i>
-
-              <div>
-
-                <strong>
-                  Your area
-                </strong>
-
-                <span>
-                  Choose the team you want to join
-                </span>
-
-              </div>
-
-            </div>
-
-
-            <div class="join-info-point">
-
-              <i class="fa-solid fa-link"></i>
-
-              <div>
-
-                <strong>
-                  Proof of work
-                </strong>
-
-                <span>
-                  Portfolio, GitHub or LinkedIn
-                </span>
-
-              </div>
-
-            </div>
-
-          </div>
-
+        <div class="career-next-actions">
+          <a href="#openRoles" class="career-primary-btn">
+            Explore open roles <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="mailto:careers@trivoxaiimpact.com" class="career-text-link">
+            careers@trivoxaiimpact.com <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
         </div>
-
-
-        <form class="join-form" id="joinForm">
-
-          <div class="join-form-row">
-
-            <div class="join-field">
-
-              <label for="fullName">
-                Full Name
-              </label>
-
-              <input
-                type="text"
-                id="fullName"
-                name="fullName"
-                placeholder="Enter your full name"
-                required
-              >
-
-            </div>
-
-
-            <div class="join-field">
-
-              <label for="email">
-                Email
-              </label>
-
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="you@example.com"
-                required
-              >
-
-            </div>
-
-          </div>
-
-
-          <div class="join-form-row">
-
-            <div class="join-field">
-
-              <label for="phone">
-                Phone Number
-              </label>
-
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                placeholder="+91 XXXXX XXXXX"
-                required
-              >
-
-            </div>
-
-
-            <div class="join-field">
-
-              <label for="location">
-                Location
-              </label>
-
-              <input
-                type="text"
-                id="location"
-                name="location"
-                placeholder="City, State"
-                required
-              >
-
-            </div>
-
-          </div>
-
-
-          <div class="join-form-row">
-
-            <div class="join-field">
-
-              <label for="team">
-                Interested Team
-              </label>
-
-              <select id="team" name="team" required>
-
-                <option value="">
-                  Select a team
-                </option>
-
-                <option value="technology">
-                  Technology
-                </option>
-
-                <option value="learning">
-                  Learning
-                </option>
-
-                <option value="design">
-                  Design
-                </option>
-
-                <option value="business">
-                  Business
-                </option>
-
-                <option value="operations">
-                  Operations
-                </option>
-
-                <option value="other">
-                  Other
-                </option>
-
-              </select>
-
-            </div>
-
-
-            <div class="join-field">
-
-              <label for="experience">
-                Experience Level
-              </label>
-
-              <select id="experience" name="experience" required>
-
-                <option value="">
-                  Select experience
-                </option>
-
-                <option value="student">
-                  Student
-                </option>
-
-                <option value="fresher">
-                  Fresher
-                </option>
-
-                <option value="0-2">
-                  0–2 Years
-                </option>
-
-                <option value="2-5">
-                  2–5 Years
-                </option>
-
-                <option value="5+">
-                  5+ Years
-                </option>
-
-              </select>
-
-            </div>
-
-          </div>
-
-
-          <div class="join-field">
-
-            <label for="role">
-              Role / Area of Interest
-            </label>
-
-            <input
-              type="text"
-              id="role"
-              name="role"
-              placeholder="Example: Frontend Developer, AI Learning, UI/UX..."
-            >
-
-          </div>
-
-
-          <div class="join-form-row">
-
-            <div class="join-field">
-
-              <label for="portfolio">
-                Portfolio / GitHub
-              </label>
-
-              <input
-                type="url"
-                id="portfolio"
-                name="portfolio"
-                placeholder="https://..."
-              >
-
-            </div>
-
-
-            <div class="join-field">
-
-              <label for="linkedin">
-                LinkedIn
-              </label>
-
-              <input
-                type="url"
-                id="linkedin"
-                name="linkedin"
-                placeholder="https://linkedin.com/in/..."
-              >
-
-            </div>
-
-          </div>
-
-
-          <div class="join-field">
-
-            <label for="message">
-              Tell us about yourself
-            </label>
-
-            <textarea
-              id="message"
-              name="message"
-              rows="6"
-              placeholder="What are you good at, what do you want to build, and why would you like to join TRIVOX?"
-              required
-            ></textarea>
-
-          </div>
-
-
-          <label class="join-check">
-
-            <input
-              type="checkbox"
-              id="consent"
-              required
-            >
-
-            <span>
-              I confirm that the information provided is accurate.
-            </span>
-
-          </label>
-
-
-          <button class="join-submit" type="submit">
-
-            Submit Application
-
-            <i class="fa-solid fa-arrow-right"></i>
-
-          </button>
-
-
-          <div class="join-success" id="joinSuccess">
-
-            <i class="fa-solid fa-circle-check"></i>
-
-            <div>
-
-              <strong>
-                Application ready
-              </strong>
-
-              <span>
-                Connect this form to your backend or Supabase to save submissions.
-              </span>
-
-            </div>
-
-          </div>
-
-        </form>
-
       </div>
 
-    </div>
+      <div class="career-path-panel">
+        <div class="career-path-top">
+          <div>
+            <small>TRIVOX CAREERS</small>
+            <strong>A clearer way to join</strong>
+          </div>
+          <span class="career-status"><i></i> Opportunities</span>
+        </div>
 
-  </section>
+        <div class="career-path-list">
+          <div class="career-path-item">
+            <span class="career-path-no">01</span>
+            <div class="career-path-icon"><i class="fa-solid fa-compass"></i></div>
+            <div>
+              <strong>Explore</strong>
+              <p>Discover teams and roles that match the direction you want to grow in.</p>
+            </div>
+          </div>
+
+          <div class="career-path-item">
+            <span class="career-path-no">02</span>
+            <div class="career-path-icon"><i class="fa-solid fa-layer-group"></i></div>
+            <div>
+              <strong>Understand</strong>
+              <p>Review the role, expectations and the kind of impact you can create.</p>
+            </div>
+          </div>
+
+          <div class="career-path-item">
+            <span class="career-path-no">03</span>
+            <div class="career-path-icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
+            <div>
+              <strong>Move forward</strong>
+              <p>Choose the right opportunity and continue through the role-specific process.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="career-path-bottom">
+          <span>BUILD WITH PURPOSE</span>
+          <span>LEARN • CONTRIBUTE • GROW</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 
   <!-- =========================================================
