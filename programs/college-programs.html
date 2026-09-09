@@ -1,1 +1,5685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>College Programs | TRIVOX AI IMPACT</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root{
+    --purple:#7156e8;
+    --purple-dark:#5d43ce;
+    --purple-light:#f1edff;
+    --purple-soft:#faf8ff;
+
+    --black:#111116;
+    --dark:#17171c;
+
+    --text:#19191f;
+    --muted:#6f7078;
+    --light-muted:#9a9aa3;
+
+    --white:#ffffff;
+    --surface:#f7f7f9;
+    --border:#e7e7ec;
+
+    --container:1180px;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+
+    font-family:"Inter",sans-serif;
+
+    background:#fff;
+    color:var(--text);
+
+    overflow-x:hidden;
+
+    -webkit-font-smoothing:antialiased;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button{
+    font:inherit;
+}
+
+main{
+    padding-top:76px;
+}
+
+.container{
+    width:min(var(--container),86%);
+    margin:auto;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar{
+    width:100%;
+    height:76px;
+
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:9999;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 4%;
+
+    background:rgba(255,255,255,.97);
+
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+
+    border-bottom:1px solid rgba(0,0,0,.06);
+
+    transition:.3s ease;
+}
+
+.navbar.scrolled{
+    box-shadow:0 8px 30px rgba(0,0,0,.06);
+}
+
+
+/* LOGO */
+
+.logo{
+    display:flex;
+    align-items:center;
+
+    flex-shrink:0;
+
+    white-space:nowrap;
+
+    font-size:22px;
+    font-weight:800;
+
+    letter-spacing:-1.1px;
+}
+
+.logo-main{
+    background:linear-gradient(
+        to bottom,
+        #111 0%,
+        #111 50%,
+        var(--purple) 50%,
+        var(--purple) 100%
+    );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+}
+
+.logo-impact{
+    margin-left:7px;
+
+    background:linear-gradient(
+        to bottom,
+        var(--purple) 0%,
+        var(--purple) 50%,
+        #222 50%,
+        #222 100%
+    );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+}
+
+
+/* NAV */
+
+.nav-menu{
+    display:flex;
+    align-items:center;
+
+    gap:2px;
+
+    list-style:none;
+}
+
+.nav-item{
+    position:relative;
+}
+
+.nav-link{
+    display:flex;
+    align-items:center;
+
+    gap:6px;
+
+    padding:28px 10px;
+
+    color:#37373d;
+
+    font-size:13px;
+    font-weight:600;
+
+    white-space:nowrap;
+
+    cursor:pointer;
+
+    transition:.2s ease;
+}
+
+.nav-link:hover,
+.nav-item.active-parent > .nav-link{
+    color:var(--purple);
+}
+
+.arrow{
+    width:6px;
+    height:6px;
+
+    border-right:1.4px solid currentColor;
+    border-bottom:1.4px solid currentColor;
+
+    transform:rotate(45deg) translateY(-2px);
+
+    transition:.25s ease;
+}
+
+.nav-item:hover .arrow{
+    transform:rotate(225deg);
+}
+
+
+/* =========================================================
+   DROPDOWNS
+========================================================= */
+
+.dropdown{
+    position:absolute;
+
+    top:68px;
+    left:0;
+
+    width:245px;
+
+    padding:9px;
+
+    background:#fff;
+
+    border:1px solid #ececf0;
+    border-radius:15px;
+
+    box-shadow:0 20px 55px rgba(0,0,0,.10);
+
+    opacity:0;
+    visibility:hidden;
+
+    transform:translateY(14px);
+
+    transition:.23s ease;
+}
+
+.nav-item:hover > .dropdown{
+    opacity:1;
+    visibility:visible;
+
+    transform:translateY(0);
+}
+
+.dropdown > a{
+    display:block;
+
+    padding:12px 13px;
+
+    border-radius:9px;
+
+    color:#45454c;
+
+    font-size:13px;
+
+    transition:.2s ease;
+}
+
+.dropdown > a:hover{
+    padding-left:17px;
+
+    color:var(--purple);
+
+    background:#f6f4ff;
+}
+
+.dropdown > a.active{
+    color:var(--purple);
+
+    background:#f1edff;
+
+    font-weight:700;
+}
+
+
+/* LEARNING MEGA */
+
+.mega-dropdown{
+    width:620px;
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+
+    gap:7px;
+
+    padding:14px;
+}
+
+.mega-box{
+    display:block;
+
+    padding:14px;
+
+    border-radius:11px;
+
+    transition:.2s ease;
+}
+
+.mega-box:hover{
+    background:#f7f5ff;
+
+    transform:translateX(3px);
+}
+
+.mega-box strong{
+    display:block;
+
+    margin-bottom:5px;
+
+    font-size:13px;
+}
+
+.mega-box p{
+    color:#83838b;
+
+    font-size:11px;
+    line-height:1.5;
+}
+
+
+/* NAV ACTIONS */
+
+.nav-actions{
+    display:flex;
+    align-items:center;
+
+    gap:10px;
+
+    flex-shrink:0;
+}
+
+.login-btn{
+    padding:10px 13px;
+
+    border:0;
+
+    background:transparent;
+
+    font-size:13px;
+    font-weight:600;
+
+    cursor:pointer;
+}
+
+.get-started{
+    padding:11px 17px;
+
+    border-radius:9px;
+
+    background:#111;
+    color:#fff;
+
+    font-size:13px;
+    font-weight:700;
+
+    transition:.25s ease;
+}
+
+.get-started:hover{
+    transform:translateY(-2px);
+}
+
+
+/* SIGN IN */
+
+.signin-dropdown-wrap{
+    position:relative;
+}
+
+.signin-main-btn{
+    display:flex;
+    align-items:center;
+
+    gap:6px;
+}
+
+.signin-dropdown{
+    position:absolute;
+
+    right:0;
+    top:51px;
+
+    width:230px;
+
+    padding:9px;
+
+    background:#fff;
+
+    border:1px solid #ececf0;
+    border-radius:14px;
+
+    box-shadow:0 20px 55px rgba(0,0,0,.10);
+
+    opacity:0;
+    visibility:hidden;
+
+    transform:translateY(12px);
+
+    transition:.23s ease;
+}
+
+.signin-dropdown-wrap:hover .signin-dropdown{
+    opacity:1;
+    visibility:visible;
+
+    transform:translateY(0);
+}
+
+.signin-dropdown a{
+    display:flex;
+    align-items:center;
+
+    gap:11px;
+
+    padding:12px;
+
+    border-radius:9px;
+
+    transition:.2s ease;
+}
+
+.signin-dropdown a:hover{
+    background:#f6f4ff;
+}
+
+.signin-dropdown i{
+    color:var(--purple);
+}
+
+.signin-dropdown strong{
+    display:block;
+
+    font-size:12px;
+}
+
+.signin-dropdown span{
+    display:block;
+
+    margin-top:3px;
+
+    color:#8c8c94;
+
+    font-size:10px;
+}
+
+
+/* MOBILE BUTTON */
+
+.menu-toggle{
+    display:none;
+
+    width:42px;
+    height:42px;
+
+    border:0;
+    border-radius:10px;
+
+    background:#f2f2f4;
+
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+
+    gap:4px;
+
+    cursor:pointer;
+}
+
+.menu-toggle span{
+    width:20px;
+    height:2px;
+
+    background:#111;
+
+    transition:.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1){
+    transform:translateY(6px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2){
+    opacity:0;
+}
+
+.menu-toggle.active span:nth-child(3){
+    transform:translateY(-6px) rotate(-45deg);
+}
+
+
+/* =========================================================
+   COMMON
+========================================================= */
+
+.section-label{
+    display:flex;
+    align-items:center;
+
+    gap:8px;
+
+    margin-bottom:15px;
+
+    color:var(--purple);
+
+    font-size:9px;
+    font-weight:800;
+
+    letter-spacing:1.5px;
+
+    text-transform:uppercase;
+}
+
+.section-label::before{
+    content:"";
+
+    width:20px;
+    height:2px;
+
+    background:var(--purple);
+}
+
+.section-title{
+    max-width:760px;
+
+    font-size:clamp(34px,3.7vw,49px);
+
+    line-height:1.07;
+
+    letter-spacing:-2.4px;
+}
+
+.section-title span{
+    color:var(--purple);
+}
+
+.section-copy{
+    color:var(--muted);
+
+    font-size:12px;
+    line-height:1.8;
+}
+
+.reveal{
+    opacity:0;
+
+    transform:translateY(25px);
+
+    transition:
+        opacity .75s ease,
+        transform .75s cubic-bezier(.2,.7,.2,1);
+}
+
+.reveal.show{
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+
+/* =========================================================
+   HERO - CAMPUS BLUEPRINT
+========================================================= */
+
+.college-hero{
+    position:relative;
+
+    overflow:hidden;
+
+    background:#fbfaff;
+}
+
+.college-hero::before{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background-image:
+        linear-gradient(
+            rgba(113,86,232,.04) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(113,86,232,.04) 1px,
+            transparent 1px
+        );
+
+    background-size:52px 52px;
+}
+
+.hero-stage{
+    min-height:680px;
+
+    position:relative;
+    z-index:2;
+
+    display:grid;
+
+    grid-template-columns:.82fr 1.18fr;
+
+    align-items:center;
+
+    gap:60px;
+
+    padding:70px 0 55px;
+}
+
+
+/* COPY */
+
+.hero-label{
+    display:inline-flex;
+    align-items:center;
+
+    gap:8px;
+
+    margin-bottom:22px;
+
+    color:var(--purple);
+
+    font-size:9px;
+    font-weight:800;
+
+    letter-spacing:1.5px;
+}
+
+.hero-label span{
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:var(--purple);
+
+    box-shadow:0 0 0 6px rgba(113,86,232,.10);
+}
+
+.hero-copy h1{
+    max-width:620px;
+
+    margin-bottom:22px;
+
+    font-size:clamp(46px,5vw,69px);
+
+    line-height:.98;
+
+    letter-spacing:-3.8px;
+}
+
+.hero-copy h1 span{
+    display:block;
+
+    color:var(--purple);
+}
+
+.hero-copy p{
+    max-width:540px;
+
+    margin-bottom:27px;
+
+    color:var(--muted);
+
+    font-size:14px;
+    line-height:1.75;
+}
+
+.hero-actions{
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:10px;
+}
+
+.primary-btn,
+.secondary-btn{
+    min-height:46px;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:9px;
+
+    padding:0 18px;
+
+    border-radius:9px;
+
+    font-size:11px;
+    font-weight:700;
+
+    transition:.3s ease;
+}
+
+.primary-btn{
+    background:#111;
+    color:#fff;
+}
+
+.secondary-btn{
+    border:1px solid var(--border);
+
+    background:#fff;
+}
+
+.primary-btn:hover,
+.secondary-btn:hover{
+    transform:translateY(-3px);
+}
+
+
+/* CAMPUS BLUEPRINT */
+
+.campus-board{
+    min-height:495px;
+
+    position:relative;
+
+    border:1px solid #dfdbea;
+    border-radius:24px;
+
+    background:#fff;
+
+    box-shadow:0 30px 70px rgba(39,24,78,.10);
+
+    overflow:hidden;
+}
+
+.board-top{
+    height:54px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 20px;
+
+    border-bottom:1px solid #ececf0;
+}
+
+.board-id{
+    display:flex;
+    align-items:center;
+
+    gap:8px;
+
+    font-size:9px;
+    font-weight:700;
+}
+
+.board-id span{
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:#55b97f;
+}
+
+.board-status{
+    padding:6px 9px;
+
+    border-radius:100px;
+
+    background:#f1edff;
+
+    color:var(--purple);
+
+    font-size:7px;
+    font-weight:700;
+}
+
+.board-map{
+    min-height:440px;
+
+    position:relative;
+
+    padding:28px;
+
+    background:
+        linear-gradient(
+            rgba(113,86,232,.028) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(113,86,232,.028) 1px,
+            transparent 1px
+        );
+
+    background-size:34px 34px;
+}
+
+.campus-block{
+    position:absolute;
+
+    display:flex;
+    align-items:center;
+
+    gap:10px;
+
+    padding:13px 14px;
+
+    border:1px solid #dedbea;
+    border-radius:12px;
+
+    background:#fff;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.05);
+
+    transition:.3s ease;
+}
+
+.campus-block:hover{
+    border-color:#cfc5f8;
+
+    transform:translateY(-4px);
+}
+
+.campus-block i{
+    width:32px;
+    height:32px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    flex-shrink:0;
+
+    border-radius:9px;
+
+    background:#f1edff;
+
+    color:var(--purple);
+
+    font-size:11px;
+}
+
+.campus-block strong{
+    display:block;
+
+    margin-bottom:3px;
+
+    font-size:9px;
+}
+
+.campus-block small{
+    display:block;
+
+    color:#9999a1;
+
+    font-size:6px;
+}
+
+.block-academics{
+    left:25px;
+    top:42px;
+}
+
+.block-lab{
+    right:27px;
+    top:45px;
+}
+
+.block-project{
+    left:45px;
+    bottom:54px;
+}
+
+.block-career{
+    right:38px;
+    bottom:52px;
+}
+
+
+/* CENTER */
+
+.board-center{
+    width:175px;
+    height:175px;
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+
+    border-radius:50%;
+
+    background:#111116;
+    color:#fff;
+
+    transform:translate(-50%,-50%);
+
+    box-shadow:0 25px 55px rgba(30,20,55,.20);
+}
+
+.board-center i{
+    margin-bottom:12px;
+
+    color:#a995ff;
+
+    font-size:30px;
+}
+
+.board-center small{
+    margin-bottom:5px;
+
+    color:#777780;
+
+    font-size:6px;
+    letter-spacing:1px;
+}
+
+.board-center strong{
+    font-size:13px;
+}
+
+
+/* PATHS */
+
+.map-line{
+    position:absolute;
+
+    background:#ddd8ed;
+
+    transform-origin:left center;
+}
+
+.line-one{
+    width:130px;
+    height:1px;
+
+    left:145px;
+    top:145px;
+
+    transform:rotate(23deg);
+}
+
+.line-two{
+    width:130px;
+    height:1px;
+
+    right:135px;
+    top:147px;
+
+    transform:rotate(-25deg);
+}
+
+.line-three{
+    width:135px;
+    height:1px;
+
+    left:145px;
+    bottom:145px;
+
+    transform:rotate(-24deg);
+}
+
+.line-four{
+    width:135px;
+    height:1px;
+
+    right:136px;
+    bottom:145px;
+
+    transform:rotate(24deg);
+}
+
+.map-dot{
+    width:8px;
+    height:8px;
+
+    position:absolute;
+
+    border-radius:50%;
+
+    background:var(--purple);
+
+    animation:mapPulse 2s infinite;
+}
+
+.dot-one{
+    left:180px;
+    top:158px;
+}
+
+.dot-two{
+    right:181px;
+    top:158px;
+
+    animation-delay:.6s;
+}
+
+.dot-three{
+    left:194px;
+    bottom:163px;
+
+    animation-delay:1.2s;
+}
+
+@keyframes mapPulse{
+    50%{
+        box-shadow:0 0 0 10px rgba(113,86,232,0);
+        opacity:.45;
+    }
+
+    0%,
+    100%{
+        box-shadow:0 0 0 4px rgba(113,86,232,.10);
+    }
+}
+
+
+/* =========================================================
+   CAMPUS PROMISE STRIP
+========================================================= */
+
+.promise-strip{
+    border-top:1px solid #e8e6ef;
+    border-bottom:1px solid #e8e6ef;
+
+    background:#fff;
+}
+
+.promise-grid{
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+}
+
+.promise-item{
+    min-height:90px;
+
+    display:flex;
+    align-items:center;
+
+    gap:12px;
+
+    padding:0 20px;
+
+    border-right:1px solid #e8e8ed;
+}
+
+.promise-item:last-child{
+    border-right:0;
+}
+
+.promise-item span{
+    color:var(--purple);
+
+    font-size:8px;
+    font-weight:800;
+}
+
+.promise-item strong{
+    display:block;
+
+    margin-bottom:3px;
+
+    font-size:10px;
+}
+
+.promise-item small{
+    color:#9b9ba3;
+
+    font-size:7px;
+}
+
+
+/* =========================================================
+   MANIFESTO SECTION
+========================================================= */
+
+.manifesto-section{
+    padding:110px 0;
+}
+
+.manifesto-layout{
+    display:grid;
+
+    grid-template-columns:.42fr 1.58fr;
+
+    gap:80px;
+}
+
+.manifesto-side{
+    padding-top:7px;
+
+    color:#a4a4ac;
+
+    font-size:9px;
+    font-weight:700;
+
+    letter-spacing:1.4px;
+}
+
+.manifesto-main h2{
+    max-width:900px;
+
+    margin-bottom:38px;
+
+    font-size:clamp(38px,4.3vw,56px);
+
+    line-height:1.04;
+
+    letter-spacing:-3px;
+}
+
+.manifesto-main h2 span{
+    color:var(--purple);
+}
+
+.manifesto-notes{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:40px;
+
+    max-width:850px;
+
+    padding-top:28px;
+
+    border-top:1px solid var(--border);
+}
+
+.manifesto-notes p{
+    color:var(--muted);
+
+    font-size:12px;
+    line-height:1.85;
+}
+
+
+/* =========================================================
+   ACADEMIC RIBBON
+========================================================= */
+
+.academic-section{
+    padding:95px 0;
+
+    background:#111116;
+
+    color:#fff;
+
+    overflow:hidden;
+}
+
+.academic-heading{
+    display:grid;
+
+    grid-template-columns:1fr .75fr;
+
+    align-items:end;
+
+    gap:70px;
+
+    margin-bottom:52px;
+}
+
+.academic-heading .section-label{
+    color:#a995ff;
+}
+
+.academic-heading .section-label::before{
+    background:#a995ff;
+}
+
+.academic-heading p{
+    color:#92929b;
+
+    font-size:11px;
+    line-height:1.8;
+}
+
+.academic-ribbon{
+    display:flex;
+
+    width:max-content;
+
+    padding-left:7vw;
+
+    animation:ribbonMove 36s linear infinite;
+}
+
+.academic-ribbon:hover{
+    animation-play-state:paused;
+}
+
+.ribbon-block{
+    width:305px;
+    min-height:270px;
+
+    flex-shrink:0;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+
+    margin-right:10px;
+
+    padding:28px;
+
+    border:1px solid #303037;
+    border-radius:18px;
+
+    background:#17171c;
+
+    transition:.3s ease;
+}
+
+.ribbon-block:hover{
+    border-color:#51436f;
+
+    transform:translateY(-5px);
+}
+
+.ribbon-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.ribbon-top span{
+    color:#606069;
+
+    font-size:7px;
+}
+
+.ribbon-top i{
+    color:#a995ff;
+
+    font-size:16px;
+}
+
+.ribbon-block h3{
+    margin-bottom:11px;
+
+    font-size:22px;
+
+    letter-spacing:-1px;
+}
+
+.ribbon-block p{
+    color:#898992;
+
+    font-size:10px;
+    line-height:1.75;
+}
+
+.ribbon-meta{
+    display:flex;
+
+    gap:6px;
+
+    margin-top:19px;
+}
+
+.ribbon-meta span{
+    padding:6px 8px;
+
+    border:1px solid #313138;
+    border-radius:100px;
+
+    color:#808089;
+
+    font-size:6px;
+}
+
+@keyframes ribbonMove{
+    from{
+        transform:translateX(0);
+    }
+
+    to{
+        transform:translateX(-50%);
+    }
+}
+
+
+/* =========================================================
+   SEMESTER CALENDAR
+========================================================= */
+
+.calendar-section{
+    padding:105px 0;
+
+    background:#f7f7f9;
+}
+
+.calendar-heading{
+    display:flex;
+
+    align-items:flex-end;
+    justify-content:space-between;
+
+    gap:50px;
+
+    margin-bottom:48px;
+}
+
+.calendar-heading .section-copy{
+    max-width:370px;
+}
+
+.semester-board{
+    overflow:hidden;
+
+    border:1px solid #dfdfe5;
+    border-radius:20px;
+
+    background:#fff;
+}
+
+.semester-top{
+    min-height:74px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 28px;
+
+    border-bottom:1px solid #e7e7ec;
+}
+
+.semester-top strong{
+    font-size:12px;
+}
+
+.semester-top span{
+    color:#9999a1;
+
+    font-size:8px;
+}
+
+.semester-grid{
+    display:grid;
+
+    grid-template-columns:130px repeat(4,1fr);
+}
+
+.semester-axis{
+    min-height:122px;
+
+    display:flex;
+    align-items:center;
+
+    padding:20px;
+
+    border-right:1px solid #ececf0;
+    border-bottom:1px solid #ececf0;
+
+    color:#a0a0a8;
+
+    font-size:8px;
+    font-weight:700;
+}
+
+.semester-cell{
+    min-height:122px;
+
+    position:relative;
+
+    padding:20px;
+
+    border-right:1px solid #ececf0;
+    border-bottom:1px solid #ececf0;
+
+    transition:.3s ease;
+}
+
+.semester-cell:nth-child(5n){
+    border-right:0;
+}
+
+.semester-cell:hover{
+    background:#faf8ff;
+}
+
+.semester-cell small{
+    display:block;
+
+    margin-bottom:13px;
+
+    color:#aaaab2;
+
+    font-size:6px;
+}
+
+.semester-cell strong{
+    display:block;
+
+    margin-bottom:6px;
+
+    font-size:10px;
+}
+
+.semester-cell p{
+    color:#8c8c95;
+
+    font-size:7px;
+    line-height:1.5;
+}
+
+.semester-cell.highlight{
+    background:#f1edff;
+}
+
+.semester-cell.highlight small,
+.semester-cell.highlight strong{
+    color:var(--purple);
+}
+
+
+/* =========================================================
+   TRANSFORMATION TRACK
+========================================================= */
+
+.transform-section{
+    padding:105px 0;
+}
+
+.transform-heading{
+    max-width:780px;
+
+    margin-bottom:55px;
+}
+
+.transform-track{
+    position:relative;
+}
+
+.transform-line{
+    width:3px;
+
+    position:absolute;
+
+    top:0;
+    bottom:0;
+    left:50%;
+
+    background:#e3dfef;
+
+    transform:translateX(-50%);
+}
+
+.transform-step{
+    min-height:170px;
+
+    position:relative;
+
+    display:grid;
+
+    grid-template-columns:1fr 80px 1fr;
+
+    align-items:center;
+}
+
+.transform-copy-left,
+.transform-copy-right{
+    padding:25px 40px;
+}
+
+.transform-copy-left{
+    text-align:right;
+}
+
+.transform-step:nth-child(even) .transform-copy-left{
+    grid-column:3;
+    grid-row:1;
+
+    text-align:left;
+}
+
+.transform-step:nth-child(even) .transform-copy-right{
+    grid-column:1;
+    grid-row:1;
+
+    text-align:right;
+}
+
+.transform-node{
+    width:58px;
+    height:58px;
+
+    position:relative;
+    z-index:2;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin:auto;
+
+    border:1px solid #dcd5f5;
+    border-radius:50%;
+
+    background:#fff;
+
+    color:var(--purple);
+
+    box-shadow:0 10px 25px rgba(0,0,0,.05);
+}
+
+.transform-step.active .transform-node{
+    background:var(--purple);
+    color:#fff;
+}
+
+.transform-copy-left small,
+.transform-copy-right small{
+    display:block;
+
+    margin-bottom:7px;
+
+    color:#aaaab2;
+
+    font-size:7px;
+}
+
+.transform-copy-left h3,
+.transform-copy-right h3{
+    margin-bottom:7px;
+
+    font-size:17px;
+}
+
+.transform-copy-left p,
+.transform-copy-right p{
+    color:var(--muted);
+
+    font-size:10px;
+    line-height:1.7;
+}
+
+
+/* =========================================================
+   CAMPUS LAB
+========================================================= */
+
+.campus-lab-section{
+    padding:105px 0;
+
+    background:#f7f7f9;
+}
+
+.lab-shell{
+    display:grid;
+
+    grid-template-columns:.8fr 1.2fr;
+
+    overflow:hidden;
+
+    border:1px solid #dfdfe5;
+    border-radius:22px;
+
+    background:#fff;
+}
+
+.lab-menu{
+    padding:32px;
+
+    border-right:1px solid #e6e6eb;
+}
+
+.lab-menu-header{
+    margin-bottom:28px;
+}
+
+.lab-menu-header small{
+    display:block;
+
+    margin-bottom:8px;
+
+    color:var(--purple);
+
+    font-size:7px;
+    font-weight:800;
+
+    letter-spacing:1px;
+}
+
+.lab-menu-header h3{
+    font-size:25px;
+
+    letter-spacing:-1.2px;
+}
+
+.lab-btn{
+    width:100%;
+
+    display:grid;
+
+    grid-template-columns:30px 1fr 20px;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:17px 0;
+
+    border:0;
+    border-bottom:1px solid #e8e8ed;
+
+    background:transparent;
+
+    text-align:left;
+
+    cursor:pointer;
+}
+
+.lab-btn > span{
+    color:#aaaab2;
+
+    font-size:7px;
+}
+
+.lab-btn strong{
+    font-size:10px;
+}
+
+.lab-btn i{
+    color:#b0b0b8;
+
+    font-size:9px;
+}
+
+.lab-btn.active{
+    color:var(--purple);
+}
+
+.lab-btn.active > span,
+.lab-btn.active i{
+    color:var(--purple);
+}
+
+
+/* LAB DISPLAY */
+
+.lab-display{
+    min-height:480px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:42px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #faf8ff,
+            #fff
+        );
+}
+
+.lab-display::before{
+    content:"";
+
+    width:320px;
+    height:320px;
+
+    position:absolute;
+
+    right:-80px;
+    top:-80px;
+
+    border:1px solid #e1dcf4;
+    border-radius:50%;
+}
+
+.lab-display small{
+    display:block;
+
+    margin-bottom:12px;
+
+    color:var(--purple);
+
+    font-size:8px;
+    font-weight:800;
+
+    letter-spacing:1px;
+}
+
+.lab-display h3{
+    max-width:520px;
+
+    margin-bottom:14px;
+
+    font-size:32px;
+
+    line-height:1.07;
+
+    letter-spacing:-1.5px;
+}
+
+.lab-display > p{
+    max-width:530px;
+
+    color:var(--muted);
+
+    font-size:10px;
+    line-height:1.75;
+}
+
+.lab-progress{
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:9px;
+
+    margin-top:34px;
+}
+
+.lab-stage{
+    min-height:145px;
+
+    padding:18px;
+
+    border:1px solid #e2e0ea;
+    border-radius:13px;
+
+    background:#fff;
+}
+
+.lab-stage span{
+    display:block;
+
+    margin-bottom:31px;
+
+    color:#a0a0a8;
+
+    font-size:7px;
+}
+
+.lab-stage i{
+    display:block;
+
+    margin-bottom:12px;
+
+    color:var(--purple);
+
+    font-size:15px;
+}
+
+.lab-stage strong{
+    display:block;
+
+    font-size:9px;
+}
+
+
+/* =========================================================
+   INSTITUTION VALUE BOARD
+========================================================= */
+
+.value-section{
+    padding:105px 0;
+}
+
+.value-layout{
+    display:grid;
+
+    grid-template-columns:.75fr 1.25fr;
+
+    gap:70px;
+}
+
+.value-copy{
+    position:sticky;
+
+    top:115px;
+
+    height:max-content;
+}
+
+.value-copy .section-title{
+    margin-bottom:18px;
+}
+
+.value-copy p{
+    max-width:410px;
+}
+
+.value-board{
+    border-top:1px solid var(--border);
+}
+
+.value-row{
+    min-height:130px;
+
+    display:grid;
+
+    grid-template-columns:60px .8fr 1.2fr;
+
+    align-items:center;
+
+    gap:25px;
+
+    border-bottom:1px solid var(--border);
+}
+
+.value-row > span{
+    color:var(--purple);
+
+    font-size:9px;
+    font-weight:800;
+}
+
+.value-row h3{
+    font-size:18px;
+}
+
+.value-row p{
+    color:var(--muted);
+
+    font-size:10px;
+    line-height:1.7;
+}
+
+
+/* =========================================================
+   PARTNERSHIP ROAD
+========================================================= */
+
+.partnership-section{
+    padding:105px 0;
+
+    background:#111116;
+
+    color:#fff;
+}
+
+.partnership-heading{
+    max-width:750px;
+
+    margin-bottom:60px;
+}
+
+.partnership-heading .section-label{
+    color:#a995ff;
+}
+
+.partnership-heading .section-label::before{
+    background:#a995ff;
+}
+
+.partnership-heading .section-title span{
+    color:#a995ff;
+}
+
+.partnership-road{
+    position:relative;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:20px;
+}
+
+.partnership-road::before{
+    content:"";
+
+    position:absolute;
+
+    left:9%;
+    right:9%;
+    top:31px;
+
+    height:1px;
+
+    background:#34343b;
+}
+
+.road-stage{
+    position:relative;
+}
+
+.road-circle{
+    width:62px;
+    height:62px;
+
+    position:relative;
+    z-index:2;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin-bottom:24px;
+
+    border:1px solid #38383f;
+    border-radius:50%;
+
+    background:#111116;
+
+    color:#a995ff;
+}
+
+.road-stage:hover .road-circle{
+    border-color:#7966ce;
+
+    background:#211d31;
+}
+
+.road-stage small{
+    display:block;
+
+    margin-bottom:7px;
+
+    color:#676770;
+
+    font-size:7px;
+}
+
+.road-stage h3{
+    margin-bottom:9px;
+
+    font-size:14px;
+}
+
+.road-stage p{
+    max-width:210px;
+
+    color:#888891;
+
+    font-size:9px;
+    line-height:1.7;
+}
+
+
+/* =========================================================
+   FUTURE READY
+========================================================= */
+
+.future-section{
+    padding:105px 0;
+}
+
+.future-shell{
+    display:grid;
+
+    grid-template-columns:1.1fr .9fr;
+
+    align-items:center;
+
+    gap:60px;
+}
+
+.future-copy h2{
+    max-width:650px;
+
+    margin-bottom:18px;
+}
+
+.future-copy p{
+    max-width:520px;
+}
+
+.future-tags{
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:7px;
+
+    margin-top:25px;
+}
+
+.future-tags span{
+    padding:8px 11px;
+
+    border:1px solid #ded8f4;
+    border-radius:100px;
+
+    background:#faf8ff;
+
+    color:#6955ca;
+
+    font-size:8px;
+}
+
+.future-visual{
+    min-height:360px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:22px;
+
+    background:#f1edff;
+}
+
+.future-ring{
+    width:260px;
+    height:260px;
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    border:1px solid rgba(113,86,232,.25);
+    border-radius:50%;
+
+    transform:translate(-50%,-50%);
+}
+
+.future-ring::before{
+    content:"";
+
+    width:175px;
+    height:175px;
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    border:1px solid rgba(113,86,232,.18);
+    border-radius:50%;
+
+    transform:translate(-50%,-50%);
+}
+
+.future-center{
+    width:110px;
+    height:110px;
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+
+    border-radius:50%;
+
+    background:#111116;
+    color:#fff;
+
+    transform:translate(-50%,-50%);
+}
+
+.future-center i{
+    margin-bottom:7px;
+
+    color:#a995ff;
+}
+
+.future-center strong{
+    font-size:9px;
+}
+
+.future-chip{
+    position:absolute;
+
+    padding:9px 11px;
+
+    border-radius:9px;
+
+    background:#fff;
+
+    color:#5f50ad;
+
+    box-shadow:0 9px 22px rgba(0,0,0,.05);
+
+    font-size:8px;
+    font-weight:700;
+}
+
+.chip-one{
+    left:32px;
+    top:58px;
+}
+
+.chip-two{
+    right:30px;
+    top:65px;
+}
+
+.chip-three{
+    left:42px;
+    bottom:58px;
+}
+
+.chip-four{
+    right:34px;
+    bottom:55px;
+}
+
+
+/* =========================================================
+   FINAL CTA
+========================================================= */
+
+.final-section{
+    padding:85px 0 65px;
+}
+
+.final-card{
+    min-height:420px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    display:flex;
+    align-items:center;
+
+    padding:58px;
+
+    border-radius:24px;
+
+    background:#7156e8;
+    color:#fff;
+}
+
+.final-card::before{
+    content:"";
+
+    width:520px;
+    height:520px;
+
+    position:absolute;
+
+    right:-190px;
+    top:-160px;
+
+    border:1px solid rgba(255,255,255,.13);
+    border-radius:50%;
+}
+
+.final-card::after{
+    content:"";
+
+    width:330px;
+    height:330px;
+
+    position:absolute;
+
+    right:-50px;
+    bottom:-190px;
+
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:50%;
+}
+
+.final-content{
+    max-width:690px;
+
+    position:relative;
+    z-index:2;
+}
+
+.final-content small{
+    display:block;
+
+    margin-bottom:14px;
+
+    color:#ded8ff;
+
+    font-size:8px;
+    font-weight:800;
+
+    letter-spacing:1.4px;
+}
+
+.final-content h2{
+    max-width:660px;
+
+    margin-bottom:18px;
+
+    font-size:clamp(39px,4.3vw,56px);
+
+    line-height:1.03;
+
+    letter-spacing:-2.9px;
+}
+
+.final-content p{
+    max-width:520px;
+
+    margin-bottom:25px;
+
+    color:#ded9f6;
+
+    font-size:12px;
+    line-height:1.75;
+}
+
+.final-content a{
+    min-height:46px;
+
+    display:inline-flex;
+    align-items:center;
+
+    gap:9px;
+
+    padding:0 18px;
+
+    border-radius:9px;
+
+    background:#fff;
+    color:#16161b;
+
+    font-size:11px;
+    font-weight:700;
+
+    transition:.3s ease;
+}
+
+.final-content a:hover{
+    transform:translateY(-3px);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer{
+    padding:5px 20px 35px;
+
+    text-align:center;
+
+    color:#92929a;
+
+    font-size:9px;
+}
+
+.footer span{
+    margin:0 6px;
+
+    color:var(--purple);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media(max-width:1050px){
+
+    .navbar{
+        height:70px;
+
+        padding:0 18px;
+    }
+
+    main{
+        padding-top:70px;
+    }
+
+    .logo{
+        font-size:18px;
+    }
+
+    .login-btn,
+    .get-started{
+        display:none;
+    }
+
+    .menu-toggle{
+        display:flex;
+    }
+
+    .nav-menu{
+        position:absolute;
+
+        top:70px;
+        left:0;
+
+        width:100%;
+
+        max-height:calc(100vh - 70px);
+
+        overflow:auto;
+
+        display:flex;
+        flex-direction:column;
+        align-items:stretch;
+
+        padding:12px 14px 18px;
+
+        background:#fff;
+
+        opacity:0;
+
+        transform:translateY(-120%);
+
+        pointer-events:none;
+
+        transition:.3s ease;
+    }
+
+    .nav-menu.active{
+        opacity:1;
+
+        transform:translateY(0);
+
+        pointer-events:auto;
+    }
+
+    .nav-item{
+        width:100%;
+    }
+
+    .nav-link{
+        width:100%;
+
+        justify-content:space-between;
+
+        padding:15px 13px;
+    }
+
+    .dropdown{
+        position:static;
+
+        width:100%;
+
+        max-height:0;
+
+        overflow:hidden;
+
+        padding:0 8px;
+
+        opacity:1;
+        visibility:visible;
+
+        transform:none;
+
+        background:#fafafa;
+
+        border:0;
+
+        box-shadow:none;
+
+        transition:max-height .35s ease;
+    }
+
+    .nav-item.open > .dropdown{
+        max-height:1200px;
+
+        padding:8px;
+    }
+
+    .mega-dropdown{
+        display:block;
+    }
+
+
+    /* HERO */
+
+    .hero-stage{
+        grid-template-columns:1fr;
+
+        gap:45px;
+
+        padding:65px 0;
+    }
+
+    .hero-copy{
+        max-width:720px;
+    }
+
+    .campus-board{
+        max-width:760px;
+    }
+
+
+    /* PROMISE */
+
+    .promise-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .promise-item:nth-child(2){
+        border-right:0;
+    }
+
+    .promise-item:nth-child(-n+2){
+        border-bottom:1px solid #e8e8ed;
+    }
+
+
+    /* MANIFESTO */
+
+    .manifesto-layout{
+        grid-template-columns:1fr;
+
+        gap:28px;
+    }
+
+
+    /* ACADEMIC */
+
+    .academic-heading{
+        grid-template-columns:1fr;
+
+        gap:25px;
+    }
+
+
+    /* SEMESTER */
+
+    .semester-board{
+        overflow-x:auto;
+    }
+
+    .semester-grid{
+        min-width:900px;
+    }
+
+
+    /* LAB */
+
+    .lab-shell{
+        grid-template-columns:1fr;
+    }
+
+    .lab-menu{
+        border-right:0;
+        border-bottom:1px solid #e6e6eb;
+    }
+
+
+    /* VALUE */
+
+    .value-layout{
+        grid-template-columns:1fr;
+
+        gap:45px;
+    }
+
+    .value-copy{
+        position:static;
+    }
+
+
+    /* ROAD */
+
+    .partnership-road{
+        grid-template-columns:repeat(2,1fr);
+
+        gap:45px;
+    }
+
+    .partnership-road::before{
+        display:none;
+    }
+
+
+    /* FUTURE */
+
+    .future-shell{
+        grid-template-columns:1fr;
+
+        gap:45px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:650px){
+
+    html,
+    body{
+        width:100%;
+        max-width:100%;
+
+        overflow-x:hidden;
+    }
+
+    .container{
+        width:100%;
+        max-width:100%;
+
+        padding-left:18px;
+        padding-right:18px;
+    }
+
+
+    /* NAV */
+
+    .navbar{
+        height:66px;
+
+        padding:0 14px;
+    }
+
+    main{
+        padding-top:66px;
+    }
+
+    .logo{
+        font-size:16px;
+    }
+
+    .logo-impact{
+        margin-left:5px;
+    }
+
+    .nav-menu{
+        top:66px;
+
+        max-height:calc(100vh - 66px);
+    }
+
+
+    /* COMMON */
+
+    .section-title{
+        font-size:clamp(31px,9.5vw,42px);
+
+        letter-spacing:-2px;
+    }
+
+
+    /* HERO */
+
+    .hero-stage{
+        padding:53px 0 45px;
+    }
+
+    .hero-copy h1{
+        font-size:clamp(44px,13vw,58px);
+
+        letter-spacing:-3px;
+    }
+
+    .hero-copy p{
+        font-size:12px;
+    }
+
+    .hero-actions{
+        width:100%;
+    }
+
+    .primary-btn,
+    .secondary-btn{
+        flex:1;
+
+        min-width:140px;
+    }
+
+    .campus-board{
+        min-height:450px;
+    }
+
+    .board-map{
+        min-height:395px;
+
+        padding:15px;
+    }
+
+    .board-center{
+        width:125px;
+        height:125px;
+    }
+
+    .board-center i{
+        font-size:23px;
+    }
+
+    .board-center strong{
+        font-size:9px;
+    }
+
+    .campus-block{
+        gap:6px;
+
+        padding:9px;
+
+        max-width:105px;
+    }
+
+    .campus-block i{
+        width:26px;
+        height:26px;
+
+        font-size:9px;
+    }
+
+    .campus-block strong{
+        font-size:7px;
+    }
+
+    .campus-block small{
+        font-size:5px;
+    }
+
+    .block-academics{
+        left:10px;
+        top:35px;
+    }
+
+    .block-lab{
+        right:10px;
+        top:38px;
+    }
+
+    .block-project{
+        left:14px;
+        bottom:40px;
+    }
+
+    .block-career{
+        right:12px;
+        bottom:39px;
+    }
+
+    .map-line,
+    .map-dot{
+        display:none;
+    }
+
+
+    /* PROMISE */
+
+    .promise-grid{
+        grid-template-columns:1fr;
+    }
+
+    .promise-item{
+        min-height:74px;
+
+        border-right:0;
+        border-bottom:1px solid #e8e8ed;
+    }
+
+    .promise-item:last-child{
+        border-bottom:0;
+    }
+
+
+    /* SECTIONS */
+
+    .manifesto-section,
+    .academic-section,
+    .calendar-section,
+    .transform-section,
+    .campus-lab-section,
+    .value-section,
+    .partnership-section,
+    .future-section{
+        padding:72px 0;
+    }
+
+
+    /* MANIFESTO */
+
+    .manifesto-main h2{
+        font-size:clamp(32px,10vw,43px);
+
+        letter-spacing:-2.3px;
+    }
+
+    .manifesto-notes{
+        grid-template-columns:1fr;
+
+        gap:18px;
+    }
+
+
+    /* ACADEMIC */
+
+    .ribbon-block{
+        width:270px;
+    }
+
+
+    /* CALENDAR */
+
+    .calendar-heading{
+        align-items:flex-start;
+        flex-direction:column;
+
+        gap:18px;
+    }
+
+
+    /* TRANSFORM */
+
+    .transform-line{
+        left:29px;
+
+        transform:none;
+    }
+
+    .transform-step,
+    .transform-step:nth-child(even){
+        min-height:auto;
+
+        grid-template-columns:58px 1fr;
+
+        padding:18px 0;
+    }
+
+    .transform-node{
+        grid-column:1 !important;
+        grid-row:1 !important;
+
+        width:46px;
+        height:46px;
+
+        margin:0;
+    }
+
+    .transform-copy-left,
+    .transform-copy-right,
+    .transform-step:nth-child(even) .transform-copy-left,
+    .transform-step:nth-child(even) .transform-copy-right{
+        grid-column:2 !important;
+        grid-row:1 !important;
+
+        padding:0;
+
+        text-align:left;
+    }
+
+    .transform-copy-right:empty,
+    .transform-copy-left:empty{
+        display:none;
+    }
+
+
+    /* LAB */
+
+    .lab-menu{
+        padding:25px 20px;
+    }
+
+    .lab-display{
+        min-height:auto;
+
+        padding:30px 20px;
+    }
+
+    .lab-display h3{
+        font-size:27px;
+    }
+
+    .lab-progress{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+
+    /* VALUE */
+
+    .value-row{
+        min-height:auto;
+
+        grid-template-columns:38px 1fr;
+
+        gap:12px;
+
+        padding:23px 0;
+    }
+
+    .value-row p{
+        grid-column:2;
+    }
+
+
+    /* PARTNERSHIP */
+
+    .partnership-road{
+        grid-template-columns:1fr;
+
+        gap:36px;
+    }
+
+
+    /* FUTURE */
+
+    .future-visual{
+        min-height:340px;
+    }
+
+    .future-ring{
+        width:220px;
+        height:220px;
+    }
+
+    .future-ring::before{
+        width:145px;
+        height:145px;
+    }
+
+    .future-chip{
+        font-size:7px;
+    }
+
+
+    /* FINAL */
+
+    .final-section{
+        padding:65px 0 50px;
+    }
+
+    .final-card{
+        min-height:390px;
+
+        padding:34px 23px;
+    }
+
+    .final-content h2{
+        font-size:clamp(36px,10vw,48px);
+
+        letter-spacing:-2.4px;
+    }
+
+}
+
+
+@media(max-width:360px){
+
+    .logo{
+        font-size:14px;
+    }
+
+    .lab-progress{
+        grid-template-columns:1fr;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        animation:none !important;
+        transition:none !important;
+        scroll-behavior:auto !important;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<header class="navbar" id="navbar">
+
+    <a href="../index.html" class="logo">
+
+        <span class="logo-main">
+            TRIVOX
+        </span>
+
+        <span class="logo-impact">
+            AI IMPACT
+        </span>
+
+    </a>
+
+
+    <ul class="nav-menu" id="navMenu">
+
+
+        <!-- COMPANY -->
+
+        <li class="nav-item">
+
+            <div class="nav-link">
+
+                Company
+
+                <span class="arrow"></span>
+
+            </div>
+
+            <div class="dropdown">
+
+                <a href="../about.html">About TRIVOX</a>
+                <a href="../mission.html">Mission</a>
+                <a href="../vision.html">Vision</a>
+                <a href="../leader.html">Leadership</a>
+                <a href="../team.html">Team</a>
+                <a href="../partners.html">Partners</a>
+                <a href="../impact.html">Impact</a>
+
+            </div>
+
+        </li>
+
+
+
+        <!-- LEARNING -->
+
+        <li class="nav-item">
+
+            <div class="nav-link">
+
+                Learning
+
+                <span class="arrow"></span>
+
+            </div>
+
+
+            <div class="dropdown mega-dropdown">
+
+
+                <a href="../learning/ailearning.html" class="mega-box">
+
+                    <strong>AI Learning</strong>
+
+                    <p>
+                        Understand artificial intelligence and intelligent systems.
+                    </p>
+
+                </a>
+
+
+                <a href="../learning/programming.html" class="mega-box">
+
+                    <strong>Programming</strong>
+
+                    <p>
+                        Build strong coding and problem-solving foundations.
+                    </p>
+
+                </a>
+
+
+                <a href="../learning/webdevelopment.html" class="mega-box">
+
+                    <strong>Web Development</strong>
+
+                    <p>
+                        Create modern websites and digital experiences.
+                    </p>
+
+                </a>
+
+
+                <a href="../learning/appdevelopment.html" class="mega-box">
+
+                    <strong>App Development</strong>
+
+                    <p>
+                        Design and build mobile applications.
+                    </p>
+
+                </a>
+
+
+                <a href="../learning/datascience.html" class="mega-box">
+
+                    <strong>Data Science</strong>
+
+                    <p>
+                        Transform data into meaningful insights.
+                    </p>
+
+                </a>
+
+
+                <a href="../learning/cybersecurity.html" class="mega-box">
+
+                    <strong>Cybersecurity</strong>
+
+                    <p>
+                        Understand digital security and protection.
+                    </p>
+
+                </a>
+
+
+            </div>
+
+        </li>
+
+
+
+        <!-- PROGRAMS -->
+
+        <li class="nav-item active-parent">
+
+            <div class="nav-link">
+
+                Programs
+
+                <span class="arrow"></span>
+
+            </div>
+
+
+            <div class="dropdown">
+
+                <a href="student-programs.html">
+                    Student Programs
+                </a>
+
+                <a href="college-programs.html" class="active">
+                    College Programs
+                </a>
+
+                <a href="internships.html">
+                    Internships
+                </a>
+
+                <a href="workshops.html">
+                    Workshops
+                </a>
+
+                <a href="bootcamps.html">
+                    Bootcamps
+                </a>
+
+                <a href="career-programs.html">
+                    Career Programs
+                </a>
+
+                <a href="certification-programs.html">
+                    Certification Programs
+                </a>
+
+            </div>
+
+        </li>
+
+
+
+        <!-- SOLUTIONS -->
+
+        <li class="nav-item">
+
+            <div class="nav-link">
+
+                Solutions
+
+                <span class="arrow"></span>
+
+            </div>
+
+
+            <div class="dropdown">
+
+                <a href="../solutions/students.html">
+                    For Students
+                </a>
+
+                <a href="../solutions/colleges.html">
+                    For Colleges
+                </a>
+
+                <a href="../solutions/schools.html">
+                    For Schools
+                </a>
+
+                <a href="../solutions/companies.html">
+                    For Companies
+                </a>
+
+            </div>
+
+        </li>
+
+
+
+        <!-- RESOURCES -->
+
+        <li class="nav-item">
+
+            <div class="nav-link">
+
+                Resources
+
+                <span class="arrow"></span>
+
+            </div>
+
+
+            <div class="dropdown">
+
+                <a href="../resources/blogs.html">
+                    Blogs
+                </a>
+
+                <a href="../resources/tutorials.html">
+                    Tutorials
+                </a>
+
+                <a href="../resources/learning-resources.html">
+                    Learning Resources
+                </a>
+
+                <a href="../resources/student-projects.html">
+                    Student Projects
+                </a>
+
+                <a href="../resources/success-stories.html">
+                    Success Stories
+                </a>
+
+                <a href="../resources/events.html">
+                    Events
+                </a>
+
+                <a href="../resources/faqs.html">
+                    FAQs
+                </a>
+
+            </div>
+
+        </li>
+
+
+
+        <!-- CAREERS -->
+
+        <li class="nav-item">
+
+            <div class="nav-link">
+
+                Careers
+
+                <span class="arrow"></span>
+
+            </div>
+
+
+            <div class="dropdown">
+
+                <a href="../careers/open-positions.html">
+                    Open Positions
+                </a>
+
+                <a href="../careers/internships.html">
+                    Internships
+                </a>
+
+                <a href="../careers/campus-hiring.html">
+                    Campus Hiring
+                </a>
+
+                <a href="../careers/join-team.html">
+                    Join Our Team
+                </a>
+
+                <a href="../careers/life-at-trivox.html">
+                    Life at TRIVOX
+                </a>
+
+            </div>
+
+        </li>
+
+
+
+        <!-- CONTACT -->
+
+        <li class="nav-item">
+
+            <a href="../contact/contact.html" class="nav-link">
+                Contact
+            </a>
+
+        </li>
+
+
+    </ul>
+
+
+
+    <div class="nav-actions">
+
+
+        <div class="signin-dropdown-wrap">
+
+
+            <button class="login-btn signin-main-btn">
+
+                Sign In
+
+                <span class="arrow"></span>
+
+            </button>
+
+
+            <div class="signin-dropdown">
+
+
+                <a href="../documentary.html">
+
+                    <i class="fa-solid fa-video"></i>
+
+                    <div>
+
+                        <strong>
+                            Documentary
+                        </strong>
+
+                        <span>
+                            Sign in for documentary
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <a href="../course.html">
+
+                    <i class="fa-solid fa-graduation-cap"></i>
+
+                    <div>
+
+                        <strong>
+                            Course
+                        </strong>
+
+                        <span>
+                            Sign in for courses
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+            </div>
+
+        </div>
+
+
+        <a href="../course.html" class="get-started">
+
+            Get Started
+
+        </a>
+
+
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Menu">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+
+    </div>
+
+</header>
+
+
+
+<main>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="college-hero">
+
+
+    <div class="container hero-stage">
+
+
+        <div class="hero-copy reveal">
+
+
+            <div class="hero-label">
+
+                <span></span>
+
+                COLLEGE PROGRAMS / CAMPUS LEARNING
+
+            </div>
+
+
+            <h1>
+
+                Turn your campus into a
+
+                <span>
+                    place where students build.
+                </span>
+
+            </h1>
+
+
+            <p>
+
+                TRIVOX College Programs bring structured skill development,
+                practical projects and technology exposure into the college
+                environment — helping students connect academic learning with
+                real capability.
+
+            </p>
+
+
+            <div class="hero-actions">
+
+
+                <a
+                    href="#academic"
+                    class="primary-btn">
+
+                    Explore Campus Programs
+
+                    <i class="fa-solid fa-arrow-down"></i>
+
+                </a>
+
+
+                <a
+                    href="#partnership"
+                    class="secondary-btn">
+
+                    Partner With TRIVOX
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="campus-board reveal">
+
+
+            <div class="board-top">
+
+
+                <div class="board-id">
+
+                    <span></span>
+
+                    TRIVOX CAMPUS BLUEPRINT
+
+                </div>
+
+
+                <div class="board-status">
+
+                    LEARNING ACTIVE
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="board-map">
+
+
+                <div class="campus-block block-academics">
+
+                    <i class="fa-solid fa-book-open"></i>
+
+                    <div>
+
+                        <strong>
+                            Academic Learning
+                        </strong>
+
+                        <small>
+                            Concepts + foundations
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="campus-block block-lab">
+
+                    <i class="fa-solid fa-flask"></i>
+
+                    <div>
+
+                        <strong>
+                            Skill Labs
+                        </strong>
+
+                        <small>
+                            Practice + tools
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="campus-block block-project">
+
+                    <i class="fa-solid fa-diagram-project"></i>
+
+                    <div>
+
+                        <strong>
+                            Project Studio
+                        </strong>
+
+                        <small>
+                            Build + demonstrate
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="campus-block block-career">
+
+                    <i class="fa-solid fa-briefcase"></i>
+
+                    <div>
+
+                        <strong>
+                            Career Connect
+                        </strong>
+
+                        <small>
+                            Readiness + pathways
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="map-line line-one"></div>
+                <div class="map-line line-two"></div>
+                <div class="map-line line-three"></div>
+                <div class="map-line line-four"></div>
+
+
+                <div class="map-dot dot-one"></div>
+                <div class="map-dot dot-two"></div>
+                <div class="map-dot dot-three"></div>
+
+
+
+                <div class="board-center">
+
+                    <i class="fa-solid fa-building-columns"></i>
+
+                    <small>
+                        COLLEGE
+                    </small>
+
+                    <strong>
+                        TRIVOX Program
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="promise-strip">
+
+
+        <div class="container promise-grid">
+
+
+            <div class="promise-item">
+
+                <span>01</span>
+
+                <div>
+
+                    <strong>
+                        Learn
+                    </strong>
+
+                    <small>
+                        Understand foundations
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="promise-item">
+
+                <span>02</span>
+
+                <div>
+
+                    <strong>
+                        Practice
+                    </strong>
+
+                    <small>
+                        Work with real tools
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="promise-item">
+
+                <span>03</span>
+
+                <div>
+
+                    <strong>
+                        Build
+                    </strong>
+
+                    <small>
+                        Create practical work
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="promise-item">
+
+                <span>04</span>
+
+                <div>
+
+                    <strong>
+                        Progress
+                    </strong>
+
+                    <small>
+                        Move toward opportunity
+                    </small>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     MANIFESTO
+========================================================= -->
+
+<section class="manifesto-section">
+
+
+    <div class="container manifesto-layout">
+
+
+        <div class="manifesto-side reveal">
+
+            01 / WHY COLLEGE PROGRAMS
+
+        </div>
+
+
+        <div class="manifesto-main reveal">
+
+
+            <h2>
+
+                College education creates knowledge.
+
+                <br>
+
+                Practical learning helps students
+
+                <span>
+                    turn that knowledge into capability.
+                </span>
+
+            </h2>
+
+
+            <div class="manifesto-notes">
+
+
+                <p>
+
+                    TRIVOX programs are designed to complement campus learning
+                    with structured exposure to technology, practical skills,
+                    guided projects and modern problem solving.
+
+                </p>
+
+
+                <p>
+
+                    Students should leave a learning experience with something
+                    they can explain, demonstrate and continue building on —
+                    not only something they completed.
+
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     ACADEMIC RIBBON
+========================================================= -->
+
+<section
+    class="academic-section"
+    id="academic">
+
+
+    <div class="container academic-heading reveal">
+
+
+        <div>
+
+
+            <div class="section-label">
+
+                Academic Extension
+
+            </div>
+
+
+            <h2 class="section-title">
+
+                Add practical learning
+
+                <span>
+                    around the classroom.
+                </span>
+
+            </h2>
+
+
+        </div>
+
+
+        <p>
+
+            Colleges can combine different TRIVOX learning experiences
+            depending on student level, academic calendar and skill goals.
+
+        </p>
+
+
+    </div>
+
+
+
+    <div class="academic-ribbon" id="academicRibbon">
+
+
+        <div class="ribbon-block">
+
+            <div class="ribbon-top">
+
+                <span>
+                    CAMPUS MODULE 01
+                </span>
+
+                <i class="fa-solid fa-code"></i>
+
+            </div>
+
+            <div>
+
+                <h3>
+                    Programming Foundations
+                </h3>
+
+                <p>
+
+                    Develop logical thinking, coding foundations and
+                    problem-solving ability through structured practice.
+
+                </p>
+
+                <div class="ribbon-meta">
+
+                    <span>Logic</span>
+                    <span>Code</span>
+                    <span>Practice</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="ribbon-block">
+
+            <div class="ribbon-top">
+
+                <span>
+                    CAMPUS MODULE 02
+                </span>
+
+                <i class="fa-solid fa-globe"></i>
+
+            </div>
+
+            <div>
+
+                <h3>
+                    Web Development
+                </h3>
+
+                <p>
+
+                    Learn how interfaces, frontend technologies and digital
+                    products come together on the modern web.
+
+                </p>
+
+                <div class="ribbon-meta">
+
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="ribbon-block">
+
+            <div class="ribbon-top">
+
+                <span>
+                    CAMPUS MODULE 03
+                </span>
+
+                <i class="fa-solid fa-brain"></i>
+
+            </div>
+
+            <div>
+
+                <h3>
+                    AI Exploration
+                </h3>
+
+                <p>
+
+                    Understand how data, models and intelligent systems can
+                    support modern problem solving.
+
+                </p>
+
+                <div class="ribbon-meta">
+
+                    <span>AI</span>
+                    <span>Models</span>
+                    <span>Ideas</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="ribbon-block">
+
+            <div class="ribbon-top">
+
+                <span>
+                    CAMPUS MODULE 04
+                </span>
+
+                <i class="fa-solid fa-chart-simple"></i>
+
+            </div>
+
+            <div>
+
+                <h3>
+                    Data Understanding
+                </h3>
+
+                <p>
+
+                    Work with information, patterns and visual communication
+                    to understand how data supports better decisions.
+
+                </p>
+
+                <div class="ribbon-meta">
+
+                    <span>Data</span>
+                    <span>Analysis</span>
+                    <span>Insight</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- DUPLICATE FOR CONTINUOUS LOOP -->
+
+        <div class="ribbon-block">
+
+            <div class="ribbon-top">
+
+                <span>
+                    CAMPUS MODULE 01
+                </span>
+
+                <i class="fa-solid fa-code"></i>
+
+            </div>
+
+            <div>
+
+                <h3>
+                    Programming Foundations
+                </h3>
+
+                <p>
+
+                    Develop logical thinking, coding foundations and
+                    problem-solving ability through structured practice.
+
+                </p>
+
+                <div class="ribbon-meta">
+
+                    <span>Logic</span>
+                    <span>Code</span>
+                    <span>Practice</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="ribbon-block">
+
+            <div class="ribbon-top">
+
+                <span>
+                    CAMPUS MODULE 02
+                </span>
+
+                <i class="fa-solid fa-globe"></i>
+
+            </div>
+
+            <div>
+
+                <h3>
+                    Web Development
+                </h3>
+
+                <p>
+
+                    Learn how interfaces, frontend technologies and digital
+                    products come together on the modern web.
+
+                </p>
+
+                <div class="ribbon-meta">
+
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="ribbon-block">
+
+            <div class="ribbon-top">
+
+                <span>
+                    CAMPUS MODULE 03
+                </span>
+
+                <i class="fa-solid fa-brain"></i>
+
+            </div>
+
+            <div>
+
+                <h3>
+                    AI Exploration
+                </h3>
+
+                <p>
+
+                    Understand how data, models and intelligent systems can
+                    support modern problem solving.
+
+                </p>
+
+                <div class="ribbon-meta">
+
+                    <span>AI</span>
+                    <span>Models</span>
+                    <span>Ideas</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="ribbon-block">
+
+            <div class="ribbon-top">
+
+                <span>
+                    CAMPUS MODULE 04
+                </span>
+
+                <i class="fa-solid fa-chart-simple"></i>
+
+            </div>
+
+            <div>
+
+                <h3>
+                    Data Understanding
+                </h3>
+
+                <p>
+
+                    Work with information, patterns and visual communication
+                    to understand how data supports better decisions.
+
+                </p>
+
+                <div class="ribbon-meta">
+
+                    <span>Data</span>
+                    <span>Analysis</span>
+                    <span>Insight</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     SEMESTER PROGRAM CALENDAR
+========================================================= -->
+
+<section class="calendar-section">
+
+
+    <div class="container">
+
+
+        <div class="calendar-heading reveal">
+
+
+            <div>
+
+
+                <div class="section-label">
+
+                    Program Calendar
+
+                </div>
+
+
+                <h2 class="section-title">
+
+                    Learning that can fit
+
+                    <span>
+                        into the campus journey.
+                    </span>
+
+                </h2>
+
+
+            </div>
+
+
+            <p class="section-copy">
+
+                Program formats can be positioned around semesters,
+                academic milestones, project periods or focused
+                student-development initiatives.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="semester-board reveal">
+
+
+            <div class="semester-top">
+
+                <strong>
+                    CAMPUS PROGRAM PLAN
+                </strong>
+
+                <span>
+                    SAMPLE LEARNING STRUCTURE
+                </span>
+
+            </div>
+
+
+
+            <div class="semester-grid">
+
+
+                <div class="semester-axis">
+                    PHASE
+                </div>
+
+                <div class="semester-axis">
+                    FOUNDATION
+                </div>
+
+                <div class="semester-axis">
+                    SKILL BUILDING
+                </div>
+
+                <div class="semester-axis">
+                    PRACTICAL
+                </div>
+
+                <div class="semester-axis">
+                    OUTCOME
+                </div>
+
+
+
+                <div class="semester-axis">
+                    Semester Track
+                </div>
+
+                <div class="semester-cell highlight">
+
+                    <small>
+                        STAGE 01
+                    </small>
+
+                    <strong>
+                        Core Concepts
+                    </strong>
+
+                    <p>
+                        Build basic understanding.
+                    </p>
+
+                </div>
+
+                <div class="semester-cell">
+
+                    <small>
+                        STAGE 02
+                    </small>
+
+                    <strong>
+                        Skill Practice
+                    </strong>
+
+                    <p>
+                        Work with concepts and tools.
+                    </p>
+
+                </div>
+
+                <div class="semester-cell">
+
+                    <small>
+                        STAGE 03
+                    </small>
+
+                    <strong>
+                        Guided Project
+                    </strong>
+
+                    <p>
+                        Apply learning to a challenge.
+                    </p>
+
+                </div>
+
+                <div class="semester-cell">
+
+                    <small>
+                        STAGE 04
+                    </small>
+
+                    <strong>
+                        Demonstration
+                    </strong>
+
+                    <p>
+                        Present practical work.
+                    </p>
+
+                </div>
+
+
+
+                <div class="semester-axis">
+                    Intensive Track
+                </div>
+
+                <div class="semester-cell">
+
+                    <small>
+                        DAY 01
+                    </small>
+
+                    <strong>
+                        Discover
+                    </strong>
+
+                    <p>
+                        Understand topic and tools.
+                    </p>
+
+                </div>
+
+                <div class="semester-cell highlight">
+
+                    <small>
+                        DAY 02
+                    </small>
+
+                    <strong>
+                        Practice
+                    </strong>
+
+                    <p>
+                        Guided exercises and exploration.
+                    </p>
+
+                </div>
+
+                <div class="semester-cell">
+
+                    <small>
+                        DAY 03
+                    </small>
+
+                    <strong>
+                        Build
+                    </strong>
+
+                    <p>
+                        Create a practical output.
+                    </p>
+
+                </div>
+
+                <div class="semester-cell">
+
+                    <small>
+                        DAY 04
+                    </small>
+
+                    <strong>
+                        Showcase
+                    </strong>
+
+                    <p>
+                        Explain what was built.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     STUDENT TRANSFORMATION
+========================================================= -->
+
+<section class="transform-section">
+
+
+    <div class="container">
+
+
+        <div class="transform-heading reveal">
+
+
+            <div class="section-label">
+
+                Student Transformation
+
+            </div>
+
+
+            <h2 class="section-title">
+
+                Move students from
+
+                <span>
+                    exposure to practical confidence.
+                </span>
+
+            </h2>
+
+
+        </div>
+
+
+
+        <div class="transform-track reveal">
+
+
+            <div class="transform-line"></div>
+
+
+
+            <div class="transform-step active">
+
+
+                <div class="transform-copy-left">
+
+                    <small>
+                        STAGE 01
+                    </small>
+
+                    <h3>
+                        Discover
+                    </h3>
+
+                    <p>
+
+                        Students explore a technology, concept or problem area.
+
+                    </p>
+
+                </div>
+
+
+                <div class="transform-node">
+
+                    <i class="fa-solid fa-compass"></i>
+
+                </div>
+
+
+                <div class="transform-copy-right"></div>
+
+
+            </div>
+
+
+
+            <div class="transform-step">
+
+
+                <div class="transform-copy-left">
+
+                    <small>
+                        STAGE 02
+                    </small>
+
+                    <h3>
+                        Understand
+                    </h3>
+
+                    <p>
+
+                        Build conceptual foundations before moving into application.
+
+                    </p>
+
+                </div>
+
+
+                <div class="transform-node">
+
+                    <i class="fa-solid fa-book-open"></i>
+
+                </div>
+
+
+                <div class="transform-copy-right"></div>
+
+
+            </div>
+
+
+
+            <div class="transform-step">
+
+
+                <div class="transform-copy-left">
+
+                    <small>
+                        STAGE 03
+                    </small>
+
+                    <h3>
+                        Practice
+                    </h3>
+
+                    <p>
+
+                        Apply knowledge through structured exercises and tools.
+
+                    </p>
+
+                </div>
+
+
+                <div class="transform-node">
+
+                    <i class="fa-solid fa-gears"></i>
+
+                </div>
+
+
+                <div class="transform-copy-right"></div>
+
+
+            </div>
+
+
+
+            <div class="transform-step">
+
+
+                <div class="transform-copy-left">
+
+                    <small>
+                        STAGE 04
+                    </small>
+
+                    <h3>
+                        Build
+                    </h3>
+
+                    <p>
+
+                        Use those skills to create a practical project outcome.
+
+                    </p>
+
+                </div>
+
+
+                <div class="transform-node">
+
+                    <i class="fa-solid fa-hammer"></i>
+
+                </div>
+
+
+                <div class="transform-copy-right"></div>
+
+
+            </div>
+
+
+
+            <div class="transform-step">
+
+
+                <div class="transform-copy-left">
+
+                    <small>
+                        STAGE 05
+                    </small>
+
+                    <h3>
+                        Demonstrate
+                    </h3>
+
+                    <p>
+
+                        Explain decisions, results and what was learned.
+
+                    </p>
+
+                </div>
+
+
+                <div class="transform-node">
+
+                    <i class="fa-solid fa-person-chalkboard"></i>
+
+                </div>
+
+
+                <div class="transform-copy-right"></div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     CAMPUS PROJECT LAB
+========================================================= -->
+
+<section class="campus-lab-section">
+
+
+    <div class="container">
+
+
+        <div class="lab-shell reveal">
+
+
+            <div class="lab-menu">
+
+
+                <div class="lab-menu-header">
+
+                    <small>
+                        CAMPUS LAB
+                    </small>
+
+                    <h3>
+                        Project experiences
+                    </h3>
+
+                </div>
+
+
+
+                <button
+                    class="lab-btn active"
+                    data-lab="0">
+
+                    <span>01</span>
+
+                    <strong>
+                        Digital Product
+                    </strong>
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+
+
+                <button
+                    class="lab-btn"
+                    data-lab="1">
+
+                    <span>02</span>
+
+                    <strong>
+                        AI Concept Project
+                    </strong>
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+
+
+                <button
+                    class="lab-btn"
+                    data-lab="2">
+
+                    <span>03</span>
+
+                    <strong>
+                        Data Story
+                    </strong>
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+
+
+                <button
+                    class="lab-btn"
+                    data-lab="3">
+
+                    <span>04</span>
+
+                    <strong>
+                        Campus Solution
+                    </strong>
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+
+            </div>
+
+
+
+            <div class="lab-display">
+
+
+                <small id="labLabel">
+
+                    DIGITAL PRODUCT
+
+                </small>
+
+
+                <h3 id="labTitle">
+
+                    Build a digital experience around a real student need.
+
+                </h3>
+
+
+                <p id="labDescription">
+
+                    Students identify a problem, plan a user experience,
+                    create a working solution and explain how the final
+                    product addresses the original need.
+
+                </p>
+
+
+
+                <div
+                    class="lab-progress"
+                    id="labProgress">
+
+
+                    <div class="lab-stage">
+
+                        <span>01</span>
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <strong>
+                            Understand
+                        </strong>
+
+                    </div>
+
+
+                    <div class="lab-stage">
+
+                        <span>02</span>
+
+                        <i class="fa-solid fa-pencil-ruler"></i>
+
+                        <strong>
+                            Design
+                        </strong>
+
+                    </div>
+
+
+                    <div class="lab-stage">
+
+                        <span>03</span>
+
+                        <i class="fa-solid fa-code"></i>
+
+                        <strong>
+                            Build
+                        </strong>
+
+                    </div>
+
+
+                    <div class="lab-stage">
+
+                        <span>04</span>
+
+                        <i class="fa-solid fa-display"></i>
+
+                        <strong>
+                            Present
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     INSTITUTION VALUE
+========================================================= -->
+
+<section class="value-section">
+
+
+    <div class="container value-layout">
+
+
+        <div class="value-copy reveal">
+
+
+            <div class="section-label">
+
+                Institution Value
+
+            </div>
+
+
+            <h2 class="section-title">
+
+                More than another
+
+                <span>
+                    training activity.
+                </span>
+
+            </h2>
+
+
+            <p class="section-copy">
+
+                A strong college program should support meaningful student
+                participation, practical exposure and better visibility
+                into modern skill pathways.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="value-board reveal">
+
+
+            <div class="value-row">
+
+                <span>01</span>
+
+                <h3>
+                    Practical Exposure
+                </h3>
+
+                <p>
+
+                    Students interact with concepts, tools and project
+                    experiences beyond theory alone.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="value-row">
+
+                <span>02</span>
+
+                <h3>
+                    Student Participation
+                </h3>
+
+                <p>
+
+                    Structured activities create more opportunities for
+                    students to engage, practice and demonstrate learning.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="value-row">
+
+                <span>03</span>
+
+                <h3>
+                    Technology Awareness
+                </h3>
+
+                <p>
+
+                    Learners gain exposure to modern digital domains and
+                    understand where those skills are used.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="value-row">
+
+                <span>04</span>
+
+                <h3>
+                    Project Culture
+                </h3>
+
+                <p>
+
+                    Encourage students to move from consuming information
+                    toward creating practical outcomes.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="value-row">
+
+                <span>05</span>
+
+                <h3>
+                    Career Readiness
+                </h3>
+
+                <p>
+
+                    Help students connect learning with roles, skills and
+                    future professional opportunities.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     PARTNERSHIP
+========================================================= -->
+
+<section
+    class="partnership-section"
+    id="partnership">
+
+
+    <div class="container">
+
+
+        <div class="partnership-heading reveal">
+
+
+            <div class="section-label">
+
+                College Partnership
+
+            </div>
+
+
+            <h2 class="section-title">
+
+                From a campus requirement
+
+                <span>
+                    to a structured learning program.
+                </span>
+
+            </h2>
+
+
+        </div>
+
+
+
+        <div class="partnership-road reveal">
+
+
+            <div class="road-stage">
+
+
+                <div class="road-circle">
+
+                    <i class="fa-solid fa-comments"></i>
+
+                </div>
+
+
+                <small>
+                    STEP 01
+                </small>
+
+
+                <h3>
+                    Understand
+                </h3>
+
+
+                <p>
+
+                    Identify student group, learning objectives,
+                    academic context and desired outcome.
+
+                </p>
+
+
+            </div>
+
+
+
+            <div class="road-stage">
+
+
+                <div class="road-circle">
+
+                    <i class="fa-solid fa-pen-ruler"></i>
+
+                </div>
+
+
+                <small>
+                    STEP 02
+                </small>
+
+
+                <h3>
+                    Design
+                </h3>
+
+
+                <p>
+
+                    Select learning topics, format, schedule
+                    and practical components.
+
+                </p>
+
+
+            </div>
+
+
+
+            <div class="road-stage">
+
+
+                <div class="road-circle">
+
+                    <i class="fa-solid fa-person-chalkboard"></i>
+
+                </div>
+
+
+                <small>
+                    STEP 03
+                </small>
+
+
+                <h3>
+                    Deliver
+                </h3>
+
+
+                <p>
+
+                    Run structured learning, guided practice
+                    and project-based experiences.
+
+                </p>
+
+
+            </div>
+
+
+
+            <div class="road-stage">
+
+
+                <div class="road-circle">
+
+                    <i class="fa-solid fa-flag-checkered"></i>
+
+                </div>
+
+
+                <small>
+                    STEP 04
+                </small>
+
+
+                <h3>
+                    Demonstrate
+                </h3>
+
+
+                <p>
+
+                    Students complete milestones and showcase
+                    practical learning outcomes.
+
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     FUTURE READY
+========================================================= -->
+
+<section class="future-section">
+
+
+    <div class="container future-shell">
+
+
+        <div class="future-copy reveal">
+
+
+            <div class="section-label">
+
+                Future Readiness
+
+            </div>
+
+
+            <h2 class="section-title">
+
+                Help students see
+
+                <span>
+                    where their learning can take them.
+                </span>
+
+            </h2>
+
+
+            <p class="section-copy">
+
+                Technology programs should give students more than tool
+                familiarity. They should help learners understand practical
+                capability, project ownership and future pathways.
+
+            </p>
+
+
+
+            <div class="future-tags">
+
+                <span>Problem Solving</span>
+                <span>Communication</span>
+                <span>Technology Skills</span>
+                <span>Project Experience</span>
+                <span>Career Awareness</span>
+                <span>Practical Confidence</span>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="future-visual reveal">
+
+
+            <div class="future-ring"></div>
+
+
+            <div class="future-center">
+
+                <i class="fa-solid fa-user-graduate"></i>
+
+                <strong>
+                    STUDENT
+                </strong>
+
+            </div>
+
+
+            <div class="future-chip chip-one">
+                Skills
+            </div>
+
+            <div class="future-chip chip-two">
+                Projects
+            </div>
+
+            <div class="future-chip chip-three">
+                Confidence
+            </div>
+
+            <div class="future-chip chip-four">
+                Opportunity
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     FINAL CTA
+========================================================= -->
+
+<section class="final-section">
+
+
+    <div class="container">
+
+
+        <div class="final-card reveal">
+
+
+            <div class="final-content">
+
+
+                <small>
+
+                    TRIVOX × YOUR CAMPUS
+
+                </small>
+
+
+                <h2>
+
+                    Build a stronger practical learning culture
+                    for your students.
+
+                </h2>
+
+
+                <p>
+
+                    Bring structured technology learning, guided practice
+                    and project-driven experiences into your campus with
+                    TRIVOX College Programs.
+
+                </p>
+
+
+                <a href="../contact/contact.html">
+
+                    Discuss a College Program
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+</main>
+
+
+
+<footer class="footer">
+
+    © 2026 TRIVOX AI IMPACT
+
+    <span>•</span>
+
+    College Programs
+
+</footer>
+
+
+
+<script>
+
+/* =========================================================
+   NAVBAR SCROLL
+========================================================= */
+
+const navbar =
+document.getElementById("navbar");
+
+window.addEventListener("scroll", () => {
+
+    navbar.classList.toggle(
+        "scrolled",
+        window.scrollY > 20
+    );
+
+});
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+const menuToggle =
+document.getElementById("menuToggle");
+
+const navMenu =
+document.getElementById("navMenu");
+
+const navItems =
+document.querySelectorAll(".nav-item");
+
+
+menuToggle.addEventListener("click", () => {
+
+    menuToggle.classList.toggle("active");
+
+    navMenu.classList.toggle("active");
+
+});
+
+
+navItems.forEach(item => {
+
+    const navLink =
+    item.querySelector(":scope > .nav-link");
+
+    const dropdown =
+    item.querySelector(":scope > .dropdown");
+
+    if(!navLink || !dropdown){
+        return;
+    }
+
+    navLink.addEventListener("click", event => {
+
+        if(window.innerWidth > 1050){
+            return;
+        }
+
+        event.preventDefault();
+
+        navItems.forEach(other => {
+
+            if(other !== item){
+                other.classList.remove("open");
+            }
+
+        });
+
+        item.classList.toggle("open");
+
+    });
+
+});
+
+
+document
+.querySelectorAll(".dropdown a")
+.forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        if(window.innerWidth <= 1050){
+
+            menuToggle.classList.remove("active");
+
+            navMenu.classList.remove("active");
+
+            navItems.forEach(item => {
+                item.classList.remove("open");
+            });
+
+        }
+
+    });
+
+});
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+const revealElements =
+document.querySelectorAll(".reveal");
+
+const revealObserver =
+new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+            entry.target.classList.add("show");
+
+            revealObserver.unobserve(
+                entry.target
+            );
+
+        }
+
+    });
+
+},{
+    threshold:.12
+});
+
+
+revealElements.forEach(element => {
+
+    revealObserver.observe(element);
+
+});
+
+
+/* =========================================================
+   PROJECT LAB DATA
+========================================================= */
+
+const labData = [
+
+    {
+        label:"DIGITAL PRODUCT",
+
+        title:
+        "Build a digital experience around a real student need.",
+
+        description:
+        "Students identify a problem, plan a user experience, create a working solution and explain how the final product addresses the original need.",
+
+        stages:[
+            {
+                icon:"fa-magnifying-glass",
+                title:"Understand"
+            },
+            {
+                icon:"fa-pencil-ruler",
+                title:"Design"
+            },
+            {
+                icon:"fa-code",
+                title:"Build"
+            },
+            {
+                icon:"fa-display",
+                title:"Present"
+            }
+        ]
+    },
+
+
+    {
+        label:"AI CONCEPT PROJECT",
+
+        title:
+        "Explore how intelligent systems can support a practical problem.",
+
+        description:
+        "Students study a problem, understand the role of data and AI, develop a solution concept and demonstrate how an intelligent workflow could operate.",
+
+        stages:[
+            {
+                icon:"fa-lightbulb",
+                title:"Problem"
+            },
+            {
+                icon:"fa-database",
+                title:"Information"
+            },
+            {
+                icon:"fa-brain",
+                title:"AI Idea"
+            },
+            {
+                icon:"fa-person-chalkboard",
+                title:"Explain"
+            }
+        ]
+    },
+
+
+    {
+        label:"DATA STORY",
+
+        title:
+        "Turn a dataset into a clear story students can communicate.",
+
+        description:
+        "Students organize information, explore patterns, create meaningful visualisations and explain the insights they discovered.",
+
+        stages:[
+            {
+                icon:"fa-table",
+                title:"Collect"
+            },
+            {
+                icon:"fa-filter",
+                title:"Prepare"
+            },
+            {
+                icon:"fa-chart-line",
+                title:"Analyse"
+            },
+            {
+                icon:"fa-chart-pie",
+                title:"Present"
+            }
+        ]
+    },
+
+
+    {
+        label:"CAMPUS SOLUTION",
+
+        title:
+        "Use student skills to think about a real campus challenge.",
+
+        description:
+        "Students observe a campus need, define the problem, propose a technology-enabled solution and develop a practical demonstration.",
+
+        stages:[
+            {
+                icon:"fa-eye",
+                title:"Observe"
+            },
+            {
+                icon:"fa-circle-question",
+                title:"Define"
+            },
+            {
+                icon:"fa-hammer",
+                title:"Create"
+            },
+            {
+                icon:"fa-users",
+                title:"Showcase"
+            }
+        ]
+    }
+
+];
+
+
+const labButtons =
+document.querySelectorAll(".lab-btn");
+
+const labLabel =
+document.getElementById("labLabel");
+
+const labTitle =
+document.getElementById("labTitle");
+
+const labDescription =
+document.getElementById("labDescription");
+
+const labProgress =
+document.getElementById("labProgress");
+
+
+function changeLab(index){
+
+    const data = labData[index];
+
+
+    labButtons.forEach(button => {
+        button.classList.remove("active");
+    });
+
+
+    labButtons[index].classList.add("active");
+
+
+    labLabel.textContent =
+    data.label;
+
+    labTitle.textContent =
+    data.title;
+
+    labDescription.textContent =
+    data.description;
+
+
+    labProgress.innerHTML =
+    data.stages.map((stage,index) => `
+
+        <div class="lab-stage">
+
+            <span>
+                0${index + 1}
+            </span>
+
+            <i class="fa-solid ${stage.icon}"></i>
+
+            <strong>
+                ${stage.title}
+            </strong>
+
+        </div>
+
+    `).join("");
+
+}
+
+
+labButtons.forEach((button,index) => {
+
+    button.addEventListener("click", () => {
+
+        changeLab(index);
+
+    });
+
+
+    button.addEventListener("mouseenter", () => {
+
+        if(window.innerWidth > 1050){
+
+            changeLab(index);
+
+        }
+
+    });
+
+});
+
+
+/* =========================================================
+   TRANSFORMATION ACTIVE STEP
+========================================================= */
+
+const transformSteps =
+document.querySelectorAll(".transform-step");
+
+const transformObserver =
+new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+            transformSteps.forEach(step => {
+                step.classList.remove("active");
+            });
+
+            entry.target.classList.add("active");
+
+        }
+
+    });
+
+},{
+    threshold:.55
+});
+
+
+transformSteps.forEach(step => {
+
+    transformObserver.observe(step);
+
+});
+
+
+/* =========================================================
+   HERO CAMPUS BLOCK INTERACTION
+========================================================= */
+
+const campusBlocks =
+document.querySelectorAll(".campus-block");
+
+campusBlocks.forEach(block => {
+
+    block.addEventListener("mouseenter", () => {
+
+        if(window.innerWidth <= 650){
+            return;
+        }
+
+        campusBlocks.forEach(other => {
+
+            if(other !== block){
+                other.style.opacity = ".48";
+            }
+
+        });
+
+    });
+
+
+    block.addEventListener("mouseleave", () => {
+
+        campusBlocks.forEach(other => {
+
+            other.style.opacity = "1";
+
+        });
+
+    });
+
+});
+
+
+/* =========================================================
+   RESIZE CLEANUP
+========================================================= */
+
+window.addEventListener("resize", () => {
+
+    if(window.innerWidth > 1050){
+
+        navMenu.classList.remove("active");
+
+        menuToggle.classList.remove("active");
+
+        navItems.forEach(item => {
+
+            item.classList.remove("open");
+
+        });
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
