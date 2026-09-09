@@ -1102,13 +1102,7 @@ button{cursor:pointer}
 }
 .apply-btn:hover{transform:translateY(-2px)}
 
-.footer{
-  padding:25px 20px 45px;
-  text-align:center;
-  color:#8d8d95;
-  font-size:11px;
-}
-.footer span{margin:0 5px;color:var(--purple)}
+
 
 
 /* =========================
@@ -2204,7 +2198,184 @@ button{cursor:pointer}
   *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
   .reveal{opacity:1;transform:none}
 }
+
+/* JOIN TEAM INLINE VISUAL */
+.join-intro-label{
+  display:block;
+  margin-bottom:24px;
+}
+
+.join-inline-visual{
+  position:relative;
+  width:100%;
+  max-width:390px;
+  aspect-ratio:4/5;
+  overflow:hidden;
+  border:1px solid #e5defc;
+  border-radius:28px;
+  background:linear-gradient(145deg,#fbfaff,#eee9ff);
+  box-shadow:0 24px 60px rgba(65,45,135,.10);
+}
+
+.join-inline-visual svg{
+  display:block;
+  width:100%;
+  height:100%;
+}
+
+.join-visual-tag{
+  position:absolute;
+  left:18px;
+  bottom:18px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:9px 12px;
+  border:1px solid rgba(255,255,255,.78);
+  border-radius:999px;
+  background:rgba(255,255,255,.90);
+  color:#5d43ce;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:1.15px;
+  backdrop-filter:blur(8px);
+}
+
+.join-visual-tag::before{
+  content:"";
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#36b36e;
+  box-shadow:0 0 0 5px rgba(54,179,110,.11);
+}
+
+@media(max-width:1050px){
+  .join-intro-side{
+    display:block !important;
+  }
+  .join-inline-visual{
+    max-width:520px;
+    aspect-ratio:16/10;
+  }
+}
+
+@media(max-width:650px){
+  .join-inline-visual{
+    max-width:none;
+    aspect-ratio:4/3;
+    border-radius:20px;
+  }
+}
+
+
+/* FULL TRIVOX FOOTER */
+.trivox-footer{position:relative;width:100%;background:#f0ecfb;color:#111;overflow:hidden;}
+.footer-inner{width:100%;max-width:1280px;margin:auto;padding:100px 7% 0;}
+.footer-opening{min-height:330px;display:grid;grid-template-columns:180px 1fr 150px;gap:50px;align-items:center;}
+.footer-opening-small span{display:block;margin-bottom:12px;color:#7450e8;font-size:9px;font-weight:900;letter-spacing:2px;}
+.footer-opening-small small{color:#9b97a4;font-size:8px;font-weight:800;letter-spacing:1.6px;}
+.footer-opening h2{max-width:700px;margin:0;font-size:clamp(60px,7.5vw,105px);line-height:.84;letter-spacing:-7px;font-weight:900;}
+.footer-opening h2 strong{display:block;color:#7450e8;}
+.footer-start-btn{width:130px;height:130px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;border-radius:50%;background:#7450e8;color:#fff;font-size:12px;font-weight:800;transition:.4s ease;}
+.footer-start-btn i{font-style:normal;font-size:22px;transition:.3s ease;}
+.footer-start-btn:hover{transform:rotate(-7deg) scale(1.06);border-radius:38% 62% 45% 55%;}
+.footer-navigation{display:grid;grid-template-columns:repeat(4,1fr);gap:60px;margin-top:90px;padding-top:45px;border-top:1px solid rgba(17,17,17,.10);}
+.footer-nav-group{display:flex;flex-direction:column;align-items:flex-start;}
+.footer-label{display:block;margin-bottom:25px;color:#aaa5b0;font-size:8px;font-weight:900;letter-spacing:1.8px;}
+.footer-nav-group a{display:inline-block;margin-bottom:11px;color:#47444c;font-size:13px;font-weight:650;transition:.25s ease;}
+.footer-nav-group a:hover{color:#7450e8;transform:translateX(8px);}
+.footer-brand{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-top:105px;overflow:hidden;}
+.footer-brand-word{margin-left:-8px;font-size:clamp(110px,19vw,270px);line-height:.68;letter-spacing:-17px;font-weight:900;color:#d8d0ef;white-space:nowrap;}
+.footer-brand-side{flex:0 0 150px;margin-bottom:5px;}
+.footer-brand-side span{display:block;margin-bottom:14px;color:#7450e8;font-size:8px;font-weight:900;letter-spacing:2px;}
+.footer-brand-side p{margin:0;color:#55515d;font-size:14px;line-height:1.5;font-weight:700;}
+.footer-bottom{min-height:90px;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;gap:25px;border-top:1px solid rgba(17,17,17,.10);margin-top:65px;}
+.footer-bottom p,.footer-bottom-center,.footer-bottom a{margin:0;color:#8e8995;font-size:8px;font-weight:800;letter-spacing:1.4px;}
+.footer-bottom-center{text-align:center;}
+.footer-bottom a{display:flex;align-items:center;justify-content:flex-end;gap:8px;}
+.footer-bottom a span{font-size:15px;color:#7450e8;}
+.footer-motion{width:100%;overflow:hidden;padding:20px 0;background:#7450e8;}
+.footer-motion-track{width:max-content;white-space:nowrap;color:#fff;font-size:18px;font-weight:900;letter-spacing:1.5px;animation:footerMove 22s linear infinite;}
+@keyframes footerMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+@media(max-width:950px){
+ .footer-inner{padding:85px 6% 0;}
+ .footer-opening{grid-template-columns:1fr;gap:35px;}
+ .footer-start-btn{width:110px;height:110px;}
+ .footer-navigation{grid-template-columns:1fr 1fr;gap:50px;}
+ .footer-brand-word{font-size:17vw;letter-spacing:-11px;}
+}
+@media(max-width:600px){
+ .footer-inner{padding:65px 18px 0;}
+ .footer-opening{min-height:auto;display:block;}
+ .footer-opening-small{margin-bottom:38px;}
+ .footer-opening h2{max-width:340px;font-size:54px;line-height:.87;letter-spacing:-4px;}
+ .footer-start-btn{width:95px;height:95px;margin-top:38px;font-size:10px;}
+ .footer-navigation{grid-template-columns:1fr 1fr;gap:45px 25px;margin-top:75px;padding-top:35px;}
+ .footer-label{margin-bottom:18px;font-size:7px;}
+ .footer-nav-group a{margin-bottom:10px;font-size:11.5px;}
+ .footer-brand{display:block;margin-top:80px;}
+ .footer-brand-word{margin-left:-5px;font-size:25vw;line-height:.72;letter-spacing:-7px;white-space:nowrap;}
+ .footer-brand-side{width:auto;margin-top:40px;}
+ .footer-bottom{min-height:auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;padding:30px 0;}
+ .footer-bottom-center{width:100%;order:3;text-align:left;}
+ .footer-motion{padding:16px 0;}
+ .footer-motion-track{font-size:14px;}
+}
+@media(max-width:380px){
+ .footer-opening h2{font-size:48px;}
+
+/* REMOVE DECORATIVE PURPLE LINES */
+.eyebrow::before,
+.process .eyebrow::before{
+  content:none !important;
+  display:none !important;
+  width:0 !important;
+  height:0 !important;
+  background:none !important;
+}
+
 </style>
+
+<style>
+/* =========================================================
+   FINAL OVERRIDE — REMOVE ALL PURPLE DECORATIVE HEADING LINES
+   ========================================================= */
+.eyebrow::before,
+.eyebrow:before,
+.process .eyebrow::before,
+.process .eyebrow:before,
+.join-intro .eyebrow::before,
+.join-intro .eyebrow:before,
+.join-application .eyebrow::before,
+.join-application .eyebrow:before,
+.join-teams .eyebrow::before,
+.join-teams .eyebrow:before,
+.join-section-head .eyebrow::before,
+.join-section-head .eyebrow:before{
+  content:none !important;
+  display:none !important;
+  width:0 !important;
+  height:0 !important;
+  min-width:0 !important;
+  margin:0 !important;
+  padding:0 !important;
+  border:0 !important;
+  background:none !important;
+  box-shadow:none !important;
+}
+
+.eyebrow,
+.process .eyebrow,
+.join-intro .eyebrow,
+.join-application .eyebrow,
+.join-teams .eyebrow,
+.join-section-head .eyebrow{
+  gap:0 !important;
+}
+</style>
+
 </head>
 <body>
 
@@ -2429,7 +2600,105 @@ button{cursor:pointer}
     <div class="container join-intro-grid">
 
       <div class="join-intro-side reveal">
-        01 / WHO WE LOOK FOR
+        <span class="join-intro-label">01 / WHO WE LOOK FOR</span>
+
+        <div class="join-inline-visual" aria-label="People learning, building and growing together">
+          <svg viewBox="0 0 420 500" role="img" aria-label="Team members learning and building together">
+            <defs>
+              <linearGradient id="joinBg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#fbfaff"/>
+                <stop offset="100%" stop-color="#ebe5ff"/>
+              </linearGradient>
+              <linearGradient id="joinPurple" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#917bff"/>
+                <stop offset="100%" stop-color="#5d43ce"/>
+              </linearGradient>
+              <filter id="joinShadow" x="-30%" y="-30%" width="160%" height="160%">
+                <feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#49328e" flood-opacity=".13"/>
+              </filter>
+            </defs>
+
+            <rect width="420" height="500" rx="28" fill="url(#joinBg)"/>
+
+            <g opacity=".28" stroke="#b7aaee" stroke-width="1">
+              <path d="M0 85H420M0 170H420M0 255H420M0 340H420M0 425H420"/>
+              <path d="M84 0V500M168 0V500M252 0V500M336 0V500"/>
+            </g>
+
+            <circle cx="335" cy="88" r="95" fill="#7156e8" opacity=".08"/>
+            <circle cx="62" cy="420" r="120" fill="#7156e8" opacity=".07"/>
+
+            <!-- idea / learning card -->
+            <g transform="translate(42 58)" filter="url(#joinShadow)">
+              <rect width="145" height="112" rx="20" fill="#fff"/>
+              <circle cx="38" cy="37" r="20" fill="#f0ecff"/>
+              <path d="M38 24c-8 0-14 6-14 14 0 5 3 9 7 12v8h14v-8c4-3 7-7 7-12 0-8-6-14-14-14z"
+                    fill="url(#joinPurple)"/>
+              <rect x="33" y="61" width="10" height="3" rx="1.5" fill="#7156e8"/>
+              <text x="70" y="34" font-family="Inter,Arial" font-size="9" font-weight="800" fill="#7156e8">KEEP LEARNING</text>
+              <text x="70" y="52" font-family="Inter,Arial" font-size="11" font-weight="700" fill="#222229">Curiosity first.</text>
+              <text x="20" y="88" font-family="Inter,Arial" font-size="9" font-weight="600" fill="#888691">Learn • Build • Improve</text>
+            </g>
+
+            <!-- build card -->
+            <g transform="translate(250 72)" filter="url(#joinShadow)">
+              <rect width="126" height="105" rx="19" fill="#17171c"/>
+              <rect x="18" y="18" width="34" height="34" rx="10" fill="#7156e8"/>
+              <path d="M29 35h12M35 29v12" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+              <text x="18" y="73" font-family="Inter,Arial" font-size="9" font-weight="800" fill="#b9aaff">PEOPLE WHO BUILD</text>
+              <text x="18" y="91" font-family="Inter,Arial" font-size="10" font-weight="700" fill="#fff">Ideas → Impact</text>
+            </g>
+
+            <!-- connection path -->
+            <path d="M165 205C205 173 236 190 264 222C286 247 310 255 350 242"
+                  fill="none" stroke="#7156e8" stroke-width="7" stroke-linecap="round"
+                  stroke-dasharray="2 17" opacity=".42"/>
+
+            <!-- team members -->
+            <g transform="translate(82 218)">
+              <g>
+                <circle cx="54" cy="42" r="23" fill="#d7af94"/>
+                <path d="M31 40c2-27 44-29 47 1-14-7-31-7-47-1z" fill="#25242b"/>
+                <rect x="25" y="68" width="59" height="94" rx="27" fill="#7156e8"/>
+                <path d="M38 162l-8 80M70 162l10 80" stroke="#29282f" stroke-width="14" stroke-linecap="round"/>
+                <path d="M29 88L5 135M79 88l31 42" stroke="#d7af94" stroke-width="12" stroke-linecap="round"/>
+                <rect x="75" y="103" width="52" height="37" rx="6" fill="#fff" stroke="#ddd7f8"/>
+                <circle cx="101" cy="121" r="5" fill="#7156e8"/>
+              </g>
+
+              <g transform="translate(122 30)">
+                <circle cx="54" cy="42" r="23" fill="#bd8e72"/>
+                <path d="M30 41c3-27 46-30 49 2-13-8-34-9-49-2z" fill="#18181d"/>
+                <rect x="25" y="68" width="59" height="94" rx="27" fill="#fff" stroke="#dcd6f7"/>
+                <path d="M38 162l-8 80M70 162l10 80" stroke="#35343c" stroke-width="14" stroke-linecap="round"/>
+                <path d="M29 88L5 135M79 88l31 42" stroke="#bd8e72" stroke-width="12" stroke-linecap="round"/>
+                <rect x="-4" y="107" width="48" height="34" rx="6" fill="#17171c"/>
+                <circle cx="20" cy="124" r="4" fill="#917bff"/>
+              </g>
+            </g>
+
+            <!-- skill chips -->
+            <g font-family="Inter,Arial" font-size="9" font-weight="800">
+              <g transform="translate(28 334)">
+                <rect width="91" height="31" rx="15.5" fill="#fff"/>
+                <circle cx="17" cy="15.5" r="5" fill="#36b36e"/>
+                <text x="30" y="19" fill="#55525e">OWNERSHIP</text>
+              </g>
+              <g transform="translate(272 292)">
+                <rect width="105" height="31" rx="15.5" fill="#fff"/>
+                <circle cx="17" cy="15.5" r="5" fill="#7156e8"/>
+                <text x="30" y="19" fill="#55525e">COLLABORATE</text>
+              </g>
+              <g transform="translate(270 350)">
+                <rect width="91" height="31" rx="15.5" fill="#fff"/>
+                <circle cx="17" cy="15.5" r="5" fill="#917bff"/>
+                <text x="30" y="19" fill="#55525e">GROWTH</text>
+              </g>
+            </g>
+          </svg>
+
+          <div class="join-visual-tag">LEARN → BUILD → GROW</div>
+        </div>
       </div>
 
       <div class="join-intro-main">
@@ -3325,7 +3594,37 @@ button{cursor:pointer}
 
 </main>
 
-<footer class="footer">© 2026 TRIVOX AI IMPACT <span>•</span> Careers <span>•</span> Join Our Team</footer>
+<footer class="trivox-footer">
+  <div class="footer-inner">
+    <div class="footer-opening">
+      <div class="footer-opening-small">
+        <span>TRIVOX AI IMPACT</span>
+        <small>LEAD WITH PURPOSE</small>
+      </div>
+      <h2>Ideas become direction.<strong>Direction becomes impact.</strong></h2>
+      <a href="course.html" class="footer-start-btn"><span>Get Started</span><i>↗</i></a>
+    </div>
+
+    <div class="footer-navigation">
+      <div class="footer-nav-group"><span class="footer-label">01 / COMPANY</span><a href="about.html">About TRIVOX</a><a href="mission.html">Mission</a><a href="vision.html">Vision</a><a href="leader.html">Leadership</a></div>
+      <div class="footer-nav-group"><span class="footer-label">02 / LEARNING</span><a href="learning/ailearning.html">AI Learning</a><a href="learning/programming.html">Programming</a><a href="learning/webdevelopment.html">Web Development</a><a href="learning/datascience.html">Data Science</a></div>
+      <div class="footer-nav-group"><span class="footer-label">03 / PROGRAMS</span><a href="programs/student-programs.html">Student Programs</a><a href="programs/college-programs.html">College Programs</a><a href="programs/internships.html">Internships</a><a href="programs/workshops.html">Workshops</a></div>
+      <div class="footer-nav-group"><span class="footer-label">04 / EXPLORE</span><a href="resources/blogs.html">Blogs</a><a href="resources/student-projects.html">Projects</a><a href="resources/events.html">Events</a><a href="contact/contact.html">Contact</a></div>
+    </div>
+
+    <div class="footer-brand">
+      <div class="footer-brand-word">TRIVOX</div>
+      <div class="footer-brand-side"><span>AI IMPACT</span><p>Think clearly.<br>Lead responsibly.<br>Create impact.</p></div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 TRIVOX AI IMPACT</p>
+      <div class="footer-bottom-center">EDUCATION × TECHNOLOGY × IMPACT</div>
+      <a href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">BACK TO TOP <span>↑</span></a>
+    </div>
+  </div>
+  <div class="footer-motion"><div class="footer-motion-track">LEAD • LEARN • BUILD • CREATE • GROW • IMPACT • LEAD • LEARN • BUILD • CREATE • GROW • IMPACT •</div></div>
+</footer>
 
 <script>
 const navbar=document.getElementById("navbar");
