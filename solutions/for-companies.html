@@ -1,1 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>For Companies | TRIVOX AI IMPACT</title>
+  <meta name="description" content="TRIVOX AI IMPACT helps companies strengthen teams through practical technology training, AI capability building, project-based upskilling and workforce development.">
+  <meta name="theme-color" content="#7450e8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:Arial,Helvetica,sans-serif;background:#fff;color:#111116;overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
+    button{font:inherit}
+    :root{
+      --purple:#7450e8;
+      --purple-soft:#a994ff;
+      --dark:#17171b;
+      --soft:#f7f7f9;
+      --line:#e5e1e9;
+      --muted:#77727d;
+    }
+
+    /* ================= NAVBAR ================= */
+    .navbar{
+      width:100%;height:76px;position:fixed;top:0;left:0;z-index:9999;
+      display:flex;align-items:center;justify-content:space-between;padding:0 4%;
+      background:rgba(255,255,255,.92);backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(0,0,0,.06)
+    }
+    .logo{display:flex;align-items:center;white-space:nowrap;font-size:23px;font-weight:900;letter-spacing:-1px}
+    .logo-main{
+      background:linear-gradient(to bottom,#111 0%,#111 50%,#7450e8 50%,#7450e8 100%);
+      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent
+    }
+    .logo-impact{
+      margin-left:7px;background:linear-gradient(to bottom,#7450e8 0%,#7450e8 50%,#222 50%,#222 100%);
+      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent
+    }
+
+    .nav-menu{display:flex;align-items:center;gap:3px;list-style:none}
+    .nav-item{position:relative}
+    .nav-link{
+      padding:28px 10px;display:flex;align-items:center;gap:6px;font-size:13.5px;
+      font-weight:600;color:#37373d;cursor:pointer;white-space:nowrap;transition:.2s
+    }
+    .nav-link:hover,.nav-item.active>.nav-link{color:var(--purple)}
+    .arrow{
+      width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;
+      transform:rotate(45deg) translateY(-2px);transition:.2s
+    }
+    .nav-item:hover .arrow{transform:rotate(225deg)}
+
+    .dropdown{
+      position:absolute;top:68px;left:0;width:245px;padding:10px;background:#fff;
+      border:1px solid #ededf2;border-radius:15px;box-shadow:0 18px 50px rgba(0,0,0,.10);
+      opacity:0;visibility:hidden;transform:translateY(12px);transition:.22s
+    }
+    .nav-item:hover>.dropdown{opacity:1;visibility:visible;transform:translateY(0)}
+    .dropdown>a{
+      display:block;padding:12px 13px;border-radius:10px;font-size:13.5px;color:#444;transition:.2s
+    }
+    .dropdown>a:hover,.dropdown>a.current{background:#f6f3ff;color:var(--purple);padding-left:17px}
+    .mega-dropdown{width:620px;display:grid;grid-template-columns:repeat(2,1fr);gap:7px;padding:15px}
+    .mega-box{padding:14px!important;border-radius:12px}
+    .mega-box:hover,.mega-box.current{background:#f7f5ff}
+    .mega-box strong{display:block;margin-bottom:5px;font-size:14px}
+    .mega-box p{color:#777;font-size:12px;line-height:1.5}
+
+    .nav-actions{display:flex;align-items:center;gap:10px}
+    .login-btn{padding:10px 14px;font-size:13.5px;font-weight:600;border-radius:9px;border:none;background:transparent;cursor:pointer}
+    .get-started{padding:11px 17px;background:#111;color:#fff;border-radius:10px;font-size:13.5px;font-weight:700}
+    .signin-dropdown-wrap{position:relative}
+    .signin-main-btn{display:flex;align-items:center;gap:7px}
+    .signin-dropdown{
+      position:absolute;right:0;top:52px;width:230px;padding:9px;background:#fff;
+      border:1px solid #ededf2;border-radius:14px;box-shadow:0 18px 50px rgba(0,0,0,.10);
+      opacity:0;visibility:hidden;transform:translateY(10px);transition:.2s
+    }
+    .signin-dropdown-wrap:hover .signin-dropdown{opacity:1;visibility:visible;transform:translateY(0)}
+    .signin-dropdown a{display:flex;align-items:center;gap:11px;padding:12px;border-radius:10px}
+    .signin-dropdown a:hover{background:#f6f3ff}
+    .signin-dropdown i{color:var(--purple)}
+    .signin-dropdown strong{display:block;font-size:13px}
+    .signin-dropdown span{display:block;margin-top:3px;font-size:10.5px;color:#888}
+
+    .menu-toggle{
+      display:none;width:42px;height:42px;border:0;background:#f3f3f5;border-radius:10px;
+      align-items:center;justify-content:center;flex-direction:column;gap:4px;cursor:pointer
+    }
+    .menu-toggle span{width:20px;height:2px;background:#111}
+
+    /* ================= COMMON ================= */
+    .schools-page{padding-top:76px}
+    .wrap{width:min(1180px,calc(100% - 40px));margin:auto}
+    .eyebrow{color:var(--purple);font-size:8px;font-weight:900;letter-spacing:1.6px;text-transform:uppercase}
+    .title{margin-top:12px;font-size:clamp(46px,5.8vw,80px);line-height:.92;letter-spacing:-4.8px}
+    .title span{color:var(--purple)}
+    .desc{max-width:620px;margin-top:18px;color:var(--muted);font-size:12px;line-height:1.75}
+
+    /* ================= HERO ================= */
+    .school-hero{
+      min-height:710px;display:flex;align-items:center;padding:80px 0 90px;
+      background:linear-gradient(180deg,#fff 0%,#faf9fd 100%)
+    }
+    .hero-grid{display:grid;grid-template-columns:1fr .95fr;gap:70px;align-items:center}
+    .hero-copy h1{font-size:clamp(60px,6.6vw,92px);line-height:.89;letter-spacing:-5.5px}
+    .hero-copy h1 span{color:var(--purple)}
+    .hero-copy p{max-width:620px;margin-top:22px;color:#76717b;font-size:14px;line-height:1.8}
+    .hero-actions{display:flex;gap:10px;margin-top:28px}
+    .btn-dark,.btn-light{
+      min-height:46px;padding:0 18px;display:inline-flex;align-items:center;justify-content:center;
+      gap:8px;border-radius:9px;font-size:11px;font-weight:800
+    }
+    .btn-dark{background:#17171b;color:#fff}
+    .btn-light{background:#fff;border:1px solid #dedbe2}
+
+    .school-visual{
+      min-height:520px;position:relative;border-radius:26px;background:#17171b;
+      overflow:hidden;box-shadow:0 28px 80px rgba(24,20,35,.13)
+    }
+    .school-visual:before{
+      content:"";position:absolute;inset:0;
+      background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+      background-size:34px 34px
+    }
+    .visual-label{position:absolute;top:26px;left:28px;color:#aaa4ae;font-size:7px;font-weight:900;letter-spacing:1.4px}
+    .visual-center{
+      width:190px;height:190px;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+      border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;
+      background:var(--purple);color:#fff;box-shadow:0 0 0 26px rgba(116,80,232,.08)
+    }
+    .visual-center i{font-size:28px;display:block;margin-bottom:10px}
+    .visual-center strong{display:block;font-size:20px}
+    .visual-center span{display:block;margin-top:5px;font-size:7px;letter-spacing:1.4px;color:#ddd3ff}
+    .orbit{
+      position:absolute;width:365px;height:365px;left:50%;top:50%;transform:translate(-50%,-50%);
+      border:1px solid rgba(255,255,255,.10);border-radius:50%
+    }
+    .orbit:before,.orbit:after{content:"";position:absolute;border-radius:50%;border:1px dashed rgba(255,255,255,.08)}
+    .orbit:before{inset:52px}.orbit:after{inset:105px}
+    .school-node{
+      position:absolute;min-width:150px;padding:14px;border:1px solid #343039;border-radius:14px;
+      background:#222126;color:#fff
+    }
+    .school-node i{color:#aa97ff;font-size:12px}
+    .school-node strong{display:block;margin-top:8px;font-size:11px}
+    .school-node small{display:block;margin-top:4px;color:#8e8993;font-size:7px}
+    .n1{left:28px;top:90px}.n2{right:28px;top:125px}.n3{left:44px;bottom:82px}.n4{right:28px;bottom:50px}
+
+    /* ================= WHAT SCHOOLS GET ================= */
+    .school-offer{padding:110px 0;background:#fff}
+    .offer-grid{margin-top:48px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .offer-card{min-height:250px;padding:28px;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:flex-end}
+    .offer-card:last-child{border-right:0}
+    .offer-card span{font-size:7px;font-weight:900;color:#aaa4ae}
+    .offer-card i{margin-top:auto;color:var(--purple);font-size:18px}
+    .offer-card strong{margin-top:24px;font-size:18px}
+    .offer-card p{margin-top:8px;color:#8c8791;font-size:9px;line-height:1.6}
+
+    /* ================= LEARNING MODEL ================= */
+    .school-model{padding:110px 0;background:#f7f7f9}
+    .model-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:80px;align-items:start}
+    .model-left{position:sticky;top:110px}
+    .model-rows{border-top:1px solid #dcd8e0}
+    .model-row{min-height:110px;display:grid;grid-template-columns:42px 1fr auto;gap:16px;align-items:center;border-bottom:1px solid #dcd8e0}
+    .model-row span{font-size:7px;font-weight:900;color:#aaa4ae}
+    .model-row strong{display:block;font-size:16px}
+    .model-row small{display:block;margin-top:5px;color:#8e8993;font-size:8px}
+    .model-row i{color:var(--purple);font-size:12px}
+
+    /* ================= DARK OUTCOMES — screenshot style ================= */
+    .school-outcomes{padding:120px 0;background:#17171b;color:#fff}
+    .outcome-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:90px;align-items:center}
+    .outcome-copy .eyebrow{color:#aa97ff}
+    .outcome-copy h2{margin-top:16px;font-size:clamp(50px,5.8vw,78px);line-height:.9;letter-spacing:-4.5px}
+    .outcome-copy p{max-width:520px;margin-top:26px;color:#9b959f;font-size:11px;line-height:1.8}
+    .progress-list{border-top:1px solid #3a3540}
+    .progress-row{min-height:100px;display:grid;grid-template-columns:48px 1fr;gap:16px;align-items:center;border-bottom:1px solid #3a3540}
+    .progress-row>span{color:#8e7be1;font-size:7px;font-weight:900}
+    .progress-copy strong{display:block;font-size:14px}
+    .progress-track{height:5px;margin-top:14px;background:#302d35;overflow:hidden}
+    .progress-track i{display:block;height:100%;background:var(--purple)}
+    .w1{width:84%}.w2{width:76%}.w3{width:82%}.w4{width:90%}
+
+    /* ================= PARTNERSHIP ================= */
+    .school-partnership{padding:110px 0;background:#fff}
+    .partnership-board{
+      margin-top:48px;display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);border-bottom:1px solid var(--line)
+    }
+    .partnership-copy,.partnership-list{padding:34px}
+    .partnership-copy{border-right:1px solid var(--line)}
+    .partnership-copy h3{font-size:30px;line-height:1.05;letter-spacing:-1.2px}
+    .partnership-copy p{margin-top:14px;color:#817b86;font-size:10px;line-height:1.75}
+    .partnership-list div{min-height:72px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+    .partnership-list div:last-child{border-bottom:0}
+    .partnership-list span{font-size:8px;color:#aaa4ae;font-weight:900}
+    .partnership-list strong{font-size:12px}
+    .partnership-list i{color:var(--purple)}
+
+    /* ================= CTA ================= */
+    .school-cta{padding:0 0 80px;background:#fff}
+    .school-cta-box{
+      min-height:390px;padding:58px;border-radius:28px;background:#f2effc;
+      display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;overflow:hidden;position:relative
+    }
+    .school-cta-box:after{
+      content:"";position:absolute;width:420px;height:420px;border-radius:50%;right:-190px;top:-210px;background:#e7e0ff
+    }
+    .school-cta-copy{position:relative;z-index:2}
+    .school-cta h2{margin-top:14px;max-width:820px;font-size:clamp(48px,5.8vw,76px);line-height:.93;letter-spacing:-4px}
+    .school-cta h2 span{color:var(--purple)}
+    .school-cta p{max-width:580px;margin-top:16px;color:#736f7a;font-size:11px;line-height:1.75}
+    .school-cta-action{position:relative;z-index:2}
+
+    /* ================= FOOTER ================= */
+    .trivox-footer{position:relative;width:100%;background:#f0ecfb;color:#111;overflow:hidden}
+    .footer-inner{width:100%;max-width:1280px;margin:auto;padding:100px 7% 0}
+    .footer-opening{min-height:330px;display:grid;grid-template-columns:180px 1fr 150px;gap:50px;align-items:center}
+    .footer-opening-small span{display:block;margin-bottom:12px;color:#7450e8;font-size:9px;font-weight:900;letter-spacing:2px}
+    .footer-opening-small small{color:#9b97a4;font-size:8px;font-weight:800;letter-spacing:1.6px}
+    .footer-opening h2{max-width:700px;margin:0;font-size:clamp(60px,7.5vw,105px);line-height:.84;letter-spacing:-7px;font-weight:900}
+    .footer-opening h2 strong{display:block;color:#7450e8}
+    .footer-start-btn{width:130px;height:130px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;border-radius:50%;background:#7450e8;color:#fff;font-size:12px;font-weight:800;transition:.4s ease}
+    .footer-start-btn i{font-style:normal;font-size:22px}
+    .footer-start-btn:hover{transform:rotate(-7deg) scale(1.06);border-radius:38% 62% 45% 55%}
+    .footer-navigation{display:grid;grid-template-columns:repeat(4,1fr);gap:60px;margin-top:90px;padding-top:45px;border-top:1px solid rgba(17,17,17,.10)}
+    .footer-nav-group{display:flex;flex-direction:column;align-items:flex-start}
+    .footer-label{display:block;margin-bottom:25px;color:#aaa5b0;font-size:8px;font-weight:900;letter-spacing:1.8px}
+    .footer-nav-group a{display:inline-block;margin-bottom:11px;color:#47444c;font-size:13px;font-weight:650;transition:.25s ease}
+    .footer-nav-group a:hover{color:#7450e8;transform:translateX(8px)}
+    .footer-brand{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-top:105px;overflow:hidden}
+    .footer-brand-word{margin-left:-8px;font-size:clamp(110px,19vw,270px);line-height:.68;letter-spacing:-17px;font-weight:900;color:#d8d0ef;white-space:nowrap}
+    .footer-brand-side{flex:0 0 150px;margin-bottom:5px}
+    .footer-brand-side span{display:block;margin-bottom:14px;color:#7450e8;font-size:8px;font-weight:900;letter-spacing:2px}
+    .footer-brand-side p{margin:0;color:#55515d;font-size:14px;line-height:1.5;font-weight:700}
+    .footer-bottom{min-height:90px;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;gap:25px;border-top:1px solid rgba(17,17,17,.10);margin-top:65px}
+    .footer-bottom p,.footer-bottom-center,.footer-bottom a{margin:0;color:#8e8995;font-size:8px;font-weight:800;letter-spacing:1.4px}
+    .footer-bottom-center{text-align:center}
+    .footer-bottom a{display:flex;align-items:center;justify-content:flex-end;gap:8px}
+    .footer-bottom a span{font-size:15px;color:#7450e8}
+    .footer-motion{width:100%;overflow:hidden;padding:20px 0;background:#7450e8}
+    .footer-motion-track{width:max-content;white-space:nowrap;color:#fff;font-size:18px;font-weight:900;letter-spacing:1.5px;animation:footerMove 22s linear infinite}
+    @keyframes footerMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    /* ================= RESPONSIVE ================= */
+    @media(max-width:1000px){
+      .navbar{height:70px;padding:0 18px}.logo{font-size:18px}.login-btn,.get-started{display:none}.menu-toggle{display:flex}
+      .nav-menu{position:absolute;top:70px;left:0;width:100%;max-height:calc(100vh - 70px);overflow:auto;display:flex;flex-direction:column;align-items:stretch;padding:12px 14px 18px;background:#fff;transform:translateY(-120%);opacity:0;pointer-events:none;transition:.3s}
+      .nav-menu.active{transform:translateY(0);opacity:1;pointer-events:auto}.nav-item{width:100%}.nav-link{width:100%;padding:15px 13px;justify-content:space-between}
+      .dropdown{position:static;width:100%;max-height:0;overflow:hidden;padding:0 8px;opacity:1;visibility:visible;transform:none;background:#fafafa;box-shadow:none;border:none;transition:.3s}
+      .nav-item.open>.dropdown{max-height:1000px;padding:8px}.mega-dropdown{display:block}
+      .schools-page{padding-top:70px}
+      .hero-grid,.model-grid,.outcome-layout{grid-template-columns:1fr}
+      .model-left{position:static}
+      .offer-grid{grid-template-columns:1fr 1fr}
+      .offer-card:nth-child(2){border-right:0}
+      .offer-card:nth-child(-n+2){border-bottom:1px solid var(--line)}
+      .school-cta-box{grid-template-columns:1fr}
+      .footer-inner{padding:85px 6% 0}
+      .footer-opening{grid-template-columns:1fr;gap:35px}
+      .footer-start-btn{width:110px;height:110px}
+      .footer-navigation{grid-template-columns:1fr 1fr;gap:50px}
+      .footer-brand-word{font-size:17vw;letter-spacing:-11px}
+    }
+
+    @media(max-width:600px){
+      .navbar{height:66px;padding:0 13px}.logo{font-size:16px}.nav-menu{top:66px;max-height:calc(100vh - 66px);padding:10px}
+      .nav-link{padding:14px 11px;font-size:13px}.schools-page{padding-top:66px}
+      .wrap{width:calc(100% - 28px)}
+      .school-hero{min-height:auto;padding:58px 0 64px}.hero-grid{gap:42px}
+      .hero-copy h1{font-size:47px;line-height:.92;letter-spacing:-3.4px}.hero-copy p{font-size:12px}
+      .hero-actions{flex-direction:column}.btn-dark,.btn-light{width:100%}
+      .school-visual{min-height:390px;border-radius:18px}
+      .visual-center{width:120px;height:120px}.visual-center i{font-size:19px}.visual-center strong{font-size:14px}
+      .orbit{width:255px;height:255px}.school-node{min-width:110px;padding:10px}.school-node small{display:none}
+      .n1{left:10px;top:60px}.n2{right:10px;top:85px}.n3{left:15px;bottom:60px}.n4{right:10px;bottom:35px}
+      .school-offer,.school-model,.school-outcomes,.school-partnership{padding:72px 0}
+      .title{font-size:36px;line-height:.98;letter-spacing:-2.3px}.desc{font-size:9.5px}
+      .offer-grid{grid-template-columns:1fr}.offer-card{min-height:170px;padding:20px;border-right:0;border-bottom:1px solid var(--line)}
+      .outcome-copy h2{font-size:42px;letter-spacing:-3px}.outcome-layout{gap:46px}
+      .progress-row{min-height:85px;grid-template-columns:32px 1fr}
+      .partnership-board{grid-template-columns:1fr}.partnership-copy{border-right:0;border-bottom:1px solid var(--line)}.partnership-copy,.partnership-list{padding:24px 0}
+      .school-cta{padding-bottom:45px}.school-cta-box{min-height:auto;padding:34px 22px;border-radius:20px}.school-cta h2{font-size:40px;letter-spacing:-2.7px}
+      .footer-inner{padding:65px 18px 0}.footer-opening{min-height:auto;display:block}.footer-opening-small{margin-bottom:38px}
+      .footer-opening h2{max-width:340px;font-size:54px;line-height:.87;letter-spacing:-4px}.footer-start-btn{width:95px;height:95px;margin-top:38px;font-size:10px}
+      .footer-navigation{grid-template-columns:1fr 1fr;gap:45px 25px;margin-top:75px;padding-top:35px}
+      .footer-label{margin-bottom:18px;font-size:7px}.footer-nav-group a{margin-bottom:10px;font-size:11.5px}
+      .footer-brand{display:block;margin-top:80px}.footer-brand-word{margin-left:-5px;font-size:25vw;line-height:.72;letter-spacing:-7px;white-space:nowrap}
+      .footer-brand-side{width:auto;margin-top:40px}.footer-bottom{min-height:auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;padding:30px 0}
+      .footer-bottom-center{width:100%;order:3;text-align:left}.footer-motion{padding:16px 0}.footer-motion-track{font-size:14px}
+    }
+
+    @media(max-width:380px){
+      .logo{font-size:14px}.hero-copy h1{font-size:43px}.footer-opening h2{font-size:48px}.footer-navigation{grid-template-columns:1fr}.footer-brand-word{font-size:24vw;letter-spacing:-5px}
+    }
+  </style>
+
+<style>
+/* ================= PROFESSIONAL FOR SCHOOLS REDESIGN ================= */
+.professional-hero{
+  background:
+    radial-gradient(circle at 82% 18%,rgba(116,80,232,.10),transparent 24%),
+    linear-gradient(180deg,#fff 0%,#faf9fd 100%);
+}
+.professional-hero-grid{
+  display:grid;
+  grid-template-columns:1fr .95fr;
+  gap:72px;
+  align-items:center;
+}
+.professional-hero-copy h1{
+  max-width:760px;
+  font-size:clamp(60px,6.5vw,92px);
+  line-height:.89;
+  letter-spacing:-5.6px;
+}
+.professional-hero-copy h1 span{color:var(--purple)}
+.hero-lead{
+  max-width:630px;
+  margin-top:24px;
+  color:#706c76;
+  font-size:14px;
+  line-height:1.8;
+}
+.hero-proof-row{
+  max-width:650px;
+  margin-top:34px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border-top:1px solid #e3dfe7;
+  border-bottom:1px solid #e3dfe7;
+}
+.hero-proof-row div{padding:18px 14px;border-right:1px solid #e3dfe7}
+.hero-proof-row div:last-child{border-right:0}
+.hero-proof-row strong{display:block;font-size:11px}
+.hero-proof-row span{display:block;margin-top:4px;color:#96919b;font-size:7.5px}
+
+.school-command-card{
+  min-height:520px;
+  overflow:hidden;
+  border-radius:24px;
+  border:1px solid #e6e3ea;
+  background:#fff;
+  box-shadow:0 28px 70px rgba(29,23,43,.08);
+}
+.command-top{
+  height:58px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 22px;
+  border-bottom:1px solid #ece9ef;
+}
+.command-top span{font-size:7px;font-weight:900;letter-spacing:1.3px;color:#99939f}
+.command-top i{color:var(--purple)}
+.command-main{padding:28px}
+.command-center{
+  padding:28px;
+  border-radius:18px;
+  background:#17171b;
+  color:#fff;
+}
+.command-center span{color:#a994ff;font-size:7px;font-weight:900;letter-spacing:1.3px}
+.command-center strong{display:block;margin-top:10px;font-size:24px;letter-spacing:-.8px}
+.command-center p{margin-top:8px;color:#9c96a0;font-size:10px;line-height:1.6}
+.command-grid{
+  margin-top:14px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+.command-grid>div{
+  min-height:150px;
+  position:relative;
+  padding:18px;
+  border:1px solid #e9e6ed;
+  border-radius:15px;
+  background:#faf9fc;
+}
+.command-grid>div>span{position:absolute;right:15px;top:14px;color:#b2adb6;font-size:7px;font-weight:900}
+.command-grid i{color:var(--purple);font-size:16px}
+.command-grid strong{display:block;margin-top:28px;font-size:13px}
+.command-grid small{display:block;margin-top:5px;color:#8e8993;font-size:7.5px;line-height:1.4}
+
+.school-positioning{padding:110px 0;background:#fff}
+.positioning-grid{display:grid;grid-template-columns:180px 1fr;gap:70px;border-top:1px solid var(--line);padding-top:45px}
+.positioning-index{color:#aaa4ae;font-size:7px;font-weight:900;letter-spacing:1.4px}
+.positioning-copy h2{
+  max-width:900px;
+  margin-top:14px;
+  font-size:clamp(48px,5.8vw,76px);
+  line-height:.93;
+  letter-spacing:-4.3px;
+}
+.positioning-copy h2 span{color:var(--purple)}
+.positioning-copy p{max-width:760px;margin-top:20px;color:#77717c;font-size:12px;line-height:1.8}
+
+.school-value{padding:110px 0;background:#f7f7f9}
+.section-split-head{display:flex;align-items:end;justify-content:space-between;gap:60px}
+.section-split-head .desc{margin-top:0;max-width:430px}
+.value-grid{
+  margin-top:48px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border-top:1px solid #ddd9e1;
+  border-bottom:1px solid #ddd9e1;
+}
+.value-card{
+  min-height:285px;
+  padding:28px;
+  border-right:1px solid #ddd9e1;
+  background:transparent;
+}
+.value-card:last-child{border-right:0}
+.value-card>span{color:#aaa4ae;font-size:7px;font-weight:900}
+.value-card i{display:block;margin-top:50px;color:var(--purple);font-size:19px}
+.value-card h3{margin-top:22px;font-size:17px}
+.value-card p{margin-top:8px;color:#88828d;font-size:9px;line-height:1.6}
+
+.school-model-pro{padding:110px 0;background:#fff}
+.model-pro-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:80px}
+.model-pro-left h2{
+  margin-top:13px;
+  font-size:clamp(46px,5.3vw,70px);
+  line-height:.94;
+  letter-spacing:-3.8px;
+}
+.model-pro-left h2 span{color:var(--purple)}
+.model-pro-left p{max-width:480px;margin-top:18px;color:#7b7680;font-size:11px;line-height:1.75}
+.model-pro-steps{border-top:1px solid var(--line)}
+.model-step-pro{
+  min-height:105px;
+  display:grid;
+  grid-template-columns:44px 1fr auto;
+  gap:16px;
+  align-items:center;
+  border-bottom:1px solid var(--line);
+}
+.model-step-pro>span{color:#aaa4ae;font-size:7px;font-weight:900}
+.model-step-pro strong{font-size:15px}
+.model-step-pro p{margin-top:5px;color:#8d8892;font-size:8px}
+.model-step-pro b{color:var(--purple);font-size:7px;letter-spacing:1.2px}
+
+.professional-outcomes{padding:120px 0}
+.professional-outcome-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:90px;align-items:center}
+.professional-progress-list{border-top:1px solid #3a3540}
+.professional-progress-row{
+  min-height:100px;
+  display:grid;
+  grid-template-columns:48px 1fr;
+  gap:16px;
+  align-items:center;
+  border-bottom:1px solid #3a3540;
+}
+.professional-progress-row>span{color:#8e7be1;font-size:7px;font-weight:900}
+.professional-progress-row strong{display:block;font-size:13px}
+.professional-bar{height:5px;margin-top:14px;background:#302d35}
+.professional-bar i{display:block;height:100%;background:var(--purple)}
+
+.school-formats{padding:110px 0;background:#f7f7f9}
+.format-list{margin-top:48px;border-top:1px solid #dcd8e0}
+.format-row{
+  min-height:105px;
+  display:grid;
+  grid-template-columns:44px 260px 1fr auto;
+  gap:18px;
+  align-items:center;
+  border-bottom:1px solid #dcd8e0;
+}
+.format-row span{color:#aaa4ae;font-size:7px;font-weight:900}
+.format-row strong{font-size:14px}
+.format-row p{color:#88828d;font-size:9px;line-height:1.5}
+.format-row i{color:var(--purple)}
+
+.school-process{padding:110px 0;background:#fff}
+.process-grid{
+  margin-top:48px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.process-grid>div{min-height:220px;padding:28px;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:flex-end}
+.process-grid>div:last-child{border-right:0}
+.process-grid span{color:#aaa4ae;font-size:7px;font-weight:900}
+.process-grid strong{margin-top:14px;font-size:16px}
+.process-grid p{margin-top:8px;color:#8b8590;font-size:8px;line-height:1.5}
+
+.professional-school-cta{padding:0 0 80px;background:#fff}
+.professional-cta-box{
+  min-height:390px;
+  padding:58px;
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:50px;
+  align-items:center;
+  border-radius:28px;
+  background:#f2effc;
+  position:relative;
+  overflow:hidden;
+}
+.professional-cta-box:before{
+  content:"";
+  position:absolute;
+  width:420px;height:420px;
+  right:-180px;top:-220px;
+  border-radius:50%;
+  background:#e7e0ff;
+}
+.professional-cta-box>div,.professional-cta-box>a{position:relative;z-index:2}
+.professional-cta-box h2{
+  max-width:860px;
+  margin-top:14px;
+  font-size:clamp(48px,5.8vw,76px);
+  line-height:.93;
+  letter-spacing:-4px;
+}
+.professional-cta-box h2 span{color:var(--purple)}
+.professional-cta-box p{max-width:610px;margin-top:16px;color:#736f7a;font-size:11px;line-height:1.75}
+
+@media(max-width:1000px){
+  .professional-hero-grid,.model-pro-grid,.professional-outcome-grid{grid-template-columns:1fr}
+  .value-grid,.process-grid{grid-template-columns:1fr 1fr}
+  .value-card:nth-child(2),.process-grid>div:nth-child(2){border-right:0}
+  .value-card:nth-child(-n+2),.process-grid>div:nth-child(-n+2){border-bottom:1px solid #ddd9e1}
+  .professional-cta-box{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .professional-hero-copy h1{font-size:46px;line-height:.92;letter-spacing:-3.2px}
+  .hero-lead{font-size:12px}
+  .hero-proof-row{grid-template-columns:1fr}
+  .hero-proof-row div{border-right:0;border-bottom:1px solid #e3dfe7}
+  .hero-proof-row div:last-child{border-bottom:0}
+  .school-command-card{min-height:auto;border-radius:18px}
+  .command-main{padding:18px}
+  .command-center{padding:20px}
+  .command-center strong{font-size:19px}
+  .command-grid{grid-template-columns:1fr}
+  .command-grid>div{min-height:125px}
+  .school-positioning,.school-value,.school-model-pro,.school-formats,.school-process{padding:72px 0}
+  .positioning-grid{grid-template-columns:1fr;gap:18px}
+  .positioning-copy h2,.model-pro-left h2{font-size:38px;letter-spacing:-2.5px}
+  .section-split-head{display:block}
+  .section-split-head .desc{margin-top:16px}
+  .value-grid,.process-grid{grid-template-columns:1fr}
+  .value-card,.process-grid>div{min-height:170px;border-right:0;border-bottom:1px solid #ddd9e1}
+  .professional-outcome-grid{gap:42px}
+  .format-row{grid-template-columns:28px 1fr auto;padding:16px 0}
+  .format-row p{grid-column:2;font-size:7.5px}
+  .professional-cta-box{min-height:auto;padding:34px 22px;border-radius:20px}
+  .professional-cta-box h2{font-size:39px;letter-spacing:-2.7px}
+}
+</style>
+
+
+<style>
+/* Image added to the empty area of WHY TRIVOX FOR SCHOOLS */
+.positioning-content{
+  display:grid;
+  grid-template-columns:minmax(0,1.1fr) minmax(340px,.9fr);
+  gap:52px;
+  align-items:center;
+}
+.positioning-copy h2{
+  font-size:clamp(44px,4.7vw,68px);
+}
+.positioning-image-wrap{
+  width:100%;
+  min-height:360px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.positioning-image{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:430px;
+  object-fit:contain;
+  border-radius:22px;
+  box-shadow:0 24px 65px rgba(31,24,48,.09);
+}
+@media(max-width:1000px){
+  .positioning-content{grid-template-columns:1fr;gap:34px}
+  .positioning-image-wrap{min-height:0}
+  .positioning-image{max-height:none}
+}
+@media(max-width:600px){
+  .positioning-content{gap:26px}
+  .positioning-image{border-radius:16px}
+}
+</style>
+
+
+<style>
+.companies-page .company-command-card .command-center{
+  background:linear-gradient(145deg,#17171b 0%,#24202d 65%,#34275a 100%);
+}
+</style>
+
+
+<style>
+/* =========================================================
+   FOR COMPANIES — ENTERPRISE IT PROJECT DESIGN
+========================================================= */
+.company-enterprise-hero{
+  min-height:760px;
+  display:flex;
+  align-items:center;
+  padding:82px 0 92px;
+  background:
+    radial-gradient(circle at 80% 12%,rgba(116,80,232,.11),transparent 24%),
+    linear-gradient(180deg,#fff 0%,#faf9fd 100%);
+}
+.enterprise-hero-grid{
+  display:grid;
+  grid-template-columns:1fr .97fr;
+  gap:72px;
+  align-items:center;
+}
+.enterprise-hero-copy h1{
+  margin-top:17px;
+  max-width:760px;
+  font-size:clamp(60px,6.5vw,92px);
+  line-height:.89;
+  letter-spacing:-5.6px;
+}
+.enterprise-hero-copy h1 span{color:var(--purple)}
+.enterprise-hero-copy>p{
+  max-width:625px;
+  margin-top:24px;
+  color:#716c77;
+  font-size:14px;
+  line-height:1.8;
+}
+.enterprise-actions{display:flex;gap:10px;margin-top:28px}
+.enterprise-proof{
+  margin-top:34px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border-top:1px solid #e3dfe7;
+  border-bottom:1px solid #e3dfe7;
+}
+.enterprise-proof>div{padding:18px 14px;border-right:1px solid #e3dfe7}
+.enterprise-proof>div:last-child{border-right:0}
+.enterprise-proof span{display:block;color:#aaa4ae;font-size:6px;font-weight:900}
+.enterprise-proof strong{display:block;margin-top:6px;font-size:11px}
+.enterprise-proof small{display:block;margin-top:4px;color:#96919b;font-size:7.5px}
+
+.project-dashboard{
+  overflow:hidden;
+  border-radius:24px;
+  border:1px solid #e6e3ea;
+  background:#fff;
+  box-shadow:0 30px 80px rgba(29,23,43,.10);
+}
+.project-dashboard-top{
+  min-height:72px;
+  padding:0 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid #ece9ef;
+}
+.project-dashboard-top span{font-size:7px;font-weight:900;color:#9c96a0;letter-spacing:1.3px}
+.project-dashboard-top strong{display:block;margin-top:5px;font-size:15px}
+.project-status{
+  padding:8px 10px;
+  border-radius:999px;
+  background:#f3efff;
+  color:var(--purple)!important;
+}
+.project-status i{
+  width:6px;height:6px;display:inline-block;margin-right:5px;
+  border-radius:50%;background:var(--purple);
+}
+.project-dashboard-body{padding:22px}
+.project-summary-card{
+  padding:22px;border-radius:17px;background:#17171b;color:#fff
+}
+.project-summary-head{display:flex;align-items:center;justify-content:space-between}
+.project-summary-head span{color:#9d97a1;font-size:7px;font-weight:900;letter-spacing:1.2px}
+.project-summary-head strong{color:#aa97ff;font-size:26px}
+.project-progress{height:6px;margin-top:18px;background:#302d35}
+.project-progress i{display:block;width:72%;height:100%;background:var(--purple)}
+.project-meta-grid{margin-top:22px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.project-meta-grid div{padding:12px;background:#222126;border-radius:10px}
+.project-meta-grid span{display:block;color:#7f7984;font-size:6px;font-weight:900}
+.project-meta-grid strong{display:block;margin-top:5px;font-size:10px}
+
+.project-dashboard-grid{margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dash-tile{
+  min-height:135px;position:relative;padding:17px;border:1px solid #e9e6ed;
+  border-radius:14px;background:#faf9fc
+}
+.dash-tile.active{background:#f1edff;border-color:#d8cef7}
+.dash-tile>span{position:absolute;right:14px;top:12px;color:#aaa4ae;font-size:6px;font-weight:900}
+.dash-tile i{color:var(--purple)}
+.dash-tile strong{display:block;margin-top:26px;font-size:12px}
+.dash-tile small{display:block;margin-top:4px;color:#8d8892;font-size:7px}
+
+.business-project-section{padding:110px 0;background:#fff}
+.business-project-head{
+  display:grid;grid-template-columns:190px 1fr;gap:70px;
+  padding-top:45px;border-top:1px solid var(--line)
+}
+.business-project-index{font-size:7px;font-weight:900;letter-spacing:1.4px;color:#aaa4ae}
+.business-project-head h2{
+  max-width:900px;margin-top:14px;font-size:clamp(48px,5.6vw,75px);
+  line-height:.93;letter-spacing:-4.2px
+}
+.business-project-head h2 span{color:var(--purple)}
+.business-project-head p{max-width:760px;margin-top:20px;color:#77717c;font-size:12px;line-height:1.8}
+
+.business-project-flow{
+  margin-top:58px;
+  display:grid;
+  grid-template-columns:1fr 42px 1fr 42px 1fr 42px 1fr;
+  align-items:center;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.business-project-step{min-height:250px;padding:26px;display:flex;flex-direction:column;justify-content:flex-end}
+.business-project-step span{font-size:7px;font-weight:900;color:#aaa4ae}
+.business-project-step i{margin-top:auto;color:var(--purple);font-size:18px}
+.business-project-step strong{margin-top:22px;font-size:16px}
+.business-project-step p{margin-top:7px;color:#88828d;font-size:8px;line-height:1.55}
+.project-flow-arrow{text-align:center;color:var(--purple);font-size:15px}
+
+.enterprise-solutions{padding:110px 0;background:#f7f7f9}
+.enterprise-solution-grid{
+  margin-top:48px;display:grid;grid-template-columns:repeat(4,1fr);
+  border-top:1px solid #ddd9e1;border-bottom:1px solid #ddd9e1
+}
+.enterprise-solution-grid article{
+  min-height:300px;padding:28px;border-right:1px solid #ddd9e1;position:relative
+}
+.enterprise-solution-grid article:last-child{border-right:0}
+.enterprise-solution-grid article>span{color:#aaa4ae;font-size:7px;font-weight:900}
+.enterprise-solution-grid i{display:block;margin-top:48px;color:var(--purple);font-size:19px}
+.enterprise-solution-grid h3{margin-top:22px;font-size:18px}
+.enterprise-solution-grid p{margin-top:8px;color:#88828d;font-size:9px;line-height:1.6}
+.enterprise-solution-grid small{position:absolute;bottom:24px;left:28px;color:#aaa4ae;font-size:6px;font-weight:900;letter-spacing:1.2px}
+
+.enterprise-project-model{padding:110px 0;background:#fff}
+.enterprise-model-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:80px}
+.enterprise-model-copy h2{
+  margin-top:13px;font-size:clamp(46px,5.3vw,70px);
+  line-height:.94;letter-spacing:-3.8px
+}
+.enterprise-model-copy h2 span{color:var(--purple)}
+.enterprise-model-copy p{max-width:480px;margin-top:18px;color:#7b7680;font-size:11px;line-height:1.75}
+.enterprise-model-list{border-top:1px solid var(--line)}
+.enterprise-model-row{
+  min-height:108px;display:grid;grid-template-columns:44px 1fr auto;
+  gap:16px;align-items:center;border-bottom:1px solid var(--line)
+}
+.enterprise-model-row>span{color:#aaa4ae;font-size:7px;font-weight:900}
+.enterprise-model-row strong{font-size:15px}
+.enterprise-model-row p{margin-top:5px;color:#8d8892;font-size:8px}
+.enterprise-model-row b{color:var(--purple);font-size:7px;letter-spacing:1.2px}
+
+.enterprise-impact{padding:120px 0;background:#17171b;color:#fff}
+.enterprise-impact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:90px;align-items:center}
+.enterprise-impact .eyebrow{color:#aa97ff}
+.enterprise-impact-copy h2{
+  margin-top:16px;font-size:clamp(50px,5.8vw,78px);
+  line-height:.9;letter-spacing:-4.5px
+}
+.enterprise-impact-copy p{max-width:520px;margin-top:26px;color:#9b959f;font-size:11px;line-height:1.8}
+.impact-metrics-list{border-top:1px solid #3a3540}
+.impact-metrics-list>div{
+  min-height:100px;display:grid;grid-template-columns:48px 1fr;
+  gap:16px;align-content:center;border-bottom:1px solid #3a3540
+}
+.impact-metrics-list span{grid-row:1/3;color:#8e7be1;font-size:7px;font-weight:900}
+.impact-metrics-list strong{font-size:13px}
+.impact-bar{height:5px;margin-top:13px;background:#302d35}
+.impact-bar i{display:block;height:100%;background:var(--purple)}
+
+.enterprise-collaboration{padding:110px 0;background:#f7f7f9}
+.collaboration-grid{
+  margin-top:48px;display:grid;grid-template-columns:repeat(4,1fr);
+  border-top:1px solid #ddd9e1;border-bottom:1px solid #ddd9e1
+}
+.collaboration-grid>div{min-height:220px;padding:28px;border-right:1px solid #ddd9e1;display:flex;flex-direction:column;justify-content:flex-end}
+.collaboration-grid>div:last-child{border-right:0}
+.collaboration-grid span{color:#aaa4ae;font-size:7px;font-weight:900}
+.collaboration-grid strong{margin-top:14px;font-size:16px}
+.collaboration-grid p{margin-top:8px;color:#88828d;font-size:8px;line-height:1.55}
+
+.enterprise-company-cta{padding:80px 0;background:#fff}
+.enterprise-company-cta-box{
+  min-height:390px;padding:58px;display:grid;grid-template-columns:1fr auto;
+  gap:50px;align-items:center;border-radius:28px;background:#f2effc;
+  position:relative;overflow:hidden
+}
+.enterprise-company-cta-box:before{
+  content:"";position:absolute;width:440px;height:440px;right:-190px;top:-240px;
+  border-radius:50%;background:#e7e0ff
+}
+.enterprise-company-cta-box>div,.enterprise-company-cta-box>a{position:relative;z-index:2}
+.enterprise-company-cta-box h2{
+  max-width:860px;margin-top:14px;font-size:clamp(48px,5.8vw,76px);
+  line-height:.93;letter-spacing:-4px
+}
+.enterprise-company-cta-box h2 span{color:var(--purple)}
+.enterprise-company-cta-box p{max-width:620px;margin-top:16px;color:#736f7a;font-size:11px;line-height:1.75}
+
+@media(max-width:1000px){
+  .enterprise-hero-grid,.enterprise-model-grid,.enterprise-impact-grid{grid-template-columns:1fr}
+  .enterprise-solution-grid,.collaboration-grid{grid-template-columns:1fr 1fr}
+  .enterprise-solution-grid article:nth-child(2),.collaboration-grid>div:nth-child(2){border-right:0}
+  .enterprise-solution-grid article:nth-child(-n+2),.collaboration-grid>div:nth-child(-n+2){border-bottom:1px solid #ddd9e1}
+  .business-project-flow{grid-template-columns:1fr}
+  .project-flow-arrow{padding:7px 0;transform:rotate(90deg)}
+  .business-project-step{min-height:180px;border-bottom:1px solid var(--line)}
+  .enterprise-company-cta-box{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .company-enterprise-hero{min-height:auto;padding:58px 0 64px}
+  .enterprise-hero-grid{gap:42px}
+  .enterprise-hero-copy h1{font-size:46px;line-height:.92;letter-spacing:-3.2px}
+  .enterprise-hero-copy>p{font-size:12px}
+  .enterprise-actions{flex-direction:column}
+  .enterprise-actions a{width:100%}
+  .enterprise-proof{grid-template-columns:1fr}
+  .enterprise-proof>div{border-right:0;border-bottom:1px solid #e3dfe7}
+  .project-dashboard{border-radius:18px}
+  .project-meta-grid{grid-template-columns:1fr}
+  .project-dashboard-grid{grid-template-columns:1fr}
+  .business-project-section,.enterprise-solutions,.enterprise-project-model,.enterprise-collaboration{padding:72px 0}
+  .business-project-head{grid-template-columns:1fr;gap:18px}
+  .business-project-head h2,.enterprise-model-copy h2{font-size:38px;letter-spacing:-2.5px}
+  .enterprise-solution-grid,.collaboration-grid{grid-template-columns:1fr}
+  .enterprise-solution-grid article,.collaboration-grid>div{min-height:175px;border-right:0;border-bottom:1px solid #ddd9e1}
+  .enterprise-impact{padding:72px 0}
+  .enterprise-impact-grid{gap:42px}
+  .enterprise-impact-copy h2{font-size:42px;letter-spacing:-3px}
+  .enterprise-company-cta{padding:45px 0}
+  .enterprise-company-cta-box{min-height:auto;padding:34px 22px;border-radius:20px}
+  .enterprise-company-cta-box h2{font-size:39px;letter-spacing:-2.7px}
+}
+</style>
+
+</head>
+
+<body id="top">
+
+<nav class="navbar">
+  <a href="../index.html" class="logo">
+    <span class="logo-main">TRIVOX</span>
+    <span class="logo-impact">AI IMPACT</span>
+  </a>
+
+  <ul class="nav-menu" id="navMenu">
+    <li class="nav-item">
+      <div class="nav-link">Company <span class="arrow"></span></div>
+      <div class="dropdown">
+        <a href="../about.html">About TRIVOX</a>
+        <a href="../mission.html">Our Mission</a>
+        <a href="../vision.html">Our Vision</a>
+        <a href="../leader.html">Leadership</a>
+        <a href="../team.html">Our Team</a>
+        <a href="../partners.html">Partners</a>
+        <a href="../impact.html">Impact</a>
+      </div>
+    </li>
+
+    <li class="nav-item">
+      <div class="nav-link">Learning <span class="arrow"></span></div>
+      <div class="dropdown mega-dropdown">
+        <a class="mega-box" href="../learning/ailearning.html"><strong>AI Learning</strong><p>Learn modern AI concepts.</p></a>
+        <a class="mega-box" href="../learning/programming.html"><strong>Programming</strong><p>Logic, code and problem solving.</p></a>
+        <a class="mega-box" href="../learning/webdevelopment.html"><strong>Web Development</strong><p>Build modern websites.</p></a>
+        <a class="mega-box" href="../learning/app-development.html"><strong>App Development</strong><p>Create practical applications.</p></a>
+        <a class="mega-box" href="../learning/datascience.html"><strong>Data Science</strong><p>Work with data and insights.</p></a>
+        <a class="mega-box" href="../learning/cyber-security.html"><strong>Cyber Security</strong><p>Learn digital security.</p></a>
+      </div>
+    </li>
+
+    <li class="nav-item">
+      <div class="nav-link">Programs <span class="arrow"></span></div>
+      <div class="dropdown">
+        <a href="../programs/student-programs.html">Student Programs</a>
+        <a href="../programs/college-programs.html">College Programs</a>
+        <a href="../programs/internships.html">Internships</a>
+        <a href="../programs/workshops.html">Workshops</a>
+        <a href="../programs/bootcamps.html">Bootcamps</a>
+        <a href="../programs/career-programs.html">Career Programs</a>
+      </div>
+    </li>
+
+    <li class="nav-item active">
+      <div class="nav-link">Solutions <span class="arrow"></span></div>
+      <div class="dropdown mega-dropdown">
+        <a class="mega-box" href="for-students.html"><strong>For Students</strong><p>Skills, projects and career support.</p></a>
+        <a class="mega-box" href="for-colleges.html"><strong>For Colleges</strong><p>Industry-ready learning programs.</p></a>
+        <a class="mega-box" href="for-schools.html"><strong>For Schools</strong><p>Modern technology and AI learning.</p></a>
+        <a class="mega-box current" href="for-companies.html"><strong>For Companies</strong><p>Training and technology solutions.</p></a>
+      </div>
+    </li>
+
+    <li class="nav-item">
+      <div class="nav-link">Resources <span class="arrow"></span></div>
+      <div class="dropdown">
+        <a href="../resources/blogs.html">Blogs</a>
+        <a href="../resources/tutorials.html">Tutorials</a>
+        <a href="../resources/student-projects.html">Student Projects</a>
+        <a href="../resources/events.html">Events</a>
+        <a href="../resources/faqs.html">FAQs</a>
+      </div>
+    </li>
+
+    <li class="nav-item">
+      <div class="nav-link">Careers <span class="arrow"></span></div>
+      <div class="dropdown">
+        <a href="../careers/open-positions.html">Open Positions</a>
+        <a href="../careers/internships.html">Internships</a>
+        <a href="../careers/campus-hiring.html">Campus Hiring</a>
+        <a href="../careers/join-team.html">Join Our Team</a>
+        <a href="../careers/life-at-trivox.html">Life at TRIVOX</a>
+      </div>
+    </li>
+
+    <li class="nav-item"><a class="nav-link" href="../contact/contact.html">Contact</a></li>
+  </ul>
+
+  <div class="nav-actions">
+    <div class="signin-dropdown-wrap">
+      <button class="login-btn signin-main-btn">Sign In <span class="arrow"></span></button>
+      <div class="signin-dropdown">
+        <a href="../documentary-login.html"><i class="fa-solid fa-film"></i><div><strong>Documentary</strong><span>Challenge login</span></div></a>
+        <a href="../student-login.html"><i class="fa-solid fa-user-graduate"></i><div><strong>Student Login</strong><span>Learning dashboard</span></div></a>
+      </div>
+    </div>
+    <a href="../course.html" class="get-started">Get Started</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+
+
+
+<main class="schools-page companies-page enterprise-companies">
+
+  <!-- HERO -->
+  <section class="company-enterprise-hero">
+    <div class="wrap enterprise-hero-grid">
+      <div class="enterprise-hero-copy">
+        <div class="eyebrow">FOR COMPANIES</div>
+        <h1>Turn business problems into <span>working technology projects.</span></h1>
+        <p>
+          TRIVOX works with companies on practical AI, software and digital transformation initiatives—combining capability building with real project execution so teams learn while solving meaningful business problems.
+        </p>
+
+        <div class="enterprise-actions">
+          <a href="#project-model" class="btn-dark">Explore Project Model <i class="fa-solid fa-arrow-down"></i></a>
+          <a href="../contact/contact.html" class="btn-light">Discuss a Requirement <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+
+        <div class="enterprise-proof">
+          <div><span>01</span><strong>Business-first</strong><small>Start from a real problem</small></div>
+          <div><span>02</span><strong>Project-led</strong><small>Build visible outcomes</small></div>
+          <div><span>03</span><strong>Team-enabled</strong><small>Transfer capability internally</small></div>
+        </div>
+      </div>
+
+      <!-- IT PROJECT DASHBOARD -->
+      <div class="project-dashboard">
+        <div class="project-dashboard-top">
+          <div>
+            <span>LIVE PROJECT VIEW</span>
+            <strong>AI Operations Assistant</strong>
+          </div>
+          <span class="project-status"><i></i> IN DELIVERY</span>
+        </div>
+
+        <div class="project-dashboard-body">
+          <div class="project-summary-card">
+            <div class="project-summary-head">
+              <span>PROJECT PROGRESS</span>
+              <strong>72%</strong>
+            </div>
+            <div class="project-progress"><i></i></div>
+            <div class="project-meta-grid">
+              <div><span>PHASE</span><strong>Build</strong></div>
+              <div><span>SPRINT</span><strong>04 / 06</strong></div>
+              <div><span>TEAM</span><strong>8 Members</strong></div>
+            </div>
+          </div>
+
+          <div class="project-dashboard-grid">
+            <div class="dash-tile">
+              <span>01</span>
+              <i class="fa-solid fa-list-check"></i>
+              <strong>Requirements</strong>
+              <small>Mapped & prioritized</small>
+            </div>
+            <div class="dash-tile active">
+              <span>02</span>
+              <i class="fa-solid fa-code"></i>
+              <strong>Development</strong>
+              <small>Current delivery phase</small>
+            </div>
+            <div class="dash-tile">
+              <span>03</span>
+              <i class="fa-solid fa-vial-circle-check"></i>
+              <strong>Testing</strong>
+              <small>Validation pipeline</small>
+            </div>
+            <div class="dash-tile">
+              <span>04</span>
+              <i class="fa-solid fa-rocket"></i>
+              <strong>Launch</strong>
+              <small>Production rollout</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUSINESS TO PROJECT -->
+  <section class="business-project-section">
+    <div class="wrap">
+      <div class="business-project-head">
+        <div class="business-project-index">01 / FROM BUSINESS NEED TO PROJECT</div>
+        <div>
+          <div class="eyebrow">A DELIVERY-FOCUSED PARTNER</div>
+          <h2>Not another training program. A <span>real project with a clear outcome.</span></h2>
+          <p>
+            We begin with the business requirement, identify the right technical approach, structure the work into delivery stages and involve your team throughout the project so knowledge stays inside the organization.
+          </p>
+        </div>
+      </div>
+
+      <div class="business-project-flow">
+        <div class="business-project-step">
+          <span>01</span>
+          <i class="fa-solid fa-magnifying-glass-chart"></i>
+          <strong>Business Problem</strong>
+          <p>Understand the current process, pain points, users and expected result.</p>
+        </div>
+        <div class="project-flow-arrow">→</div>
+        <div class="business-project-step">
+          <span>02</span>
+          <i class="fa-solid fa-diagram-project"></i>
+          <strong>Solution Design</strong>
+          <p>Define architecture, workflows, integrations and project scope.</p>
+        </div>
+        <div class="project-flow-arrow">→</div>
+        <div class="business-project-step">
+          <span>03</span>
+          <i class="fa-solid fa-laptop-code"></i>
+          <strong>Build & Validate</strong>
+          <p>Develop in iterations, test continuously and review with stakeholders.</p>
+        </div>
+        <div class="project-flow-arrow">→</div>
+        <div class="business-project-step">
+          <span>04</span>
+          <i class="fa-solid fa-chart-line"></i>
+          <strong>Deploy & Improve</strong>
+          <p>Launch, measure usage and refine based on real operating feedback.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTIONS -->
+  <section class="enterprise-solutions">
+    <div class="wrap">
+      <div class="section-split-head">
+        <div>
+          <div class="eyebrow">PROJECT AREAS</div>
+          <h2 class="title">Where TRIVOX can support your <span>technology roadmap.</span></h2>
+        </div>
+        <p class="desc">
+          Engagements can range from a focused proof-of-concept to a structured internal transformation project.
+        </p>
+      </div>
+
+      <div class="enterprise-solution-grid">
+        <article>
+          <span>01</span>
+          <i class="fa-solid fa-brain"></i>
+          <h3>AI & Automation</h3>
+          <p>Internal copilots, workflow automation, AI-assisted operations and task intelligence.</p>
+          <small>AI / AUTOMATION</small>
+        </article>
+
+        <article>
+          <span>02</span>
+          <i class="fa-solid fa-window-maximize"></i>
+          <h3>Web Platforms</h3>
+          <p>Business portals, internal systems, dashboards and customer-facing applications.</p>
+          <small>WEB / PLATFORM</small>
+        </article>
+
+        <article>
+          <span>03</span>
+          <i class="fa-solid fa-mobile-screen-button"></i>
+          <h3>Application Development</h3>
+          <p>Practical mobile and workflow applications designed around real operational use.</p>
+          <small>APP / PRODUCT</small>
+        </article>
+
+        <article>
+          <span>04</span>
+          <i class="fa-solid fa-chart-pie"></i>
+          <h3>Data & Insights</h3>
+          <p>Operational dashboards, reporting systems, analytics workflows and decision support.</p>
+          <small>DATA / ANALYTICS</small>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECT MODEL -->
+  <section class="enterprise-project-model" id="project-model">
+    <div class="wrap enterprise-model-grid">
+      <div class="enterprise-model-copy">
+        <div class="eyebrow">PROJECT DELIVERY MODEL</div>
+        <h2>Clear stages. Clear ownership. <span>Clear decisions.</span></h2>
+        <p>
+          Every project is broken into reviewable stages so business and technical teams stay aligned from discovery to production.
+        </p>
+      </div>
+
+      <div class="enterprise-model-list">
+        <div class="enterprise-model-row">
+          <span>01</span>
+          <div><strong>Discovery</strong><p>Problem definition, users, workflows, constraints and success criteria.</p></div>
+          <b>ALIGN</b>
+        </div>
+        <div class="enterprise-model-row">
+          <span>02</span>
+          <div><strong>Architecture</strong><p>Solution design, technology choices, integration points and delivery plan.</p></div>
+          <b>DESIGN</b>
+        </div>
+        <div class="enterprise-model-row">
+          <span>03</span>
+          <div><strong>Execution</strong><p>Iterative development, reviews, testing and stakeholder feedback.</p></div>
+          <b>BUILD</b>
+        </div>
+        <div class="enterprise-model-row">
+          <span>04</span>
+          <div><strong>Production</strong><p>Deployment, handover, documentation, training and improvement cycle.</p></div>
+          <b>DELIVER</b>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DARK PROJECT IMPACT -->
+  <section class="enterprise-impact">
+    <div class="wrap enterprise-impact-grid">
+      <div class="enterprise-impact-copy">
+        <div class="eyebrow">PROJECT IMPACT</div>
+        <h2>Measure the project by what changes after delivery.</h2>
+        <p>
+          A successful project should improve a process, reduce friction, create visibility or help a team perform better—not simply produce another system.
+        </p>
+      </div>
+
+      <div class="impact-metrics-list">
+        <div>
+          <span>01</span>
+          <strong>PROCESS EFFICIENCY</strong>
+          <div class="impact-bar"><i style="width:88%"></i></div>
+        </div>
+        <div>
+          <span>02</span>
+          <strong>TEAM ADOPTION</strong>
+          <div class="impact-bar"><i style="width:82%"></i></div>
+        </div>
+        <div>
+          <span>03</span>
+          <strong>WORKFLOW VISIBILITY</strong>
+          <div class="impact-bar"><i style="width:91%"></i></div>
+        </div>
+        <div>
+          <span>04</span>
+          <strong>DELIVERY READINESS</strong>
+          <div class="impact-bar"><i style="width:86%"></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLLABORATION -->
+  <section class="enterprise-collaboration">
+    <div class="wrap">
+      <div class="section-split-head">
+        <div>
+          <div class="eyebrow">HOW WE COLLABORATE</div>
+          <h2 class="title">Your team stays part of the <span>project.</span></h2>
+        </div>
+        <p class="desc">
+          We work transparently with internal stakeholders so requirements, decisions and technical knowledge remain visible throughout delivery.
+        </p>
+      </div>
+
+      <div class="collaboration-grid">
+        <div>
+          <span>01</span>
+          <strong>Business Stakeholders</strong>
+          <p>Define priorities, approve direction and validate business value.</p>
+        </div>
+        <div>
+          <span>02</span>
+          <strong>TRIVOX Project Team</strong>
+          <p>Design, build, test and coordinate the technical delivery.</p>
+        </div>
+        <div>
+          <span>03</span>
+          <strong>Internal Technology Team</strong>
+          <p>Review integrations, architecture, security and long-term ownership.</p>
+        </div>
+        <div>
+          <span>04</span>
+          <strong>End Users</strong>
+          <p>Validate usability, workflows and real-world adoption during delivery.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="enterprise-company-cta">
+    <div class="wrap">
+      <div class="enterprise-company-cta-box">
+        <div>
+          <div class="eyebrow">HAVE A PROJECT IN MIND?</div>
+          <h2>Bring the requirement. We’ll help turn it into a <span>working solution.</span></h2>
+          <p>
+            Share the business problem, current workflow or project idea. TRIVOX can help structure the approach, scope the delivery and build the solution with your team.
+          </p>
+        </div>
+        <a href="../contact/contact.html" class="btn-dark">Discuss Your Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+
+
+<footer class="trivox-footer">
+  <div class="footer-inner">
+    <div class="footer-opening">
+      <div class="footer-opening-small">
+        <span>TRIVOX AI IMPACT</span>
+        <small>LEAD WITH PURPOSE</small>
+      </div>
+      <h2>Ideas become direction.<strong>Direction becomes impact.</strong></h2>
+      <a href="../course.html" class="footer-start-btn"><span>Get Started</span><i>↗</i></a>
+    </div>
+
+    <div class="footer-navigation">
+      <div class="footer-nav-group"><span class="footer-label">01 / COMPANY</span><a href="../about.html">About TRIVOX</a><a href="../mission.html">Mission</a><a href="../vision.html">Vision</a><a href="../leader.html">Leadership</a></div>
+      <div class="footer-nav-group"><span class="footer-label">02 / LEARNING</span><a href="../learning/ailearning.html">AI Learning</a><a href="../learning/programming.html">Programming</a><a href="../learning/webdevelopment.html">Web Development</a><a href="../learning/datascience.html">Data Science</a></div>
+      <div class="footer-nav-group"><span class="footer-label">03 / PROGRAMS</span><a href="../programs/student-programs.html">Student Programs</a><a href="../programs/college-programs.html">College Programs</a><a href="../programs/internships.html">Internships</a><a href="../programs/workshops.html">Workshops</a></div>
+      <div class="footer-nav-group"><span class="footer-label">04 / EXPLORE</span><a href="../resources/blogs.html">Blogs</a><a href="../resources/student-projects.html">Projects</a><a href="../resources/events.html">Events</a><a href="../contact/contact.html">Contact</a></div>
+    </div>
+
+    <div class="footer-brand">
+      <div class="footer-brand-word">TRIVOX</div>
+      <div class="footer-brand-side"><span>AI IMPACT</span><p>Think clearly.<br>Lead responsibly.<br>Create impact.</p></div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 TRIVOX AI IMPACT</p>
+      <div class="footer-bottom-center">EDUCATION × TECHNOLOGY × IMPACT</div>
+      <a href="#top">BACK TO TOP <span>↑</span></a>
+    </div>
+  </div>
+
+  <div class="footer-motion">
+    <div class="footer-motion-track">LEAD • LEARN • BUILD • CREATE • GROW • IMPACT • LEAD • LEARN • BUILD • CREATE • GROW • IMPACT •</div>
+  </div>
+</footer>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const navMenu = document.getElementById('navMenu');
+
+  menuToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+  });
+
+  document.querySelectorAll('.nav-item > .nav-link').forEach(link => {
+    link.addEventListener('click', function(e){
+      if(window.innerWidth <= 1000 && this.nextElementSibling?.classList.contains('dropdown')){
+        e.preventDefault();
+        this.parentElement.classList.toggle('open');
+      }
+    });
+  });
+
+  window.addEventListener('scroll', () => {
+    document.querySelector('.navbar').style.boxShadow =
+      window.scrollY > 20 ? '0 8px 30px rgba(0,0,0,.05)' : 'none';
+  });
+</script>
+
+</body>
+</html>
