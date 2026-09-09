@@ -1,1 +1,5432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Internships | TRIVOX AI IMPACT</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root{
+    --purple:#7156e8;
+    --purple-dark:#5d43ce;
+    --purple-light:#f1edff;
+    --purple-soft:#faf8ff;
+
+    --black:#111116;
+    --dark:#17171c;
+
+    --text:#19191f;
+    --muted:#6f7078;
+    --soft:#9a9aa3;
+
+    --white:#fff;
+    --surface:#f7f7f9;
+    --border:#e7e7ec;
+
+    --container:1180px;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+
+    font-family:"Inter",sans-serif;
+
+    background:#fff;
+    color:var(--text);
+
+    overflow-x:hidden;
+
+    -webkit-font-smoothing:antialiased;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button{
+    font:inherit;
+}
+
+main{
+    padding-top:76px;
+}
+
+.container{
+    width:min(var(--container),86%);
+    margin:auto;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar{
+    width:100%;
+    height:76px;
+
+    position:fixed;
+    left:0;
+    top:0;
+    z-index:9999;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 4%;
+
+    background:rgba(255,255,255,.97);
+
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+
+    border-bottom:1px solid rgba(0,0,0,.06);
+
+    transition:.3s ease;
+}
+
+.navbar.scrolled{
+    box-shadow:0 8px 30px rgba(0,0,0,.06);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+
+    flex-shrink:0;
+
+    white-space:nowrap;
+
+    font-size:22px;
+    font-weight:800;
+
+    letter-spacing:-1.1px;
+}
+
+.logo-main{
+    background:linear-gradient(
+        to bottom,
+        #111 0%,
+        #111 50%,
+        var(--purple) 50%,
+        var(--purple) 100%
+    );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+}
+
+.logo-impact{
+    margin-left:7px;
+
+    background:linear-gradient(
+        to bottom,
+        var(--purple) 0%,
+        var(--purple) 50%,
+        #222 50%,
+        #222 100%
+    );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+}
+
+
+/* NAV */
+
+.nav-menu{
+    display:flex;
+    align-items:center;
+
+    gap:2px;
+
+    list-style:none;
+}
+
+.nav-item{
+    position:relative;
+}
+
+.nav-link{
+    display:flex;
+    align-items:center;
+
+    gap:6px;
+
+    padding:28px 10px;
+
+    color:#37373d;
+
+    font-size:13px;
+    font-weight:600;
+
+    white-space:nowrap;
+
+    cursor:pointer;
+
+    transition:.2s ease;
+}
+
+.nav-link:hover,
+.nav-item.active-parent > .nav-link{
+    color:var(--purple);
+}
+
+.arrow{
+    width:6px;
+    height:6px;
+
+    border-right:1.4px solid currentColor;
+    border-bottom:1.4px solid currentColor;
+
+    transform:rotate(45deg) translateY(-2px);
+
+    transition:.25s ease;
+}
+
+.nav-item:hover .arrow{
+    transform:rotate(225deg);
+}
+
+
+/* =========================================================
+   DROPDOWNS
+========================================================= */
+
+.dropdown{
+    position:absolute;
+
+    top:68px;
+    left:0;
+
+    width:245px;
+
+    padding:9px;
+
+    background:#fff;
+
+    border:1px solid #ececf0;
+    border-radius:15px;
+
+    box-shadow:0 20px 55px rgba(0,0,0,.10);
+
+    opacity:0;
+    visibility:hidden;
+
+    transform:translateY(14px);
+
+    transition:.23s ease;
+}
+
+.nav-item:hover > .dropdown{
+    opacity:1;
+    visibility:visible;
+
+    transform:translateY(0);
+}
+
+.dropdown > a{
+    display:block;
+
+    padding:12px 13px;
+
+    border-radius:9px;
+
+    color:#45454c;
+
+    font-size:13px;
+
+    transition:.2s ease;
+}
+
+.dropdown > a:hover{
+    padding-left:17px;
+
+    color:var(--purple);
+
+    background:#f6f4ff;
+}
+
+.dropdown > a.active{
+    color:var(--purple);
+
+    background:#f1edff;
+
+    font-weight:700;
+}
+
+
+/* MEGA */
+
+.mega-dropdown{
+    width:620px;
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+
+    gap:7px;
+
+    padding:14px;
+}
+
+.mega-box{
+    display:block;
+
+    padding:14px;
+
+    border-radius:11px;
+
+    transition:.2s ease;
+}
+
+.mega-box:hover{
+    background:#f7f5ff;
+
+    transform:translateX(3px);
+}
+
+.mega-box strong{
+    display:block;
+
+    margin-bottom:5px;
+
+    font-size:13px;
+}
+
+.mega-box p{
+    color:#83838b;
+
+    font-size:11px;
+    line-height:1.5;
+}
+
+
+/* NAV ACTIONS */
+
+.nav-actions{
+    display:flex;
+    align-items:center;
+
+    gap:10px;
+
+    flex-shrink:0;
+}
+
+.login-btn{
+    padding:10px 13px;
+
+    border:0;
+
+    background:transparent;
+
+    font-size:13px;
+    font-weight:600;
+
+    cursor:pointer;
+}
+
+.get-started{
+    padding:11px 17px;
+
+    border-radius:9px;
+
+    background:#111;
+    color:#fff;
+
+    font-size:13px;
+    font-weight:700;
+
+    transition:.25s ease;
+}
+
+.get-started:hover{
+    transform:translateY(-2px);
+}
+
+
+/* SIGN IN */
+
+.signin-dropdown-wrap{
+    position:relative;
+}
+
+.signin-main-btn{
+    display:flex;
+    align-items:center;
+
+    gap:6px;
+}
+
+.signin-dropdown{
+    position:absolute;
+
+    right:0;
+    top:51px;
+
+    width:230px;
+
+    padding:9px;
+
+    background:#fff;
+
+    border:1px solid #ececf0;
+    border-radius:14px;
+
+    box-shadow:0 20px 55px rgba(0,0,0,.10);
+
+    opacity:0;
+    visibility:hidden;
+
+    transform:translateY(12px);
+
+    transition:.23s ease;
+}
+
+.signin-dropdown-wrap:hover .signin-dropdown{
+    opacity:1;
+    visibility:visible;
+
+    transform:translateY(0);
+}
+
+.signin-dropdown a{
+    display:flex;
+    align-items:center;
+
+    gap:11px;
+
+    padding:12px;
+
+    border-radius:9px;
+
+    transition:.2s ease;
+}
+
+.signin-dropdown a:hover{
+    background:#f6f4ff;
+}
+
+.signin-dropdown i{
+    color:var(--purple);
+}
+
+.signin-dropdown strong{
+    display:block;
+    font-size:12px;
+}
+
+.signin-dropdown span{
+    display:block;
+
+    margin-top:3px;
+
+    color:#8c8c94;
+
+    font-size:10px;
+}
+
+
+/* MOBILE TOGGLE */
+
+.menu-toggle{
+    display:none;
+
+    width:42px;
+    height:42px;
+
+    border:0;
+    border-radius:10px;
+
+    background:#f2f2f4;
+
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+
+    gap:4px;
+
+    cursor:pointer;
+}
+
+.menu-toggle span{
+    width:20px;
+    height:2px;
+
+    background:#111;
+
+    transition:.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1){
+    transform:translateY(6px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2){
+    opacity:0;
+}
+
+.menu-toggle.active span:nth-child(3){
+    transform:translateY(-6px) rotate(-45deg);
+}
+
+
+/* =========================================================
+   COMMON
+========================================================= */
+
+.section-label{
+    display:flex;
+    align-items:center;
+
+    gap:9px;
+
+    margin-bottom:15px;
+
+    color:var(--purple);
+
+    font-size:9px;
+    font-weight:800;
+
+    letter-spacing:1.5px;
+
+    text-transform:uppercase;
+}
+
+.section-label::before{
+    content:"";
+
+    width:20px;
+    height:2px;
+
+    background:var(--purple);
+}
+
+.section-title{
+    max-width:760px;
+
+    font-size:clamp(34px,3.7vw,49px);
+
+    line-height:1.07;
+
+    letter-spacing:-2.4px;
+}
+
+.section-title span{
+    color:var(--purple);
+}
+
+.section-copy{
+    color:var(--muted);
+
+    font-size:12px;
+    line-height:1.8;
+}
+
+.reveal{
+    opacity:0;
+
+    transform:translateY(24px);
+
+    transition:
+        opacity .7s ease,
+        transform .7s cubic-bezier(.2,.7,.2,1);
+}
+
+.reveal.show{
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+
+/* =========================================================
+   HERO - EDITORIAL WORK ENTRY
+========================================================= */
+
+.hero{
+    position:relative;
+
+    overflow:hidden;
+
+    background:#fff;
+}
+
+.hero::before{
+    content:"";
+
+    width:520px;
+    height:520px;
+
+    position:absolute;
+
+    right:-240px;
+    top:-180px;
+
+    border-radius:50%;
+
+    background:#f1edff;
+}
+
+.hero-layout{
+    min-height:660px;
+
+    position:relative;
+    z-index:2;
+
+    display:grid;
+
+    grid-template-columns:1.18fr .82fr;
+
+    align-items:center;
+
+    gap:75px;
+
+    padding:76px 0 60px;
+}
+
+
+/* HERO TEXT */
+
+.hero-label{
+    display:flex;
+    align-items:center;
+
+    gap:11px;
+
+    margin-bottom:22px;
+
+    color:var(--purple);
+
+    font-size:9px;
+    font-weight:800;
+
+    letter-spacing:1.6px;
+}
+
+.hero-label::before{
+    content:"";
+
+    width:30px;
+    height:1px;
+
+    background:var(--purple);
+}
+
+.hero-copy h1{
+    max-width:740px;
+
+    margin-bottom:23px;
+
+    font-size:clamp(52px,6vw,82px);
+
+    line-height:.91;
+
+    letter-spacing:-5.2px;
+}
+
+.hero-copy h1 .normal{
+    color:#111;
+}
+
+.hero-copy h1 .purple{
+    display:block;
+
+    color:var(--purple);
+}
+
+.hero-copy p{
+    max-width:560px;
+
+    margin-bottom:29px;
+
+    color:var(--muted);
+
+    font-size:14px;
+    line-height:1.78;
+}
+
+.hero-actions{
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:10px;
+}
+
+.hero-primary,
+.hero-secondary{
+    min-height:46px;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:9px;
+
+    padding:0 18px;
+
+    border-radius:9px;
+
+    font-size:11px;
+    font-weight:700;
+
+    transition:.3s ease;
+}
+
+.hero-primary{
+    background:#111;
+    color:#fff;
+}
+
+.hero-secondary{
+    border:1px solid var(--border);
+
+    background:#fff;
+}
+
+.hero-primary:hover,
+.hero-secondary:hover{
+    transform:translateY(-3px);
+}
+
+
+/* =========================================================
+   HERO RIGHT - WORK BRIEF
+========================================================= */
+
+.work-brief-wrap{
+    min-height:480px;
+
+    position:relative;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.work-paper{
+    width:100%;
+    max-width:420px;
+
+    position:relative;
+    z-index:3;
+
+    padding:31px;
+
+    background:#f7f3dd;
+
+    box-shadow:0 30px 65px rgba(0,0,0,.12);
+
+    transform:rotate(2.5deg);
+}
+
+.work-paper::before{
+    content:"";
+
+    width:26px;
+    height:26px;
+
+    position:absolute;
+
+    left:50%;
+    top:-13px;
+
+    border-radius:50%;
+
+    background:#7156e8;
+
+    transform:translateX(-50%);
+
+    box-shadow:0 6px 12px rgba(0,0,0,.12);
+}
+
+.paper-top{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+
+    gap:20px;
+
+    margin-bottom:42px;
+}
+
+.paper-top small{
+    color:#8a856f;
+
+    font-size:7px;
+    font-weight:700;
+
+    letter-spacing:1px;
+}
+
+.paper-top strong{
+    color:#5f5946;
+
+    font-size:8px;
+}
+
+.work-paper h3{
+    max-width:320px;
+
+    margin-bottom:17px;
+
+    color:#222018;
+
+    font-size:30px;
+
+    line-height:1.02;
+
+    letter-spacing:-1.5px;
+}
+
+.paper-copy{
+    color:#7a7461;
+
+    font-size:10px;
+    line-height:1.7;
+}
+
+.paper-rule{
+    margin:27px 0;
+
+    border:0;
+    border-top:1px solid rgba(88,82,63,.18);
+}
+
+.paper-tasks{
+    display:flex;
+    flex-direction:column;
+
+    gap:13px;
+}
+
+.paper-task{
+    display:grid;
+
+    grid-template-columns:21px 1fr;
+
+    gap:9px;
+
+    align-items:start;
+}
+
+.paper-task i{
+    margin-top:2px;
+
+    color:var(--purple);
+
+    font-size:8px;
+}
+
+.paper-task strong{
+    display:block;
+
+    margin-bottom:3px;
+
+    color:#4f4a3b;
+
+    font-size:9px;
+}
+
+.paper-task span{
+    color:#85806e;
+
+    font-size:7px;
+}
+
+.paper-sign{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    margin-top:30px;
+}
+
+.paper-sign span{
+    color:#908a76;
+
+    font-size:7px;
+}
+
+.paper-sign strong{
+    padding:7px 10px;
+
+    border:1px solid rgba(113,86,232,.35);
+    border-radius:4px;
+
+    color:var(--purple);
+
+    font-size:7px;
+
+    transform:rotate(-4deg);
+}
+
+
+/* FLOATING TEXT */
+
+.work-note{
+    position:absolute;
+    z-index:5;
+
+    padding:11px 13px;
+
+    border:1px solid #e2e0e9;
+    border-radius:10px;
+
+    background:#fff;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.06);
+
+    font-size:8px;
+    font-weight:700;
+}
+
+.work-note i{
+    margin-right:6px;
+
+    color:var(--purple);
+}
+
+.note-a{
+    left:-18px;
+    top:77px;
+}
+
+.note-b{
+    right:-25px;
+    bottom:94px;
+}
+
+
+/* =========================================================
+   MOVING WORK STRIP
+========================================================= */
+
+.work-strip{
+    overflow:hidden;
+
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+
+    background:#111116;
+    color:#fff;
+}
+
+.work-strip-track{
+    width:max-content;
+
+    display:flex;
+
+    animation:stripMove 25s linear infinite;
+}
+
+.work-strip-group{
+    display:flex;
+}
+
+.strip-word{
+    min-width:245px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:10px;
+
+    padding:19px 28px;
+
+    border-right:1px solid #29292f;
+
+    color:#babac1;
+
+    font-size:9px;
+    font-weight:700;
+}
+
+.strip-word i{
+    color:#a995ff;
+}
+
+@keyframes stripMove{
+    from{
+        transform:translateX(0);
+    }
+
+    to{
+        transform:translateX(-50%);
+    }
+}
+
+
+/* =========================================================
+   SECTION 1 - WORK REALITY
+========================================================= */
+
+.reality-section{
+    padding:110px 0;
+}
+
+.reality-layout{
+    display:grid;
+
+    grid-template-columns:.8fr 1.2fr;
+
+    gap:80px;
+
+    align-items:start;
+}
+
+.reality-left{
+    position:sticky;
+    top:115px;
+}
+
+.reality-left h2{
+    margin-bottom:20px;
+}
+
+.reality-left p{
+    max-width:420px;
+}
+
+.reality-statements{
+    border-top:1px solid var(--border);
+}
+
+.reality-statement{
+    min-height:145px;
+
+    display:grid;
+
+    grid-template-columns:60px 1fr;
+
+    gap:25px;
+
+    padding:28px 0;
+
+    border-bottom:1px solid var(--border);
+}
+
+.reality-statement span{
+    color:var(--purple);
+
+    font-size:10px;
+    font-weight:800;
+}
+
+.reality-statement h3{
+    margin-bottom:8px;
+
+    font-size:19px;
+
+    letter-spacing:-.7px;
+}
+
+.reality-statement p{
+    max-width:590px;
+
+    color:var(--muted);
+
+    font-size:10px;
+    line-height:1.75;
+}
+
+
+/* =========================================================
+   SECTION 2 - ROLE DIRECTORY ACCORDION
+========================================================= */
+
+.roles-section{
+    padding:105px 0;
+
+    background:#f7f7f9;
+}
+
+.roles-heading{
+    max-width:760px;
+
+    margin-bottom:46px;
+}
+
+.role-directory{
+    border-top:1px solid #dcdce2;
+}
+
+.role-row{
+    border-bottom:1px solid #dcdce2;
+}
+
+.role-trigger{
+    width:100%;
+    min-height:105px;
+
+    display:grid;
+
+    grid-template-columns:65px 1fr 1fr 30px;
+
+    align-items:center;
+
+    gap:18px;
+
+    padding:0;
+
+    border:0;
+
+    background:transparent;
+
+    text-align:left;
+
+    cursor:pointer;
+
+    transition:.25s ease;
+}
+
+.role-trigger > span{
+    color:#aaaab2;
+
+    font-size:8px;
+}
+
+.role-trigger h3{
+    font-size:17px;
+}
+
+.role-trigger small{
+    color:#92929b;
+
+    font-size:8px;
+}
+
+.role-trigger i{
+    color:#aaaab2;
+
+    font-size:10px;
+
+    transition:.3s ease;
+}
+
+.role-row.active .role-trigger{
+    color:var(--purple);
+}
+
+.role-row.active .role-trigger i{
+    color:var(--purple);
+
+    transform:rotate(45deg);
+}
+
+.role-detail{
+    max-height:0;
+
+    overflow:hidden;
+
+    transition:max-height .4s ease;
+}
+
+.role-row.active .role-detail{
+    max-height:260px;
+}
+
+.role-detail-inner{
+    display:grid;
+
+    grid-template-columns:65px 1fr 1fr;
+
+    gap:18px;
+
+    padding:0 0 30px;
+}
+
+.role-detail-copy{
+    grid-column:2;
+}
+
+.role-detail-copy p{
+    max-width:520px;
+
+    color:var(--muted);
+
+    font-size:10px;
+    line-height:1.75;
+}
+
+.role-skill-list{
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:6px;
+
+    align-content:start;
+}
+
+.role-skill-list span{
+    padding:7px 9px;
+
+    border-radius:100px;
+
+    background:#fff;
+
+    color:#6753c2;
+
+    font-size:7px;
+}
+
+
+/* =========================================================
+   SECTION 3 - A DAY IN THE INTERNSHIP
+========================================================= */
+
+.day-section{
+    padding:110px 0;
+
+    background:#111116;
+    color:#fff;
+}
+
+.day-heading{
+    display:grid;
+
+    grid-template-columns:1fr .7fr;
+
+    align-items:end;
+
+    gap:60px;
+
+    margin-bottom:58px;
+}
+
+.day-heading .section-label{
+    color:#a995ff;
+}
+
+.day-heading .section-label::before{
+    background:#a995ff;
+}
+
+.day-heading .section-title span{
+    color:#a995ff;
+}
+
+.day-heading p{
+    color:#8e8e97;
+
+    font-size:11px;
+    line-height:1.8;
+}
+
+.day-story{
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:12px;
+}
+
+.day-frame{
+    min-height:370px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+
+    padding:25px;
+
+    border:1px solid #303037;
+    border-radius:18px;
+
+    background:#17171c;
+
+    transition:.35s ease;
+}
+
+.day-frame:hover{
+    transform:translateY(-6px);
+
+    border-color:#594a7e;
+}
+
+.day-frame:nth-child(2){
+    transform:translateY(32px);
+}
+
+.day-frame:nth-child(2):hover{
+    transform:translateY(26px);
+}
+
+.day-frame:nth-child(4){
+    transform:translateY(32px);
+}
+
+.day-frame:nth-child(4):hover{
+    transform:translateY(26px);
+}
+
+.frame-time{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.frame-time span{
+    color:#66666f;
+
+    font-size:7px;
+}
+
+.frame-time i{
+    color:#a995ff;
+
+    font-size:15px;
+}
+
+.frame-center{
+    padding:25px 0;
+}
+
+.frame-center small{
+    display:block;
+
+    margin-bottom:8px;
+
+    color:#a995ff;
+
+    font-size:7px;
+    font-weight:800;
+}
+
+.frame-center h3{
+    margin-bottom:10px;
+
+    font-size:20px;
+
+    line-height:1.08;
+}
+
+.frame-center p{
+    color:#898992;
+
+    font-size:9px;
+    line-height:1.7;
+}
+
+.frame-footer{
+    padding-top:16px;
+
+    border-top:1px solid #2d2d34;
+
+    color:#6f6f78;
+
+    font-size:7px;
+}
+
+
+/* =========================================================
+   SECTION 4 - PROJECT HANDOFF
+========================================================= */
+
+.handoff-section{
+    padding:110px 0;
+
+    background:#fff;
+}
+
+.handoff-heading{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+
+    gap:50px;
+
+    margin-bottom:50px;
+}
+
+.handoff-heading .section-copy{
+    max-width:380px;
+}
+
+.handoff-stage{
+    display:grid;
+
+    grid-template-columns:1fr 100px 1fr;
+
+    align-items:center;
+
+    gap:20px;
+}
+
+.handoff-side{
+    min-height:420px;
+
+    padding:34px;
+
+    border-radius:22px;
+}
+
+.handoff-side.left{
+    background:#f7f7f9;
+}
+
+.handoff-side.right{
+    background:#f1edff;
+}
+
+.handoff-side small{
+    display:block;
+
+    margin-bottom:10px;
+
+    color:var(--purple);
+
+    font-size:7px;
+    font-weight:800;
+
+    letter-spacing:1px;
+}
+
+.handoff-side h3{
+    max-width:390px;
+
+    margin-bottom:14px;
+
+    font-size:29px;
+
+    line-height:1.06;
+
+    letter-spacing:-1.4px;
+}
+
+.handoff-side p{
+    max-width:420px;
+
+    color:var(--muted);
+
+    font-size:10px;
+    line-height:1.75;
+}
+
+.handoff-list{
+    margin-top:28px;
+
+    border-top:1px solid rgba(0,0,0,.08);
+}
+
+.handoff-item{
+    display:flex;
+    align-items:center;
+
+    gap:10px;
+
+    padding:13px 0;
+
+    border-bottom:1px solid rgba(0,0,0,.07);
+}
+
+.handoff-item i{
+    width:28px;
+    height:28px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:8px;
+
+    background:#fff;
+
+    color:var(--purple);
+
+    font-size:8px;
+}
+
+.handoff-item strong{
+    font-size:9px;
+}
+
+.handoff-arrow{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:31px;
+
+    color:var(--purple);
+}
+
+
+/* =========================================================
+   SECTION 5 - MENTOR CONVERSATION
+========================================================= */
+
+.mentor-section{
+    padding:110px 0;
+
+    background:#f7f7f9;
+}
+
+.mentor-heading{
+    max-width:730px;
+
+    margin-bottom:50px;
+}
+
+.chat-stage{
+    max-width:900px;
+
+    margin:auto;
+}
+
+.chat-line{
+    display:flex;
+
+    margin-bottom:18px;
+}
+
+.chat-line.student{
+    justify-content:flex-end;
+}
+
+.chat-bubble{
+    max-width:560px;
+
+    padding:19px 21px;
+
+    border-radius:18px 18px 18px 4px;
+
+    background:#fff;
+
+    border:1px solid #e3e3e8;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.03);
+}
+
+.chat-line.student .chat-bubble{
+    border-radius:18px 18px 4px 18px;
+
+    background:#7156e8;
+    color:#fff;
+
+    border-color:#7156e8;
+}
+
+.chat-name{
+    display:block;
+
+    margin-bottom:8px;
+
+    color:var(--purple);
+
+    font-size:7px;
+    font-weight:800;
+}
+
+.chat-line.student .chat-name{
+    color:#dcd5ff;
+}
+
+.chat-bubble p{
+    font-size:11px;
+    line-height:1.7;
+}
+
+.chat-time{
+    display:block;
+
+    margin-top:9px;
+
+    color:#aaaab2;
+
+    font-size:6px;
+}
+
+.chat-line.student .chat-time{
+    color:#cec8ee;
+}
+
+
+/* =========================================================
+   SECTION 6 - BEFORE / AFTER
+========================================================= */
+
+.transform-section{
+    padding:110px 0;
+}
+
+.transform-heading{
+    max-width:760px;
+
+    margin-bottom:50px;
+}
+
+.transform-board{
+    overflow:hidden;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    border:1px solid #e1e1e6;
+    border-radius:22px;
+}
+
+.transform-column{
+    padding:40px;
+}
+
+.transform-column.before{
+    background:#fafafa;
+}
+
+.transform-column.after{
+    background:#111116;
+    color:#fff;
+}
+
+.transform-column small{
+    display:block;
+
+    margin-bottom:12px;
+
+    color:#9a9aa2;
+
+    font-size:7px;
+    font-weight:800;
+
+    letter-spacing:1px;
+}
+
+.transform-column.after small{
+    color:#a995ff;
+}
+
+.transform-column h3{
+    margin-bottom:30px;
+
+    font-size:29px;
+
+    letter-spacing:-1.4px;
+}
+
+.transform-row{
+    min-height:76px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:25px;
+
+    border-top:1px solid #e5e5ea;
+}
+
+.transform-column.after .transform-row{
+    border-color:#303037;
+}
+
+.transform-row strong{
+    font-size:10px;
+}
+
+.transform-row span{
+    color:#8e8e97;
+
+    font-size:8px;
+
+    text-align:right;
+}
+
+.transform-column.after .transform-row span{
+    color:#777781;
+}
+
+
+/* =========================================================
+   SECTION 7 - WORK HABITS
+========================================================= */
+
+.habits-section{
+    padding:105px 0;
+
+    background:#f7f7f9;
+}
+
+.habits-layout{
+    display:grid;
+
+    grid-template-columns:.7fr 1.3fr;
+
+    gap:70px;
+}
+
+.habits-copy{
+    position:sticky;
+    top:115px;
+
+    height:max-content;
+}
+
+.habits-copy h2{
+    margin-bottom:18px;
+}
+
+.habit-list{
+    border-top:1px solid #dcdce2;
+}
+
+.habit{
+    min-height:105px;
+
+    display:grid;
+
+    grid-template-columns:55px 1fr 35px;
+
+    align-items:center;
+
+    gap:16px;
+
+    border-bottom:1px solid #dcdce2;
+
+    transition:.3s ease;
+}
+
+.habit:hover{
+    padding-left:10px;
+}
+
+.habit-number{
+    color:#aaaab2;
+
+    font-size:8px;
+}
+
+.habit strong{
+    display:block;
+
+    margin-bottom:5px;
+
+    font-size:12px;
+}
+
+.habit p{
+    color:var(--muted);
+
+    font-size:8px;
+    line-height:1.6;
+}
+
+.habit i{
+    width:30px;
+    height:30px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:#f1edff;
+
+    color:var(--purple);
+
+    font-size:8px;
+}
+
+
+/* =========================================================
+   SECTION 8 - APPLICATION TICKET
+========================================================= */
+
+.apply-section{
+    padding:110px 0;
+
+    background:#111116;
+    color:#fff;
+}
+
+.apply-layout{
+    display:grid;
+
+    grid-template-columns:.85fr 1.15fr;
+
+    align-items:center;
+
+    gap:70px;
+}
+
+.apply-copy .section-label{
+    color:#a995ff;
+}
+
+.apply-copy .section-label::before{
+    background:#a995ff;
+}
+
+.apply-copy .section-title span{
+    color:#a995ff;
+}
+
+.apply-copy p{
+    max-width:430px;
+
+    margin-top:18px;
+
+    color:#8d8d96;
+
+    font-size:11px;
+    line-height:1.8;
+}
+
+
+/* TICKET */
+
+.application-ticket{
+    overflow:hidden;
+
+    display:grid;
+
+    grid-template-columns:1fr 145px;
+
+    border:1px solid #38383f;
+    border-radius:18px;
+
+    background:#17171c;
+}
+
+.ticket-main{
+    padding:34px;
+}
+
+.ticket-small{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    margin-bottom:30px;
+}
+
+.ticket-small span{
+    color:#6f6f78;
+
+    font-size:7px;
+}
+
+.ticket-small strong{
+    color:#a995ff;
+
+    font-size:7px;
+}
+
+.ticket-main h3{
+    max-width:450px;
+
+    margin-bottom:13px;
+
+    font-size:29px;
+
+    line-height:1.07;
+
+    letter-spacing:-1.4px;
+}
+
+.ticket-main p{
+    max-width:470px;
+
+    color:#878790;
+
+    font-size:9px;
+    line-height:1.7;
+}
+
+.ticket-steps{
+    margin-top:28px;
+
+    border-top:1px solid #303037;
+}
+
+.ticket-step{
+    display:grid;
+
+    grid-template-columns:35px 1fr;
+
+    gap:10px;
+
+    padding:13px 0;
+
+    border-bottom:1px solid #303037;
+}
+
+.ticket-step span{
+    color:#65656e;
+
+    font-size:7px;
+}
+
+.ticket-step strong{
+    font-size:9px;
+}
+
+
+/* STUB */
+
+.ticket-stub{
+    position:relative;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-left:1px dashed #4b4b53;
+
+    background:#111116;
+}
+
+.ticket-stub::before,
+.ticket-stub::after{
+    content:"";
+
+    width:26px;
+    height:26px;
+
+    position:absolute;
+
+    left:-13px;
+
+    border-radius:50%;
+
+    background:#111116;
+}
+
+.ticket-stub::before{
+    top:-13px;
+}
+
+.ticket-stub::after{
+    bottom:-13px;
+}
+
+.stub-inner{
+    text-align:center;
+
+    transform:rotate(-90deg);
+}
+
+.stub-inner i{
+    display:block;
+
+    margin-bottom:10px;
+
+    color:#a995ff;
+
+    font-size:22px;
+}
+
+.stub-inner strong{
+    display:block;
+
+    font-size:10px;
+
+    white-space:nowrap;
+}
+
+.stub-inner span{
+    display:block;
+
+    margin-top:5px;
+
+    color:#707079;
+
+    font-size:6px;
+}
+
+
+/* =========================================================
+   FINAL POSTER
+========================================================= */
+
+.final-section{
+    padding:85px 0 65px;
+}
+
+.final-poster{
+    min-height:470px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    display:flex;
+    align-items:flex-end;
+
+    padding:55px;
+
+    border-radius:24px;
+
+    background:#7156e8;
+    color:#fff;
+}
+
+.final-poster::before{
+    content:"WORK";
+
+    position:absolute;
+
+    right:-10px;
+    top:-38px;
+
+    color:rgba(255,255,255,.07);
+
+    font-size:210px;
+    font-weight:800;
+
+    letter-spacing:-12px;
+}
+
+.final-poster::after{
+    content:"";
+
+    width:280px;
+    height:280px;
+
+    position:absolute;
+
+    right:70px;
+    bottom:-170px;
+
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:50%;
+}
+
+.final-content{
+    max-width:760px;
+
+    position:relative;
+    z-index:2;
+}
+
+.final-content small{
+    display:block;
+
+    margin-bottom:14px;
+
+    color:#ddd6ff;
+
+    font-size:8px;
+    font-weight:800;
+
+    letter-spacing:1.4px;
+}
+
+.final-content h2{
+    max-width:720px;
+
+    margin-bottom:18px;
+
+    font-size:clamp(42px,4.8vw,62px);
+
+    line-height:.99;
+
+    letter-spacing:-3.3px;
+}
+
+.final-content p{
+    max-width:520px;
+
+    margin-bottom:25px;
+
+    color:#ded9f6;
+
+    font-size:12px;
+    line-height:1.75;
+}
+
+.final-button{
+    min-height:46px;
+
+    display:inline-flex;
+    align-items:center;
+
+    gap:9px;
+
+    padding:0 18px;
+
+    border-radius:9px;
+
+    background:#fff;
+    color:#17171c;
+
+    font-size:11px;
+    font-weight:700;
+
+    transition:.3s ease;
+}
+
+.final-button:hover{
+    transform:translateY(-3px);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer{
+    padding:5px 20px 35px;
+
+    text-align:center;
+
+    color:#92929a;
+
+    font-size:9px;
+}
+
+.footer span{
+    margin:0 6px;
+
+    color:var(--purple);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media(max-width:1050px){
+
+    .navbar{
+        height:70px;
+
+        padding:0 18px;
+    }
+
+    main{
+        padding-top:70px;
+    }
+
+    .logo{
+        font-size:18px;
+    }
+
+    .login-btn,
+    .get-started{
+        display:none;
+    }
+
+    .menu-toggle{
+        display:flex;
+    }
+
+    .nav-menu{
+        position:absolute;
+
+        top:70px;
+        left:0;
+
+        width:100%;
+
+        max-height:calc(100vh - 70px);
+
+        overflow:auto;
+
+        display:flex;
+        flex-direction:column;
+        align-items:stretch;
+
+        padding:12px 14px 18px;
+
+        background:#fff;
+
+        opacity:0;
+
+        transform:translateY(-120%);
+
+        pointer-events:none;
+
+        transition:.3s ease;
+    }
+
+    .nav-menu.active{
+        opacity:1;
+
+        transform:translateY(0);
+
+        pointer-events:auto;
+    }
+
+    .nav-item{
+        width:100%;
+    }
+
+    .nav-link{
+        width:100%;
+
+        justify-content:space-between;
+
+        padding:15px 13px;
+    }
+
+    .dropdown{
+        position:static;
+
+        width:100%;
+
+        max-height:0;
+
+        overflow:hidden;
+
+        padding:0 8px;
+
+        opacity:1;
+        visibility:visible;
+
+        transform:none;
+
+        background:#fafafa;
+
+        border:0;
+
+        box-shadow:none;
+
+        transition:max-height .35s ease;
+    }
+
+    .nav-item.open > .dropdown{
+        max-height:1300px;
+
+        padding:8px;
+    }
+
+    .mega-dropdown{
+        display:block;
+    }
+
+
+    /* HERO */
+
+    .hero-layout{
+        grid-template-columns:1fr;
+
+        gap:42px;
+
+        padding:65px 0;
+    }
+
+    .hero-copy{
+        max-width:760px;
+    }
+
+    .work-brief-wrap{
+        max-width:700px;
+    }
+
+
+    /* REALITY */
+
+    .reality-layout{
+        grid-template-columns:1fr;
+
+        gap:45px;
+    }
+
+    .reality-left{
+        position:static;
+    }
+
+
+    /* DAY */
+
+    .day-story{
+        grid-template-columns:repeat(2,1fr);
+
+        gap:16px;
+    }
+
+    .day-frame:nth-child(2),
+    .day-frame:nth-child(4){
+        transform:none;
+    }
+
+    .day-frame:nth-child(2):hover,
+    .day-frame:nth-child(4):hover{
+        transform:translateY(-6px);
+    }
+
+
+    /* HANDOFF */
+
+    .handoff-stage{
+        grid-template-columns:1fr;
+    }
+
+    .handoff-arrow{
+        transform:rotate(90deg);
+    }
+
+
+    /* HABITS */
+
+    .habits-layout{
+        grid-template-columns:1fr;
+
+        gap:45px;
+    }
+
+    .habits-copy{
+        position:static;
+    }
+
+
+    /* APPLY */
+
+    .apply-layout{
+        grid-template-columns:1fr;
+
+        gap:45px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:650px){
+
+    html,
+    body{
+        width:100%;
+        max-width:100%;
+
+        overflow-x:hidden;
+    }
+
+    .container{
+        width:100%;
+
+        padding-left:18px;
+        padding-right:18px;
+    }
+
+
+    /* NAV */
+
+    .navbar{
+        height:66px;
+
+        padding:0 14px;
+    }
+
+    main{
+        padding-top:66px;
+    }
+
+    .logo{
+        font-size:16px;
+    }
+
+    .logo-impact{
+        margin-left:5px;
+    }
+
+    .nav-menu{
+        top:66px;
+
+        max-height:calc(100vh - 66px);
+    }
+
+
+    /* COMMON */
+
+    .section-title{
+        font-size:clamp(31px,9.3vw,41px);
+
+        letter-spacing:-2px;
+    }
+
+
+    /* HERO */
+
+    .hero-layout{
+        min-height:auto;
+
+        gap:34px;
+
+        padding:49px 0 40px;
+    }
+
+    .hero-copy h1{
+        font-size:clamp(45px,13vw,58px);
+
+        line-height:.94;
+
+        letter-spacing:-3.4px;
+    }
+
+    .hero-copy p{
+        font-size:12px;
+    }
+
+    .hero-actions{
+        width:100%;
+    }
+
+    .hero-primary,
+    .hero-secondary{
+        flex:1;
+
+        min-width:140px;
+
+        padding:0 12px;
+
+        font-size:10px;
+    }
+
+
+    /* PAPER */
+
+    .work-brief-wrap{
+        min-height:auto;
+    }
+
+    .work-paper{
+        max-width:none;
+
+        padding:25px 20px;
+
+        transform:none;
+    }
+
+    .work-paper h3{
+        font-size:25px;
+    }
+
+    .work-note{
+        display:none;
+    }
+
+
+    /* STRIP */
+
+    .strip-word{
+        min-width:190px;
+
+        padding:17px 18px;
+
+        font-size:8px;
+    }
+
+
+    /* SECTIONS */
+
+    .reality-section,
+    .roles-section,
+    .day-section,
+    .handoff-section,
+    .mentor-section,
+    .transform-section,
+    .habits-section,
+    .apply-section{
+        padding:72px 0;
+    }
+
+
+    /* REALITY */
+
+    .reality-statement{
+        min-height:auto;
+
+        grid-template-columns:40px 1fr;
+
+        gap:12px;
+
+        padding:22px 0;
+    }
+
+    .reality-statement h3{
+        font-size:16px;
+    }
+
+
+    /* ROLE DIRECTORY */
+
+    .role-trigger{
+        min-height:88px;
+
+        grid-template-columns:38px 1fr 24px;
+
+        gap:10px;
+    }
+
+    .role-trigger small{
+        display:none;
+    }
+
+    .role-trigger h3{
+        font-size:14px;
+    }
+
+    .role-detail-inner{
+        grid-template-columns:38px 1fr;
+
+        gap:10px;
+    }
+
+    .role-detail-copy{
+        grid-column:2;
+    }
+
+    .role-skill-list{
+        grid-column:2;
+    }
+
+
+    /* DAY */
+
+    .day-heading{
+        grid-template-columns:1fr;
+
+        gap:20px;
+    }
+
+    .day-story{
+        grid-template-columns:1fr;
+    }
+
+    .day-frame{
+        min-height:280px;
+    }
+
+
+    /* HANDOFF */
+
+    .handoff-heading{
+        align-items:flex-start;
+        flex-direction:column;
+
+        gap:18px;
+    }
+
+    .handoff-side{
+        min-height:auto;
+
+        padding:28px 21px;
+    }
+
+    .handoff-side h3{
+        font-size:26px;
+    }
+
+
+    /* CHAT */
+
+    .chat-bubble{
+        max-width:88%;
+
+        padding:15px 16px;
+    }
+
+    .chat-bubble p{
+        font-size:10px;
+    }
+
+
+    /* TRANSFORMATION */
+
+    .transform-board{
+        grid-template-columns:1fr;
+    }
+
+    .transform-column{
+        padding:28px 21px;
+    }
+
+    .transform-column h3{
+        font-size:25px;
+    }
+
+    .transform-row{
+        min-height:68px;
+
+        gap:15px;
+    }
+
+
+    /* HABITS */
+
+    .habit{
+        min-height:auto;
+
+        grid-template-columns:35px 1fr 30px;
+
+        gap:10px;
+
+        padding:18px 0;
+    }
+
+
+    /* APPLY */
+
+    .application-ticket{
+        grid-template-columns:1fr;
+    }
+
+    .ticket-main{
+        padding:27px 20px;
+    }
+
+    .ticket-main h3{
+        font-size:25px;
+    }
+
+    .ticket-stub{
+        min-height:90px;
+
+        border-left:0;
+        border-top:1px dashed #4b4b53;
+    }
+
+    .ticket-stub::before,
+    .ticket-stub::after{
+        top:-13px;
+        bottom:auto;
+    }
+
+    .ticket-stub::before{
+        left:-13px;
+    }
+
+    .ticket-stub::after{
+        left:auto;
+        right:-13px;
+    }
+
+    .stub-inner{
+        transform:none;
+    }
+
+    .stub-inner i{
+        margin-bottom:6px;
+    }
+
+
+    /* FINAL */
+
+    .final-section{
+        padding:65px 0 50px;
+    }
+
+    .final-poster{
+        min-height:420px;
+
+        padding:34px 22px;
+    }
+
+    .final-poster::before{
+        right:-10px;
+        top:-5px;
+
+        font-size:100px;
+    }
+
+    .final-content h2{
+        font-size:clamp(37px,10vw,48px);
+
+        letter-spacing:-2.5px;
+    }
+
+}
+
+
+@media(max-width:360px){
+
+    .logo{
+        font-size:14px;
+    }
+
+    .hero-primary,
+    .hero-secondary{
+        width:100%;
+
+        flex:none;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        animation:none !important;
+        transition:none !important;
+        scroll-behavior:auto !important;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<header class="navbar" id="navbar">
+
+    <a href="../index.html" class="logo">
+
+        <span class="logo-main">
+            TRIVOX
+        </span>
+
+        <span class="logo-impact">
+            AI IMPACT
+        </span>
+
+    </a>
+
+
+    <ul class="nav-menu" id="navMenu">
+
+
+        <!-- COMPANY -->
+
+        <li class="nav-item">
+
+            <div class="nav-link">
+
+                Company
+
+                <span class="arrow"></span>
+
+            </div>
+
+            <div class="dropdown">
+
+                <a href="../about.html">About TRIVOX</a>
+                <a href="../mission.html">Mission</a>
+                <a href="../vision.html">Vision</a>
+                <a href="../leader.html">Leadership</a>
+                <a href="../team.html">Team</a>
+                <a href="../partners.html">Partners</a>
+                <a href="../impact.html">Impact</a>
+
+            </div>
+
+        </li>
+
+
+        <!-- LEARNING -->
+
+        <li class="nav-item">
+
+            <div class="nav-link">
+
+                Learning
+
+                <span class="arrow"></span>
+
+            </div>
+
+            <div class="dropdown mega-dropdown">
+
+                <a href="../learning/ailearning.html" class="mega-box">
+
+                    <strong>AI Learning</strong>
+
+                    <p>
+                        Understand artificial intelligence and intelligent systems.
+                    </p>
+
+                </a>
+
+                <a href="../learning/programming.html" class="mega-box">
+
+                    <strong>Programming</strong>
+
+                    <p>
+                        Build strong coding and problem-solving foundations.
+                    </p>
+
+                </a>
+
+                <a href="../learning/webdevelopment.html" class="mega-box">
+
+                    <strong>Web Development</strong>
+
+                    <p>
+                        Create modern websites and digital experiences.
+                    </p>
+
+                </a>
+
+                <a href="../learning/appdevelopment.html" class="mega-box">
+
+                    <strong>App Development</strong>
+
+                    <p>
+                        Design and build mobile applications.
+                    </p>
+
+                </a>
+
+                <a href="../learning/datascience.html" class="mega-box">
+
+                    <strong>Data Science</strong>
+
+                    <p>
+                        Transform data into meaningful insights.
+                    </p>
+
+                </a>
+
+                <a href="../learning/cybersecurity.html" class="mega-box">
+
+                    <strong>Cybersecurity</strong>
+
+                    <p>
+                        Understand digital security and protection.
+                    </p>
+
+                </a>
+
+            </div>
+
+        </li>
+
+
+        <!-- PROGRAMS -->
+
+        <li class="nav-item active-parent">
+
+            <div class="nav-link">
+
+                Programs
+
+                <span class="arrow"></span>
+
+            </div>
+
+            <div class="dropdown">
+
+                <a href="student-programs.html">
+                    Student Programs
+                </a>
+
+                <a href="college-programs.html">
+                    College Programs
+                </a>
+
+                <a href="internships.html" class="active">
+                    Internships
+                </a>
+
+                <a href="workshops.html">
+                    Workshops
+                </a>
+
+                <a href="bootcamps.html">
+                    Bootcamps
+                </a>
+
+                <a href="career-programs.html">
+                    Career Programs
+                </a>
+
+                <a href="certification-programs.html">
+                    Certification Programs
+                </a>
+
+            </div>
+
+        </li>
+
+
+        <!-- SOLUTIONS -->
+
+        <li class="nav-item">
+
+            <div class="nav-link">
+
+                Solutions
+
+                <span class="arrow"></span>
+
+            </div>
+
+            <div class="dropdown">
+
+                <a href="../solutions/students.html">
+                    For Students
+                </a>
+
+                <a href="../solutions/colleges.html">
+                    For Colleges
+                </a>
+
+                <a href="../solutions/schools.html">
+                    For Schools
+                </a>
+
+                <a href="../solutions/companies.html">
+                    For Companies
+                </a>
+
+            </div>
+
+        </li>
+
+
+        <!-- RESOURCES -->
+
+        <li class="nav-item">
+
+            <div class="nav-link">
+
+                Resources
+
+                <span class="arrow"></span>
+
+            </div>
+
+            <div class="dropdown">
+
+                <a href="../resources/blogs.html">
+                    Blogs
+                </a>
+
+                <a href="../resources/tutorials.html">
+                    Tutorials
+                </a>
+
+                <a href="../resources/learning-resources.html">
+                    Learning Resources
+                </a>
+
+                <a href="../resources/student-projects.html">
+                    Student Projects
+                </a>
+
+                <a href="../resources/success-stories.html">
+                    Success Stories
+                </a>
+
+                <a href="../resources/events.html">
+                    Events
+                </a>
+
+                <a href="../resources/faqs.html">
+                    FAQs
+                </a>
+
+            </div>
+
+        </li>
+
+
+        <!-- CAREERS -->
+
+        <li class="nav-item">
+
+            <div class="nav-link">
+
+                Careers
+
+                <span class="arrow"></span>
+
+            </div>
+
+            <div class="dropdown">
+
+                <a href="../careers/open-positions.html">
+                    Open Positions
+                </a>
+
+                <a href="../careers/internships.html">
+                    Internships
+                </a>
+
+                <a href="../careers/campus-hiring.html">
+                    Campus Hiring
+                </a>
+
+                <a href="../careers/join-team.html">
+                    Join Our Team
+                </a>
+
+                <a href="../careers/life-at-trivox.html">
+                    Life at TRIVOX
+                </a>
+
+            </div>
+
+        </li>
+
+
+        <!-- CONTACT -->
+
+        <li class="nav-item">
+
+            <a
+            href="../contact/contact.html"
+            class="nav-link">
+
+                Contact
+
+            </a>
+
+        </li>
+
+
+    </ul>
+
+
+    <div class="nav-actions">
+
+
+        <div class="signin-dropdown-wrap">
+
+            <button class="login-btn signin-main-btn">
+
+                Sign In
+
+                <span class="arrow"></span>
+
+            </button>
+
+            <div class="signin-dropdown">
+
+                <a href="../documentary.html">
+
+                    <i class="fa-solid fa-video"></i>
+
+                    <div>
+
+                        <strong>
+                            Documentary
+                        </strong>
+
+                        <span>
+                            Sign in for documentary
+                        </span>
+
+                    </div>
+
+                </a>
+
+                <a href="../course.html">
+
+                    <i class="fa-solid fa-graduation-cap"></i>
+
+                    <div>
+
+                        <strong>
+                            Course
+                        </strong>
+
+                        <span>
+                            Sign in for courses
+                        </span>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <a
+        href="../course.html"
+        class="get-started">
+
+            Get Started
+
+        </a>
+
+
+        <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Menu"
+        aria-expanded="false">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+
+    </div>
+
+</header>
+
+
+
+<main>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero">
+
+
+    <div class="container hero-layout">
+
+
+        <div class="hero-copy reveal">
+
+
+            <div class="hero-label">
+
+                INTERNSHIPS / FROM LEARNING TO WORKING
+
+            </div>
+
+
+            <h1>
+
+                <span class="normal">
+                    Stop practicing
+                </span>
+
+                <span class="purple">
+                    only for practice.
+                </span>
+
+            </h1>
+
+
+            <p>
+
+                TRIVOX Internships are designed to help students experience
+                how real work happens — understand a requirement, manage
+                responsibility, build an outcome, receive feedback and improve.
+
+            </p>
+
+
+            <div class="hero-actions">
+
+
+                <a
+                href="#roles"
+                class="hero-primary">
+
+                    Explore Internship Areas
+
+                    <i class="fa-solid fa-arrow-down"></i>
+
+                </a>
+
+
+                <a
+                href="#apply"
+                class="hero-secondary">
+
+                    Application Process
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="work-brief-wrap reveal">
+
+
+            <div class="work-note note-a">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                Brief received
+
+            </div>
+
+
+            <div class="work-note note-b">
+
+                <i class="fa-solid fa-comment"></i>
+
+                Feedback pending
+
+            </div>
+
+
+
+            <div class="work-paper">
+
+
+                <div class="paper-top">
+
+                    <small>
+                        TRIVOX / WORK BRIEF / 001
+                    </small>
+
+                    <strong>
+                        INTERN COPY
+                    </strong>
+
+                </div>
+
+
+                <h3>
+
+                    Build a better student opportunity experience.
+
+                </h3>
+
+
+                <p class="paper-copy">
+
+                    Your task is to understand the student problem,
+                    propose a practical solution and create an experience
+                    that can be reviewed by a mentor.
+
+                </p>
+
+
+                <hr class="paper-rule">
+
+
+                <div class="paper-tasks">
+
+
+                    <div class="paper-task">
+
+                        <i class="fa-solid fa-check"></i>
+
+                        <div>
+
+                            <strong>
+                                Understand the requirement
+                            </strong>
+
+                            <span>
+                                Ask questions before building
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="paper-task">
+
+                        <i class="fa-solid fa-check"></i>
+
+                        <div>
+
+                            <strong>
+                                Create the first version
+                            </strong>
+
+                            <span>
+                                Turn the idea into practical work
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="paper-task">
+
+                        <i class="fa-solid fa-check"></i>
+
+                        <div>
+
+                            <strong>
+                                Review and improve
+                            </strong>
+
+                            <span>
+                                Use mentor feedback
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="paper-sign">
+
+                    <span>
+                        ASSIGNED TO / INTERN
+                    </span>
+
+                    <strong>
+                        START WORK
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- WORK STRIP -->
+
+    <div class="work-strip">
+
+
+        <div class="work-strip-track">
+
+
+            <div class="work-strip-group">
+
+                <div class="strip-word">
+                    <i class="fa-solid fa-briefcase"></i>
+                    Real Responsibilities
+                </div>
+
+                <div class="strip-word">
+                    <i class="fa-solid fa-comments"></i>
+                    Team Communication
+                </div>
+
+                <div class="strip-word">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    Project Ownership
+                </div>
+
+                <div class="strip-word">
+                    <i class="fa-solid fa-arrow-rotate-right"></i>
+                    Feedback & Iteration
+                </div>
+
+                <div class="strip-word">
+                    <i class="fa-solid fa-person-chalkboard"></i>
+                    Work Demonstration
+                </div>
+
+            </div>
+
+
+            <div class="work-strip-group">
+
+                <div class="strip-word">
+                    <i class="fa-solid fa-briefcase"></i>
+                    Real Responsibilities
+                </div>
+
+                <div class="strip-word">
+                    <i class="fa-solid fa-comments"></i>
+                    Team Communication
+                </div>
+
+                <div class="strip-word">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    Project Ownership
+                </div>
+
+                <div class="strip-word">
+                    <i class="fa-solid fa-arrow-rotate-right"></i>
+                    Feedback & Iteration
+                </div>
+
+                <div class="strip-word">
+                    <i class="fa-solid fa-person-chalkboard"></i>
+                    Work Demonstration
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     WORK REALITY
+========================================================= -->
+
+<section class="reality-section">
+
+
+    <div class="container reality-layout">
+
+
+        <div class="reality-left reveal">
+
+
+            <div class="section-label">
+
+                Internship Reality
+
+            </div>
+
+
+            <h2 class="section-title">
+
+                Internship means learning
+
+                <span>
+                    inside the work.
+                </span>
+
+            </h2>
+
+
+            <p class="section-copy">
+
+                The difference is responsibility. Instead of only completing
+                lessons, interns learn how to contribute toward an outcome.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="reality-statements reveal">
+
+
+            <div class="reality-statement">
+
+                <span>
+                    01
+                </span>
+
+                <div>
+
+                    <h3>
+                        Someone gives you a requirement.
+                    </h3>
+
+                    <p>
+
+                        You learn how to understand the task, ask useful
+                        questions and identify what the final result should do.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="reality-statement">
+
+                <span>
+                    02
+                </span>
+
+                <div>
+
+                    <h3>
+                        You decide how to approach it.
+                    </h3>
+
+                    <p>
+
+                        Internships introduce planning, prioritization and
+                        the responsibility of moving work forward.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="reality-statement">
+
+                <span>
+                    03
+                </span>
+
+                <div>
+
+                    <h3>
+                        Someone reviews what you built.
+                    </h3>
+
+                    <p>
+
+                        Feedback helps you understand the difference between
+                        simply completing something and completing it well.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="reality-statement">
+
+                <span>
+                    04
+                </span>
+
+                <div>
+
+                    <h3>
+                        You improve and explain your work.
+                    </h3>
+
+                    <p>
+
+                        Professional confidence grows when you can describe
+                        your choices, respond to feedback and demonstrate progress.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     ROLE DIRECTORY
+========================================================= -->
+
+<section
+class="roles-section"
+id="roles">
+
+
+    <div class="container">
+
+
+        <div class="roles-heading reveal">
+
+
+            <div class="section-label">
+
+                Internship Directory
+
+            </div>
+
+
+            <h2 class="section-title">
+
+                Explore the kind of work
+
+                <span>
+                    you want to experience.
+                </span>
+
+            </h2>
+
+
+        </div>
+
+
+
+        <div class="role-directory reveal">
+
+
+            <!-- ROLE 01 -->
+
+            <div class="role-row active">
+
+
+                <button class="role-trigger">
+
+                    <span>
+                        01
+                    </span>
+
+                    <h3>
+                        Software Development
+                    </h3>
+
+                    <small>
+                        Logic / Programming / Development
+                    </small>
+
+                    <i class="fa-solid fa-plus"></i>
+
+                </button>
+
+
+                <div class="role-detail">
+
+                    <div class="role-detail-inner">
+
+                        <div></div>
+
+                        <div class="role-detail-copy">
+
+                            <p>
+
+                                Work on structured programming tasks,
+                                understand implementation requirements,
+                                debug issues and improve code through review.
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="role-skill-list">
+
+                            <span>Programming</span>
+                            <span>Logic</span>
+                            <span>Debugging</span>
+                            <span>Git</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ROLE 02 -->
+
+            <div class="role-row">
+
+
+                <button class="role-trigger">
+
+                    <span>
+                        02
+                    </span>
+
+                    <h3>
+                        Web Development
+                    </h3>
+
+                    <small>
+                        Frontend / Responsive / Digital Product
+                    </small>
+
+                    <i class="fa-solid fa-plus"></i>
+
+                </button>
+
+
+                <div class="role-detail">
+
+                    <div class="role-detail-inner">
+
+                        <div></div>
+
+                        <div class="role-detail-copy">
+
+                            <p>
+
+                                Create responsive pages, translate interface
+                                requirements into code and improve digital
+                                experiences through mentor feedback.
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="role-skill-list">
+
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                            <span>Responsive UI</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ROLE 03 -->
+
+            <div class="role-row">
+
+
+                <button class="role-trigger">
+
+                    <span>
+                        03
+                    </span>
+
+                    <h3>
+                        App Development
+                    </h3>
+
+                    <small>
+                        Mobile / Product / Interaction
+                    </small>
+
+                    <i class="fa-solid fa-plus"></i>
+
+                </button>
+
+
+                <div class="role-detail">
+
+                    <div class="role-detail-inner">
+
+                        <div></div>
+
+                        <div class="role-detail-copy">
+
+                            <p>
+
+                                Explore mobile product work through screen flows,
+                                functionality, user interactions and practical
+                                application-building tasks.
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="role-skill-list">
+
+                            <span>Mobile UI</span>
+                            <span>Features</span>
+                            <span>Testing</span>
+                            <span>User Flow</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ROLE 04 -->
+
+            <div class="role-row">
+
+
+                <button class="role-trigger">
+
+                    <span>
+                        04
+                    </span>
+
+                    <h3>
+                        AI & Intelligent Systems
+                    </h3>
+
+                    <small>
+                        AI / Data / Solution Thinking
+                    </small>
+
+                    <i class="fa-solid fa-plus"></i>
+
+                </button>
+
+
+                <div class="role-detail">
+
+                    <div class="role-detail-inner">
+
+                        <div></div>
+
+                        <div class="role-detail-copy">
+
+                            <p>
+
+                                Understand practical AI use cases,
+                                organize information and explore how intelligent
+                                workflows can support real problems.
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="role-skill-list">
+
+                            <span>AI Concepts</span>
+                            <span>Data</span>
+                            <span>Prompts</span>
+                            <span>Solutions</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ROLE 05 -->
+
+            <div class="role-row">
+
+
+                <button class="role-trigger">
+
+                    <span>
+                        05
+                    </span>
+
+                    <h3>
+                        Data & Insights
+                    </h3>
+
+                    <small>
+                        Analysis / SQL / Visualization
+                    </small>
+
+                    <i class="fa-solid fa-plus"></i>
+
+                </button>
+
+
+                <div class="role-detail">
+
+                    <div class="role-detail-inner">
+
+                        <div></div>
+
+                        <div class="role-detail-copy">
+
+                            <p>
+
+                                Work with structured information,
+                                identify useful patterns and communicate
+                                findings through clear data stories.
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="role-skill-list">
+
+                            <span>SQL</span>
+                            <span>Analysis</span>
+                            <span>Charts</span>
+                            <span>Insight</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     A DAY IN THE INTERNSHIP
+========================================================= -->
+
+<section class="day-section">
+
+
+    <div class="container">
+
+
+        <div class="day-heading reveal">
+
+
+            <div>
+
+
+                <div class="section-label">
+
+                    Inside the Internship
+
+                </div>
+
+
+                <h2 class="section-title">
+
+                    One day.
+
+                    <span>
+                        Four different kinds of learning.
+                    </span>
+
+                </h2>
+
+
+            </div>
+
+
+            <p>
+
+                Professional learning does not happen in one format.
+                You learn from tasks, people, problems and feedback.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="day-story reveal">
+
+
+            <div class="day-frame">
+
+
+                <div class="frame-time">
+
+                    <span>
+                        09:30 AM
+                    </span>
+
+                    <i class="fa-solid fa-mug-hot"></i>
+
+                </div>
+
+
+                <div class="frame-center">
+
+                    <small>
+                        START
+                    </small>
+
+                    <h3>
+                        Daily Check-in
+                    </h3>
+
+                    <p>
+
+                        Review priorities, ask questions and understand
+                        what needs to move forward today.
+
+                    </p>
+
+                </div>
+
+
+                <div class="frame-footer">
+                    Communication
+                </div>
+
+
+            </div>
+
+
+
+            <div class="day-frame">
+
+
+                <div class="frame-time">
+
+                    <span>
+                        11:00 AM
+                    </span>
+
+                    <i class="fa-solid fa-laptop-code"></i>
+
+                </div>
+
+
+                <div class="frame-center">
+
+                    <small>
+                        FOCUS
+                    </small>
+
+                    <h3>
+                        Build Session
+                    </h3>
+
+                    <p>
+
+                        Work independently on the current task and
+                        turn the requirement into practical progress.
+
+                    </p>
+
+                </div>
+
+
+                <div class="frame-footer">
+                    Ownership
+                </div>
+
+
+            </div>
+
+
+
+            <div class="day-frame">
+
+
+                <div class="frame-time">
+
+                    <span>
+                        02:30 PM
+                    </span>
+
+                    <i class="fa-solid fa-comments"></i>
+
+                </div>
+
+
+                <div class="frame-center">
+
+                    <small>
+                        REVIEW
+                    </small>
+
+                    <h3>
+                        Mentor Feedback
+                    </h3>
+
+                    <p>
+
+                        Show your work, discuss decisions and
+                        understand what can be improved.
+
+                    </p>
+
+                </div>
+
+
+                <div class="frame-footer">
+                    Feedback
+                </div>
+
+
+            </div>
+
+
+
+            <div class="day-frame">
+
+
+                <div class="frame-time">
+
+                    <span>
+                        04:30 PM
+                    </span>
+
+                    <i class="fa-solid fa-arrow-trend-up"></i>
+
+                </div>
+
+
+                <div class="frame-center">
+
+                    <small>
+                        CLOSE
+                    </small>
+
+                    <h3>
+                        Improve & Update
+                    </h3>
+
+                    <p>
+
+                        Apply feedback, record progress and prepare
+                        the next step before closing the day.
+
+                    </p>
+
+                </div>
+
+
+                <div class="frame-footer">
+                    Iteration
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     PROJECT HANDOFF
+========================================================= -->
+
+<section class="handoff-section">
+
+
+    <div class="container">
+
+
+        <div class="handoff-heading reveal">
+
+
+            <div>
+
+
+                <div class="section-label">
+
+                    Project Handoff
+
+                </div>
+
+
+                <h2 class="section-title">
+
+                    A requirement comes in.
+
+                    <span>
+                        Your work goes out.
+                    </span>
+
+                </h2>
+
+
+            </div>
+
+
+            <p class="section-copy">
+
+                Internship experience teaches students how to convert
+                expectations into a finished, explainable outcome.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="handoff-stage reveal">
+
+
+            <!-- INPUT -->
+
+            <div class="handoff-side left">
+
+
+                <small>
+                    WHAT YOU RECEIVE
+                </small>
+
+
+                <h3>
+                    A problem that needs a useful result.
+                </h3>
+
+
+                <p>
+
+                    The starting point is not a tutorial.
+                    It is a requirement with an expected outcome.
+
+                </p>
+
+
+                <div class="handoff-list">
+
+
+                    <div class="handoff-item">
+
+                        <i class="fa-solid fa-file-lines"></i>
+
+                        <strong>
+                            Project brief
+                        </strong>
+
+                    </div>
+
+
+                    <div class="handoff-item">
+
+                        <i class="fa-solid fa-bullseye"></i>
+
+                        <strong>
+                            Desired outcome
+                        </strong>
+
+                    </div>
+
+
+                    <div class="handoff-item">
+
+                        <i class="fa-solid fa-clock"></i>
+
+                        <strong>
+                            Timeline
+                        </strong>
+
+                    </div>
+
+
+                    <div class="handoff-item">
+
+                        <i class="fa-solid fa-comments"></i>
+
+                        <strong>
+                            Mentor guidance
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="handoff-arrow">
+
+                <i class="fa-solid fa-arrow-right-long"></i>
+
+            </div>
+
+
+
+            <!-- OUTPUT -->
+
+            <div class="handoff-side right">
+
+
+                <small>
+                    WHAT YOU DELIVER
+                </small>
+
+
+                <h3>
+                    A project you can explain and improve.
+                </h3>
+
+
+                <p>
+
+                    The outcome demonstrates both technical work
+                    and your ability to take responsibility for the process.
+
+                </p>
+
+
+                <div class="handoff-list">
+
+
+                    <div class="handoff-item">
+
+                        <i class="fa-solid fa-cube"></i>
+
+                        <strong>
+                            Working solution
+                        </strong>
+
+                    </div>
+
+
+                    <div class="handoff-item">
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        <strong>
+                            Tested result
+                        </strong>
+
+                    </div>
+
+
+                    <div class="handoff-item">
+
+                        <i class="fa-solid fa-arrow-rotate-right"></i>
+
+                        <strong>
+                            Improved version
+                        </strong>
+
+                    </div>
+
+
+                    <div class="handoff-item">
+
+                        <i class="fa-solid fa-person-chalkboard"></i>
+
+                        <strong>
+                            Demonstration
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     MENTOR CONVERSATION
+========================================================= -->
+
+<section class="mentor-section">
+
+
+    <div class="container">
+
+
+        <div class="mentor-heading reveal">
+
+
+            <div class="section-label">
+
+                Mentor Conversation
+
+            </div>
+
+
+            <h2 class="section-title">
+
+                Feedback should feel like
+
+                <span>
+                    a conversation about better work.
+                </span>
+
+            </h2>
+
+
+        </div>
+
+
+
+        <div class="chat-stage reveal">
+
+
+            <div class="chat-line mentor">
+
+                <div class="chat-bubble">
+
+                    <span class="chat-name">
+                        MENTOR
+                    </span>
+
+                    <p>
+
+                        I checked the first version. The functionality is working,
+                        but what do you think is the most important action
+                        for the user on this screen?
+
+                    </p>
+
+                    <span class="chat-time">
+                        Review session
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="chat-line student">
+
+                <div class="chat-bubble">
+
+                    <span class="chat-name">
+                        INTERN
+                    </span>
+
+                    <p>
+
+                        The main action is discovering an opportunity.
+                        I think I made too many secondary actions equally visible.
+
+                    </p>
+
+                    <span class="chat-time">
+                        Response
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="chat-line mentor">
+
+                <div class="chat-bubble">
+
+                    <span class="chat-name">
+                        MENTOR
+                    </span>
+
+                    <p>
+
+                        Exactly. Simplify the hierarchy first.
+                        Then test whether the primary action becomes obvious
+                        before adding anything new.
+
+                    </p>
+
+                    <span class="chat-time">
+                        Feedback
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="chat-line student">
+
+                <div class="chat-bubble">
+
+                    <span class="chat-name">
+                        INTERN
+                    </span>
+
+                    <p>
+
+                        I'll revise that section, remove the competing actions
+                        and share the next version for review.
+
+                    </p>
+
+                    <span class="chat-time">
+                        Next iteration
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     BEFORE / AFTER
+========================================================= -->
+
+<section class="transform-section">
+
+
+    <div class="container">
+
+
+        <div class="transform-heading reveal">
+
+
+            <div class="section-label">
+
+                Professional Growth
+
+            </div>
+
+
+            <h2 class="section-title">
+
+                The goal is not only better technical skill.
+
+                <span>
+                    It is better working ability.
+                </span>
+
+            </h2>
+
+
+        </div>
+
+
+
+        <div class="transform-board reveal">
+
+
+            <!-- BEFORE -->
+
+            <div class="transform-column before">
+
+
+                <small>
+                    BEFORE INTERNSHIP
+                </small>
+
+
+                <h3>
+                    Learning mode
+                </h3>
+
+
+                <div class="transform-row">
+
+                    <strong>
+                        Task source
+                    </strong>
+
+                    <span>
+                        Tutorial
+                    </span>
+
+                </div>
+
+
+                <div class="transform-row">
+
+                    <strong>
+                        Questions
+                    </strong>
+
+                    <span>
+                        What should I build?
+                    </span>
+
+                </div>
+
+
+                <div class="transform-row">
+
+                    <strong>
+                        Feedback
+                    </strong>
+
+                    <span>
+                        Correct / incorrect
+                    </span>
+
+                </div>
+
+
+                <div class="transform-row">
+
+                    <strong>
+                        Responsibility
+                    </strong>
+
+                    <span>
+                        Finish exercise
+                    </span>
+
+                </div>
+
+
+                <div class="transform-row">
+
+                    <strong>
+                        Result
+                    </strong>
+
+                    <span>
+                        Practice completed
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- AFTER -->
+
+            <div class="transform-column after">
+
+
+                <small>
+                    DURING INTERNSHIP
+                </small>
+
+
+                <h3>
+                    Working mode
+                </h3>
+
+
+                <div class="transform-row">
+
+                    <strong>
+                        Task source
+                    </strong>
+
+                    <span>
+                        Real requirement
+                    </span>
+
+                </div>
+
+
+                <div class="transform-row">
+
+                    <strong>
+                        Questions
+                    </strong>
+
+                    <span>
+                        What does the user need?
+                    </span>
+
+                </div>
+
+
+                <div class="transform-row">
+
+                    <strong>
+                        Feedback
+                    </strong>
+
+                    <span>
+                        Review + iteration
+                    </span>
+
+                </div>
+
+
+                <div class="transform-row">
+
+                    <strong>
+                        Responsibility
+                    </strong>
+
+                    <span>
+                        Own the outcome
+                    </span>
+
+                </div>
+
+
+                <div class="transform-row">
+
+                    <strong>
+                        Result
+                    </strong>
+
+                    <span>
+                        Work demonstrated
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     WORK HABITS
+========================================================= -->
+
+<section class="habits-section">
+
+
+    <div class="container habits-layout">
+
+
+        <div class="habits-copy reveal">
+
+
+            <div class="section-label">
+
+                Work Habits
+
+            </div>
+
+
+            <h2 class="section-title">
+
+                Technical skill is only
+
+                <span>
+                    part of the internship.
+                </span>
+
+            </h2>
+
+
+            <p class="section-copy">
+
+                Real work also depends on communication,
+                responsibility and the ability to keep improving.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="habit-list reveal">
+
+
+            <div class="habit">
+
+                <span class="habit-number">
+                    01
+                </span>
+
+                <div>
+
+                    <strong>
+                        Ask clear questions
+                    </strong>
+
+                    <p>
+                        Understand requirements instead of making silent assumptions.
+                    </p>
+
+                </div>
+
+                <i class="fa-solid fa-comment"></i>
+
+            </div>
+
+
+            <div class="habit">
+
+                <span class="habit-number">
+                    02
+                </span>
+
+                <div>
+
+                    <strong>
+                        Communicate progress
+                    </strong>
+
+                    <p>
+                        Keep mentors or teammates informed about what is moving.
+                    </p>
+
+                </div>
+
+                <i class="fa-solid fa-signal"></i>
+
+            </div>
+
+
+            <div class="habit">
+
+                <span class="habit-number">
+                    03
+                </span>
+
+                <div>
+
+                    <strong>
+                        Respect timelines
+                    </strong>
+
+                    <p>
+                        Plan tasks and take responsibility for agreed work.
+                    </p>
+
+                </div>
+
+                <i class="fa-solid fa-clock"></i>
+
+            </div>
+
+
+            <div class="habit">
+
+                <span class="habit-number">
+                    04
+                </span>
+
+                <div>
+
+                    <strong>
+                        Receive feedback well
+                    </strong>
+
+                    <p>
+                        Use review comments to improve the work instead of defending it.
+                    </p>
+
+                </div>
+
+                <i class="fa-solid fa-arrow-rotate-right"></i>
+
+            </div>
+
+
+            <div class="habit">
+
+                <span class="habit-number">
+                    05
+                </span>
+
+                <div>
+
+                    <strong>
+                        Explain your decisions
+                    </strong>
+
+                    <p>
+                        Demonstrate not only what you built but why you built it that way.
+                    </p>
+
+                </div>
+
+                <i class="fa-solid fa-person-chalkboard"></i>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     APPLICATION
+========================================================= -->
+
+<section
+class="apply-section"
+id="apply">
+
+
+    <div class="container apply-layout">
+
+
+        <div class="apply-copy reveal">
+
+
+            <div class="section-label">
+
+                Application
+
+            </div>
+
+
+            <h2 class="section-title">
+
+                Ready to move from
+
+                <span>
+                    learner to intern?
+                </span>
+
+            </h2>
+
+
+            <p>
+
+                The internship journey starts with understanding
+                your current skills, interests and readiness to
+                contribute to a structured project experience.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="application-ticket reveal">
+
+
+            <div class="ticket-main">
+
+
+                <div class="ticket-small">
+
+                    <span>
+                        TRIVOX / INTERNSHIP ENTRY
+                    </span>
+
+                    <strong>
+                        APPLICATION
+                    </strong>
+
+                </div>
+
+
+                <h3>
+
+                    Your internship journey starts before the first task.
+
+                </h3>
+
+
+                <p>
+
+                    The application process helps identify your current
+                    learning stage and a suitable internship direction.
+
+                </p>
+
+
+                <div class="ticket-steps">
+
+
+                    <div class="ticket-step">
+
+                        <span>01</span>
+
+                        <strong>
+                            Submit interest
+                        </strong>
+
+                    </div>
+
+
+                    <div class="ticket-step">
+
+                        <span>02</span>
+
+                        <strong>
+                            Share learning or project experience
+                        </strong>
+
+                    </div>
+
+
+                    <div class="ticket-step">
+
+                        <span>03</span>
+
+                        <strong>
+                            Review internship fit
+                        </strong>
+
+                    </div>
+
+
+                    <div class="ticket-step">
+
+                        <span>04</span>
+
+                        <strong>
+                            Begin orientation
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="ticket-stub">
+
+
+                <div class="stub-inner">
+
+                    <i class="fa-solid fa-briefcase"></i>
+
+                    <strong>
+                        INTERN ENTRY
+                    </strong>
+
+                    <span>
+                        TRIVOX AI IMPACT
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     FINAL CTA
+========================================================= -->
+
+<section class="final-section">
+
+
+    <div class="container">
+
+
+        <div class="final-poster reveal">
+
+
+            <div class="final-content">
+
+
+                <small>
+                    LEARNING GOT YOU HERE
+                </small>
+
+
+                <h2>
+
+                    Now experience what it feels like to work with your skills.
+
+                </h2>
+
+
+                <p>
+
+                    Explore TRIVOX Internships and move into structured
+                    project work, mentor feedback and practical responsibility.
+
+                </p>
+
+
+                <a
+                href="../contact/contact.html"
+                class="final-button">
+
+                    Explore Internships
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+</main>
+
+
+
+<footer class="footer">
+
+    © 2026 TRIVOX AI IMPACT
+
+    <span>•</span>
+
+    Internships
+
+</footer>
+
+
+
+<script>
+
+/* =========================================================
+   NAVBAR SHADOW
+========================================================= */
+
+const navbar =
+document.getElementById("navbar");
+
+window.addEventListener("scroll", () => {
+
+    navbar.classList.toggle(
+        "scrolled",
+        window.scrollY > 20
+    );
+
+});
+
+
+/* =========================================================
+   MOBILE NAV
+========================================================= */
+
+const menuToggle =
+document.getElementById("menuToggle");
+
+const navMenu =
+document.getElementById("navMenu");
+
+const navItems =
+document.querySelectorAll(".nav-item");
+
+
+menuToggle.addEventListener("click", () => {
+
+    const opened =
+    navMenu.classList.toggle("active");
+
+    menuToggle.classList.toggle(
+        "active",
+        opened
+    );
+
+    menuToggle.setAttribute(
+        "aria-expanded",
+        opened ? "true" : "false"
+    );
+
+});
+
+
+navItems.forEach(item => {
+
+    const link =
+    item.querySelector(":scope > .nav-link");
+
+    const dropdown =
+    item.querySelector(":scope > .dropdown");
+
+
+    if(!link || !dropdown){
+        return;
+    }
+
+
+    link.addEventListener("click", event => {
+
+        if(window.innerWidth > 1050){
+            return;
+        }
+
+
+        event.preventDefault();
+
+
+        navItems.forEach(other => {
+
+            if(other !== item){
+
+                other.classList.remove("open");
+
+            }
+
+        });
+
+
+        item.classList.toggle("open");
+
+    });
+
+});
+
+
+document
+.querySelectorAll(".dropdown a")
+.forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        if(window.innerWidth <= 1050){
+
+            navMenu.classList.remove("active");
+
+            menuToggle.classList.remove("active");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+
+            navItems.forEach(item => {
+
+                item.classList.remove("open");
+
+            });
+
+        }
+
+    });
+
+});
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const revealItems =
+document.querySelectorAll(".reveal");
+
+
+const revealObserver =
+new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+            entry.target.classList.add("show");
+
+            revealObserver.unobserve(
+                entry.target
+            );
+
+        }
+
+    });
+
+},{
+    threshold:.11
+});
+
+
+revealItems.forEach(item => {
+
+    revealObserver.observe(item);
+
+});
+
+
+/* =========================================================
+   ROLE ACCORDION
+========================================================= */
+
+const roleRows =
+document.querySelectorAll(".role-row");
+
+
+roleRows.forEach(row => {
+
+    const trigger =
+    row.querySelector(".role-trigger");
+
+
+    trigger.addEventListener("click", () => {
+
+        const alreadyOpen =
+        row.classList.contains("active");
+
+
+        roleRows.forEach(other => {
+
+            other.classList.remove("active");
+
+        });
+
+
+        if(!alreadyOpen){
+
+            row.classList.add("active");
+
+        }
+
+    });
+
+});
+
+
+/* =========================================================
+   HERO PAPER SMALL MOTION
+========================================================= */
+
+const workPaper =
+document.querySelector(".work-paper");
+
+
+window.addEventListener("mousemove", event => {
+
+    if(
+        window.innerWidth <= 1050 ||
+        !workPaper
+    ){
+        return;
+    }
+
+
+    const x =
+    (event.clientX / window.innerWidth - .5) * 4;
+
+    const y =
+    (event.clientY / window.innerHeight - .5) * 4;
+
+
+    workPaper.style.transform =
+    `rotate(2.5deg) translate(${x}px, ${y}px)`;
+
+});
+
+
+window.addEventListener("mouseleave", () => {
+
+    if(workPaper){
+
+        workPaper.style.transform =
+        "rotate(2.5deg) translate(0,0)";
+
+    }
+
+});
+
+
+/* =========================================================
+   RESIZE CLEANUP
+========================================================= */
+
+window.addEventListener("resize", () => {
+
+    if(window.innerWidth > 1050){
+
+        navMenu.classList.remove("active");
+
+        menuToggle.classList.remove("active");
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+
+        navItems.forEach(item => {
+
+            item.classList.remove("open");
+
+        });
+
+    }
+
+
+    if(
+        window.innerWidth <= 1050 &&
+        workPaper
+    ){
+
+        workPaper.style.transform =
+        "none";
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
