@@ -1,1 +1,2283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Student Projects | TRIVOX AI IMPACT</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:Arial,Helvetica,sans-serif;color:#16161b;background:#fff;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
 
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:Arial,Helvetica,sans-serif;color:#16161b;background:#fff;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+  overflow-x:hidden;
+}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  color:#16161b;
+  background:#fff;
+  overflow-x:hidden;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.navbar{
+  width:100%;
+  height:76px;
+
+  position:fixed;
+  top:0;
+  left:0;
+
+  z-index:9999;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:0 4%;
+
+  background:rgba(255,255,255,.86);
+
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+
+  border-bottom:1px solid rgba(0,0,0,.06);
+}
+
+
+.logo{
+  display:flex;
+  align-items:center;
+
+  white-space:nowrap;
+
+  font-size:23px;
+  font-weight:900;
+
+  letter-spacing:-1px;
+}
+
+
+.logo-main{
+
+  background:
+  linear-gradient(
+    to bottom,
+    #111 0%,
+    #111 50%,
+    #7450e8 50%,
+    #7450e8 100%
+  );
+
+  -webkit-background-clip:text;
+  background-clip:text;
+
+  -webkit-text-fill-color:transparent;
+}
+
+
+.logo-impact{
+
+  margin-left:7px;
+
+  background:
+  linear-gradient(
+    to bottom,
+    #7450e8 0%,
+    #7450e8 50%,
+    #222 50%,
+    #222 100%
+  );
+
+  -webkit-background-clip:text;
+  background-clip:text;
+
+  -webkit-text-fill-color:transparent;
+}
+
+
+.nav-menu{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:3px;
+
+  list-style:none;
+}
+
+
+.nav-item{
+  position:relative;
+}
+
+
+.nav-link{
+
+  padding:28px 10px;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:6px;
+
+  font-size:13.5px;
+
+  font-weight:600;
+
+  color:#37373d;
+
+  cursor:pointer;
+
+  white-space:nowrap;
+
+  transition:.2s;
+}
+
+
+.nav-link:hover{
+  color:#7450e8;
+}
+
+
+.arrow{
+
+  width:6px;
+
+  height:6px;
+
+  border-right:1.5px solid currentColor;
+
+  border-bottom:1.5px solid currentColor;
+
+  transform:
+  rotate(45deg)
+  translateY(-2px);
+
+  transition:.2s;
+}
+
+
+.nav-item:hover .arrow{
+
+  transform:
+  rotate(225deg);
+}
+
+
+/* dropdown */
+
+.dropdown{
+
+  position:absolute;
+
+  top:68px;
+
+  left:0;
+
+  width:245px;
+
+  padding:10px;
+
+  background:#fff;
+
+  border:1px solid #ededf2;
+
+  border-radius:15px;
+
+  box-shadow:
+  0 18px 50px
+  rgba(0,0,0,.10);
+
+  opacity:0;
+
+  visibility:hidden;
+
+  transform:
+  translateY(12px);
+
+  transition:.22s;
+}
+
+
+.nav-item:hover > .dropdown{
+
+  opacity:1;
+
+  visibility:visible;
+
+  transform:
+  translateY(0);
+}
+
+
+.dropdown > a{
+
+  display:block;
+
+  padding:12px 13px;
+
+  border-radius:10px;
+
+  font-size:13.5px;
+
+  color:#444;
+
+  transition:.2s;
+}
+
+
+.dropdown > a:hover{
+
+  background:#f6f3ff;
+
+  color:#7450e8;
+
+  padding-left:17px;
+}
+
+
+.mega-dropdown{
+
+  width:620px;
+
+  display:grid;
+
+  grid-template-columns:
+  repeat(2,1fr);
+
+  gap:7px;
+
+  padding:15px;
+}
+
+
+.mega-box{
+
+  padding:14px;
+
+  border-radius:12px;
+}
+
+
+.mega-box:hover{
+  background:#f7f5ff;
+}
+
+
+.mega-box strong{
+
+  display:block;
+
+  margin-bottom:5px;
+
+  font-size:14px;
+}
+
+
+.mega-box p{
+
+  color:#777;
+
+  font-size:12px;
+
+  line-height:1.5;
+}
+
+
+/* nav actions */
+
+.nav-actions{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+}
+
+
+.login-btn{
+
+  padding:10px 14px;
+
+  font-size:13.5px;
+
+  font-weight:600;
+
+  border-radius:9px;
+
+  border:none;
+
+  background:transparent;
+
+  cursor:pointer;
+}
+
+
+.get-started{
+
+  padding:11px 17px;
+
+  background:#111;
+
+  color:#fff;
+
+  border-radius:10px;
+
+  font-size:13.5px;
+
+  font-weight:700;
+}
+
+
+.signin-dropdown-wrap{
+  position:relative;
+}
+
+
+.signin-main-btn{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:7px;
+}
+
+
+.signin-dropdown{
+
+  position:absolute;
+
+  right:0;
+
+  top:52px;
+
+  width:230px;
+
+  padding:9px;
+
+  background:#fff;
+
+  border:1px solid #ededf2;
+
+  border-radius:14px;
+
+  box-shadow:
+  0 18px 50px
+  rgba(0,0,0,.10);
+
+  opacity:0;
+
+  visibility:hidden;
+
+  transform:
+  translateY(10px);
+
+  transition:.2s;
+}
+
+
+.signin-dropdown-wrap:hover
+.signin-dropdown{
+
+  opacity:1;
+
+  visibility:visible;
+
+  transform:
+  translateY(0);
+}
+
+
+.signin-dropdown a{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:11px;
+
+  padding:12px;
+
+  border-radius:10px;
+}
+
+
+.signin-dropdown a:hover{
+  background:#f6f3ff;
+}
+
+
+.signin-dropdown i{
+  color:#7450e8;
+}
+
+
+.signin-dropdown strong{
+
+  display:block;
+
+  font-size:13px;
+}
+
+
+.signin-dropdown span{
+
+  display:block;
+
+  margin-top:3px;
+
+  font-size:10.5px;
+
+  color:#888;
+}
+
+
+.menu-toggle{
+
+  display:none;
+
+  width:42px;
+
+  height:42px;
+
+  border:0;
+
+  background:#f3f3f5;
+
+  border-radius:10px;
+
+  align-items:center;
+
+  justify-content:center;
+
+  flex-direction:column;
+
+  gap:4px;
+
+  cursor:pointer;
+}
+
+
+.menu-toggle span{
+
+  width:20px;
+
+  height:2px;
+
+  background:#111;
+}
+
+
+
+
+
+
+/* =========================================================
+   STUDENT PROJECTS — PREMIUM EDITORIAL EXPERIENCE
+========================================================= */
+:root{
+  --purple:#7450e8;
+  --purple-soft:#a994ff;
+  --ink:#111016;
+  --muted:#74717c;
+  --lavender:#f5f2ff;
+}
+
+.projects-hero{
+  min-height:100svh;
+  padding:132px 6% 72px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  background:#f8f7fb;
+}
+.projects-hero::before{
+  content:"";
+  position:absolute;
+  width:680px;height:680px;
+  right:-190px;top:-220px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(116,80,232,.17),rgba(116,80,232,0) 68%);
+}
+.projects-hero-inner{
+  width:100%;max-width:1280px;margin:auto;
+  display:grid;grid-template-columns:.92fr 1.08fr;
+  gap:65px;align-items:center;position:relative;z-index:2;
+}
+.hero-kicker{
+  display:flex;align-items:center;gap:11px;
+  color:var(--purple);font-size:9px;font-weight:900;letter-spacing:1.5px;
+}
+.hero-kicker::before{content:"";width:31px;height:1px;background:var(--purple)}
+.projects-hero h1{
+  margin-top:20px;
+  font-size:clamp(56px,6.2vw,88px);
+  line-height:.9;letter-spacing:-5px;font-weight:900;color:var(--ink);
+}
+.projects-hero h1 .outline{
+  display:block;color:transparent;
+  -webkit-text-stroke:1.6px var(--purple);
+}
+.projects-hero h1 .purple{display:block;color:var(--purple)}
+.hero-description{
+  max-width:535px;margin-top:26px;
+  color:#6f6c77;font-size:13px;line-height:1.8;
+}
+.hero-foot{
+  margin-top:31px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;
+}
+.explore-projects{
+  min-height:48px;padding:0 19px;display:inline-flex;align-items:center;gap:10px;
+  border-radius:11px;background:var(--ink);color:#fff;font-size:9px;font-weight:900;
+}
+.hero-foot-note{font-size:9px;color:#8b8792;font-weight:800;letter-spacing:.4px}
+
+/* HERO PROJECT BOARD */
+.project-board{height:540px;position:relative;}
+.board-main{
+  width:72%;height:72%;position:absolute;right:3%;top:8%;
+  border-radius:26px;overflow:hidden;background:#17151d;
+  box-shadow:0 35px 80px rgba(34,25,67,.18);
+}
+.board-main img{width:100%;height:100%;object-fit:cover;display:block}
+.board-main::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(10,8,15,.02),rgba(12,9,18,.78));
+}
+.board-caption{position:absolute;left:27px;right:27px;bottom:25px;z-index:2;color:#fff}
+.board-caption small{font-size:8px;font-weight:900;letter-spacing:1.2px;color:#c4b6ff}
+.board-caption strong{display:block;margin-top:7px;font-size:24px;letter-spacing:-1px}
+.board-caption p{max-width:330px;margin-top:7px;font-size:9px;line-height:1.55;color:#d3cedb}
+
+.board-mini{
+  width:42%;height:35%;position:absolute;left:0;bottom:4%;
+  border-radius:20px;overflow:hidden;border:7px solid #f8f7fb;
+  box-shadow:0 20px 55px rgba(39,28,78,.14);z-index:3;
+}
+.board-mini img{width:100%;height:100%;object-fit:cover}
+.board-label{
+  position:absolute;left:5%;top:4%;z-index:4;
+  padding:11px 13px;border-radius:12px;background:#fff;
+  box-shadow:0 12px 35px rgba(31,23,58,.1);
+}
+.board-label span{display:block;color:var(--purple);font-size:7px;font-weight:900;letter-spacing:1px}
+.board-label strong{display:block;margin-top:4px;font-size:13px}
+.board-orbit{
+  position:absolute;width:105px;height:105px;right:0;bottom:1%;
+  border:1px solid rgba(116,80,232,.25);border-radius:50%;
+  animation:spin 12s linear infinite;
+}
+.board-orbit::before,.board-orbit::after{
+  content:"";position:absolute;border-radius:50%;background:var(--purple)
+}
+.board-orbit::before{width:8px;height:8px;left:8px;top:14px}
+.board-orbit::after{width:5px;height:5px;right:8px;bottom:19px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* CATEGORY RAIL */
+.category-rail{background:var(--ink);color:#fff;overflow:hidden;padding:18px 0}
+.category-track{display:flex;width:max-content;gap:38px;animation:rail 24s linear infinite}
+.category-track span{white-space:nowrap;font-size:9px;font-weight:900;letter-spacing:1.3px}
+.category-track b{color:#8f73f5;font-size:12px}
+@keyframes rail{to{transform:translateX(-50%)}}
+
+/* PROJECT INDEX */
+.project-index{padding:110px 6%;background:#fff}
+.project-index-wrap{max-width:1240px;margin:auto}
+.index-head{
+  display:grid;grid-template-columns:1fr .55fr;gap:60px;align-items:end;margin-bottom:55px
+}
+.index-head small,.process-title small,.lab-head small{
+  color:var(--purple);font-size:9px;font-weight:900;letter-spacing:1.4px
+}
+.index-head h2,.process-title h2,.lab-head h2{
+  margin-top:12px;font-size:clamp(44px,5vw,70px);line-height:.92;letter-spacing:-4px
+}
+.index-head p{font-size:12px;color:var(--muted);line-height:1.75}
+
+/* editorial project rows */
+.project-row{
+  display:grid;grid-template-columns:90px .78fr 1fr;
+  gap:30px;align-items:center;padding:26px 0;border-top:1px solid #e7e3ed;
+  transition:.3s;
+}
+.project-row:last-child{border-bottom:1px solid #e7e3ed}
+.project-row:hover{padding-left:12px}
+.project-number{font-size:10px;color:var(--purple);font-weight:900}
+.project-thumb{height:210px;border-radius:18px;overflow:hidden}
+.project-thumb img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.project-row:hover .project-thumb img{transform:scale(1.045)}
+.project-copy .tag{font-size:8px;color:var(--purple);font-weight:900;letter-spacing:1px}
+.project-copy h3{margin-top:8px;font-size:30px;letter-spacing:-1.2px}
+.project-copy p{max-width:440px;margin-top:9px;font-size:10px;line-height:1.65;color:#77737e}
+.project-tech{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px}
+.project-tech span{padding:6px 8px;border-radius:50px;background:#f3f0fb;font-size:7px;font-weight:800;color:#625d6c}
+
+
+
+/* =========================================================
+   CLEAN STUDENT PROJECT FLOW — SIMPLE, PREMIUM, READABLE
+========================================================= */
+.project-process{
+  padding:110px 6% 115px;
+  background:#ffffff;
+  overflow:hidden;
+  position:relative;
+}
+.process-wrap{
+  max-width:1240px;
+  margin:auto;
+}
+.process-title{
+  max-width:760px;
+}
+.process-title small{
+  color:#7450e8;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:1.4px;
+}
+.process-title h2{
+  margin-top:12px;
+  font-size:clamp(44px,5vw,68px);
+  line-height:.94;
+  letter-spacing:-4px;
+  color:#17151d;
+}
+.process-intro{
+  max-width:560px;
+  margin-top:16px;
+  color:#76727e;
+  font-size:12px;
+  line-height:1.75;
+}
+
+.clean-flow{
+  position:relative;
+  margin-top:70px;
+  padding:25px 0 10px;
+}
+
+.clean-flow-line{
+  position:absolute;
+  left:7%;
+  right:7%;
+  top:74px;
+  height:2px;
+  background:#e5def8;
+}
+.clean-flow-line::after{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  height:2px;
+  width:28%;
+  background:#7450e8;
+  animation:progressLine 6s ease-in-out infinite;
+}
+@keyframes progressLine{
+  0%{width:0}
+  25%{width:32%}
+  50%{width:64%}
+  75%{width:100%}
+  100%{width:100%}
+}
+
+.clean-flow-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:28px;
+  position:relative;
+  z-index:2;
+}
+
+.clean-step{
+  position:relative;
+  padding-top:0;
+  text-align:left;
+}
+.clean-step-top{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-height:62px;
+}
+.clean-step-dot{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#ffffff;
+  border:2px solid #7450e8;
+  color:#7450e8;
+  font-size:10px;
+  font-weight:900;
+  box-shadow:0 0 0 8px #f4f1ff;
+  flex-shrink:0;
+}
+.clean-step-label{
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:1px;
+  color:#8a8494;
+}
+.clean-step-card{
+  margin-top:20px;
+  min-height:205px;
+  padding:24px 22px;
+  border-radius:18px;
+  background:#faf9fd;
+  border:1px solid #eeeaf6;
+  transition:.3s ease;
+}
+.clean-step:hover .clean-step-card{
+  transform:translateY(-5px);
+  border-color:#d8cff4;
+  box-shadow:0 16px 36px rgba(66,48,119,.08);
+}
+.clean-step-card h3{
+  font-size:21px;
+  line-height:1.08;
+  letter-spacing:-.6px;
+  color:#17151d;
+}
+.clean-step-card p{
+  margin-top:10px;
+  font-size:10px;
+  line-height:1.65;
+  color:#77737e;
+}
+.clean-step-meta{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+  margin-top:16px;
+}
+.clean-step-meta span{
+  padding:6px 8px;
+  border-radius:999px;
+  background:#eee9ff;
+  color:#6755a7;
+  font-size:7px;
+  font-weight:900;
+  letter-spacing:.35px;
+}
+
+.clean-flow-note{
+  margin-top:42px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+  padding-top:24px;
+  border-top:1px solid #ece8f2;
+}
+.clean-flow-note strong{
+  font-size:13px;
+  color:#17151d;
+}
+.clean-flow-note span{
+  font-size:9px;
+  font-weight:900;
+  color:#7450e8;
+  letter-spacing:.6px;
+}
+
+@media(max-width:700px){
+  .project-process{
+    padding:74px 16px 78px;
+  }
+  .process-title h2{
+    font-size:clamp(40px,11vw,52px);
+    letter-spacing:-2.7px;
+  }
+  .process-intro{
+    font-size:11px;
+  }
+  .clean-flow{
+    margin-top:48px;
+    padding-left:18px;
+  }
+  .clean-flow-line{
+    left:37px;
+    right:auto;
+    top:24px;
+    bottom:24px;
+    width:2px;
+    height:auto;
+    background:#e5def8;
+  }
+  .clean-flow-line::after{
+    top:0;
+    left:0;
+    width:2px;
+    height:28%;
+    animation:progressLineMobile 6s ease-in-out infinite;
+  }
+  @keyframes progressLineMobile{
+    0%{height:0}
+    25%{height:32%}
+    50%{height:64%}
+    75%{height:100%}
+    100%{height:100%}
+  }
+  .clean-flow-grid{
+    grid-template-columns:1fr;
+    gap:28px;
+  }
+  .clean-step{
+    padding-left:58px;
+  }
+  .clean-step-top{
+    position:absolute;
+    left:0;
+    top:0;
+    min-height:auto;
+  }
+  .clean-step-label{
+    position:absolute;
+    left:58px;
+    top:12px;
+    white-space:nowrap;
+  }
+  .clean-step-card{
+    margin-top:0;
+    min-height:auto;
+    padding:20px;
+  }
+  .clean-step-card h3{
+    font-size:19px;
+  }
+  .clean-step-card p{
+    font-size:9px;
+  }
+  .clean-flow-note{
+    display:block;
+    margin-top:34px;
+  }
+  .clean-flow-note span{
+    display:block;
+    margin-top:8px;
+  }
+}
+
+/* PROJECT LAB */
+.project-lab{padding:110px 6%;background:#15131c;color:#fff}
+.lab-wrap{max-width:1240px;margin:auto}
+.lab-head{display:grid;grid-template-columns:1fr .6fr;gap:60px;align-items:end}
+.lab-head p{font-size:12px;line-height:1.75;color:#aaa5b2}
+.lab-grid{
+  display:grid;grid-template-columns:1.1fr .9fr .9fr;
+  gap:12px;margin-top:45px;height:460px
+}
+.lab-card{position:relative;overflow:hidden;border-radius:18px;background:#222}
+.lab-card img{width:100%;height:100%;object-fit:cover;transition:.6s}
+.lab-card:hover img{transform:scale(1.05)}
+.lab-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(8,7,11,.8))}
+.lab-card-content{position:absolute;left:20px;right:20px;bottom:19px;z-index:2}
+.lab-card-content span{font-size:7px;font-weight:900;color:#b6a4ff;letter-spacing:1px}
+.lab-card-content strong{display:block;font-size:18px;margin-top:5px}
+.lab-column{display:grid;grid-template-rows:1fr 1fr;gap:12px}
+
+/* FINAL STATEMENT */
+.projects-final{padding:95px 6%;background:#fff}
+.final-wrap{
+  max-width:1240px;margin:auto;display:grid;grid-template-columns:1fr 1fr;
+  gap:70px;align-items:center
+}
+.final-wrap h2{font-size:clamp(45px,5vw,72px);line-height:.91;letter-spacing:-4px}
+.final-wrap h2 span{color:var(--purple)}
+.final-side{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #ddd8e7}
+.final-stat{padding-top:20px}
+.final-stat strong{display:block;font-size:27px;color:var(--purple)}
+.final-stat span{display:block;margin-top:6px;font-size:8px;font-weight:900;color:#797580}
+
+/* NAV MOBILE - same behavior, no redesign */
+@media(max-width:1000px){
+  .menu-toggle{display:flex}.login-btn,.get-started{display:none}
+  .nav-menu{
+    position:absolute;top:70px;left:0;width:100%;max-height:calc(100vh - 70px);
+    overflow:auto;display:flex;flex-direction:column;align-items:stretch;padding:12px 14px 18px;
+    background:#fff;transform:translateY(-120%);opacity:0;pointer-events:none;transition:.3s
+  }
+  .nav-menu.active{transform:translateY(0);opacity:1;pointer-events:auto}
+  .nav-item{width:100%}.nav-link{width:100%;padding:15px 13px;justify-content:space-between}
+  .dropdown{position:static;width:100%;max-height:0;overflow:hidden;padding:0 8px;opacity:1;visibility:visible;transform:none;background:#fafafa;box-shadow:none;border:none}
+  .nav-item.open>.dropdown{max-height:1000px;padding:8px}.mega-dropdown{display:block}
+}
+
+@media(max-width:700px){
+  .navbar{height:68px;padding:0 14px}.logo{font-size:16px}
+  .projects-hero{padding:105px 16px 58px;min-height:auto}
+  .projects-hero-inner{grid-template-columns:1fr;gap:35px}
+  .projects-hero h1{font-size:clamp(48px,14vw,66px);letter-spacing:-3.5px}
+  .hero-description{font-size:12px}
+  .project-board{height:390px}
+  .board-main{width:82%;height:72%;right:0}
+  .board-mini{width:52%;height:37%;bottom:1%}
+  .board-caption{left:17px;bottom:16px}.board-caption strong{font-size:18px}
+  .board-caption p{font-size:8px}
+  .board-label{left:0;top:0}
+  .board-orbit{width:75px;height:75px}
+
+  .project-index,.project-process,.project-lab,.projects-final{padding:72px 16px}
+  .index-head,.lab-head,.final-wrap{grid-template-columns:1fr;gap:20px}
+  .index-head{margin-bottom:35px}
+  .index-head h2,.process-title h2,.lab-head h2,.final-wrap h2{
+    font-size:clamp(40px,11vw,52px);letter-spacing:-2.7px
+  }
+  .project-row{grid-template-columns:38px 105px 1fr;gap:10px;padding:18px 0}
+  .project-thumb{height:120px;border-radius:12px}
+  .project-copy h3{font-size:17px;letter-spacing:-.6px}
+  .project-copy p{font-size:8px;line-height:1.45}
+  .project-tech{display:none}
+
+  /* mobile keeps a real flowing chart; swipe horizontally */
+  .process-path{
+    width:860px;height:390px;margin-top:45px
+  }
+  .process-wrap{overflow-x:auto;scrollbar-width:none}
+  .process-wrap::-webkit-scrollbar{display:none}
+  .process-point{width:175px;padding:15px}
+  .process-point h3{font-size:16px}.process-point p{font-size:8px}
+  .p1{left:10px;top:210px}.p2{left:225px;top:40px}.p3{left:440px;top:200px}.p4{left:655px;top:30px}
+
+  .lab-grid{height:auto;grid-template-columns:1fr;gap:10px}
+  .lab-card{min-height:280px}
+  .lab-column{grid-template-columns:1fr 1fr;grid-template-rows:1fr}
+  .lab-column .lab-card{min-height:180px}
+  .final-side{margin-top:15px}
+}
+
+
+/* SCREENSHOT-INSPIRED FINAL SECTION */
+.projects-blocks-end{
+  min-height:620px;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  background:#fff;
+  padding:90px 20px;
+}
+.blocks-glow{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:760px;
+  height:500px;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 28% 58%,rgba(246,144,202,.68) 0%,rgba(246,144,202,.32) 22%,transparent 48%),
+    radial-gradient(circle at 50% 48%,rgba(103,105,232,.68) 0%,rgba(103,105,232,.35) 25%,transparent 52%),
+    radial-gradient(circle at 74% 50%,rgba(91,226,235,.72) 0%,rgba(91,226,235,.31) 24%,transparent 51%);
+  filter:blur(34px);
+  opacity:.9;
+  pointer-events:none;
+}
+.blocks-end-content{
+  position:relative;
+  z-index:2;
+  width:100%;
+  max-width:760px;
+}
+.blocks-brand{
+  color:#24156f;
+  font-size:25px;
+  line-height:1;
+  font-weight:900;
+  letter-spacing:-.8px;
+}
+.projects-blocks-end h2{
+  margin-top:38px;
+  color:#251270;
+  font-size:clamp(74px,9vw,118px);
+  line-height:.9;
+  letter-spacing:-6px;
+  font-weight:900;
+}
+.projects-blocks-end p{
+  margin-top:38px;
+  color:rgba(58,43,133,.52);
+  font-size:clamp(20px,2.3vw,31px);
+  line-height:1.25;
+  font-weight:700;
+  letter-spacing:-.8px;
+}
+
+@media(max-width:700px){
+  .projects-blocks-end{
+    min-height:520px;
+    padding:70px 18px;
+  }
+  .blocks-glow{
+    width:520px;
+    height:390px;
+    filter:blur(30px);
+  }
+  .blocks-brand{
+    font-size:18px;
+  }
+  .projects-blocks-end h2{
+    margin-top:30px;
+    font-size:clamp(62px,20vw,88px);
+    letter-spacing:-4px;
+  }
+  .projects-blocks-end p{
+    margin-top:30px;
+    font-size:19px;
+    line-height:1.3;
+  }
+}
+
+
+/* FINAL SECTION — PURPLE ONLY + CHANGING TEXT */
+.projects-blocks-end{
+  background:#f7f4ff !important;
+}
+.blocks-glow{
+  width:780px !important;
+  height:500px !important;
+  background:
+    radial-gradient(circle at 50% 50%,
+      rgba(116,80,232,.58) 0%,
+      rgba(116,80,232,.34) 27%,
+      rgba(116,80,232,.15) 48%,
+      rgba(116,80,232,0) 72%) !important;
+  filter:blur(30px) !important;
+  opacity:1 !important;
+}
+.blocks-brand{
+  color:#7450e8 !important;
+}
+.projects-blocks-end h2{
+  color:#3d258e !important;
+}
+.projects-blocks-end p{
+  color:rgba(61,37,142,.58) !important;
+}
+
+.project-end-changing{
+  position:relative;
+  display:block;
+  height:1.22em;
+  overflow:hidden;
+}
+.project-end-word{
+  position:absolute;
+  left:0;right:0;top:0;
+  opacity:0;
+  transform:translateY(75%);
+  transition:opacity .38s ease,transform .38s ease;
+}
+.project-end-word.active{
+  opacity:1;
+  transform:translateY(0);
+}
+.project-end-word.exit{
+  opacity:0;
+  transform:translateY(-75%);
+}
+
+@media(max-width:700px){
+  .blocks-glow{
+    width:520px !important;
+    height:390px !important;
+  }
+}
+
+
+/* =========================================================
+   ALL SECTION TITLES — FIXED FIRST LINE + CHANGING SECOND LINE
+========================================================= */
+.animated-section-title .title-fixed{
+  display:block;
+}
+.animated-section-title .title-changing{
+  display:block;
+  position:relative;
+  height:1.08em;
+  overflow:hidden;
+}
+.animated-section-title .title-word{
+  position:absolute;
+  left:0;
+  top:0;
+  width:100%;
+  opacity:0;
+  transform:translateY(78%);
+  transition:
+    opacity .38s ease,
+    transform .38s cubic-bezier(.22,.8,.3,1);
+}
+.animated-section-title .title-word.active{
+  opacity:1;
+  transform:translateY(0);
+}
+.animated-section-title .title-word.exit{
+  opacity:0;
+  transform:translateY(-78%);
+}
+
+/* Hero title colors */
+.hero-animated-title .title-fixed{
+  color:#17151d;
+}
+.hero-animated-title .title-word{
+  color:#7450e8;
+}
+
+/* White/light sections */
+.index-head .animated-section-title .title-fixed,
+.process-title .animated-section-title .title-fixed{
+  color:#17151d;
+}
+.index-head .animated-section-title .title-word,
+.process-title .animated-section-title .title-word{
+  color:#7450e8;
+}
+
+/* Dark Project Lab */
+.lab-head .animated-section-title .title-fixed{
+  color:#ffffff;
+}
+.lab-head .animated-section-title .title-word{
+  color:#a994ff;
+}
+
+/* Final purple section */
+.projects-blocks-end .final-animated-title{
+  font-size:clamp(58px,7vw,92px) !important;
+  line-height:.94 !important;
+}
+.projects-blocks-end .final-animated-title .title-fixed{
+  color:#3d258e;
+}
+.projects-blocks-end .final-animated-title .title-word{
+  color:#7450e8;
+  font-size:.48em;
+  letter-spacing:-2px;
+  padding-top:12px;
+}
+
+@media(max-width:700px){
+  .animated-section-title .title-changing{
+    height:1.12em;
+  }
+  .projects-blocks-end .final-animated-title{
+    font-size:clamp(52px,16vw,76px) !important;
+  }
+  .projects-blocks-end .final-animated-title .title-word{
+    font-size:.43em;
+    letter-spacing:-1px;
+    padding-top:9px;
+  }
+}
+
+
+/* =========================================================
+   SECTION-BY-SECTION REVEAL
+   Each main section enters only when it comes into view.
+========================================================= */
+.projects-hero,
+.project-index,
+.project-process,
+.project-lab,
+.projects-blocks-end{
+  opacity:0;
+  transform:translateY(46px);
+  transition:
+    opacity .8s ease,
+    transform .8s cubic-bezier(.22,.8,.3,1);
+  will-change:opacity,transform;
+}
+
+.projects-hero.section-visible,
+.project-index.section-visible,
+.project-process.section-visible,
+.project-lab.section-visible,
+.projects-blocks-end.section-visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* Keep the thin moving category strip visible naturally between sections */
+.category-rail{
+  opacity:1 !important;
+  transform:none !important;
+}
+
+/* Make every section clearly separated */
+.projects-hero,
+.project-index,
+.project-process,
+.project-lab,
+.projects-blocks-end{
+  position:relative;
+  isolation:isolate;
+}
+
+/* Slight delay for inner content, giving a neat one-after-another feel */
+.projects-hero.section-visible > *,
+.project-index.section-visible > *,
+.project-process.section-visible > *,
+.project-lab.section-visible > *,
+.projects-blocks-end.section-visible > *{
+  animation:sectionInnerIn .8s .08s both;
+}
+
+@keyframes sectionInnerIn{
+  from{
+    opacity:0;
+    transform:translateY(18px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@media(max-width:700px){
+  .projects-hero,
+  .project-index,
+  .project-process,
+  .project-lab,
+  .projects-blocks-end{
+    transform:translateY(30px);
+    transition-duration:.7s;
+  }
+}
+
+/* Accessibility */
+@media(prefers-reduced-motion:reduce){
+  .projects-hero,
+  .project-index,
+  .project-process,
+  .project-lab,
+  .projects-blocks-end{
+    opacity:1 !important;
+    transform:none !important;
+    transition:none !important;
+  }
+  .projects-hero.section-visible > *,
+  .project-index.section-visible > *,
+  .project-process.section-visible > *,
+  .project-lab.section-visible > *,
+  .projects-blocks-end.section-visible > *{
+    animation:none !important;
+  }
+}
+
+
+/* =========================================================
+   LAST SECTION — PROJECT PARTICLE SHOWER
+========================================================= */
+.project-particle-shower{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+  z-index:1;
+}
+
+.project-particle{
+  position:absolute;
+  top:-70px;
+  left:var(--x);
+  color:rgba(116,80,232,var(--opacity));
+  font-size:var(--size);
+  font-weight:900;
+  line-height:1;
+  white-space:nowrap;
+  user-select:none;
+  text-shadow:0 6px 18px rgba(116,80,232,.10);
+  animation:projectParticleFall var(--duration) linear var(--delay) infinite;
+  transform:translate3d(0,-80px,0) rotate(var(--rotate));
+}
+
+.project-particle.dot{
+  width:var(--size);
+  height:var(--size);
+  border-radius:50%;
+  background:rgba(116,80,232,var(--opacity));
+  color:transparent;
+}
+
+.project-particle.square{
+  width:var(--size);
+  height:var(--size);
+  border:1.5px solid rgba(116,80,232,var(--opacity));
+  border-radius:4px;
+  color:transparent;
+}
+
+@keyframes projectParticleFall{
+  0%{
+    transform:translate3d(0,-90px,0) rotate(var(--rotate));
+    opacity:0;
+  }
+  8%{
+    opacity:1;
+  }
+  88%{
+    opacity:1;
+  }
+  100%{
+    transform:translate3d(var(--drift),720px,0) rotate(calc(var(--rotate) + 210deg));
+    opacity:0;
+  }
+}
+
+/* keep the main final-section content above the shower */
+.projects-blocks-end .blocks-glow{
+  z-index:0;
+}
+.projects-blocks-end .blocks-end-content{
+  z-index:3;
+}
+
+/* softer on mobile so it does not disturb the text */
+@media(max-width:700px){
+  .project-particle:nth-child(n+19){
+    display:none;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .project-particle{
+    animation:none !important;
+    display:none;
+  }
+}
+
+</style>
+</head>
+<body>
+<nav class="navbar">
+
+  <a href="index.html" class="logo">
+
+    <span class="logo-main">
+      TRIVOX
+    </span>
+
+    <span class="logo-impact">
+      AI IMPACT
+    </span>
+
+  </a>
+
+
+  <ul class="nav-menu" id="navMenu">
+
+
+    <li class="nav-item has-dropdown">
+
+      <a href="#" class="nav-link">
+
+        Company
+
+        <span class="arrow"></span>
+
+      </a>
+
+      <div class="dropdown">
+
+        <a href="about.html">About TRIVOX</a>
+
+        <a href="mission.html">Our Mission</a>
+
+        <a href="vision.html">Our Vision</a>
+
+        <a href="leadership.html">Leadership</a>
+
+        <a href="team.html">Our Team</a>
+
+        <a href="partners.html">Partners</a>
+
+        <a href="impact.html">Impact</a>
+
+      </div>
+
+    </li>
+
+
+
+    <li class="nav-item has-dropdown">
+
+      <a href="#" class="nav-link">
+
+        Learning
+
+        <span class="arrow"></span>
+
+      </a>
+
+
+      <div class="dropdown mega-dropdown">
+
+        <a
+          href="ai-learning.html"
+          class="mega-box"
+        >
+
+          <strong>
+            AI Learning
+          </strong>
+
+          <p>
+            Understand artificial intelligence
+            and its real-world applications.
+          </p>
+
+        </a>
+
+
+        <a
+          href="programming.html"
+          class="mega-box"
+        >
+
+          <strong>
+            Programming
+          </strong>
+
+          <p>
+            Build strong coding foundations
+            through practical learning.
+          </p>
+
+        </a>
+
+
+        <a
+          href="web-development.html"
+          class="mega-box"
+        >
+
+          <strong>
+            Web Development
+          </strong>
+
+          <p>
+            Learn modern websites
+            and web technologies.
+          </p>
+
+        </a>
+
+
+        <a
+          href="app-development.html"
+          class="mega-box"
+        >
+
+          <strong>
+            App Development
+          </strong>
+
+          <p>
+            Create practical
+            mobile applications.
+          </p>
+
+        </a>
+
+
+        <a
+          href="data-science.html"
+          class="mega-box"
+        >
+
+          <strong>
+            Data Science
+          </strong>
+
+          <p>
+            Learn data analysis
+            and useful insights.
+          </p>
+
+        </a>
+
+
+        <a
+          href="cyber-security.html"
+          class="mega-box"
+        >
+
+          <strong>
+            Cyber Security
+          </strong>
+
+          <p>
+            Explore digital security
+            and responsible technology.
+          </p>
+
+        </a>
+
+      </div>
+
+    </li>
+
+
+
+    <li class="nav-item has-dropdown">
+
+      <a href="#" class="nav-link">
+
+        Programs
+
+        <span class="arrow"></span>
+
+      </a>
+
+      <div class="dropdown">
+
+        <a href="#">
+          Student Programs
+        </a>
+
+        <a href="#">
+          College Programs
+        </a>
+
+        <a href="#">
+          Internships
+        </a>
+
+        <a href="#">
+          Workshops
+        </a>
+
+        <a href="#">
+          Bootcamps
+        </a>
+
+        <a href="#">
+          Career Programs
+        </a>
+
+      </div>
+
+    </li>
+
+
+
+    <li class="nav-item has-dropdown">
+
+      <a href="#" class="nav-link">
+
+        Solutions
+
+        <span class="arrow"></span>
+
+      </a>
+
+      <div class="dropdown mega-dropdown">
+
+        <a href="#" class="mega-box">
+
+          <strong>
+            For Students
+          </strong>
+
+          <p>
+            Learning, projects and
+            career-focused experiences.
+          </p>
+
+        </a>
+
+
+        <a href="#" class="mega-box">
+
+          <strong>
+            For Colleges
+          </strong>
+
+          <p>
+            Programs connecting education
+            with practical skills.
+          </p>
+
+        </a>
+
+
+        <a href="#" class="mega-box">
+
+          <strong>
+            For Schools
+          </strong>
+
+          <p>
+            Early technology
+            and future skills.
+          </p>
+
+        </a>
+
+
+        <a href="#" class="mega-box">
+
+          <strong>
+            For Companies
+          </strong>
+
+          <p>
+            Talent and collaborative
+            learning initiatives.
+          </p>
+
+        </a>
+
+      </div>
+
+    </li>
+
+
+
+    <li class="nav-item has-dropdown">
+
+      <a href="#" class="nav-link">
+
+        Resources
+
+        <span class="arrow"></span>
+
+      </a>
+
+      <div class="dropdown">
+
+        <a href="blogs.html">
+          Blogs
+        </a>
+
+        <a href="tutorials.html">
+          Tutorials
+        </a>
+
+        <a href="learning-resources.html">
+          Learning Resources
+        </a>
+
+        <a href="students-project.html">Student Projects</a>
+
+        <a href="success-stories.html">
+          Success Stories
+        </a>
+
+        <a href="events.html">
+          Events
+        </a>
+
+        <a href="FAQs.html">
+          FAQs
+        </a>
+
+      </div>
+
+    </li>
+
+
+
+    <li class="nav-item has-dropdown">
+
+      <a href="#" class="nav-link">
+
+        Careers
+
+        <span class="arrow"></span>
+
+      </a>
+
+      <div class="dropdown">
+
+        <a href="#">
+          Open Positions
+        </a>
+
+        <a href="#">
+          Internships
+        </a>
+
+        <a href="#">
+          Campus Hiring
+        </a>
+
+        <a href="#">
+          Join Our Team
+        </a>
+
+        <a href="#">
+          Life at TRIVOX
+        </a>
+
+      </div>
+
+    </li>
+
+
+
+    <li class="nav-item">
+
+      <a
+        href="contact.html"
+        class="nav-link"
+      >
+        Contact
+      </a>
+
+    </li>
+
+  </ul>
+
+
+
+  <div class="nav-actions">
+
+
+    <div class="signin-dropdown-wrap">
+
+      <button
+        class="login-btn signin-main-btn"
+      >
+
+        Sign In
+
+        <span class="arrow"></span>
+
+      </button>
+
+
+      <div class="signin-dropdown">
+
+        <a href="#">
+
+          <i class="fa-solid fa-film"></i>
+
+          <div>
+
+            <strong>
+              Documentary
+            </strong>
+
+            <span>
+              Documentary challenge login
+            </span>
+
+          </div>
+
+        </a>
+
+
+        <a href="#">
+
+          <i class="fa-solid fa-graduation-cap"></i>
+
+          <div>
+
+            <strong>
+              Course
+            </strong>
+
+            <span>
+              Learning portal login
+            </span>
+
+          </div>
+
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <a
+      href="#"
+      class="get-started"
+    >
+      Get Started
+    </a>
+
+
+    <button
+      class="menu-toggle"
+      id="menuToggle"
+      aria-label="Open Menu"
+    >
+
+      <span></span>
+      <span></span>
+      <span></span>
+
+    </button>
+
+  </div>
+
+</nav>
+
+<section class="projects-hero">
+  <div class="projects-hero-inner">
+    <div>
+      <div class="hero-kicker">STUDENT PROJECTS / TRIVOX</div>
+      <h1 class="animated-section-title hero-animated-title">
+      <span class="title-fixed">THINK IT.</span>
+      <span class="title-changing">
+        <span class="title-word active">BUILD IT.</span>
+        <span class="title-word">DESIGN IT.</span>
+        <span class="title-word">CREATE IT.</span>
+        <span class="title-word">SHOW IT.</span>
+      </span>
+    </h1>
+      <p class="hero-description">
+        Student Projects is where learning becomes visible. Students move beyond lessons to design, code, test and present practical work they can actually demonstrate.
+      </p>
+      <div class="hero-foot">
+        <a href="#project-index" class="explore-projects">EXPLORE THE WORK <i class="fa-solid fa-arrow-down"></i></a>
+        <span class="hero-foot-note">REAL LEARNING → REAL EXECUTION</span>
+      </div>
+    </div>
+
+    <div class="project-board">
+      <div class="board-label">
+        <span>PROJECT / 001</span>
+        <strong>Built by students</strong>
+      </div>
+      <div class="board-main">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=88" alt="Student digital project">
+        <div class="board-caption">
+          <small>FEATURED BUILD</small>
+          <strong>A working idea is stronger than a written answer.</strong>
+          <p>Students turn concepts into interfaces, prototypes, applications and data-driven solutions.</p>
+        </div>
+      </div>
+      <div class="board-mini">
+        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=700&q=88" alt="Mobile app project">
+      </div>
+      <div class="board-orbit"></div>
+    </div>
+  </div>
+</section>
+
+<div class="category-rail">
+  <div class="category-track">
+    <span>WEB EXPERIENCES</span><b>✦</b><span>MOBILE PRODUCTS</span><b>✦</b><span>AI BUILDS</span><b>✦</b><span>DATA PROJECTS</span><b>✦</b><span>SECURITY PROJECTS</span><b>✦</b>
+    <span>WEB EXPERIENCES</span><b>✦</b><span>MOBILE PRODUCTS</span><b>✦</b><span>AI BUILDS</span><b>✦</b><span>DATA PROJECTS</span><b>✦</b><span>SECURITY PROJECTS</span><b>✦</b>
+  </div>
+</div>
+
+<section class="project-index" id="project-index">
+  <div class="project-index-wrap">
+    <div class="index-head">
+      <div>
+        <small>SELECTED STUDENT WORK</small>
+        <h2 class="animated-section-title">
+      <span class="title-fixed">NOT ASSIGNMENTS.</span>
+      <span class="title-changing">
+        <span class="title-word active">ACTUAL BUILDS.</span>
+        <span class="title-word">REAL PROJECTS.</span>
+        <span class="title-word">VISIBLE SKILLS.</span>
+        <span class="title-word">PRACTICAL WORK.</span>
+      </span>
+    </h2>
+      </div>
+      <p>Each project represents a learning journey — understanding a problem, choosing an approach, building a solution and improving it through practice.</p>
+    </div>
+
+    <article class="project-row">
+      <div class="project-number">01</div>
+      <div class="project-thumb"><img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&w=800&q=86" alt=""></div>
+      <div class="project-copy">
+        <span class="tag">WEB DEVELOPMENT</span>
+        <h3>Responsive Product Experience</h3>
+        <p>A complete interface concept shaped into a responsive, usable web experience.</p>
+        <div class="project-tech"><span>UI</span><span>HTML</span><span>CSS</span><span>JAVASCRIPT</span></div>
+      </div>
+    </article>
+
+    <article class="project-row">
+      <div class="project-number">02</div>
+      <div class="project-thumb"><img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=800&q=86" alt=""></div>
+      <div class="project-copy">
+        <span class="tag">APP DEVELOPMENT</span>
+        <h3>Mobile-first Application</h3>
+        <p>Students plan screens, user flows and functionality around a practical mobile use case.</p>
+        <div class="project-tech"><span>MOBILE UI</span><span>APP FLOW</span><span>PROTOTYPE</span></div>
+      </div>
+    </article>
+
+    <article class="project-row">
+      <div class="project-number">03</div>
+      <div class="project-thumb"><img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=800&q=86" alt=""></div>
+      <div class="project-copy">
+        <span class="tag">AI / PROGRAMMING</span>
+        <h3>Intelligent Problem Solver</h3>
+        <p>A programming project focused on logic, experimentation and using technology to create a useful outcome.</p>
+        <div class="project-tech"><span>LOGIC</span><span>CODE</span><span>AI</span><span>TESTING</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+
+
+<section class="project-process">
+  <div class="process-wrap">
+    <div class="process-title">
+      <small>THE BUILD JOURNEY</small>
+      <h2 class="animated-section-title">
+      <span class="title-fixed">FROM IDEA</span>
+      <span class="title-changing">
+        <span class="title-word active">TO REAL OUTCOME.</span>
+        <span class="title-word">TO WORKING PROJECT.</span>
+        <span class="title-word">TO PRACTICAL SKILL.</span>
+        <span class="title-word">TO VISIBLE IMPACT.</span>
+      </span>
+    </h2>
+    </div>
+
+    <p class="process-intro">
+      A simple four-stage journey that shows how students move from understanding a problem to presenting a real project.
+    </p>
+
+    <div class="clean-flow">
+      <div class="clean-flow-line"></div>
+
+      <div class="clean-flow-grid">
+
+        <article class="clean-step">
+          <div class="clean-step-top">
+            <div class="clean-step-dot">01</div>
+            <div class="clean-step-label">DISCOVER</div>
+          </div>
+          <div class="clean-step-card">
+            <h3>Find the problem.</h3>
+            <p>Students begin by observing, asking questions and identifying something meaningful to solve.</p>
+            <div class="clean-step-meta">
+              <span>RESEARCH</span>
+              <span>IDEA</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="clean-step">
+          <div class="clean-step-top">
+            <div class="clean-step-dot">02</div>
+            <div class="clean-step-label">PLAN</div>
+          </div>
+          <div class="clean-step-card">
+            <h3>Shape the solution.</h3>
+            <p>The idea becomes a clear plan with the right features, tools and structure.</p>
+            <div class="clean-step-meta">
+              <span>DESIGN</span>
+              <span>STRUCTURE</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="clean-step">
+          <div class="clean-step-top">
+            <div class="clean-step-dot">03</div>
+            <div class="clean-step-label">BUILD</div>
+          </div>
+          <div class="clean-step-card">
+            <h3>Create and improve.</h3>
+            <p>Students build, test, fix and refine until the project becomes functional and useful.</p>
+            <div class="clean-step-meta">
+              <span>CREATE</span>
+              <span>TEST</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="clean-step">
+          <div class="clean-step-top">
+            <div class="clean-step-dot">04</div>
+            <div class="clean-step-label">PRESENT</div>
+          </div>
+          <div class="clean-step-card">
+            <h3>Show the outcome.</h3>
+            <p>The final project becomes visible proof of practical learning, confidence and execution.</p>
+            <div class="clean-step-meta">
+              <span>DEMO</span>
+              <span>IMPACT</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="clean-flow-note">
+        <strong>One clear journey. No complicated visual noise.</strong>
+        <span>DISCOVER → PLAN → BUILD → PRESENT</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="project-lab">
+  <div class="lab-wrap">
+    <div class="lab-head">
+      <div><small>INSIDE THE PROJECT LAB</small><h2 class="animated-section-title">
+      <span class="title-fixed">LEARNING HAPPENS</span>
+      <span class="title-changing">
+        <span class="title-word active">WHILE BUILDING.</span>
+        <span class="title-word">WHILE TESTING.</span>
+        <span class="title-word">WHILE CREATING.</span>
+        <span class="title-word">WHILE IMPROVING.</span>
+      </span>
+    </h2></div>
+     
+    </div>
+    <div class="lab-grid">
+      <article class="lab-card">
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1100&q=86" alt="">
+        <div class="lab-card-content"><span>COLLABORATE</span><strong>Ideas get stronger together.</strong></div>
+      </article>
+      <div class="lab-column">
+        <article class="lab-card">
+          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=700&q=86" alt="">
+          <div class="lab-card-content"><span>CREATE</span><strong>Build the first version.</strong></div>
+        </article>
+        <article class="lab-card">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=700&q=86" alt="">
+          <div class="lab-card-content"><span>ANALYZE</span><strong>Learn from the result.</strong></div>
+        </article>
+      </div>
+      <div class="lab-column">
+        <article class="lab-card">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=700&q=86" alt="">
+          <div class="lab-card-content"><span>EXPERIMENT</span><strong>Test new possibilities.</strong></div>
+        </article>
+        <article class="lab-card">
+          <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=700&q=86" alt="">
+          <div class="lab-card-content"><span>PRESENT</span><strong>Explain what you built.</strong></div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="projects-blocks-end">
+  <div class="blocks-glow"></div>
+  <div class="project-particle-shower" aria-hidden="true"></div>
+
+  <div class="blocks-end-content">
+    <div class="blocks-brand">TRIVOX AI IMPACT</div>
+
+    <h2>Projects</h2>
+    <p>
+      Start with an idea.<br>
+      <span class="project-end-changing">
+        <span class="project-end-word active">Build it into something real.</span>
+        <span class="project-end-word">Turn learning into action.</span>
+        <span class="project-end-word">Create work you can show.</span>
+        <span class="project-end-word">Make your skills visible.</span>
+      </span>
+    </p>
+  </div>
+</section>
+
+
+
+<script>
+const menuToggle=document.getElementById("menuToggle");
+const navMenu=document.getElementById("navMenu");
+if(menuToggle&&navMenu){
+  menuToggle.addEventListener("click",()=>navMenu.classList.toggle("active"));
+}
+document.querySelectorAll(".nav-item > .nav-link").forEach(link=>{
+  link.addEventListener("click",e=>{
+    if(window.innerWidth<=1000){
+      const item=link.closest(".nav-item");
+      const dropdown=item.querySelector(".dropdown");
+      if(dropdown){e.preventDefault();item.classList.toggle("open");}
+    }
+  });
+});
+</script>
+
+
+
+
+
+<script>
+document.querySelectorAll(".animated-section-title .title-changing").forEach((group,index)=>{
+  const words=Array.from(group.querySelectorAll(".title-word"));
+  if(words.length<2) return;
+
+  let currentIndex=0;
+
+  setInterval(()=>{
+    const current=words[currentIndex];
+
+    current.classList.remove("active");
+    current.classList.add("exit");
+
+    currentIndex=(currentIndex+1)%words.length;
+    const next=words[currentIndex];
+
+    setTimeout(()=>{
+      words.forEach(word=>word.classList.remove("exit"));
+      next.classList.add("active");
+    },320);
+
+  },2200 + (index * 90));
+});
+</script>
+
+
+<script>
+(function(){
+  const words=[...document.querySelectorAll(".project-end-word")];
+  if(words.length<2) return;
+  let i=0;
+
+  setInterval(()=>{
+    const current=words[i];
+    current.classList.remove("active");
+    current.classList.add("exit");
+
+    i=(i+1)%words.length;
+    const next=words[i];
+
+    setTimeout(()=>{
+      words.forEach(w=>w.classList.remove("exit"));
+      next.classList.add("active");
+    },320);
+  },2200);
+})();
+</script>
+
+
+<script>
+(function(){
+  const sections = document.querySelectorAll(
+    ".projects-hero, .project-index, .project-process, .project-lab, .projects-blocks-end"
+  );
+
+  if(!sections.length) return;
+
+  const revealSection = (section)=>{
+    section.classList.add("section-visible");
+  };
+
+  // First section should be visible immediately.
+  revealSection(sections[0]);
+
+  if("IntersectionObserver" in window){
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          revealSection(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    },{
+      threshold:0.18,
+      rootMargin:"0px 0px -8% 0px"
+    });
+
+    sections.forEach((section,index)=>{
+      if(index !== 0) observer.observe(section);
+    });
+  }else{
+    sections.forEach(revealSection);
+  }
+})();
+</script>
+
+
+<script>
+(function(){
+  const shower = document.querySelector(".project-particle-shower");
+  if(!shower) return;
+
+  const symbols = [
+    "</>", "{ }", "AI", "01", "UI", "JS",
+    "◇", "+", "×", "⌘", "↗", "○"
+  ];
+
+  const total = 34;
+
+  for(let i=0;i<total;i++){
+    const p = document.createElement("span");
+
+    const shapeChance = Math.random();
+    if(shapeChance < .16){
+      p.className = "project-particle dot";
+      p.textContent = "";
+    }else if(shapeChance < .30){
+      p.className = "project-particle square";
+      p.textContent = "";
+    }else{
+      p.className = "project-particle";
+      p.textContent = symbols[Math.floor(Math.random()*symbols.length)];
+    }
+
+    const size = 8 + Math.random()*12;
+    const duration = 8 + Math.random()*9;
+    const delay = -(Math.random()*duration);
+    const opacity = (.12 + Math.random()*.25).toFixed(2);
+    const rotate = Math.floor(Math.random()*160 - 80);
+    const drift = Math.floor(Math.random()*120 - 60);
+
+    p.style.setProperty("--x", (Math.random()*100).toFixed(2) + "%");
+    p.style.setProperty("--size", size.toFixed(1) + "px");
+    p.style.setProperty("--duration", duration.toFixed(2) + "s");
+    p.style.setProperty("--delay", delay.toFixed(2) + "s");
+    p.style.setProperty("--opacity", opacity);
+    p.style.setProperty("--rotate", rotate + "deg");
+    p.style.setProperty("--drift", drift + "px");
+
+    shower.appendChild(p);
+  }
+})();
+</script>
+
+</body>
+</html>
