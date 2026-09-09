@@ -1,1 +1,6589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Bootcamps | TRIVOX AI IMPACT</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root{
+    --purple:#7156e8;
+    --purple-dark:#5d43ce;
+    --purple-light:#f1edff;
+    --purple-soft:#faf8ff;
+
+    --black:#111116;
+    --dark:#17171c;
+
+    --text:#19191f;
+    --muted:#6f7078;
+    --soft:#9a9aa3;
+
+    --white:#fff;
+    --surface:#f7f7f9;
+    --border:#e7e7ec;
+
+    --green:#54a773;
+    --orange:#db8d3b;
+
+    --container:1180px;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    font-family:"Inter",sans-serif;
+    background:#fff;
+    color:var(--text);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button{
+    font:inherit;
+    cursor:pointer;
+}
+
+main{
+    padding-top:76px;
+}
+
+.container{
+    width:min(var(--container),86%);
+    margin:auto;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar{
+    width:100%;
+    height:76px;
+
+    position:fixed;
+    left:0;
+    top:0;
+    z-index:9999;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 4%;
+
+    background:rgba(255,255,255,.97);
+
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+
+    border-bottom:1px solid rgba(0,0,0,.06);
+
+    transition:.3s ease;
+}
+
+.navbar.scrolled{
+    box-shadow:0 8px 30px rgba(0,0,0,.06);
+}
+
+
+/* LOGO */
+
+.logo{
+    display:flex;
+    align-items:center;
+
+    flex-shrink:0;
+
+    white-space:nowrap;
+
+    font-size:22px;
+    font-weight:800;
+
+    letter-spacing:-1.1px;
+}
+
+.logo-main{
+    background:linear-gradient(
+        to bottom,
+        #111 0%,
+        #111 50%,
+        var(--purple) 50%,
+        var(--purple) 100%
+    );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+}
+
+.logo-impact{
+    margin-left:7px;
+
+    background:linear-gradient(
+        to bottom,
+        var(--purple) 0%,
+        var(--purple) 50%,
+        #222 50%,
+        #222 100%
+    );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+}
+
+
+/* NAV */
+
+.nav-menu{
+    display:flex;
+    align-items:center;
+    gap:2px;
+    list-style:none;
+}
+
+.nav-item{
+    position:relative;
+}
+
+.nav-link{
+    display:flex;
+    align-items:center;
+    gap:6px;
+
+    padding:28px 10px;
+
+    color:#37373d;
+
+    font-size:13px;
+    font-weight:600;
+
+    white-space:nowrap;
+
+    cursor:pointer;
+
+    transition:.2s ease;
+}
+
+.nav-link:hover,
+.nav-item.active-parent > .nav-link{
+    color:var(--purple);
+}
+
+.arrow{
+    width:6px;
+    height:6px;
+
+    border-right:1.4px solid currentColor;
+    border-bottom:1.4px solid currentColor;
+
+    transform:rotate(45deg) translateY(-2px);
+
+    transition:.25s ease;
+}
+
+.nav-item:hover .arrow{
+    transform:rotate(225deg);
+}
+
+
+/* =========================================================
+   DROPDOWN
+========================================================= */
+
+.dropdown{
+    position:absolute;
+
+    top:68px;
+    left:0;
+
+    width:245px;
+
+    padding:9px;
+
+    background:#fff;
+
+    border:1px solid #ececf0;
+    border-radius:15px;
+
+    box-shadow:0 20px 55px rgba(0,0,0,.10);
+
+    opacity:0;
+    visibility:hidden;
+
+    transform:translateY(14px);
+
+    transition:.23s ease;
+}
+
+.nav-item:hover > .dropdown{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+.dropdown > a{
+    display:block;
+
+    padding:12px 13px;
+
+    border-radius:9px;
+
+    color:#45454c;
+
+    font-size:13px;
+
+    transition:.2s ease;
+}
+
+.dropdown > a:hover{
+    padding-left:17px;
+    color:var(--purple);
+    background:#f6f4ff;
+}
+
+.dropdown > a.active{
+    color:var(--purple);
+    background:#f1edff;
+    font-weight:700;
+}
+
+
+/* MEGA */
+
+.mega-dropdown{
+    width:620px;
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+
+    gap:7px;
+
+    padding:14px;
+}
+
+.mega-box{
+    display:block;
+    padding:14px;
+    border-radius:11px;
+    transition:.2s ease;
+}
+
+.mega-box:hover{
+    background:#f7f5ff;
+    transform:translateX(3px);
+}
+
+.mega-box strong{
+    display:block;
+    margin-bottom:5px;
+    font-size:13px;
+}
+
+.mega-box p{
+    color:#83838b;
+    font-size:11px;
+    line-height:1.5;
+}
+
+
+/* NAV ACTIONS */
+
+.nav-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-shrink:0;
+}
+
+.login-btn{
+    padding:10px 13px;
+    border:0;
+    background:transparent;
+    font-size:13px;
+    font-weight:600;
+}
+
+.get-started{
+    padding:11px 17px;
+    border-radius:9px;
+    background:#111;
+    color:#fff;
+    font-size:13px;
+    font-weight:700;
+    transition:.25s ease;
+}
+
+.get-started:hover{
+    transform:translateY(-2px);
+}
+
+
+/* SIGN IN */
+
+.signin-dropdown-wrap{
+    position:relative;
+}
+
+.signin-main-btn{
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+.signin-dropdown{
+    position:absolute;
+
+    right:0;
+    top:51px;
+
+    width:230px;
+
+    padding:9px;
+
+    background:#fff;
+
+    border:1px solid #ececf0;
+    border-radius:14px;
+
+    box-shadow:0 20px 55px rgba(0,0,0,.10);
+
+    opacity:0;
+    visibility:hidden;
+
+    transform:translateY(12px);
+
+    transition:.23s ease;
+}
+
+.signin-dropdown-wrap:hover .signin-dropdown{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+.signin-dropdown a{
+    display:flex;
+    align-items:center;
+    gap:11px;
+
+    padding:12px;
+
+    border-radius:9px;
+
+    transition:.2s ease;
+}
+
+.signin-dropdown a:hover{
+    background:#f6f4ff;
+}
+
+.signin-dropdown i{
+    color:var(--purple);
+}
+
+.signin-dropdown strong{
+    display:block;
+    font-size:12px;
+}
+
+.signin-dropdown span{
+    display:block;
+    margin-top:3px;
+    color:#8c8c94;
+    font-size:10px;
+}
+
+
+/* MOBILE BUTTON */
+
+.menu-toggle{
+    display:none;
+
+    width:42px;
+    height:42px;
+
+    border:0;
+    border-radius:10px;
+
+    background:#f2f2f4;
+
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+
+    gap:4px;
+}
+
+.menu-toggle span{
+    width:20px;
+    height:2px;
+    background:#111;
+    transition:.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1){
+    transform:translateY(6px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2){
+    opacity:0;
+}
+
+.menu-toggle.active span:nth-child(3){
+    transform:translateY(-6px) rotate(-45deg);
+}
+
+
+/* =========================================================
+   COMMON
+========================================================= */
+
+.section-label{
+    display:flex;
+    align-items:center;
+    gap:9px;
+
+    margin-bottom:15px;
+
+    color:var(--purple);
+
+    font-size:9px;
+    font-weight:800;
+
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+}
+
+.section-label::before{
+    content:"";
+
+    width:20px;
+    height:2px;
+
+    background:var(--purple);
+}
+
+.section-title{
+    max-width:780px;
+
+    font-size:clamp(34px,3.7vw,49px);
+
+    line-height:1.07;
+
+    letter-spacing:-2.4px;
+}
+
+.section-title span{
+    color:var(--purple);
+}
+
+.section-copy{
+    color:var(--muted);
+
+    font-size:12px;
+    line-height:1.8;
+}
+
+.reveal{
+    opacity:0;
+
+    transform:translateY(24px);
+
+    transition:
+        opacity .7s ease,
+        transform .7s cubic-bezier(.2,.7,.2,1);
+}
+
+.reveal.show{
+    opacity:1;
+    transform:none;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    position:relative;
+
+    overflow:hidden;
+
+    background:#111116;
+    color:#fff;
+}
+
+.hero-grid-bg{
+    position:absolute;
+    inset:0;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        );
+
+    background-size:50px 50px;
+}
+
+.hero-layout{
+    min-height:690px;
+
+    position:relative;
+    z-index:2;
+
+    display:grid;
+
+    grid-template-columns:.9fr 1.1fr;
+
+    align-items:center;
+
+    gap:65px;
+
+    padding:70px 0 60px;
+}
+
+.hero-kicker{
+    display:flex;
+    align-items:center;
+
+    gap:9px;
+
+    margin-bottom:20px;
+
+    color:#a995ff;
+
+    font-size:9px;
+    font-weight:800;
+
+    letter-spacing:1.5px;
+}
+
+.hero-kicker span{
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:#a995ff;
+
+    box-shadow:0 0 0 6px rgba(169,149,255,.08);
+
+    animation:kickerPulse 1.8s infinite;
+}
+
+@keyframes kickerPulse{
+    50%{
+        box-shadow:0 0 0 12px rgba(169,149,255,0);
+    }
+}
+
+.hero-copy h1{
+    max-width:640px;
+
+    margin-bottom:22px;
+
+    font-size:clamp(48px,5.4vw,74px);
+
+    line-height:.94;
+
+    letter-spacing:-4.2px;
+}
+
+.hero-copy h1 span{
+    display:block;
+    color:#a995ff;
+}
+
+.hero-copy p{
+    max-width:520px;
+
+    margin-bottom:28px;
+
+    color:#9797a0;
+
+    font-size:13px;
+    line-height:1.8;
+}
+
+.hero-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.hero-btn{
+    min-height:46px;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:8px;
+
+    padding:0 17px;
+
+    border-radius:9px;
+
+    font-size:10px;
+    font-weight:700;
+
+    transition:.3s ease;
+}
+
+.hero-btn.primary{
+    background:#fff;
+    color:#111;
+}
+
+.hero-btn.secondary{
+    border:1px solid #34343b;
+    background:#17171c;
+    color:#fff;
+}
+
+.hero-btn:hover{
+    transform:translateY(-3px);
+}
+
+
+/* =========================================================
+   MISSION CONTROL
+========================================================= */
+
+.mission-control{
+    min-height:510px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    position:relative;
+}
+
+.control-shell{
+    width:100%;
+    max-width:560px;
+
+    overflow:hidden;
+
+    border:1px solid #303037;
+    border-radius:20px;
+
+    background:#17171c;
+
+    box-shadow:0 35px 80px rgba(0,0,0,.28);
+
+    transition:.2s ease;
+}
+
+.control-head{
+    min-height:56px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 18px;
+
+    border-bottom:1px solid #303037;
+}
+
+.control-head strong{
+    font-size:8px;
+}
+
+.control-status{
+    display:flex;
+    align-items:center;
+
+    gap:6px;
+
+    color:#70b587;
+
+    font-size:6px;
+    font-weight:700;
+}
+
+.control-status::before{
+    content:"";
+
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
+    background:#5fb17b;
+}
+
+.control-main{
+    display:grid;
+    grid-template-columns:1fr 190px;
+
+    min-height:350px;
+}
+
+.control-map{
+    position:relative;
+
+    overflow:hidden;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(113,86,232,.2),
+            transparent 45%
+        ),
+        #111116;
+}
+
+.control-map::before{
+    content:"";
+
+    width:280px;
+    height:280px;
+
+    position:absolute;
+
+    border:1px solid rgba(169,149,255,.14);
+    border-radius:50%;
+}
+
+.control-map::after{
+    content:"";
+
+    width:190px;
+    height:190px;
+
+    position:absolute;
+
+    border:1px dashed rgba(169,149,255,.18);
+    border-radius:50%;
+
+    animation:rotateMission 18s linear infinite;
+}
+
+@keyframes rotateMission{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+.mission-core{
+    width:104px;
+    height:104px;
+
+    position:relative;
+    z-index:2;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+
+    border-radius:50%;
+
+    background:#7156e8;
+
+    box-shadow:0 20px 45px rgba(113,86,232,.35);
+}
+
+.mission-core i{
+    margin-bottom:8px;
+    font-size:21px;
+}
+
+.mission-core strong{
+    font-size:8px;
+}
+
+.mission-point{
+    position:absolute;
+    z-index:3;
+
+    padding:7px 9px;
+
+    border:1px solid #34343b;
+    border-radius:8px;
+
+    background:#17171c;
+
+    color:#aaaab2;
+
+    font-size:6px;
+    font-weight:700;
+}
+
+.mp1{left:20px;top:48px;}
+.mp2{right:22px;top:68px;}
+.mp3{left:35px;bottom:55px;}
+.mp4{right:34px;bottom:42px;}
+
+.control-side{
+    padding:16px;
+    border-left:1px solid #303037;
+}
+
+.control-side > small{
+    display:block;
+    margin-bottom:13px;
+    color:#696972;
+    font-size:6px;
+    font-weight:800;
+}
+
+.control-readout{
+    margin-bottom:9px;
+    padding:11px;
+    border:1px solid #303037;
+    border-radius:9px;
+    background:#111116;
+}
+
+.control-readout span{
+    display:block;
+    margin-bottom:5px;
+    color:#66666f;
+    font-size:5px;
+}
+
+.control-readout strong{
+    font-size:8px;
+}
+
+.control-readout .green{
+    color:#6fb584;
+}
+
+.control-progress{
+    margin-top:7px;
+    height:5px;
+    overflow:hidden;
+    border-radius:100px;
+    background:#2b2b31;
+}
+
+.control-progress span{
+    display:block;
+    width:72%;
+    height:100%;
+    background:#7156e8;
+}
+
+.control-footer{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    border-top:1px solid #303037;
+}
+
+.control-footer-item{
+    min-height:70px;
+    padding:13px;
+    border-right:1px solid #303037;
+}
+
+.control-footer-item:last-child{
+    border-right:0;
+}
+
+.control-footer-item span{
+    display:block;
+    margin-bottom:9px;
+    color:#62626b;
+    font-size:5px;
+}
+
+.control-footer-item strong{
+    font-size:7px;
+}
+
+.control-footer-item.active{
+    background:#211d31;
+}
+
+.control-footer-item.active strong{
+    color:#a995ff;
+}
+
+
+/* =========================================================
+   PROMISE
+========================================================= */
+
+.promise-section{
+    padding:105px 0;
+}
+
+.promise-layout{
+    display:grid;
+    grid-template-columns:.38fr 1.62fr;
+    gap:70px;
+}
+
+.promise-index{
+    color:#aaaab2;
+
+    font-size:9px;
+    font-weight:700;
+
+    letter-spacing:1.4px;
+
+    padding-top:8px;
+}
+
+.promise-main h2{
+    max-width:900px;
+
+    margin-bottom:35px;
+
+    font-size:clamp(39px,4.4vw,57px);
+
+    line-height:1.03;
+
+    letter-spacing:-3px;
+}
+
+.promise-main h2 span{
+    color:var(--purple);
+}
+
+.promise-bars{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:7px;
+}
+
+.promise-bar{
+    min-height:170px;
+
+    padding:22px;
+
+    border-top:3px solid var(--purple);
+
+    background:#f7f7f9;
+}
+
+.promise-bar:nth-child(2){
+    border-top-color:#111116;
+}
+
+.promise-bar:nth-child(3){
+    border-top-color:#9b8be4;
+}
+
+.promise-bar:nth-child(4){
+    border-top-color:#5fa677;
+}
+
+.promise-bar span{
+    display:block;
+    margin-bottom:45px;
+    color:#aaaab2;
+    font-size:7px;
+}
+
+.promise-bar strong{
+    display:block;
+    margin-bottom:7px;
+    font-size:12px;
+}
+
+.promise-bar p{
+    color:var(--muted);
+    font-size:8px;
+    line-height:1.65;
+}
+
+
+/* =========================================================
+   COHORT PULSE
+========================================================= */
+
+.pulse-section{
+    padding:105px 0;
+    background:#f7f7f9;
+}
+
+.pulse-head{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+
+    gap:45px;
+
+    margin-bottom:40px;
+}
+
+.pulse-head .section-copy{
+    max-width:380px;
+}
+
+.pulse-shell{
+    display:grid;
+    grid-template-columns:240px 1fr;
+
+    min-height:460px;
+
+    overflow:hidden;
+
+    border:1px solid #dedee4;
+    border-radius:18px;
+
+    background:#fff;
+}
+
+.pulse-legend{
+    padding:22px;
+
+    border-right:1px solid #e6e6eb;
+
+    background:#111116;
+    color:#fff;
+}
+
+.pulse-legend > small{
+    display:block;
+
+    margin-bottom:24px;
+
+    color:#73737c;
+
+    font-size:7px;
+    font-weight:800;
+}
+
+.legend-item{
+    display:flex;
+    align-items:center;
+
+    gap:9px;
+
+    margin-bottom:18px;
+}
+
+.legend-dot{
+    width:10px;
+    height:10px;
+
+    border-radius:50%;
+}
+
+.legend-dot.one{background:#7156e8;}
+.legend-dot.two{background:#a995ff;}
+.legend-dot.three{background:#5ca675;}
+.legend-dot.four{background:#e0a04d;}
+
+.legend-item strong{
+    display:block;
+    margin-bottom:3px;
+    font-size:8px;
+}
+
+.legend-item span{
+    color:#75757e;
+    font-size:6px;
+}
+
+.pulse-map{
+    position:relative;
+
+    min-height:460px;
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(113,86,232,.08),
+            transparent 40%
+        ),
+        #fff;
+}
+
+.pulse-orbit{
+    width:340px;
+    height:340px;
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    border:1px solid #e5e0f7;
+    border-radius:50%;
+
+    transform:translate(-50%,-50%);
+}
+
+.pulse-orbit::before{
+    content:"";
+
+    width:220px;
+    height:220px;
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    border:1px dashed #e3def5;
+    border-radius:50%;
+
+    transform:translate(-50%,-50%);
+}
+
+.pulse-center{
+    width:105px;
+    height:105px;
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    z-index:2;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+
+    border-radius:50%;
+
+    background:#111116;
+    color:#fff;
+
+    transform:translate(-50%,-50%);
+}
+
+.pulse-center i{
+    margin-bottom:8px;
+    color:#a995ff;
+    font-size:20px;
+}
+
+.pulse-center strong{
+    font-size:7px;
+}
+
+.cohort-node{
+    width:48px;
+    height:48px;
+
+    position:absolute;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:4px solid #fff;
+    border-radius:50%;
+
+    color:#fff;
+
+    font-size:7px;
+    font-weight:800;
+
+    box-shadow:0 6px 20px rgba(0,0,0,.08);
+
+    animation:nodeFloat 3s ease-in-out infinite;
+}
+
+@keyframes nodeFloat{
+    50%{
+        transform:translateY(-6px);
+    }
+}
+
+.cn1{left:18%;top:19%;background:#7156e8;}
+.cn2{right:17%;top:20%;background:#a995ff;animation-delay:.5s;}
+.cn3{left:11%;bottom:23%;background:#5ca675;animation-delay:1s;}
+.cn4{right:10%;bottom:22%;background:#e0a04d;animation-delay:1.5s;}
+.cn5{left:43%;top:7%;background:#7156e8;animation-delay:.8s;}
+.cn6{left:43%;bottom:7%;background:#a995ff;animation-delay:1.3s;}
+
+
+/* =========================================================
+   SKILL HEATMAP
+========================================================= */
+
+.heatmap-section{
+    padding:105px 0;
+
+    background:#111116;
+    color:#fff;
+}
+
+.heatmap-head{
+    display:grid;
+    grid-template-columns:1fr .7fr;
+
+    align-items:end;
+
+    gap:55px;
+
+    margin-bottom:42px;
+}
+
+.heatmap-head .section-label{
+    color:#a995ff;
+}
+
+.heatmap-head .section-label::before{
+    background:#a995ff;
+}
+
+.heatmap-head .section-title span{
+    color:#a995ff;
+}
+
+.heatmap-head p{
+    color:#8b8b94;
+    font-size:11px;
+    line-height:1.8;
+}
+
+.heatmap{
+    overflow:hidden;
+
+    border:1px solid #303037;
+    border-radius:18px;
+
+    background:#17171c;
+}
+
+.heatmap-row{
+    display:grid;
+    grid-template-columns:180px repeat(5,1fr);
+
+    min-height:74px;
+
+    border-bottom:1px solid #303037;
+}
+
+.heatmap-row:last-child{
+    border-bottom:0;
+}
+
+.heatmap-cell{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-right:1px solid #303037;
+
+    color:#76767f;
+
+    font-size:7px;
+}
+
+.heatmap-cell:last-child{
+    border-right:0;
+}
+
+.heatmap-label{
+    justify-content:flex-start;
+
+    padding-left:18px;
+
+    color:#c6c6cc;
+
+    font-size:8px;
+    font-weight:700;
+}
+
+.heat-level-1{background:#19191f;}
+.heat-level-2{background:#211d31;color:#9f91dd;}
+.heat-level-3{background:#2e2750;color:#b8a9ff;}
+.heat-level-4{background:#4f3ca4;color:#e0d9ff;}
+.heat-level-5{background:#7156e8;color:#fff;}
+
+
+/* =========================================================
+   SPRINTS
+========================================================= */
+
+.sprint-section{
+    padding:110px 0;
+}
+
+.sprint-head{
+    max-width:760px;
+    margin-bottom:45px;
+}
+
+.sprint-stack{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.sprint-block{
+    min-height:145px;
+
+    display:grid;
+    grid-template-columns:110px 1fr 210px;
+
+    align-items:center;
+
+    gap:25px;
+
+    padding:26px;
+
+    border-radius:16px;
+
+    background:#f7f7f9;
+
+    transition:.3s ease;
+}
+
+.sprint-block:nth-child(2){
+    margin-left:4%;
+}
+
+.sprint-block:nth-child(3){
+    margin-left:8%;
+}
+
+.sprint-block:nth-child(4){
+    margin-left:12%;
+}
+
+.sprint-block:hover{
+    transform:translateX(8px);
+}
+
+.sprint-id{
+    color:#7156e8;
+
+    font-size:9px;
+    font-weight:800;
+}
+
+.sprint-main small{
+    display:block;
+
+    margin-bottom:7px;
+
+    color:#9999a2;
+
+    font-size:7px;
+    font-weight:800;
+}
+
+.sprint-main h3{
+    margin-bottom:6px;
+
+    font-size:18px;
+}
+
+.sprint-main p{
+    color:var(--muted);
+
+    font-size:9px;
+    line-height:1.6;
+}
+
+.sprint-output{
+    justify-self:end;
+
+    padding:13px 15px;
+
+    border:1px solid #e1e1e6;
+    border-radius:10px;
+
+    background:#fff;
+}
+
+.sprint-output span{
+    display:block;
+    margin-bottom:5px;
+    color:#aaaab2;
+    font-size:6px;
+}
+
+.sprint-output strong{
+    font-size:8px;
+}
+
+
+/* =========================================================
+   CHALLENGE ARENA
+========================================================= */
+
+.arena-section{
+    padding:105px 0;
+    background:#f7f7f9;
+}
+
+.arena-layout{
+    display:grid;
+    grid-template-columns:.75fr 1.25fr;
+
+    gap:55px;
+
+    align-items:center;
+}
+
+.arena-copy h2{
+    margin-bottom:18px;
+}
+
+.arena-copy p{
+    max-width:420px;
+}
+
+.arena-stage{
+    min-height:440px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:22px;
+
+    background:#111116;
+    color:#fff;
+}
+
+.arena-stage::before{
+    content:"";
+
+    width:320px;
+    height:320px;
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    border:1px solid #303037;
+    border-radius:50%;
+
+    transform:translate(-50%,-50%);
+}
+
+.arena-stage::after{
+    content:"";
+
+    width:190px;
+    height:190px;
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    border:1px dashed #403957;
+    border-radius:50%;
+
+    transform:translate(-50%,-50%);
+}
+
+.arena-center{
+    width:140px;
+    height:140px;
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+    z-index:3;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+
+    border-radius:50%;
+
+    background:#7156e8;
+
+    transform:translate(-50%,-50%);
+}
+
+.arena-center i{
+    margin-bottom:9px;
+    font-size:25px;
+}
+
+.arena-center strong{
+    font-size:9px;
+}
+
+.arena-task{
+    position:absolute;
+    z-index:3;
+
+    width:150px;
+
+    padding:13px;
+
+    border:1px solid #303037;
+    border-radius:11px;
+
+    background:#17171c;
+}
+
+.arena-task small{
+    display:block;
+
+    margin-bottom:6px;
+
+    color:#a995ff;
+
+    font-size:6px;
+    font-weight:800;
+}
+
+.arena-task strong{
+    display:block;
+
+    margin-bottom:5px;
+
+    font-size:8px;
+}
+
+.arena-task span{
+    color:#76767f;
+    font-size:6px;
+}
+
+.at1{left:22px;top:34px;}
+.at2{right:22px;top:52px;}
+.at3{left:30px;bottom:40px;}
+.at4{right:28px;bottom:32px;}
+
+
+/* =========================================================
+   PEER REVIEW
+========================================================= */
+
+.peer-section{
+    padding:105px 0;
+
+    background:#111116;
+    color:#fff;
+}
+
+.peer-head{
+    max-width:760px;
+    margin-bottom:42px;
+}
+
+.peer-head .section-label{
+    color:#a995ff;
+}
+
+.peer-head .section-label::before{
+    background:#a995ff;
+}
+
+.peer-head .section-title span{
+    color:#a995ff;
+}
+
+.peer-exchange{
+    display:grid;
+
+    grid-template-columns:1fr 90px 1fr;
+
+    align-items:center;
+
+    gap:20px;
+}
+
+.peer-card{
+    min-height:330px;
+
+    padding:26px;
+
+    border:1px solid #303037;
+    border-radius:17px;
+
+    background:#17171c;
+}
+
+.peer-user{
+    display:flex;
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:24px;
+}
+
+.peer-avatar{
+    width:40px;
+    height:40px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:#292930;
+    color:#a995ff;
+
+    font-size:8px;
+}
+
+.peer-user strong{
+    display:block;
+
+    margin-bottom:3px;
+
+    font-size:8px;
+}
+
+.peer-user span{
+    color:#707079;
+    font-size:6px;
+}
+
+.peer-project{
+    margin-bottom:20px;
+}
+
+.peer-project small{
+    display:block;
+    margin-bottom:7px;
+    color:#a995ff;
+    font-size:6px;
+    font-weight:800;
+}
+
+.peer-project h3{
+    margin-bottom:7px;
+    font-size:18px;
+}
+
+.peer-project p{
+    color:#85858e;
+    font-size:8px;
+    line-height:1.65;
+}
+
+.peer-feedback{
+    padding:14px;
+
+    border-left:3px solid #7156e8;
+
+    background:#111116;
+}
+
+.peer-feedback strong{
+    display:block;
+    margin-bottom:6px;
+    font-size:7px;
+}
+
+.peer-feedback p{
+    color:#777780;
+    font-size:7px;
+    line-height:1.6;
+}
+
+.peer-arrow{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    width:68px;
+    height:68px;
+
+    margin:auto;
+
+    border-radius:50%;
+
+    background:#7156e8;
+
+    font-size:17px;
+
+    animation:swapPulse 2s infinite;
+}
+
+@keyframes swapPulse{
+    50%{
+        transform:scale(1.08);
+    }
+}
+
+
+/* =========================================================
+   MENTOR HOURS
+========================================================= */
+
+.mentor-hours-section{
+    padding:105px 0;
+}
+
+.mentor-hours-layout{
+    display:grid;
+    grid-template-columns:.7fr 1.3fr;
+
+    gap:65px;
+}
+
+.mentor-hours-copy h2{
+    margin-bottom:18px;
+}
+
+.slot-board{
+    border-top:1px solid var(--border);
+}
+
+.slot-row{
+    min-height:88px;
+
+    display:grid;
+    grid-template-columns:95px 1fr 130px;
+
+    align-items:center;
+
+    gap:15px;
+
+    border-bottom:1px solid var(--border);
+
+    transition:.2s ease;
+}
+
+.slot-row:hover{
+    background:#faf8ff;
+    padding-left:8px;
+}
+
+.slot-time{
+    color:#7156e8;
+
+    font-size:9px;
+    font-weight:800;
+}
+
+.slot-main strong{
+    display:block;
+
+    margin-bottom:4px;
+
+    font-size:10px;
+}
+
+.slot-main span{
+    color:#9999a2;
+    font-size:7px;
+}
+
+.slot-button{
+    justify-self:end;
+
+    min-height:35px;
+
+    padding:0 11px;
+
+    border:1px solid #dedee4;
+    border-radius:8px;
+
+    background:#fff;
+
+    color:#7156e8;
+
+    font-size:7px;
+    font-weight:700;
+}
+
+
+/* =========================================================
+   BUILD FACTORY
+   NEW INTERACTIVE HOVER SECTION
+========================================================= */
+
+.factory-section{
+    padding:110px 0 130px;
+
+    background:#f7f7f9;
+
+    overflow:hidden;
+}
+
+.factory-head{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+
+    gap:40px;
+
+    margin-bottom:48px;
+}
+
+.factory-head .section-copy{
+    max-width:390px;
+}
+
+
+/* MAIN GRID */
+
+.factory-line{
+    position:relative;
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+
+    gap:12px;
+}
+
+.factory-line::before{
+    content:"";
+
+    height:2px;
+
+    position:absolute;
+
+    left:5%;
+    right:5%;
+    top:50%;
+
+    background:#ddd7f4;
+
+    z-index:0;
+}
+
+
+/* FACTORY CARD */
+
+.factory-stage{
+    min-height:330px;
+
+    position:relative;
+    z-index:2;
+
+    overflow:hidden;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+
+    padding:23px;
+
+    border:1px solid #e0e0e5;
+    border-radius:18px;
+
+    background:#fff;
+
+    cursor:pointer;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.025);
+
+    transition:
+        transform .4s cubic-bezier(.2,.8,.2,1),
+        box-shadow .4s ease,
+        border-color .4s ease;
+}
+
+.factory-stage:nth-child(2){
+    margin-top:32px;
+}
+
+.factory-stage:nth-child(3){
+    margin-top:64px;
+}
+
+.factory-stage:nth-child(4){
+    margin-top:96px;
+}
+
+
+/* HOVER LIFT */
+
+.factory-stage:hover,
+.factory-stage.open{
+    z-index:10;
+
+    border-color:#cfc5f7;
+
+    transform:translateY(-12px) scale(1.025);
+
+    box-shadow:
+        0 28px 65px rgba(35,24,85,.15);
+}
+
+
+/* NORMAL CONTENT */
+
+.factory-main-content{
+    position:relative;
+    z-index:2;
+
+    transition:
+        opacity .35s ease,
+        transform .35s ease;
+}
+
+.factory-stage:hover .factory-main-content,
+.factory-stage.open .factory-main-content{
+    opacity:0;
+
+    transform:translateY(-18px);
+}
+
+
+/* TOP */
+
+.factory-stage-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    margin-bottom:75px;
+}
+
+.factory-stage-top span{
+    color:#aaaab2;
+    font-size:7px;
+}
+
+.factory-stage-top i{
+    width:42px;
+    height:42px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:12px;
+
+    background:#f1edff;
+
+    color:#7156e8;
+
+    font-size:15px;
+}
+
+.factory-stage small{
+    display:block;
+
+    margin-bottom:8px;
+
+    color:#7156e8;
+
+    font-size:6px;
+    font-weight:800;
+
+    letter-spacing:.7px;
+}
+
+.factory-stage h3{
+    margin-bottom:8px;
+
+    font-size:18px;
+
+    line-height:1.12;
+}
+
+.factory-stage p{
+    color:#878790;
+
+    font-size:8px;
+    line-height:1.65;
+}
+
+
+/* HOVER HINT */
+
+.factory-hint{
+    display:flex;
+    align-items:center;
+
+    gap:6px;
+
+    margin-top:22px;
+
+    color:#aaaab2;
+
+    font-size:6px;
+    font-weight:700;
+}
+
+.factory-hint i{
+    color:#7156e8;
+}
+
+
+/* =========================================================
+   FACTORY HOVER PREVIEW
+========================================================= */
+
+.factory-hover{
+    position:absolute;
+    inset:0;
+
+    z-index:5;
+
+    display:flex;
+    flex-direction:column;
+
+    padding:20px;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transform:translateY(30px);
+
+    transition:
+        opacity .4s ease,
+        transform .4s cubic-bezier(.2,.8,.2,1);
+}
+
+.factory-stage:hover .factory-hover,
+.factory-stage.open .factory-hover{
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+
+/* PREVIEW HEADER */
+
+.factory-preview-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    margin-bottom:15px;
+}
+
+.factory-preview-head span{
+    color:#7156e8;
+
+    font-size:6px;
+    font-weight:800;
+}
+
+.factory-preview-status{
+    display:flex;
+    align-items:center;
+
+    gap:5px;
+
+    padding:5px 7px;
+
+    border-radius:100px;
+
+    background:#eef8f1;
+
+    color:#4d8c62;
+
+    font-size:5px;
+    font-weight:800;
+}
+
+.factory-preview-status::before{
+    content:"";
+
+    width:5px;
+    height:5px;
+
+    border-radius:50%;
+
+    background:#58a66f;
+}
+
+
+/* PREVIEW VISUAL */
+
+.factory-preview-visual{
+    height:130px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin-bottom:18px;
+
+    border-radius:13px;
+
+    background:#111116;
+}
+
+
+/* IDEA VISUAL */
+
+.idea-visual{
+    width:75px;
+    height:75px;
+
+    position:relative;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:#7156e8;
+
+    color:#fff;
+
+    box-shadow:0 0 0 15px rgba(113,86,232,.12);
+}
+
+.idea-visual i{
+    font-size:23px;
+}
+
+.idea-spark{
+    width:6px;
+    height:6px;
+
+    position:absolute;
+
+    border-radius:50%;
+
+    background:#a995ff;
+}
+
+.idea-spark.s1{
+    left:25px;
+    top:25px;
+}
+
+.idea-spark.s2{
+    right:22px;
+    top:40px;
+}
+
+.idea-spark.s3{
+    left:55px;
+    bottom:18px;
+}
+
+
+/* PROTOTYPE VISUAL */
+
+.prototype-window{
+    width:82%;
+
+    overflow:hidden;
+
+    border:1px solid #37373e;
+    border-radius:9px;
+
+    background:#1c1c22;
+}
+
+.prototype-head{
+    height:21px;
+
+    display:flex;
+    align-items:center;
+
+    gap:4px;
+
+    padding:0 7px;
+
+    border-bottom:1px solid #303037;
+}
+
+.prototype-head span{
+    width:4px;
+    height:4px;
+
+    border-radius:50%;
+
+    background:#696972;
+}
+
+.prototype-body{
+    display:grid;
+    grid-template-columns:28% 1fr;
+
+    gap:6px;
+
+    padding:8px;
+}
+
+.prototype-sidebar{
+    min-height:65px;
+
+    border-radius:4px;
+
+    background:#292930;
+}
+
+.prototype-content{
+    display:flex;
+    flex-direction:column;
+
+    gap:5px;
+}
+
+.prototype-line{
+    height:8px;
+
+    border-radius:3px;
+
+    background:#7156e8;
+}
+
+.prototype-line:nth-child(2){
+    width:72%;
+
+    background:#34343b;
+}
+
+.prototype-line:nth-child(3){
+    width:88%;
+
+    background:#34343b;
+}
+
+.prototype-button{
+    width:35px;
+    height:12px;
+
+    margin-top:auto;
+
+    border-radius:3px;
+
+    background:#a995ff;
+}
+
+
+/* REFINE VISUAL */
+
+.refine-visual{
+    width:85%;
+}
+
+.refine-row{
+    display:grid;
+    grid-template-columns:20px 1fr 23px;
+
+    align-items:center;
+
+    gap:7px;
+
+    margin-bottom:8px;
+}
+
+.refine-row i{
+    color:#a995ff;
+    font-size:7px;
+}
+
+.refine-track{
+    height:6px;
+
+    overflow:hidden;
+
+    border-radius:100px;
+
+    background:#303037;
+}
+
+.refine-fill{
+    height:100%;
+
+    border-radius:100px;
+
+    background:#7156e8;
+}
+
+.refine-row:nth-child(1) .refine-fill{
+    width:88%;
+}
+
+.refine-row:nth-child(2) .refine-fill{
+    width:68%;
+}
+
+.refine-row:nth-child(3) .refine-fill{
+    width:93%;
+}
+
+.refine-row span{
+    color:#777780;
+    font-size:5px;
+}
+
+
+/* SHIP VISUAL */
+
+.ship-visual{
+    width:100px;
+    height:100px;
+
+    position:relative;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.ship-ring{
+    width:95px;
+    height:95px;
+
+    position:absolute;
+
+    border:1px solid #37373e;
+    border-radius:50%;
+
+    animation:shipRotate 8s linear infinite;
+}
+
+.ship-ring::before{
+    content:"";
+
+    width:7px;
+    height:7px;
+
+    position:absolute;
+
+    left:11px;
+    top:11px;
+
+    border-radius:50%;
+
+    background:#a995ff;
+}
+
+@keyframes shipRotate{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+.ship-core{
+    width:58px;
+    height:58px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:#7156e8;
+    color:#fff;
+
+    font-size:19px;
+}
+
+
+/* PREVIEW COPY */
+
+.factory-hover small{
+    display:block;
+
+    margin-bottom:6px;
+
+    color:#7156e8;
+
+    font-size:6px;
+    font-weight:800;
+}
+
+.factory-hover h4{
+    margin-bottom:7px;
+
+    font-size:16px;
+
+    line-height:1.1;
+}
+
+.factory-hover > p{
+    color:#777780;
+
+    font-size:7px;
+    line-height:1.6;
+}
+
+
+/* PREVIEW TAGS */
+
+.factory-preview-tags{
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:5px;
+
+    margin-top:auto;
+
+    padding-top:14px;
+}
+
+.factory-preview-tags span{
+    padding:5px 7px;
+
+    border-radius:100px;
+
+    background:#f1edff;
+
+    color:#7156e8;
+
+    font-size:5px;
+    font-weight:700;
+}
+
+
+/* =========================================================
+   DEMO DAY
+========================================================= */
+
+.demo-section{
+    padding:105px 0;
+
+    background:#111116;
+    color:#fff;
+}
+
+.demo-layout{
+    display:grid;
+    grid-template-columns:.7fr 1.3fr;
+
+    gap:60px;
+
+    align-items:center;
+}
+
+.demo-copy .section-label{
+    color:#a995ff;
+}
+
+.demo-copy .section-label::before{
+    background:#a995ff;
+}
+
+.demo-copy .section-title span{
+    color:#a995ff;
+}
+
+.demo-copy p{
+    max-width:430px;
+
+    margin-top:18px;
+
+    color:#8c8c95;
+
+    font-size:10px;
+    line-height:1.8;
+}
+
+.demo-stage{
+    min-height:440px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    border:1px solid #303037;
+    border-radius:20px;
+
+    background:#17171c;
+}
+
+.demo-screen{
+    width:70%;
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    padding:28px;
+
+    border-radius:14px;
+
+    background:#fff;
+    color:#111;
+
+    transform:translate(-50%,-50%);
+
+    box-shadow:0 25px 60px rgba(0,0,0,.35);
+}
+
+.demo-screen small{
+    display:block;
+
+    margin-bottom:24px;
+
+    color:#7156e8;
+
+    font-size:6px;
+    font-weight:800;
+}
+
+.demo-screen h3{
+    margin-bottom:10px;
+
+    font-size:25px;
+
+    line-height:1.05;
+}
+
+.demo-screen p{
+    color:#777780;
+
+    font-size:8px;
+    line-height:1.65;
+}
+
+.demo-screen-footer{
+    display:flex;
+
+    gap:7px;
+
+    margin-top:22px;
+}
+
+.demo-screen-footer span{
+    padding:6px 8px;
+
+    border-radius:100px;
+
+    background:#f1edff;
+
+    color:#7156e8;
+
+    font-size:6px;
+}
+
+.demo-light{
+    width:90px;
+    height:90px;
+
+    position:absolute;
+
+    top:-10px;
+
+    border-radius:50%;
+
+    background:rgba(113,86,232,.15);
+
+    filter:blur(8px);
+}
+
+.demo-light.left{
+    left:10%;
+}
+
+.demo-light.right{
+    right:10%;
+}
+
+
+/* =========================================================
+   GRADUATION
+========================================================= */
+
+.graduate-section{
+    padding:105px 0;
+}
+
+.graduate-layout{
+    display:grid;
+    grid-template-columns:1fr .9fr;
+
+    gap:65px;
+
+    align-items:center;
+}
+
+.graduate-copy h2{
+    margin-bottom:18px;
+}
+
+.graduate-pass{
+    max-width:450px;
+
+    margin-left:auto;
+
+    overflow:hidden;
+
+    border:1px solid #dedee4;
+    border-radius:18px;
+
+    background:#fff;
+
+    box-shadow:0 25px 55px rgba(0,0,0,.08);
+}
+
+.pass-top{
+    min-height:76px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 22px;
+
+    background:#111116;
+    color:#fff;
+}
+
+.pass-top strong{
+    font-size:9px;
+}
+
+.pass-top span{
+    color:#777780;
+    font-size:6px;
+}
+
+.pass-body{
+    padding:28px;
+}
+
+.pass-body small{
+    display:block;
+    margin-bottom:8px;
+    color:#7156e8;
+    font-size:6px;
+    font-weight:800;
+}
+
+.pass-body h3{
+    margin-bottom:22px;
+    font-size:25px;
+}
+
+.pass-info{
+    border-top:1px solid #ececf0;
+}
+
+.pass-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:20px;
+
+    padding:12px 0;
+
+    border-bottom:1px solid #ececf0;
+
+    font-size:7px;
+}
+
+.pass-row span{
+    color:#92929b;
+}
+
+.pass-stamp{
+    width:84px;
+    height:84px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin-top:24px;
+
+    border:2px solid #7156e8;
+    border-radius:50%;
+
+    color:#7156e8;
+
+    font-size:7px;
+    font-weight:800;
+
+    text-align:center;
+
+    transform:rotate(-8deg);
+}
+
+
+/* =========================================================
+   CAREER LAUNCH
+========================================================= */
+
+.launch-section{
+    padding:105px 0;
+
+    background:#f7f7f9;
+}
+
+.launch-head{
+    max-width:760px;
+    margin-bottom:42px;
+}
+
+.launch-deck{
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:10px;
+}
+
+.launch-main{
+    min-height:360px;
+
+    padding:32px;
+
+    border-radius:18px;
+
+    background:#7156e8;
+    color:#fff;
+}
+
+.launch-main small{
+    display:block;
+
+    margin-bottom:55px;
+
+    color:#ddd6ff;
+
+    font-size:7px;
+    font-weight:800;
+}
+
+.launch-main h3{
+    max-width:520px;
+
+    margin-bottom:12px;
+
+    font-size:31px;
+
+    line-height:1.06;
+
+    letter-spacing:-1.5px;
+}
+
+.launch-main p{
+    max-width:500px;
+
+    color:#ddd7f4;
+
+    font-size:9px;
+    line-height:1.7;
+}
+
+.launch-side{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+.launch-tile{
+    min-height:175px;
+
+    padding:20px;
+
+    border:1px solid #e1e1e6;
+    border-radius:14px;
+
+    background:#fff;
+}
+
+.launch-tile i{
+    margin-bottom:28px;
+
+    color:#7156e8;
+
+    font-size:16px;
+}
+
+.launch-tile strong{
+    display:block;
+
+    margin-bottom:6px;
+
+    font-size:10px;
+}
+
+.launch-tile p{
+    color:#888891;
+
+    font-size:7px;
+    line-height:1.6;
+}
+
+
+/* =========================================================
+   FINAL
+========================================================= */
+
+.final-section{
+    padding:85px 0 65px;
+}
+
+.final-card{
+    min-height:430px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    display:flex;
+    align-items:flex-end;
+
+    padding:55px;
+
+    border-radius:24px;
+
+    background:#111116;
+    color:#fff;
+}
+
+.final-card::before{
+    content:"BOOTCAMP";
+
+    position:absolute;
+
+    right:-30px;
+    top:-38px;
+
+    color:rgba(255,255,255,.04);
+
+    font-size:150px;
+    font-weight:800;
+
+    letter-spacing:-8px;
+}
+
+.final-card::after{
+    content:"";
+
+    width:330px;
+    height:330px;
+
+    position:absolute;
+
+    right:90px;
+    bottom:-190px;
+
+    border:1px solid rgba(169,149,255,.16);
+    border-radius:50%;
+}
+
+.final-content{
+    max-width:750px;
+
+    position:relative;
+    z-index:2;
+}
+
+.final-content small{
+    display:block;
+
+    margin-bottom:14px;
+
+    color:#a995ff;
+
+    font-size:8px;
+    font-weight:800;
+
+    letter-spacing:1.4px;
+}
+
+.final-content h2{
+    max-width:700px;
+
+    margin-bottom:18px;
+
+    font-size:clamp(40px,4.6vw,60px);
+
+    line-height:1;
+
+    letter-spacing:-3px;
+}
+
+.final-content p{
+    max-width:520px;
+
+    margin-bottom:25px;
+
+    color:#8e8e97;
+
+    font-size:11px;
+    line-height:1.75;
+}
+
+.final-btn{
+    min-height:46px;
+
+    display:inline-flex;
+    align-items:center;
+
+    gap:8px;
+
+    padding:0 18px;
+
+    border-radius:9px;
+
+    background:#7156e8;
+    color:#fff;
+
+    font-size:10px;
+    font-weight:700;
+
+    transition:.3s ease;
+}
+
+.final-btn:hover{
+    transform:translateY(-3px);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer{
+    padding:0 20px 35px;
+
+    text-align:center;
+
+    color:#92929a;
+
+    font-size:9px;
+}
+
+.footer span{
+    margin:0 6px;
+
+    color:#7156e8;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media(max-width:1050px){
+
+    .navbar{
+        height:70px;
+        padding:0 18px;
+    }
+
+    main{
+        padding-top:70px;
+    }
+
+    .logo{
+        font-size:18px;
+    }
+
+    .login-btn,
+    .get-started{
+        display:none;
+    }
+
+    .menu-toggle{
+        display:flex;
+    }
+
+    .nav-menu{
+        position:absolute;
+
+        top:70px;
+        left:0;
+
+        width:100%;
+
+        max-height:calc(100vh - 70px);
+
+        overflow:auto;
+
+        display:flex;
+        flex-direction:column;
+        align-items:stretch;
+
+        padding:12px 14px 18px;
+
+        background:#fff;
+
+        opacity:0;
+
+        transform:translateY(-120%);
+
+        pointer-events:none;
+
+        transition:.3s ease;
+    }
+
+    .nav-menu.active{
+        opacity:1;
+
+        transform:translateY(0);
+
+        pointer-events:auto;
+    }
+
+    .nav-item{
+        width:100%;
+    }
+
+    .nav-link{
+        width:100%;
+
+        justify-content:space-between;
+
+        padding:15px 13px;
+    }
+
+    .dropdown{
+        position:static;
+
+        width:100%;
+
+        max-height:0;
+
+        overflow:hidden;
+
+        padding:0 8px;
+
+        opacity:1;
+        visibility:visible;
+
+        transform:none;
+
+        background:#fafafa;
+
+        border:0;
+
+        box-shadow:none;
+
+        transition:max-height .35s ease;
+    }
+
+    .nav-item.open > .dropdown{
+        max-height:1300px;
+
+        padding:8px;
+    }
+
+    .mega-dropdown{
+        display:block;
+    }
+
+
+    /* HERO */
+
+    .hero-layout{
+        grid-template-columns:1fr;
+
+        gap:40px;
+    }
+
+    .mission-control{
+        max-width:760px;
+    }
+
+
+    /* PROMISE */
+
+    .promise-layout{
+        grid-template-columns:1fr;
+
+        gap:28px;
+    }
+
+    .promise-bars{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+
+    /* PULSE */
+
+    .pulse-shell{
+        grid-template-columns:1fr;
+    }
+
+    .pulse-legend{
+        display:grid;
+
+        grid-template-columns:repeat(4,1fr);
+
+        gap:10px;
+
+        border-right:0;
+        border-bottom:1px solid #303037;
+    }
+
+    .pulse-legend > small{
+        grid-column:1 / -1;
+    }
+
+
+    /* PEER */
+
+    .peer-exchange{
+        grid-template-columns:1fr;
+    }
+
+    .peer-arrow{
+        transform:rotate(90deg);
+    }
+
+
+    /* SECTIONS */
+
+    .mentor-hours-layout,
+    .arena-layout,
+    .demo-layout,
+    .graduate-layout{
+        grid-template-columns:1fr;
+
+        gap:40px;
+    }
+
+    .graduate-pass{
+        margin-left:0;
+    }
+
+
+    /* NEW FACTORY */
+
+    .factory-line{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .factory-line::before{
+        display:none;
+    }
+
+    .factory-stage:nth-child(2),
+    .factory-stage:nth-child(3),
+    .factory-stage:nth-child(4){
+        margin-top:0;
+    }
+
+
+    /* LAUNCH */
+
+    .launch-deck{
+        grid-template-columns:1fr;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:650px){
+
+    html,
+    body{
+        width:100%;
+        max-width:100%;
+
+        overflow-x:hidden;
+    }
+
+    .container{
+        width:100%;
+
+        padding-left:18px;
+        padding-right:18px;
+    }
+
+
+    /* NAV */
+
+    .navbar{
+        height:66px;
+
+        padding:0 14px;
+    }
+
+    main{
+        padding-top:66px;
+    }
+
+    .logo{
+        font-size:16px;
+    }
+
+    .logo-impact{
+        margin-left:5px;
+    }
+
+    .nav-menu{
+        top:66px;
+
+        max-height:calc(100vh - 66px);
+    }
+
+
+    /* COMMON */
+
+    .section-title{
+        font-size:clamp(31px,9.2vw,41px);
+
+        letter-spacing:-2px;
+    }
+
+
+    /* HERO */
+
+    .hero-layout{
+        min-height:auto;
+
+        padding:50px 0 42px;
+
+        gap:35px;
+    }
+
+    .hero-copy h1{
+        font-size:clamp(43px,12vw,56px);
+
+        letter-spacing:-3.2px;
+    }
+
+    .hero-copy p{
+        font-size:12px;
+    }
+
+    .hero-actions{
+        width:100%;
+    }
+
+    .hero-btn{
+        flex:1;
+
+        min-width:140px;
+    }
+
+    .mission-control{
+        min-height:auto;
+    }
+
+    .control-main{
+        grid-template-columns:1fr;
+    }
+
+    .control-side{
+        display:grid;
+
+        grid-template-columns:1fr 1fr;
+
+        gap:8px;
+
+        border-left:0;
+        border-top:1px solid #303037;
+    }
+
+    .control-side > small{
+        grid-column:1 / -1;
+    }
+
+    .control-footer{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .control-footer-item:nth-child(2){
+        border-right:0;
+    }
+
+    .control-footer-item:nth-child(-n+2){
+        border-bottom:1px solid #303037;
+    }
+
+
+    /* SECTION SPACING */
+
+    .promise-section,
+    .pulse-section,
+    .heatmap-section,
+    .sprint-section,
+    .arena-section,
+    .peer-section,
+    .mentor-hours-section,
+    .factory-section,
+    .demo-section,
+    .graduate-section,
+    .launch-section{
+        padding:72px 0;
+    }
+
+
+    /* PROMISE */
+
+    .promise-main h2{
+        font-size:clamp(32px,9.6vw,43px);
+
+        letter-spacing:-2.3px;
+    }
+
+    .promise-bars{
+        grid-template-columns:1fr;
+    }
+
+
+    /* PULSE */
+
+    .pulse-head,
+    .factory-head{
+        align-items:flex-start;
+        flex-direction:column;
+
+        gap:18px;
+    }
+
+    .pulse-map{
+        min-height:360px;
+    }
+
+    .pulse-orbit{
+        width:270px;
+        height:270px;
+    }
+
+    .pulse-orbit::before{
+        width:180px;
+        height:180px;
+    }
+
+    .cohort-node{
+        width:40px;
+        height:40px;
+
+        font-size:6px;
+    }
+
+    .pulse-legend{
+        grid-template-columns:1fr 1fr;
+    }
+
+
+    /* HEATMAP */
+
+    .heatmap{
+        overflow-x:auto;
+    }
+
+    .heatmap-row{
+        min-width:650px;
+    }
+
+
+    /* SPRINTS */
+
+    .sprint-block,
+    .sprint-block:nth-child(2),
+    .sprint-block:nth-child(3),
+    .sprint-block:nth-child(4){
+        min-height:auto;
+
+        grid-template-columns:55px 1fr;
+
+        gap:12px;
+
+        margin-left:0;
+
+        padding:20px 17px;
+    }
+
+    .sprint-output{
+        grid-column:2;
+
+        justify-self:start;
+    }
+
+
+    /* ARENA */
+
+    .arena-stage{
+        min-height:390px;
+    }
+
+    .arena-stage::before{
+        width:260px;
+        height:260px;
+    }
+
+    .arena-stage::after{
+        width:150px;
+        height:150px;
+    }
+
+    .arena-center{
+        width:110px;
+        height:110px;
+    }
+
+    .arena-task{
+        width:125px;
+
+        padding:10px;
+    }
+
+    .at1{left:10px;top:18px;}
+    .at2{right:10px;top:35px;}
+    .at3{left:12px;bottom:25px;}
+    .at4{right:12px;bottom:20px;}
+
+
+    /* PEER */
+
+    .peer-card{
+        min-height:auto;
+    }
+
+
+    /* MENTOR */
+
+    .slot-row{
+        min-height:auto;
+
+        grid-template-columns:70px 1fr;
+
+        gap:10px;
+
+        padding:17px 0;
+    }
+
+    .slot-button{
+        grid-column:2;
+
+        justify-self:start;
+    }
+
+
+    /* =====================================================
+       FACTORY MOBILE
+       TAP TO REVEAL
+    ===================================================== */
+
+    .factory-line{
+        grid-template-columns:1fr;
+    }
+
+    .factory-line::before{
+        display:none;
+    }
+
+    .factory-stage,
+    .factory-stage:nth-child(2),
+    .factory-stage:nth-child(3),
+    .factory-stage:nth-child(4){
+        min-height:310px;
+
+        margin-top:0;
+
+        transform:none;
+    }
+
+    .factory-stage:hover{
+        transform:none;
+    }
+
+    .factory-stage.open{
+        min-height:365px;
+
+        transform:none;
+
+        border-color:#cfc5f7;
+
+        box-shadow:0 20px 45px rgba(35,24,85,.10);
+    }
+
+    .factory-stage-top{
+        margin-bottom:55px;
+    }
+
+    .factory-stage:hover .factory-main-content{
+        opacity:1;
+        transform:none;
+    }
+
+    .factory-stage:hover .factory-hover{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    .factory-stage.open .factory-main-content{
+        opacity:0;
+        transform:translateY(-15px);
+    }
+
+    .factory-stage.open .factory-hover{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+    .factory-preview-visual{
+        height:145px;
+    }
+
+    .factory-hint{
+        font-size:7px;
+    }
+
+
+    /* DEMO */
+
+    .demo-stage{
+        min-height:390px;
+    }
+
+    .demo-screen{
+        width:86%;
+
+        padding:22px 18px;
+    }
+
+    .demo-screen h3{
+        font-size:22px;
+    }
+
+
+    /* GRADUATION */
+
+    .graduate-pass{
+        width:100%;
+    }
+
+
+    /* LAUNCH */
+
+    .launch-main{
+        min-height:auto;
+
+        padding:28px 22px;
+    }
+
+    .launch-main small{
+        margin-bottom:35px;
+    }
+
+    .launch-main h3{
+        font-size:27px;
+    }
+
+    .launch-side{
+        grid-template-columns:1fr;
+    }
+
+    .launch-tile{
+        min-height:155px;
+    }
+
+
+    /* FINAL */
+
+    .final-section{
+        padding:65px 0 50px;
+    }
+
+    .final-card{
+        min-height:420px;
+
+        padding:34px 22px;
+    }
+
+    .final-card::before{
+        top:10px;
+
+        font-size:75px;
+    }
+
+    .final-content h2{
+        font-size:clamp(36px,10vw,48px);
+
+        letter-spacing:-2.5px;
+    }
+
+}
+
+
+@media(max-width:360px){
+
+    .logo{
+        font-size:14px;
+    }
+
+    .hero-btn{
+        width:100%;
+
+        flex:none;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        animation:none !important;
+        transition:none !important;
+        scroll-behavior:auto !important;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<header class="navbar" id="navbar">
+
+
+    <a href="../index.html" class="logo">
+
+        <span class="logo-main">
+            TRIVOX
+        </span>
+
+        <span class="logo-impact">
+            AI IMPACT
+        </span>
+
+    </a>
+
+
+
+    <ul class="nav-menu" id="navMenu">
+
+
+        <!-- COMPANY -->
+
+        <li class="nav-item">
+
+            <div class="nav-link">
+                Company
+                <span class="arrow"></span>
+            </div>
+
+            <div class="dropdown">
+
+                <a href="../about.html">About TRIVOX</a>
+                <a href="../mission.html">Mission</a>
+                <a href="../vision.html">Vision</a>
+                <a href="../leader.html">Leadership</a>
+                <a href="../team.html">Team</a>
+                <a href="../partners.html">Partners</a>
+                <a href="../impact.html">Impact</a>
+
+            </div>
+
+        </li>
+
+
+
+        <!-- LEARNING -->
+
+        <li class="nav-item">
+
+            <div class="nav-link">
+                Learning
+                <span class="arrow"></span>
+            </div>
+
+            <div class="dropdown mega-dropdown">
+
+                <a href="../learning/ailearning.html" class="mega-box">
+                    <strong>AI Learning</strong>
+                    <p>Understand artificial intelligence and intelligent systems.</p>
+                </a>
+
+                <a href="../learning/programming.html" class="mega-box">
+                    <strong>Programming</strong>
+                    <p>Build strong coding and problem-solving foundations.</p>
+                </a>
+
+                <a href="../learning/webdevelopment.html" class="mega-box">
+                    <strong>Web Development</strong>
+                    <p>Create modern websites and digital experiences.</p>
+                </a>
+
+                <a href="../learning/appdevelopment.html" class="mega-box">
+                    <strong>App Development</strong>
+                    <p>Design and build mobile applications.</p>
+                </a>
+
+                <a href="../learning/datascience.html" class="mega-box">
+                    <strong>Data Science</strong>
+                    <p>Transform data into meaningful insights.</p>
+                </a>
+
+                <a href="../learning/cybersecurity.html" class="mega-box">
+                    <strong>Cybersecurity</strong>
+                    <p>Understand digital security and protection.</p>
+                </a>
+
+            </div>
+
+        </li>
+
+
+
+        <!-- PROGRAMS -->
+
+        <li class="nav-item active-parent">
+
+            <div class="nav-link">
+                Programs
+                <span class="arrow"></span>
+            </div>
+
+            <div class="dropdown">
+
+                <a href="student-programs.html">Student Programs</a>
+                <a href="college-programs.html">College Programs</a>
+                <a href="internships.html">Internships</a>
+                <a href="workshops.html">Workshops</a>
+
+                <a href="bootcamps.html" class="active">
+                    Bootcamps
+                </a>
+
+                <a href="career-programs.html">Career Programs</a>
+                <a href="certification-programs.html">Certification Programs</a>
+
+            </div>
+
+        </li>
+
+
+
+        <!-- SOLUTIONS -->
+
+        <li class="nav-item">
+
+            <div class="nav-link">
+                Solutions
+                <span class="arrow"></span>
+            </div>
+
+            <div class="dropdown">
+
+                <a href="../solutions/students.html">For Students</a>
+                <a href="../solutions/colleges.html">For Colleges</a>
+                <a href="../solutions/schools.html">For Schools</a>
+                <a href="../solutions/companies.html">For Companies</a>
+
+            </div>
+
+        </li>
+
+
+
+        <!-- RESOURCES -->
+
+        <li class="nav-item">
+
+            <div class="nav-link">
+                Resources
+                <span class="arrow"></span>
+            </div>
+
+            <div class="dropdown">
+
+                <a href="../resources/blogs.html">Blogs</a>
+                <a href="../resources/tutorials.html">Tutorials</a>
+                <a href="../resources/learning-resources.html">Learning Resources</a>
+                <a href="../resources/student-projects.html">Student Projects</a>
+                <a href="../resources/success-stories.html">Success Stories</a>
+                <a href="../resources/events.html">Events</a>
+                <a href="../resources/faqs.html">FAQs</a>
+
+            </div>
+
+        </li>
+
+
+
+        <!-- CAREERS -->
+
+        <li class="nav-item">
+
+            <div class="nav-link">
+                Careers
+                <span class="arrow"></span>
+            </div>
+
+            <div class="dropdown">
+
+                <a href="../careers/open-positions.html">Open Positions</a>
+                <a href="../careers/internships.html">Internships</a>
+                <a href="../careers/campus-hiring.html">Campus Hiring</a>
+                <a href="../careers/join-team.html">Join Our Team</a>
+                <a href="../careers/life-at-trivox.html">Life at TRIVOX</a>
+
+            </div>
+
+        </li>
+
+
+
+        <!-- CONTACT -->
+
+        <li class="nav-item">
+
+            <a href="../contact/contact.html" class="nav-link">
+                Contact
+            </a>
+
+        </li>
+
+
+    </ul>
+
+
+
+    <div class="nav-actions">
+
+
+        <div class="signin-dropdown-wrap">
+
+            <button class="login-btn signin-main-btn">
+
+                Sign In
+
+                <span class="arrow"></span>
+
+            </button>
+
+
+            <div class="signin-dropdown">
+
+                <a href="../documentary.html">
+
+                    <i class="fa-solid fa-video"></i>
+
+                    <div>
+                        <strong>Documentary</strong>
+                        <span>Sign in for documentary</span>
+                    </div>
+
+                </a>
+
+
+                <a href="../course.html">
+
+                    <i class="fa-solid fa-graduation-cap"></i>
+
+                    <div>
+                        <strong>Course</strong>
+                        <span>Sign in for courses</span>
+                    </div>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <a href="../course.html" class="get-started">
+            Get Started
+        </a>
+
+
+        <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Menu"
+        aria-expanded="false">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+
+    </div>
+
+
+</header>
+
+
+
+<main>
+
+
+<!-- =========================================================
+     01 HERO
+========================================================= -->
+
+<section class="hero">
+
+
+    <div class="hero-grid-bg"></div>
+
+
+    <div class="container hero-layout">
+
+
+        <div class="hero-copy reveal">
+
+
+            <div class="hero-kicker">
+
+                <span></span>
+
+                BOOTCAMPS / INTENSIVE COHORT EXPERIENCE
+
+            </div>
+
+
+            <h1>
+
+                Enter focused.
+
+                <span>
+                    Leave transformed.
+                </span>
+
+            </h1>
+
+
+            <p>
+
+                TRIVOX Bootcamps combine structured learning,
+                fast practice, mentor support, challenges,
+                project building and peer collaboration into
+                an intensive skill-building experience.
+
+            </p>
+
+
+            <div class="hero-actions">
+
+
+                <a href="#sprints" class="hero-btn primary">
+
+                    Explore Bootcamp
+
+                    <i class="fa-solid fa-arrow-down"></i>
+
+                </a>
+
+
+                <a href="#launch" class="hero-btn secondary">
+
+                    See Outcomes
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="mission-control reveal">
+
+
+            <div class="control-shell">
+
+
+                <div class="control-head">
+
+                    <strong>
+                        BOOTCAMP MISSION CONTROL
+                    </strong>
+
+                    <div class="control-status">
+                        COHORT ACTIVE
+                    </div>
+
+                </div>
+
+
+
+                <div class="control-main">
+
+
+                    <div class="control-map">
+
+
+                        <div class="mission-core">
+
+                            <i class="fa-solid fa-rocket"></i>
+
+                            <strong>
+                                SPRINT
+                            </strong>
+
+                        </div>
+
+
+                        <div class="mission-point mp1">
+                            LEARN
+                        </div>
+
+                        <div class="mission-point mp2">
+                            PRACTICE
+                        </div>
+
+                        <div class="mission-point mp3">
+                            BUILD
+                        </div>
+
+                        <div class="mission-point mp4">
+                            SHIP
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="control-side">
+
+
+                        <small>
+                            LIVE READOUT
+                        </small>
+
+
+                        <div class="control-readout">
+
+                            <span>CURRENT MODE</span>
+
+                            <strong>
+                                BUILD SPRINT
+                            </strong>
+
+                        </div>
+
+
+                        <div class="control-readout">
+
+                            <span>COHORT SIGNAL</span>
+
+                            <strong class="green">
+                                ACTIVE
+                            </strong>
+
+                        </div>
+
+
+                        <div class="control-readout">
+
+                            <span>PROJECT STATUS</span>
+
+                            <strong>
+                                PROTOTYPE
+                            </strong>
+
+                            <div class="control-progress">
+                                <span></span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="control-readout">
+
+                            <span>NEXT CHECKPOINT</span>
+
+                            <strong>
+                                PEER REVIEW
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="control-footer">
+
+
+                    <div class="control-footer-item">
+                        <span>01</span>
+                        <strong>Foundation</strong>
+                    </div>
+
+
+                    <div class="control-footer-item active">
+                        <span>02</span>
+                        <strong>Sprint</strong>
+                    </div>
+
+
+                    <div class="control-footer-item">
+                        <span>03</span>
+                        <strong>Project</strong>
+                    </div>
+
+
+                    <div class="control-footer-item">
+                        <span>04</span>
+                        <strong>Demo</strong>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     02 PROMISE
+========================================================= -->
+
+<section class="promise-section">
+
+
+    <div class="container promise-layout">
+
+
+        <div class="promise-index reveal">
+            01 / BOOTCAMP MODE
+        </div>
+
+
+        <div class="promise-main reveal">
+
+
+            <h2>
+
+                A bootcamp compresses learning into
+
+                <span>
+                    focused progress.
+                </span>
+
+            </h2>
+
+
+            <div class="promise-bars">
+
+
+                <div class="promise-bar">
+
+                    <span>01</span>
+
+                    <strong>Focus</strong>
+
+                    <p>
+                        Work around one clear skill direction.
+                    </p>
+
+                </div>
+
+
+                <div class="promise-bar">
+
+                    <span>02</span>
+
+                    <strong>Practice</strong>
+
+                    <p>
+                        Apply concepts repeatedly through guided work.
+                    </p>
+
+                </div>
+
+
+                <div class="promise-bar">
+
+                    <span>03</span>
+
+                    <strong>Pressure</strong>
+
+                    <p>
+                        Build within structured challenge conditions.
+                    </p>
+
+                </div>
+
+
+                <div class="promise-bar">
+
+                    <span>04</span>
+
+                    <strong>Proof</strong>
+
+                    <p>
+                        Finish with work you can demonstrate.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     03 COHORT PULSE
+========================================================= -->
+
+<section class="pulse-section">
+
+
+    <div class="container">
+
+
+        <div class="pulse-head reveal">
+
+
+            <div>
+
+                <div class="section-label">
+                    Cohort Pulse
+                </div>
+
+                <h2 class="section-title">
+
+                    You're not learning alone.
+
+                    <span>
+                        You're moving as a cohort.
+                    </span>
+
+                </h2>
+
+            </div>
+
+
+            <p class="section-copy">
+
+                Bootcamp learners work around the same mission,
+                compare progress, collaborate and push each other forward.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="pulse-shell reveal">
+
+
+            <aside class="pulse-legend">
+
+                <small>COHORT SIGNALS</small>
+
+
+                <div class="legend-item">
+
+                    <span class="legend-dot one"></span>
+
+                    <div>
+                        <strong>Learning</strong>
+                        <span>Concept mode</span>
+                    </div>
+
+                </div>
+
+
+                <div class="legend-item">
+
+                    <span class="legend-dot two"></span>
+
+                    <div>
+                        <strong>Building</strong>
+                        <span>Project mode</span>
+                    </div>
+
+                </div>
+
+
+                <div class="legend-item">
+
+                    <span class="legend-dot three"></span>
+
+                    <div>
+                        <strong>Reviewing</strong>
+                        <span>Feedback mode</span>
+                    </div>
+
+                </div>
+
+
+                <div class="legend-item">
+
+                    <span class="legend-dot four"></span>
+
+                    <div>
+                        <strong>Preparing</strong>
+                        <span>Demo mode</span>
+                    </div>
+
+                </div>
+
+
+            </aside>
+
+
+
+            <div class="pulse-map">
+
+
+                <div class="pulse-orbit"></div>
+
+
+                <div class="pulse-center">
+
+                    <i class="fa-solid fa-users"></i>
+
+                    <strong>
+                        COHORT
+                    </strong>
+
+                </div>
+
+
+                <div class="cohort-node cn1">A</div>
+                <div class="cohort-node cn2">R</div>
+                <div class="cohort-node cn3">S</div>
+                <div class="cohort-node cn4">M</div>
+                <div class="cohort-node cn5">V</div>
+                <div class="cohort-node cn6">K</div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     04 SKILL HEATMAP
+========================================================= -->
+
+<section class="heatmap-section">
+
+
+    <div class="container">
+
+
+        <div class="heatmap-head reveal">
+
+
+            <div>
+
+                <div class="section-label">
+                    Skill Heatmap
+                </div>
+
+                <h2 class="section-title">
+
+                    Track what is becoming
+
+                    <span>
+                        stronger.
+                    </span>
+
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                Bootcamp progress can be understood by looking at
+                how learners improve across practice, problem solving,
+                building and communication.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="heatmap reveal">
+
+
+            <div class="heatmap-row">
+
+                <div class="heatmap-cell heatmap-label">
+                    Skill Area
+                </div>
+
+                <div class="heatmap-cell">Start</div>
+                <div class="heatmap-cell">Practice</div>
+                <div class="heatmap-cell">Sprint</div>
+                <div class="heatmap-cell">Project</div>
+                <div class="heatmap-cell">Demo</div>
+
+            </div>
+
+
+            <div class="heatmap-row">
+
+                <div class="heatmap-cell heatmap-label">
+                    Fundamentals
+                </div>
+
+                <div class="heatmap-cell heat-level-2">Basic</div>
+                <div class="heatmap-cell heat-level-3">Growing</div>
+                <div class="heatmap-cell heat-level-4">Strong</div>
+                <div class="heatmap-cell heat-level-4">Strong</div>
+                <div class="heatmap-cell heat-level-5">Confident</div>
+
+            </div>
+
+
+            <div class="heatmap-row">
+
+                <div class="heatmap-cell heatmap-label">
+                    Problem Solving
+                </div>
+
+                <div class="heatmap-cell heat-level-1">Early</div>
+                <div class="heatmap-cell heat-level-2">Basic</div>
+                <div class="heatmap-cell heat-level-3">Growing</div>
+                <div class="heatmap-cell heat-level-4">Strong</div>
+                <div class="heatmap-cell heat-level-5">Confident</div>
+
+            </div>
+
+
+            <div class="heatmap-row">
+
+                <div class="heatmap-cell heatmap-label">
+                    Project Building
+                </div>
+
+                <div class="heatmap-cell heat-level-1">Early</div>
+                <div class="heatmap-cell heat-level-2">Basic</div>
+                <div class="heatmap-cell heat-level-3">Growing</div>
+                <div class="heatmap-cell heat-level-5">Confident</div>
+                <div class="heatmap-cell heat-level-5">Confident</div>
+
+            </div>
+
+
+            <div class="heatmap-row">
+
+                <div class="heatmap-cell heatmap-label">
+                    Communication
+                </div>
+
+                <div class="heatmap-cell heat-level-2">Basic</div>
+                <div class="heatmap-cell heat-level-2">Basic</div>
+                <div class="heatmap-cell heat-level-3">Growing</div>
+                <div class="heatmap-cell heat-level-4">Strong</div>
+                <div class="heatmap-cell heat-level-5">Confident</div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     05 SPRINT
+========================================================= -->
+
+<section class="sprint-section" id="sprints">
+
+
+    <div class="container">
+
+
+        <div class="sprint-head reveal">
+
+            <div class="section-label">
+                Sprint System
+            </div>
+
+            <h2 class="section-title">
+
+                Every stage demands
+
+                <span>
+                    something different from you.
+                </span>
+
+            </h2>
+
+        </div>
+
+
+
+        <div class="sprint-stack reveal">
+
+
+            <div class="sprint-block">
+
+                <div class="sprint-id">
+                    SPRINT 01
+                </div>
+
+                <div class="sprint-main">
+
+                    <small>FOUNDATION</small>
+
+                    <h3>
+                        Understand the system
+                    </h3>
+
+                    <p>
+                        Build the core knowledge and vocabulary required
+                        before moving into faster practical work.
+                    </p>
+
+                </div>
+
+                <div class="sprint-output">
+                    <span>OUTPUT</span>
+                    <strong>Skill baseline</strong>
+                </div>
+
+            </div>
+
+
+            <div class="sprint-block">
+
+                <div class="sprint-id">
+                    SPRINT 02
+                </div>
+
+                <div class="sprint-main">
+
+                    <small>PRACTICE</small>
+
+                    <h3>
+                        Repeat until it becomes natural
+                    </h3>
+
+                    <p>
+                        Work through targeted exercises and small
+                        problems to improve confidence and fluency.
+                    </p>
+
+                </div>
+
+                <div class="sprint-output">
+                    <span>OUTPUT</span>
+                    <strong>Practice proof</strong>
+                </div>
+
+            </div>
+
+
+            <div class="sprint-block">
+
+                <div class="sprint-id">
+                    SPRINT 03
+                </div>
+
+                <div class="sprint-main">
+
+                    <small>BUILD</small>
+
+                    <h3>
+                        Turn knowledge into a working project
+                    </h3>
+
+                    <p>
+                        Apply multiple concepts together inside one
+                        practical build challenge.
+                    </p>
+
+                </div>
+
+                <div class="sprint-output">
+                    <span>OUTPUT</span>
+                    <strong>Project prototype</strong>
+                </div>
+
+            </div>
+
+
+            <div class="sprint-block">
+
+                <div class="sprint-id">
+                    SPRINT 04
+                </div>
+
+                <div class="sprint-main">
+
+                    <small>SHIP</small>
+
+                    <h3>
+                        Improve, explain and demonstrate
+                    </h3>
+
+                    <p>
+                        Refine the work, prepare the story and present
+                        the final result clearly.
+                    </p>
+
+                </div>
+
+                <div class="sprint-output">
+                    <span>OUTPUT</span>
+                    <strong>Demo-ready build</strong>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     06 CHALLENGE ARENA
+========================================================= -->
+
+<section class="arena-section">
+
+
+    <div class="container arena-layout">
+
+
+        <div class="arena-copy reveal">
+
+            <div class="section-label">
+                Challenge Arena
+            </div>
+
+            <h2 class="section-title">
+
+                Knowledge gets tested
+
+                <span>
+                    under pressure.
+                </span>
+
+            </h2>
+
+            <p class="section-copy">
+
+                Bootcamp challenges force learners to make decisions,
+                work with constraints and build without following
+                every step of a tutorial.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="arena-stage reveal">
+
+
+            <div class="arena-center">
+
+                <i class="fa-solid fa-bolt"></i>
+
+                <strong>
+                    BUILD NOW
+                </strong>
+
+            </div>
+
+
+            <div class="arena-task at1">
+
+                <small>CHALLENGE A</small>
+
+                <strong>
+                    Fix the broken flow
+                </strong>
+
+                <span>
+                    Debug and improve
+                </span>
+
+            </div>
+
+
+            <div class="arena-task at2">
+
+                <small>CHALLENGE B</small>
+
+                <strong>
+                    Build from a brief
+                </strong>
+
+                <span>
+                    No tutorial
+                </span>
+
+            </div>
+
+
+            <div class="arena-task at3">
+
+                <small>CHALLENGE C</small>
+
+                <strong>
+                    Improve usability
+                </strong>
+
+                <span>
+                    Make it clearer
+                </span>
+
+            </div>
+
+
+            <div class="arena-task at4">
+
+                <small>CHALLENGE D</small>
+
+                <strong>
+                    Explain your choice
+                </strong>
+
+                <span>
+                    Defend decisions
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     07 PEER REVIEW
+========================================================= -->
+
+<section class="peer-section">
+
+
+    <div class="container">
+
+
+        <div class="peer-head reveal">
+
+            <div class="section-label">
+                Peer Review Exchange
+            </div>
+
+            <h2 class="section-title">
+
+                Your work improves when
+
+                <span>
+                    someone else looks at it.
+                </span>
+
+            </h2>
+
+        </div>
+
+
+
+        <div class="peer-exchange reveal">
+
+
+            <div class="peer-card">
+
+
+                <div class="peer-user">
+
+                    <div class="peer-avatar">
+                        A
+                    </div>
+
+                    <div>
+                        <strong>Ananya</strong>
+                        <span>Frontend build</span>
+                    </div>
+
+                </div>
+
+
+                <div class="peer-project">
+
+                    <small>PROJECT</small>
+
+                    <h3>
+                        Learning dashboard
+                    </h3>
+
+                    <p>
+                        A student dashboard built around progress,
+                        projects and next actions.
+                    </p>
+
+                </div>
+
+
+                <div class="peer-feedback">
+
+                    <strong>
+                        Feedback received
+                    </strong>
+
+                    <p>
+                        Primary navigation is clear. Simplify the
+                        second content block so the next action
+                        becomes easier to identify.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="peer-arrow">
+
+                <i class="fa-solid fa-arrow-right-arrow-left"></i>
+
+            </div>
+
+
+
+            <div class="peer-card">
+
+
+                <div class="peer-user">
+
+                    <div class="peer-avatar">
+                        R
+                    </div>
+
+                    <div>
+                        <strong>Rahul</strong>
+                        <span>AI workflow</span>
+                    </div>
+
+                </div>
+
+
+                <div class="peer-project">
+
+                    <small>PROJECT</small>
+
+                    <h3>
+                        Student help assistant
+                    </h3>
+
+                    <p>
+                        An AI workflow built around common
+                        student questions and structured information.
+                    </p>
+
+                </div>
+
+
+                <div class="peer-feedback">
+
+                    <strong>
+                        Feedback received
+                    </strong>
+
+                    <p>
+                        The response logic works well. Make the
+                        context more specific before adding
+                        additional instructions.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     08 MENTOR HOURS
+========================================================= -->
+
+<section class="mentor-hours-section">
+
+
+    <div class="container mentor-hours-layout">
+
+
+        <div class="mentor-hours-copy reveal">
+
+            <div class="section-label">
+                Mentor Office Hours
+            </div>
+
+            <h2 class="section-title">
+
+                When you're stuck,
+
+                <span>
+                    don't stay stuck.
+                </span>
+
+            </h2>
+
+            <p class="section-copy">
+
+                Focused review slots help learners unblock technical
+                issues, improve project decisions and prepare for
+                the next sprint.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="slot-board reveal">
+
+
+            <div class="slot-row">
+
+                <div class="slot-time">
+                    10:00
+                </div>
+
+                <div class="slot-main">
+
+                    <strong>
+                        Code Review
+                    </strong>
+
+                    <span>
+                        Implementation and debugging support
+                    </span>
+
+                </div>
+
+                <button class="slot-button">
+                    Request slot
+                </button>
+
+            </div>
+
+
+            <div class="slot-row">
+
+                <div class="slot-time">
+                    12:30
+                </div>
+
+                <div class="slot-main">
+
+                    <strong>
+                        Project Direction
+                    </strong>
+
+                    <span>
+                        Scope and decision review
+                    </span>
+
+                </div>
+
+                <button class="slot-button">
+                    Request slot
+                </button>
+
+            </div>
+
+
+            <div class="slot-row">
+
+                <div class="slot-time">
+                    03:00
+                </div>
+
+                <div class="slot-main">
+
+                    <strong>
+                        UI / UX Review
+                    </strong>
+
+                    <span>
+                        Clarity and product experience feedback
+                    </span>
+
+                </div>
+
+                <button class="slot-button">
+                    Request slot
+                </button>
+
+            </div>
+
+
+            <div class="slot-row">
+
+                <div class="slot-time">
+                    05:00
+                </div>
+
+                <div class="slot-main">
+
+                    <strong>
+                        Demo Preparation
+                    </strong>
+
+                    <span>
+                        Presentation and explanation support
+                    </span>
+
+                </div>
+
+                <button class="slot-button">
+                    Request slot
+                </button>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     09 BUILD FACTORY
+     NEW HOVER / TAP INTERACTION
+========================================================= -->
+
+<section class="factory-section">
+
+
+    <div class="container">
+
+
+        <div class="factory-head reveal">
+
+
+            <div>
+
+                <div class="section-label">
+                    Build Factory
+                </div>
+
+                <h2 class="section-title">
+
+                    Ideas move through
+
+                    <span>
+                        a production line.
+                    </span>
+
+                </h2>
+
+            </div>
+
+
+            <p class="section-copy">
+
+                Move your cursor over each stage to see
+                what actually happens inside the bootcamp project process.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="factory-line reveal">
+
+
+            <!-- =================================================
+                 IDEA
+            ================================================== -->
+
+            <article class="factory-stage">
+
+
+                <div class="factory-main-content">
+
+
+                    <div class="factory-stage-top">
+
+                        <span>
+                            01
+                        </span>
+
+                        <i class="fa-solid fa-lightbulb"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            IDEA
+                        </small>
+
+                        <h3>
+                            Define the problem
+                        </h3>
+
+                        <p>
+                            Start with a clear user need or
+                            practical challenge.
+                        </p>
+
+
+                        <div class="factory-hint">
+
+                            <i class="fa-solid fa-arrow-pointer"></i>
+
+                            Hover to explore
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="factory-hover">
+
+
+                    <div class="factory-preview-head">
+
+                        <span>
+                            INSIDE / IDEA
+                        </span>
+
+                        <div class="factory-preview-status">
+                            DISCOVER
+                        </div>
+
+                    </div>
+
+
+                    <div class="factory-preview-visual">
+
+
+                        <div class="idea-visual">
+
+                            <i class="fa-solid fa-lightbulb"></i>
+
+                        </div>
+
+
+                        <span class="idea-spark s1"></span>
+                        <span class="idea-spark s2"></span>
+                        <span class="idea-spark s3"></span>
+
+
+                    </div>
+
+
+                    <small>
+                        FIRST DECISION
+                    </small>
+
+
+                    <h4>
+                        What problem are we solving?
+                    </h4>
+
+
+                    <p>
+
+                        Learners research the user, understand the
+                        actual pain point and reduce a broad idea
+                        into one focused problem.
+
+                    </p>
+
+
+                    <div class="factory-preview-tags">
+
+                        <span>User</span>
+                        <span>Problem</span>
+                        <span>Research</span>
+
+                    </div>
+
+
+                </div>
+
+
+            </article>
+
+
+
+            <!-- =================================================
+                 PROTOTYPE
+            ================================================== -->
+
+            <article class="factory-stage">
+
+
+                <div class="factory-main-content">
+
+
+                    <div class="factory-stage-top">
+
+                        <span>
+                            02
+                        </span>
+
+                        <i class="fa-solid fa-pen-ruler"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            PROTOTYPE
+                        </small>
+
+                        <h3>
+                            Create the first version
+                        </h3>
+
+                        <p>
+                            Build enough to test the
+                            core idea quickly.
+                        </p>
+
+
+                        <div class="factory-hint">
+
+                            <i class="fa-solid fa-arrow-pointer"></i>
+
+                            Hover to preview
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="factory-hover">
+
+
+                    <div class="factory-preview-head">
+
+                        <span>
+                            INSIDE / PROTOTYPE
+                        </span>
+
+                        <div class="factory-preview-status">
+                            BUILDING
+                        </div>
+
+                    </div>
+
+
+                    <div class="factory-preview-visual">
+
+
+                        <div class="prototype-window">
+
+
+                            <div class="prototype-head">
+
+                                <span></span>
+                                <span></span>
+                                <span></span>
+
+                            </div>
+
+
+                            <div class="prototype-body">
+
+
+                                <div class="prototype-sidebar"></div>
+
+
+                                <div class="prototype-content">
+
+                                    <div class="prototype-line"></div>
+                                    <div class="prototype-line"></div>
+                                    <div class="prototype-line"></div>
+
+                                    <div class="prototype-button"></div>
+
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                    <small>
+                        FIRST BUILD
+                    </small>
+
+
+                    <h4>
+                        Make the idea visible.
+                    </h4>
+
+
+                    <p>
+
+                        Create a fast working version so the team
+                        can test structure, functionality and the
+                        core experience before polishing details.
+
+                    </p>
+
+
+                    <div class="factory-preview-tags">
+
+                        <span>Structure</span>
+                        <span>Build</span>
+                        <span>Prototype</span>
+
+                    </div>
+
+
+                </div>
+
+
+            </article>
+
+
+
+            <!-- =================================================
+                 REFINE
+            ================================================== -->
+
+            <article class="factory-stage">
+
+
+                <div class="factory-main-content">
+
+
+                    <div class="factory-stage-top">
+
+                        <span>
+                            03
+                        </span>
+
+                        <i class="fa-solid fa-flask"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            REFINE
+                        </small>
+
+                        <h3>
+                            Test and improve
+                        </h3>
+
+                        <p>
+                            Use feedback and observation
+                            to strengthen the project.
+                        </p>
+
+
+                        <div class="factory-hint">
+
+                            <i class="fa-solid fa-arrow-pointer"></i>
+
+                            Hover for review
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="factory-hover">
+
+
+                    <div class="factory-preview-head">
+
+                        <span>
+                            INSIDE / REFINE
+                        </span>
+
+                        <div class="factory-preview-status">
+                            REVIEW
+                        </div>
+
+                    </div>
+
+
+                    <div class="factory-preview-visual">
+
+
+                        <div class="refine-visual">
+
+
+                            <div class="refine-row">
+
+                                <i class="fa-solid fa-code"></i>
+
+                                <div class="refine-track">
+                                    <div class="refine-fill"></div>
+                                </div>
+
+                                <span>
+                                    CODE
+                                </span>
+
+                            </div>
+
+
+                            <div class="refine-row">
+
+                                <i class="fa-solid fa-mobile-screen"></i>
+
+                                <div class="refine-track">
+                                    <div class="refine-fill"></div>
+                                </div>
+
+                                <span>
+                                    UX
+                                </span>
+
+                            </div>
+
+
+                            <div class="refine-row">
+
+                                <i class="fa-solid fa-check"></i>
+
+                                <div class="refine-track">
+                                    <div class="refine-fill"></div>
+                                </div>
+
+                                <span>
+                                    TEST
+                                </span>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                    <small>
+                        ITERATION
+                    </small>
+
+
+                    <h4>
+                        Review what is not working.
+                    </h4>
+
+
+                    <p>
+
+                        Learners inspect the first version,
+                        collect feedback, identify weak areas
+                        and improve the result instead of
+                        immediately adding more features.
+
+                    </p>
+
+
+                    <div class="factory-preview-tags">
+
+                        <span>Feedback</span>
+                        <span>Testing</span>
+                        <span>Improve</span>
+
+                    </div>
+
+
+                </div>
+
+
+            </article>
+
+
+
+            <!-- =================================================
+                 SHIP
+            ================================================== -->
+
+            <article class="factory-stage">
+
+
+                <div class="factory-main-content">
+
+
+                    <div class="factory-stage-top">
+
+                        <span>
+                            04
+                        </span>
+
+                        <i class="fa-solid fa-rocket"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            SHIP
+                        </small>
+
+                        <h3>
+                            Prepare the final build
+                        </h3>
+
+                        <p>
+                            Finalize the result and make
+                            it ready to demonstrate.
+                        </p>
+
+
+                        <div class="factory-hint">
+
+                            <i class="fa-solid fa-arrow-pointer"></i>
+
+                            Hover to launch
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="factory-hover">
+
+
+                    <div class="factory-preview-head">
+
+                        <span>
+                            INSIDE / SHIP
+                        </span>
+
+                        <div class="factory-preview-status">
+                            READY
+                        </div>
+
+                    </div>
+
+
+                    <div class="factory-preview-visual">
+
+
+                        <div class="ship-visual">
+
+                            <div class="ship-ring"></div>
+
+                            <div class="ship-core">
+
+                                <i class="fa-solid fa-rocket"></i>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <small>
+                        FINAL DELIVERY
+                    </small>
+
+
+                    <h4>
+                        Make it ready to show.
+                    </h4>
+
+
+                    <p>
+
+                        Clean the final experience, verify important
+                        flows and prepare a clear demonstration that
+                        explains the problem, solution and learning.
+
+                    </p>
+
+
+                    <div class="factory-preview-tags">
+
+                        <span>Polish</span>
+                        <span>Demo</span>
+                        <span>Launch</span>
+
+                    </div>
+
+
+                </div>
+
+
+            </article>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     10 DEMO DAY
+========================================================= -->
+
+<section class="demo-section">
+
+
+    <div class="container demo-layout">
+
+
+        <div class="demo-copy reveal">
+
+            <div class="section-label">
+                Demo Day
+            </div>
+
+            <h2 class="section-title">
+
+                The final project has to
+
+                <span>
+                    stand on its own.
+                </span>
+
+            </h2>
+
+            <p>
+
+                Demo Day asks learners to present what they built,
+                explain why it matters and show how the solution works.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="demo-stage reveal">
+
+
+            <div class="demo-light left"></div>
+            <div class="demo-light right"></div>
+
+
+            <div class="demo-screen">
+
+                <small>
+                    FINAL DEMO / COHORT SHOWCASE
+                </small>
+
+                <h3>
+                    AI-powered student opportunity navigator
+                </h3>
+
+                <p>
+
+                    A practical solution that helps students
+                    discover relevant learning and career opportunities.
+
+                </p>
+
+                <div class="demo-screen-footer">
+
+                    <span>Problem</span>
+                    <span>Solution</span>
+                    <span>Demo</span>
+                    <span>Learning</span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     11 COMPLETION
+========================================================= -->
+
+<section class="graduate-section">
+
+
+    <div class="container graduate-layout">
+
+
+        <div class="graduate-copy reveal">
+
+            <div class="section-label">
+                Bootcamp Completion
+            </div>
+
+            <h2 class="section-title">
+
+                Finish with a record
+
+                <span>
+                    of what you completed.
+                </span>
+
+            </h2>
+
+            <p class="section-copy">
+
+                A completion record can bring together the bootcamp track,
+                project work, challenge participation and final demonstration.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="graduate-pass reveal">
+
+
+            <div class="pass-top">
+
+                <strong>
+                    TRIVOX BOOTCAMP PASS
+                </strong>
+
+                <span>
+                    COMPLETED
+                </span>
+
+            </div>
+
+
+            <div class="pass-body">
+
+                <small>
+                    COHORT COMPLETION
+                </small>
+
+                <h3>
+                    Intensive Skill Bootcamp
+                </h3>
+
+
+                <div class="pass-info">
+
+                    <div class="pass-row">
+                        <span>Foundation</span>
+                        <strong>Complete</strong>
+                    </div>
+
+                    <div class="pass-row">
+                        <span>Challenges</span>
+                        <strong>Complete</strong>
+                    </div>
+
+                    <div class="pass-row">
+                        <span>Project</span>
+                        <strong>Complete</strong>
+                    </div>
+
+                    <div class="pass-row">
+                        <span>Peer Review</span>
+                        <strong>Complete</strong>
+                    </div>
+
+                    <div class="pass-row">
+                        <span>Final Demo</span>
+                        <strong>Complete</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="pass-stamp">
+
+                    BOOTCAMP
+                    <br>
+                    READY
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     12 CAREER LAUNCH
+========================================================= -->
+
+<section class="launch-section" id="launch">
+
+
+    <div class="container">
+
+
+        <div class="launch-head reveal">
+
+            <div class="section-label">
+                After Bootcamp
+            </div>
+
+            <h2 class="section-title">
+
+                The sprint ends.
+
+                <span>
+                    Your next move begins.
+                </span>
+
+            </h2>
+
+        </div>
+
+
+
+        <div class="launch-deck reveal">
+
+
+            <div class="launch-main">
+
+                <small>
+                    CAREER LAUNCH DECK
+                </small>
+
+                <h3>
+                    Turn bootcamp output into career proof.
+                </h3>
+
+                <p>
+
+                    Use the project, feedback and practical experience
+                    from the bootcamp to strengthen your portfolio,
+                    interview story and next learning direction.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="launch-side">
+
+
+                <div class="launch-tile">
+
+                    <i class="fa-solid fa-folder-open"></i>
+
+                    <strong>
+                        Portfolio
+                    </strong>
+
+                    <p>
+                        Present your bootcamp project clearly.
+                    </p>
+
+                </div>
+
+
+                <div class="launch-tile">
+
+                    <i class="fa-solid fa-comments"></i>
+
+                    <strong>
+                        Interview Story
+                    </strong>
+
+                    <p>
+                        Explain what you built and how you solved problems.
+                    </p>
+
+                </div>
+
+
+                <div class="launch-tile">
+
+                    <i class="fa-solid fa-route"></i>
+
+                    <strong>
+                        Next Skill
+                    </strong>
+
+                    <p>
+                        Identify what to learn after the intensive sprint.
+                    </p>
+
+                </div>
+
+
+                <div class="launch-tile">
+
+                    <i class="fa-solid fa-briefcase"></i>
+
+                    <strong>
+                        Opportunity Readiness
+                    </strong>
+
+                    <p>
+                        Build confidence to explore internships and roles.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     FINAL CTA
+========================================================= -->
+
+<section class="final-section">
+
+
+    <div class="container">
+
+
+        <div class="final-card reveal">
+
+
+            <div class="final-content">
+
+                <small>
+                    JOIN THE NEXT SPRINT
+                </small>
+
+                <h2>
+                    Learn fast. Build deeply. Finish with proof.
+                </h2>
+
+                <p>
+
+                    Explore TRIVOX Bootcamps for focused skill development,
+                    practical challenges, cohort learning and project-based growth.
+
+                </p>
+
+                <a
+                href="../contact/contact.html"
+                class="final-btn">
+
+                    Discuss a Bootcamp
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+</main>
+
+
+
+<footer class="footer">
+
+    © 2026 TRIVOX AI IMPACT
+
+    <span>•</span>
+
+    Bootcamps
+
+</footer>
+
+
+
+<script>
+
+/* =========================================================
+   NAVBAR SHADOW
+========================================================= */
+
+const navbar =
+document.getElementById("navbar");
+
+window.addEventListener("scroll", () => {
+
+    navbar.classList.toggle(
+        "scrolled",
+        window.scrollY > 20
+    );
+
+});
+
+
+/* =========================================================
+   MOBILE NAV
+========================================================= */
+
+const menuToggle =
+document.getElementById("menuToggle");
+
+const navMenu =
+document.getElementById("navMenu");
+
+const navItems =
+document.querySelectorAll(".nav-item");
+
+
+menuToggle.addEventListener("click", () => {
+
+    const active =
+    navMenu.classList.toggle("active");
+
+    menuToggle.classList.toggle(
+        "active",
+        active
+    );
+
+    menuToggle.setAttribute(
+        "aria-expanded",
+        active ? "true" : "false"
+    );
+
+});
+
+
+navItems.forEach(item => {
+
+    const link =
+    item.querySelector(":scope > .nav-link");
+
+    const dropdown =
+    item.querySelector(":scope > .dropdown");
+
+
+    if(!link || !dropdown){
+        return;
+    }
+
+
+    link.addEventListener("click", event => {
+
+        if(window.innerWidth > 1050){
+            return;
+        }
+
+        event.preventDefault();
+
+
+        navItems.forEach(other => {
+
+            if(other !== item){
+                other.classList.remove("open");
+            }
+
+        });
+
+
+        item.classList.toggle("open");
+
+    });
+
+});
+
+
+document
+.querySelectorAll(".dropdown a")
+.forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        if(window.innerWidth <= 1050){
+
+            navMenu.classList.remove("active");
+
+            menuToggle.classList.remove("active");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+
+            navItems.forEach(item => {
+                item.classList.remove("open");
+            });
+
+        }
+
+    });
+
+});
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const revealItems =
+document.querySelectorAll(".reveal");
+
+
+const revealObserver =
+new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+            entry.target.classList.add("show");
+
+            revealObserver.unobserve(
+                entry.target
+            );
+
+        }
+
+    });
+
+},{
+    threshold:.10
+});
+
+
+revealItems.forEach(item => {
+
+    revealObserver.observe(item);
+
+});
+
+
+/* =========================================================
+   HERO CONTROL ACTIVE
+========================================================= */
+
+const controlItems =
+document.querySelectorAll(".control-footer-item");
+
+let controlIndex = 0;
+
+
+function updateControl(){
+
+    controlItems.forEach(item => {
+        item.classList.remove("active");
+    });
+
+
+    controlItems[controlIndex]
+    .classList.add("active");
+
+
+    controlIndex++;
+
+
+    if(controlIndex >= controlItems.length){
+        controlIndex = 0;
+    }
+
+}
+
+
+const reduceMotion =
+window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+).matches;
+
+
+if(!reduceMotion){
+
+    setInterval(
+        updateControl,
+        1600
+    );
+
+}
+
+
+/* =========================================================
+   MENTOR SLOT BUTTONS
+========================================================= */
+
+const slotButtons =
+document.querySelectorAll(".slot-button");
+
+
+slotButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        const oldText =
+        button.textContent;
+
+        button.textContent =
+        "Requested ✓";
+
+        button.style.color =
+        "#4d9465";
+
+
+        setTimeout(() => {
+
+            button.textContent =
+            oldText;
+
+            button.style.color =
+            "";
+
+        },1600);
+
+    });
+
+});
+
+
+/* =========================================================
+   BUILD FACTORY MOBILE TAP
+========================================================= */
+
+const factoryStages =
+document.querySelectorAll(".factory-stage");
+
+
+factoryStages.forEach(stage => {
+
+    stage.addEventListener("click", event => {
+
+        if(window.innerWidth > 650){
+            return;
+        }
+
+
+        const alreadyOpen =
+        stage.classList.contains("open");
+
+
+        factoryStages.forEach(other => {
+
+            other.classList.remove("open");
+
+        });
+
+
+        if(!alreadyOpen){
+
+            stage.classList.add("open");
+
+        }
+
+    });
+
+});
+
+
+/* =========================================================
+   FACTORY CARD DESKTOP 3D POINTER EFFECT
+========================================================= */
+
+factoryStages.forEach(stage => {
+
+    stage.addEventListener("mousemove", event => {
+
+        if(
+            window.innerWidth <= 650 ||
+            reduceMotion
+        ){
+            return;
+        }
+
+
+        const rect =
+        stage.getBoundingClientRect();
+
+
+        const x =
+        event.clientX - rect.left;
+
+        const y =
+        event.clientY - rect.top;
+
+
+        const centerX =
+        rect.width / 2;
+
+        const centerY =
+        rect.height / 2;
+
+
+        const rotateX =
+        ((y - centerY) / centerY) * -2.2;
+
+        const rotateY =
+        ((x - centerX) / centerX) * 2.2;
+
+
+        stage.style.transform =
+        `translateY(-12px)
+         scale(1.025)
+         perspective(800px)
+         rotateX(${rotateX}deg)
+         rotateY(${rotateY}deg)`;
+
+    });
+
+
+    stage.addEventListener("mouseleave", () => {
+
+        stage.style.transform = "";
+
+    });
+
+});
+
+
+/* =========================================================
+   HERO CONTROL PARALLAX
+========================================================= */
+
+const controlShell =
+document.querySelector(".control-shell");
+
+
+window.addEventListener("mousemove", event => {
+
+    if(
+        window.innerWidth <= 1050 ||
+        !controlShell ||
+        reduceMotion
+    ){
+        return;
+    }
+
+
+    const x =
+    (event.clientX / window.innerWidth - .5) * 5;
+
+    const y =
+    (event.clientY / window.innerHeight - .5) * 5;
+
+
+    controlShell.style.transform =
+    `translate(${x}px, ${y}px)`;
+
+});
+
+
+document.addEventListener("mouseleave", () => {
+
+    if(controlShell){
+        controlShell.style.transform = "";
+    }
+
+});
+
+
+/* =========================================================
+   RESIZE
+========================================================= */
+
+window.addEventListener("resize", () => {
+
+    if(window.innerWidth > 1050){
+
+        navMenu.classList.remove("active");
+
+        menuToggle.classList.remove("active");
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+
+        navItems.forEach(item => {
+            item.classList.remove("open");
+        });
+
+    }
+
+
+    if(
+        window.innerWidth <= 1050 &&
+        controlShell
+    ){
+        controlShell.style.transform = "";
+    }
+
+
+    if(window.innerWidth > 650){
+
+        factoryStages.forEach(stage => {
+            stage.classList.remove("open");
+        });
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
