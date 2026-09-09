@@ -1,1 +1,7395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Career Programs | TRIVOX AI IMPACT</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root{
+    --purple:#7156e8;
+    --purple-dark:#5d43ce;
+    --purple-light:#f1edff;
+    --purple-soft:#faf8ff;
+
+    --black:#111116;
+    --dark:#17171c;
+
+    --text:#19191f;
+    --muted:#6f7078;
+    --light-muted:#9a9aa3;
+
+    --white:#fff;
+    --surface:#f7f7f9;
+    --surface2:#f0f0f3;
+    --border:#e7e7ec;
+
+    --green:#55a36c;
+    --red:#df6c67;
+    --orange:#d79a54;
+
+    --container:1180px;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+
+    background:#fff;
+    color:var(--text);
+
+    font-family:"Inter",sans-serif;
+    -webkit-font-smoothing:antialiased;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button,
+input{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+img{
+    max-width:100%;
+}
+
+main{
+    padding-top:76px;
+}
+
+.container{
+    width:min(var(--container),86%);
+    margin:auto;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar{
+    width:100%;
+    height:76px;
+
+    position:fixed;
+    left:0;
+    top:0;
+    z-index:9999;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 4%;
+
+    background:rgba(255,255,255,.97);
+
+    border-bottom:1px solid rgba(0,0,0,.06);
+
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+
+    transition:.3s ease;
+}
+
+.navbar.scrolled{
+    box-shadow:0 8px 30px rgba(0,0,0,.06);
+}
+
+
+/* LOGO */
+
+.logo{
+    display:flex;
+    align-items:center;
+
+    flex-shrink:0;
+
+    white-space:nowrap;
+
+    font-size:22px;
+    font-weight:800;
+
+    letter-spacing:-1.1px;
+}
+
+.logo-main{
+    background:linear-gradient(
+        to bottom,
+        #111 0%,
+        #111 50%,
+        var(--purple) 50%,
+        var(--purple) 100%
+    );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.logo-impact{
+    margin-left:7px;
+
+    background:linear-gradient(
+        to bottom,
+        var(--purple) 0%,
+        var(--purple) 50%,
+        #222 50%,
+        #222 100%
+    );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+
+/* NAV MENU */
+
+.nav-menu{
+    display:flex;
+    align-items:center;
+
+    gap:2px;
+
+    list-style:none;
+}
+
+.nav-item{
+    position:relative;
+}
+
+.nav-link{
+    display:flex;
+    align-items:center;
+
+    gap:6px;
+
+    padding:28px 10px;
+
+    color:#37373d;
+
+    font-size:13px;
+    font-weight:600;
+
+    white-space:nowrap;
+
+    cursor:pointer;
+
+    transition:.2s ease;
+}
+
+.nav-link:hover,
+.nav-item.active-parent > .nav-link{
+    color:var(--purple);
+}
+
+.arrow{
+    width:6px;
+    height:6px;
+
+    border-right:1.4px solid currentColor;
+    border-bottom:1.4px solid currentColor;
+
+    transform:rotate(45deg) translateY(-2px);
+
+    transition:.25s ease;
+}
+
+.nav-item:hover .arrow{
+    transform:rotate(225deg);
+}
+
+
+/* DROPDOWN */
+
+.dropdown{
+    position:absolute;
+
+    top:68px;
+    left:0;
+
+    width:245px;
+
+    padding:9px;
+
+    background:#fff;
+
+    border:1px solid #ececf0;
+    border-radius:15px;
+
+    box-shadow:0 20px 55px rgba(0,0,0,.10);
+
+    opacity:0;
+    visibility:hidden;
+
+    transform:translateY(14px);
+
+    transition:.23s ease;
+}
+
+.nav-item:hover > .dropdown{
+    opacity:1;
+    visibility:visible;
+
+    transform:translateY(0);
+}
+
+.dropdown > a{
+    display:block;
+
+    padding:12px 13px;
+
+    border-radius:9px;
+
+    color:#45454c;
+
+    font-size:13px;
+
+    transition:.2s ease;
+}
+
+.dropdown > a:hover{
+    padding-left:17px;
+
+    color:var(--purple);
+
+    background:#f6f4ff;
+}
+
+.dropdown > a.active{
+    color:var(--purple);
+
+    background:#f1edff;
+
+    font-weight:700;
+}
+
+
+/* MEGA DROPDOWN */
+
+.mega-dropdown{
+    width:620px;
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+
+    gap:7px;
+
+    padding:14px;
+}
+
+.mega-box{
+    display:block;
+
+    padding:14px;
+
+    border-radius:11px;
+
+    transition:.2s ease;
+}
+
+.mega-box:hover{
+    background:#f7f5ff;
+
+    transform:translateX(3px);
+}
+
+.mega-box strong{
+    display:block;
+
+    margin-bottom:5px;
+
+    font-size:13px;
+}
+
+.mega-box p{
+    color:#83838b;
+
+    font-size:11px;
+    line-height:1.5;
+}
+
+
+/* ACTIONS */
+
+.nav-actions{
+    display:flex;
+    align-items:center;
+
+    gap:10px;
+
+    flex-shrink:0;
+}
+
+.login-btn{
+    padding:10px 13px;
+
+    border:0;
+
+    background:transparent;
+
+    font-size:13px;
+    font-weight:600;
+}
+
+.get-started{
+    padding:11px 17px;
+
+    border-radius:9px;
+
+    background:#111;
+    color:#fff;
+
+    font-size:13px;
+    font-weight:700;
+
+    transition:.25s ease;
+}
+
+.get-started:hover{
+    transform:translateY(-2px);
+}
+
+
+/* SIGN IN */
+
+.signin-dropdown-wrap{
+    position:relative;
+}
+
+.signin-main-btn{
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+.signin-dropdown{
+    width:230px;
+
+    position:absolute;
+
+    right:0;
+    top:51px;
+
+    padding:9px;
+
+    background:#fff;
+
+    border:1px solid #ececf0;
+    border-radius:14px;
+
+    box-shadow:0 20px 55px rgba(0,0,0,.10);
+
+    opacity:0;
+    visibility:hidden;
+
+    transform:translateY(12px);
+
+    transition:.23s ease;
+}
+
+.signin-dropdown-wrap:hover .signin-dropdown{
+    opacity:1;
+    visibility:visible;
+
+    transform:translateY(0);
+}
+
+.signin-dropdown a{
+    display:flex;
+    align-items:center;
+
+    gap:11px;
+
+    padding:12px;
+
+    border-radius:9px;
+
+    transition:.2s ease;
+}
+
+.signin-dropdown a:hover{
+    background:#f6f4ff;
+}
+
+.signin-dropdown i{
+    color:var(--purple);
+}
+
+.signin-dropdown strong{
+    display:block;
+
+    font-size:12px;
+}
+
+.signin-dropdown span{
+    display:block;
+
+    margin-top:3px;
+
+    color:#8c8c94;
+
+    font-size:10px;
+}
+
+
+/* MOBILE BUTTON */
+
+.menu-toggle{
+    width:42px;
+    height:42px;
+
+    display:none;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+
+    gap:4px;
+
+    border:0;
+    border-radius:10px;
+
+    background:#f2f2f4;
+}
+
+.menu-toggle span{
+    width:20px;
+    height:2px;
+
+    background:#111;
+
+    transition:.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1){
+    transform:translateY(6px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2){
+    opacity:0;
+}
+
+.menu-toggle.active span:nth-child(3){
+    transform:translateY(-6px) rotate(-45deg);
+}
+
+
+/* =========================================================
+   COMMON
+========================================================= */
+
+.section-label{
+    display:flex;
+    align-items:center;
+
+    gap:9px;
+
+    margin-bottom:15px;
+
+    color:var(--purple);
+
+    font-size:9px;
+    font-weight:800;
+
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+}
+
+.section-label::before{
+    content:"";
+
+    width:20px;
+    height:2px;
+
+    background:var(--purple);
+}
+
+.section-title{
+    max-width:800px;
+
+    font-size:clamp(34px,3.7vw,50px);
+
+    line-height:1.06;
+
+    letter-spacing:-2.5px;
+}
+
+.section-title span{
+    color:var(--purple);
+}
+
+.section-copy{
+    color:var(--muted);
+
+    font-size:12px;
+    line-height:1.8;
+}
+
+.reveal{
+    opacity:0;
+
+    transform:translateY(24px);
+
+    transition:
+        opacity .75s ease,
+        transform .75s cubic-bezier(.2,.7,.2,1);
+}
+
+.reveal.show{
+    opacity:1;
+    transform:none;
+}
+
+
+/* =========================================================
+   01 HERO — CAREER OS
+========================================================= */
+
+.career-os-hero{
+    min-height:720px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:58px 0 48px;
+
+    background:
+        linear-gradient(180deg,#fbfaff 0%,#f5f3fb 100%);
+}
+
+.career-os-hero::before{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    pointer-events:none;
+
+    background-image:
+        linear-gradient(rgba(113,86,232,.04) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(113,86,232,.04) 1px,transparent 1px);
+
+    background-size:42px 42px;
+
+    mask-image:linear-gradient(to bottom,#000,transparent 85%);
+}
+
+.hero-intro{
+    position:relative;
+    z-index:2;
+
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+
+    gap:50px;
+
+    margin-bottom:35px;
+}
+
+.hero-intro-left{
+    max-width:760px;
+}
+
+.hero-eyebrow{
+    display:flex;
+    align-items:center;
+
+    gap:9px;
+
+    margin-bottom:16px;
+
+    color:var(--purple);
+
+    font-size:9px;
+    font-weight:800;
+
+    letter-spacing:1.4px;
+}
+
+.hero-eyebrow-dot{
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:var(--purple);
+
+    box-shadow:0 0 0 6px rgba(113,86,232,.09);
+}
+
+.hero-intro h1{
+    max-width:780px;
+
+    font-size:clamp(49px,5.5vw,74px);
+
+    line-height:.95;
+
+    letter-spacing:-4.2px;
+}
+
+.hero-intro h1 span{
+    color:var(--purple);
+}
+
+.hero-side-copy{
+    max-width:340px;
+
+    padding-bottom:5px;
+}
+
+.hero-side-copy p{
+    margin-bottom:17px;
+
+    color:#707078;
+
+    font-size:11px;
+    line-height:1.75;
+}
+
+.hero-mini-link{
+    display:inline-flex;
+    align-items:center;
+
+    gap:8px;
+
+    color:#111116;
+
+    font-size:9px;
+    font-weight:800;
+}
+
+.hero-mini-link i{
+    color:var(--purple);
+}
+
+
+/* APP WINDOW */
+
+.career-app{
+    position:relative;
+    z-index:3;
+
+    min-height:440px;
+
+    display:grid;
+    grid-template-columns:175px 1fr;
+
+    overflow:hidden;
+
+    border:1px solid #dfdde7;
+    border-radius:19px;
+
+    background:#fff;
+
+    box-shadow:
+        0 30px 80px rgba(44,31,89,.10),
+        0 2px 8px rgba(0,0,0,.03);
+}
+
+.career-sidebar{
+    padding:17px 13px;
+
+    background:#111116;
+    color:#fff;
+}
+
+.career-sidebar-brand{
+    display:flex;
+    align-items:center;
+
+    gap:8px;
+
+    padding:7px 7px 20px;
+
+    border-bottom:1px solid #2b2b31;
+}
+
+.career-sidebar-logo{
+    width:28px;
+    height:28px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:8px;
+
+    background:#7156e8;
+
+    font-size:9px;
+}
+
+.career-sidebar-brand strong{
+    display:block;
+
+    font-size:8px;
+}
+
+.career-sidebar-brand span{
+    display:block;
+
+    margin-top:2px;
+
+    color:#686871;
+
+    font-size:5px;
+}
+
+.sidebar-label{
+    display:block;
+
+    margin:20px 7px 9px;
+
+    color:#575760;
+
+    font-size:5px;
+    font-weight:800;
+
+    letter-spacing:.8px;
+}
+
+.os-nav{
+    width:100%;
+
+    display:flex;
+    align-items:center;
+
+    gap:9px;
+
+    margin-bottom:4px;
+
+    padding:10px 9px;
+
+    border:0;
+    border-radius:8px;
+
+    background:transparent;
+    color:#777780;
+
+    text-align:left;
+
+    font-size:7px;
+    font-weight:600;
+
+    transition:.2s ease;
+}
+
+.os-nav i{
+    width:17px;
+
+    color:#64646d;
+
+    font-size:7px;
+}
+
+.os-nav:hover,
+.os-nav.active{
+    background:#211d31;
+    color:#fff;
+}
+
+.os-nav.active i{
+    color:#a995ff;
+}
+
+.sidebar-progress{
+    margin:26px 7px 0;
+
+    padding-top:15px;
+
+    border-top:1px solid #2b2b31;
+}
+
+.sidebar-progress-head{
+    display:flex;
+    justify-content:space-between;
+
+    margin-bottom:7px;
+
+    color:#65656e;
+
+    font-size:5px;
+}
+
+.sidebar-progress-track{
+    height:4px;
+
+    overflow:hidden;
+
+    border-radius:50px;
+
+    background:#303037;
+}
+
+.sidebar-progress-fill{
+    width:38%;
+    height:100%;
+
+    border-radius:50px;
+
+    background:#7156e8;
+
+    transition:.4s ease;
+}
+
+
+/* APP MAIN */
+
+.career-app-main{
+    min-width:0;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.app-toolbar{
+    min-height:58px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:20px;
+
+    padding:0 19px;
+
+    border-bottom:1px solid #ececf0;
+
+    background:#fff;
+}
+
+.toolbar-path{
+    display:flex;
+    align-items:center;
+
+    gap:7px;
+
+    color:#9999a2;
+
+    font-size:6px;
+}
+
+.toolbar-path strong{
+    color:#33333a;
+}
+
+.toolbar-status{
+    display:flex;
+    align-items:center;
+
+    gap:7px;
+
+    padding:6px 9px;
+
+    border-radius:100px;
+
+    background:#eff8f1;
+    color:#4d8c60;
+
+    font-size:5px;
+    font-weight:800;
+}
+
+.toolbar-status::before{
+    content:"";
+
+    width:5px;
+    height:5px;
+
+    border-radius:50%;
+
+    background:#55a36c;
+}
+
+
+/* APP CONTENT */
+
+.os-content{
+    flex:1;
+
+    display:grid;
+    grid-template-columns:1fr 270px;
+
+    min-height:0;
+
+    background:#f8f8fa;
+}
+
+.os-workspace{
+    min-width:0;
+
+    padding:25px;
+}
+
+.workspace-kicker{
+    margin-bottom:7px;
+
+    color:#9999a2;
+
+    font-size:6px;
+    font-weight:800;
+}
+
+.workspace-title{
+    max-width:560px;
+
+    margin-bottom:8px;
+
+    font-size:25px;
+
+    line-height:1.05;
+
+    letter-spacing:-1.4px;
+}
+
+.workspace-description{
+    max-width:550px;
+
+    color:#85858e;
+
+    font-size:8px;
+    line-height:1.65;
+}
+
+.role-choice-area{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    gap:8px;
+
+    margin-top:23px;
+}
+
+.role-choice{
+    min-height:105px;
+
+    position:relative;
+
+    padding:14px;
+
+    border:1px solid #e3e3e8;
+    border-radius:11px;
+
+    background:#fff;
+
+    text-align:left;
+
+    transition:.25s ease;
+}
+
+.role-choice:hover,
+.role-choice.active{
+    border-color:#bdb0ef;
+
+    box-shadow:0 10px 25px rgba(77,55,151,.08);
+
+    transform:translateY(-3px);
+}
+
+.role-choice-icon{
+    width:31px;
+    height:31px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin-bottom:10px;
+
+    border-radius:8px;
+
+    background:#f1edff;
+    color:#7156e8;
+
+    font-size:8px;
+}
+
+.role-choice strong{
+    display:block;
+
+    margin-bottom:4px;
+
+    font-size:8px;
+}
+
+.role-choice span{
+    color:#9999a2;
+
+    font-size:5px;
+}
+
+.role-choice-check{
+    width:17px;
+    height:17px;
+
+    position:absolute;
+
+    right:9px;
+    top:9px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:1px solid #dedee4;
+    border-radius:50%;
+
+    color:transparent;
+
+    font-size:5px;
+}
+
+.role-choice.active .role-choice-check{
+    border-color:#7156e8;
+
+    background:#7156e8;
+    color:#fff;
+}
+
+
+/* SKILL SIGNAL */
+
+.skill-signal{
+    margin-top:15px;
+
+    padding:14px;
+
+    border:1px solid #e4e4e9;
+    border-radius:11px;
+
+    background:#fff;
+}
+
+.skill-signal-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:20px;
+
+    margin-bottom:12px;
+}
+
+.skill-signal-top strong{
+    font-size:7px;
+}
+
+.skill-signal-top span{
+    color:#9999a2;
+
+    font-size:5px;
+}
+
+.signal-bars{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+
+    gap:6px;
+}
+
+.signal-item small{
+    display:block;
+
+    margin-bottom:5px;
+
+    color:#9999a2;
+
+    font-size:4.8px;
+}
+
+.signal-track{
+    height:5px;
+
+    overflow:hidden;
+
+    border-radius:50px;
+
+    background:#ececf0;
+}
+
+.signal-fill{
+    height:100%;
+
+    border-radius:50px;
+
+    background:#7156e8;
+
+    transition:.4s ease;
+}
+
+
+/* APP RESULT */
+
+.os-result-panel{
+    padding:18px;
+
+    border-left:1px solid #e7e7ec;
+
+    background:#fff;
+}
+
+.result-label{
+    margin-bottom:12px;
+
+    color:#aaaab2;
+
+    font-size:5px;
+    font-weight:800;
+
+    letter-spacing:.7px;
+}
+
+.result-role{
+    padding-bottom:16px;
+
+    border-bottom:1px solid #ececf0;
+}
+
+.result-role-icon{
+    width:42px;
+    height:42px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin-bottom:12px;
+
+    border-radius:11px;
+
+    background:#111116;
+    color:#a995ff;
+
+    font-size:12px;
+}
+
+.result-role h3{
+    margin-bottom:6px;
+
+    font-size:17px;
+
+    line-height:1.1;
+}
+
+.result-role p{
+    color:#85858e;
+
+    font-size:6.5px;
+    line-height:1.6;
+}
+
+.result-stack{
+    padding:15px 0;
+
+    border-bottom:1px solid #ececf0;
+}
+
+.result-stack > small{
+    display:block;
+
+    margin-bottom:9px;
+
+    color:#aaaab2;
+
+    font-size:5px;
+    font-weight:800;
+}
+
+.result-tags{
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:5px;
+}
+
+.result-tags span{
+    padding:5px 7px;
+
+    border-radius:6px;
+
+    background:#f4f2fb;
+    color:#7156e8;
+
+    font-size:5px;
+    font-weight:700;
+}
+
+.result-next{
+    padding-top:15px;
+}
+
+.result-next small{
+    display:block;
+
+    margin-bottom:8px;
+
+    color:#aaaab2;
+
+    font-size:5px;
+    font-weight:800;
+}
+
+.result-next-step{
+    display:flex;
+    align-items:center;
+
+    gap:8px;
+
+    padding:10px;
+
+    border-radius:8px;
+
+    background:#f7f7f9;
+}
+
+.result-next-step i{
+    color:#7156e8;
+
+    font-size:8px;
+}
+
+.result-next-step strong{
+    display:block;
+
+    margin-bottom:2px;
+
+    font-size:6px;
+}
+
+.result-next-step span{
+    color:#9999a2;
+
+    font-size:5px;
+}
+
+
+/* HERO BOTTOM */
+
+.hero-os-footer{
+    position:relative;
+    z-index:2;
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+
+    border:1px solid #e0dee7;
+    border-top:0;
+
+    background:rgba(255,255,255,.8);
+}
+
+.hero-os-stat{
+    min-height:66px;
+
+    display:flex;
+    align-items:center;
+
+    gap:10px;
+
+    padding:0 17px;
+
+    border-right:1px solid #e0dee7;
+}
+
+.hero-os-stat:last-child{
+    border-right:0;
+}
+
+.hero-os-stat i{
+    color:#7156e8;
+
+    font-size:9px;
+}
+
+.hero-os-stat small{
+    display:block;
+
+    margin-bottom:3px;
+
+    color:#aaaab2;
+
+    font-size:5px;
+}
+
+.hero-os-stat strong{
+    font-size:7px;
+}
+
+
+/* =========================================================
+   02 CAREER SIGNAL
+========================================================= */
+
+.signal-section{
+    padding:110px 0;
+
+    background:#fff;
+}
+
+.signal-layout{
+    display:grid;
+    grid-template-columns:.8fr 1.2fr;
+
+    gap:80px;
+
+    align-items:center;
+}
+
+.signal-copy h2{
+    margin-bottom:18px;
+}
+
+.signal-copy p{
+    max-width:480px;
+}
+
+.signal-statement{
+    position:relative;
+
+    padding:35px 0 35px 45px;
+
+    border-left:1px solid #dcdce2;
+}
+
+.signal-statement::before{
+    content:"“";
+
+    position:absolute;
+
+    left:-6px;
+    top:-10px;
+
+    color:#7156e8;
+
+    font-size:90px;
+    font-weight:800;
+
+    line-height:1;
+}
+
+.signal-statement p{
+    max-width:620px;
+
+    font-size:clamp(27px,3vw,39px);
+
+    line-height:1.15;
+
+    letter-spacing:-1.7px;
+}
+
+.signal-statement p span{
+    color:#7156e8;
+}
+
+
+/* =========================================================
+   03 ROLE DNA
+========================================================= */
+
+.role-dna-section{
+    padding:105px 0;
+
+    overflow:hidden;
+
+    background:#111116;
+    color:#fff;
+}
+
+.role-dna-head{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+
+    gap:50px;
+
+    margin-bottom:48px;
+}
+
+.role-dna-head .section-label{
+    color:#a995ff;
+}
+
+.role-dna-head .section-label::before{
+    background:#a995ff;
+}
+
+.role-dna-head .section-title span{
+    color:#a995ff;
+}
+
+.role-dna-head p{
+    max-width:370px;
+
+    color:#85858e;
+
+    font-size:10px;
+    line-height:1.75;
+}
+
+.dna-stage{
+    min-height:480px;
+
+    position:relative;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.dna-line{
+    width:4px;
+    height:390px;
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    border-radius:50px;
+
+    background:linear-gradient(
+        to bottom,
+        transparent,
+        #7156e8 20%,
+        #a995ff 50%,
+        #7156e8 80%,
+        transparent
+    );
+
+    transform:translate(-50%,-50%);
+}
+
+.dna-node{
+    width:43%;
+
+    position:absolute;
+
+    display:flex;
+    align-items:center;
+
+    gap:14px;
+}
+
+.dna-node.left{
+    left:0;
+
+    justify-content:flex-end;
+
+    text-align:right;
+}
+
+.dna-node.right{
+    right:0;
+}
+
+.dna-node:nth-of-type(2){
+    top:30px;
+}
+
+.dna-node:nth-of-type(3){
+    top:125px;
+}
+
+.dna-node:nth-of-type(4){
+    top:220px;
+}
+
+.dna-node:nth-of-type(5){
+    top:315px;
+}
+
+.dna-copy small{
+    display:block;
+
+    margin-bottom:5px;
+
+    color:#74747d;
+
+    font-size:5px;
+    font-weight:800;
+}
+
+.dna-copy strong{
+    display:block;
+
+    margin-bottom:4px;
+
+    font-size:13px;
+}
+
+.dna-copy p{
+    max-width:340px;
+
+    color:#777780;
+
+    font-size:7px;
+    line-height:1.55;
+}
+
+.dna-dot{
+    width:17px;
+    height:17px;
+
+    position:relative;
+
+    flex-shrink:0;
+
+    border:4px solid #111116;
+    border-radius:50%;
+
+    background:#a995ff;
+
+    box-shadow:0 0 0 1px #5d4b9e;
+}
+
+.dna-connector{
+    width:70px;
+    height:1px;
+
+    flex-shrink:0;
+
+    background:#38333f;
+}
+
+
+/* =========================================================
+   04 ROLE SWITCHER
+========================================================= */
+
+.role-switch-section{
+    padding:105px 0;
+
+    background:#f7f7f9;
+}
+
+.switcher-layout{
+    display:grid;
+    grid-template-columns:320px 1fr;
+
+    gap:20px;
+}
+
+.switcher-menu{
+    padding:25px 0;
+}
+
+.switcher-menu .section-title{
+    margin-bottom:27px;
+
+    font-size:38px;
+}
+
+.role-switch-btn{
+    width:100%;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:15px;
+
+    padding:15px 0;
+
+    border:0;
+    border-bottom:1px solid #dddde3;
+
+    background:transparent;
+
+    color:#8b8b93;
+
+    text-align:left;
+
+    transition:.25s ease;
+}
+
+.role-switch-btn strong{
+    font-size:10px;
+}
+
+.role-switch-btn span{
+    font-size:6px;
+}
+
+.role-switch-btn i{
+    opacity:0;
+
+    color:#7156e8;
+
+    transition:.25s ease;
+}
+
+.role-switch-btn:hover,
+.role-switch-btn.active{
+    color:#111116;
+}
+
+.role-switch-btn.active i{
+    opacity:1;
+}
+
+.role-switch-display{
+    min-height:490px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:42px;
+
+    border-radius:18px;
+
+    background:#7156e8;
+    color:#fff;
+}
+
+.role-switch-display::before{
+    content:"";
+
+    width:400px;
+    height:400px;
+
+    position:absolute;
+
+    right:-180px;
+    bottom:-220px;
+
+    border:1px solid rgba(255,255,255,.16);
+    border-radius:50%;
+}
+
+.role-display-number{
+    position:absolute;
+
+    right:30px;
+    top:20px;
+
+    color:rgba(255,255,255,.12);
+
+    font-size:110px;
+    font-weight:800;
+
+    letter-spacing:-8px;
+}
+
+.role-display-icon{
+    width:58px;
+    height:58px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin-bottom:70px;
+
+    border-radius:15px;
+
+    background:#fff;
+    color:#7156e8;
+
+    font-size:18px;
+}
+
+.role-switch-display small{
+    display:block;
+
+    margin-bottom:10px;
+
+    color:#ddd7fb;
+
+    font-size:7px;
+    font-weight:800;
+}
+
+.role-switch-display h3{
+    max-width:600px;
+
+    margin-bottom:13px;
+
+    font-size:37px;
+
+    line-height:1.02;
+
+    letter-spacing:-2px;
+}
+
+.role-switch-display p{
+    max-width:560px;
+
+    color:#ddd8f5;
+
+    font-size:9px;
+    line-height:1.7;
+}
+
+.role-display-footer{
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:7px;
+
+    margin-top:30px;
+}
+
+.role-display-footer span{
+    padding:7px 9px;
+
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:100px;
+
+    background:rgba(255,255,255,.08);
+
+    font-size:6px;
+}
+
+
+/* =========================================================
+   05 CAREER PROOF
+========================================================= */
+
+.proof-section{
+    padding:110px 0;
+
+    background:#fff;
+}
+
+.proof-heading{
+    max-width:760px;
+
+    margin-bottom:50px;
+}
+
+.proof-heading p{
+    max-width:540px;
+
+    margin-top:17px;
+}
+
+.proof-desk{
+    min-height:580px;
+
+    position:relative;
+
+    padding:55px;
+
+    overflow:hidden;
+
+    background:#eae7df;
+}
+
+.proof-desk::before{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    opacity:.16;
+
+    background-image:
+        radial-gradient(#4c4b48 .7px,transparent .7px);
+
+    background-size:8px 8px;
+}
+
+.proof-sheet{
+    position:absolute;
+
+    padding:22px;
+
+    background:#fff;
+
+    box-shadow:0 15px 30px rgba(0,0,0,.10);
+
+    transition:.35s ease;
+}
+
+.proof-sheet:hover{
+    z-index:20;
+
+    transform:rotate(0deg) translateY(-8px) scale(1.03);
+}
+
+.sheet-project{
+    width:40%;
+    height:360px;
+
+    left:7%;
+    top:75px;
+
+    transform:rotate(-3deg);
+}
+
+.sheet-case{
+    width:30%;
+    height:250px;
+
+    right:10%;
+    top:45px;
+
+    transform:rotate(4deg);
+}
+
+.sheet-feedback{
+    width:28%;
+    height:190px;
+
+    right:18%;
+    bottom:35px;
+
+    transform:rotate(-4deg);
+
+    background:#fff8b8;
+}
+
+.sheet-label{
+    display:inline-block;
+
+    margin-bottom:15px;
+
+    padding:5px 7px;
+
+    background:#111116;
+    color:#fff;
+
+    font-size:5px;
+    font-weight:800;
+}
+
+.sheet-project .sheet-label{
+    background:#7156e8;
+}
+
+.proof-sheet h3{
+    max-width:330px;
+
+    margin-bottom:9px;
+
+    font-size:20px;
+
+    line-height:1.08;
+}
+
+.proof-sheet p{
+    color:#777780;
+
+    font-size:7px;
+    line-height:1.6;
+}
+
+.project-screen{
+    height:140px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    margin-top:22px;
+
+    border:1px solid #e2e2e7;
+
+    background:#f7f7f9;
+}
+
+.project-screen-top{
+    height:22px;
+
+    display:flex;
+    align-items:center;
+
+    gap:4px;
+
+    padding:0 7px;
+
+    border-bottom:1px solid #e2e2e7;
+
+    background:#fff;
+}
+
+.project-screen-top span{
+    width:4px;
+    height:4px;
+
+    border-radius:50%;
+
+    background:#cccbd1;
+}
+
+.project-screen-body{
+    height:calc(100% - 22px);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        linear-gradient(135deg,#f2efff,#fff);
+}
+
+.project-screen-body strong{
+    color:#7156e8;
+
+    font-size:16px;
+}
+
+.feedback-mark{
+    position:absolute;
+
+    right:20px;
+    bottom:20px;
+
+    color:#7156e8;
+
+    font-size:34px;
+
+    transform:rotate(-8deg);
+}
+
+.desk-pen{
+    width:170px;
+    height:9px;
+
+    position:absolute;
+
+    left:43%;
+    bottom:90px;
+
+    border-radius:10px;
+
+    background:#111116;
+
+    transform:rotate(34deg);
+
+    box-shadow:0 8px 15px rgba(0,0,0,.13);
+}
+
+.desk-pen::after{
+    content:"";
+
+    width:35px;
+    height:9px;
+
+    position:absolute;
+
+    right:0;
+
+    background:#7156e8;
+}
+
+
+/* =========================================================
+   06 RESUME BEFORE / AFTER
+========================================================= */
+
+.resume-lab{
+    padding:105px 0;
+
+    background:#f7f7f9;
+}
+
+.resume-lab-head{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+
+    gap:50px;
+
+    margin-bottom:45px;
+}
+
+.resume-lab-head p{
+    max-width:380px;
+}
+
+.resume-compare{
+    display:grid;
+    grid-template-columns:1fr 70px 1fr;
+
+    align-items:center;
+
+    gap:25px;
+}
+
+.resume-paper{
+    min-height:450px;
+
+    padding:28px;
+
+    border:1px solid #dedee4;
+
+    background:#fff;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.06);
+}
+
+.resume-paper.before{
+    opacity:.75;
+
+    transform:rotate(-1deg);
+}
+
+.resume-paper.after{
+    border-top:4px solid #7156e8;
+
+    transform:rotate(1deg);
+}
+
+.resume-state{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    margin-bottom:24px;
+}
+
+.resume-state span{
+    font-size:6px;
+    font-weight:800;
+}
+
+.resume-state.bad span{
+    color:#a56b68;
+}
+
+.resume-state.good span{
+    color:#7156e8;
+}
+
+.resume-state i{
+    font-size:9px;
+}
+
+.resume-name{
+    padding-bottom:18px;
+
+    border-bottom:2px solid #111116;
+}
+
+.resume-name h3{
+    margin-bottom:4px;
+
+    font-size:21px;
+}
+
+.resume-name p{
+    color:#9999a2;
+
+    font-size:6px;
+}
+
+.resume-content-block{
+    padding:18px 0;
+
+    border-bottom:1px solid #ececf0;
+}
+
+.resume-content-block:last-child{
+    border-bottom:0;
+}
+
+.resume-content-block > small{
+    display:block;
+
+    margin-bottom:9px;
+
+    color:#7156e8;
+
+    font-size:5px;
+    font-weight:800;
+}
+
+.resume-bullet{
+    position:relative;
+
+    margin-bottom:8px;
+
+    padding-left:11px;
+
+    color:#74747d;
+
+    font-size:7px;
+    line-height:1.55;
+}
+
+.resume-bullet::before{
+    content:"";
+
+    width:3px;
+    height:3px;
+
+    position:absolute;
+
+    left:0;
+    top:6px;
+
+    border-radius:50%;
+
+    background:#9999a2;
+}
+
+.resume-highlight{
+    padding:2px 4px;
+
+    border-radius:3px;
+
+    background:#f1edff;
+    color:#7156e8;
+}
+
+.resume-transform{
+    width:58px;
+    height:58px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin:auto;
+
+    border-radius:50%;
+
+    background:#7156e8;
+    color:#fff;
+
+    box-shadow:0 10px 25px rgba(113,86,232,.25);
+}
+
+
+/* =========================================================
+   07 INTERVIEW ROOM
+========================================================= */
+
+.interview-section{
+    padding:105px 0;
+
+    background:#111116;
+    color:#fff;
+}
+
+.interview-heading{
+    max-width:760px;
+
+    margin-bottom:45px;
+}
+
+.interview-heading .section-label{
+    color:#a995ff;
+}
+
+.interview-heading .section-label::before{
+    background:#a995ff;
+}
+
+.interview-heading .section-title span{
+    color:#a995ff;
+}
+
+.interview-room{
+    min-height:510px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    display:grid;
+    grid-template-columns:1fr 300px;
+
+    border:1px solid #303037;
+    border-radius:18px;
+
+    background:#17171c;
+}
+
+.interview-camera{
+    position:relative;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(circle at center,rgba(113,86,232,.12),transparent 45%),
+        #111116;
+}
+
+.interview-camera::before{
+    content:"";
+
+    width:420px;
+    height:420px;
+
+    position:absolute;
+
+    border:1px solid #2f2f36;
+    border-radius:50%;
+}
+
+.interview-person{
+    width:145px;
+    height:145px;
+
+    position:relative;
+    z-index:2;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:#211d31;
+
+    color:#a995ff;
+
+    font-size:44px;
+
+    box-shadow:0 0 0 18px rgba(113,86,232,.04);
+}
+
+.interview-question{
+    width:min(560px,78%);
+
+    position:absolute;
+
+    left:50%;
+    bottom:28px;
+    z-index:3;
+
+    padding:17px 19px;
+
+    border:1px solid #35353c;
+    border-radius:11px;
+
+    background:rgba(23,23,28,.94);
+
+    transform:translateX(-50%);
+}
+
+.interview-question small{
+    display:block;
+
+    margin-bottom:6px;
+
+    color:#a995ff;
+
+    font-size:5px;
+    font-weight:800;
+}
+
+.interview-question strong{
+    display:block;
+
+    font-size:10px;
+    line-height:1.5;
+}
+
+.interview-panel{
+    padding:20px;
+
+    border-left:1px solid #303037;
+}
+
+.interview-panel-title{
+    margin-bottom:18px;
+
+    color:#707079;
+
+    font-size:6px;
+    font-weight:800;
+}
+
+.interview-score{
+    margin-bottom:17px;
+}
+
+.interview-score-top{
+    display:flex;
+    justify-content:space-between;
+
+    margin-bottom:6px;
+
+    color:#85858e;
+
+    font-size:6px;
+}
+
+.interview-score-track{
+    height:5px;
+
+    overflow:hidden;
+
+    border-radius:50px;
+
+    background:#303037;
+}
+
+.interview-score-fill{
+    height:100%;
+
+    border-radius:50px;
+
+    background:#7156e8;
+}
+
+.interview-note{
+    margin-top:27px;
+
+    padding:14px;
+
+    border-left:3px solid #7156e8;
+
+    background:#111116;
+}
+
+.interview-note small{
+    display:block;
+
+    margin-bottom:7px;
+
+    color:#a995ff;
+
+    font-size:5px;
+    font-weight:800;
+}
+
+.interview-note p{
+    color:#7c7c85;
+
+    font-size:7px;
+    line-height:1.6;
+}
+
+
+/* =========================================================
+   08 COMMUNICATION SECTION
+========================================================= */
+
+.story-section{
+    padding:110px 0;
+
+    background:#fff;
+}
+
+.story-layout{
+    display:grid;
+    grid-template-columns:.65fr 1.35fr;
+
+    gap:80px;
+}
+
+.story-copy{
+    position:sticky;
+    top:120px;
+
+    align-self:start;
+}
+
+.story-copy h2{
+    margin-bottom:17px;
+}
+
+.story-script{
+    border-top:1px solid #dedee4;
+}
+
+.story-line{
+    display:grid;
+    grid-template-columns:110px 1fr;
+
+    gap:25px;
+
+    padding:30px 0;
+
+    border-bottom:1px solid #dedee4;
+}
+
+.story-line small{
+    padding-top:5px;
+
+    color:#7156e8;
+
+    font-size:6px;
+    font-weight:800;
+}
+
+.story-line h3{
+    margin-bottom:8px;
+
+    font-size:22px;
+
+    line-height:1.08;
+}
+
+.story-line p{
+    max-width:570px;
+
+    color:#777780;
+
+    font-size:8px;
+    line-height:1.7;
+}
+
+
+/* =========================================================
+   09 RECRUITER LENS
+========================================================= */
+
+.lens-section{
+    padding:105px 0;
+
+    background:#f7f7f9;
+}
+
+.lens-head{
+    max-width:760px;
+
+    margin-bottom:45px;
+}
+
+.recruiter-lens{
+    min-height:540px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#ececf0;
+}
+
+.lens-resume{
+    width:430px;
+    min-height:450px;
+
+    position:relative;
+
+    padding:32px;
+
+    background:#fff;
+
+    box-shadow:0 25px 60px rgba(0,0,0,.10);
+}
+
+.lens-resume h3{
+    margin-bottom:4px;
+
+    font-size:23px;
+}
+
+.lens-resume > p{
+    margin-bottom:25px;
+
+    color:#9999a2;
+
+    font-size:6px;
+}
+
+.lens-block{
+    margin-bottom:23px;
+}
+
+.lens-block small{
+    display:block;
+
+    margin-bottom:8px;
+
+    color:#7156e8;
+
+    font-size:5px;
+    font-weight:800;
+}
+
+.lens-line{
+    height:7px;
+
+    margin-bottom:7px;
+
+    border-radius:3px;
+
+    background:#ececf0;
+}
+
+.lens-line.short{
+    width:58%;
+}
+
+.lens-line.medium{
+    width:77%;
+}
+
+.lens-focus{
+    position:absolute;
+
+    border:2px solid #7156e8;
+    border-radius:8px;
+
+    background:rgba(113,86,232,.04);
+
+    pointer-events:none;
+
+    transition:.5s cubic-bezier(.2,.7,.2,1);
+}
+
+.lens-focus.one{
+    width:355px;
+    height:80px;
+
+    left:50%;
+    top:150px;
+
+    transform:translateX(-50%);
+}
+
+.lens-tag{
+    position:absolute;
+
+    right:calc(50% - 310px);
+    top:170px;
+
+    padding:8px 10px;
+
+    border-radius:8px;
+
+    background:#111116;
+    color:#fff;
+
+    font-size:6px;
+    font-weight:800;
+
+    transition:.5s ease;
+}
+
+.lens-scanner-line{
+    width:100%;
+    height:2px;
+
+    position:absolute;
+
+    left:0;
+    top:0;
+
+    background:#7156e8;
+
+    box-shadow:0 0 18px rgba(113,86,232,.6);
+
+    animation:lensScan 4s ease-in-out infinite;
+}
+
+@keyframes lensScan{
+    0%,100%{
+        top:8%;
+        opacity:.2;
+    }
+
+    50%{
+        top:90%;
+        opacity:1;
+    }
+}
+
+
+/* =========================================================
+   10 OPPORTUNITY TRACK
+========================================================= */
+
+.opportunity-section{
+    padding:105px 0;
+
+    overflow:hidden;
+
+    background:#111116;
+    color:#fff;
+}
+
+.opportunity-head{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+
+    gap:50px;
+
+    margin-bottom:55px;
+}
+
+.opportunity-head .section-label{
+    color:#a995ff;
+}
+
+.opportunity-head .section-label::before{
+    background:#a995ff;
+}
+
+.opportunity-head .section-title span{
+    color:#a995ff;
+}
+
+.opportunity-head p{
+    max-width:370px;
+
+    color:#7d7d86;
+
+    font-size:9px;
+    line-height:1.7;
+}
+
+.opportunity-track{
+    position:relative;
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+
+    gap:0;
+}
+
+.opportunity-track::before{
+    content:"";
+
+    height:1px;
+
+    position:absolute;
+
+    left:0;
+    right:0;
+    top:31px;
+
+    background:#38383f;
+}
+
+.opportunity-stop{
+    position:relative;
+
+    padding-right:30px;
+}
+
+.stop-dot{
+    width:17px;
+    height:17px;
+
+    position:relative;
+    z-index:2;
+
+    margin:23px 0 35px;
+
+    border:5px solid #111116;
+    border-radius:50%;
+
+    background:#7156e8;
+
+    box-shadow:0 0 0 1px #5c4b91;
+}
+
+.opportunity-stop small{
+    display:block;
+
+    margin-bottom:9px;
+
+    color:#a995ff;
+
+    font-size:5px;
+    font-weight:800;
+}
+
+.opportunity-stop h3{
+    margin-bottom:8px;
+
+    font-size:18px;
+}
+
+.opportunity-stop p{
+    max-width:230px;
+
+    color:#777780;
+
+    font-size:7px;
+    line-height:1.6;
+}
+
+
+/* =========================================================
+   11 CAREER KIT
+========================================================= */
+
+.kit-section{
+    padding:105px 0;
+
+    background:#fff;
+}
+
+.kit-head{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+
+    gap:50px;
+
+    margin-bottom:45px;
+}
+
+.kit-head p{
+    max-width:380px;
+}
+
+.kit-table{
+    border-top:1px solid #dedee4;
+}
+
+.kit-row{
+    min-height:110px;
+
+    display:grid;
+    grid-template-columns:80px 1fr 1.3fr 35px;
+
+    align-items:center;
+
+    gap:25px;
+
+    border-bottom:1px solid #dedee4;
+
+    transition:.25s ease;
+}
+
+.kit-row:hover{
+    padding-left:10px;
+
+    background:#faf9ff;
+}
+
+.kit-icon{
+    width:42px;
+    height:42px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:10px;
+
+    background:#f1edff;
+    color:#7156e8;
+
+    font-size:10px;
+}
+
+.kit-row h3{
+    font-size:15px;
+}
+
+.kit-row p{
+    max-width:500px;
+
+    color:#7e7e87;
+
+    font-size:8px;
+    line-height:1.6;
+}
+
+.kit-row > i{
+    color:#aaaab2;
+
+    font-size:9px;
+
+    transition:.25s ease;
+}
+
+.kit-row:hover > i{
+    color:#7156e8;
+
+    transform:translateX(4px);
+}
+
+
+/* =========================================================
+   12 READINESS RECEIPT
+========================================================= */
+
+.receipt-section{
+    padding:105px 0;
+
+    background:#f4f1e9;
+}
+
+.receipt-layout{
+    display:grid;
+    grid-template-columns:1fr .85fr;
+
+    gap:80px;
+
+    align-items:center;
+}
+
+.receipt-copy h2{
+    margin-bottom:18px;
+}
+
+.receipt-paper{
+    max-width:420px;
+
+    position:relative;
+
+    margin-left:auto;
+
+    padding:30px 27px 40px;
+
+    background:#fff;
+
+    box-shadow:0 25px 55px rgba(0,0,0,.09);
+}
+
+.receipt-paper::after{
+    content:"";
+
+    height:12px;
+
+    position:absolute;
+
+    left:0;
+    right:0;
+    bottom:-11px;
+
+    background:
+        linear-gradient(
+            -45deg,
+            transparent 7px,
+            #fff 0
+        ) 0 0/14px 14px repeat-x;
+}
+
+.receipt-brand{
+    padding-bottom:20px;
+
+    border-bottom:1px dashed #cfcfd5;
+
+    text-align:center;
+}
+
+.receipt-brand strong{
+    display:block;
+
+    margin-bottom:4px;
+
+    font-size:12px;
+}
+
+.receipt-brand span{
+    color:#9999a2;
+
+    font-size:6px;
+}
+
+.receipt-id{
+    display:flex;
+    justify-content:space-between;
+
+    padding:14px 0;
+
+    border-bottom:1px dashed #cfcfd5;
+
+    color:#8c8c94;
+
+    font-size:6px;
+}
+
+.receipt-list{
+    padding:12px 0;
+}
+
+.receipt-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:20px;
+
+    padding:10px 0;
+
+    border-bottom:1px solid #f0f0f3;
+
+    font-size:7px;
+}
+
+.receipt-row span{
+    color:#777780;
+}
+
+.receipt-row strong{
+    color:#55a36c;
+}
+
+.receipt-total{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+
+    gap:20px;
+
+    padding-top:22px;
+}
+
+.receipt-total small{
+    display:block;
+
+    margin-bottom:4px;
+
+    color:#9999a2;
+
+    font-size:5px;
+}
+
+.receipt-total h3{
+    font-size:23px;
+}
+
+.receipt-stamp{
+    padding:8px 10px;
+
+    border:2px solid #7156e8;
+    border-radius:5px;
+
+    color:#7156e8;
+
+    font-size:7px;
+    font-weight:800;
+
+    transform:rotate(-6deg);
+}
+
+
+/* =========================================================
+   13 FINAL
+========================================================= */
+
+.final-section{
+    padding:90px 0 65px;
+
+    background:#fff;
+}
+
+.final-launch{
+    min-height:450px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    display:flex;
+    align-items:center;
+
+    padding:60px;
+
+    background:#7156e8;
+    color:#fff;
+}
+
+.final-launch::before{
+    content:"READY";
+
+    position:absolute;
+
+    right:-30px;
+    bottom:-55px;
+
+    color:rgba(255,255,255,.07);
+
+    font-size:180px;
+    font-weight:800;
+
+    letter-spacing:-12px;
+}
+
+.final-copy{
+    position:relative;
+    z-index:2;
+
+    max-width:760px;
+}
+
+.final-copy small{
+    display:block;
+
+    margin-bottom:14px;
+
+    color:#ddd6ff;
+
+    font-size:7px;
+    font-weight:800;
+
+    letter-spacing:1.2px;
+}
+
+.final-copy h2{
+    margin-bottom:18px;
+
+    font-size:clamp(42px,5vw,64px);
+
+    line-height:.98;
+
+    letter-spacing:-3.5px;
+}
+
+.final-copy p{
+    max-width:570px;
+
+    margin-bottom:26px;
+
+    color:#ddd8f5;
+
+    font-size:11px;
+    line-height:1.75;
+}
+
+.final-btn{
+    min-height:47px;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:9px;
+
+    padding:0 19px;
+
+    border-radius:8px;
+
+    background:#fff;
+    color:#111116;
+
+    font-size:9px;
+    font-weight:800;
+
+    transition:.25s ease;
+}
+
+.final-btn:hover{
+    transform:translateY(-3px);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer{
+    padding:0 20px 35px;
+
+    background:#fff;
+
+    color:#92929a;
+
+    text-align:center;
+
+    font-size:9px;
+}
+
+.footer span{
+    margin:0 6px;
+
+    color:#7156e8;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media(max-width:1050px){
+
+    .navbar{
+        height:70px;
+
+        padding:0 18px;
+    }
+
+    main{
+        padding-top:70px;
+    }
+
+    .logo{
+        font-size:18px;
+    }
+
+    .login-btn,
+    .get-started{
+        display:none;
+    }
+
+    .menu-toggle{
+        display:flex;
+    }
+
+    .nav-menu{
+        width:100%;
+        max-height:calc(100vh - 70px);
+
+        position:absolute;
+
+        left:0;
+        top:70px;
+
+        display:flex;
+        flex-direction:column;
+        align-items:stretch;
+
+        overflow:auto;
+
+        padding:12px 14px 18px;
+
+        background:#fff;
+
+        opacity:0;
+
+        transform:translateY(-120%);
+
+        pointer-events:none;
+
+        transition:.3s ease;
+    }
+
+    .nav-menu.active{
+        opacity:1;
+
+        transform:translateY(0);
+
+        pointer-events:auto;
+    }
+
+    .nav-item{
+        width:100%;
+    }
+
+    .nav-link{
+        width:100%;
+
+        justify-content:space-between;
+
+        padding:15px 13px;
+    }
+
+    .dropdown{
+        width:100%;
+        max-height:0;
+
+        position:static;
+
+        overflow:hidden;
+
+        padding:0 8px;
+
+        border:0;
+
+        background:#fafafa;
+
+        box-shadow:none;
+
+        opacity:1;
+        visibility:visible;
+
+        transform:none;
+
+        transition:max-height .35s ease;
+    }
+
+    .nav-item.open > .dropdown{
+        max-height:1300px;
+
+        padding:8px;
+    }
+
+    .mega-dropdown{
+        display:block;
+    }
+
+
+    /* HERO */
+
+    .hero-intro{
+        align-items:flex-start;
+        flex-direction:column;
+
+        gap:20px;
+    }
+
+    .hero-side-copy{
+        max-width:570px;
+    }
+
+    .career-app{
+        grid-template-columns:150px 1fr;
+    }
+
+    .os-content{
+        grid-template-columns:1fr;
+    }
+
+    .os-result-panel{
+        border-left:0;
+        border-top:1px solid #e7e7ec;
+    }
+
+
+    /* SIGNAL */
+
+    .signal-layout{
+        grid-template-columns:1fr;
+
+        gap:45px;
+    }
+
+
+    /* SWITCHER */
+
+    .switcher-layout{
+        grid-template-columns:260px 1fr;
+    }
+
+
+    /* STORY */
+
+    .story-layout{
+        grid-template-columns:1fr;
+
+        gap:45px;
+    }
+
+    .story-copy{
+        position:static;
+    }
+
+
+    /* RECEIPT */
+
+    .receipt-layout{
+        grid-template-columns:1fr;
+
+        gap:45px;
+    }
+
+    .receipt-paper{
+        margin-left:0;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:650px){
+
+    html,
+    body{
+        width:100%;
+        max-width:100%;
+
+        overflow-x:hidden;
+    }
+
+    .container{
+        width:100%;
+
+        padding-left:18px;
+        padding-right:18px;
+    }
+
+
+    /* NAV */
+
+    .navbar{
+        height:66px;
+
+        padding:0 14px;
+    }
+
+    main{
+        padding-top:66px;
+    }
+
+    .logo{
+        font-size:16px;
+    }
+
+    .logo-impact{
+        margin-left:5px;
+    }
+
+    .nav-menu{
+        top:66px;
+
+        max-height:calc(100vh - 66px);
+    }
+
+
+    /* COMMON */
+
+    .section-title{
+        font-size:clamp(31px,9.3vw,42px);
+
+        letter-spacing:-2px;
+    }
+
+
+    /* HERO */
+
+    .career-os-hero{
+        min-height:auto;
+
+        padding:45px 0 40px;
+    }
+
+    .hero-intro h1{
+        font-size:clamp(43px,12vw,56px);
+
+        letter-spacing:-3px;
+    }
+
+    .career-app{
+        display:block;
+
+        border-radius:13px;
+    }
+
+    .career-sidebar{
+        display:flex;
+        align-items:center;
+
+        gap:5px;
+
+        overflow-x:auto;
+
+        padding:9px;
+    }
+
+    .career-sidebar-brand,
+    .sidebar-label,
+    .sidebar-progress{
+        display:none;
+    }
+
+    .os-nav{
+        width:auto;
+        min-width:max-content;
+
+        margin:0;
+
+        padding:9px 11px;
+    }
+
+    .app-toolbar{
+        min-height:50px;
+
+        padding:0 12px;
+    }
+
+    .toolbar-status{
+        display:none;
+    }
+
+    .os-workspace{
+        padding:18px 13px;
+    }
+
+    .workspace-title{
+        font-size:22px;
+    }
+
+    .role-choice-area{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .role-choice{
+        min-height:105px;
+    }
+
+    .signal-bars{
+        grid-template-columns:1fr;
+
+        gap:9px;
+    }
+
+    .os-result-panel{
+        padding:17px;
+    }
+
+    .hero-os-footer{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .hero-os-stat:nth-child(2){
+        border-right:0;
+    }
+
+    .hero-os-stat:nth-child(-n+2){
+        border-bottom:1px solid #e0dee7;
+    }
+
+
+    /* SECTIONS */
+
+    .signal-section,
+    .role-dna-section,
+    .role-switch-section,
+    .proof-section,
+    .resume-lab,
+    .interview-section,
+    .story-section,
+    .lens-section,
+    .opportunity-section,
+    .kit-section,
+    .receipt-section{
+        padding:72px 0;
+    }
+
+
+    /* SIGNAL */
+
+    .signal-statement{
+        padding:25px 0 25px 24px;
+    }
+
+    .signal-statement p{
+        font-size:28px;
+    }
+
+
+    /* DNA */
+
+    .role-dna-head{
+        align-items:flex-start;
+        flex-direction:column;
+
+        gap:17px;
+    }
+
+    .dna-stage{
+        min-height:auto;
+
+        display:block;
+
+        padding-left:23px;
+
+        border-left:2px solid #7156e8;
+    }
+
+    .dna-line{
+        display:none;
+    }
+
+    .dna-node,
+    .dna-node.left,
+    .dna-node.right,
+    .dna-node:nth-of-type(2),
+    .dna-node:nth-of-type(3),
+    .dna-node:nth-of-type(4),
+    .dna-node:nth-of-type(5){
+        width:100%;
+
+        position:static;
+
+        display:block;
+
+        margin-bottom:30px;
+
+        text-align:left;
+    }
+
+    .dna-node:last-child{
+        margin-bottom:0;
+    }
+
+    .dna-connector,
+    .dna-dot{
+        display:none;
+    }
+
+    .dna-copy strong{
+        font-size:16px;
+    }
+
+
+    /* SWITCHER */
+
+    .switcher-layout{
+        grid-template-columns:1fr;
+
+        gap:25px;
+    }
+
+    .switcher-menu{
+        padding:0;
+    }
+
+    .switcher-menu .section-title{
+        font-size:34px;
+    }
+
+    .role-switch-btn{
+        padding:13px 0;
+    }
+
+    .role-switch-display{
+        min-height:430px;
+
+        padding:27px 20px;
+    }
+
+    .role-display-number{
+        font-size:78px;
+    }
+
+    .role-display-icon{
+        margin-bottom:70px;
+    }
+
+    .role-switch-display h3{
+        font-size:31px;
+    }
+
+
+    /* PROOF DESK */
+
+    .proof-desk{
+        min-height:760px;
+
+        padding:0;
+    }
+
+    .proof-sheet{
+        position:absolute;
+    }
+
+    .sheet-project{
+        width:82%;
+        height:330px;
+
+        left:8%;
+        top:45px;
+    }
+
+    .sheet-case{
+        width:73%;
+        height:225px;
+
+        right:7%;
+        top:390px;
+    }
+
+    .sheet-feedback{
+        width:68%;
+        height:165px;
+
+        left:9%;
+        right:auto;
+        bottom:20px;
+    }
+
+    .desk-pen{
+        display:none;
+    }
+
+
+    /* RESUME */
+
+    .resume-lab-head{
+        align-items:flex-start;
+        flex-direction:column;
+
+        gap:18px;
+    }
+
+    .resume-compare{
+        grid-template-columns:1fr;
+
+        gap:20px;
+    }
+
+    .resume-paper.before,
+    .resume-paper.after{
+        transform:none;
+    }
+
+    .resume-transform{
+        transform:rotate(90deg);
+    }
+
+
+    /* INTERVIEW */
+
+    .interview-room{
+        grid-template-columns:1fr;
+    }
+
+    .interview-camera{
+        min-height:390px;
+    }
+
+    .interview-camera::before{
+        width:310px;
+        height:310px;
+    }
+
+    .interview-person{
+        width:110px;
+        height:110px;
+
+        font-size:34px;
+    }
+
+    .interview-question{
+        width:90%;
+
+        bottom:18px;
+    }
+
+    .interview-panel{
+        border-left:0;
+        border-top:1px solid #303037;
+    }
+
+
+    /* STORY */
+
+    .story-line{
+        grid-template-columns:1fr;
+
+        gap:8px;
+
+        padding:24px 0;
+    }
+
+
+    /* LENS */
+
+    .recruiter-lens{
+        min-height:500px;
+    }
+
+    .lens-resume{
+        width:84%;
+
+        padding:24px 20px;
+    }
+
+    .lens-focus.one{
+        width:75%;
+
+        top:150px;
+    }
+
+    .lens-tag{
+        right:10px;
+        top:115px;
+    }
+
+
+    /* OPPORTUNITY */
+
+    .opportunity-head{
+        align-items:flex-start;
+        flex-direction:column;
+
+        gap:18px;
+    }
+
+    .opportunity-track{
+        grid-template-columns:1fr;
+
+        padding-left:28px;
+    }
+
+    .opportunity-track::before{
+        width:1px;
+        height:auto;
+
+        left:7px;
+        top:0;
+        bottom:0;
+    }
+
+    .opportunity-stop{
+        padding:0 0 35px 15px;
+    }
+
+    .stop-dot{
+        position:absolute;
+
+        left:-28px;
+        top:0;
+
+        margin:0;
+    }
+
+
+    /* KIT */
+
+    .kit-head{
+        align-items:flex-start;
+        flex-direction:column;
+
+        gap:18px;
+    }
+
+    .kit-row{
+        min-height:auto;
+
+        grid-template-columns:52px 1fr 25px;
+
+        gap:12px;
+
+        padding:18px 0;
+    }
+
+    .kit-row p{
+        grid-column:2;
+    }
+
+    .kit-row > i{
+        grid-column:3;
+        grid-row:1;
+    }
+
+
+    /* RECEIPT */
+
+    .receipt-paper{
+        width:100%;
+    }
+
+
+    /* FINAL */
+
+    .final-section{
+        padding:65px 0 50px;
+    }
+
+    .final-launch{
+        min-height:430px;
+
+        padding:38px 22px;
+    }
+
+    .final-launch::before{
+        font-size:90px;
+
+        right:-10px;
+        bottom:-20px;
+    }
+
+    .final-copy h2{
+        font-size:clamp(38px,10vw,50px);
+
+        letter-spacing:-2.5px;
+    }
+
+}
+
+
+@media(max-width:360px){
+
+    .logo{
+        font-size:14px;
+    }
+
+    .role-choice-area{
+        grid-template-columns:1fr;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        animation:none !important;
+        transition:none !important;
+        scroll-behavior:auto !important;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<header class="navbar" id="navbar">
+
+    <a href="../index.html" class="logo">
+
+        <span class="logo-main">
+            TRIVOX
+        </span>
+
+        <span class="logo-impact">
+            AI IMPACT
+        </span>
+
+    </a>
+
+
+    <ul class="nav-menu" id="navMenu">
+
+
+        <li class="nav-item">
+
+            <div class="nav-link">
+                Company
+                <span class="arrow"></span>
+            </div>
+
+            <div class="dropdown">
+
+                <a href="../about.html">About TRIVOX</a>
+                <a href="../mission.html">Mission</a>
+                <a href="../vision.html">Vision</a>
+                <a href="../leader.html">Leadership</a>
+                <a href="../team.html">Team</a>
+                <a href="../partners.html">Partners</a>
+                <a href="../impact.html">Impact</a>
+
+            </div>
+
+        </li>
+
+
+        <li class="nav-item">
+
+            <div class="nav-link">
+                Learning
+                <span class="arrow"></span>
+            </div>
+
+            <div class="dropdown mega-dropdown">
+
+                <a href="../learning/ailearning.html" class="mega-box">
+                    <strong>AI Learning</strong>
+                    <p>Understand artificial intelligence and intelligent systems.</p>
+                </a>
+
+                <a href="../learning/programming.html" class="mega-box">
+                    <strong>Programming</strong>
+                    <p>Build coding and problem-solving foundations.</p>
+                </a>
+
+                <a href="../learning/webdevelopment.html" class="mega-box">
+                    <strong>Web Development</strong>
+                    <p>Create modern websites and digital experiences.</p>
+                </a>
+
+                <a href="../learning/appdevelopment.html" class="mega-box">
+                    <strong>App Development</strong>
+                    <p>Design and build mobile applications.</p>
+                </a>
+
+                <a href="../learning/datascience.html" class="mega-box">
+                    <strong>Data Science</strong>
+                    <p>Transform data into meaningful insights.</p>
+                </a>
+
+                <a href="../learning/cybersecurity.html" class="mega-box">
+                    <strong>Cybersecurity</strong>
+                    <p>Understand digital security and protection.</p>
+                </a>
+
+            </div>
+
+        </li>
+
+
+        <li class="nav-item active-parent">
+
+            <div class="nav-link">
+                Programs
+                <span class="arrow"></span>
+            </div>
+
+            <div class="dropdown">
+
+                <a href="student-programs.html">
+                    Student Programs
+                </a>
+
+                <a href="college-programs.html">
+                    College Programs
+                </a>
+
+                <a href="internships.html">
+                    Internships
+                </a>
+
+                <a href="workshops.html">
+                    Workshops
+                </a>
+
+                <a href="bootcamps.html">
+                    Bootcamps
+                </a>
+
+                <a href="career-programs.html" class="active">
+                    Career Programs
+                </a>
+
+                <a href="certification-programs.html">
+                    Certification Programs
+                </a>
+
+            </div>
+
+        </li>
+
+
+        <li class="nav-item">
+
+            <div class="nav-link">
+                Solutions
+                <span class="arrow"></span>
+            </div>
+
+            <div class="dropdown">
+
+                <a href="../solutions/students.html">
+                    For Students
+                </a>
+
+                <a href="../solutions/colleges.html">
+                    For Colleges
+                </a>
+
+                <a href="../solutions/schools.html">
+                    For Schools
+                </a>
+
+                <a href="../solutions/companies.html">
+                    For Companies
+                </a>
+
+            </div>
+
+        </li>
+
+
+        <li class="nav-item">
+
+            <div class="nav-link">
+                Resources
+                <span class="arrow"></span>
+            </div>
+
+            <div class="dropdown">
+
+                <a href="../resources/blogs.html">Blogs</a>
+                <a href="../resources/tutorials.html">Tutorials</a>
+                <a href="../resources/learning-resources.html">Learning Resources</a>
+                <a href="../resources/student-projects.html">Student Projects</a>
+                <a href="../resources/success-stories.html">Success Stories</a>
+                <a href="../resources/events.html">Events</a>
+                <a href="../resources/faqs.html">FAQs</a>
+
+            </div>
+
+        </li>
+
+
+        <li class="nav-item">
+
+            <div class="nav-link">
+                Careers
+                <span class="arrow"></span>
+            </div>
+
+            <div class="dropdown">
+
+                <a href="../careers/open-positions.html">
+                    Open Positions
+                </a>
+
+                <a href="../careers/internships.html">
+                    Internships
+                </a>
+
+                <a href="../careers/campus-hiring.html">
+                    Campus Hiring
+                </a>
+
+                <a href="../careers/join-team.html">
+                    Join Our Team
+                </a>
+
+                <a href="../careers/life-at-trivox.html">
+                    Life at TRIVOX
+                </a>
+
+            </div>
+
+        </li>
+
+
+        <li class="nav-item">
+
+            <a href="../contact/contact.html" class="nav-link">
+                Contact
+            </a>
+
+        </li>
+
+    </ul>
+
+
+    <div class="nav-actions">
+
+
+        <div class="signin-dropdown-wrap">
+
+            <button class="login-btn signin-main-btn">
+
+                Sign In
+
+                <span class="arrow"></span>
+
+            </button>
+
+
+            <div class="signin-dropdown">
+
+                <a href="../documentary.html">
+
+                    <i class="fa-solid fa-video"></i>
+
+                    <div>
+                        <strong>Documentary</strong>
+                        <span>Sign in for documentary</span>
+                    </div>
+
+                </a>
+
+
+                <a href="../course.html">
+
+                    <i class="fa-solid fa-graduation-cap"></i>
+
+                    <div>
+                        <strong>Course</strong>
+                        <span>Sign in for courses</span>
+                    </div>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <a href="../course.html" class="get-started">
+            Get Started
+        </a>
+
+
+        <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Menu"
+        aria-expanded="false">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+    </div>
+
+</header>
+
+
+<main>
+
+
+<!-- =========================================================
+     01 CAREER OS HERO
+========================================================= -->
+
+<section class="career-os-hero">
+
+
+    <div class="container">
+
+
+        <div class="hero-intro reveal">
+
+
+            <div class="hero-intro-left">
+
+
+                <div class="hero-eyebrow">
+
+                    <span class="hero-eyebrow-dot"></span>
+
+                    TRIVOX CAREER PROGRAMS / CAREER OS
+
+                </div>
+
+
+                <h1>
+
+                    Find the work
+
+                    <span>
+                        that fits you.
+                    </span>
+
+                </h1>
+
+
+            </div>
+
+
+            <div class="hero-side-copy">
+
+                <p>
+                    Explore career directions, understand the skills
+                    behind each role, build visible proof and prepare
+                    to communicate your ability when opportunities arrive.
+                </p>
+
+                <a href="#career-map" class="hero-mini-link">
+
+                    Open Career Explorer
+
+                    <i class="fa-solid fa-arrow-down"></i>
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- CAREER APPLICATION -->
+
+        <div class="career-app reveal">
+
+
+            <!-- APP SIDEBAR -->
+
+            <aside class="career-sidebar">
+
+
+                <div class="career-sidebar-brand">
+
+                    <div class="career-sidebar-logo">
+
+                        <i class="fa-solid fa-briefcase"></i>
+
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Career OS
+                        </strong>
+
+                        <span>
+                            TRIVOX
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <span class="sidebar-label">
+                    WORKSPACE
+                </span>
+
+
+                <button class="os-nav active">
+
+                    <i class="fa-solid fa-compass"></i>
+
+                    Explore
+
+                </button>
+
+
+                <button class="os-nav">
+
+                    <i class="fa-solid fa-fingerprint"></i>
+
+                    Skills
+
+                </button>
+
+
+                <button class="os-nav">
+
+                    <i class="fa-solid fa-folder-open"></i>
+
+                    Proof
+
+                </button>
+
+
+                <button class="os-nav">
+
+                    <i class="fa-solid fa-file-lines"></i>
+
+                    Resume
+
+                </button>
+
+
+                <button class="os-nav">
+
+                    <i class="fa-solid fa-microphone"></i>
+
+                    Interview
+
+                </button>
+
+
+                <div class="sidebar-progress">
+
+                    <div class="sidebar-progress-head">
+
+                        <span>READINESS</span>
+
+                        <span id="sidebarProgressValue">
+                            38%
+                        </span>
+
+                    </div>
+
+                    <div class="sidebar-progress-track">
+
+                        <div
+                        class="sidebar-progress-fill"
+                        id="sidebarProgressFill">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </aside>
+
+
+
+            <!-- APP MAIN -->
+
+            <div class="career-app-main">
+
+
+                <div class="app-toolbar">
+
+
+                    <div class="toolbar-path">
+
+                        Career OS
+
+                        <i class="fa-solid fa-chevron-right"></i>
+
+                        <strong>
+                            Role Explorer
+                        </strong>
+
+                    </div>
+
+
+                    <div class="toolbar-status">
+                        SESSION ACTIVE
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="os-content">
+
+
+                    <!-- WORKSPACE -->
+
+                    <div class="os-workspace">
+
+
+                        <div class="workspace-kicker">
+                            ROLE DISCOVERY
+                        </div>
+
+
+                        <h2 class="workspace-title">
+
+                            What kind of work
+                            feels interesting to you?
+
+                        </h2>
+
+
+                        <p class="workspace-description">
+
+                            Select a direction. Career OS will show
+                            the role, useful skill signals and a
+                            practical next step.
+
+                        </p>
+
+
+
+                        <div class="role-choice-area">
+
+
+                            <button
+                            class="role-choice active"
+                            data-role="developer">
+
+                                <div class="role-choice-check">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+
+                                <div class="role-choice-icon">
+                                    <i class="fa-solid fa-code"></i>
+                                </div>
+
+                                <strong>
+                                    Build Systems
+                                </strong>
+
+                                <span>
+                                    Logic • Code • Products
+                                </span>
+
+                            </button>
+
+
+                            <button
+                            class="role-choice"
+                            data-role="frontend">
+
+                                <div class="role-choice-check">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+
+                                <div class="role-choice-icon">
+                                    <i class="fa-solid fa-display"></i>
+                                </div>
+
+                                <strong>
+                                    Create Experiences
+                                </strong>
+
+                                <span>
+                                    UI • Web • Interaction
+                                </span>
+
+                            </button>
+
+
+                            <button
+                            class="role-choice"
+                            data-role="data">
+
+                                <div class="role-choice-check">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+
+                                <div class="role-choice-icon">
+                                    <i class="fa-solid fa-chart-line"></i>
+                                </div>
+
+                                <strong>
+                                    Find Insights
+                                </strong>
+
+                                <span>
+                                    Data • Patterns • Decisions
+                                </span>
+
+                            </button>
+
+
+                            <button
+                            class="role-choice"
+                            data-role="ai">
+
+                                <div class="role-choice-check">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+
+                                <div class="role-choice-icon">
+                                    <i class="fa-solid fa-brain"></i>
+                                </div>
+
+                                <strong>
+                                    Build with AI
+                                </strong>
+
+                                <span>
+                                    AI • Context • Solutions
+                                </span>
+
+                            </button>
+
+
+                            <button
+                            class="role-choice"
+                            data-role="product">
+
+                                <div class="role-choice-check">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+
+                                <div class="role-choice-icon">
+                                    <i class="fa-solid fa-layer-group"></i>
+                                </div>
+
+                                <strong>
+                                    Shape Products
+                                </strong>
+
+                                <span>
+                                    Users • Ideas • Execution
+                                </span>
+
+                            </button>
+
+
+                            <button
+                            class="role-choice"
+                            data-role="security">
+
+                                <div class="role-choice-check">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+
+                                <div class="role-choice-icon">
+                                    <i class="fa-solid fa-shield-halved"></i>
+                                </div>
+
+                                <strong>
+                                    Protect Systems
+                                </strong>
+
+                                <span>
+                                    Security • Risk • Networks
+                                </span>
+
+                            </button>
+
+
+                        </div>
+
+
+
+                        <div class="skill-signal">
+
+
+                            <div class="skill-signal-top">
+
+                                <strong>
+                                    ROLE SIGNAL
+                                </strong>
+
+                                <span id="signalText">
+                                    SOFTWARE DEVELOPMENT
+                                </span>
+
+                            </div>
+
+
+                            <div class="signal-bars">
+
+
+                                <div class="signal-item">
+
+                                    <small>
+                                        LOGIC
+                                    </small>
+
+                                    <div class="signal-track">
+                                        <div
+                                        class="signal-fill"
+                                        id="sig1"
+                                        style="width:92%">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="signal-item">
+
+                                    <small>
+                                        BUILDING
+                                    </small>
+
+                                    <div class="signal-track">
+                                        <div
+                                        class="signal-fill"
+                                        id="sig2"
+                                        style="width:94%">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="signal-item">
+
+                                    <small>
+                                        DESIGN
+                                    </small>
+
+                                    <div class="signal-track">
+                                        <div
+                                        class="signal-fill"
+                                        id="sig3"
+                                        style="width:58%">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="signal-item">
+
+                                    <small>
+                                        DATA
+                                    </small>
+
+                                    <div class="signal-track">
+                                        <div
+                                        class="signal-fill"
+                                        id="sig4"
+                                        style="width:70%">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="signal-item">
+
+                                    <small>
+                                        PEOPLE
+                                    </small>
+
+                                    <div class="signal-track">
+                                        <div
+                                        class="signal-fill"
+                                        id="sig5"
+                                        style="width:64%">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- RESULT -->
+
+                    <aside class="os-result-panel">
+
+
+                        <div class="result-label">
+                            CURRENT DIRECTION
+                        </div>
+
+
+                        <div class="result-role">
+
+
+                            <div class="result-role-icon">
+
+                                <i
+                                class="fa-solid fa-code"
+                                id="resultIcon">
+                                </i>
+
+                            </div>
+
+
+                            <h3 id="resultTitle">
+                                Software Developer
+                            </h3>
+
+
+                            <p id="resultDescription">
+
+                                Build working systems by combining
+                                programming, problem solving and
+                                structured technical thinking.
+
+                            </p>
+
+
+                        </div>
+
+
+
+                        <div class="result-stack">
+
+
+                            <small>
+                                USEFUL FOUNDATIONS
+                            </small>
+
+
+                            <div
+                            class="result-tags"
+                            id="resultTags">
+
+                                <span>Programming</span>
+                                <span>Logic</span>
+                                <span>Git</span>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <div class="result-next">
+
+
+                            <small>
+                                NEXT MOVE
+                            </small>
+
+
+                            <div class="result-next-step">
+
+                                <i class="fa-solid fa-arrow-right"></i>
+
+                                <div>
+
+                                    <strong id="nextStepTitle">
+                                        Build one complete project
+                                    </strong>
+
+                                    <span>
+                                        Create visible evidence
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </aside>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="hero-os-footer reveal">
+
+
+            <div class="hero-os-stat">
+
+                <i class="fa-solid fa-crosshairs"></i>
+
+                <div>
+                    <small>DISCOVER</small>
+                    <strong>Career Direction</strong>
+                </div>
+
+            </div>
+
+
+            <div class="hero-os-stat">
+
+                <i class="fa-solid fa-fingerprint"></i>
+
+                <div>
+                    <small>UNDERSTAND</small>
+                    <strong>Role Skills</strong>
+                </div>
+
+            </div>
+
+
+            <div class="hero-os-stat">
+
+                <i class="fa-solid fa-folder-open"></i>
+
+                <div>
+                    <small>PROVE</small>
+                    <strong>Project Ability</strong>
+                </div>
+
+            </div>
+
+
+            <div class="hero-os-stat">
+
+                <i class="fa-solid fa-arrow-up-right-dots"></i>
+
+                <div>
+                    <small>PREPARE</small>
+                    <strong>For Opportunity</strong>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     02 CAREER SIGNAL
+========================================================= -->
+
+<section class="signal-section">
+
+
+    <div class="container signal-layout">
+
+
+        <div class="signal-copy reveal">
+
+
+            <div class="section-label">
+                Career Signal
+            </div>
+
+
+            <h2 class="section-title">
+
+                Career clarity starts before the
+
+                <span>
+                    job search.
+                </span>
+
+            </h2>
+
+
+            <p class="section-copy">
+
+                Instead of beginning with job titles,
+                begin by understanding the work you enjoy,
+                the skills you are developing and the kind
+                of problems you want to become capable of solving.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="signal-statement reveal">
+
+            <p>
+
+                A stronger career decision connects
+
+                <span>
+                    interest, ability, evidence and opportunity.
+                </span>
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     03 ROLE DNA
+========================================================= -->
+
+<section class="role-dna-section">
+
+
+    <div class="container">
+
+
+        <div class="role-dna-head reveal">
+
+
+            <div>
+
+                <div class="section-label">
+                    Role DNA
+                </div>
+
+                <h2 class="section-title">
+
+                    A role is more than
+
+                    <span>
+                        a job title.
+                    </span>
+
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                Explore the capabilities that sit underneath
+                professional roles and understand what the work
+                actually asks you to practice.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="dna-stage reveal">
+
+
+            <div class="dna-line"></div>
+
+
+            <div class="dna-node left">
+
+                <div class="dna-copy">
+
+                    <small>
+                        DNA 01
+                    </small>
+
+                    <strong>
+                        Problem Thinking
+                    </strong>
+
+                    <p>
+                        Understand the requirement before
+                        jumping directly into a solution.
+                    </p>
+
+                </div>
+
+                <div class="dna-connector"></div>
+
+                <div class="dna-dot"></div>
+
+            </div>
+
+
+            <div class="dna-node right">
+
+                <div class="dna-dot"></div>
+
+                <div class="dna-connector"></div>
+
+                <div class="dna-copy">
+
+                    <small>
+                        DNA 02
+                    </small>
+
+                    <strong>
+                        Practical Execution
+                    </strong>
+
+                    <p>
+                        Turn ideas into something that can
+                        be tested, reviewed and improved.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="dna-node left">
+
+                <div class="dna-copy">
+
+                    <small>
+                        DNA 03
+                    </small>
+
+                    <strong>
+                        Clear Communication
+                    </strong>
+
+                    <p>
+                        Explain decisions, progress and outcomes
+                        so other people can understand your work.
+                    </p>
+
+                </div>
+
+                <div class="dna-connector"></div>
+
+                <div class="dna-dot"></div>
+
+            </div>
+
+
+            <div class="dna-node right">
+
+                <div class="dna-dot"></div>
+
+                <div class="dna-connector"></div>
+
+                <div class="dna-copy">
+
+                    <small>
+                        DNA 04
+                    </small>
+
+                    <strong>
+                        Continuous Improvement
+                    </strong>
+
+                    <p>
+                        Use feedback and reflection to improve
+                        both the work and the way you approach it.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     04 ROLE SWITCHER
+========================================================= -->
+
+<section class="role-switch-section" id="career-map">
+
+
+    <div class="container switcher-layout">
+
+
+        <div class="switcher-menu reveal">
+
+
+            <div class="section-label">
+                Career Map
+            </div>
+
+
+            <h2 class="section-title">
+                Switch the role.
+            </h2>
+
+
+            <button
+            class="role-switch-btn active"
+            data-switch="developer">
+
+                <div>
+                    <strong>Software Development</strong>
+                    <span>Build technical systems</span>
+                </div>
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </button>
+
+
+            <button
+            class="role-switch-btn"
+            data-switch="frontend">
+
+                <div>
+                    <strong>Frontend & Web</strong>
+                    <span>Build digital experiences</span>
+                </div>
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </button>
+
+
+            <button
+            class="role-switch-btn"
+            data-switch="data">
+
+                <div>
+                    <strong>Data & Analytics</strong>
+                    <span>Turn data into insight</span>
+                </div>
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </button>
+
+
+            <button
+            class="role-switch-btn"
+            data-switch="ai">
+
+                <div>
+                    <strong>AI Solutions</strong>
+                    <span>Build with intelligent tools</span>
+                </div>
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </button>
+
+
+            <button
+            class="role-switch-btn"
+            data-switch="product">
+
+                <div>
+                    <strong>Product Building</strong>
+                    <span>Connect users and solutions</span>
+                </div>
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </button>
+
+
+        </div>
+
+
+
+        <div class="role-switch-display reveal">
+
+
+            <div
+            class="role-display-number"
+            id="displayNumber">
+                01
+            </div>
+
+
+            <div
+            class="role-display-icon"
+            id="displayIcon">
+
+                <i class="fa-solid fa-code"></i>
+
+            </div>
+
+
+            <small id="displayLabel">
+                ROLE DIRECTION / ENGINEERING
+            </small>
+
+
+            <h3 id="displayTitle">
+                Software Development
+            </h3>
+
+
+            <p id="displayDescription">
+
+                Work on software systems, application logic,
+                technical problem solving and the implementation
+                of features that turn requirements into working products.
+
+            </p>
+
+
+            <div
+            class="role-display-footer"
+            id="displayTags">
+
+                <span>Programming</span>
+                <span>Problem Solving</span>
+                <span>Git</span>
+                <span>Projects</span>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     05 CAREER PROOF DESK
+========================================================= -->
+
+<section class="proof-section">
+
+
+    <div class="container">
+
+
+        <div class="proof-heading reveal">
+
+
+            <div class="section-label">
+                Career Proof Desk
+            </div>
+
+
+            <h2 class="section-title">
+
+                Your work should be
+
+                <span>
+                    visible.
+                </span>
+
+            </h2>
+
+
+            <p class="section-copy">
+
+                Projects, decisions, iterations and feedback
+                can become stronger career evidence when they
+                are documented and presented clearly.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="proof-desk reveal">
+
+
+            <article class="proof-sheet sheet-project">
+
+                <span class="sheet-label">
+                    PROJECT / 01
+                </span>
+
+                <h3>
+                    Student opportunity discovery experience
+                </h3>
+
+                <p>
+                    A practical build showing interface thinking,
+                    implementation and problem solving.
+                </p>
+
+                <div class="project-screen">
+
+                    <div class="project-screen-top">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <div class="project-screen-body">
+                        <strong>PROJECT UI</strong>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="proof-sheet sheet-case">
+
+                <span class="sheet-label">
+                    CASE NOTE
+                </span>
+
+                <h3>
+                    What changed after feedback?
+                </h3>
+
+                <p>
+                    Explain the first approach, what did not work,
+                    the feedback received and how the solution improved.
+                </p>
+
+                <i class="fa-solid fa-arrow-trend-up feedback-mark"></i>
+
+            </article>
+
+
+            <article class="proof-sheet sheet-feedback">
+
+                <span class="sheet-label">
+                    REVIEW NOTE
+                </span>
+
+                <h3>
+                    “Explain the reason behind the decision.”
+                </h3>
+
+                <p>
+                    Strong portfolios show thinking,
+                    not only screenshots.
+                </p>
+
+            </article>
+
+
+            <div class="desk-pen"></div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     06 RESUME TRANSFORMATION
+========================================================= -->
+
+<section class="resume-lab">
+
+
+    <div class="container">
+
+
+        <div class="resume-lab-head reveal">
+
+
+            <div>
+
+                <div class="section-label">
+                    Resume Lab
+                </div>
+
+                <h2 class="section-title">
+
+                    Replace lists with
+
+                    <span>
+                        evidence.
+                    </span>
+
+                </h2>
+
+            </div>
+
+
+            <p class="section-copy">
+
+                Move from simply naming technologies
+                to describing what you built, contributed
+                and improved.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="resume-compare reveal">
+
+
+            <!-- BEFORE -->
+
+            <article class="resume-paper before">
+
+
+                <div class="resume-state bad">
+
+                    <span>
+                        BEFORE
+                    </span>
+
+                    <i class="fa-solid fa-minus"></i>
+
+                </div>
+
+
+                <div class="resume-name">
+
+                    <h3>
+                        Student Resume
+                    </h3>
+
+                    <p>
+                        Computer Science Student
+                    </p>
+
+                </div>
+
+
+                <div class="resume-content-block">
+
+                    <small>
+                        SKILLS
+                    </small>
+
+                    <div class="resume-bullet">
+                        HTML, CSS, JavaScript
+                    </div>
+
+                    <div class="resume-bullet">
+                        Python
+                    </div>
+
+                    <div class="resume-bullet">
+                        SQL
+                    </div>
+
+                </div>
+
+
+                <div class="resume-content-block">
+
+                    <small>
+                        PROJECT
+                    </small>
+
+                    <div class="resume-bullet">
+                        Created a website.
+                    </div>
+
+                    <div class="resume-bullet">
+                        Used HTML and CSS.
+                    </div>
+
+                    <div class="resume-bullet">
+                        Worked with JavaScript.
+                    </div>
+
+                </div>
+
+
+                <div class="resume-content-block">
+
+                    <small>
+                        EXPERIENCE
+                    </small>
+
+                    <div class="resume-bullet">
+                        Participated in team project.
+                    </div>
+
+                </div>
+
+
+            </article>
+
+
+
+            <div class="resume-transform">
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </div>
+
+
+
+            <!-- AFTER -->
+
+            <article class="resume-paper after">
+
+
+                <div class="resume-state good">
+
+                    <span>
+                        AFTER / CAREER PROOF
+                    </span>
+
+                    <i class="fa-solid fa-check"></i>
+
+                </div>
+
+
+                <div class="resume-name">
+
+                    <h3>
+                        Student Resume
+                    </h3>
+
+                    <p>
+                        Developer • Builder • Problem Solver
+                    </p>
+
+                </div>
+
+
+                <div class="resume-content-block">
+
+                    <small>
+                        PROJECT EXPERIENCE
+                    </small>
+
+                    <div class="resume-bullet">
+
+                        Built a
+
+                        <span class="resume-highlight">
+                            responsive student opportunity interface
+                        </span>
+
+                        with reusable components and structured navigation.
+
+                    </div>
+
+                    <div class="resume-bullet">
+
+                        Improved the primary flow after
+                        reviewing usability feedback.
+
+                    </div>
+
+                </div>
+
+
+                <div class="resume-content-block">
+
+                    <small>
+                        TECHNICAL CONTRIBUTION
+                    </small>
+
+                    <div class="resume-bullet">
+
+                        Implemented responsive UI behaviour
+                        using HTML, CSS and JavaScript.
+
+                    </div>
+
+                    <div class="resume-bullet">
+
+                        Documented project decisions
+                        and demonstrated the final result.
+
+                    </div>
+
+                </div>
+
+
+                <div class="resume-content-block">
+
+                    <small>
+                        COLLABORATION
+                    </small>
+
+                    <div class="resume-bullet">
+
+                        Worked through requirement discussion,
+                        review and iteration with peers.
+
+                    </div>
+
+                </div>
+
+
+            </article>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     07 INTERVIEW ROOM
+========================================================= -->
+
+<section class="interview-section">
+
+
+    <div class="container">
+
+
+        <div class="interview-heading reveal">
+
+
+            <div class="section-label">
+                Interview Room
+            </div>
+
+
+            <h2 class="section-title">
+
+                Practice talking about
+
+                <span>
+                    real work.
+                </span>
+
+            </h2>
+
+
+        </div>
+
+
+
+        <div class="interview-room reveal">
+
+
+            <div class="interview-camera">
+
+
+                <div class="interview-person">
+
+                    <i class="fa-solid fa-user"></i>
+
+                </div>
+
+
+                <div class="interview-question">
+
+
+                    <small id="interviewLabel">
+                        QUESTION 01 / PROJECT
+                    </small>
+
+
+                    <strong id="interviewQuestion">
+
+                        Tell me about a project where your
+                        first approach did not work.
+
+                    </strong>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <aside class="interview-panel">
+
+
+                <div class="interview-panel-title">
+                    RESPONSE SIGNALS
+                </div>
+
+
+                <div class="interview-score">
+
+                    <div class="interview-score-top">
+                        <span>Clarity</span>
+                        <span>82%</span>
+                    </div>
+
+                    <div class="interview-score-track">
+                        <div
+                        class="interview-score-fill"
+                        style="width:82%">
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="interview-score">
+
+                    <div class="interview-score-top">
+                        <span>Structure</span>
+                        <span>76%</span>
+                    </div>
+
+                    <div class="interview-score-track">
+                        <div
+                        class="interview-score-fill"
+                        style="width:76%">
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="interview-score">
+
+                    <div class="interview-score-top">
+                        <span>Technical Detail</span>
+                        <span>88%</span>
+                    </div>
+
+                    <div class="interview-score-track">
+                        <div
+                        class="interview-score-fill"
+                        style="width:88%">
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="interview-score">
+
+                    <div class="interview-score-top">
+                        <span>Reflection</span>
+                        <span>73%</span>
+                    </div>
+
+                    <div class="interview-score-track">
+                        <div
+                        class="interview-score-fill"
+                        style="width:73%">
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="interview-note">
+
+                    <small>
+                        PRACTICE NOTE
+                    </small>
+
+                    <p id="interviewNote">
+
+                        Start with the problem, explain your
+                        decision and finish with what changed.
+
+                    </p>
+
+                </div>
+
+
+            </aside>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     08 TELL YOUR STORY
+========================================================= -->
+
+<section class="story-section">
+
+
+    <div class="container story-layout">
+
+
+        <div class="story-copy reveal">
+
+
+            <div class="section-label">
+                Career Story
+            </div>
+
+
+            <h2 class="section-title">
+
+                Learn to explain
+
+                <span>
+                    your value.
+                </span>
+
+            </h2>
+
+
+            <p class="section-copy">
+
+                A useful career story connects what
+                you learned with what you built,
+                how you improved and where you want
+                to contribute next.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="story-script reveal">
+
+
+            <article class="story-line">
+
+                <small>
+                    01 / CONTEXT
+                </small>
+
+                <div>
+
+                    <h3>
+                        What were you trying to solve?
+                    </h3>
+
+                    <p>
+                        Give enough context for another person
+                        to understand why the work mattered.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="story-line">
+
+                <small>
+                    02 / ACTION
+                </small>
+
+                <div>
+
+                    <h3>
+                        What did you actually do?
+                    </h3>
+
+                    <p>
+                        Explain your contribution instead of
+                        describing only what the team did.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="story-line">
+
+                <small>
+                    03 / DECISION
+                </small>
+
+                <div>
+
+                    <h3>
+                        Why did you choose that approach?
+                    </h3>
+
+                    <p>
+                        Show the reasoning behind important
+                        technical or product decisions.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="story-line">
+
+                <small>
+                    04 / RESULT
+                </small>
+
+                <div>
+
+                    <h3>
+                        What changed because of your work?
+                    </h3>
+
+                    <p>
+                        End with the result, improvement,
+                        learning or practical outcome.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     09 RECRUITER LENS
+========================================================= -->
+
+<section class="lens-section">
+
+
+    <div class="container">
+
+
+        <div class="lens-head reveal">
+
+
+            <div class="section-label">
+                Recruiter Lens
+            </div>
+
+
+            <h2 class="section-title">
+
+                Make useful evidence
+
+                <span>
+                    easy to find.
+                </span>
+
+            </h2>
+
+
+        </div>
+
+
+
+        <div class="recruiter-lens reveal">
+
+
+            <div class="lens-scanner-line"></div>
+
+
+            <div class="lens-resume">
+
+
+                <h3>
+                    Student Portfolio
+                </h3>
+
+                <p>
+                    Developer • Project Builder
+                </p>
+
+
+                <div class="lens-block">
+
+                    <small>
+                        PROJECT EXPERIENCE
+                    </small>
+
+                    <div class="lens-line"></div>
+                    <div class="lens-line medium"></div>
+                    <div class="lens-line short"></div>
+
+                </div>
+
+
+                <div class="lens-block">
+
+                    <small>
+                        PRACTICAL SKILLS
+                    </small>
+
+                    <div class="lens-line medium"></div>
+                    <div class="lens-line"></div>
+                    <div class="lens-line short"></div>
+
+                </div>
+
+
+                <div class="lens-block">
+
+                    <small>
+                        CONTRIBUTION
+                    </small>
+
+                    <div class="lens-line"></div>
+                    <div class="lens-line medium"></div>
+
+                </div>
+
+
+            </div>
+
+
+            <div
+            class="lens-focus one"
+            id="lensFocus">
+            </div>
+
+
+            <div
+            class="lens-tag"
+            id="lensTag">
+
+                PROJECT EVIDENCE
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     10 OPPORTUNITY TRACK
+========================================================= -->
+
+<section class="opportunity-section">
+
+
+    <div class="container">
+
+
+        <div class="opportunity-head reveal">
+
+
+            <div>
+
+                <div class="section-label">
+                    Opportunity Track
+                </div>
+
+
+                <h2 class="section-title">
+
+                    Preparation can support
+
+                    <span>
+                        different next steps.
+                    </span>
+
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                The proof you build can be adapted
+                to different kinds of early career opportunities.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="opportunity-track reveal">
+
+
+            <article class="opportunity-stop">
+
+                <div class="stop-dot"></div>
+
+                <small>
+                    PATH 01
+                </small>
+
+                <h3>
+                    Internship
+                </h3>
+
+                <p>
+                    Demonstrate fundamentals, learning ability
+                    and practical project experience.
+                </p>
+
+            </article>
+
+
+            <article class="opportunity-stop">
+
+                <div class="stop-dot"></div>
+
+                <small>
+                    PATH 02
+                </small>
+
+                <h3>
+                    Entry-Level Role
+                </h3>
+
+                <p>
+                    Show practical skill, communication
+                    and evidence of reliable execution.
+                </p>
+
+            </article>
+
+
+            <article class="opportunity-stop">
+
+                <div class="stop-dot"></div>
+
+                <small>
+                    PATH 03
+                </small>
+
+                <h3>
+                    Startup Team
+                </h3>
+
+                <p>
+                    Demonstrate ownership, adaptability
+                    and the ability to work across tasks.
+                </p>
+
+            </article>
+
+
+            <article class="opportunity-stop">
+
+                <div class="stop-dot"></div>
+
+                <small>
+                    PATH 04
+                </small>
+
+                <h3>
+                    Independent Projects
+                </h3>
+
+                <p>
+                    Show end-to-end work, communication
+                    and clear project delivery.
+                </p>
+
+            </article>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     11 CAREER KIT
+========================================================= -->
+
+<section class="kit-section">
+
+
+    <div class="container">
+
+
+        <div class="kit-head reveal">
+
+
+            <div>
+
+                <div class="section-label">
+                    Career Kit
+                </div>
+
+
+                <h2 class="section-title">
+
+                    Bring the important pieces
+
+                    <span>
+                        together.
+                    </span>
+
+                </h2>
+
+            </div>
+
+
+            <p class="section-copy">
+
+                Build a clearer collection of material
+                you can use when presenting yourself
+                for future opportunities.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="kit-table reveal">
+
+
+            <div class="kit-row">
+
+                <div class="kit-icon">
+                    <i class="fa-solid fa-file-lines"></i>
+                </div>
+
+                <h3>
+                    Resume
+                </h3>
+
+                <p>
+                    Present skills and experience through
+                    specific contributions and project evidence.
+                </p>
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </div>
+
+
+            <div class="kit-row">
+
+                <div class="kit-icon">
+                    <i class="fa-solid fa-folder-open"></i>
+                </div>
+
+                <h3>
+                    Portfolio
+                </h3>
+
+                <p>
+                    Organize selected projects so others
+                    can understand the problem, process and outcome.
+                </p>
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </div>
+
+
+            <div class="kit-row">
+
+                <div class="kit-icon">
+                    <i class="fa-brands fa-github"></i>
+                </div>
+
+                <h3>
+                    Project Repository
+                </h3>
+
+                <p>
+                    Keep technical work, documentation
+                    and project history organized.
+                </p>
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </div>
+
+
+            <div class="kit-row">
+
+                <div class="kit-icon">
+                    <i class="fa-solid fa-comments"></i>
+                </div>
+
+                <h3>
+                    Project Story
+                </h3>
+
+                <p>
+                    Prepare a concise explanation of
+                    what you built and what you learned.
+                </p>
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </div>
+
+
+            <div class="kit-row">
+
+                <div class="kit-icon">
+                    <i class="fa-solid fa-microphone"></i>
+                </div>
+
+                <h3>
+                    Interview Practice
+                </h3>
+
+                <p>
+                    Practice answering questions about
+                    decisions, challenges and practical work.
+                </p>
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     12 READINESS RECEIPT
+========================================================= -->
+
+<section class="receipt-section">
+
+
+    <div class="container receipt-layout">
+
+
+        <div class="receipt-copy reveal">
+
+
+            <div class="section-label">
+                Readiness Check
+            </div>
+
+
+            <h2 class="section-title">
+
+                Before you apply,
+
+                <span>
+                    check your proof.
+                </span>
+
+            </h2>
+
+
+            <p class="section-copy">
+
+                Career readiness is not one single item.
+                It is the combination of direction,
+                practical work, communication and preparation.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="receipt-paper reveal">
+
+
+            <div class="receipt-brand">
+
+                <strong>
+                    TRIVOX CAREER CHECK
+                </strong>
+
+                <span>
+                    READINESS SUMMARY
+                </span>
+
+            </div>
+
+
+            <div class="receipt-id">
+
+                <span>
+                    CAREER / STUDENT
+                </span>
+
+                <span>
+                    STATUS / REVIEWED
+                </span>
+
+            </div>
+
+
+            <div class="receipt-list">
+
+
+                <div class="receipt-row">
+
+                    <span>
+                        Career direction
+                    </span>
+
+                    <strong>
+                        READY
+                    </strong>
+
+                </div>
+
+
+                <div class="receipt-row">
+
+                    <span>
+                        Practical project
+                    </span>
+
+                    <strong>
+                        READY
+                    </strong>
+
+                </div>
+
+
+                <div class="receipt-row">
+
+                    <span>
+                        Portfolio story
+                    </span>
+
+                    <strong>
+                        READY
+                    </strong>
+
+                </div>
+
+
+                <div class="receipt-row">
+
+                    <span>
+                        Resume evidence
+                    </span>
+
+                    <strong>
+                        READY
+                    </strong>
+
+                </div>
+
+
+                <div class="receipt-row">
+
+                    <span>
+                        Interview practice
+                    </span>
+
+                    <strong>
+                        READY
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="receipt-total">
+
+
+                <div>
+
+                    <small>
+                        NEXT STATUS
+                    </small>
+
+                    <h3>
+                        Opportunity Ready
+                    </h3>
+
+                </div>
+
+
+                <div class="receipt-stamp">
+                    PREPARED
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     13 FINAL CTA
+========================================================= -->
+
+<section class="final-section">
+
+
+    <div class="container">
+
+
+        <div class="final-launch reveal">
+
+
+            <div class="final-copy">
+
+
+                <small>
+                    TRIVOX CAREER PROGRAMS
+                </small>
+
+
+                <h2>
+
+                    Don't wait for the interview
+                    to start preparing.
+
+                </h2>
+
+
+                <p>
+
+                    Build career direction, practical proof,
+                    a stronger portfolio and the confidence
+                    to explain what you can do.
+
+                </p>
+
+
+                <a
+                href="../contact/contact.html"
+                class="final-btn">
+
+                    Explore Career Programs
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+</main>
+
+
+
+<footer class="footer">
+
+    © 2026 TRIVOX AI IMPACT
+
+    <span>•</span>
+
+    Career Programs
+
+</footer>
+
+
+
+<script>
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+const navbar =
+document.getElementById("navbar");
+
+window.addEventListener("scroll", () => {
+
+    navbar.classList.toggle(
+        "scrolled",
+        window.scrollY > 20
+    );
+
+});
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+const menuToggle =
+document.getElementById("menuToggle");
+
+const navMenu =
+document.getElementById("navMenu");
+
+const navItems =
+document.querySelectorAll(".nav-item");
+
+
+menuToggle.addEventListener("click", () => {
+
+    const active =
+    navMenu.classList.toggle("active");
+
+    menuToggle.classList.toggle(
+        "active",
+        active
+    );
+
+    menuToggle.setAttribute(
+        "aria-expanded",
+        active ? "true" : "false"
+    );
+
+});
+
+
+navItems.forEach(item => {
+
+    const link =
+    item.querySelector(":scope > .nav-link");
+
+    const dropdown =
+    item.querySelector(":scope > .dropdown");
+
+
+    if(!link || !dropdown){
+        return;
+    }
+
+
+    link.addEventListener("click", event => {
+
+        if(window.innerWidth > 1050){
+            return;
+        }
+
+        event.preventDefault();
+
+
+        navItems.forEach(other => {
+
+            if(other !== item){
+                other.classList.remove("open");
+            }
+
+        });
+
+
+        item.classList.toggle("open");
+
+    });
+
+});
+
+
+document
+.querySelectorAll(".dropdown a")
+.forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        if(window.innerWidth <= 1050){
+
+            navMenu.classList.remove("active");
+
+            menuToggle.classList.remove("active");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+            navItems.forEach(item => {
+                item.classList.remove("open");
+            });
+
+        }
+
+    });
+
+});
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+const revealElements =
+document.querySelectorAll(".reveal");
+
+
+const observer =
+new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+            entry.target.classList.add("show");
+
+            observer.unobserve(
+                entry.target
+            );
+
+        }
+
+    });
+
+},{
+    threshold:.08
+});
+
+
+revealElements.forEach(element => {
+    observer.observe(element);
+});
+
+
+/* =========================================================
+   CAREER OS DATA
+========================================================= */
+
+const careerRoleData = {
+
+    developer:{
+
+        title:"Software Developer",
+
+        description:
+        "Build working systems by combining programming, problem solving and structured technical thinking.",
+
+        icon:"fa-code",
+
+        signal:"SOFTWARE DEVELOPMENT",
+
+        tags:[
+            "Programming",
+            "Logic",
+            "Git"
+        ],
+
+        next:
+        "Build one complete project",
+
+        bars:[
+            92,
+            94,
+            58,
+            70,
+            64
+        ],
+
+        progress:38
+    },
+
+
+    frontend:{
+
+        title:"Frontend Developer",
+
+        description:
+        "Create responsive digital experiences by connecting interface design with practical web implementation.",
+
+        icon:"fa-display",
+
+        signal:"FRONTEND & WEB",
+
+        tags:[
+            "HTML / CSS",
+            "JavaScript",
+            "UI"
+        ],
+
+        next:
+        "Build a responsive interface",
+
+        bars:[
+            76,
+            91,
+            95,
+            50,
+            72
+        ],
+
+        progress:44
+    },
+
+
+    data:{
+
+        title:"Data Analyst",
+
+        description:
+        "Explore information, identify useful patterns and communicate insights that can support decisions.",
+
+        icon:"fa-chart-line",
+
+        signal:"DATA & ANALYTICS",
+
+        tags:[
+            "SQL",
+            "Analysis",
+            "Visualization"
+        ],
+
+        next:
+        "Create an insight project",
+
+        bars:[
+            84,
+            65,
+            52,
+            96,
+            76
+        ],
+
+        progress:49
+    },
+
+
+    ai:{
+
+        title:"AI Solution Builder",
+
+        description:
+        "Use intelligent tools, data and structured context to create useful AI-assisted solutions.",
+
+        icon:"fa-brain",
+
+        signal:"AI SOLUTIONS",
+
+        tags:[
+            "AI Tools",
+            "Prompts",
+            "Data"
+        ],
+
+        next:
+        "Prototype an AI workflow",
+
+        bars:[
+            88,
+            86,
+            58,
+            84,
+            70
+        ],
+
+        progress:56
+    },
+
+
+    product:{
+
+        title:"Product Builder",
+
+        description:
+        "Understand user needs and connect ideas, technology and execution into practical product experiences.",
+
+        icon:"fa-layer-group",
+
+        signal:"PRODUCT BUILDING",
+
+        tags:[
+            "Users",
+            "Product",
+            "Execution"
+        ],
+
+        next:
+        "Document one product case",
+
+        bars:[
+            78,
+            79,
+            84,
+            66,
+            95
+        ],
+
+        progress:62
+    },
+
+
+    security:{
+
+        title:"Security Learner",
+
+        description:
+        "Understand digital risks, system behaviour and foundational practices used to protect applications and information.",
+
+        icon:"fa-shield-halved",
+
+        signal:"CYBERSECURITY",
+
+        tags:[
+            "Networks",
+            "Security",
+            "Risk"
+        ],
+
+        next:
+        "Build a security lab",
+
+        bars:[
+            91,
+            82,
+            45,
+            78,
+            67
+        ],
+
+        progress:52
+    }
+
+};
+
+
+const roleChoices =
+document.querySelectorAll(".role-choice");
+
+const resultTitle =
+document.getElementById("resultTitle");
+
+const resultDescription =
+document.getElementById("resultDescription");
+
+const resultIcon =
+document.getElementById("resultIcon");
+
+const resultTags =
+document.getElementById("resultTags");
+
+const nextStepTitle =
+document.getElementById("nextStepTitle");
+
+const signalText =
+document.getElementById("signalText");
+
+const sidebarProgressFill =
+document.getElementById("sidebarProgressFill");
+
+const sidebarProgressValue =
+document.getElementById("sidebarProgressValue");
+
+
+const signalElements = [
+
+    document.getElementById("sig1"),
+    document.getElementById("sig2"),
+    document.getElementById("sig3"),
+    document.getElementById("sig4"),
+    document.getElementById("sig5")
+
+];
+
+
+roleChoices.forEach(choice => {
+
+    choice.addEventListener("click", () => {
+
+        const key =
+        choice.dataset.role;
+
+        const data =
+        careerRoleData[key];
+
+
+        roleChoices.forEach(item => {
+            item.classList.remove("active");
+        });
+
+
+        choice.classList.add("active");
+
+
+        resultTitle.textContent =
+        data.title;
+
+        resultDescription.textContent =
+        data.description;
+
+        resultIcon.className =
+        `fa-solid ${data.icon}`;
+
+        signalText.textContent =
+        data.signal;
+
+        nextStepTitle.textContent =
+        data.next;
+
+
+        resultTags.innerHTML =
+        data.tags
+        .map(tag => `<span>${tag}</span>`)
+        .join("");
+
+
+        signalElements.forEach(
+            (element,index) => {
+
+                element.style.width =
+                `${data.bars[index]}%`;
+
+            }
+        );
+
+
+        sidebarProgressFill.style.width =
+        `${data.progress}%`;
+
+        sidebarProgressValue.textContent =
+        `${data.progress}%`;
+
+    });
+
+});
+
+
+/* =========================================================
+   ROLE SWITCHER
+========================================================= */
+
+const roleSwitchData = {
+
+    developer:{
+
+        number:"01",
+
+        label:"ROLE DIRECTION / ENGINEERING",
+
+        title:"Software Development",
+
+        description:
+        "Work on software systems, application logic, technical problem solving and the implementation of features that turn requirements into working products.",
+
+        icon:"fa-code",
+
+        tags:[
+            "Programming",
+            "Problem Solving",
+            "Git",
+            "Projects"
+        ]
+    },
+
+
+    frontend:{
+
+        number:"02",
+
+        label:"ROLE DIRECTION / DIGITAL EXPERIENCE",
+
+        title:"Frontend & Web",
+
+        description:
+        "Build responsive interfaces and web experiences by combining layout, interaction, accessibility and implementation.",
+
+        icon:"fa-display",
+
+        tags:[
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Responsive UI"
+        ]
+    },
+
+
+    data:{
+
+        number:"03",
+
+        label:"ROLE DIRECTION / INSIGHTS",
+
+        title:"Data & Analytics",
+
+        description:
+        "Work with structured information, explore patterns and communicate findings through analysis and visual explanation.",
+
+        icon:"fa-chart-column",
+
+        tags:[
+            "SQL",
+            "Analysis",
+            "Visualization",
+            "Insights"
+        ]
+    },
+
+
+    ai:{
+
+        number:"04",
+
+        label:"ROLE DIRECTION / INTELLIGENCE",
+
+        title:"AI Solutions",
+
+        description:
+        "Combine AI tools, structured prompts, data and practical workflows to create intelligent solution experiences.",
+
+        icon:"fa-brain",
+
+        tags:[
+            "AI",
+            "Prompting",
+            "Automation",
+            "Solutions"
+        ]
+    },
+
+
+    product:{
+
+        number:"05",
+
+        label:"ROLE DIRECTION / PRODUCT",
+
+        title:"Product Building",
+
+        description:
+        "Connect user needs, product decisions and practical execution to shape useful digital experiences.",
+
+        icon:"fa-layer-group",
+
+        tags:[
+            "Users",
+            "Product Thinking",
+            "Execution",
+            "Communication"
+        ]
+    }
+
+};
+
+
+const switchButtons =
+document.querySelectorAll(".role-switch-btn");
+
+const displayNumber =
+document.getElementById("displayNumber");
+
+const displayIcon =
+document.getElementById("displayIcon");
+
+const displayLabel =
+document.getElementById("displayLabel");
+
+const displayTitle =
+document.getElementById("displayTitle");
+
+const displayDescription =
+document.getElementById("displayDescription");
+
+const displayTags =
+document.getElementById("displayTags");
+
+
+switchButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        const key =
+        button.dataset.switch;
+
+        const data =
+        roleSwitchData[key];
+
+
+        switchButtons.forEach(item => {
+            item.classList.remove("active");
+        });
+
+
+        button.classList.add("active");
+
+
+        displayNumber.textContent =
+        data.number;
+
+        displayIcon.innerHTML =
+        `<i class="fa-solid ${data.icon}"></i>`;
+
+        displayLabel.textContent =
+        data.label;
+
+        displayTitle.textContent =
+        data.title;
+
+        displayDescription.textContent =
+        data.description;
+
+        displayTags.innerHTML =
+        data.tags
+        .map(tag => `<span>${tag}</span>`)
+        .join("");
+
+    });
+
+});
+
+
+/* =========================================================
+   INTERVIEW ROTATION
+========================================================= */
+
+const interviewQuestions = [
+
+    {
+        label:"QUESTION 01 / PROJECT",
+        question:
+        "Tell me about a project where your first approach did not work.",
+        note:
+        "Start with the problem, explain your decision and finish with what changed."
+    },
+
+    {
+        label:"QUESTION 02 / DECISION",
+        question:
+        "Why did you choose that technical approach for your project?",
+        note:
+        "Explain the alternatives you considered and why the final choice made sense."
+    },
+
+    {
+        label:"QUESTION 03 / LEARNING",
+        question:
+        "What did you have to learn while building your project?",
+        note:
+        "Connect the new skill directly to the problem you needed to solve."
+    },
+
+    {
+        label:"QUESTION 04 / FEEDBACK",
+        question:
+        "Describe one piece of feedback that changed your work.",
+        note:
+        "Explain what you heard, what you changed and what improved afterwards."
+    }
+
+];
+
+
+const interviewLabel =
+document.getElementById("interviewLabel");
+
+const interviewQuestion =
+document.getElementById("interviewQuestion");
+
+const interviewNote =
+document.getElementById("interviewNote");
+
+
+let interviewIndex = 0;
+
+
+setInterval(() => {
+
+    interviewIndex++;
+
+    if(
+        interviewIndex >=
+        interviewQuestions.length
+    ){
+        interviewIndex = 0;
+    }
+
+
+    const item =
+    interviewQuestions[interviewIndex];
+
+
+    interviewLabel.textContent =
+    item.label;
+
+    interviewQuestion.textContent =
+    item.question;
+
+    interviewNote.textContent =
+    item.note;
+
+},4800);
+
+
+/* =========================================================
+   RECRUITER LENS
+========================================================= */
+
+const lensFocus =
+document.getElementById("lensFocus");
+
+const lensTag =
+document.getElementById("lensTag");
+
+
+const lensPositions = [
+
+    {
+        top:"150px",
+        height:"80px",
+        tag:"PROJECT EVIDENCE"
+    },
+
+    {
+        top:"255px",
+        height:"75px",
+        tag:"PRACTICAL SKILLS"
+    },
+
+    {
+        top:"350px",
+        height:"65px",
+        tag:"CONTRIBUTION"
+    }
+
+];
+
+
+let lensIndex = 0;
+
+
+setInterval(() => {
+
+    lensIndex++;
+
+    if(
+        lensIndex >=
+        lensPositions.length
+    ){
+        lensIndex = 0;
+    }
+
+
+    const item =
+    lensPositions[lensIndex];
+
+
+    lensFocus.style.top =
+    item.top;
+
+    lensFocus.style.height =
+    item.height;
+
+    lensTag.textContent =
+    item.tag;
+
+
+    if(window.innerWidth > 650){
+
+        lensTag.style.top =
+        `calc(${item.top} + 20px)`;
+
+    }
+
+},2600);
+
+
+/* =========================================================
+   MOBILE RESIZE
+========================================================= */
+
+window.addEventListener("resize", () => {
+
+    if(window.innerWidth > 1050){
+
+        navMenu.classList.remove("active");
+
+        menuToggle.classList.remove("active");
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+
+        navItems.forEach(item => {
+            item.classList.remove("open");
+        });
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
