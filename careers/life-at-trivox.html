@@ -1102,13 +1102,7 @@ button{cursor:pointer}
 }
 .apply-btn:hover{transform:translateY(-2px)}
 
-.footer{
-  padding:25px 20px 45px;
-  text-align:center;
-  color:#8d8d95;
-  font-size:11px;
-}
-.footer span{margin:0 5px;color:var(--purple)}
+
 
 /* =========================
    RESPONSIVE
@@ -1380,7 +1374,135 @@ button{cursor:pointer}
   .life-cta{padding-bottom:76px}.life-cta-box{padding:38px 22px}.life-cta-box h2{font-size:36px}
 }
 
+
+
+/* FULL TRIVOX FOOTER */
+.trivox-footer{position:relative;width:100%;background:#f0ecfb;color:#111;overflow:hidden;}
+.footer-inner{width:100%;max-width:1280px;margin:auto;padding:100px 7% 0;}
+.footer-opening{min-height:330px;display:grid;grid-template-columns:180px 1fr 150px;gap:50px;align-items:center;}
+.footer-opening-small span{display:block;margin-bottom:12px;color:#7450e8;font-size:9px;font-weight:900;letter-spacing:2px;}
+.footer-opening-small small{color:#9b97a4;font-size:8px;font-weight:800;letter-spacing:1.6px;}
+.footer-opening h2{max-width:700px;margin:0;font-size:clamp(60px,7.5vw,105px);line-height:.84;letter-spacing:-7px;font-weight:900;}
+.footer-opening h2 strong{display:block;color:#7450e8;}
+.footer-start-btn{width:130px;height:130px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;border-radius:50%;background:#7450e8;color:#fff;font-size:12px;font-weight:800;transition:.4s ease;}
+.footer-start-btn i{font-style:normal;font-size:22px;transition:.3s ease;}
+.footer-start-btn:hover{transform:rotate(-7deg) scale(1.06);border-radius:38% 62% 45% 55%;}
+.footer-navigation{display:grid;grid-template-columns:repeat(4,1fr);gap:60px;margin-top:90px;padding-top:45px;border-top:1px solid rgba(17,17,17,.10);}
+.footer-nav-group{display:flex;flex-direction:column;align-items:flex-start;}
+.footer-label{display:block;margin-bottom:25px;color:#aaa5b0;font-size:8px;font-weight:900;letter-spacing:1.8px;}
+.footer-nav-group a{display:inline-block;margin-bottom:11px;color:#47444c;font-size:13px;font-weight:650;transition:.25s ease;}
+.footer-nav-group a:hover{color:#7450e8;transform:translateX(8px);}
+.footer-brand{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-top:105px;overflow:hidden;}
+.footer-brand-word{margin-left:-8px;font-size:clamp(110px,19vw,270px);line-height:.68;letter-spacing:-17px;font-weight:900;color:#d8d0ef;white-space:nowrap;}
+.footer-brand-side{flex:0 0 150px;margin-bottom:5px;}
+.footer-brand-side span{display:block;margin-bottom:14px;color:#7450e8;font-size:8px;font-weight:900;letter-spacing:2px;}
+.footer-brand-side p{margin:0;color:#55515d;font-size:14px;line-height:1.5;font-weight:700;}
+.footer-bottom{min-height:90px;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;gap:25px;border-top:1px solid rgba(17,17,17,.10);margin-top:65px;}
+.footer-bottom p,.footer-bottom-center,.footer-bottom a{margin:0;color:#8e8995;font-size:8px;font-weight:800;letter-spacing:1.4px;}
+.footer-bottom-center{text-align:center;}
+.footer-bottom a{display:flex;align-items:center;justify-content:flex-end;gap:8px;}
+.footer-bottom a span{font-size:15px;color:#7450e8;}
+.footer-motion{width:100%;overflow:hidden;padding:20px 0;background:#7450e8;}
+.footer-motion-track{width:max-content;white-space:nowrap;color:#fff;font-size:18px;font-weight:900;letter-spacing:1.5px;animation:footerMove 22s linear infinite;}
+@keyframes footerMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+@media(max-width:950px){
+ .footer-inner{padding:85px 6% 0;}
+ .footer-opening{grid-template-columns:1fr;gap:35px;}
+ .footer-start-btn{width:110px;height:110px;}
+ .footer-navigation{grid-template-columns:1fr 1fr;gap:50px;}
+ .footer-brand-word{font-size:17vw;letter-spacing:-11px;}
+}
+@media(max-width:600px){
+ .footer-inner{padding:65px 18px 0;}
+ .footer-opening{min-height:auto;display:block;}
+ .footer-opening-small{margin-bottom:38px;}
+ .footer-opening h2{max-width:340px;font-size:54px;line-height:.87;letter-spacing:-4px;}
+ .footer-start-btn{width:95px;height:95px;margin-top:38px;font-size:10px;}
+ .footer-navigation{grid-template-columns:1fr 1fr;gap:45px 25px;margin-top:75px;padding-top:35px;}
+ .footer-label{margin-bottom:18px;font-size:7px;}
+ .footer-nav-group a{margin-bottom:10px;font-size:11.5px;}
+ .footer-brand{display:block;margin-top:80px;}
+ .footer-brand-word{margin-left:-5px;font-size:25vw;line-height:.72;letter-spacing:-7px;white-space:nowrap;}
+ .footer-brand-side{width:auto;margin-top:40px;}
+ .footer-bottom{min-height:auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;padding:30px 0;}
+ .footer-bottom-center{width:100%;order:3;text-align:left;}
+ .footer-motion{padding:16px 0;}
+ .footer-motion-track{font-size:14px;}
+}
+@media(max-width:380px){
+ .footer-opening h2{font-size:48px;}
+
+/* CULTURE INLINE VISUAL — fills the left empty space */
+.culture-inline-visual{
+  position:relative;
+  width:100%;
+  max-width:360px;
+  margin-top:26px;
+  aspect-ratio:4/3;
+  overflow:hidden;
+  border:1px solid #e6e2f6;
+  border-radius:24px;
+  background:linear-gradient(145deg,#fbfaff,#eee9ff);
+  box-shadow:0 22px 55px rgba(61,43,125,.09);
+}
+.culture-inline-visual svg{display:block;width:100%;height:100%}
+.culture-visual-tag{
+  position:absolute;left:16px;bottom:16px;
+  padding:8px 11px;border-radius:999px;
+  background:rgba(255,255,255,.92);
+  color:#5d43ce;font-size:8px;font-weight:800;letter-spacing:1.1px;
+}
+@media(max-width:1050px){
+  .life-intro-grid{grid-template-columns:1fr!important}
+  .section-index{display:block!important}
+  .culture-inline-visual{max-width:520px;aspect-ratio:16/9}
+}
+@media(max-width:650px){
+  .culture-inline-visual{max-width:none;border-radius:18px}
+}
+
 </style>
+
+<style>
+/* REMOVE PURPLE DECORATIVE HEADING LINES */
+.eyebrow::before,
+.eyebrow:before,
+.process .eyebrow::before,
+.process .eyebrow:before,
+.principles .eyebrow::before,
+.principles .eyebrow:before,
+.life-page .eyebrow::before,
+.life-page .eyebrow:before,
+.life-section-head .eyebrow::before,
+.life-section-head .eyebrow:before,
+.inside-project .eyebrow::before,
+.inside-project .eyebrow:before,
+.growth-section .eyebrow::before,
+.growth-section .eyebrow:before{
+  content:none !important;
+  display:none !important;
+  width:0 !important;
+  height:0 !important;
+  min-width:0 !important;
+  margin:0 !important;
+  padding:0 !important;
+  border:0 !important;
+  background:none !important;
+  box-shadow:none !important;
+}
+
+.eyebrow,
+.process .eyebrow,
+.principles .eyebrow,
+.life-page .eyebrow,
+.life-section-head .eyebrow,
+.inside-project .eyebrow,
+.growth-section .eyebrow{
+  gap:0 !important;
+}
+</style>
+
 </head>
 <body>
 
@@ -1574,7 +1696,98 @@ button{cursor:pointer}
 
   <section class="life-intro">
     <div class="container life-intro-grid">
-      <div class="section-index reveal">01 / OUR CULTURE</div>
+      <div class="section-index reveal">
+  <span>01 / OUR CULTURE</span>
+
+  <div class="culture-inline-visual">
+    <svg viewBox="0 0 480 360" role="img" aria-label="TRIVOX project culture team illustration">
+      <defs>
+        <linearGradient id="cultureBg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#fbfaff"/>
+          <stop offset="100%" stop-color="#e9e3ff"/>
+        </linearGradient>
+        <linearGradient id="culturePurple" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#927cff"/>
+          <stop offset="100%" stop-color="#6045d4"/>
+        </linearGradient>
+        <filter id="cultureShadow" x="-30%" y="-30%" width="160%" height="160%">
+          <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#4d369b" flood-opacity=".13"/>
+        </filter>
+      </defs>
+
+      <rect width="480" height="360" rx="24" fill="url(#cultureBg)"/>
+
+      <g opacity=".28" stroke="#b9adeb">
+        <path d="M0 72H480M0 144H480M0 216H480M0 288H480"/>
+        <path d="M96 0V360M192 0V360M288 0V360M384 0V360"/>
+      </g>
+
+      <circle cx="405" cy="55" r="92" fill="#7156e8" opacity=".08"/>
+      <circle cx="60" cy="320" r="105" fill="#7156e8" opacity=".06"/>
+
+      <!-- project board -->
+      <g transform="translate(232 42)" filter="url(#cultureShadow)">
+        <rect width="205" height="145" rx="18" fill="#fff"/>
+        <rect x="17" y="17" width="171" height="24" rx="7" fill="#17171c"/>
+        <circle cx="32" cy="29" r="4" fill="#8e78ff"/>
+        <text x="44" y="33" font-family="Inter,Arial" font-size="8" font-weight="800" fill="#fff">LIVE PROJECT</text>
+
+        <rect x="18" y="57" width="50" height="53" rx="9" fill="#f2efff"/>
+        <rect x="77" y="57" width="50" height="53" rx="9" fill="#f7f7f9"/>
+        <rect x="136" y="57" width="50" height="53" rx="9" fill="#f2efff"/>
+        <rect x="18" y="120" width="168" height="7" rx="4" fill="#eeeafc"/>
+        <rect x="18" y="120" width="116" height="7" rx="4" fill="url(#culturePurple)"/>
+      </g>
+
+      <!-- team member 1 -->
+      <g transform="translate(62 104)">
+        <circle cx="55" cy="42" r="25" fill="#d6ad91"/>
+        <path d="M30 40c3-29 47-31 51 1-14-8-35-8-51-1z" fill="#24232a"/>
+        <rect x="23" y="70" width="65" height="96" rx="29" fill="url(#culturePurple)"/>
+        <path d="M39 166l-9 76M72 166l11 76" stroke="#29282f" stroke-width="14" stroke-linecap="round"/>
+        <path d="M27 91L5 137M84 91l31 38" stroke="#d6ad91" stroke-width="12" stroke-linecap="round"/>
+        <rect x="78" y="105" width="57" height="39" rx="6" fill="#fff" stroke="#ddd7f8"/>
+        <circle cx="106" cy="124" r="5" fill="#7156e8"/>
+      </g>
+
+      <!-- team member 2 -->
+      <g transform="translate(148 132)">
+        <circle cx="55" cy="42" r="25" fill="#bd8e72"/>
+        <path d="M30 41c3-29 48-32 51 2-14-9-35-9-51-2z" fill="#18181d"/>
+        <rect x="23" y="70" width="65" height="96" rx="29" fill="#fff" stroke="#dcd6f7"/>
+        <path d="M39 166l-9 72M72 166l11 72" stroke="#35343c" stroke-width="14" stroke-linecap="round"/>
+        <path d="M27 91L5 137M84 91l28 38" stroke="#bd8e72" stroke-width="12" stroke-linecap="round"/>
+        <rect x="-3" y="108" width="52" height="36" rx="6" fill="#17171c"/>
+        <circle cx="23" cy="126" r="4" fill="#917bff"/>
+      </g>
+
+      <!-- collaboration chips -->
+      <g font-family="Inter,Arial" font-size="8" font-weight="800">
+        <g transform="translate(28 54)">
+          <rect width="98" height="29" rx="14.5" fill="#fff"/>
+          <circle cx="16" cy="14.5" r="5" fill="#36b36e"/>
+          <text x="29" y="18" fill="#55525e">SOLVE</text>
+        </g>
+        <g transform="translate(140 52)">
+          <rect width="82" height="29" rx="14.5" fill="#fff"/>
+          <circle cx="16" cy="14.5" r="5" fill="#7156e8"/>
+          <text x="29" y="18" fill="#55525e">SHIP</text>
+        </g>
+        <g transform="translate(326 212)">
+          <rect width="112" height="29" rx="14.5" fill="#fff"/>
+          <circle cx="16" cy="14.5" r="5" fill="#8e78ff"/>
+          <text x="29" y="18" fill="#55525e">IMPROVE</text>
+        </g>
+      </g>
+
+      <path d="M226 230C276 224 300 207 329 176" fill="none"
+            stroke="#7156e8" stroke-width="6" stroke-linecap="round"
+            stroke-dasharray="2 15" opacity=".38"/>
+    </svg>
+
+    <div class="culture-visual-tag">PROJECT CULTURE</div>
+  </div>
+</div>
       <div>
         <div class="eyebrow reveal">BUILT AROUND THE WORK</div>
         <h2 class="life-section-title reveal">
@@ -1748,8 +1961,36 @@ button{cursor:pointer}
   </div>
 </div>
 
-<footer class="footer">
-  © 2026 TRIVOX AI IMPACT <span>•</span> Careers <span>•</span> Open Positions
+<footer class="trivox-footer">
+  <div class="footer-inner">
+    <div class="footer-opening">
+      <div class="footer-opening-small">
+        <span>TRIVOX AI IMPACT</span>
+        <small>LEAD WITH PURPOSE</small>
+      </div>
+      <h2>Ideas become direction.<strong>Direction becomes impact.</strong></h2>
+      <a href="course.html" class="footer-start-btn"><span>Get Started</span><i>↗</i></a>
+    </div>
+
+    <div class="footer-navigation">
+      <div class="footer-nav-group"><span class="footer-label">01 / COMPANY</span><a href="about.html">About TRIVOX</a><a href="mission.html">Mission</a><a href="vision.html">Vision</a><a href="leader.html">Leadership</a></div>
+      <div class="footer-nav-group"><span class="footer-label">02 / LEARNING</span><a href="learning/ailearning.html">AI Learning</a><a href="learning/programming.html">Programming</a><a href="learning/webdevelopment.html">Web Development</a><a href="learning/datascience.html">Data Science</a></div>
+      <div class="footer-nav-group"><span class="footer-label">03 / PROGRAMS</span><a href="programs/student-programs.html">Student Programs</a><a href="programs/college-programs.html">College Programs</a><a href="programs/internships.html">Internships</a><a href="programs/workshops.html">Workshops</a></div>
+      <div class="footer-nav-group"><span class="footer-label">04 / EXPLORE</span><a href="resources/blogs.html">Blogs</a><a href="resources/student-projects.html">Projects</a><a href="resources/events.html">Events</a><a href="contact/contact.html">Contact</a></div>
+    </div>
+
+    <div class="footer-brand">
+      <div class="footer-brand-word">TRIVOX</div>
+      <div class="footer-brand-side"><span>AI IMPACT</span><p>Think clearly.<br>Lead responsibly.<br>Create impact.</p></div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 TRIVOX AI IMPACT</p>
+      <div class="footer-bottom-center">EDUCATION × TECHNOLOGY × IMPACT</div>
+      <a href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">BACK TO TOP <span>↑</span></a>
+    </div>
+  </div>
+  <div class="footer-motion"><div class="footer-motion-track">LEAD • LEARN • BUILD • CREATE • GROW • IMPACT • LEAD • LEARN • BUILD • CREATE • GROW • IMPACT •</div></div>
 </footer>
 
 <script>
