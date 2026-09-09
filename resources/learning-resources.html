@@ -2605,6 +2605,72 @@ a{
 
 }
 
+
+/* =====================================================
+   PREMIUM LIGHT FOOTER
+===================================================== */
+.trivox-footer{position:relative;width:100%;background:#f0ecfb;color:#111;overflow:hidden;}
+.footer-inner{width:100%;max-width:1280px;margin:auto;padding:100px 7% 0;}
+.footer-opening{min-height:330px;display:grid;grid-template-columns:180px 1fr 150px;gap:50px;align-items:center;}
+.footer-opening-small span{display:block;margin-bottom:12px;color:#7450e8;font-size:9px;font-weight:900;letter-spacing:2px;}
+.footer-opening-small small{color:#9b97a4;font-size:8px;font-weight:800;letter-spacing:1.6px;}
+.footer-opening h2{max-width:700px;margin:0;font-size:clamp(60px,7.5vw,105px);line-height:.84;letter-spacing:-7px;font-weight:900;}
+.footer-opening h2 strong{display:block;color:#7450e8;}
+.footer-start-btn{width:130px;height:130px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;border-radius:50%;background:#7450e8;color:#fff;font-size:12px;font-weight:800;transition:.4s ease;}
+.footer-start-btn i{font-style:normal;font-size:22px;transition:.3s ease;}
+.footer-start-btn:hover{transform:rotate(-7deg) scale(1.06);border-radius:38% 62% 45% 55%;}
+.footer-navigation{display:grid;grid-template-columns:repeat(4,1fr);gap:60px;margin-top:90px;padding-top:45px;border-top:1px solid rgba(17,17,17,.10);}
+.footer-nav-group{display:flex;flex-direction:column;align-items:flex-start;}
+.footer-label{display:block;margin-bottom:25px;color:#aaa5b0;font-size:8px;font-weight:900;letter-spacing:1.8px;}
+.footer-nav-group a{display:inline-block;margin-bottom:11px;color:#47444c;font-size:13px;font-weight:650;transition:.25s ease;}
+.footer-nav-group a:hover{color:#7450e8;transform:translateX(8px);}
+.footer-brand{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-top:105px;overflow:hidden;}
+.footer-brand-word{margin-left:-8px;font-size:clamp(110px,19vw,270px);line-height:.68;letter-spacing:-17px;font-weight:900;color:#d8d0ef;white-space:nowrap;}
+.footer-brand-side{flex:0 0 150px;margin-bottom:5px;}
+.footer-brand-side span{display:block;margin-bottom:14px;color:#7450e8;font-size:8px;font-weight:900;letter-spacing:2px;}
+.footer-brand-side p{margin:0;color:#55515d;font-size:14px;line-height:1.5;font-weight:700;}
+.footer-bottom{min-height:90px;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;gap:25px;border-top:1px solid rgba(17,17,17,.10);margin-top:65px;}
+.footer-bottom p,.footer-bottom-center,.footer-bottom a{margin:0;color:#8e8995;font-size:8px;font-weight:800;letter-spacing:1.4px;}
+.footer-bottom-center{text-align:center;}
+.footer-bottom a{display:flex;align-items:center;justify-content:flex-end;gap:8px;}
+.footer-bottom a span{font-size:15px;color:#7450e8;}
+.footer-motion{width:100%;overflow:hidden;padding:20px 0;background:#7450e8;}
+.footer-motion-track{width:max-content;white-space:nowrap;color:#fff;font-size:18px;font-weight:900;letter-spacing:1.5px;animation:footerMove 22s linear infinite;}
+@keyframes footerMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+@media(max-width:950px){
+ .footer-inner{padding:85px 6% 0;}
+ .footer-opening{grid-template-columns:1fr;gap:35px;}
+ .footer-start-btn{width:110px;height:110px;}
+ .footer-navigation{grid-template-columns:1fr 1fr;gap:50px;}
+ .footer-brand-word{font-size:17vw;letter-spacing:-11px;}
+}
+@media(max-width:600px){
+ .footer-inner{padding:65px 18px 0;}
+ .footer-opening{min-height:auto;display:block;}
+ .footer-opening-small{margin-bottom:38px;}
+ .footer-opening h2{max-width:340px;font-size:54px;line-height:.87;letter-spacing:-4px;}
+ .footer-start-btn{width:95px;height:95px;margin-top:38px;font-size:10px;}
+ .footer-navigation{grid-template-columns:1fr 1fr;gap:45px 25px;margin-top:75px;padding-top:35px;}
+ .footer-label{margin-bottom:18px;font-size:7px;}
+ .footer-nav-group a{margin-bottom:10px;font-size:11.5px;}
+ .footer-brand{display:block;margin-top:80px;}
+ .footer-brand-word{margin-left:-5px;font-size:25vw;line-height:.72;letter-spacing:-7px;white-space:nowrap;}
+ .footer-brand-side{width:auto;margin-top:40px;}
+ .footer-bottom{min-height:auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;padding:30px 0;}
+ .footer-bottom-center{width:100%;order:3;text-align:left;}
+ .footer-motion{padding:16px 0;}
+ .footer-motion-track{font-size:14px;}
+}
+@media(max-width:380px){
+ .footer-opening h2{font-size:48px;}
+ .footer-navigation{grid-template-columns:1fr;gap:35px;}
+ .footer-brand-word{font-size:24vw;letter-spacing:-5px;}
+}
+
+
+
+
 </style>
 </head>
 
@@ -3774,6 +3840,38 @@ a{
 
 
 </main>
+
+<footer class="trivox-footer">
+  <div class="footer-inner">
+    <div class="footer-opening">
+      <div class="footer-opening-small">
+        <span>TRIVOX AI IMPACT</span>
+        <small>LEAD WITH PURPOSE</small>
+      </div>
+      <h2>Ideas become direction.<strong>Direction becomes impact.</strong></h2>
+      <a href="course.html" class="footer-start-btn"><span>Get Started</span><i>↗</i></a>
+    </div>
+
+    <div class="footer-navigation">
+      <div class="footer-nav-group"><span class="footer-label">01 / COMPANY</span><a href="about.html">About TRIVOX</a><a href="mission.html">Mission</a><a href="vision.html">Vision</a><a href="leader.html">Leadership</a></div>
+      <div class="footer-nav-group"><span class="footer-label">02 / LEARNING</span><a href="learning/ailearning.html">AI Learning</a><a href="learning/programming.html">Programming</a><a href="learning/webdevelopment.html">Web Development</a><a href="learning/datascience.html">Data Science</a></div>
+      <div class="footer-nav-group"><span class="footer-label">03 / PROGRAMS</span><a href="programs/student-programs.html">Student Programs</a><a href="programs/college-programs.html">College Programs</a><a href="programs/internships.html">Internships</a><a href="programs/workshops.html">Workshops</a></div>
+      <div class="footer-nav-group"><span class="footer-label">04 / EXPLORE</span><a href="resources/blogs.html">Blogs</a><a href="resources/student-projects.html">Projects</a><a href="resources/events.html">Events</a><a href="contact/contact.html">Contact</a></div>
+    </div>
+
+    <div class="footer-brand">
+      <div class="footer-brand-word">TRIVOX</div>
+      <div class="footer-brand-side"><span>AI IMPACT</span><p>Think clearly.<br>Lead responsibly.<br>Create impact.</p></div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 TRIVOX AI IMPACT</p>
+      <div class="footer-bottom-center">EDUCATION × TECHNOLOGY × IMPACT</div>
+      <a href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">BACK TO TOP <span>↑</span></a>
+    </div>
+  </div>
+  <div class="footer-motion"><div class="footer-motion-track">LEAD • LEARN • BUILD • CREATE • GROW • IMPACT • LEAD • LEARN • BUILD • CREATE • GROW • IMPACT •</div></div>
+</footer>
 
 
 <script>
