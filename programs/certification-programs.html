@@ -1,1 +1,5863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Certification Programs | TRIVOX AI IMPACT</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root{
+    --purple:#7156e8;
+    --purple-dark:#5d43ce;
+    --purple-light:#f1edff;
+    --purple-soft:#faf8ff;
+
+    --black:#111116;
+    --dark:#17171c;
+
+    --text:#19191f;
+    --muted:#6f7078;
+    --soft:#9a9aa3;
+
+    --white:#fff;
+    --surface:#f7f7f9;
+    --surface2:#f0f0f3;
+    --border:#e7e7ec;
+
+    --green:#57a66f;
+    --orange:#d99a4f;
+    --red:#dd6d67;
+
+    --container:1180px;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+
+    background:#fff;
+    color:var(--text);
+
+    font-family:"Inter",sans-serif;
+    -webkit-font-smoothing:antialiased;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button{
+    font:inherit;
+    cursor:pointer;
+}
+
+main{
+    padding-top:76px;
+}
+
+.container{
+    width:min(var(--container),86%);
+    margin:auto;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar{
+    width:100%;
+    height:76px;
+
+    position:fixed;
+    left:0;
+    top:0;
+    z-index:9999;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 4%;
+
+    background:rgba(255,255,255,.97);
+
+    border-bottom:1px solid rgba(0,0,0,.06);
+
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+
+    transition:.3s ease;
+}
+
+.navbar.scrolled{
+    box-shadow:0 8px 30px rgba(0,0,0,.06);
+}
+
+
+/* LOGO */
+
+.logo{
+    display:flex;
+    align-items:center;
+
+    flex-shrink:0;
+
+    white-space:nowrap;
+
+    font-size:22px;
+    font-weight:800;
+
+    letter-spacing:-1.1px;
+}
+
+.logo-main{
+    background:linear-gradient(
+        to bottom,
+        #111 0%,
+        #111 50%,
+        var(--purple) 50%,
+        var(--purple) 100%
+    );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+}
+
+.logo-impact{
+    margin-left:7px;
+
+    background:linear-gradient(
+        to bottom,
+        var(--purple) 0%,
+        var(--purple) 50%,
+        #222 50%,
+        #222 100%
+    );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+}
+
+
+/* NAV */
+
+.nav-menu{
+    display:flex;
+    align-items:center;
+
+    gap:2px;
+
+    list-style:none;
+}
+
+.nav-item{
+    position:relative;
+}
+
+.nav-link{
+    display:flex;
+    align-items:center;
+
+    gap:6px;
+
+    padding:28px 10px;
+
+    color:#37373d;
+
+    font-size:13px;
+    font-weight:600;
+
+    white-space:nowrap;
+
+    cursor:pointer;
+
+    transition:.2s ease;
+}
+
+.nav-link:hover,
+.nav-item.active-parent > .nav-link{
+    color:var(--purple);
+}
+
+.arrow{
+    width:6px;
+    height:6px;
+
+    border-right:1.4px solid currentColor;
+    border-bottom:1.4px solid currentColor;
+
+    transform:rotate(45deg) translateY(-2px);
+
+    transition:.25s ease;
+}
+
+.nav-item:hover .arrow{
+    transform:rotate(225deg);
+}
+
+
+/* DROPDOWN */
+
+.dropdown{
+    width:245px;
+
+    position:absolute;
+
+    top:68px;
+    left:0;
+
+    padding:9px;
+
+    background:#fff;
+
+    border:1px solid #ececf0;
+    border-radius:15px;
+
+    box-shadow:0 20px 55px rgba(0,0,0,.10);
+
+    opacity:0;
+    visibility:hidden;
+
+    transform:translateY(14px);
+
+    transition:.23s ease;
+}
+
+.nav-item:hover > .dropdown{
+    opacity:1;
+    visibility:visible;
+
+    transform:translateY(0);
+}
+
+.dropdown > a{
+    display:block;
+
+    padding:12px 13px;
+
+    border-radius:9px;
+
+    color:#45454c;
+
+    font-size:13px;
+
+    transition:.2s ease;
+}
+
+.dropdown > a:hover{
+    padding-left:17px;
+
+    color:var(--purple);
+
+    background:#f6f4ff;
+}
+
+.dropdown > a.active{
+    color:var(--purple);
+
+    background:#f1edff;
+
+    font-weight:700;
+}
+
+
+/* MEGA */
+
+.mega-dropdown{
+    width:620px;
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+
+    gap:7px;
+
+    padding:14px;
+}
+
+.mega-box{
+    display:block;
+
+    padding:14px;
+
+    border-radius:11px;
+
+    transition:.2s ease;
+}
+
+.mega-box:hover{
+    background:#f7f5ff;
+    transform:translateX(3px);
+}
+
+.mega-box strong{
+    display:block;
+
+    margin-bottom:5px;
+
+    font-size:13px;
+}
+
+.mega-box p{
+    color:#83838b;
+
+    font-size:11px;
+    line-height:1.5;
+}
+
+
+/* ACTIONS */
+
+.nav-actions{
+    display:flex;
+    align-items:center;
+
+    gap:10px;
+
+    flex-shrink:0;
+}
+
+.login-btn{
+    padding:10px 13px;
+
+    border:0;
+
+    background:transparent;
+
+    font-size:13px;
+    font-weight:600;
+}
+
+.get-started{
+    padding:11px 17px;
+
+    border-radius:9px;
+
+    background:#111;
+    color:#fff;
+
+    font-size:13px;
+    font-weight:700;
+
+    transition:.25s ease;
+}
+
+.get-started:hover{
+    transform:translateY(-2px);
+}
+
+
+/* SIGN IN */
+
+.signin-dropdown-wrap{
+    position:relative;
+}
+
+.signin-main-btn{
+    display:flex;
+    align-items:center;
+
+    gap:6px;
+}
+
+.signin-dropdown{
+    width:230px;
+
+    position:absolute;
+
+    right:0;
+    top:51px;
+
+    padding:9px;
+
+    background:#fff;
+
+    border:1px solid #ececf0;
+    border-radius:14px;
+
+    box-shadow:0 20px 55px rgba(0,0,0,.10);
+
+    opacity:0;
+    visibility:hidden;
+
+    transform:translateY(12px);
+
+    transition:.23s ease;
+}
+
+.signin-dropdown-wrap:hover .signin-dropdown{
+    opacity:1;
+    visibility:visible;
+
+    transform:translateY(0);
+}
+
+.signin-dropdown a{
+    display:flex;
+    align-items:center;
+
+    gap:11px;
+
+    padding:12px;
+
+    border-radius:9px;
+
+    transition:.2s ease;
+}
+
+.signin-dropdown a:hover{
+    background:#f6f4ff;
+}
+
+.signin-dropdown i{
+    color:var(--purple);
+}
+
+.signin-dropdown strong{
+    display:block;
+
+    font-size:12px;
+}
+
+.signin-dropdown span{
+    display:block;
+
+    margin-top:3px;
+
+    color:#8c8c94;
+
+    font-size:10px;
+}
+
+
+/* MOBILE */
+
+.menu-toggle{
+    width:42px;
+    height:42px;
+
+    display:none;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+
+    gap:4px;
+
+    border:0;
+    border-radius:10px;
+
+    background:#f2f2f4;
+}
+
+.menu-toggle span{
+    width:20px;
+    height:2px;
+
+    background:#111;
+
+    transition:.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1){
+    transform:translateY(6px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2){
+    opacity:0;
+}
+
+.menu-toggle.active span:nth-child(3){
+    transform:translateY(-6px) rotate(-45deg);
+}
+
+
+/* =========================================================
+   COMMON
+========================================================= */
+
+.section-label{
+    display:flex;
+    align-items:center;
+
+    gap:9px;
+
+    margin-bottom:15px;
+
+    color:var(--purple);
+
+    font-size:9px;
+    font-weight:800;
+
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+}
+
+.section-label::before{
+    content:"";
+
+    width:20px;
+    height:2px;
+
+    background:var(--purple);
+}
+
+.section-title{
+    max-width:800px;
+
+    font-size:clamp(34px,3.7vw,50px);
+
+    line-height:1.06;
+
+    letter-spacing:-2.5px;
+}
+
+.section-title span{
+    color:var(--purple);
+}
+
+.section-copy{
+    color:var(--muted);
+
+    font-size:12px;
+    line-height:1.8;
+}
+
+.reveal{
+    opacity:0;
+
+    transform:translateY(24px);
+
+    transition:
+        opacity .7s ease,
+        transform .7s cubic-bezier(.2,.7,.2,1);
+}
+
+.reveal.show{
+    opacity:1;
+    transform:none;
+}
+
+
+/* =========================================================
+   01 HERO - CREDENTIAL LAB
+========================================================= */
+
+.cert-hero{
+    position:relative;
+
+    overflow:hidden;
+
+    padding:62px 0 55px;
+
+    background:#111116;
+    color:#fff;
+}
+
+.cert-hero::before{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+
+    background-size:44px 44px;
+}
+
+.cert-hero-layout{
+    position:relative;
+    z-index:2;
+
+    display:grid;
+    grid-template-columns:.8fr 1.2fr;
+
+    align-items:center;
+
+    gap:60px;
+
+    min-height:620px;
+}
+
+.cert-kicker{
+    display:flex;
+    align-items:center;
+
+    gap:9px;
+
+    margin-bottom:18px;
+
+    color:#a995ff;
+
+    font-size:9px;
+    font-weight:800;
+
+    letter-spacing:1.4px;
+}
+
+.cert-kicker span{
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:#a995ff;
+
+    box-shadow:0 0 0 6px rgba(169,149,255,.08);
+}
+
+.cert-copy h1{
+    max-width:650px;
+
+    margin-bottom:22px;
+
+    font-size:clamp(48px,5.2vw,72px);
+
+    line-height:.94;
+
+    letter-spacing:-4px;
+}
+
+.cert-copy h1 span{
+    display:block;
+
+    color:#a995ff;
+}
+
+.cert-copy p{
+    max-width:520px;
+
+    margin-bottom:28px;
+
+    color:#92929b;
+
+    font-size:12px;
+    line-height:1.8;
+}
+
+.cert-actions{
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:10px;
+}
+
+.cert-btn{
+    min-height:46px;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:8px;
+
+    padding:0 17px;
+
+    border-radius:8px;
+
+    font-size:9px;
+    font-weight:800;
+
+    transition:.25s ease;
+}
+
+.cert-btn.primary{
+    background:#fff;
+    color:#111116;
+}
+
+.cert-btn.secondary{
+    border:1px solid #34343b;
+
+    background:#17171c;
+    color:#fff;
+}
+
+.cert-btn:hover{
+    transform:translateY(-3px);
+}
+
+
+/* LAB INTERFACE */
+
+.credential-lab{
+    overflow:hidden;
+
+    border:1px solid #303037;
+    border-radius:18px;
+
+    background:#17171c;
+
+    box-shadow:0 35px 80px rgba(0,0,0,.28);
+}
+
+.lab-toolbar{
+    min-height:56px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 17px;
+
+    border-bottom:1px solid #303037;
+}
+
+.lab-toolbar strong{
+    font-size:7px;
+}
+
+.lab-status{
+    display:flex;
+    align-items:center;
+
+    gap:6px;
+
+    color:#61ac78;
+
+    font-size:5px;
+    font-weight:800;
+}
+
+.lab-status::before{
+    content:"";
+
+    width:5px;
+    height:5px;
+
+    border-radius:50%;
+
+    background:#61ac78;
+}
+
+.lab-body{
+    display:grid;
+    grid-template-columns:150px 1fr;
+
+    min-height:410px;
+}
+
+.lab-steps{
+    padding:14px;
+
+    border-right:1px solid #303037;
+
+    background:#111116;
+}
+
+.lab-steps > small{
+    display:block;
+
+    margin:5px 5px 13px;
+
+    color:#595962;
+
+    font-size:5px;
+    font-weight:800;
+}
+
+.lab-step{
+    width:100%;
+
+    display:flex;
+    align-items:center;
+
+    gap:8px;
+
+    margin-bottom:5px;
+
+    padding:10px 8px;
+
+    border:0;
+    border-radius:8px;
+
+    background:transparent;
+    color:#6f6f78;
+
+    text-align:left;
+
+    font-size:6px;
+    font-weight:700;
+
+    transition:.2s ease;
+}
+
+.lab-step i{
+    width:19px;
+    height:19px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:6px;
+
+    background:#25252b;
+
+    font-size:5px;
+}
+
+.lab-step:hover,
+.lab-step.active{
+    background:#211d31;
+
+    color:#fff;
+}
+
+.lab-step.active i{
+    background:#7156e8;
+
+    color:#fff;
+}
+
+.lab-screen{
+    padding:23px;
+
+    background:
+        radial-gradient(circle at 70% 40%,rgba(113,86,232,.12),transparent 35%),
+        #17171c;
+}
+
+.lab-screen-top{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+
+    gap:20px;
+
+    margin-bottom:25px;
+}
+
+.lab-screen-top small{
+    display:block;
+
+    margin-bottom:7px;
+
+    color:#a995ff;
+
+    font-size:5px;
+    font-weight:800;
+}
+
+.lab-screen-top h3{
+    font-size:22px;
+}
+
+.lab-score{
+    padding:8px 10px;
+
+    border:1px solid #33333a;
+    border-radius:8px;
+
+    color:#a995ff;
+
+    font-size:6px;
+}
+
+.lab-visual{
+    min-height:200px;
+
+    position:relative;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    overflow:hidden;
+
+    border:1px solid #303037;
+    border-radius:12px;
+
+    background:#111116;
+}
+
+.credential-seal{
+    width:126px;
+    height:126px;
+
+    position:relative;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+
+    border:1px solid #4c406a;
+    border-radius:50%;
+
+    background:#201c2c;
+
+    box-shadow:
+        0 0 0 15px rgba(113,86,232,.04),
+        0 0 0 30px rgba(113,86,232,.02);
+}
+
+.credential-seal::before{
+    content:"";
+
+    width:102px;
+    height:102px;
+
+    position:absolute;
+
+    border:1px dashed #5d4d7f;
+    border-radius:50%;
+
+    animation:sealSpin 16s linear infinite;
+}
+
+@keyframes sealSpin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+.credential-seal i{
+    position:relative;
+    z-index:2;
+
+    margin-bottom:8px;
+
+    color:#a995ff;
+
+    font-size:23px;
+}
+
+.credential-seal strong{
+    position:relative;
+    z-index:2;
+
+    font-size:7px;
+}
+
+.lab-output{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    gap:7px;
+
+    margin-top:12px;
+}
+
+.lab-output-item{
+    padding:11px;
+
+    border:1px solid #303037;
+    border-radius:8px;
+
+    background:#111116;
+}
+
+.lab-output-item small{
+    display:block;
+
+    margin-bottom:5px;
+
+    color:#62626b;
+
+    font-size:5px;
+}
+
+.lab-output-item strong{
+    font-size:6px;
+}
+
+
+/* =========================================================
+   02 CERTIFICATION PHILOSOPHY
+========================================================= */
+
+.cert-philosophy{
+    padding:110px 0;
+}
+
+.philosophy-layout{
+    display:grid;
+    grid-template-columns:.35fr 1.65fr;
+
+    gap:70px;
+}
+
+.philosophy-index{
+    padding-top:9px;
+
+    color:#aaaab2;
+
+    font-size:9px;
+    font-weight:800;
+}
+
+.philosophy-main h2{
+    max-width:900px;
+
+    margin-bottom:34px;
+
+    font-size:clamp(39px,4.4vw,57px);
+
+    line-height:1.03;
+
+    letter-spacing:-3px;
+}
+
+.philosophy-main h2 span{
+    color:#7156e8;
+}
+
+.philosophy-rule{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    gap:0;
+
+    border-top:1px solid #dedee4;
+}
+
+.philosophy-item{
+    min-height:180px;
+
+    padding:24px 22px;
+
+    border-right:1px solid #dedee4;
+}
+
+.philosophy-item:last-child{
+    border-right:0;
+}
+
+.philosophy-item small{
+    display:block;
+
+    margin-bottom:45px;
+
+    color:#aaaab2;
+
+    font-size:6px;
+}
+
+.philosophy-item strong{
+    display:block;
+
+    margin-bottom:8px;
+
+    font-size:13px;
+}
+
+.philosophy-item p{
+    color:#777780;
+
+    font-size:8px;
+    line-height:1.65;
+}
+
+
+/* =========================================================
+   03 CREDENTIAL PATH
+========================================================= */
+
+.path-section{
+    padding:105px 0;
+
+    background:#f7f7f9;
+}
+
+.path-head{
+    max-width:800px;
+
+    margin-bottom:45px;
+}
+
+.path-track{
+    position:relative;
+
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+
+    gap:8px;
+}
+
+.path-track::before{
+    content:"";
+
+    height:2px;
+
+    position:absolute;
+
+    left:5%;
+    right:5%;
+    top:38px;
+
+    background:#ddd7f2;
+}
+
+.path-stage{
+    position:relative;
+    z-index:2;
+}
+
+.path-dot{
+    width:76px;
+    height:76px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin-bottom:18px;
+
+    border:7px solid #f7f7f9;
+    border-radius:50%;
+
+    background:#fff;
+
+    color:#7156e8;
+
+    box-shadow:0 0 0 1px #ddd8ef;
+
+    font-size:15px;
+
+    transition:.3s ease;
+}
+
+.path-stage:hover .path-dot{
+    background:#7156e8;
+    color:#fff;
+
+    transform:translateY(-6px);
+}
+
+.path-stage small{
+    display:block;
+
+    margin-bottom:6px;
+
+    color:#aaaab2;
+
+    font-size:5px;
+    font-weight:800;
+}
+
+.path-stage strong{
+    display:block;
+
+    margin-bottom:6px;
+
+    font-size:9px;
+}
+
+.path-stage p{
+    color:#85858e;
+
+    font-size:6px;
+    line-height:1.55;
+}
+
+
+/* =========================================================
+   04 COMPETENCY GRID
+========================================================= */
+
+.competency-section{
+    padding:105px 0;
+
+    background:#111116;
+    color:#fff;
+}
+
+.competency-head{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+
+    gap:50px;
+
+    margin-bottom:45px;
+}
+
+.competency-head .section-label{
+    color:#a995ff;
+}
+
+.competency-head .section-label::before{
+    background:#a995ff;
+}
+
+.competency-head .section-title span{
+    color:#a995ff;
+}
+
+.competency-head p{
+    max-width:380px;
+
+    color:#808089;
+
+    font-size:9px;
+    line-height:1.7;
+}
+
+.competency-grid{
+    overflow:hidden;
+
+    border:1px solid #303037;
+    border-radius:16px;
+}
+
+.competency-row{
+    display:grid;
+    grid-template-columns:190px repeat(4,1fr);
+
+    min-height:78px;
+
+    border-bottom:1px solid #303037;
+}
+
+.competency-row:last-child{
+    border-bottom:0;
+}
+
+.comp-cell{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-right:1px solid #303037;
+
+    color:#72727b;
+
+    font-size:6px;
+}
+
+.comp-cell:last-child{
+    border-right:0;
+}
+
+.comp-name{
+    justify-content:flex-start;
+
+    padding-left:18px;
+
+    color:#c7c7cd;
+
+    font-size:8px;
+    font-weight:700;
+}
+
+.comp-level-1{
+    background:#17171c;
+}
+
+.comp-level-2{
+    background:#211d31;
+    color:#9f91dd;
+}
+
+.comp-level-3{
+    background:#3b2f72;
+    color:#cfc5ff;
+}
+
+.comp-level-4{
+    background:#7156e8;
+    color:#fff;
+}
+
+
+/* =========================================================
+   05 ASSESSMENT STUDIO
+========================================================= */
+
+.assessment-section{
+    padding:110px 0;
+
+    background:#fff;
+}
+
+.assessment-layout{
+    display:grid;
+    grid-template-columns:.7fr 1.3fr;
+
+    gap:70px;
+
+    align-items:center;
+}
+
+.assessment-copy h2{
+    margin-bottom:18px;
+}
+
+.assessment-sheet{
+    position:relative;
+
+    overflow:hidden;
+
+    padding:30px;
+
+    border:1px solid #dedee4;
+
+    background:#fff;
+
+    box-shadow:0 25px 60px rgba(0,0,0,.08);
+
+    transform:rotate(-1deg);
+}
+
+.assessment-sheet::before{
+    content:"ASSESSMENT";
+
+    position:absolute;
+
+    right:-15px;
+    top:5px;
+
+    color:#f2f0fb;
+
+    font-size:56px;
+    font-weight:800;
+
+    letter-spacing:-3px;
+}
+
+.assessment-sheet-head{
+    position:relative;
+    z-index:2;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:25px;
+
+    padding-bottom:18px;
+
+    border-bottom:2px solid #111116;
+}
+
+.assessment-sheet-head small{
+    display:block;
+
+    margin-bottom:5px;
+
+    color:#7156e8;
+
+    font-size:5px;
+    font-weight:800;
+}
+
+.assessment-sheet-head h3{
+    font-size:19px;
+}
+
+.assessment-score{
+    width:64px;
+    height:64px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+
+    border-radius:50%;
+
+    background:#f1edff;
+
+    color:#7156e8;
+}
+
+.assessment-score strong{
+    font-size:17px;
+}
+
+.assessment-score span{
+    font-size:5px;
+}
+
+.assessment-question{
+    position:relative;
+    z-index:2;
+
+    padding:18px 0;
+
+    border-bottom:1px solid #ececf0;
+}
+
+.assessment-question:last-child{
+    border-bottom:0;
+}
+
+.assessment-question small{
+    display:block;
+
+    margin-bottom:6px;
+
+    color:#aaaab2;
+
+    font-size:5px;
+    font-weight:800;
+}
+
+.assessment-question strong{
+    display:block;
+
+    margin-bottom:10px;
+
+    font-size:9px;
+}
+
+.option-row{
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:6px;
+}
+
+.option{
+    padding:6px 8px;
+
+    border:1px solid #e1e1e6;
+    border-radius:6px;
+
+    color:#777780;
+
+    font-size:6px;
+}
+
+.option.selected{
+    border-color:#7156e8;
+
+    background:#f1edff;
+    color:#7156e8;
+
+    font-weight:700;
+}
+
+
+/* =========================================================
+   06 PROJECT PROOF
+========================================================= */
+
+.project-proof-section{
+    padding:105px 0;
+
+    background:#f7f7f9;
+}
+
+.project-proof-head{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+
+    gap:50px;
+
+    margin-bottom:45px;
+}
+
+.project-proof-head p{
+    max-width:380px;
+}
+
+.proof-stage{
+    min-height:500px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:#dfdcd4;
+}
+
+.proof-stage::before{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    opacity:.16;
+
+    background-image:
+        radial-gradient(#4b4b48 .7px,transparent .7px);
+
+    background-size:8px 8px;
+}
+
+.proof-note{
+    position:absolute;
+
+    padding:22px;
+
+    background:#fff;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.10);
+
+    transition:.35s ease;
+}
+
+.proof-note:hover{
+    z-index:10;
+
+    transform:rotate(0deg) translateY(-7px) scale(1.03);
+}
+
+.proof-main{
+    width:43%;
+    height:330px;
+
+    left:8%;
+    top:70px;
+
+    transform:rotate(-3deg);
+}
+
+.proof-feedback{
+    width:29%;
+    height:190px;
+
+    right:11%;
+    top:50px;
+
+    background:#fff6ad;
+
+    transform:rotate(4deg);
+}
+
+.proof-review{
+    width:34%;
+    height:210px;
+
+    right:16%;
+    bottom:35px;
+
+    transform:rotate(-2deg);
+}
+
+.note-label{
+    display:inline-block;
+
+    margin-bottom:14px;
+
+    padding:5px 7px;
+
+    background:#7156e8;
+    color:#fff;
+
+    font-size:5px;
+    font-weight:800;
+}
+
+.proof-feedback .note-label{
+    background:#111116;
+}
+
+.proof-note h3{
+    margin-bottom:8px;
+
+    font-size:19px;
+
+    line-height:1.08;
+}
+
+.proof-note p{
+    color:#777780;
+
+    font-size:7px;
+    line-height:1.6;
+}
+
+.mini-project{
+    height:120px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin-top:20px;
+
+    border:1px solid #e1e1e6;
+
+    background:
+        linear-gradient(135deg,#f3efff,#fff);
+}
+
+.mini-project strong{
+    color:#7156e8;
+
+    font-size:15px;
+}
+
+
+/* =========================================================
+   07 REVIEW CHAMBER
+========================================================= */
+
+.review-section{
+    padding:105px 0;
+
+    background:#111116;
+    color:#fff;
+}
+
+.review-head{
+    max-width:770px;
+
+    margin-bottom:45px;
+}
+
+.review-head .section-label{
+    color:#a995ff;
+}
+
+.review-head .section-label::before{
+    background:#a995ff;
+}
+
+.review-head .section-title span{
+    color:#a995ff;
+}
+
+.review-chamber{
+    display:grid;
+    grid-template-columns:1fr 300px;
+
+    overflow:hidden;
+
+    border:1px solid #303037;
+    border-radius:17px;
+
+    background:#17171c;
+}
+
+.review-document{
+    min-height:470px;
+
+    position:relative;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:30px;
+
+    background:
+        radial-gradient(circle at center,rgba(113,86,232,.09),transparent 45%),
+        #111116;
+}
+
+.review-paper{
+    width:72%;
+
+    padding:27px;
+
+    background:#fff;
+    color:#111116;
+
+    transform:rotate(-1deg);
+
+    box-shadow:0 25px 60px rgba(0,0,0,.25);
+}
+
+.review-paper small{
+    display:block;
+
+    margin-bottom:9px;
+
+    color:#7156e8;
+
+    font-size:5px;
+    font-weight:800;
+}
+
+.review-paper h3{
+    margin-bottom:18px;
+
+    font-size:22px;
+}
+
+.review-line{
+    height:7px;
+
+    margin-bottom:7px;
+
+    border-radius:3px;
+
+    background:#ececf0;
+}
+
+.review-line.short{
+    width:60%;
+}
+
+.review-line.medium{
+    width:78%;
+}
+
+.review-stamp{
+    margin-top:25px;
+
+    display:inline-block;
+
+    padding:8px 11px;
+
+    border:2px solid #7156e8;
+
+    color:#7156e8;
+
+    font-size:7px;
+    font-weight:800;
+
+    transform:rotate(-5deg);
+}
+
+.review-panel{
+    padding:20px;
+
+    border-left:1px solid #303037;
+}
+
+.review-panel > small{
+    display:block;
+
+    margin-bottom:16px;
+
+    color:#696972;
+
+    font-size:5px;
+    font-weight:800;
+}
+
+.review-item{
+    margin-bottom:15px;
+}
+
+.review-item-top{
+    display:flex;
+    justify-content:space-between;
+
+    margin-bottom:6px;
+
+    color:#83838c;
+
+    font-size:6px;
+}
+
+.review-track{
+    height:5px;
+
+    overflow:hidden;
+
+    border-radius:100px;
+
+    background:#303037;
+}
+
+.review-fill{
+    height:100%;
+
+    border-radius:100px;
+
+    background:#7156e8;
+}
+
+.review-note{
+    margin-top:24px;
+
+    padding:13px;
+
+    border-left:3px solid #7156e8;
+
+    background:#111116;
+}
+
+.review-note strong{
+    display:block;
+
+    margin-bottom:6px;
+
+    font-size:7px;
+}
+
+.review-note p{
+    color:#777780;
+
+    font-size:7px;
+    line-height:1.6;
+}
+
+
+/* =========================================================
+   08 CREDENTIAL GENERATOR
+========================================================= */
+
+.generator-section{
+    padding:110px 0;
+
+    background:#fff;
+}
+
+.generator-layout{
+    display:grid;
+    grid-template-columns:.65fr 1.35fr;
+
+    gap:70px;
+
+    align-items:center;
+}
+
+.generator-copy h2{
+    margin-bottom:18px;
+}
+
+.certificate{
+    position:relative;
+
+    overflow:hidden;
+
+    padding:42px;
+
+    border:1px solid #dedee4;
+
+    background:#fff;
+
+    box-shadow:0 28px 65px rgba(0,0,0,.08);
+}
+
+.certificate::before{
+    content:"";
+
+    position:absolute;
+    inset:12px;
+
+    border:1px solid #e8e4f7;
+
+    pointer-events:none;
+}
+
+.certificate::after{
+    content:"TRIVOX";
+
+    position:absolute;
+
+    right:-20px;
+    bottom:-35px;
+
+    color:#f4f2fb;
+
+    font-size:90px;
+    font-weight:800;
+
+    letter-spacing:-5px;
+}
+
+.certificate-top{
+    position:relative;
+    z-index:2;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:20px;
+
+    margin-bottom:45px;
+}
+
+.certificate-brand strong{
+    display:block;
+
+    font-size:10px;
+}
+
+.certificate-brand span{
+    display:block;
+
+    margin-top:4px;
+
+    color:#9999a2;
+
+    font-size:5px;
+}
+
+.certificate-seal-small{
+    width:50px;
+    height:50px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:#7156e8;
+    color:#fff;
+}
+
+.certificate-body{
+    position:relative;
+    z-index:2;
+
+    text-align:center;
+}
+
+.certificate-body small{
+    display:block;
+
+    margin-bottom:10px;
+
+    color:#7156e8;
+
+    font-size:6px;
+    font-weight:800;
+
+    letter-spacing:1px;
+}
+
+.certificate-body h3{
+    margin-bottom:8px;
+
+    font-size:28px;
+
+    font-family:Georgia,serif;
+    font-weight:500;
+}
+
+.certificate-body p{
+    max-width:480px;
+
+    margin:0 auto;
+
+    color:#777780;
+
+    font-size:8px;
+    line-height:1.7;
+}
+
+.certificate-name{
+    width:65%;
+
+    margin:28px auto 12px;
+    padding-bottom:8px;
+
+    border-bottom:1px solid #111116;
+
+    font-size:20px;
+    font-family:Georgia,serif;
+}
+
+.certificate-footer{
+    position:relative;
+    z-index:2;
+
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+
+    gap:25px;
+
+    margin-top:38px;
+}
+
+.cert-meta small{
+    display:block;
+
+    margin-bottom:4px;
+
+    color:#aaaab2;
+
+    font-size:5px;
+}
+
+.cert-meta strong{
+    font-size:7px;
+}
+
+
+/* =========================================================
+   09 VERIFY CREDENTIAL
+========================================================= */
+
+.verify-section{
+    padding:105px 0;
+
+    background:#f7f7f9;
+}
+
+.verify-layout{
+    display:grid;
+    grid-template-columns:1fr .85fr;
+
+    gap:70px;
+
+    align-items:center;
+}
+
+.verify-copy h2{
+    margin-bottom:18px;
+}
+
+.verify-device{
+    max-width:430px;
+
+    margin-left:auto;
+
+    overflow:hidden;
+
+    border:8px solid #111116;
+    border-radius:28px;
+
+    background:#fff;
+
+    box-shadow:0 30px 65px rgba(0,0,0,.12);
+}
+
+.device-top{
+    height:28px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#111116;
+}
+
+.device-notch{
+    width:70px;
+    height:7px;
+
+    border-radius:100px;
+
+    background:#2c2c32;
+}
+
+.verify-screen{
+    padding:26px;
+}
+
+.verify-check{
+    width:62px;
+    height:62px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin:0 auto 18px;
+
+    border-radius:50%;
+
+    background:#eef8f1;
+    color:#57a66f;
+
+    font-size:20px;
+}
+
+.verify-screen h3{
+    margin-bottom:7px;
+
+    text-align:center;
+
+    font-size:20px;
+}
+
+.verify-screen > p{
+    margin-bottom:22px;
+
+    color:#8c8c94;
+
+    text-align:center;
+
+    font-size:7px;
+}
+
+.verify-details{
+    border-top:1px solid #ececf0;
+}
+
+.verify-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:15px;
+
+    padding:12px 0;
+
+    border-bottom:1px solid #ececf0;
+
+    font-size:7px;
+}
+
+.verify-row span{
+    color:#9999a2;
+}
+
+.verify-code{
+    width:100px;
+    height:100px;
+
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+
+    gap:3px;
+
+    margin:22px auto 0;
+
+    padding:8px;
+
+    background:#111116;
+}
+
+.verify-code span{
+    background:#fff;
+}
+
+.verify-code span.dark{
+    background:#111116;
+}
+
+
+/* =========================================================
+   10 CREDENTIAL SHOWCASE
+========================================================= */
+
+.showcase-section{
+    padding:105px 0;
+
+    background:#111116;
+    color:#fff;
+}
+
+.showcase-head{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+
+    gap:50px;
+
+    margin-bottom:45px;
+}
+
+.showcase-head .section-label{
+    color:#a995ff;
+}
+
+.showcase-head .section-label::before{
+    background:#a995ff;
+}
+
+.showcase-head .section-title span{
+    color:#a995ff;
+}
+
+.showcase-head p{
+    max-width:380px;
+
+    color:#7f7f88;
+
+    font-size:9px;
+    line-height:1.7;
+}
+
+.showcase-strip{
+    display:grid;
+    grid-template-columns:1.2fr .8fr .8fr;
+
+    gap:10px;
+}
+
+.showcase-main{
+    min-height:350px;
+
+    padding:30px;
+
+    border-radius:17px;
+
+    background:#7156e8;
+}
+
+.showcase-main small{
+    display:block;
+
+    margin-bottom:65px;
+
+    color:#ddd6ff;
+
+    font-size:6px;
+    font-weight:800;
+}
+
+.showcase-main h3{
+    max-width:460px;
+
+    margin-bottom:11px;
+
+    font-size:30px;
+
+    line-height:1.05;
+}
+
+.showcase-main p{
+    max-width:450px;
+
+    color:#ddd8f5;
+
+    font-size:8px;
+    line-height:1.7;
+}
+
+.showcase-card{
+    min-height:350px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+
+    padding:24px;
+
+    border:1px solid #303037;
+    border-radius:17px;
+
+    background:#17171c;
+
+    transition:.3s ease;
+}
+
+.showcase-card:hover{
+    transform:translateY(-6px);
+
+    border-color:#5b4b86;
+}
+
+.showcase-card i{
+    color:#a995ff;
+
+    font-size:19px;
+}
+
+.showcase-card small{
+    display:block;
+
+    margin-bottom:8px;
+
+    color:#686871;
+
+    font-size:5px;
+}
+
+.showcase-card strong{
+    display:block;
+
+    margin-bottom:8px;
+
+    font-size:14px;
+}
+
+.showcase-card p{
+    color:#777780;
+
+    font-size:7px;
+    line-height:1.6;
+}
+
+
+/* =========================================================
+   11 NEXT LEVEL
+========================================================= */
+
+.next-section{
+    padding:105px 0;
+
+    background:#fff;
+}
+
+.next-layout{
+    display:grid;
+    grid-template-columns:.7fr 1.3fr;
+
+    gap:70px;
+}
+
+.next-copy{
+    position:sticky;
+    top:120px;
+
+    align-self:start;
+}
+
+.next-copy h2{
+    margin-bottom:18px;
+}
+
+.next-board{
+    border-top:1px solid #dedee4;
+}
+
+.next-row{
+    min-height:105px;
+
+    display:grid;
+    grid-template-columns:75px 1fr 140px 30px;
+
+    align-items:center;
+
+    gap:20px;
+
+    border-bottom:1px solid #dedee4;
+
+    transition:.25s ease;
+}
+
+.next-row:hover{
+    padding-left:8px;
+
+    background:#faf9ff;
+}
+
+.next-number{
+    color:#7156e8;
+
+    font-size:8px;
+    font-weight:800;
+}
+
+.next-main strong{
+    display:block;
+
+    margin-bottom:5px;
+
+    font-size:13px;
+}
+
+.next-main span{
+    color:#888891;
+
+    font-size:7px;
+}
+
+.next-status{
+    padding:7px 9px;
+
+    border-radius:100px;
+
+    background:#f1edff;
+    color:#7156e8;
+
+    text-align:center;
+
+    font-size:6px;
+    font-weight:800;
+}
+
+.next-row > i{
+    color:#aaaab2;
+
+    transition:.25s ease;
+}
+
+.next-row:hover > i{
+    color:#7156e8;
+
+    transform:translateX(4px);
+}
+
+
+/* =========================================================
+   FINAL
+========================================================= */
+
+.final-section{
+    padding:85px 0 65px;
+
+    background:#f7f7f9;
+}
+
+.final-cert{
+    min-height:430px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    display:flex;
+    align-items:center;
+
+    padding:55px;
+
+    border-radius:24px;
+
+    background:#7156e8;
+    color:#fff;
+}
+
+.final-cert::before{
+    content:"CERTIFIED";
+
+    position:absolute;
+
+    right:-20px;
+    bottom:-40px;
+
+    color:rgba(255,255,255,.07);
+
+    font-size:145px;
+    font-weight:800;
+
+    letter-spacing:-9px;
+}
+
+.final-cert-copy{
+    position:relative;
+    z-index:2;
+
+    max-width:760px;
+}
+
+.final-cert-copy small{
+    display:block;
+
+    margin-bottom:14px;
+
+    color:#ddd6ff;
+
+    font-size:7px;
+    font-weight:800;
+}
+
+.final-cert-copy h2{
+    margin-bottom:18px;
+
+    font-size:clamp(40px,4.8vw,61px);
+
+    line-height:1;
+
+    letter-spacing:-3.3px;
+}
+
+.final-cert-copy p{
+    max-width:550px;
+
+    margin-bottom:25px;
+
+    color:#ddd8f5;
+
+    font-size:10px;
+    line-height:1.75;
+}
+
+.final-btn{
+    min-height:46px;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:8px;
+
+    padding:0 18px;
+
+    border-radius:8px;
+
+    background:#fff;
+    color:#111116;
+
+    font-size:9px;
+    font-weight:800;
+
+    transition:.25s ease;
+}
+
+.final-btn:hover{
+    transform:translateY(-3px);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer{
+    padding:0 20px 35px;
+
+    background:#f7f7f9;
+
+    color:#92929a;
+
+    text-align:center;
+
+    font-size:9px;
+}
+
+.footer span{
+    margin:0 6px;
+
+    color:#7156e8;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media(max-width:1050px){
+
+    .navbar{
+        height:70px;
+
+        padding:0 18px;
+    }
+
+    main{
+        padding-top:70px;
+    }
+
+    .logo{
+        font-size:18px;
+    }
+
+    .login-btn,
+    .get-started{
+        display:none;
+    }
+
+    .menu-toggle{
+        display:flex;
+    }
+
+    .nav-menu{
+        width:100%;
+        max-height:calc(100vh - 70px);
+
+        position:absolute;
+
+        left:0;
+        top:70px;
+
+        display:flex;
+        flex-direction:column;
+        align-items:stretch;
+
+        overflow:auto;
+
+        padding:12px 14px 18px;
+
+        background:#fff;
+
+        opacity:0;
+
+        transform:translateY(-120%);
+
+        pointer-events:none;
+
+        transition:.3s ease;
+    }
+
+    .nav-menu.active{
+        opacity:1;
+
+        transform:translateY(0);
+
+        pointer-events:auto;
+    }
+
+    .nav-item{
+        width:100%;
+    }
+
+    .nav-link{
+        width:100%;
+
+        justify-content:space-between;
+
+        padding:15px 13px;
+    }
+
+    .dropdown{
+        width:100%;
+        max-height:0;
+
+        position:static;
+
+        overflow:hidden;
+
+        padding:0 8px;
+
+        border:0;
+
+        background:#fafafa;
+
+        box-shadow:none;
+
+        opacity:1;
+        visibility:visible;
+
+        transform:none;
+
+        transition:max-height .35s ease;
+    }
+
+    .nav-item.open > .dropdown{
+        max-height:1300px;
+
+        padding:8px;
+    }
+
+    .mega-dropdown{
+        display:block;
+    }
+
+
+    .cert-hero-layout{
+        grid-template-columns:1fr;
+
+        gap:40px;
+    }
+
+    .philosophy-layout{
+        grid-template-columns:1fr;
+
+        gap:30px;
+    }
+
+    .path-track{
+        grid-template-columns:repeat(3,1fr);
+
+        row-gap:40px;
+    }
+
+    .path-track::before{
+        display:none;
+    }
+
+    .assessment-layout,
+    .generator-layout,
+    .verify-layout,
+    .next-layout{
+        grid-template-columns:1fr;
+
+        gap:45px;
+    }
+
+    .verify-device{
+        margin-left:0;
+    }
+
+    .next-copy{
+        position:static;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:650px){
+
+    html,
+    body{
+        width:100%;
+        max-width:100%;
+
+        overflow-x:hidden;
+    }
+
+    .container{
+        width:100%;
+
+        padding-left:18px;
+        padding-right:18px;
+    }
+
+
+    .navbar{
+        height:66px;
+
+        padding:0 14px;
+    }
+
+    main{
+        padding-top:66px;
+    }
+
+    .logo{
+        font-size:16px;
+    }
+
+    .logo-impact{
+        margin-left:5px;
+    }
+
+    .nav-menu{
+        top:66px;
+
+        max-height:calc(100vh - 66px);
+    }
+
+
+    .section-title{
+        font-size:clamp(31px,9.2vw,42px);
+
+        letter-spacing:-2px;
+    }
+
+
+    /* HERO */
+
+    .cert-hero{
+        padding:48px 0 42px;
+    }
+
+    .cert-hero-layout{
+        min-height:auto;
+    }
+
+    .cert-copy h1{
+        font-size:clamp(43px,12vw,55px);
+
+        letter-spacing:-3px;
+    }
+
+    .cert-btn{
+        width:100%;
+    }
+
+    .lab-body{
+        grid-template-columns:1fr;
+    }
+
+    .lab-steps{
+        display:flex;
+
+        gap:5px;
+
+        overflow-x:auto;
+
+        border-right:0;
+        border-bottom:1px solid #303037;
+    }
+
+    .lab-steps > small{
+        display:none;
+    }
+
+    .lab-step{
+        width:auto;
+        min-width:max-content;
+
+        margin:0;
+    }
+
+    .lab-screen{
+        padding:17px;
+    }
+
+    .lab-output{
+        grid-template-columns:1fr;
+    }
+
+
+    /* SPACING */
+
+    .cert-philosophy,
+    .path-section,
+    .competency-section,
+    .assessment-section,
+    .project-proof-section,
+    .review-section,
+    .generator-section,
+    .verify-section,
+    .showcase-section,
+    .next-section{
+        padding:72px 0;
+    }
+
+
+    /* PHILOSOPHY */
+
+    .philosophy-main h2{
+        font-size:clamp(32px,9.7vw,44px);
+
+        letter-spacing:-2.3px;
+    }
+
+    .philosophy-rule{
+        grid-template-columns:1fr;
+    }
+
+    .philosophy-item{
+        min-height:auto;
+
+        border-right:0;
+        border-bottom:1px solid #dedee4;
+    }
+
+    .philosophy-item small{
+        margin-bottom:22px;
+    }
+
+
+    /* PATH */
+
+    .path-track{
+        grid-template-columns:1fr 1fr;
+    }
+
+
+    /* COMPETENCY */
+
+    .competency-head,
+    .project-proof-head,
+    .showcase-head{
+        align-items:flex-start;
+        flex-direction:column;
+
+        gap:18px;
+    }
+
+    .competency-grid{
+        overflow-x:auto;
+    }
+
+    .competency-row{
+        min-width:620px;
+    }
+
+
+    /* ASSESSMENT */
+
+    .assessment-sheet{
+        padding:22px 17px;
+
+        transform:none;
+    }
+
+    .assessment-sheet::before{
+        font-size:38px;
+    }
+
+
+    /* PROOF */
+
+    .proof-stage{
+        min-height:720px;
+    }
+
+    .proof-main{
+        width:82%;
+        height:315px;
+
+        left:8%;
+        top:40px;
+    }
+
+    .proof-feedback{
+        width:72%;
+        height:170px;
+
+        right:8%;
+        top:375px;
+    }
+
+    .proof-review{
+        width:74%;
+        height:180px;
+
+        left:9%;
+        right:auto;
+        bottom:20px;
+    }
+
+
+    /* REVIEW */
+
+    .review-chamber{
+        grid-template-columns:1fr;
+    }
+
+    .review-document{
+        min-height:390px;
+    }
+
+    .review-paper{
+        width:86%;
+    }
+
+    .review-panel{
+        border-left:0;
+        border-top:1px solid #303037;
+    }
+
+
+    /* CERTIFICATE */
+
+    .certificate{
+        padding:31px 19px;
+    }
+
+    .certificate-name{
+        width:85%;
+    }
+
+    .certificate-footer{
+        align-items:flex-start;
+        flex-direction:column;
+
+        gap:13px;
+    }
+
+
+    /* VERIFY */
+
+    .verify-device{
+        width:100%;
+    }
+
+
+    /* SHOWCASE */
+
+    .showcase-strip{
+        grid-template-columns:1fr;
+    }
+
+    .showcase-main,
+    .showcase-card{
+        min-height:260px;
+    }
+
+    .showcase-main small{
+        margin-bottom:40px;
+    }
+
+
+    /* NEXT */
+
+    .next-row{
+        min-height:auto;
+
+        grid-template-columns:50px 1fr 25px;
+
+        gap:12px;
+
+        padding:18px 0;
+    }
+
+    .next-status{
+        grid-column:2;
+
+        justify-self:start;
+    }
+
+    .next-row > i{
+        grid-column:3;
+        grid-row:1;
+    }
+
+
+    /* FINAL */
+
+    .final-section{
+        padding:65px 0 50px;
+    }
+
+    .final-cert{
+        min-height:420px;
+
+        padding:36px 22px;
+    }
+
+    .final-cert::before{
+        font-size:72px;
+
+        bottom:-10px;
+    }
+
+    .final-cert-copy h2{
+        font-size:clamp(36px,10vw,49px);
+
+        letter-spacing:-2.5px;
+    }
+
+}
+
+
+@media(max-width:360px){
+
+    .logo{
+        font-size:14px;
+    }
+
+    .path-track{
+        grid-template-columns:1fr;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        animation:none !important;
+        transition:none !important;
+        scroll-behavior:auto !important;
+    }
+
+}
+
+
+/* =========================================================
+   REDESIGN — 01 CREDENTIAL GATEWAY
+========================================================= */
+.gateway-hero{
+    position:relative;
+    overflow:hidden;
+    min-height:720px;
+    padding:76px 0 64px;
+    background:#111116;
+    color:#fff;
+}
+.gateway-hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+    background-size:54px 54px;
+}
+.gateway-glow{
+    width:720px;height:720px;
+    position:absolute;left:50%;top:47%;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(113,86,232,.18),rgba(113,86,232,.04) 38%,transparent 68%);
+    pointer-events:none;
+}
+.gateway-inner{position:relative;z-index:2;text-align:center}
+.gateway-kicker{
+    display:inline-flex;align-items:center;gap:9px;
+    margin-bottom:18px;color:#ad9cff;
+    font-size:9px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;
+}
+.gateway-kicker::before,.gateway-kicker::after{
+    content:"";width:26px;height:1px;background:#7156e8;
+}
+.gateway-title{
+    max-width:930px;margin:0 auto 18px;
+    font-size:clamp(50px,6vw,82px);
+    line-height:.94;letter-spacing:-5px;
+}
+.gateway-title span{color:#a995ff}
+.gateway-copy{
+    max-width:610px;margin:0 auto 30px;
+    color:#94949d;font-size:12px;line-height:1.8;
+}
+.gateway-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-bottom:55px}
+.gateway-btn{
+    min-height:46px;display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    padding:0 18px;border-radius:8px;font-size:9px;font-weight:800;transition:.25s ease;
+}
+.gateway-btn.primary{background:#fff;color:#111116}
+.gateway-btn.secondary{border:1px solid #36363d;background:#17171c;color:#fff}
+.gateway-btn:hover{transform:translateY(-3px)}
+.gateway-machine{
+    max-width:980px;margin:auto;position:relative;
+    display:grid;grid-template-columns:1fr 180px 1fr;align-items:center;
+}
+.gateway-rail{
+    height:1px;position:absolute;left:9%;right:9%;top:50%;
+    background:linear-gradient(90deg,transparent,#5e4bb1,#a995ff,#5e4bb1,transparent);
+}
+.gateway-side{
+    position:relative;z-index:2;
+    display:flex;flex-direction:column;gap:12px;
+}
+.gateway-side.left{align-items:flex-end}
+.gateway-side.right{align-items:flex-start}
+.gateway-token{
+    width:190px;min-height:52px;display:flex;align-items:center;gap:11px;
+    padding:11px 13px;border:1px solid #303037;border-radius:10px;
+    background:#17171c;text-align:left;transition:.3s ease;
+}
+.gateway-token:hover{border-color:#7156e8;transform:translateX(5px)}
+.gateway-side.left .gateway-token:hover{transform:translateX(-5px)}
+.gateway-token i{
+    width:28px;height:28px;display:grid;place-items:center;flex:0 0 auto;
+    border-radius:7px;background:#24222d;color:#a995ff;font-size:9px;
+}
+.gateway-token small{display:block;color:#666670;font-size:5px;margin-bottom:3px}
+.gateway-token strong{display:block;font-size:8px}
+.gateway-core{
+    width:180px;height:180px;position:relative;z-index:4;
+    display:grid;place-items:center;margin:auto;border-radius:50%;
+    border:1px solid #514471;background:#17171c;
+    box-shadow:0 0 0 16px rgba(113,86,232,.05),0 0 0 34px rgba(113,86,232,.025);
+}
+.gateway-core::before{
+    content:"";position:absolute;inset:14px;border:1px dashed #5b4b80;border-radius:50%;
+    animation:gatewaySpin 16s linear infinite;
+}
+.gateway-core-content{position:relative;z-index:2}
+.gateway-core i{display:block;margin-bottom:8px;color:#a995ff;font-size:27px}
+.gateway-core strong{display:block;font-size:11px}
+.gateway-core small{display:block;margin-top:5px;color:#777781;font-size:5px}
+@keyframes gatewaySpin{to{transform:rotate(360deg)}}
+.gateway-progress{
+    max-width:760px;margin:42px auto 0;display:grid;grid-template-columns:repeat(6,1fr);
+    position:relative;
+}
+.gateway-progress::before{
+    content:"";height:1px;position:absolute;left:7%;right:7%;top:10px;background:#36313f;
+}
+.gateway-point{position:relative;z-index:2;text-align:center}
+.gateway-point b{
+    width:20px;height:20px;display:grid;place-items:center;margin:0 auto 8px;
+    border-radius:50%;border:1px solid #494451;background:#111116;color:#77717f;font-size:5px;
+}
+.gateway-point.active b{background:#7156e8;border-color:#7156e8;color:#fff;box-shadow:0 0 0 6px rgba(113,86,232,.12)}
+.gateway-point span{color:#65656f;font-size:5px;font-weight:700}
+.gateway-point.active span{color:#b6a8f6}
+
+/* =========================================================
+   REDESIGN — 04 SKILL CONSTELLATION
+========================================================= */
+.skill-constellation-section{
+    padding:110px 0;background:#f7f7f9;overflow:hidden;
+}
+.constellation-head{
+    display:grid;grid-template-columns:1.15fr .65fr;align-items:end;gap:60px;margin-bottom:48px;
+}
+.constellation-head p{max-width:390px}
+.constellation-space{
+    min-height:570px;position:relative;overflow:hidden;
+    border:1px solid #e2e2e7;background:#fff;
+}
+.constellation-space::before{
+    content:"";position:absolute;inset:0;
+    background-image:radial-gradient(#c8c4d8 .75px,transparent .75px);
+    background-size:20px 20px;opacity:.42;
+}
+.constellation-orbit{
+    width:430px;height:430px;position:absolute;left:50%;top:50%;
+    transform:translate(-50%,-50%);border:1px solid #e6e1f7;border-radius:50%;
+}
+.constellation-orbit::before,.constellation-orbit::after{
+    content:"";position:absolute;border:1px dashed #ebe7f8;border-radius:50%;
+}
+.constellation-orbit::before{inset:62px}
+.constellation-orbit::after{inset:125px}
+.constellation-center{
+    width:128px;height:128px;position:absolute;left:50%;top:50%;
+    transform:translate(-50%,-50%);z-index:4;
+    display:flex;align-items:center;justify-content:center;flex-direction:column;
+    border-radius:50%;background:#111116;color:#fff;box-shadow:0 18px 45px rgba(17,17,22,.18);
+}
+.constellation-center i{color:#a995ff;font-size:22px;margin-bottom:8px}
+.constellation-center strong{font-size:10px}
+.constellation-center small{margin-top:4px;color:#777780;font-size:5px}
+.skill-node{
+    width:118px;height:118px;position:absolute;z-index:5;
+    display:flex;align-items:center;justify-content:center;flex-direction:column;
+    border:1px solid #dedbe9;border-radius:50%;background:#fff;
+    box-shadow:0 12px 30px rgba(20,20,28,.06);cursor:pointer;transition:.3s ease;
+}
+.skill-node i{color:#7156e8;font-size:15px;margin-bottom:7px}
+.skill-node strong{font-size:8px}
+.skill-node small{margin-top:4px;color:#9a9aa3;font-size:5px}
+.skill-node:hover,.skill-node.active{
+    transform:scale(1.08);border-color:#7156e8;background:#7156e8;color:#fff;
+    box-shadow:0 18px 38px rgba(113,86,232,.22);
+}
+.skill-node:hover i,.skill-node.active i{color:#fff}
+.skill-node:hover small,.skill-node.active small{color:#ddd6ff}
+.skill-node.n1{left:10%;top:12%}
+.skill-node.n2{right:10%;top:12%}
+.skill-node.n3{left:7%;bottom:10%}
+.skill-node.n4{right:7%;bottom:10%}
+.skill-node.n5{left:50%;top:5%;transform:translateX(-50%)}
+.skill-node.n5:hover,.skill-node.n5.active{transform:translateX(-50%) scale(1.08)}
+.constellation-info{
+    width:260px;min-height:100px;position:absolute;left:50%;bottom:20px;z-index:8;
+    transform:translateX(-50%);padding:15px 17px;border-radius:10px;
+    background:#111116;color:#fff;text-align:center;box-shadow:0 16px 35px rgba(0,0,0,.14);
+}
+.constellation-info small{display:block;margin-bottom:5px;color:#a995ff;font-size:5px;font-weight:800}
+.constellation-info strong{display:block;margin-bottom:5px;font-size:10px}
+.constellation-info p{color:#85858e;font-size:6px;line-height:1.55}
+
+/* =========================================================
+   REDESIGN — 06 EVIDENCE REEL
+========================================================= */
+.evidence-reel-section{padding:110px 0;background:#111116;color:#fff;overflow:hidden}
+.evidence-reel-head{
+    display:grid;grid-template-columns:1.15fr .65fr;align-items:end;gap:60px;margin-bottom:48px;
+}
+.evidence-reel-head .section-label{color:#a995ff}
+.evidence-reel-head .section-label::before{background:#a995ff}
+.evidence-reel-head .section-title span{color:#a995ff}
+.evidence-reel-head p{max-width:390px;color:#81818a}
+.evidence-reel{
+    position:relative;border-top:1px solid #33333a;border-bottom:1px solid #33333a;
+    background:#17171c;
+}
+.reel-perf{
+    height:26px;display:flex;align-items:center;justify-content:space-around;overflow:hidden;
+    border-bottom:1px solid #303037;
+}
+.reel-perf.bottom{border-top:1px solid #303037;border-bottom:0}
+.reel-perf span{width:18px;height:8px;flex:0 0 auto;border-radius:2px;background:#0d0d11}
+.reel-track{display:grid;grid-template-columns:repeat(5,1fr)}
+.reel-frame{
+    min-height:350px;position:relative;overflow:hidden;padding:25px 20px;
+    border-right:1px solid #303037;cursor:pointer;transition:.35s ease;
+}
+.reel-frame:last-child{border-right:0}
+.reel-frame::after{
+    content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(113,86,232,.14));
+    opacity:0;transition:.35s ease;
+}
+.reel-frame:hover{background:#1d1a28}
+.reel-frame:hover::after{opacity:1}
+.reel-no{display:block;margin-bottom:55px;color:#595963;font-size:6px;font-weight:800}
+.reel-icon{
+    width:54px;height:54px;display:grid;place-items:center;margin-bottom:20px;
+    border-radius:50%;background:#24222d;color:#a995ff;font-size:16px;transition:.3s ease;
+}
+.reel-frame:hover .reel-icon{background:#7156e8;color:#fff;transform:rotate(-8deg) scale(1.08)}
+.reel-frame h3{position:relative;z-index:2;margin-bottom:9px;font-size:17px}
+.reel-frame > p{position:relative;z-index:2;color:#777780;font-size:7px;line-height:1.65}
+.reel-reveal{
+    position:absolute;left:18px;right:18px;bottom:18px;z-index:3;
+    padding:13px;border:1px solid #4a3d6d;border-radius:8px;background:#211c31;
+    opacity:0;transform:translateY(18px);transition:.3s ease;
+}
+.reel-frame:hover .reel-reveal{opacity:1;transform:none}
+.reel-reveal small{display:block;margin-bottom:5px;color:#a995ff;font-size:5px;font-weight:800}
+.reel-reveal strong{display:block;font-size:8px;line-height:1.45}
+.reel-hint{
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    margin-top:18px;color:#6e6e78;font-size:7px;
+}
+.reel-hint i{color:#a995ff}
+
+@media(max-width:1050px){
+    .gateway-machine{grid-template-columns:1fr 150px 1fr}
+    .gateway-core{width:150px;height:150px}
+    .gateway-token{width:165px}
+    .constellation-head,.evidence-reel-head{grid-template-columns:1fr}
+    .reel-track{grid-template-columns:repeat(5,220px);overflow-x:auto}
+}
+@media(max-width:650px){
+    .gateway-hero{min-height:auto;padding:58px 0 52px}
+    .gateway-title{font-size:clamp(43px,12vw,58px);letter-spacing:-3px}
+    .gateway-copy{font-size:11px}
+    .gateway-actions{margin-bottom:38px}
+    .gateway-btn{width:100%}
+    .gateway-machine{display:block}
+    .gateway-rail{display:none}
+    .gateway-core{width:145px;height:145px;margin:0 auto 28px}
+    .gateway-side{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .gateway-side.left{margin-bottom:8px}
+    .gateway-token{width:100%;min-height:58px}
+    .gateway-side.left .gateway-token:hover,.gateway-token:hover{transform:none}
+    .gateway-progress{grid-template-columns:repeat(3,1fr);gap:20px 5px;margin-top:30px}
+    .gateway-progress::before{display:none}
+    .skill-constellation-section,.evidence-reel-section{padding:72px 0}
+    .constellation-space{min-height:590px}
+    .constellation-orbit{width:270px;height:270px;top:43%}
+    .constellation-orbit::before{inset:38px}
+    .constellation-orbit::after{inset:78px}
+    .constellation-center{width:100px;height:100px}
+    .skill-node{width:90px;height:90px}
+    .skill-node.n1{left:2%;top:13%}
+    .skill-node.n2{right:2%;top:13%}
+    .skill-node.n3{left:2%;bottom:19%}
+    .skill-node.n4{right:2%;bottom:19%}
+    .skill-node.n5{top:3%}
+    .constellation-info{width:calc(100% - 28px);bottom:14px}
+    .reel-track{grid-template-columns:repeat(5,78vw)}
+    .reel-frame{min-height:330px}
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<header class="navbar" id="navbar">
+
+    <a href="../index.html" class="logo">
+
+        <span class="logo-main">
+            TRIVOX
+        </span>
+
+        <span class="logo-impact">
+            AI IMPACT
+        </span>
+
+    </a>
+
+
+    <ul class="nav-menu" id="navMenu">
+
+
+        <li class="nav-item">
+
+            <div class="nav-link">
+                Company
+                <span class="arrow"></span>
+            </div>
+
+            <div class="dropdown">
+
+                <a href="../about.html">About TRIVOX</a>
+                <a href="../mission.html">Mission</a>
+                <a href="../vision.html">Vision</a>
+                <a href="../leader.html">Leadership</a>
+                <a href="../team.html">Team</a>
+                <a href="../partners.html">Partners</a>
+                <a href="../impact.html">Impact</a>
+
+            </div>
+
+        </li>
+
+
+        <li class="nav-item">
+
+            <div class="nav-link">
+                Learning
+                <span class="arrow"></span>
+            </div>
+
+            <div class="dropdown mega-dropdown">
+
+                <a href="../learning/ailearning.html" class="mega-box">
+
+                    <strong>AI Learning</strong>
+                    <p>Understand artificial intelligence and intelligent systems.</p>
+
+                </a>
+
+                <a href="../learning/programming.html" class="mega-box">
+
+                    <strong>Programming</strong>
+                    <p>Build strong coding and problem-solving foundations.</p>
+
+                </a>
+
+                <a href="../learning/webdevelopment.html" class="mega-box">
+
+                    <strong>Web Development</strong>
+                    <p>Create modern websites and digital experiences.</p>
+
+                </a>
+
+                <a href="../learning/appdevelopment.html" class="mega-box">
+
+                    <strong>App Development</strong>
+                    <p>Design and build mobile applications.</p>
+
+                </a>
+
+                <a href="../learning/datascience.html" class="mega-box">
+
+                    <strong>Data Science</strong>
+                    <p>Transform data into meaningful insights.</p>
+
+                </a>
+
+                <a href="../learning/cybersecurity.html" class="mega-box">
+
+                    <strong>Cybersecurity</strong>
+                    <p>Understand digital security and protection.</p>
+
+                </a>
+
+            </div>
+
+        </li>
+
+
+        <li class="nav-item active-parent">
+
+            <div class="nav-link">
+                Programs
+                <span class="arrow"></span>
+            </div>
+
+            <div class="dropdown">
+
+                <a href="student-programs.html">
+                    Student Programs
+                </a>
+
+                <a href="college-programs.html">
+                    College Programs
+                </a>
+
+                <a href="internships.html">
+                    Internships
+                </a>
+
+                <a href="workshops.html">
+                    Workshops
+                </a>
+
+                <a href="bootcamps.html">
+                    Bootcamps
+                </a>
+
+                <a href="career-programs.html">
+                    Career Programs
+                </a>
+
+                <a
+                href="certification-programs.html"
+                class="active">
+
+                    Certification Programs
+
+                </a>
+
+            </div>
+
+        </li>
+
+
+        <li class="nav-item">
+
+            <div class="nav-link">
+                Solutions
+                <span class="arrow"></span>
+            </div>
+
+            <div class="dropdown">
+
+                <a href="../solutions/students.html">
+                    For Students
+                </a>
+
+                <a href="../solutions/colleges.html">
+                    For Colleges
+                </a>
+
+                <a href="../solutions/schools.html">
+                    For Schools
+                </a>
+
+                <a href="../solutions/companies.html">
+                    For Companies
+                </a>
+
+            </div>
+
+        </li>
+
+
+        <li class="nav-item">
+
+            <div class="nav-link">
+                Resources
+                <span class="arrow"></span>
+            </div>
+
+            <div class="dropdown">
+
+                <a href="../resources/blogs.html">
+                    Blogs
+                </a>
+
+                <a href="../resources/tutorials.html">
+                    Tutorials
+                </a>
+
+                <a href="../resources/learning-resources.html">
+                    Learning Resources
+                </a>
+
+                <a href="../resources/student-projects.html">
+                    Student Projects
+                </a>
+
+                <a href="../resources/success-stories.html">
+                    Success Stories
+                </a>
+
+                <a href="../resources/events.html">
+                    Events
+                </a>
+
+                <a href="../resources/faqs.html">
+                    FAQs
+                </a>
+
+            </div>
+
+        </li>
+
+
+        <li class="nav-item">
+
+            <div class="nav-link">
+                Careers
+                <span class="arrow"></span>
+            </div>
+
+            <div class="dropdown">
+
+                <a href="../careers/open-positions.html">
+                    Open Positions
+                </a>
+
+                <a href="../careers/internships.html">
+                    Internships
+                </a>
+
+                <a href="../careers/campus-hiring.html">
+                    Campus Hiring
+                </a>
+
+                <a href="../careers/join-team.html">
+                    Join Our Team
+                </a>
+
+                <a href="../careers/life-at-trivox.html">
+                    Life at TRIVOX
+                </a>
+
+            </div>
+
+        </li>
+
+
+        <li class="nav-item">
+
+            <a href="../contact/contact.html" class="nav-link">
+                Contact
+            </a>
+
+        </li>
+
+
+    </ul>
+
+
+    <div class="nav-actions">
+
+
+        <div class="signin-dropdown-wrap">
+
+            <button class="login-btn signin-main-btn">
+
+                Sign In
+
+                <span class="arrow"></span>
+
+            </button>
+
+
+            <div class="signin-dropdown">
+
+
+                <a href="../documentary.html">
+
+                    <i class="fa-solid fa-video"></i>
+
+                    <div>
+
+                        <strong>
+                            Documentary
+                        </strong>
+
+                        <span>
+                            Sign in for documentary
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <a href="../course.html">
+
+                    <i class="fa-solid fa-graduation-cap"></i>
+
+                    <div>
+
+                        <strong>
+                            Course
+                        </strong>
+
+                        <span>
+                            Sign in for courses
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+            </div>
+
+        </div>
+
+
+        <a href="../course.html" class="get-started">
+            Get Started
+        </a>
+
+
+        <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Menu"
+        aria-expanded="false">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+
+    </div>
+
+</header>
+
+
+
+<main>
+
+
+<!-- =========================================================
+     01 HERO
+========================================================= -->
+
+<section class="cert-hero">
+
+
+    <div class="container cert-hero-layout">
+
+
+        <div class="cert-copy reveal">
+
+
+            <div class="cert-kicker">
+
+                <span></span>
+
+                CERTIFICATION PROGRAMS / CREDENTIAL LAB
+
+            </div>
+
+
+            <h1>
+
+                Don't collect certificates.
+
+                <span>
+                    Build proof.
+                </span>
+
+            </h1>
+
+
+            <p>
+
+                TRIVOX Certification Programs combine structured learning,
+                practical assessment, project evidence and review
+                before bringing the work together into a
+                completion credential.
+
+            </p>
+
+
+            <div class="cert-actions">
+
+
+                <a href="#credential-path" class="cert-btn primary">
+
+                    Explore Certification
+
+                    <i class="fa-solid fa-arrow-down"></i>
+
+                </a>
+
+
+                <a href="#credential-preview" class="cert-btn secondary">
+
+                    View Credential
+
+                    <i class="fa-solid fa-certificate"></i>
+
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="credential-lab reveal">
+
+
+            <div class="lab-toolbar">
+
+                <strong>
+                    TRIVOX / CREDENTIAL LAB
+                </strong>
+
+                <div class="lab-status">
+                    CANDIDATE ACTIVE
+                </div>
+
+            </div>
+
+
+            <div class="lab-body">
+
+
+                <aside class="lab-steps">
+
+
+                    <small>
+                        CERTIFICATION FLOW
+                    </small>
+
+
+                    <button
+                    class="lab-step active"
+                    data-lab="learn">
+
+                        <i class="fa-solid fa-book-open"></i>
+
+                        Learn
+
+                    </button>
+
+
+                    <button
+                    class="lab-step"
+                    data-lab="practice">
+
+                        <i class="fa-solid fa-code"></i>
+
+                        Practice
+
+                    </button>
+
+
+                    <button
+                    class="lab-step"
+                    data-lab="assess">
+
+                        <i class="fa-solid fa-list-check"></i>
+
+                        Assessment
+
+                    </button>
+
+
+                    <button
+                    class="lab-step"
+                    data-lab="project">
+
+                        <i class="fa-solid fa-folder-open"></i>
+
+                        Project
+
+                    </button>
+
+
+                    <button
+                    class="lab-step"
+                    data-lab="review">
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        Review
+
+                    </button>
+
+
+                    <button
+                    class="lab-step"
+                    data-lab="credential">
+
+                        <i class="fa-solid fa-award"></i>
+
+                        Credential
+
+                    </button>
+
+
+                </aside>
+
+
+
+                <div class="lab-screen">
+
+
+                    <div class="lab-screen-top">
+
+
+                        <div>
+
+                            <small id="labLabel">
+                                STAGE 01 / FOUNDATION
+                            </small>
+
+                            <h3 id="labTitle">
+                                Learn the required concepts.
+                            </h3>
+
+                        </div>
+
+
+                        <div class="lab-score" id="labScore">
+                            FOUNDATION
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="lab-visual">
+
+
+                        <div class="credential-seal">
+
+                            <i
+                            class="fa-solid fa-book-open"
+                            id="labIcon"></i>
+
+                            <strong id="labVisualTitle">
+                                LEARN
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="lab-output">
+
+
+                        <div class="lab-output-item">
+
+                            <small>
+                                STATUS
+                            </small>
+
+                            <strong id="labStatusOne">
+                                IN PROGRESS
+                            </strong>
+
+                        </div>
+
+
+                        <div class="lab-output-item">
+
+                            <small>
+                                EVIDENCE
+                            </small>
+
+                            <strong id="labStatusTwo">
+                                CONCEPTS
+                            </strong>
+
+                        </div>
+
+
+                        <div class="lab-output-item">
+
+                            <small>
+                                NEXT
+                            </small>
+
+                            <strong id="labStatusThree">
+                                PRACTICE
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+
+<!-- =========================================================
+     01 HERO — CREDENTIAL GATEWAY
+========================================================= -->
+<section class="gateway-hero">
+    <div class="gateway-glow"></div>
+    <div class="container gateway-inner">
+        <div class="gateway-kicker reveal">Certification Programs / Proof Path</div>
+        <h1 class="gateway-title reveal">
+            Turn what you learned into <span>proof you can show.</span>
+        </h1>
+        <p class="gateway-copy reveal">
+            Move through learning, practice, assessment, project work and review —
+            then bring that evidence together into a clear TRIVOX completion credential.
+        </p>
+
+        <div class="gateway-actions reveal">
+            <a href="#credential-path" class="gateway-btn primary">
+                Explore Certification <i class="fa-solid fa-arrow-down"></i>
+            </a>
+            <a href="#credential-preview" class="gateway-btn secondary">
+                View Credential <i class="fa-solid fa-certificate"></i>
+            </a>
+        </div>
+
+        <div class="gateway-machine reveal">
+            <div class="gateway-rail"></div>
+
+            <div class="gateway-side left">
+                <div class="gateway-token">
+                    <i class="fa-solid fa-book-open"></i>
+                    <div><small>INPUT 01</small><strong>Concept Learning</strong></div>
+                </div>
+                <div class="gateway-token">
+                    <i class="fa-solid fa-code"></i>
+                    <div><small>INPUT 02</small><strong>Practical Work</strong></div>
+                </div>
+            </div>
+
+            <div class="gateway-core">
+                <div class="gateway-core-content">
+                    <i class="fa-solid fa-fingerprint"></i>
+                    <strong>PROOF</strong>
+                    <small>TRIVOX</small>
+                </div>
+            </div>
+
+            <div class="gateway-side right">
+                <div class="gateway-token">
+                    <i class="fa-solid fa-list-check"></i>
+                    <div><small>CHECK 01</small><strong>Assessment</strong></div>
+                </div>
+                <div class="gateway-token">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <div><small>CHECK 02</small><strong>Review Evidence</strong></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="gateway-progress reveal">
+            <div class="gateway-point active"><b>01</b><span>LEARN</span></div>
+            <div class="gateway-point"><b>02</b><span>PRACTICE</span></div>
+            <div class="gateway-point"><b>03</b><span>ASSESS</span></div>
+            <div class="gateway-point"><b>04</b><span>BUILD</span></div>
+            <div class="gateway-point"><b>05</b><span>REVIEW</span></div>
+            <div class="gateway-point"><b>06</b><span>CREDENTIAL</span></div>
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     03 CREDENTIAL PATH
+========================================================= -->
+
+<section class="path-section" id="credential-path">
+
+
+    <div class="container">
+
+
+        <div class="path-head reveal">
+
+
+            <div class="section-label">
+                Credential Path
+            </div>
+
+
+            <h2 class="section-title">
+
+                One credential.
+
+                <span>
+                    Six checkpoints.
+                </span>
+
+            </h2>
+
+
+        </div>
+
+
+
+        <div class="path-track reveal">
+
+
+            <article class="path-stage">
+
+                <div class="path-dot">
+                    <i class="fa-solid fa-book-open"></i>
+                </div>
+
+                <small>
+                    CHECKPOINT 01
+                </small>
+
+                <strong>
+                    Learn
+                </strong>
+
+                <p>
+                    Build the required conceptual foundation.
+                </p>
+
+            </article>
+
+
+            <article class="path-stage">
+
+                <div class="path-dot">
+                    <i class="fa-solid fa-code"></i>
+                </div>
+
+                <small>
+                    CHECKPOINT 02
+                </small>
+
+                <strong>
+                    Practice
+                </strong>
+
+                <p>
+                    Apply concepts through guided exercises.
+                </p>
+
+            </article>
+
+
+            <article class="path-stage">
+
+                <div class="path-dot">
+                    <i class="fa-solid fa-list-check"></i>
+                </div>
+
+                <small>
+                    CHECKPOINT 03
+                </small>
+
+                <strong>
+                    Assess
+                </strong>
+
+                <p>
+                    Check understanding through structured assessment.
+                </p>
+
+            </article>
+
+
+            <article class="path-stage">
+
+                <div class="path-dot">
+                    <i class="fa-solid fa-folder-open"></i>
+                </div>
+
+                <small>
+                    CHECKPOINT 04
+                </small>
+
+                <strong>
+                    Build
+                </strong>
+
+                <p>
+                    Create practical project evidence.
+                </p>
+
+            </article>
+
+
+            <article class="path-stage">
+
+                <div class="path-dot">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+
+                <small>
+                    CHECKPOINT 05
+                </small>
+
+                <strong>
+                    Review
+                </strong>
+
+                <p>
+                    Review work against expected outcomes.
+                </p>
+
+            </article>
+
+
+            <article class="path-stage">
+
+                <div class="path-dot">
+                    <i class="fa-solid fa-award"></i>
+                </div>
+
+                <small>
+                    CHECKPOINT 06
+                </small>
+
+                <strong>
+                    Credential
+                </strong>
+
+                <p>
+                    Record successful completion.
+                </p>
+
+            </article>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     04 COMPETENCY
+========================================================= -->
+
+<section class="competency-section">
+
+
+    <div class="container">
+
+
+        <div class="competency-head reveal">
+
+
+            <div>
+
+                <div class="section-label">
+                    Competency Map
+                </div>
+
+                <h2 class="section-title">
+
+                    See what the certification
+
+                    <span>
+                        is actually checking.
+                    </span>
+
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                A certification track can evaluate more than
+                simple concept recall by combining technical,
+                practical and communication evidence.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="competency-grid reveal">
+
+
+            <div class="competency-row">
+
+                <div class="comp-cell comp-name">
+                    Competency
+                </div>
+
+                <div class="comp-cell">
+                    Foundation
+                </div>
+
+                <div class="comp-cell">
+                    Practice
+                </div>
+
+                <div class="comp-cell">
+                    Project
+                </div>
+
+                <div class="comp-cell">
+                    Review
+                </div>
+
+            </div>
+
+
+            <div class="competency-row">
+
+                <div class="comp-cell comp-name">
+                    Concepts
+                </div>
+
+                <div class="comp-cell comp-level-4">
+                    Strong
+                </div>
+
+                <div class="comp-cell comp-level-3">
+                    Applied
+                </div>
+
+                <div class="comp-cell comp-level-2">
+                    Used
+                </div>
+
+                <div class="comp-cell comp-level-3">
+                    Checked
+                </div>
+
+            </div>
+
+
+            <div class="competency-row">
+
+                <div class="comp-cell comp-name">
+                    Practical Skill
+                </div>
+
+                <div class="comp-cell comp-level-1">
+                    Intro
+                </div>
+
+                <div class="comp-cell comp-level-3">
+                    Applied
+                </div>
+
+                <div class="comp-cell comp-level-4">
+                    Strong
+                </div>
+
+                <div class="comp-cell comp-level-4">
+                    Checked
+                </div>
+
+            </div>
+
+
+            <div class="competency-row">
+
+                <div class="comp-cell comp-name">
+                    Problem Solving
+                </div>
+
+                <div class="comp-cell comp-level-1">
+                    Intro
+                </div>
+
+                <div class="comp-cell comp-level-2">
+                    Growing
+                </div>
+
+                <div class="comp-cell comp-level-4">
+                    Strong
+                </div>
+
+                <div class="comp-cell comp-level-4">
+                    Checked
+                </div>
+
+            </div>
+
+
+            <div class="competency-row">
+
+                <div class="comp-cell comp-name">
+                    Communication
+                </div>
+
+                <div class="comp-cell comp-level-1">
+                    Intro
+                </div>
+
+                <div class="comp-cell comp-level-2">
+                    Growing
+                </div>
+
+                <div class="comp-cell comp-level-3">
+                    Applied
+                </div>
+
+                <div class="comp-cell comp-level-4">
+                    Checked
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+
+<!-- =========================================================
+     04 COMPETENCY — SKILL CONSTELLATION
+========================================================= -->
+<section class="skill-constellation-section">
+    <div class="container">
+        <div class="constellation-head reveal">
+            <div>
+                <div class="section-label">Skill Constellation</div>
+                <h2 class="section-title">
+                    One credential can connect <span>different kinds of proof.</span>
+                </h2>
+            </div>
+            <p class="section-copy">
+                Hover or tap a skill point to see the type of evidence that can support it.
+                The goal is not one isolated score, but a clearer picture of applied ability.
+            </p>
+        </div>
+
+        <div class="constellation-space reveal">
+            <div class="constellation-orbit"></div>
+
+            <div class="constellation-center">
+                <i class="fa-solid fa-certificate"></i>
+                <strong>CREDENTIAL</strong>
+                <small>EVIDENCE CORE</small>
+            </div>
+
+            <button class="skill-node n1 active"
+                data-title="Concept Understanding"
+                data-text="Supported by learning checkpoints and assessment responses.">
+                <i class="fa-solid fa-brain"></i>
+                <strong>Concepts</strong><small>UNDERSTAND</small>
+            </button>
+
+            <button class="skill-node n2"
+                data-title="Practical Skill"
+                data-text="Supported by exercises, implementation work and working outputs.">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+                <strong>Practical</strong><small>APPLY</small>
+            </button>
+
+            <button class="skill-node n3"
+                data-title="Problem Solving"
+                data-text="Supported by decisions, iteration and how challenges were handled.">
+                <i class="fa-solid fa-route"></i>
+                <strong>Problem Solving</strong><small>REASON</small>
+            </button>
+
+            <button class="skill-node n4"
+                data-title="Communication"
+                data-text="Supported by explanations, project presentation and review discussion.">
+                <i class="fa-solid fa-comments"></i>
+                <strong>Communication</strong><small>EXPLAIN</small>
+            </button>
+
+            <button class="skill-node n5"
+                data-title="Project Evidence"
+                data-text="Supported by a tangible build that brings multiple competencies together.">
+                <i class="fa-solid fa-folder-open"></i>
+                <strong>Project</strong><small>DEMONSTRATE</small>
+            </button>
+
+            <div class="constellation-info" id="constellationInfo">
+                <small>SELECTED EVIDENCE</small>
+                <strong id="constellationTitle">Concept Understanding</strong>
+                <p id="constellationText">Supported by learning checkpoints and assessment responses.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     06 PROJECT PROOF
+========================================================= -->
+
+<section class="project-proof-section">
+
+
+    <div class="container">
+
+
+        <div class="project-proof-head reveal">
+
+
+            <div>
+
+                <div class="section-label">
+                    Project Proof
+                </div>
+
+
+                <h2 class="section-title">
+
+                    A project turns knowledge
+
+                    <span>
+                        into evidence.
+                    </span>
+
+                </h2>
+
+            </div>
+
+
+            <p class="section-copy">
+
+                Use practical work to show how concepts
+                were applied, reviewed and improved
+                during the certification process.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="proof-stage reveal">
+
+
+            <article class="proof-note proof-main">
+
+
+                <span class="note-label">
+                    PROJECT SUBMISSION
+                </span>
+
+
+                <h3>
+                    Responsive student opportunity portal
+                </h3>
+
+
+                <p>
+
+                    Demonstrates layout, interaction,
+                    responsive behaviour and structured
+                    frontend implementation.
+
+                </p>
+
+
+                <div class="mini-project">
+
+                    <strong>
+                        PROJECT PREVIEW
+                    </strong>
+
+                </div>
+
+
+            </article>
+
+
+
+            <article class="proof-note proof-feedback">
+
+
+                <span class="note-label">
+                    FEEDBACK
+                </span>
+
+
+                <h3>
+                    Improve the mobile navigation.
+                </h3>
+
+
+                <p>
+
+                    The main interface works well.
+                    Simplify menu behaviour before final review.
+
+                </p>
+
+
+            </article>
+
+
+
+            <article class="proof-note proof-review">
+
+
+                <span class="note-label">
+                    REVISION NOTE
+                </span>
+
+
+                <h3>
+                    Update completed.
+                </h3>
+
+
+                <p>
+
+                    Mobile navigation was restructured
+                    and tested again before submission.
+
+                </p>
+
+
+            </article>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+
+<!-- =========================================================
+     06 PROJECT PROOF — EVIDENCE REEL
+========================================================= -->
+<section class="evidence-reel-section">
+    <div class="container">
+        <div class="evidence-reel-head reveal">
+            <div>
+                <div class="section-label">Evidence Reel</div>
+                <h2 class="section-title">
+                    Follow the work from <span>brief to final proof.</span>
+                </h2>
+            </div>
+            <p class="section-copy">
+                A project is more useful when the process is visible too.
+                Move across the reel to see how requirement, build, feedback,
+                revision and final evidence connect.
+            </p>
+        </div>
+
+        <div class="evidence-reel reveal">
+            <div class="reel-perf">
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+
+            <div class="reel-track">
+                <article class="reel-frame">
+                    <span class="reel-no">FRAME 01 / BRIEF</span>
+                    <div class="reel-icon"><i class="fa-solid fa-file-lines"></i></div>
+                    <h3>Understand the requirement.</h3>
+                    <p>Start with the problem, expected behaviour and the outcome to demonstrate.</p>
+                    <div class="reel-reveal">
+                        <small>ON HOVER / EVIDENCE</small>
+                        <strong>Requirement notes + planned solution</strong>
+                    </div>
+                </article>
+
+                <article class="reel-frame">
+                    <span class="reel-no">FRAME 02 / BUILD</span>
+                    <div class="reel-icon"><i class="fa-solid fa-code"></i></div>
+                    <h3>Create the working version.</h3>
+                    <p>Translate the requirement into a practical implementation that can be reviewed.</p>
+                    <div class="reel-reveal">
+                        <small>ON HOVER / EVIDENCE</small>
+                        <strong>Working project + implementation choices</strong>
+                    </div>
+                </article>
+
+                <article class="reel-frame">
+                    <span class="reel-no">FRAME 03 / FEEDBACK</span>
+                    <div class="reel-icon"><i class="fa-solid fa-message"></i></div>
+                    <h3>Receive focused feedback.</h3>
+                    <p>Identify what works, what is unclear and what should improve before completion.</p>
+                    <div class="reel-reveal">
+                        <small>ON HOVER / REVIEW NOTE</small>
+                        <strong>Improve mobile navigation and simplify interaction</strong>
+                    </div>
+                </article>
+
+                <article class="reel-frame">
+                    <span class="reel-no">FRAME 04 / REVISION</span>
+                    <div class="reel-icon"><i class="fa-solid fa-rotate"></i></div>
+                    <h3>Improve and test again.</h3>
+                    <p>Use review feedback to revise the work and demonstrate a stronger final result.</p>
+                    <div class="reel-reveal">
+                        <small>ON HOVER / CHANGE</small>
+                        <strong>Navigation restructured and responsive behaviour retested</strong>
+                    </div>
+                </article>
+
+                <article class="reel-frame">
+                    <span class="reel-no">FRAME 05 / PROOF</span>
+                    <div class="reel-icon"><i class="fa-solid fa-check-double"></i></div>
+                    <h3>Finish with visible evidence.</h3>
+                    <p>Bring the final build and review trail together as part of the certification record.</p>
+                    <div class="reel-reveal">
+                        <small>ON HOVER / FINAL</small>
+                        <strong>Project evidence ready for credential review</strong>
+                    </div>
+                </article>
+            </div>
+
+            <div class="reel-perf bottom">
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+        </div>
+
+        <div class="reel-hint reveal">
+            <i class="fa-solid fa-arrow-pointer"></i>
+            Hover a frame to reveal its evidence
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     08 CREDENTIAL
+========================================================= -->
+
+<section class="generator-section" id="credential-preview">
+
+
+    <div class="container generator-layout">
+
+
+        <div class="generator-copy reveal">
+
+
+            <div class="section-label">
+                Credential Preview
+            </div>
+
+
+            <h2 class="section-title">
+
+                Bring completion and
+
+                <span>
+                    evidence together.
+                </span>
+
+            </h2>
+
+
+            <p class="section-copy">
+
+                The final credential can record successful
+                completion of the TRIVOX certification track
+                and provide a clear reference to the program.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="certificate reveal">
+
+
+            <div class="certificate-top">
+
+
+                <div class="certificate-brand">
+
+                    <strong>
+                        TRIVOX AI IMPACT
+                    </strong>
+
+                    <span>
+                        CERTIFICATION PROGRAM
+                    </span>
+
+                </div>
+
+
+                <div class="certificate-seal-small">
+
+                    <i class="fa-solid fa-award"></i>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="certificate-body">
+
+
+                <small>
+                    CERTIFICATE OF COMPLETION
+                </small>
+
+
+                <h3>
+                    Certification Program
+                </h3>
+
+
+                <p>
+
+                    This credential records successful completion
+                    of the selected TRIVOX learning,
+                    assessment and project requirements.
+
+                </p>
+
+
+                <div class="certificate-name">
+                    Student Name
+                </div>
+
+
+                <p>
+                    has completed the selected certification track.
+                </p>
+
+
+            </div>
+
+
+
+            <div class="certificate-footer">
+
+
+                <div class="cert-meta">
+
+                    <small>
+                        PROGRAM
+                    </small>
+
+                    <strong>
+                        Web Development
+                    </strong>
+
+                </div>
+
+
+                <div class="cert-meta">
+
+                    <small>
+                        CREDENTIAL ID
+                    </small>
+
+                    <strong>
+                        TRVX-CERT-XXXX
+                    </strong>
+
+                </div>
+
+
+                <div class="cert-meta">
+
+                    <small>
+                        STATUS
+                    </small>
+
+                    <strong>
+                        COMPLETED
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     09 VERIFY
+========================================================= -->
+
+<section class="verify-section">
+
+
+    <div class="container verify-layout">
+
+
+        <div class="verify-copy reveal">
+
+
+            <div class="section-label">
+                Credential Record
+            </div>
+
+
+            <h2 class="section-title">
+
+                Make credential details
+
+                <span>
+                    easy to review.
+                </span>
+
+            </h2>
+
+
+            <p class="section-copy">
+
+                A credential record can clearly display
+                the program name, credential identifier
+                and completion status in one place.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="verify-device reveal">
+
+
+            <div class="device-top">
+
+                <div class="device-notch"></div>
+
+            </div>
+
+
+            <div class="verify-screen">
+
+
+                <div class="verify-check">
+
+                    <i class="fa-solid fa-check"></i>
+
+                </div>
+
+
+                <h3>
+                    Credential Record
+                </h3>
+
+
+                <p>
+                    TRIVOX Certification Program
+                </p>
+
+
+                <div class="verify-details">
+
+
+                    <div class="verify-row">
+
+                        <span>
+                            Program
+                        </span>
+
+                        <strong>
+                            Web Development
+                        </strong>
+
+                    </div>
+
+
+                    <div class="verify-row">
+
+                        <span>
+                            Credential ID
+                        </span>
+
+                        <strong>
+                            TRVX-CERT-XXXX
+                        </strong>
+
+                    </div>
+
+
+                    <div class="verify-row">
+
+                        <span>
+                            Candidate
+                        </span>
+
+                        <strong>
+                            Student Name
+                        </strong>
+
+                    </div>
+
+
+                    <div class="verify-row">
+
+                        <span>
+                            Status
+                        </span>
+
+                        <strong>
+                            Completed
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="verify-code">
+
+                    <span></span>
+                    <span class="dark"></span>
+                    <span></span>
+                    <span class="dark"></span>
+                    <span></span>
+
+                    <span class="dark"></span>
+                    <span></span>
+                    <span class="dark"></span>
+                    <span></span>
+                    <span class="dark"></span>
+
+                    <span></span>
+                    <span class="dark"></span>
+                    <span class="dark"></span>
+                    <span class="dark"></span>
+                    <span></span>
+
+                    <span class="dark"></span>
+                    <span></span>
+                    <span class="dark"></span>
+                    <span></span>
+                    <span class="dark"></span>
+
+                    <span></span>
+                    <span class="dark"></span>
+                    <span></span>
+                    <span class="dark"></span>
+                    <span></span>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     10 SHOWCASE
+========================================================= -->
+
+<section class="showcase-section">
+
+
+    <div class="container">
+
+
+        <div class="showcase-head reveal">
+
+
+            <div>
+
+                <div class="section-label">
+                    Credential in Context
+                </div>
+
+
+                <h2 class="section-title">
+
+                    The certificate is one part of
+
+                    <span>
+                        the larger story.
+                    </span>
+
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                Pair completion with projects,
+                skills and explanations so the credential
+                has useful context.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="showcase-strip reveal">
+
+
+            <div class="showcase-main">
+
+                <small>
+                    COMPLETE PROFILE
+                </small>
+
+                <h3>
+                    Credential + project + skill evidence.
+                </h3>
+
+                <p>
+
+                    Bring multiple forms of proof together
+                    when presenting your learning journey.
+
+                </p>
+
+            </div>
+
+
+            <div class="showcase-card">
+
+
+                <i class="fa-solid fa-folder-open"></i>
+
+
+                <div>
+
+                    <small>
+                        SHOW
+                    </small>
+
+                    <strong>
+                        Project
+                    </strong>
+
+                    <p>
+                        Demonstrate how learning was applied.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="showcase-card">
+
+
+                <i class="fa-solid fa-comments"></i>
+
+
+                <div>
+
+                    <small>
+                        EXPLAIN
+                    </small>
+
+                    <strong>
+                        Learning Story
+                    </strong>
+
+                    <p>
+                        Describe what changed through practice.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     11 NEXT LEVEL
+========================================================= -->
+
+<section class="next-section">
+
+
+    <div class="container next-layout">
+
+
+        <div class="next-copy reveal">
+
+
+            <div class="section-label">
+                After Certification
+            </div>
+
+
+            <h2 class="section-title">
+
+                Completion can become
+
+                <span>
+                    your next starting point.
+                </span>
+
+            </h2>
+
+
+            <p class="section-copy">
+
+                Use the completed track to decide
+                whether to deepen the same skill,
+                build a larger project or move into
+                another related learning direction.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="next-board reveal">
+
+
+            <div class="next-row">
+
+                <div class="next-number">
+                    01
+                </div>
+
+                <div class="next-main">
+
+                    <strong>
+                        Build a larger project
+                    </strong>
+
+                    <span>
+                        Apply the same skills at a deeper level.
+                    </span>
+
+                </div>
+
+                <div class="next-status">
+                    BUILD
+                </div>
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </div>
+
+
+            <div class="next-row">
+
+                <div class="next-number">
+                    02
+                </div>
+
+                <div class="next-main">
+
+                    <strong>
+                        Add to your portfolio
+                    </strong>
+
+                    <span>
+                        Document the project and learning evidence.
+                    </span>
+
+                </div>
+
+                <div class="next-status">
+                    SHOW
+                </div>
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </div>
+
+
+            <div class="next-row">
+
+                <div class="next-number">
+                    03
+                </div>
+
+                <div class="next-main">
+
+                    <strong>
+                        Explore an advanced track
+                    </strong>
+
+                    <span>
+                        Continue into deeper technical learning.
+                    </span>
+
+                </div>
+
+                <div class="next-status">
+                    LEARN
+                </div>
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </div>
+
+
+            <div class="next-row">
+
+                <div class="next-number">
+                    04
+                </div>
+
+                <div class="next-main">
+
+                    <strong>
+                        Prepare for opportunity
+                    </strong>
+
+                    <span>
+                        Connect the credential with career proof.
+                    </span>
+
+                </div>
+
+                <div class="next-status">
+                    PREPARE
+                </div>
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     FINAL
+========================================================= -->
+
+<section class="final-section">
+
+
+    <div class="container">
+
+
+        <div class="final-cert reveal">
+
+
+            <div class="final-cert-copy">
+
+
+                <small>
+                    TRIVOX CERTIFICATION PROGRAMS
+                </small>
+
+
+                <h2>
+
+                    Learn it.
+                    Prove it.
+                    Complete it.
+
+                </h2>
+
+
+                <p>
+
+                    Explore certification programs that combine
+                    structured learning, assessment,
+                    project evidence and completion credentials.
+
+                </p>
+
+
+                <a
+                href="../contact/contact.html"
+                class="final-btn">
+
+                    Explore Certification Programs
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+</main>
+
+
+
+<footer class="footer">
+
+    © 2026 TRIVOX AI IMPACT
+
+    <span>•</span>
+
+    Certification Programs
+
+</footer>
+
+
+
+<script>
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+const navbar =
+document.getElementById("navbar");
+
+
+window.addEventListener("scroll", () => {
+
+    navbar.classList.toggle(
+        "scrolled",
+        window.scrollY > 20
+    );
+
+});
+
+
+/* =========================================================
+   MOBILE NAV
+========================================================= */
+
+const menuToggle =
+document.getElementById("menuToggle");
+
+const navMenu =
+document.getElementById("navMenu");
+
+const navItems =
+document.querySelectorAll(".nav-item");
+
+
+menuToggle.addEventListener("click", () => {
+
+    const active =
+    navMenu.classList.toggle("active");
+
+
+    menuToggle.classList.toggle(
+        "active",
+        active
+    );
+
+
+    menuToggle.setAttribute(
+        "aria-expanded",
+        active ? "true" : "false"
+    );
+
+});
+
+
+navItems.forEach(item => {
+
+    const link =
+    item.querySelector(":scope > .nav-link");
+
+    const dropdown =
+    item.querySelector(":scope > .dropdown");
+
+
+    if(!link || !dropdown){
+        return;
+    }
+
+
+    link.addEventListener("click", event => {
+
+        if(window.innerWidth > 1050){
+            return;
+        }
+
+
+        event.preventDefault();
+
+
+        navItems.forEach(other => {
+
+            if(other !== item){
+                other.classList.remove("open");
+            }
+
+        });
+
+
+        item.classList.toggle("open");
+
+    });
+
+});
+
+
+document
+.querySelectorAll(".dropdown a")
+.forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        if(window.innerWidth <= 1050){
+
+            navMenu.classList.remove("active");
+
+            menuToggle.classList.remove("active");
+
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+
+            navItems.forEach(item => {
+                item.classList.remove("open");
+            });
+
+        }
+
+    });
+
+});
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+const revealItems =
+document.querySelectorAll(".reveal");
+
+
+const revealObserver =
+new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+            entry.target.classList.add("show");
+
+            revealObserver.unobserve(
+                entry.target
+            );
+
+        }
+
+    });
+
+},{
+    threshold:.08
+});
+
+
+revealItems.forEach(item => {
+
+    revealObserver.observe(item);
+
+});
+
+
+/* =========================================================
+   CREDENTIAL LAB
+========================================================= */
+
+const labData = {
+
+    learn:{
+        label:"STAGE 01 / FOUNDATION",
+        title:"Learn the required concepts.",
+        score:"FOUNDATION",
+        icon:"fa-book-open",
+        visual:"LEARN",
+        one:"IN PROGRESS",
+        two:"CONCEPTS",
+        three:"PRACTICE"
+    },
+
+    practice:{
+        label:"STAGE 02 / APPLICATION",
+        title:"Turn concepts into practice.",
+        score:"PRACTICE",
+        icon:"fa-code",
+        visual:"PRACTICE",
+        one:"ACTIVE",
+        two:"EXERCISES",
+        three:"ASSESS"
+    },
+
+    assess:{
+        label:"STAGE 03 / ASSESSMENT",
+        title:"Check what you understand.",
+        score:"ASSESSMENT",
+        icon:"fa-list-check",
+        visual:"ASSESS",
+        one:"READY",
+        two:"ANSWERS",
+        three:"PROJECT"
+    },
+
+    project:{
+        label:"STAGE 04 / PROJECT PROOF",
+        title:"Build something that demonstrates the skill.",
+        score:"BUILD",
+        icon:"fa-folder-open",
+        visual:"PROJECT",
+        one:"BUILDING",
+        two:"PROJECT",
+        three:"REVIEW"
+    },
+
+    review:{
+        label:"STAGE 05 / REVIEW",
+        title:"Review the work against expected outcomes.",
+        score:"REVIEW",
+        icon:"fa-magnifying-glass",
+        visual:"REVIEW",
+        one:"CHECKING",
+        two:"FEEDBACK",
+        three:"CREDENTIAL"
+    },
+
+    credential:{
+        label:"STAGE 06 / COMPLETION",
+        title:"Record successful completion.",
+        score:"COMPLETE",
+        icon:"fa-award",
+        visual:"CREDENTIAL",
+        one:"COMPLETED",
+        two:"RECORD",
+        three:"NEXT TRACK"
+    }
+
+};
+
+
+const labSteps =
+document.querySelectorAll(".lab-step");
+
+const labLabel =
+document.getElementById("labLabel");
+
+const labTitle =
+document.getElementById("labTitle");
+
+const labScore =
+document.getElementById("labScore");
+
+const labIcon =
+document.getElementById("labIcon");
+
+const labVisualTitle =
+document.getElementById("labVisualTitle");
+
+const labStatusOne =
+document.getElementById("labStatusOne");
+
+const labStatusTwo =
+document.getElementById("labStatusTwo");
+
+const labStatusThree =
+document.getElementById("labStatusThree");
+
+
+labSteps.forEach(step => {
+
+    step.addEventListener("click", () => {
+
+        const key =
+        step.dataset.lab;
+
+        const data =
+        labData[key];
+
+
+        labSteps.forEach(item => {
+            item.classList.remove("active");
+        });
+
+
+        step.classList.add("active");
+
+
+        labLabel.textContent =
+        data.label;
+
+        labTitle.textContent =
+        data.title;
+
+        labScore.textContent =
+        data.score;
+
+
+        labIcon.className =
+        `fa-solid ${data.icon}`;
+
+
+        labVisualTitle.textContent =
+        data.visual;
+
+        labStatusOne.textContent =
+        data.one;
+
+        labStatusTwo.textContent =
+        data.two;
+
+        labStatusThree.textContent =
+        data.three;
+
+    });
+
+});
+
+
+/* =========================================================
+   AUTO LAB ROTATION
+========================================================= */
+
+let labIndex = 0;
+
+const labKeys = [
+    "learn",
+    "practice",
+    "assess",
+    "project",
+    "review",
+    "credential"
+];
+
+
+function rotateLab(){
+
+    if(window.innerWidth <= 650){
+        return;
+    }
+
+
+    labIndex++;
+
+
+    if(labIndex >= labKeys.length){
+        labIndex = 0;
+    }
+
+
+    const key =
+    labKeys[labIndex];
+
+
+    const step =
+    document.querySelector(
+        `.lab-step[data-lab="${key}"]`
+    );
+
+
+    if(step){
+        step.click();
+    }
+
+}
+
+
+setInterval(
+    rotateLab,
+    4300
+);
+
+
+/* =========================================================
+   ASSESSMENT OPTION CLICK
+========================================================= */
+
+const assessmentQuestions =
+document.querySelectorAll(".assessment-question");
+
+
+assessmentQuestions.forEach(question => {
+
+    const options =
+    question.querySelectorAll(".option");
+
+
+    options.forEach(option => {
+
+        option.addEventListener("click", () => {
+
+            options.forEach(item => {
+                item.classList.remove("selected");
+            });
+
+
+            option.classList.add("selected");
+
+        });
+
+    });
+
+});
+
+
+/* =========================================================
+   MOBILE RESIZE
+========================================================= */
+
+window.addEventListener("resize", () => {
+
+    if(window.innerWidth > 1050){
+
+        navMenu.classList.remove("active");
+
+        menuToggle.classList.remove("active");
+
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+
+        navItems.forEach(item => {
+            item.classList.remove("open");
+        });
+
+    }
+
+});
+
+
+/* REDESIGNED CERTIFICATION INTERACTIONS */
+const skillNodes = document.querySelectorAll(".skill-node");
+const constellationTitle = document.getElementById("constellationTitle");
+const constellationText = document.getElementById("constellationText");
+
+skillNodes.forEach(node => {
+    const activateSkill = () => {
+        skillNodes.forEach(item => item.classList.remove("active"));
+        node.classList.add("active");
+        if (constellationTitle) constellationTitle.textContent = node.dataset.title;
+        if (constellationText) constellationText.textContent = node.dataset.text;
+    };
+    node.addEventListener("mouseenter", activateSkill);
+    node.addEventListener("click", activateSkill);
+});
+
+const gatewayPoints = document.querySelectorAll(".gateway-point");
+let gatewayIndex = 0;
+if (gatewayPoints.length) {
+    setInterval(() => {
+        gatewayPoints.forEach(point => point.classList.remove("active"));
+        gatewayIndex = (gatewayIndex + 1) % gatewayPoints.length;
+        gatewayPoints[gatewayIndex].classList.add("active");
+    }, 1500);
+}
+
+</script>
+
+</body>
+</html>
