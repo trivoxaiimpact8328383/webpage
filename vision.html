@@ -1,1 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Our Vision | TRIVOX AI IMPACT</title>
+  <meta name="description" content="Explore the vision of TRIVOX AI IMPACT — building a future where learning, technology and purpose create meaningful impact.">
+  <meta name="theme-color" content="#7450e8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:Arial,Helvetica,sans-serif;background:#fff;color:#111116;overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
+    button{font:inherit}
+    :root{
+      --purple:#7450e8;
+      --purple-soft:#a994ff;
+      --dark:#17171b;
+      --soft:#f7f7f9;
+      --line:#e5e1e9;
+      --muted:#77727d;
+    }
+
+    /* ================= NAVBAR ================= */
+    .navbar{
+      width:100%;height:76px;position:fixed;top:0;left:0;z-index:9999;
+      display:flex;align-items:center;justify-content:space-between;padding:0 4%;
+      background:rgba(255,255,255,.94);backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(0,0,0,.06)
+    }
+    .logo{display:flex;align-items:center;white-space:nowrap;font-size:23px;font-weight:900;letter-spacing:-1px}
+    .logo-main{
+      background:linear-gradient(to bottom,#111 0%,#111 50%,#7450e8 50%,#7450e8 100%);
+      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent
+    }
+    .logo-impact{
+      margin-left:7px;background:linear-gradient(to bottom,#7450e8 0%,#7450e8 50%,#222 50%,#222 100%);
+      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent
+    }
+    .nav-menu{display:flex;align-items:center;gap:3px;list-style:none}
+    .nav-item{position:relative}
+    .nav-link{
+      padding:28px 10px;display:flex;align-items:center;gap:6px;font-size:13.5px;
+      font-weight:600;color:#37373d;cursor:pointer;white-space:nowrap;transition:.2s
+    }
+    .nav-link:hover,.nav-item.active>.nav-link{color:var(--purple)}
+    .arrow{
+      width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;
+      transform:rotate(45deg) translateY(-2px);transition:.2s
+    }
+    .nav-item:hover .arrow{transform:rotate(225deg)}
+    .dropdown{
+      position:absolute;top:68px;left:0;width:305px;padding:10px;background:#fff;
+      border:1px solid #ededf2;border-radius:15px;box-shadow:0 18px 50px rgba(0,0,0,.10);
+      opacity:0;visibility:hidden;transform:translateY(12px);transition:.22s
+    }
+    .nav-item:hover>.dropdown{opacity:1;visibility:visible;transform:translateY(0)}
+    .dropdown>a{
+      display:block;padding:13px 18px;border-radius:10px;font-size:13.5px;color:#444;transition:.2s
+    }
+    .dropdown>a:hover,.dropdown>a.current{background:#f6f3ff;color:var(--purple);padding-left:22px}
+    .mega-dropdown{width:620px;display:grid;grid-template-columns:repeat(2,1fr);gap:7px;padding:15px}
+    .mega-box{padding:14px!important;border-radius:12px}
+    .mega-box:hover,.mega-box.current{background:#f7f5ff}
+    .mega-box strong{display:block;margin-bottom:5px;font-size:14px}
+    .mega-box p{color:#777;font-size:12px;line-height:1.5}
+    .nav-actions{display:flex;align-items:center;gap:10px}
+    .login-btn{padding:10px 14px;font-size:13.5px;font-weight:600;border-radius:9px;border:none;background:transparent;cursor:pointer}
+    .get-started{padding:11px 17px;background:#111;color:#fff;border-radius:10px;font-size:13.5px;font-weight:700}
+    .signin-dropdown-wrap{position:relative}
+    .signin-main-btn{display:flex;align-items:center;gap:7px}
+    .signin-dropdown{
+      position:absolute;right:0;top:52px;width:230px;padding:9px;background:#fff;
+      border:1px solid #ededf2;border-radius:14px;box-shadow:0 18px 50px rgba(0,0,0,.10);
+      opacity:0;visibility:hidden;transform:translateY(10px);transition:.2s
+    }
+    .signin-dropdown-wrap:hover .signin-dropdown{opacity:1;visibility:visible;transform:translateY(0)}
+    .signin-dropdown a{display:flex;align-items:center;gap:11px;padding:12px;border-radius:10px}
+    .signin-dropdown a:hover{background:#f6f3ff}
+    .signin-dropdown i{color:var(--purple)}
+    .signin-dropdown strong{display:block;font-size:13px}
+    .signin-dropdown span{display:block;margin-top:3px;font-size:10.5px;color:#888}
+    .menu-toggle{
+      display:none;width:42px;height:42px;border:0;background:#f3f3f5;border-radius:10px;
+      align-items:center;justify-content:center;flex-direction:column;gap:4px;cursor:pointer
+    }
+    .menu-toggle span{width:20px;height:2px;background:#111}
+
+    /* ================= COMMON ================= */
+    .vision-page{padding-top:76px}
+    .wrap{width:min(1180px,calc(100% - 40px));margin:auto}
+    .eyebrow{color:var(--purple);font-size:8px;font-weight:900;letter-spacing:1.8px;text-transform:uppercase}
+    .title{margin-top:12px;font-size:clamp(46px,5.6vw,76px);line-height:.93;letter-spacing:-4.2px}
+    .title span{color:var(--purple)}
+    .desc{max-width:620px;margin-top:18px;color:var(--muted);font-size:12px;line-height:1.8}
+
+    /* ================= HERO ================= */
+    .vision-hero{
+      min-height:720px;position:relative;overflow:hidden;display:flex;align-items:center;
+      background:
+        linear-gradient(rgba(116,80,232,.045) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(116,80,232,.045) 1px,transparent 1px),
+        radial-gradient(circle at 50% 30%,rgba(116,80,232,.10),transparent 34%),
+        #fbfbfd;
+      background-size:68px 68px,68px 68px,auto,auto;
+    }
+    .vision-hero-inner{text-align:center;position:relative;z-index:2}
+    .vision-hero h1{
+      max-width:1040px;margin:0 auto;
+      font-size:clamp(68px,8.5vw,132px);line-height:.86;letter-spacing:-8px;font-weight:900
+    }
+    .vision-hero h1 span{display:block;color:var(--purple)}
+    .vision-hero p{
+      max-width:760px;margin:28px auto 0;color:#74717a;font-size:16px;line-height:1.75
+    }
+    .hero-actions{display:flex;justify-content:center;gap:12px;margin-top:34px}
+    .btn-dark,.btn-light{
+      min-height:50px;padding:0 22px;display:inline-flex;align-items:center;justify-content:center;
+      gap:9px;border-radius:11px;font-size:12px;font-weight:800
+    }
+    .btn-dark{background:#17171b;color:#fff}
+    .btn-light{background:#fff;border:1px solid #dedbe2}
+    .vision-symbol{
+      position:absolute;width:70px;height:70px;display:flex;align-items:center;justify-content:center;
+      border-radius:20px;background:#f0ebff;color:var(--purple);font-size:27px;opacity:.65
+    }
+    .vs1{left:11%;top:31%}.vs2{right:13%;top:28%}.vs3{left:20%;bottom:18%}.vs4{right:18%;bottom:16%}
+    .vision-ring{
+      position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+      width:760px;height:760px;border:1px solid rgba(116,80,232,.08);border-radius:50%
+    }
+    .vision-ring:before,.vision-ring:after{content:"";position:absolute;border-radius:50%;border:1px solid rgba(116,80,232,.07)}
+    .vision-ring:before{inset:90px}.vision-ring:after{inset:190px}
+
+    /* ================= VISION STATEMENT ================= */
+    .vision-statement{padding:120px 0;background:#fff}
+    .statement-grid{display:grid;grid-template-columns:180px 1fr;gap:70px;border-top:1px solid var(--line);padding-top:46px}
+    .section-index{color:#aaa4ae;font-size:7px;font-weight:900;letter-spacing:1.4px}
+    .statement-copy h2{
+      max-width:940px;margin-top:14px;font-size:clamp(50px,6vw,82px);line-height:.91;letter-spacing:-4.8px
+    }
+    .statement-copy h2 span{color:var(--purple)}
+    .statement-copy p{max-width:760px;margin-top:22px;color:#77717c;font-size:12px;line-height:1.85}
+
+    /* ================= PILLARS ================= */
+    .vision-pillars{padding:115px 0;background:#f7f7f9}
+    .split-head{display:flex;align-items:end;justify-content:space-between;gap:60px}
+    .split-head .desc{margin-top:0;max-width:430px}
+    .pillar-grid{
+      margin-top:50px;display:grid;grid-template-columns:repeat(4,1fr);
+      border-top:1px solid #ddd9e1;border-bottom:1px solid #ddd9e1
+    }
+    .pillar-card{
+      min-height:290px;padding:30px;border-right:1px solid #ddd9e1;
+      display:flex;flex-direction:column;justify-content:flex-end
+    }
+    .pillar-card:last-child{border-right:0}
+    .pillar-card>span{margin-bottom:auto;color:#aaa4ae;font-size:7px;font-weight:900}
+    .pillar-card i{color:var(--purple);font-size:19px}
+    .pillar-card h3{margin-top:24px;font-size:18px}
+    .pillar-card p{margin-top:9px;color:#88828d;font-size:9px;line-height:1.65}
+
+    /* ================= DARK FUTURE ================= */
+    .future-section{padding:120px 0;background:#17171b;color:#fff}
+    .future-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:90px;align-items:start}
+    .future-copy .eyebrow{color:#aa97ff}
+    .future-copy h2{margin-top:14px;font-size:clamp(48px,5.6vw,76px);line-height:.92;letter-spacing:-4px}
+    .future-copy h2 span{color:#aa97ff}
+    .future-copy p{max-width:480px;margin-top:20px;color:#9a949f;font-size:11px;line-height:1.8}
+    .future-list{border-top:1px solid #39353e}
+    .future-row{
+      min-height:105px;display:grid;grid-template-columns:46px 1fr auto;gap:16px;align-items:center;
+      border-bottom:1px solid #39353e
+    }
+    .future-row span{color:#8e7be1;font-size:7px;font-weight:900}
+    .future-row strong{display:block;font-size:15px}
+    .future-row small{display:block;margin-top:5px;color:#88818c;font-size:8px}
+    .future-row i{color:#aa97ff}
+
+    /* ================= IMPACT FLOW ================= */
+    .vision-flow{padding:115px 0;background:#fff}
+    .flow-grid{
+      margin-top:50px;display:grid;grid-template-columns:repeat(5,1fr);
+      border-top:1px solid var(--line);border-bottom:1px solid var(--line)
+    }
+    .flow-step{min-height:230px;padding:28px;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:flex-end}
+    .flow-step:last-child{border-right:0}
+    .flow-step span{color:#aaa4ae;font-size:7px;font-weight:900}
+    .flow-step strong{margin-top:12px;font-size:16px}
+    .flow-step p{margin-top:8px;color:#8b8590;font-size:8px;line-height:1.55}
+    .flow-step.active{background:#f4f0ff}
+    .flow-step.active strong{color:var(--purple)}
+
+    /* ================= CTA ================= */
+    .vision-cta{padding:0 0 85px;background:#fff}
+    .vision-cta-box{
+      min-height:400px;padding:60px;display:grid;grid-template-columns:1fr auto;gap:50px;align-items:center;
+      border-radius:30px;background:#f2effc;position:relative;overflow:hidden
+    }
+    .vision-cta-box:before{
+      content:"";position:absolute;width:470px;height:470px;border-radius:50%;
+      right:-210px;top:-230px;background:#e7e0ff
+    }
+    .vision-cta-copy,.vision-cta-action{position:relative;z-index:2}
+    .vision-cta h2{max-width:850px;margin-top:14px;font-size:clamp(48px,5.8vw,78px);line-height:.92;letter-spacing:-4.3px}
+    .vision-cta h2 span{color:var(--purple)}
+    .vision-cta p{max-width:610px;margin-top:17px;color:#736f7a;font-size:11px;line-height:1.8}
+
+    /* ================= FOOTER ================= */
+    .trivox-footer{position:relative;width:100%;background:#f0ecfb;color:#111;overflow:hidden}
+    .footer-inner{width:100%;max-width:1280px;margin:auto;padding:100px 7% 0}
+    .footer-opening{min-height:330px;display:grid;grid-template-columns:180px 1fr 150px;gap:50px;align-items:center}
+    .footer-opening-small span{display:block;margin-bottom:12px;color:#7450e8;font-size:9px;font-weight:900;letter-spacing:2px}
+    .footer-opening-small small{color:#9b97a4;font-size:8px;font-weight:800;letter-spacing:1.6px}
+    .footer-opening h2{max-width:700px;margin:0;font-size:clamp(60px,7.5vw,105px);line-height:.84;letter-spacing:-7px;font-weight:900}
+    .footer-opening h2 strong{display:block;color:#7450e8}
+    .footer-start-btn{width:130px;height:130px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;border-radius:50%;background:#7450e8;color:#fff;font-size:12px;font-weight:800;transition:.4s ease}
+    .footer-start-btn i{font-style:normal;font-size:22px}
+    .footer-start-btn:hover{transform:rotate(-7deg) scale(1.06);border-radius:38% 62% 45% 55%}
+    .footer-navigation{display:grid;grid-template-columns:repeat(4,1fr);gap:60px;margin-top:90px;padding-top:45px;border-top:1px solid rgba(17,17,17,.10)}
+    .footer-nav-group{display:flex;flex-direction:column;align-items:flex-start}
+    .footer-label{display:block;margin-bottom:25px;color:#aaa5b0;font-size:8px;font-weight:900;letter-spacing:1.8px}
+    .footer-nav-group a{display:inline-block;margin-bottom:11px;color:#47444c;font-size:13px;font-weight:650;transition:.25s ease}
+    .footer-nav-group a:hover{color:#7450e8;transform:translateX(8px)}
+    .footer-brand{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-top:105px;overflow:hidden}
+    .footer-brand-word{margin-left:-8px;font-size:clamp(110px,19vw,270px);line-height:.68;letter-spacing:-17px;font-weight:900;color:#d8d0ef;white-space:nowrap}
+    .footer-brand-side{flex:0 0 150px;margin-bottom:5px}
+    .footer-brand-side span{display:block;margin-bottom:14px;color:#7450e8;font-size:8px;font-weight:900;letter-spacing:2px}
+    .footer-brand-side p{margin:0;color:#55515d;font-size:14px;line-height:1.5;font-weight:700}
+    .footer-bottom{min-height:90px;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;gap:25px;border-top:1px solid rgba(17,17,17,.10);margin-top:65px}
+    .footer-bottom p,.footer-bottom-center,.footer-bottom a{margin:0;color:#8e8995;font-size:8px;font-weight:800;letter-spacing:1.4px}
+    .footer-bottom-center{text-align:center}
+    .footer-bottom a{display:flex;align-items:center;justify-content:flex-end;gap:8px}
+    .footer-bottom a span{font-size:15px;color:#7450e8}
+    .footer-motion{width:100%;overflow:hidden;padding:20px 0;background:#7450e8}
+    .footer-motion-track{width:max-content;white-space:nowrap;color:#fff;font-size:18px;font-weight:900;letter-spacing:1.5px;animation:footerMove 22s linear infinite}
+    @keyframes footerMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    /* ================= RESPONSIVE ================= */
+    @media(max-width:1000px){
+      .navbar{height:70px;padding:0 18px}.logo{font-size:18px}.login-btn,.get-started{display:none}.menu-toggle{display:flex}
+      .nav-menu{position:absolute;top:70px;left:0;width:100%;max-height:calc(100vh - 70px);overflow:auto;display:flex;flex-direction:column;align-items:stretch;padding:12px 14px 18px;background:#fff;transform:translateY(-120%);opacity:0;pointer-events:none;transition:.3s}
+      .nav-menu.active{transform:translateY(0);opacity:1;pointer-events:auto}.nav-item{width:100%}.nav-link{width:100%;padding:15px 13px;justify-content:space-between}
+      .dropdown{position:static;width:100%;max-height:0;overflow:hidden;padding:0 8px;opacity:1;visibility:visible;transform:none;background:#fafafa;box-shadow:none;border:none;transition:.3s}
+      .nav-item.open>.dropdown{max-height:1000px;padding:8px}.mega-dropdown{display:block}
+      .vision-page{padding-top:70px}
+      .future-grid{grid-template-columns:1fr}
+      .pillar-grid{grid-template-columns:1fr 1fr}
+      .pillar-card:nth-child(2){border-right:0}
+      .pillar-card:nth-child(-n+2){border-bottom:1px solid #ddd9e1}
+      .flow-grid{grid-template-columns:1fr 1fr}
+      .flow-step:nth-child(even){border-right:0}
+      .flow-step{border-bottom:1px solid var(--line)}
+      .vision-cta-box{grid-template-columns:1fr}
+      .footer-inner{padding:85px 6% 0}.footer-opening{grid-template-columns:1fr;gap:35px}
+      .footer-start-btn{width:110px;height:110px}.footer-navigation{grid-template-columns:1fr 1fr;gap:50px}
+      .footer-brand-word{font-size:17vw;letter-spacing:-11px}
+    }
+
+    @media(max-width:600px){
+      .navbar{height:66px;padding:0 13px}.logo{font-size:16px}.nav-menu{top:66px;max-height:calc(100vh - 66px);padding:10px}
+      .nav-link{padding:14px 11px;font-size:13px}.vision-page{padding-top:66px}.wrap{width:calc(100% - 28px)}
+      .vision-hero{min-height:650px}
+      .vision-hero h1{font-size:55px;line-height:.9;letter-spacing:-4px}
+      .vision-hero p{font-size:12px;line-height:1.7}
+      .hero-actions{flex-direction:column}.btn-dark,.btn-light{width:100%}
+      .vision-ring{width:470px;height:470px}.vision-symbol{width:48px;height:48px;border-radius:14px;font-size:19px}
+      .statement-grid{grid-template-columns:1fr;gap:20px}
+      .vision-statement,.vision-pillars,.future-section,.vision-flow{padding:75px 0}
+      .statement-copy h2,.future-copy h2{font-size:41px;letter-spacing:-2.8px}
+      .split-head{display:block}.split-head .desc{margin-top:16px}
+      .pillar-grid,.flow-grid{grid-template-columns:1fr}
+      .pillar-card,.flow-step{min-height:180px;border-right:0;border-bottom:1px solid #ddd9e1}
+      .future-grid{gap:45px}
+      .future-row{min-height:90px}
+      .vision-cta{padding-bottom:45px}.vision-cta-box{min-height:auto;padding:35px 22px;border-radius:20px}
+      .vision-cta h2{font-size:40px;letter-spacing:-2.8px}
+      .footer-inner{padding:65px 18px 0}.footer-opening{min-height:auto;display:block}.footer-opening-small{margin-bottom:38px}
+      .footer-opening h2{max-width:340px;font-size:54px;line-height:.87;letter-spacing:-4px}.footer-start-btn{width:95px;height:95px;margin-top:38px;font-size:10px}
+      .footer-navigation{grid-template-columns:1fr 1fr;gap:45px 25px;margin-top:75px;padding-top:35px}
+      .footer-label{margin-bottom:18px;font-size:7px}.footer-nav-group a{margin-bottom:10px;font-size:11.5px}
+      .footer-brand{display:block;margin-top:80px}.footer-brand-word{margin-left:-5px;font-size:25vw;line-height:.72;letter-spacing:-7px;white-space:nowrap}
+      .footer-brand-side{width:auto;margin-top:40px}.footer-bottom{min-height:auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;padding:30px 0}
+      .footer-bottom-center{width:100%;order:3;text-align:left}.footer-motion{padding:16px 0}.footer-motion-track{font-size:14px}
+    }
+  </style>
+
+<style>
+/* =========================================================
+   CLEAN VISION HERO
+========================================================= */
+
+.vision-hero-clean{
+  min-height:720px;
+  display:flex;
+  align-items:center;
+  padding:88px 0 96px;
+  background:
+    radial-gradient(circle at 82% 16%,rgba(116,80,232,.09),transparent 24%),
+    linear-gradient(180deg,#ffffff 0%,#faf9fd 100%);
+}
+
+.vision-hero-clean-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(420px,.9fr);
+  gap:72px;
+  align-items:center;
+}
+
+.vision-hero-clean-copy{
+  max-width:680px;
+}
+
+.vision-hero-clean-copy h1{
+  margin-top:18px;
+  font-size:clamp(62px,6.7vw,94px);
+  line-height:.89;
+  letter-spacing:-5.6px;
+  font-weight:900;
+}
+
+.vision-hero-clean-copy h1 span{
+  display:block;
+  color:#7450e8;
+}
+
+.vision-hero-clean-copy > p{
+  max-width:610px;
+  margin-top:24px;
+  color:#74717a;
+  font-size:14px;
+  line-height:1.8;
+}
+
+.hero-actions-clean{
+  justify-content:flex-start;
+  margin-top:30px;
+}
+
+.vision-hero-points{
+  margin-top:36px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border-top:1px solid #e2dee6;
+  border-bottom:1px solid #e2dee6;
+}
+
+.vision-hero-points div{
+  padding:18px 16px;
+  border-right:1px solid #e2dee6;
+}
+
+.vision-hero-points div:last-child{
+  border-right:0;
+}
+
+.vision-hero-points strong{
+  display:block;
+  font-size:12px;
+  color:#17171b;
+}
+
+.vision-hero-points span{
+  display:block;
+  margin-top:5px;
+  color:#97919b;
+  font-size:8px;
+}
+
+.vision-hero-image-card{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.vision-hero-image{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:28px;
+  box-shadow:0 28px 70px rgba(31,24,48,.10);
+}
+
+@media(max-width:1000px){
+  .vision-hero-clean-grid{
+    grid-template-columns:1fr;
+    gap:46px;
+  }
+
+  .vision-hero-clean-copy{
+    max-width:none;
+  }
+
+  .vision-hero-image-card{
+    max-width:760px;
+    margin:auto;
+  }
+}
+
+@media(max-width:600px){
+  .vision-hero-clean{
+    min-height:auto;
+    padding:58px 0 68px;
+  }
+
+  .vision-hero-clean-grid{
+    gap:34px;
+  }
+
+  .vision-hero-clean-copy h1{
+    font-size:48px;
+    line-height:.92;
+    letter-spacing:-3.5px;
+  }
+
+  .vision-hero-clean-copy > p{
+    font-size:12px;
+    line-height:1.7;
+  }
+
+  .hero-actions-clean{
+    flex-direction:column;
+  }
+
+  .vision-hero-points{
+    grid-template-columns:1fr;
+  }
+
+  .vision-hero-points div{
+    border-right:0;
+    border-bottom:1px solid #e2dee6;
+  }
+
+  .vision-hero-points div:last-child{
+    border-bottom:0;
+  }
+
+  .vision-hero-image{
+    border-radius:18px;
+  }
+}
+</style>
+
+
+<style>
+/* FINAL CLEAN FIRST SECTION */
+.vision-hero-final{
+  min-height:700px;
+  display:flex;
+  align-items:center;
+  padding:92px 0 100px;
+  background:
+    radial-gradient(circle at 78% 15%,rgba(116,80,232,.10),transparent 24%),
+    linear-gradient(180deg,#fff 0%,#faf9fd 100%);
+}
+.vision-final-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(430px,.92fr);
+  gap:78px;
+  align-items:center;
+}
+.vision-final-copy{max-width:690px}
+.vision-final-copy h1{
+  margin-top:18px;
+  font-size:clamp(60px,6.5vw,92px);
+  line-height:.9;
+  letter-spacing:-5.5px;
+  font-weight:900;
+}
+.vision-final-copy h1 span{
+  display:block;
+  color:#7450e8;
+}
+.vision-final-copy>p{
+  max-width:620px;
+  margin-top:24px;
+  color:#716d77;
+  font-size:14px;
+  line-height:1.8;
+}
+.vision-final-actions{
+  justify-content:flex-start;
+  margin-top:30px;
+}
+.vision-final-meta{
+  margin-top:36px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border-top:1px solid #e3dfe7;
+  border-bottom:1px solid #e3dfe7;
+}
+.vision-final-meta>div{
+  padding:18px 14px;
+  border-right:1px solid #e3dfe7;
+}
+.vision-final-meta>div:last-child{border-right:0}
+.vision-final-meta span{
+  display:block;
+  color:#aaa4ae;
+  font-size:7px;
+  font-weight:900;
+}
+.vision-final-meta strong{
+  display:block;
+  margin-top:6px;
+  font-size:11px;
+}
+.vision-final-visual{
+  position:relative;
+}
+.vision-visual-main{
+  overflow:hidden;
+  border-radius:26px;
+  box-shadow:0 28px 70px rgba(31,24,48,.11);
+}
+.vision-visual-main img{
+  width:100%;
+  display:block;
+}
+.vision-visual-note{
+  width:78%;
+  margin:-28px auto 0;
+  position:relative;
+  z-index:2;
+  padding:18px 20px;
+  border-radius:15px;
+  background:#fff;
+  border:1px solid #e7e3eb;
+  box-shadow:0 16px 40px rgba(31,24,48,.08);
+}
+.vision-visual-note span{
+  display:block;
+  color:#7450e8;
+  font-size:7px;
+  font-weight:900;
+  letter-spacing:1.3px;
+}
+.vision-visual-note strong{
+  display:block;
+  margin-top:7px;
+  font-size:11px;
+}
+
+/* IMAGE CONTENT INSIDE PREVIOUS EMPTY CARDS */
+.pillar-img{
+  width:100%;
+  height:105px;
+  object-fit:cover;
+  display:block;
+  margin:22px 0 0;
+  border-radius:14px;
+}
+.flow-img{
+  width:100%;
+  height:86px;
+  object-fit:cover;
+  display:block;
+  margin:18px 0 4px;
+  border-radius:12px;
+}
+.pillar-card{
+  justify-content:flex-start!important;
+}
+.pillar-card i{
+  margin-top:18px!important;
+}
+.pillar-card h3{
+  margin-top:18px!important;
+}
+.flow-step{
+  justify-content:flex-start!important;
+}
+.flow-step strong{
+  margin-top:14px!important;
+}
+
+@media(max-width:1000px){
+  .vision-final-grid{
+    grid-template-columns:1fr;
+    gap:48px;
+  }
+  .vision-final-copy{max-width:none}
+  .vision-final-visual{
+    max-width:760px;
+    margin:auto;
+  }
+}
+@media(max-width:600px){
+  .vision-hero-final{
+    min-height:auto;
+    padding:58px 0 70px;
+  }
+  .vision-final-grid{gap:34px}
+  .vision-final-copy h1{
+    font-size:48px;
+    line-height:.92;
+    letter-spacing:-3.5px;
+  }
+  .vision-final-copy>p{
+    font-size:12px;
+    line-height:1.7;
+  }
+  .vision-final-actions{flex-direction:column}
+  .vision-final-meta{grid-template-columns:1fr}
+  .vision-final-meta>div{
+    border-right:0;
+    border-bottom:1px solid #e3dfe7;
+  }
+  .vision-final-meta>div:last-child{border-bottom:0}
+  .vision-visual-main{border-radius:18px}
+  .vision-visual-note{
+    width:88%;
+    margin-top:-20px;
+  }
+  .pillar-img{height:120px}
+  .flow-img{height:100px}
+}
+</style>
+
+</head>
+
+<body id="top">
+
+<nav class="navbar">
+  <a href="index.html" class="logo">
+    <span class="logo-main">TRIVOX</span>
+    <span class="logo-impact">AI IMPACT</span>
+  </a>
+
+  <ul class="nav-menu" id="navMenu">
+    <li class="nav-item active">
+      <div class="nav-link">Company <span class="arrow"></span></div>
+      <div class="dropdown">
+        <a href="about.html">About TRIVOX</a>
+        <a href="mission.html">Our Mission</a>
+        <a href="vision.html" class="current">Our Vision</a>
+        <a href="leader.html">Leadership</a>
+        <a href="team.html">Our Team</a>
+        <a href="partners.html">Partners</a>
+        <a href="impact.html">Impact</a>
+      </div>
+    </li>
+
+    <li class="nav-item">
+      <div class="nav-link">Learning <span class="arrow"></span></div>
+      <div class="dropdown mega-dropdown">
+        <a class="mega-box" href="learning/ailearning.html"><strong>AI Learning</strong><p>Learn modern AI concepts.</p></a>
+        <a class="mega-box" href="learning/programming.html"><strong>Programming</strong><p>Logic, code and problem solving.</p></a>
+        <a class="mega-box" href="learning/webdevelopment.html"><strong>Web Development</strong><p>Build modern websites.</p></a>
+        <a class="mega-box" href="learning/app-development.html"><strong>App Development</strong><p>Create practical applications.</p></a>
+        <a class="mega-box" href="learning/datascience.html"><strong>Data Science</strong><p>Work with data and insights.</p></a>
+        <a class="mega-box" href="learning/cyber-security.html"><strong>Cyber Security</strong><p>Learn digital security.</p></a>
+      </div>
+    </li>
+
+    <li class="nav-item">
+      <div class="nav-link">Programs <span class="arrow"></span></div>
+      <div class="dropdown">
+        <a href="programs/student-programs.html">Student Programs</a>
+        <a href="programs/college-programs.html">College Programs</a>
+        <a href="programs/internships.html">Internships</a>
+        <a href="programs/workshops.html">Workshops</a>
+        <a href="programs/bootcamps.html">Bootcamps</a>
+        <a href="programs/career-programs.html">Career Programs</a>
+      </div>
+    </li>
+
+    <li class="nav-item">
+      <div class="nav-link">Solutions <span class="arrow"></span></div>
+      <div class="dropdown mega-dropdown">
+        <a class="mega-box" href="solutions/for-students.html"><strong>For Students</strong><p>Skills, projects and career support.</p></a>
+        <a class="mega-box" href="solutions/for-colleges.html"><strong>For Colleges</strong><p>Industry-ready learning programs.</p></a>
+        <a class="mega-box" href="solutions/for-schools.html"><strong>For Schools</strong><p>Modern technology and AI learning.</p></a>
+        <a class="mega-box" href="solutions/for-companies.html"><strong>For Companies</strong><p>Training and technology solutions.</p></a>
+      </div>
+    </li>
+
+    <li class="nav-item">
+      <div class="nav-link">Resources <span class="arrow"></span></div>
+      <div class="dropdown">
+        <a href="resources/blogs.html">Blogs</a>
+        <a href="resources/tutorials.html">Tutorials</a>
+        <a href="resources/student-projects.html">Student Projects</a>
+        <a href="resources/events.html">Events</a>
+        <a href="resources/faqs.html">FAQs</a>
+      </div>
+    </li>
+
+    <li class="nav-item">
+      <div class="nav-link">Careers <span class="arrow"></span></div>
+      <div class="dropdown">
+        <a href="careers/open-positions.html">Open Positions</a>
+        <a href="careers/internships.html">Internships</a>
+        <a href="careers/campus-hiring.html">Campus Hiring</a>
+        <a href="careers/join-team.html">Join Our Team</a>
+        <a href="careers/life-at-trivox.html">Life at TRIVOX</a>
+      </div>
+    </li>
+
+    <li class="nav-item"><a class="nav-link" href="contact/contact.html">Contact</a></li>
+  </ul>
+
+  <div class="nav-actions">
+    <div class="signin-dropdown-wrap">
+      <button class="login-btn signin-main-btn">Sign In <span class="arrow"></span></button>
+      <div class="signin-dropdown">
+        <a href="documentary-login.html"><i class="fa-solid fa-film"></i><div><strong>Documentary</strong><span>Challenge login</span></div></a>
+        <a href="student-login.html"><i class="fa-solid fa-user-graduate"></i><div><strong>Student Login</strong><span>Learning dashboard</span></div></a>
+      </div>
+    </div>
+    <a href="course.html" class="get-started">Get Started</a>
+    <button class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<main class="vision-page">
+
+  
+  
+  <section class="vision-hero vision-hero-final">
+    <div class="wrap vision-final-grid">
+
+      <div class="vision-final-copy">
+        <div class="eyebrow">OUR VISION</div>
+
+        <h1>
+          A future where learning
+          <span>creates real capability.</span>
+        </h1>
+
+        <p>
+          TRIVOX AI IMPACT envisions a learning culture where students do more than consume information.
+          They learn to think clearly, work with technology responsibly, build practical solutions and create
+          outcomes they can confidently show.
+        </p>
+
+        <div class="hero-actions vision-final-actions">
+          <a href="#vision-statement" class="btn-dark">
+            Explore Our Vision
+            <i class="fa-solid fa-arrow-down"></i>
+          </a>
+
+          <a href="programs/student-programs.html" class="btn-light">
+            View Programs
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <div class="vision-final-meta">
+          <div>
+            <span>01</span>
+            <strong>Think Clearly</strong>
+          </div>
+          <div>
+            <span>02</span>
+            <strong>Build Practically</strong>
+          </div>
+          <div>
+            <span>03</span>
+            <strong>Create Impact</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="vision-final-visual">
+        <div class="vision-visual-main">
+          <img
+            alt="TRIVOX future learning vision"
+            src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 640'%3E%3Crect width='900' height='640' rx='36' fill='%2317171b'/%3E%3Ccircle cx='450' cy='320' r='195' fill='none' stroke='%237450e8' stroke-opacity='.28' stroke-width='2'/%3E%3Ccircle cx='450' cy='320' r='145' fill='none' stroke='%23a994ff' stroke-opacity='.22' stroke-width='2' stroke-dasharray='8 10'/%3E%3Ccircle cx='450' cy='320' r='95' fill='%237450e8'/%3E%3Ctext x='450' y='307' text-anchor='middle' font-family='Arial' font-size='20' font-weight='700' fill='white'%3ETRIVOX%3C/text%3E%3Ctext x='450' y='337' text-anchor='middle' font-family='Arial' font-size='12' font-weight='700' fill='%23ddd3ff'%3EVISION%3C/text%3E%3Crect x='80' y='92' width='180' height='92' rx='18' fill='%23242229' stroke='%2338343f'/%3E%3Ctext x='112' y='128' font-family='Arial' font-size='11' font-weight='700' fill='%23a994ff'%3ETHINK%3C/text%3E%3Crect x='112' y='145' width='102' height='8' rx='4' fill='%236d6874'/%3E%3Crect x='640' y='92' width='180' height='92' rx='18' fill='%23242229' stroke='%2338343f'/%3E%3Ctext x='672' y='128' font-family='Arial' font-size='11' font-weight='700' fill='%23a994ff'%3EBUILD%3C/text%3E%3Crect x='672' y='145' width='102' height='8' rx='4' fill='%236d6874'/%3E%3Crect x='80' y='456' width='180' height='92' rx='18' fill='%23242229' stroke='%2338343f'/%3E%3Ctext x='112' y='492' font-family='Arial' font-size='11' font-weight='700' fill='%23a994ff'%3EAPPLY%3C/text%3E%3Crect x='112' y='509' width='102' height='8' rx='4' fill='%236d6874'/%3E%3Crect x='640' y='456' width='180' height='92' rx='18' fill='%23242229' stroke='%2338343f'/%3E%3Ctext x='672' y='492' font-family='Arial' font-size='11' font-weight='700' fill='%23a994ff'%3EIMPACT%3C/text%3E%3Crect x='672' y='509' width='102' height='8' rx='4' fill='%236d6874'/%3E%3Cpath d='M260 138 C340 150 360 220 390 250' fill='none' stroke='%237450e8' stroke-width='3'/%3E%3Cpath d='M640 138 C560 150 540 220 510 250' fill='none' stroke='%237450e8' stroke-width='3'/%3E%3Cpath d='M260 502 C340 490 360 420 390 390' fill='none' stroke='%237450e8' stroke-width='3'/%3E%3Cpath d='M640 502 C560 490 540 420 510 390' fill='none' stroke='%237450e8' stroke-width='3'/%3E%3C/svg%3E"
+          >
+        </div>
+
+        <div class="vision-visual-note">
+          <span>VISION FRAMEWORK</span>
+          <strong>Learning → Capability → Opportunity → Impact</strong>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <section class="vision-statement" id="vision-statement">
+    <div class="wrap statement-grid">
+      <div class="section-index">01 / OUR VISION</div>
+      <div class="statement-copy">
+        <div class="eyebrow">THE FUTURE WE WANT TO BUILD</div>
+        <h2>Learning should create people who can <span>think, build and lead.</span></h2>
+        <p>TRIVOX AI IMPACT is working toward a learning ecosystem where technology is not treated as a subject to memorize, but as a practical tool for solving problems, creating opportunities and producing meaningful outcomes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="vision-pillars">
+    <div class="wrap">
+      <div class="split-head">
+        <div>
+          <div class="eyebrow">VISION PILLARS</div>
+          <h2 class="title">What our future is <span>built on.</span></h2>
+        </div>
+        <p class="desc">Our vision connects learning, technology, responsibility and opportunity into one clear direction.</p>
+      </div>
+
+      <div class="pillar-grid">
+        <div class="pillar-card">
+          <span>01</span><img class="pillar-img" alt="Independent thinking" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 150'%3E%3Crect width='300' height='150' rx='18' fill='%23f1edff'/%3E%3Ccircle cx='150' cy='75' r='38' fill='%237450e8'/%3E%3Cpath d='M132 77c0-15 10-27 24-27s24 12 24 27c0 11-6 19-15 24v12h-18v-12c-9-5-15-13-15-24Z' fill='white'/%3E%3C/svg%3E">
+          <i class="fa-solid fa-brain"></i>
+          <h3>Independent Thinking</h3>
+          <p>Learners should question, analyze and make better decisions instead of only following instructions.</p>
+        </div>
+        <div class="pillar-card">
+          <span>02</span><img class="pillar-img" alt="Practical capability" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 150'%3E%3Crect width='300' height='150' rx='18' fill='%23f1edff'/%3E%3Crect x='92' y='40' width='116' height='70' rx='10' fill='%2317171b'/%3E%3Cpath d='M120 75l18-15M120 75l18 15M180 60l18 15-18 15' stroke='%23a994ff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+          <i class="fa-solid fa-laptop-code"></i>
+          <h3>Practical Capability</h3>
+          <p>Knowledge should become visible through projects, problem solving and real application.</p>
+        </div>
+        <div class="pillar-card">
+          <span>03</span><img class="pillar-img" alt="Responsible technology" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 150'%3E%3Crect width='300' height='150' rx='18' fill='%23f1edff'/%3E%3Cpath d='M150 30l52 22v35c0 34-22 52-52 65-30-13-52-31-52-65V52l52-22Z' fill='%237450e8'/%3E%3Cpath d='M129 78l15 15 30-34' fill='none' stroke='white' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+          <i class="fa-solid fa-compass"></i>
+          <h3>Responsible Technology</h3>
+          <p>Students should understand both the power and responsibility that comes with modern technology.</p>
+        </div>
+        <div class="pillar-card">
+          <span>04</span><img class="pillar-img" alt="Meaningful opportunity" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 150'%3E%3Crect width='300' height='150' rx='18' fill='%23f1edff'/%3E%3Cpath d='M78 108l52-52 34 30 58-62' fill='none' stroke='%237450e8' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M195 24h27v27' fill='none' stroke='%237450e8' stroke-width='10' stroke-linecap='round'/%3E%3C/svg%3E">
+          <i class="fa-solid fa-arrow-up-right-dots"></i>
+          <h3>Meaningful Opportunity</h3>
+          <p>Learning should help students move toward stronger education, career and innovation pathways.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="future-section">
+    <div class="wrap future-grid">
+      <div class="future-copy">
+        <div class="eyebrow">THE FUTURE STATE</div>
+        <h2>From passive learning to <span>active capability.</span></h2>
+        <p>Our long-term direction is simple: learners should be able to show what they understand, what they can create and how they can contribute.</p>
+      </div>
+
+      <div class="future-list">
+        <div class="future-row">
+          <span>01</span>
+          <div><strong>Learn with clarity</strong><small>Understand concepts instead of memorizing them.</small></div>
+          <i class="fa-solid fa-arrow-right"></i>
+        </div>
+        <div class="future-row">
+          <span>02</span>
+          <div><strong>Build with confidence</strong><small>Turn learning into practical projects and solutions.</small></div>
+          <i class="fa-solid fa-arrow-right"></i>
+        </div>
+        <div class="future-row">
+          <span>03</span>
+          <div><strong>Work with responsibility</strong><small>Use technology with awareness, discipline and purpose.</small></div>
+          <i class="fa-solid fa-arrow-right"></i>
+        </div>
+        <div class="future-row">
+          <span>04</span>
+          <div><strong>Create visible impact</strong><small>Use capability to improve opportunities and communities.</small></div>
+          <i class="fa-solid fa-arrow-right"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="vision-flow">
+    <div class="wrap">
+      <div class="eyebrow">VISION IN MOTION</div>
+      <h2 class="title">The path from learning to <span>impact.</span></h2>
+
+      <div class="flow-grid">
+        <div class="flow-step"><span>01</span><img class="flow-img" alt="Curiosity" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 260 130'%3E%3Crect width='260' height='130' rx='16' fill='%23f5f2ff'/%3E%3Ccircle cx='130' cy='65' r='32' fill='%237450e8'/%3E%3Ctext x='130' y='72' text-anchor='middle' font-family='Arial' font-size='18' font-weight='700' fill='white'%3E01%3C/text%3E%3C/svg%3E"><strong>Curiosity</strong><p>Ask better questions and explore what is possible.</p></div>
+        <div class="flow-step"><span>02</span><img class="flow-img" alt="Understanding" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 260 130'%3E%3Crect width='260' height='130' rx='16' fill='%23f5f2ff'/%3E%3Ccircle cx='130' cy='65' r='32' fill='%237450e8'/%3E%3Ctext x='130' y='72' text-anchor='middle' font-family='Arial' font-size='18' font-weight='700' fill='white'%3E02%3C/text%3E%3C/svg%3E"><strong>Understanding</strong><p>Build strong foundations and practical clarity.</p></div>
+        <div class="flow-step"><span>03</span><img class="flow-img" alt="Capability" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 260 130'%3E%3Crect width='260' height='130' rx='16' fill='%23f5f2ff'/%3E%3Ccircle cx='130' cy='65' r='32' fill='%237450e8'/%3E%3Ctext x='130' y='72' text-anchor='middle' font-family='Arial' font-size='18' font-weight='700' fill='white'%3E03%3C/text%3E%3C/svg%3E"><strong>Capability</strong><p>Apply knowledge through tools, tasks and projects.</p></div>
+        <div class="flow-step"><span>04</span><img class="flow-img" alt="Opportunity" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 260 130'%3E%3Crect width='260' height='130' rx='16' fill='%23f5f2ff'/%3E%3Ccircle cx='130' cy='65' r='32' fill='%237450e8'/%3E%3Ctext x='130' y='72' text-anchor='middle' font-family='Arial' font-size='18' font-weight='700' fill='white'%3E04%3C/text%3E%3C/svg%3E"><strong>Opportunity</strong><p>Use skills to access stronger pathways and experiences.</p></div>
+        <div class="flow-step active"><span>05</span><img class="flow-img" alt="Impact" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 260 130'%3E%3Crect width='260' height='130' rx='16' fill='%23f5f2ff'/%3E%3Ccircle cx='130' cy='65' r='32' fill='%237450e8'/%3E%3Ctext x='130' y='72' text-anchor='middle' font-family='Arial' font-size='18' font-weight='700' fill='white'%3E05%3C/text%3E%3C/svg%3E"><strong>Impact</strong><p>Create outcomes that matter beyond the classroom.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="vision-cta">
+    <div class="wrap">
+      <div class="vision-cta-box">
+        <div class="vision-cta-copy">
+          <div class="eyebrow">BUILD THE FUTURE WITH TRIVOX</div>
+          <h2>Let learning become a force for <span>real progress.</span></h2>
+          <p>Work with TRIVOX to create learning experiences that help students build capability, confidence and meaningful direction.</p>
+        </div>
+        <div class="vision-cta-action">
+          <a href="contact/contact.html" class="btn-dark">Start a Conversation <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="trivox-footer">
+  <div class="footer-inner">
+    <div class="footer-opening">
+      <div class="footer-opening-small">
+        <span>TRIVOX AI IMPACT</span>
+        <small>LEAD WITH PURPOSE</small>
+      </div>
+      <h2>Ideas become direction.<strong>Direction becomes impact.</strong></h2>
+      <a href="course.html" class="footer-start-btn"><span>Get Started</span><i>↗</i></a>
+    </div>
+
+    <div class="footer-navigation">
+      <div class="footer-nav-group"><span class="footer-label">01 / COMPANY</span><a href="about.html">About TRIVOX</a><a href="mission.html">Mission</a><a href="vision.html">Vision</a><a href="leader.html">Leadership</a></div>
+      <div class="footer-nav-group"><span class="footer-label">02 / LEARNING</span><a href="learning/ailearning.html">AI Learning</a><a href="learning/programming.html">Programming</a><a href="learning/webdevelopment.html">Web Development</a><a href="learning/datascience.html">Data Science</a></div>
+      <div class="footer-nav-group"><span class="footer-label">03 / PROGRAMS</span><a href="programs/student-programs.html">Student Programs</a><a href="programs/college-programs.html">College Programs</a><a href="programs/internships.html">Internships</a><a href="programs/workshops.html">Workshops</a></div>
+      <div class="footer-nav-group"><span class="footer-label">04 / EXPLORE</span><a href="resources/blogs.html">Blogs</a><a href="resources/student-projects.html">Projects</a><a href="resources/events.html">Events</a><a href="contact/contact.html">Contact</a></div>
+    </div>
+
+    <div class="footer-brand">
+      <div class="footer-brand-word">TRIVOX</div>
+      <div class="footer-brand-side"><span>AI IMPACT</span><p>Think clearly.<br>Lead responsibly.<br>Create impact.</p></div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 TRIVOX AI IMPACT</p>
+      <div class="footer-bottom-center">EDUCATION × TECHNOLOGY × IMPACT</div>
+      <a href="#top">BACK TO TOP <span>↑</span></a>
+    </div>
+  </div>
+
+  <div class="footer-motion">
+    <div class="footer-motion-track">LEAD • LEARN • BUILD • CREATE • GROW • IMPACT • LEAD • LEARN • BUILD • CREATE • GROW • IMPACT •</div>
+  </div>
+</footer>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const navMenu = document.getElementById('navMenu');
+
+  menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+
+  document.querySelectorAll('.nav-item > .nav-link').forEach(link => {
+    link.addEventListener('click', function(e){
+      if(window.innerWidth <= 1000 && this.nextElementSibling?.classList.contains('dropdown')){
+        e.preventDefault();
+        this.parentElement.classList.toggle('open');
+      }
+    });
+  });
+
+  window.addEventListener('scroll', () => {
+    document.querySelector('.navbar').style.boxShadow =
+      window.scrollY > 20 ? '0 8px 30px rgba(0,0,0,.05)' : 'none';
+  });
+</script>
+
+</body>
+</html>
