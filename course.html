@@ -9917,8 +9917,9 @@ function renderFreeCourseCard(
     course.duration || "1 Month";
 
   const isAvailable =
-    String(course.status || "")
-      .toLowerCase() === "active";
+    ["active", "available"].includes(
+      String(course.status || "").trim().toLowerCase()
+    );
 
   const isLocked =
     Boolean(course.is_locked);
@@ -10137,8 +10138,9 @@ function openFreeCourse(courseId){
   }
 
   if(
-    String(course.status || "")
-      .toLowerCase() !== "active"
+    !["active", "available"].includes(
+      String(course.status || "").trim().toLowerCase()
+    )
   ){
     showToast(
       "Free course not available.",
@@ -10874,7 +10876,7 @@ function renderCourseCard(
 
   const isAvailable =
     String(course.status || "")
-      .toLowerCase() === "active";
+      .trim().toLowerCase() === "available";
 
   const fallbackImage =
     getCourseFallbackImage(
@@ -11031,7 +11033,7 @@ function openCourse(courseId){
   const isAvailable =
     String(
       course.status || ""
-    ).toLowerCase() === "active";
+    ).trim().toLowerCase() === "available";
 
   if(!isAvailable){
 
