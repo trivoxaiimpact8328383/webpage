@@ -11285,7 +11285,7 @@ async function sendCourseEnrollmentEmailNotification(course, isFreeCourse, activ
 
 /* ===== COURSE ENROLLMENT ===== */
 
-async function handleCourseEnroll(courseId, isFreeCourse, button){
+async function originalHandleCourseEnroll(courseId, isFreeCourse, button){
 
   const savedUser = getSavedCourseUser();
   const activeUser = currentDatabaseUser || savedUser;
@@ -15620,6 +15620,112 @@ async function sendCourseCompletionEmailNotification(course, courseType, activeU
     }
   );
 })();
+</script>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+const TRIVOX_PAYMENT_API = "https://payment-czhd.onrender.com";
+let trivoxPaymentBusy = false;
+
+async function handleCourseEnroll(courseId, isFreeCourse, button) {
+  if (isFreeCourse) {
+    return originalHandleCourseEnroll(courseId, true, button);
+  }
+  if (trivoxPaymentBusy) return;
+  const savedUser = getSavedCourseUser();
+  const activeUser = currentDatabaseUser || savedUser;
+  if (!savedUser || !activeUser?.id ||
+      localStorage.getItem("trivoxCourseLoggedIn") !== "true") {
+    closeCourseDetail();
+    showAuthPage();
+    showToast("Please login to enroll in this course.", "error");
+    return;
+  }
+  const course = currentCourseData.find(c => Number(c.id) === Number(courseId));
+  if (!course) return showToast("Course not available.", "error");
+  const status = getCourseEnrollmentStatus("paid", courseId);
+  if (status === "enrolled" || status === "completed") {
+    return showToast("You are already enrolled in this course.");
+  }
+  if (typeof Razorpay === "undefined") {
+    return showToast("Payment gateway could not load. Please try again.", "error");
+  }
+  trivoxPaymentBusy = true;
+  const originalText = button?.innerHTML || "ENROLL";
+  function reset() {
+    trivoxPaymentBusy = false;
+    if (button) {
+      button.disabled = false;
+      button.innerHTML = originalText;
+    }
+  }
+  if (button) {
+    button.disabled = true;
+    button.textContent = "Opening payment...";
+  }
+  try {
+    const orderResponse = await fetch(TRIVOX_PAYMENT_API + "/api/razorpay/course/create-order", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ course_id: Number(courseId) })
+    });
+    const order = await orderResponse.json();
+    if (!orderResponse.ok || !order.success) {
+      throw new Error(order.message || "Unable to create payment order.");
+    }
+    const checkout = new Razorpay({
+      key: order.key,
+      amount: order.amount,
+      currency: order.currency || "INR",
+      order_id: order.order_id,
+      name: "Trivox AI Impact",
+      description: order.course_title || course.title || "Course Enrollment",
+      theme: { color: "#5957e8" },
+      handler: async function (payment) {
+        if (button) {
+          button.disabled = true;
+          button.textContent = "Verifying payment...";
+        }
+        try {
+          const response = await fetch(TRIVOX_PAYMENT_API + "/api/razorpay/course/verify", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              razorpay_order_id: payment.razorpay_order_id,
+              razorpay_payment_id: payment.razorpay_payment_id,
+              razorpay_signature: payment.razorpay_signature
+            })
+          });
+          const result = await response.json();
+          if (!response.ok || !result.success || result.status !== "captured") {
+            throw new Error(result.message || "Payment confirmation pending.");
+          }
+          showToast("Payment successful! ₹" + result.amount);
+          // Server records verified payment in trivox_course_payments.
+          // Course access must be linked to an authenticated user server-side.
+          // Never mark enrollment as paid using browser-only identity.
+        } catch (error) {
+          console.error("Trivox payment verification:", error);
+          showToast((error.message || "Payment verification pending.") +
+            " Check transaction before paying again.", "error");
+        } finally {
+          reset();
+        }
+      },
+      modal: { ondismiss: reset }
+    });
+    checkout.on("payment.failed", function (response) {
+      console.error("Trivox payment failed:", response.error);
+      showToast("Payment failed. Please try again.", "error");
+      reset();
+    });
+    checkout.open();
+  } catch (error) {
+    console.error("Trivox payment start:", error);
+    showToast(error.message || "Unable to start payment.", "error");
+    reset();
+  }
+}
 </script>
 
 </body>
