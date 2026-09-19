@@ -33,14 +33,14 @@ body{
   background:#f4f8f5;
   min-height:100vh;
   display:flex;
-  align-items:center;
   justify-content:center;
+  align-items:center;
   padding:20px;
 }
 
 .payment-card{
   width:100%;
-  max-width:390px;
+  max-width:400px;
   background:white;
   padding:30px 24px;
   border-radius:24px;
@@ -57,54 +57,106 @@ body{
 .tagline{
   font-size:12px;
   color:#777;
-  margin-top:2px;
+  margin-top:3px;
 }
 
-.payment-title{
-  margin-top:30px;
-  font-size:20px;
+.title{
+  font-size:21px;
   font-weight:800;
-  color:#222;
+  margin-top:30px;
 }
 
-.payment-desc{
-  font-size:13px;
+.subtitle{
   color:#777;
+  font-size:13px;
   margin-top:9px;
   line-height:1.6;
 }
 
 .amount-box{
+  margin-top:25px;
   background:#effaf3;
   border:1px solid #d5eddf;
   border-radius:18px;
-  margin-top:25px;
   padding:23px;
 }
 
 .amount-label{
-  color:#65766b;
   font-size:13px;
+  color:#65766b;
 }
 
-.amount{
-  font-size:46px;
+.amount-input-wrap{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-top:12px;
+}
+
+.rupee{
+  font-size:36px;
   font-weight:800;
   color:#087f5b;
-  margin-top:5px;
+}
+
+.amount-input{
+  width:180px;
+  border:0;
+  outline:0;
+  background:transparent;
+  font-family:Inter,sans-serif;
+  font-size:42px;
+  font-weight:800;
+  color:#087f5b;
+  text-align:center;
+}
+
+.amount-input::placeholder{
+  color:#b5d8c4;
+}
+
+.amount-input::-webkit-inner-spin-button,
+.amount-input::-webkit-outer-spin-button{
+  -webkit-appearance:none;
+  margin:0;
+}
+
+.quick-amounts{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:20px;
+}
+
+.quick-amounts button{
+  border:1px solid #d9e9df;
+  background:white;
+  padding:10px 15px;
+  border-radius:10px;
+  font-family:Inter,sans-serif;
+  font-size:13px;
+  font-weight:700;
+  color:#087f5b;
+  cursor:pointer;
+}
+
+.quick-amounts button.active{
+  background:#087f5b;
+  color:white;
 }
 
 .pay-btn{
   width:100%;
-  height:54px;
-  border:0;
+  height:55px;
+  margin-top:26px;
   background:#087f5b;
+  border:0;
+  border-radius:14px;
   color:white;
   font-family:Inter,sans-serif;
   font-size:16px;
   font-weight:700;
-  border-radius:14px;
-  margin-top:25px;
   cursor:pointer;
 }
 
@@ -116,53 +168,59 @@ body{
 .secure{
   font-size:12px;
   color:#888;
-  margin-top:17px;
+  margin-top:18px;
 }
 
 .success-box{
   display:none;
-  margin-top:25px;
+  margin-top:28px;
   padding:25px 15px;
   background:#effaf3;
   border-radius:18px;
-  text-align:center;
 }
 
 .success-icon{
   width:70px;
   height:70px;
   background:#087f5b;
-  border-radius:50%;
   color:white;
+  border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
   font-size:36px;
-  margin:0 auto 15px;
+  margin:0 auto 16px;
 }
 
 .success-title{
-  font-size:21px;
+  font-size:22px;
   font-weight:800;
   color:#087f5b;
 }
 
-.success-text{
-  font-size:14px;
+.success-amount{
+  font-size:28px;
+  font-weight:800;
+  margin-top:13px;
+}
+
+.success-note{
+  font-size:13px;
   color:#555;
-  margin-top:10px;
+  margin-top:8px;
 }
 
 .transaction{
+  margin-top:20px;
   font-size:11px;
-  color:#555;
-  margin-top:15px;
+  color:#666;
   overflow-wrap:anywhere;
-  line-height:1.8;
+  line-height:1.9;
+  white-space:pre-line;
 }
 
-.status-message{
-  margin-top:16px;
+.status{
+  margin-top:18px;
   font-size:13px;
   color:#b45309;
   line-height:1.6;
@@ -186,43 +244,79 @@ body{
 
   <div id="paymentSection">
 
-    <div class="payment-title">
+    <div class="title">
       Complete Your Payment
     </div>
 
-    <div class="payment-desc">
-      Secure payment powered by Razorpay
+    <div class="subtitle">
+      Enter the amount you want to pay
     </div>
 
     <div class="amount-box">
 
       <div class="amount-label">
-        Total Amount
+        Enter Amount
       </div>
 
-      <div class="amount">
-        ₹1.00
+      <div class="amount-input-wrap">
+
+        <span class="rupee">
+          ₹
+        </span>
+
+        <input
+          type="number"
+          id="amountInput"
+          class="amount-input"
+          value="1"
+          min="1"
+          max="1000000"
+          step="0.01"
+          inputmode="decimal"
+          oninput="updateAmount()"
+        >
+
       </div>
 
     </div>
 
+    <div class="quick-amounts">
+
+      <button onclick="setAmount(1)">
+        ₹1
+      </button>
+
+      <button onclick="setAmount(100)">
+        ₹100
+      </button>
+
+      <button onclick="setAmount(200)">
+        ₹200
+      </button>
+
+      <button onclick="setAmount(500)">
+        ₹500
+      </button>
+
+    </div>
+
     <button
-      class="pay-btn"
       id="payButton"
+      class="pay-btn"
       onclick="startPayment()"
     >
-      Pay ₹1
+      Pay ₹1.00
     </button>
 
     <div class="secure">
-      Secure payment • UPI • Cards
+      Secure payment powered by Razorpay
     </div>
 
   </div>
 
   <div
-    class="success-box"
     id="successBox"
+    class="success-box"
   >
 
     <div class="success-icon">
@@ -233,8 +327,13 @@ body{
       Payment Successful!
     </div>
 
-    <div class="success-text">
-      ₹1.00 paid successfully
+    <div
+      class="success-amount"
+      id="successAmount"
+    ></div>
+
+    <div class="success-note">
+      Your payment has been received
     </div>
 
     <div
@@ -245,7 +344,7 @@ body{
   </div>
 
   <div
-    class="status-message"
+    class="status"
     id="statusMessage"
     role="status"
   ></div>
@@ -254,9 +353,9 @@ body{
 
 <script>
 
-/* ===================================
-   CEZOO RAZORPAY LIVE PAYMENT
-=================================== */
+/* =====================================
+   CONFIGURATION
+===================================== */
 
 const API =
   "https://payment-czhd.onrender.com";
@@ -264,57 +363,130 @@ const API =
 const RAZORPAY_KEY =
   "rzp_live_TdnkHC6KB6wZYP";
 
+const amountInput =
+  document.getElementById(
+    "amountInput"
+  );
+
 const payButton =
-  document.getElementById("payButton");
+  document.getElementById(
+    "payButton"
+  );
 
 const statusMessage =
-  document.getElementById("statusMessage");
+  document.getElementById(
+    "statusMessage"
+  );
 
-const successBox =
-  document.getElementById("successBox");
+let paymentStarted = false;
 
-const paymentSection =
-  document.getElementById("paymentSection");
+/* =====================================
+   FORMAT AMOUNT
+===================================== */
 
-const transactionDetails =
-  document.getElementById("transactionDetails");
+function formatAmount(value){
 
-/* ===================================
+  return Number(value).toLocaleString(
+    "en-IN",
+    {
+      minimumFractionDigits:2,
+      maximumFractionDigits:2
+    }
+  );
+
+}
+
+/* =====================================
+   SET AMOUNT
+===================================== */
+
+function setAmount(value){
+
+  amountInput.value = value;
+
+  updateAmount();
+
+}
+
+/* =====================================
+   UPDATE PAYMENT BUTTON
+===================================== */
+
+function updateAmount(){
+
+  const amount =
+    Number(amountInput.value);
+
+  if(
+    !Number.isFinite(amount) ||
+    amount < 1 ||
+    amount > 1000000
+  ){
+
+    payButton.textContent =
+      "Enter Valid Amount";
+
+    payButton.disabled = true;
+
+    return;
+
+  }
+
+  payButton.disabled =
+    paymentStarted;
+
+  payButton.textContent =
+    "Pay ₹" + formatAmount(amount);
+
+}
+
+/* =====================================
    SHOW MESSAGE
-=================================== */
+===================================== */
 
 function showMessage(message){
 
-  statusMessage.textContent = message;
+  statusMessage.textContent =
+    message;
 
 }
 
-/* ===================================
-   PAYMENT SUCCESS UI
-=================================== */
+/* =====================================
+   SUCCESS UI
+===================================== */
 
 function showSuccess(result){
 
-  paymentSection.style.display = "none";
+  document.getElementById(
+    "paymentSection"
+  ).style.display = "none";
 
-  successBox.style.display = "block";
+  document.getElementById(
+    "successBox"
+  ).style.display = "block";
 
-  showMessage("");
+  document.getElementById(
+    "successAmount"
+  ).textContent =
+    "₹" + formatAmount(result.amount);
 
-  transactionDetails.textContent =
+  document.getElementById(
+    "transactionDetails"
+  ).textContent =
     "Payment ID: " +
     result.payment_id +
     "\nOrder ID: " +
-    result.order_id;
+    result.order_id +
+    "\nPayment Method: " +
+    result.payment_method;
 
-  transactionDetails.style.whiteSpace =
-    "pre-line";
+  showMessage("");
 
 }
 
-/* ===================================
-   VERIFY PAYMENT WITH BACKEND
-=================================== */
+/* =====================================
+   VERIFY PAYMENT
+===================================== */
 
 async function verifyPayment(response){
 
@@ -322,92 +494,11 @@ async function verifyPayment(response){
     "Verifying your payment..."
   );
 
-  const verifyResponse = await fetch(
+  const verifyResponse =
+    await fetch(
 
-    API + "/api/razorpay/verify",
-
-    {
-
-      method:"POST",
-
-      headers:{
-        "Content-Type":
-          "application/json"
-      },
-
-      body:JSON.stringify({
-
-        razorpay_order_id:
-          response.razorpay_order_id,
-
-        razorpay_payment_id:
-          response.razorpay_payment_id,
-
-        razorpay_signature:
-          response.razorpay_signature
-
-      })
-
-    }
-
-  );
-
-  const result =
-    await verifyResponse.json();
-
-  if(
-    verifyResponse.ok &&
-    result.success === true &&
-    result.status === "captured" &&
-    result.amount === 1
-  ){
-
-    showSuccess(result);
-
-  }else{
-
-    showMessage(
-      "Payment confirmation pending. " +
-      "Please check your Razorpay " +
-      "transaction before trying again."
-    );
-
-  }
-
-}
-
-/* ===================================
-   START ₹1 PAYMENT
-=================================== */
-
-async function startPayment(){
-
-  if(
-    typeof Razorpay === "undefined"
-  ){
-
-    showMessage(
-      "Payment gateway could not load."
-    );
-
-    return;
-
-  }
-
-  payButton.disabled = true;
-
-  payButton.textContent =
-    "Please wait...";
-
-  showMessage("");
-
-  try{
-
-    /* CREATE ORDER */
-
-    const response = await fetch(
-
-      API + "/api/razorpay/create-order",
+      API +
+      "/api/razorpay/verify",
 
       {
 
@@ -420,23 +511,128 @@ async function startPayment(){
 
         body:JSON.stringify({
 
-          items:[
+          razorpay_order_id:
+            response.razorpay_order_id,
 
-            {
-              id:"payment_1",
-              quantity:1
-            }
+          razorpay_payment_id:
+            response.razorpay_payment_id,
 
-          ],
-
-          customer_name:
-            "CEZOO Customer"
+          razorpay_signature:
+            response.razorpay_signature
 
         })
 
       }
 
     );
+
+  const result =
+    await verifyResponse.json();
+
+  if(
+    verifyResponse.ok &&
+    result.success === true &&
+    result.status === "captured"
+  ){
+
+    showSuccess(result);
+
+    return;
+
+  }
+
+  showMessage(
+    "Payment confirmation pending. " +
+    "Please check your transaction " +
+    "before paying again."
+  );
+
+}
+
+/* =====================================
+   START DYNAMIC PAYMENT
+===================================== */
+
+async function startPayment(){
+
+  if(paymentStarted){
+    return;
+  }
+
+  const amount =
+    Number(amountInput.value);
+
+  if(
+    !Number.isFinite(amount) ||
+    amount < 1 ||
+    amount > 1000000 ||
+    Math.abs(
+      amount * 100 -
+      Math.round(amount * 100)
+    ) > 0.000001
+  ){
+
+    showMessage(
+      "Enter a valid amount of at least ₹1, " +
+      "with at most two decimal places."
+    );
+
+    return;
+
+  }
+
+  if(
+    typeof Razorpay === "undefined"
+  ){
+
+    showMessage(
+      "Razorpay could not load."
+    );
+
+    return;
+
+  }
+
+  paymentStarted = true;
+
+  payButton.disabled = true;
+
+  payButton.textContent =
+    "Please wait...";
+
+  showMessage("");
+
+  try{
+
+    /* CREATE ORDER */
+
+    const response =
+      await fetch(
+
+        API +
+        "/api/razorpay/create-order",
+
+        {
+
+          method:"POST",
+
+          headers:{
+            "Content-Type":
+              "application/json"
+          },
+
+          body:JSON.stringify({
+
+            amount: amount,
+
+            customer_name:
+              "CEZOO Customer"
+
+          })
+
+        }
+
+      );
 
     const order =
       await response.json();
@@ -448,26 +644,27 @@ async function startPayment(){
 
       throw new Error(
         order.message ||
-        "Order creation failed"
+        "Unable to create order"
       );
 
     }
 
-    /* CHECK ₹1 AMOUNT */
+    /* CHECK AMOUNT */
 
     if(
-      order.amount !== 100 ||
+      order.amount !==
+      Math.round(amount * 100) ||
       order.currency !== "INR" ||
       order.key !== RAZORPAY_KEY
     ){
 
       throw new Error(
-        "Payment configuration mismatch"
+        "Payment amount or key mismatch"
       );
 
     }
 
-    /* RAZORPAY OPTIONS */
+    /* RAZORPAY CHECKOUT */
 
     const options = {
 
@@ -484,7 +681,7 @@ async function startPayment(){
         "CEZOO",
 
       description:
-        "CEZOO ₹1 Payment",
+        "CEZOO Payment",
 
       order_id:
         order.order_id,
@@ -511,8 +708,7 @@ async function startPayment(){
 
           showMessage(
             "Unable to confirm payment. " +
-            "Check Razorpay Dashboard " +
-            "before paying again."
+            "Please check Razorpay before retrying."
           );
 
         }
@@ -523,18 +719,15 @@ async function startPayment(){
 
         ondismiss:function(){
 
-          payButton.disabled = false;
+          paymentStarted = false;
 
-          payButton.textContent =
-            "Pay ₹1";
+          updateAmount();
 
         }
 
       }
 
     };
-
-    /* OPEN CHECKOUT */
 
     const razorpay =
       new Razorpay(options);
@@ -553,10 +746,9 @@ async function startPayment(){
           "Payment failed. Please try again."
         );
 
-        payButton.disabled = false;
+        paymentStarted = false;
 
-        payButton.textContent =
-          "Pay ₹1";
+        updateAmount();
 
       }
 
@@ -573,14 +765,15 @@ async function startPayment(){
       "Unable to start payment"
     );
 
-    payButton.disabled = false;
+    paymentStarted = false;
 
-    payButton.textContent =
-      "Pay ₹1";
+    updateAmount();
 
   }
 
 }
+
+updateAmount();
 
 </script>
 
