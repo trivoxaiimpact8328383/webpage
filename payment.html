@@ -1,0 +1,588 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>CEZOO Payment</title>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Bungee&family=Inter:wght@400;500;600;700;800&display=swap"
+  rel="stylesheet"
+>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Inter,Arial,sans-serif;
+  background:#f4f8f5;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.payment-card{
+  width:100%;
+  max-width:390px;
+  background:white;
+  padding:30px 24px;
+  border-radius:24px;
+  box-shadow:0 12px 45px rgba(0,0,0,.06);
+  text-align:center;
+}
+
+.logo{
+  font-family:Bungee,sans-serif;
+  font-size:38px;
+  color:#087f5b;
+}
+
+.tagline{
+  font-size:12px;
+  color:#777;
+  margin-top:2px;
+}
+
+.payment-title{
+  margin-top:30px;
+  font-size:20px;
+  font-weight:800;
+  color:#222;
+}
+
+.payment-desc{
+  font-size:13px;
+  color:#777;
+  margin-top:9px;
+  line-height:1.6;
+}
+
+.amount-box{
+  background:#effaf3;
+  border:1px solid #d5eddf;
+  border-radius:18px;
+  margin-top:25px;
+  padding:23px;
+}
+
+.amount-label{
+  color:#65766b;
+  font-size:13px;
+}
+
+.amount{
+  font-size:46px;
+  font-weight:800;
+  color:#087f5b;
+  margin-top:5px;
+}
+
+.pay-btn{
+  width:100%;
+  height:54px;
+  border:0;
+  background:#087f5b;
+  color:white;
+  font-family:Inter,sans-serif;
+  font-size:16px;
+  font-weight:700;
+  border-radius:14px;
+  margin-top:25px;
+  cursor:pointer;
+}
+
+.pay-btn:disabled{
+  opacity:.6;
+  cursor:not-allowed;
+}
+
+.secure{
+  font-size:12px;
+  color:#888;
+  margin-top:17px;
+}
+
+.success-box{
+  display:none;
+  margin-top:25px;
+  padding:25px 15px;
+  background:#effaf3;
+  border-radius:18px;
+  text-align:center;
+}
+
+.success-icon{
+  width:70px;
+  height:70px;
+  background:#087f5b;
+  border-radius:50%;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:36px;
+  margin:0 auto 15px;
+}
+
+.success-title{
+  font-size:21px;
+  font-weight:800;
+  color:#087f5b;
+}
+
+.success-text{
+  font-size:14px;
+  color:#555;
+  margin-top:10px;
+}
+
+.transaction{
+  font-size:11px;
+  color:#555;
+  margin-top:15px;
+  overflow-wrap:anywhere;
+  line-height:1.8;
+}
+
+.status-message{
+  margin-top:16px;
+  font-size:13px;
+  color:#b45309;
+  line-height:1.6;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="payment-card">
+
+  <div class="logo">
+    CEZOO
+  </div>
+
+  <div class="tagline">
+    Groceries in Minutes
+  </div>
+
+  <div id="paymentSection">
+
+    <div class="payment-title">
+      Complete Your Payment
+    </div>
+
+    <div class="payment-desc">
+      Secure payment powered by Razorpay
+    </div>
+
+    <div class="amount-box">
+
+      <div class="amount-label">
+        Total Amount
+      </div>
+
+      <div class="amount">
+        ₹1.00
+      </div>
+
+    </div>
+
+    <button
+      class="pay-btn"
+      id="payButton"
+      onclick="startPayment()"
+    >
+      Pay ₹1
+    </button>
+
+    <div class="secure">
+      Secure payment • UPI • Cards
+    </div>
+
+  </div>
+
+  <div
+    class="success-box"
+    id="successBox"
+  >
+
+    <div class="success-icon">
+      ✓
+    </div>
+
+    <div class="success-title">
+      Payment Successful!
+    </div>
+
+    <div class="success-text">
+      ₹1.00 paid successfully
+    </div>
+
+    <div
+      class="transaction"
+      id="transactionDetails"
+    ></div>
+
+  </div>
+
+  <div
+    class="status-message"
+    id="statusMessage"
+    role="status"
+  ></div>
+
+</div>
+
+<script>
+
+/* ===================================
+   CEZOO RAZORPAY LIVE PAYMENT
+=================================== */
+
+const API =
+  "https://payment-czhd.onrender.com";
+
+const RAZORPAY_KEY =
+  "rzp_live_TdnkHC6KB6wZYP";
+
+const payButton =
+  document.getElementById("payButton");
+
+const statusMessage =
+  document.getElementById("statusMessage");
+
+const successBox =
+  document.getElementById("successBox");
+
+const paymentSection =
+  document.getElementById("paymentSection");
+
+const transactionDetails =
+  document.getElementById("transactionDetails");
+
+/* ===================================
+   SHOW MESSAGE
+=================================== */
+
+function showMessage(message){
+
+  statusMessage.textContent = message;
+
+}
+
+/* ===================================
+   PAYMENT SUCCESS UI
+=================================== */
+
+function showSuccess(result){
+
+  paymentSection.style.display = "none";
+
+  successBox.style.display = "block";
+
+  showMessage("");
+
+  transactionDetails.textContent =
+    "Payment ID: " +
+    result.payment_id +
+    "\nOrder ID: " +
+    result.order_id;
+
+  transactionDetails.style.whiteSpace =
+    "pre-line";
+
+}
+
+/* ===================================
+   VERIFY PAYMENT WITH BACKEND
+=================================== */
+
+async function verifyPayment(response){
+
+  showMessage(
+    "Verifying your payment..."
+  );
+
+  const verifyResponse = await fetch(
+
+    API + "/api/razorpay/verify",
+
+    {
+
+      method:"POST",
+
+      headers:{
+        "Content-Type":
+          "application/json"
+      },
+
+      body:JSON.stringify({
+
+        razorpay_order_id:
+          response.razorpay_order_id,
+
+        razorpay_payment_id:
+          response.razorpay_payment_id,
+
+        razorpay_signature:
+          response.razorpay_signature
+
+      })
+
+    }
+
+  );
+
+  const result =
+    await verifyResponse.json();
+
+  if(
+    verifyResponse.ok &&
+    result.success === true &&
+    result.status === "captured" &&
+    result.amount === 1
+  ){
+
+    showSuccess(result);
+
+  }else{
+
+    showMessage(
+      "Payment confirmation pending. " +
+      "Please check your Razorpay " +
+      "transaction before trying again."
+    );
+
+  }
+
+}
+
+/* ===================================
+   START ₹1 PAYMENT
+=================================== */
+
+async function startPayment(){
+
+  if(
+    typeof Razorpay === "undefined"
+  ){
+
+    showMessage(
+      "Payment gateway could not load."
+    );
+
+    return;
+
+  }
+
+  payButton.disabled = true;
+
+  payButton.textContent =
+    "Please wait...";
+
+  showMessage("");
+
+  try{
+
+    /* CREATE ORDER */
+
+    const response = await fetch(
+
+      API + "/api/razorpay/create-order",
+
+      {
+
+        method:"POST",
+
+        headers:{
+          "Content-Type":
+            "application/json"
+        },
+
+        body:JSON.stringify({
+
+          items:[
+
+            {
+              id:"payment_1",
+              quantity:1
+            }
+
+          ],
+
+          customer_name:
+            "CEZOO Customer"
+
+        })
+
+      }
+
+    );
+
+    const order =
+      await response.json();
+
+    if(
+      !response.ok ||
+      !order.success
+    ){
+
+      throw new Error(
+        order.message ||
+        "Order creation failed"
+      );
+
+    }
+
+    /* CHECK ₹1 AMOUNT */
+
+    if(
+      order.amount !== 100 ||
+      order.currency !== "INR" ||
+      order.key !== RAZORPAY_KEY
+    ){
+
+      throw new Error(
+        "Payment configuration mismatch"
+      );
+
+    }
+
+    /* RAZORPAY OPTIONS */
+
+    const options = {
+
+      key:
+        RAZORPAY_KEY,
+
+      amount:
+        order.amount,
+
+      currency:
+        "INR",
+
+      name:
+        "CEZOO",
+
+      description:
+        "CEZOO ₹1 Payment",
+
+      order_id:
+        order.order_id,
+
+      theme:{
+
+        color:"#087f5b"
+
+      },
+
+      handler:async function(
+        paymentResponse
+      ){
+
+        try{
+
+          await verifyPayment(
+            paymentResponse
+          );
+
+        }catch(error){
+
+          console.error(error);
+
+          showMessage(
+            "Unable to confirm payment. " +
+            "Check Razorpay Dashboard " +
+            "before paying again."
+          );
+
+        }
+
+      },
+
+      modal:{
+
+        ondismiss:function(){
+
+          payButton.disabled = false;
+
+          payButton.textContent =
+            "Pay ₹1";
+
+        }
+
+      }
+
+    };
+
+    /* OPEN CHECKOUT */
+
+    const razorpay =
+      new Razorpay(options);
+
+    razorpay.on(
+
+      "payment.failed",
+
+      function(response){
+
+        console.error(
+          response.error
+        );
+
+        showMessage(
+          "Payment failed. Please try again."
+        );
+
+        payButton.disabled = false;
+
+        payButton.textContent =
+          "Pay ₹1";
+
+      }
+
+    );
+
+    razorpay.open();
+
+  }catch(error){
+
+    console.error(error);
+
+    showMessage(
+      error.message ||
+      "Unable to start payment"
+    );
+
+    payButton.disabled = false;
+
+    payButton.textContent =
+      "Pay ₹1";
+
+  }
+
+}
+
+</script>
+
+</body>
+</html>
