@@ -420,6 +420,12 @@ button{font:inherit;cursor:pointer}
   .footer-navigation{grid-template-columns:1fr;gap:35px}
   .footer-brand-word{font-size:24vw;letter-spacing:-5px}
 }
+
+/* Language control: placed after Sign In; existing layout untouched */
+.trivox-language{display:inline-flex;align-items:center;gap:3px;padding:4px;border:1px solid #e5e0f7;border-radius:12px;background:#f8f6ff;white-space:nowrap;flex-shrink:0}
+.trivox-language button{border:0;background:transparent;color:#62616b;font:700 12px Inter,sans-serif;padding:8px 11px;border-radius:8px;cursor:pointer}
+.trivox-language button.active{background:#7156e8;color:white;box-shadow:0 2px 8px #7156e833}
+@media(max-width:650px){.trivox-language{padding:2px;gap:0}.trivox-language button{padding:7px 8px;font-size:11px}}
 </style>
 </head>
 <body>
@@ -516,6 +522,7 @@ button{font:inherit;cursor:pointer}
         <a href="login.html"><i class="fa-solid fa-user"></i><div><strong>Student Login</strong><span>Access your account</span></div></a>
       </div>
     </div>
+    <div class="trivox-language notranslate" translate="no" role="group" aria-label="Website language"><button type="button" data-trivox-lang="en">EN</button><button type="button" data-trivox-lang="te">తెలుగు</button></div>
     <a href="contact/contact.html" class="get-started">Get Started</a>
     <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
       <span></span><span></span><span></span>
@@ -899,5 +906,55 @@ const observer=new IntersectionObserver(entries=>{
 document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
 </script>
 
+
+<script id="trivox-native-language">
+(function(){
+  "use strict";
+  const translations = {"Company": "సంస్థ", "About TRIVOX": "ట్రివాక్స్ గురించి", "Our Mission": "మా లక్ష్యం", "Our Vision": "మా దృష్టి", "Leadership": "నాయకత్వం", "Our Team": "మా బృందం", "Partners": "భాగస్వాములు", "Impact": "ప్రభావం", "Learning": "అభ్యాసం", "AI Learning": "ఏఐ అభ్యాసం", "Learn AI concepts, tools and real-world applications.": "ఏఐ భావనలు, సాధనాలు, వాస్తవ ప్రపంచ అనువర్తనాలను నేర్చుకోండి.", "Programming": "ప్రోగ్రామింగ్", "Build coding and problem-solving skills.": "కోడింగ్, సమస్యల పరిష్కార నైపుణ్యాలను పెంపొందించుకోండి.", "Web Development": "వెబ్ అభివృద్ధి", "Build modern responsive websites.": "ఆధునిక రెస్పాన్సివ్ వెబ్‌సైట్‌లను రూపొందించండి.", "App Development": "యాప్ అభివృద్ధి", "Build modern application experiences.": "ఆధునిక యాప్ అనుభవాలను రూపొందించండి.", "Data Science": "డేటా సైన్స్", "Explore analytics and intelligent data.": "డేటా విశ్లేషణను, తెలివైన డేటా వినియోగాన్ని తెలుసుకోండి.", "Cyber Security": "సైబర్ భద్రత", "Understand modern security practices.": "ఆధునిక భద్రతా పద్ధతులను అర్థం చేసుకోండి.", "Programs": "కార్యక్రమాలు", "Student Programs": "విద్యార్థుల కార్యక్రమాలు", "College Programs": "కళాశాల కార్యక్రమాలు", "Internships": "ఇంటర్న్‌షిప్‌లు", "Workshops": "వర్క్‌షాప్‌లు", "Bootcamps": "బూట్‌క్యాంప్‌లు", "Career Programs": "కెరీర్ కార్యక్రమాలు", "Certification Programs": "సర్టిఫికేషన్ కార్యక్రమాలు", "Solutions": "పరిష్కారాలు", "For Students": "విద్యార్థుల కోసం", "Skills, projects and career support.": "నైపుణ్యాలు, ప్రాజెక్టులు, కెరీర్ సహాయం.", "For Colleges": "కళాశాలల కోసం", "Industry-ready learning programs.": "పరిశ్రమ అవసరాలకు అనుగుణమైన అభ్యాస కార్యక్రమాలు.", "For Schools": "పాఠశాలల కోసం", "Modern technology learning.": "ఆధునిక సాంకేతిక విద్య.", "For Companies": "కంపెనీల కోసం", "Training and technology solutions.": "శిక్షణ, సాంకేతిక పరిష్కారాలు.", "Resources": "వనరులు", "Blogs": "బ్లాగులు", "Tutorials": "ట్యుటోరియల్స్", "Learning Resources": "అభ్యాస వనరులు", "Student Projects": "విద్యార్థుల ప్రాజెక్టులు", "Success Stories": "విజయ గాథలు", "Events": "కార్యక్రమాలు", "FAQs": "తరచుగా అడిగే ప్రశ్నలు", "Careers": "ఉద్యోగావకాశాలు", "Open Positions": "ఖాళీ ఉద్యోగాలు", "Campus Hiring": "క్యాంపస్ నియామకాలు", "Join Our Team": "మా బృందంలో చేరండి", "Life at TRIVOX": "ట్రివాక్స్‌లో జీవితం", "Contact": "సంప్రదించండి", "Sign In": "సైన్ ఇన్", "Documentary": "డాక్యుమెంటరీ", "Sign in for documentary": "డాక్యుమెంటరీ కోసం సైన్ ఇన్ చేయండి", "Student Login": "విద్యార్థి లాగిన్", "Access your account": "మీ ఖాతాను తెరవండి", "Get Started": "ప్రారంభించండి", "IMPACT THROUGH LEARNING, BUILDING AND OPPORTUNITY": "అభ్యాసం, నిర్మాణం, అవకాశాల ద్వారా ప్రభావం", "Impact becomes real when learning turns into": "అభ్యాసం మారినప్పుడే ప్రభావం నిజమవుతుంది", "visible progress.": "కనిపించే పురోగతిగా.", "TRIVOX focuses on creating practical learning experiences that help students build skills, complete projects, gain confidence and move closer to meaningful opportunities.": "విద్యార్థులు నైపుణ్యాలు పెంపొందించుకోవడానికి, ప్రాజెక్టులు పూర్తి చేయడానికి, ఆత్మవిశ్వాసం పొందడానికి, విలువైన అవకాశాలకు చేరువ కావడానికి ఉపయోగపడే ఆచరణాత్మక అభ్యాస అనుభవాలను ట్రివాక్స్ అందిస్తుంది.", "Explore Impact": "ప్రభావాన్ని తెలుసుకోండి", "Work With Us": "మాతో కలిసి పనిచేయండి", "01 / OUR IMPACT": "01 / మా ప్రభావం", "MORE THAN PARTICIPATION": "పాల్గొనడాన్ని మించి", "We measure progress by what students can": "విద్యార్థులు ఏమి చేయగలరో దాని ఆధారంగా పురోగతిని కొలుస్తాం", "understand, build and demonstrate.": "అర్థం చేసుకోవడం, నిర్మించడం, ప్రదర్శించడం.", "Our focus is not only on course completion. We aim to help learners move from curiosity to practical capability through structured learning, projects and feedback.": "కోర్సు పూర్తి చేయడం మాత్రమే మా లక్ష్యం కాదు. క్రమబద్ధమైన అభ్యాసం, ప్రాజెక్టులు, అభిప్రాయాల ద్వారా ఆసక్తిని ఆచరణాత్మక సామర్థ్యంగా మార్చడంలో విద్యార్థులకు తోడ్పడతాం.", "Stronger impact means clearer skills, better confidence, portfolio evidence, greater exposure and better readiness for future education or career opportunities.": "బలమైన ప్రభావం అంటే స్పష్టమైన నైపుణ్యాలు, మెరుగైన ఆత్మవిశ్వాసం, చేసిన పనికి ఆధారాలు, విస్తృత అనుభవం, భవిష్యత్ విద్య లేదా కెరీర్ అవకాశాలకు మెరుగైన సిద్ధత.", "IMPACT AREAS": "ప్రభావ రంగాలు", "What meaningful progress": "అర్థవంతమైన పురోగతి", "looks like.": "ఎలా కనిపిస్తుంది.", "TRIVOX impact is designed around practical outcomes that can be seen in how students learn, build, collaborate and move toward opportunity.": "విద్యార్థులు ఎలా నేర్చుకుంటారు, నిర్మిస్తారు, కలిసి పనిచేస్తారు, అవకాశాల వైపు సాగుతారు అనే ఆచరణాత్మక ఫలితాలపై ట్రివాక్స్ ప్రభావం ఆధారపడి ఉంటుంది.", "Stronger Understanding": "మెరుగైన అవగాహన", "Students build clearer foundations in AI, programming, technology and practical problem solving.": "ఏఐ, ప్రోగ్రామింగ్, సాంకేతికత, ఆచరణాత్మక సమస్యల పరిష్కారంలో విద్యార్థులు బలమైన పునాదులు ఏర్పరచుకుంటారు.", "Real Project Evidence": "నిజమైన ప్రాజెక్టుల ఆధారాలు", "Learners create tangible work they can explain, improve and use as proof of practical capability.": "విద్యార్థులు వివరించగలిగే, మెరుగుపరచగలిగే, తమ ఆచరణాత్మక సామర్థ్యానికి ఆధారంగా చూపగలిగే పనిని రూపొందిస్తారు.", "Collaboration Skills": "సహకార నైపుణ్యాలు", "Students learn to communicate, work across teams, take ownership and contribute to shared outcomes.": "విద్యార్థులు సంభాషించడం, బృందాలతో పనిచేయడం, బాధ్యత తీసుకోవడం, ఉమ్మడి ఫలితాలకు తోడ్పడడం నేర్చుకుంటారు.", "Career Readiness": "కెరీర్‌కు సిద్ధత", "Practical experience and stronger confidence help students move closer to internships and opportunities.": "ఆచరణాత్మక అనుభవం, పెరిగిన ఆత్మవిశ్వాసం విద్యార్థులను ఇంటర్న్‌షిప్‌లు, అవకాశాలకు చేరువ చేస్తాయి.", "THE IMPACT JOURNEY": "ప్రభావ ప్రయాణం", "From curiosity to": "ఆసక్తి నుంచి", "capability and opportunity.": "సామర్థ్యం, అవకాశాల వైపు.", "The journey is intentionally practical: understand the idea, apply it, build something, reflect on the result and move forward with stronger proof of ability.": "ఈ ప్రయాణం ఆచరణాత్మకమైనది: భావనను అర్థం చేసుకోవడం, అమలు చేయడం, ఏదైనా నిర్మించడం, ఫలితాన్ని పరిశీలించడం, సామర్థ్యానికి బలమైన ఆధారంతో ముందుకు సాగడం.", "Discover": "అన్వేషించండి", "Students explore new ideas, domains and possibilities.": "విద్యార్థులు కొత్త ఆలోచనలు, రంగాలు, అవకాశాలను అన్వేషిస్తారు.", "Learn": "నేర్చుకోండి", "Build foundations through structured concepts and guided practice.": "క్రమబద్ధమైన భావనలు, మార్గదర్శక సాధనతో పునాదులు నిర్మించుకోండి.", "Build": "నిర్మించండి", "Turn learning into projects, assignments and practical outputs.": "నేర్చుకున్న విషయాలను ప్రాజెక్టులు, అసైన్‌మెంట్‌లు, ఆచరణాత్మక ఫలితాలుగా మార్చండి.", "Improve": "మెరుగుపరచండి", "Use feedback, reflection and iteration to strengthen the work.": "అభిప్రాయాలు, సమీక్ష, పునరావృత ప్రయత్నాలతో పనిని మెరుగుపరచండి.", "Advance": "ముందుకు సాగండి", "Move toward internships, programs, opportunities and continued growth.": "ఇంటర్న్‌షిప్‌లు, కార్యక్రమాలు, అవకాశాలు, నిరంతర అభివృద్ధి వైపు సాగండి.", "IMPACT IN PRACTICE": "ఆచరణలో ప్రభావం", "Progress is strongest when students can": "విద్యార్థులు చూపగలిగినప్పుడు పురోగతి మరింత బలంగా ఉంటుంది", "show what changed.": "ఏమి మారిందో.", "Impact can appear in many forms: a first working project, clearer communication, better technical confidence, a completed internship or the ability to explain and defend a solution.": "మొదటి పనిచేసే ప్రాజెక్టు, స్పష్టమైన సంభాషణ, మెరుగైన సాంకేతిక ఆత్మవిశ్వాసం, పూర్తి చేసిన ఇంటర్న్‌షిప్ లేదా పరిష్కారాన్ని వివరించి సమర్థించగల సామర్థ్యం—ఇలా ప్రభావం అనేక రూపాల్లో కనిపిస్తుంది.", "SKILL DEVELOPMENT": "నైపుణ్యాభివృద్ధి", "From theory to practical confidence": "సిద్ధాంతం నుంచి ఆచరణాత్మక ఆత్మవిశ్వాసానికి", "Learners move beyond passive understanding and begin applying concepts to real tasks and project work.": "విద్యార్థులు కేవలం అర్థం చేసుకోవడాన్ని దాటి నిజమైన పనులు, ప్రాజెక్టుల్లో భావనలను అమలు చేయడం ప్రారంభిస్తారు.", "PROJECT EXPERIENCE": "ప్రాజెక్టు అనుభవం", "From exercises to portfolio evidence": "సాధనల నుంచి పోర్ట్‌ఫోలియో ఆధారాల వరకు", "Students gain work they can demonstrate, discuss and continue improving beyond the learning environment.": "విద్యార్థులు చూపగలిగే, చర్చించగలిగే, అభ్యాసం తర్వాత కూడా మెరుగుపరచగలిగే పనిని సాధిస్తారు.", "TEAM EXPOSURE": "బృంద అనుభవం", "From individual learning to collaboration": "వ్యక్తిగత అభ్యాసం నుంచి సహకారానికి", "Working with others builds communication, accountability and stronger problem-solving habits.": "ఇతరులతో కలిసి పనిచేయడం సంభాషణ, బాధ్యత, సమస్యల పరిష్కార అలవాట్లను బలోపేతం చేస్తుంది.", "OPPORTUNITY READINESS": "అవకాశాలకు సిద్ధత", "From preparation to next-step confidence": "సన్నద్ధత నుంచి తదుపరి అడుగుపై నమ్మకానికి", "Practical exposure helps students understand what employers and future programs expect from them.": "ఆచరణాత్మక అనుభవం ద్వారా యజమానులు, భవిష్యత్ కార్యక్రమాలు తమ నుంచి ఏమి ఆశిస్తున్నాయో విద్యార్థులు తెలుసుకుంటారు.", "CREATE IMPACT WITH TRIVOX": "ట్రివాక్స్‌తో ప్రభావాన్ని సృష్టించండి", "Want to help more students move from learning to real opportunity?": "మరింత మంది విద్యార్థులు అభ్యాసం నుంచి నిజమైన అవకాశాలకు చేరుకునేలా సహాయం చేయాలనుకుంటున్నారా?", "Partner with TRIVOX to create practical learning, project exposure, career readiness and stronger pathways for students.": "ఆచరణాత్మక అభ్యాసం, ప్రాజెక్టు అనుభవం, కెరీర్ సిద్ధత, విద్యార్థులకు మెరుగైన మార్గాలను సృష్టించేందుకు ట్రివాక్స్‌తో భాగస్వామ్యం అవ్వండి.", "Start a Conversation": "సంభాషణ ప్రారంభించండి", "LEAD WITH PURPOSE": "లక్ష్యంతో ముందుండండి", "Ideas become direction.": "ఆలోచనలు దిశగా మారతాయి.", "Direction becomes impact.": "దిశ ప్రభావంగా మారుతుంది.", "01 / COMPANY": "01 / సంస్థ", "Mission": "లక్ష్యం", "Vision": "దృష్టి", "02 / LEARNING": "02 / అభ్యాసం", "03 / PROGRAMS": "03 / కార్యక్రమాలు", "04 / EXPLORE": "04 / అన్వేషించండి", "Projects": "ప్రాజెక్టులు", "Think clearly.": "స్పష్టంగా ఆలోచించండి.", "Lead responsibly.": "బాధ్యతగా ముందుండండి.", "Create impact.": "ప్రభావాన్ని సృష్టించండి.", "EDUCATION × TECHNOLOGY × IMPACT": "విద్య × సాంకేతికత × ప్రభావం", "BACK TO TOP": "పైకి వెళ్లండి", "LEAD • LEARN • BUILD • CREATE • GROW • IMPACT • LEAD • LEARN • BUILD • CREATE • GROW • IMPACT •": "ముందుండండి • నేర్చుకోండి • నిర్మించండి • సృష్టించండి • ఎదగండి • ప్రభావం • ముందుండండి • నేర్చుకోండి • నిర్మించండి • సృష్టించండి • ఎదగండి • ప్రభావం •"};
+  const originals = new WeakMap();
+  const normalize = value => value.replace(/\s+/g," ").trim();
+  function translateText(node,lang){
+    if(!originals.has(node)) originals.set(node,node.nodeValue);
+    const original=originals.get(node);
+    if(lang==="en"){if(node.nodeValue!==original)node.nodeValue=original;return;}
+    const key=normalize(original);
+    const translated=translations[key];
+    if(!translated)return;
+    const leading=original.match(/^\s*/)[0],trailing=original.match(/\s*$/)[0];
+    const result=leading+translated+trailing;
+    if(node.nodeValue!==result)node.nodeValue=result;
+  }
+  function applyLanguage(lang){
+    lang=lang==="te"?"te":"en";
+    document.documentElement.lang=lang;
+    document.documentElement.classList.toggle("trivox-telugu",lang==="te");
+    document.querySelectorAll(".trivox-language button").forEach(b=>{
+      const active=b.dataset.trivoxLang===lang;
+      b.classList.toggle("active",active);b.setAttribute("aria-pressed",String(active));
+    });
+    const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{
+      acceptNode(node){
+        const el=node.parentElement;
+        return el&&!el.closest('script,style,noscript,.notranslate,[translate="no"]')&&normalize(node.nodeValue)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT;
+      }
+    });
+    const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
+    nodes.forEach(node=>translateText(node,lang));
+    const svgTranslations={"LEARN":"నేర్చుకోండి","Build foundations":"పునాదులు నిర్మించండి","BUILD":"నిర్మించండి","Projects & practice":"ప్రాజెక్టులు, సాధన","GROW":"ఎదగండి","Confidence & skills":"ఆత్మవిశ్వాసం, నైపుణ్యాలు","IMPACT":"ప్రభావం","Opportunity":"అవకాశం","TRIVOX IMPACT MODEL":"ట్రివాక్స్ ప్రభావ నమూనా","Learning → Execution":"అభ్యాసం → అమలు"};
+    document.querySelectorAll('svg text').forEach(el=>{
+      if(!el.dataset.originalText)el.dataset.originalText=el.textContent;
+      el.textContent=lang==="te"?(svgTranslations[el.dataset.originalText]||el.dataset.originalText):el.dataset.originalText;
+    });
+    const menu=document.getElementById("menuToggle");
+    if(menu)menu.setAttribute("aria-label",lang==="te"?"మెనూను తెరవండి":"Toggle menu");
+    try{localStorage.setItem("trivox-language",lang);}catch(e){}
+    window.dispatchEvent(new CustomEvent("trivox-language-change",{detail:{language:lang}}));
+  }
+  document.querySelectorAll(".trivox-language button").forEach(b=>b.addEventListener("click",()=>applyLanguage(b.dataset.trivoxLang)));
+  let initial="en";try{initial=localStorage.getItem("trivox-language")||"en";}catch(e){}
+  applyLanguage(initial);
+  window.addEventListener("storage",e=>{if(e.key==="trivox-language")applyLanguage(e.newValue);});
+})();
+</script>
 </body>
 </html>
