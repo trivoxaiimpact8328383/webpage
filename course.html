@@ -15776,7 +15776,7 @@ const extra={
 Object.assign(dict,extra);
 const normalized=new Map(Object.entries(dict).map(([a,b])=>[a.toLocaleLowerCase('en'),b]));
 const phrases=Object.entries(dict).filter(([a,b])=>a.length>=3&&/[A-Za-z]/.test(a)&&a!==b).sort((a,b)=>b[0].length-a[0].length);
-const originals=new WeakMap(),attrs=new WeakMap();let language='en',writing=false,queued=false;
+const originals=new WeakMap(),attrs=new WeakMap(),rendered=new WeakMap(),renderedAttrs=new WeakMap();let language='en',writing=false,queued=false;
 const clean=s=>s.replace(/\s+/g,' ').trim();
 const protectedText=s=>!/[A-Za-z]/.test(s)||/^(?:https?:|[\w.+-]+@[\w.-]+\.|[A-Z0-9_-]{16,})/.test(s)||/^(?:TRIVOX|AI IMPACT|NSS|CSR|NGO|OTP|B\.Tech)$/i.test(s);
 function translate(s){const key=clean(s);if(!key||protectedText(key))return s;const exact=normalized.get(key.toLocaleLowerCase('en'));if(exact)return s.replace(s.trim(),exact);
@@ -15801,19 +15801,43 @@ function translateRemoteNode(node,source){
  if(!needsRemote(original,local))return;
  remoteTranslate(original).then(result=>{
   if(!result||language!=='te'||originals.get(node)!==original||!node.isConnected)return;
-  if(node.nodeValue===local||node.nodeValue===original)node.nodeValue=original.replace(original.trim(),result);
+  if(node.nodeValue===local||node.nodeValue===original){node.nodeValue=original.replace(original.trim(),result);rendered.set(node,node.nodeValue);}
  });
 }
 function translateRemoteAttribute(el,key,source){
  const local=translate(source);if(!needsRemote(source,local))return;
  remoteTranslate(source).then(result=>{
   if(!result||language!=='te'||!el.isConnected||attrs.get(el)?.[key]!==source)return;
-  if(el.getAttribute(key)===local||el.getAttribute(key)===source)el.setAttribute(key,source.replace(source.trim(),result));
+  if(el.getAttribute(key)===local||el.getAttribute(key)===source){el.setAttribute(key,source.replace(source.trim(),result));let last=renderedAttrs.get(el)||{};last[key]=el.getAttribute(key);renderedAttrs.set(el,last);}
  });
 }
 function skip(el){return !el||!!el.closest('script,style,noscript,svg,code,pre,textarea,.trivox-language,[translate="no"],.notranslate,[contenteditable="true"],input,select,option')}
-function textNode(n){if(!n.nodeValue.trim()||skip(n.parentElement))return;const old=originals.get(n),now=n.nodeValue;const source=old!==undefined&&(now===translate(old)||now===remoteCache.get(clean(old)))?old:now;originals.set(n,source);const target=language==='te'?translate(source):source;if(now!==target)n.nodeValue=target;if(language==='te')translateRemoteNode(n,source)}
-function attributes(el){if(!el||el.closest('script,style,noscript,svg,code,pre,.trivox-language,[translate="no"],.notranslate,[contenteditable="true"]'))return;let store=attrs.get(el);if(!store){store={};attrs.set(el,store)}for(const key of ['placeholder','title','aria-label','alt','value']){if(!el.hasAttribute(key)||key==='value'&&!/^(BUTTON)$/.test(el.tagName))continue;const now=el.getAttribute(key),old=store[key],source=old!==undefined&&(now===translate(old)||now===remoteCache.get(clean(old)))?old:now;store[key]=source;const target=language==='te'?translate(source):source;if(now!==target)el.setAttribute(key,target);if(language==='te')translateRemoteAttribute(el,key,source)}}
+function textNode(n){
+ if(!n.nodeValue.trim()||skip(n.parentElement))return;
+ const now=n.nodeValue,old=originals.get(n),last=rendered.get(n);
+ // A translated string is never a new English source. Only real external DOM edits replace the source.
+ const source=old!==undefined&&(now===last||now===old)?old:now;
+ originals.set(n,source);
+ const target=language==='te'?translate(source):source;
+ if(now!==target)n.nodeValue=target;
+ rendered.set(n,target);
+ if(language==='te')translateRemoteNode(n,source);
+}
+function attributes(el){
+ if(!el||el.closest('script,style,noscript,svg,code,pre,.trivox-language,[translate="no"],.notranslate,[contenteditable="true"]'))return;
+ let store=attrs.get(el)||{},last=renderedAttrs.get(el)||{};
+ for(const key of ['placeholder','title','aria-label','alt','value']){
+  if(!el.hasAttribute(key)||key==='value'&&!/^(BUTTON)$/.test(el.tagName))continue;
+  const now=el.getAttribute(key),old=store[key];
+  const source=old!==undefined&&(now===last[key]||now===old)?old:now;
+  store[key]=source;
+  const target=language==='te'?translate(source):source;
+  if(now!==target)el.setAttribute(key,target);
+  last[key]=target;
+  if(language==='te')translateRemoteAttribute(el,key,source);
+ }
+ attrs.set(el,store);renderedAttrs.set(el,last);
+}
 function scan(){if(writing)return;writing=true;try{const walk=document.createTreeWalker(document.body,NodeFilter.SHOW_ELEMENT|NodeFilter.SHOW_TEXT);while(walk.nextNode()){const n=walk.currentNode;if(n.nodeType===3)textNode(n);else attributes(n)}}finally{writing=false}}
 function setLanguage(next){language=next==='te'?'te':'en';document.documentElement.lang=language;document.documentElement.classList.toggle('trivox-telugu',language==='te');toggles.forEach(toggle=>{toggle.classList.toggle('is-telugu',language==='te');toggle.querySelectorAll('[data-lang]').forEach(b=>{const active=b.dataset.lang===language;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active))})});scan();try{localStorage.setItem('trivox-language',language)}catch(e){}}
 toggles.forEach(toggle=>toggle.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>setLanguage(b.dataset.lang))));
