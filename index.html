@@ -5117,6 +5117,38 @@ html.trivox-telugu .hero-title,html.trivox-telugu .model-head h2,html.trivox-tel
 }
 </style>
 
+
+<style id="trivox-telugu-layout-fix">
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;500;600;700;800;900&display=swap');
+html.trivox-telugu { font-family:'Noto Sans Telugu',Arial,sans-serif; }
+html.trivox-telugu body { font-family:'Noto Sans Telugu',Arial,sans-serif; }
+html.trivox-telugu :is(h1,h2,h3,h4,h5,h6,p,small,strong,button,a,.nav-link,.hero-description,.model-label,.take-forward-eyebrow) {
+  font-family:'Noto Sans Telugu',Arial,sans-serif;
+  letter-spacing:normal !important;
+  line-height:1.55;
+  overflow-wrap:break-word;
+  word-break:normal;
+  text-overflow:clip;
+}
+html.trivox-telugu :is(.hero-title,.showcase-head h2,.model-head h2,.learning-copy h2,.take-forward h2,.center-motion h2,.course-hero h3) {
+  line-height:1.48 !important;
+  letter-spacing:normal !important;
+  height:auto;
+  max-height:none;
+  white-space:normal;
+  overflow-wrap:break-word;
+}
+html.trivox-telugu .hero-title {font-size:clamp(28px,4.2vw,55px);}
+html.trivox-telugu .hero-title span {line-height:inherit;}
+html.trivox-telugu .hero-description {width:auto;max-width:900px;white-space:normal;}
+html.trivox-telugu :is(.model-item,.forward-item,.course-mini,.course-hero,.hero-content) {min-width:0;}
+html.trivox-telugu :is(.model-item h3,.forward-copy h3,.course-mini strong,.course-mini span) {height:auto;max-height:none;white-space:normal;line-height:1.55 !important;}
+@media(max-width:600px){
+ html.trivox-telugu :is(.hero-title,.showcase-head h2,.model-head h2,.learning-copy h2,.take-forward h2,.center-motion h2){font-size:clamp(25px,7vw,36px);line-height:1.55 !important;}
+ html.trivox-telugu .hero {height:auto;min-height:64svh;}
+ html.trivox-telugu .hero-description {max-width:100%;}
+}
+</style>
 </head>
 
 <body>
