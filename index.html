@@ -3896,6 +3896,42 @@ svg{
     font-size:8px;
   }
 }
+
+/* Only replaces the Get Started navbar button; Sign In is untouched. */
+.trivox-language{position:relative;display:flex;align-items:center;flex:0 0 auto;width:108px;height:34px;padding:3px;border:1px solid #e8e4f2;border-radius:9px;background:#f5f3fa;isolation:isolate}
+.trivox-language-slider{position:absolute;z-index:-1;left:3px;top:3px;width:39px;height:26px;border-radius:6px;background:#7450e8;box-shadow:0 2px 7px rgba(116,80,232,.18);transition:transform .28s cubic-bezier(.2,.8,.2,1),width .28s cubic-bezier(.2,.8,.2,1)}
+.trivox-language.is-telugu .trivox-language-slider{transform:translateX(39px);width:63px}
+.trivox-language-option{border:0;background:transparent;position:relative;flex:0 0 39px;height:26px;padding:0;cursor:pointer;font:700 11px Arial,Helvetica,sans-serif;color:#615b6d;white-space:nowrap;transition:color .2s}
+.trivox-language-option[data-lang="te"]{flex-basis:63px;font-size:11px}
+.trivox-language-option.active{color:#fff}
+
+/* Mobile: show original Sign In and place language switch immediately beside it. */
+@media(max-width:1000px){
+ .nav-actions .signin-main-btn.login-btn{display:inline-flex !important;align-items:center;justify-content:center;gap:5px}
+ .nav-actions{margin-left:auto;flex-shrink:0}
+}
+@media(max-width:600px){
+ .navbar{gap:5px;padding-left:9px;padding-right:9px}
+ .navbar .logo{font-size:clamp(11px,3.5vw,16px);letter-spacing:-.6px;min-width:0}
+ .navbar .logo-impact{margin-left:3px}
+ .nav-actions{gap:4px}
+ .nav-actions .signin-main-btn{min-height:32px;padding:0 7px;font-size:10.5px}
+ .menu-toggle{width:34px;height:34px;flex:0 0 34px}
+ .trivox-language{width:88px;height:30px;padding:2px}
+ .trivox-language-slider{left:2px;top:2px;width:31px;height:24px}
+ .trivox-language.is-telugu .trivox-language-slider{transform:translateX(31px);width:53px}
+ .trivox-language-option{flex-basis:31px;height:24px;font-size:9px}
+ .trivox-language-option[data-lang="te"]{flex-basis:53px;font-size:9px}
+}
+/* Keep language switch beside the original Sign In control on mobile. */
+@media(max-width:1000px){
+  .nav-actions{gap:6px}
+  .trivox-language{display:flex;flex-shrink:0}
+}
+
+@media(prefers-reduced-motion:reduce){.trivox-language-slider{transition:none}}
+html.trivox-telugu .hero-title,html.trivox-telugu .model-head h2,html.trivox-telugu .learning-copy h2,html.trivox-telugu .take-forward h2{font-size:clamp(27px,4.2vw,55px);line-height:1.3;letter-spacing:0;overflow-wrap:anywhere}
+@media(max-width:600px){html.trivox-telugu .hero-title,html.trivox-telugu .model-head h2,html.trivox-telugu .learning-copy h2,html.trivox-telugu .take-forward h2{font-size:clamp(24px,7vw,34px);line-height:1.4}}
 </style>
 
 <style id="mobile-signin-open-close-final-fix">
@@ -5265,9 +5301,11 @@ svg{
       </div>
     </div>
 
-    <a href="course.html" class="get-started">
-      Get Started
-    </a>
+    <div class="trivox-language notranslate" translate="no" role="group" aria-label="Website language">
+      <span class="trivox-language-slider" aria-hidden="true"></span>
+      <button type="button" class="trivox-language-option active" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" class="trivox-language-option" data-lang="te" aria-pressed="false">తెలుగు</button>
+    </div>
 
     <button
       class="menu-toggle"
@@ -6890,6 +6928,38 @@ const menuToggle =
   }, {passive:true});
 
   window.addEventListener('resize', closeSignIn);
+})();
+</script>
+
+
+<script id="trivox-native-language">
+(function(){
+ const dictionary={"Company": "సంస్థ", "About TRIVOX": "TRIVOX గురించి", "Our Mission": "మా లక్ష్యం", "Our Vision": "మా దృష్టి", "Leadership": "నాయకత్వం", "Our Team": "మా బృందం", "Partners": "భాగస్వాములు", "Impact": "ప్రభావం", "Learning": "అభ్యాసం", "AI Learning": "AI అభ్యాసం", "Programming": "ప్రోగ్రామింగ్", "Web Development": "వెబ్ డెవలప్‌మెంట్", "App Development": "యాప్ డెవలప్‌మెంట్", "Data Science": "డేటా సైన్స్", "Cyber Security": "సైబర్ భద్రత", "Programs": "కార్యక్రమాలు", "Student Programs": "విద్యార్థుల కార్యక్రమాలు", "College Programs": "కళాశాల కార్యక్రమాలు", "Internships": "ఇంటర్న్‌షిప్‌లు", "Workshops": "వర్క్‌షాప్‌లు", "Bootcamps": "బూట్‌క్యాంప్‌లు", "Career Programs": "కెరీర్ కార్యక్రమాలు", "Certification Programs": "సర్టిఫికేషన్ కార్యక్రమాలు", "Solutions": "పరిష్కారాలు", "For Students": "విద్యార్థుల కోసం", "For Colleges": "కళాశాలల కోసం", "For Schools": "పాఠశాలల కోసం", "For Companies": "సంస్థల కోసం", "Resources": "వనరులు", "Blogs": "బ్లాగులు", "Tutorials": "ట్యుటోరియల్స్", "Learning Resources": "అభ్యాస వనరులు", "Student Projects": "విద్యార్థుల ప్రాజెక్టులు", "Success Stories": "విజయ గాథలు", "Events": "ఈవెంట్‌లు", "FAQs": "తరచుగా అడిగే ప్రశ్నలు", "Careers": "ఉద్యోగావకాశాలు", "Open Positions": "ఖాళీ ఉద్యోగాలు", "Campus Hiring": "క్యాంపస్ నియామకాలు", "Join Our Team": "మా బృందంలో చేరండి", "Life at TRIVOX": "TRIVOXలో జీవితం", "Contact": "సంప్రదించండి", "Sign In": "సైన్ ఇన్", "Documentary": "డాక్యుమెంటరీ", "Sign in for documentary": "డాక్యుమెంటరీ కోసం సైన్ ఇన్", "Course": "కోర్సు", "Sign in for courses": "కోర్సుల కోసం సైన్ ఇన్", "Don’t just learn.": "కేవలం నేర్చుకోవడమే కాదు.", "Make an impact.": "నిజమైన ప్రభావం చూపండి.", "Explore TRIVOX": "TRIVOXను అన్వేషించండి", "View Programs": "కార్యక్రమాలు చూడండి", "Explore what we build": "మేము నిర్మించేవి చూడండి", "Ideas moving into impact.": "ఆలోచనల నుంచి ప్రభావం వైపు.", "LEARNING": "అభ్యాసం", "LEARNING AT TRIVOX": "TRIVOXలో అభ్యాసం", "KNOWLEDGE IN MOTION": "ఆచరణలో జ్ఞానం", "BECOMES": "మారుతుంది", "REAL.": "వాస్తవంగా.", "BUILDING AT TRIVOX": "TRIVOXలో నిర్మాణం", "LEARN → APPLY → BUILD": "నేర్చుకోండి → అమలు చేయండి → నిర్మించండి", "Learn more from what": "మీ ఖర్చులతో మరింత", "you already spend on.": "నేర్చుకోండి.", "Make an eligible purchase": "అర్హత గల కొనుగోలు చేయండి", "Get partner benefits": "భాగస్వామి ప్రయోజనాలు పొందండి", "Unlock your learning": "మీ అభ్యాసాన్ని ప్రారంభించండి", "Learn & complete": "నేర్చుకుని పూర్తి చేయండి", "Earn your certificate": "మీ సర్టిఫికెట్ పొందండి", "One connected experience:": "ఒక అనుసంధాన అనుభవం:", "Your learning,": "మీ అభ్యాసం,", "always moving.": "ఎప్పుడూ ముందుకు.", "Short, focused learning": "సంక్షిప్తమైన, లక్ష్యబద్ధమైన అభ్యాసం", "Progress that stays visible": "స్పష్టంగా కనిపించే పురోగతి", "Complete. Prove. Progress.": "పూర్తి చేయండి. నిరూపించండి. ముందుకు సాగండి.", "My Learning": "నా అభ్యాసం", "Continue where you left off": "మీరు ఆపిన చోటు నుంచి కొనసాగించండి", "Current learning module": "ప్రస్తుత అభ్యాస మాడ్యూల్", "Lessons": "పాఠాలు", "Quiz": "క్విజ్", "NEXT MILESTONE": "తదుపరి మైలురాయి", "Course Certificate": "కోర్సు సర్టిఫికెట్", "Locked": "లాక్ చేయబడింది", "Learning that stays": "నిలిచిపోయే అభ్యాసం", "with you.": "మీతో పాటు.", "See the student journey": "విద్యార్థి ప్రయాణాన్ని చూడండి", "Knowledge you can build on": "మరింత నేర్చుకోవడానికి పునాది", "Modules": "మాడ్యూల్స్", "Progress": "పురోగతి", "Practical experience, not just theory": "సిద్ధాంతమే కాదు, ఆచరణాత్మక అనుభవం", "Projects": "ప్రాజెక్టులు", "Assignments": "అసైన్‌మెంట్‌లు", "Practice": "అభ్యాసం", "Proof of what you completed": "మీరు పూర్తి చేసినదానికి ఆధారం", "Certificates": "సర్టిఫికెట్లు", "Milestones": "మైలురాళ్లు", "Achievements": "విజయాలు", "A clearer path to what comes next": "తదుపరి దశకు స్పష్టమైన మార్గం", "Next Module": "తదుపరి మాడ్యూల్", "Skill Growth": "నైపుణ్యాల అభివృద్ధి", "Long-term Learning": "దీర్ఘకాలిక అభ్యాసం", "One platform. Complete journey.": "ఒకే వేదిక. సంపూర్ణ ప్రయాణం.", "From registration": "నమోదు నుంచి", "to recognition.": "గుర్తింపు వరకు.", "JOIN": "చేరండి", "Register & Get Started": "నమోదై ప్రారంభించండి", "Registration": "నమోదు", "Referral Code": "రిఫరల్ కోడ్", "Student Profile": "విద్యార్థి ప్రొఫైల్", "PARTICIPATE": "పాల్గొనండి", "Quiz & Documentary Challenges": "క్విజ్, డాక్యుమెంటరీ సవాళ్లు", "Competitions": "పోటీలు", "SUBMIT": "సమర్పించండి", "Upload Your Work": "మీ పనిని అప్‌లోడ్ చేయండి", "Video Upload": "వీడియో అప్‌లోడ్", "Verification": "ధృవీకరణ", "Judging": "మూల్యాంకనం", "TRACK": "గమనించండి", "Your Progress Dashboard": "మీ పురోగతి డ్యాష్‌బోర్డ్", "Points": "పాయింట్లు", "Referrals": "రిఫరల్స్", "Rankings": "ర్యాంకులు", "COMPLETE": "పూర్తి చేయండి", "Payments & Confirmation": "చెల్లింపులు, నిర్ధారణ", "Payments": "చెల్లింపులు", "Confirmation": "నిర్ధారణ", "Receipts": "రసీదులు", "Explore": "అన్వేషించండి", "Learn More": "మరింత తెలుసుకోండి", "Get Started": "ప్రారంభించండి", "Apply Now": "ఇప్పుడే దరఖాస్తు చేయండి", "Read More": "మరింత చదవండి", "Contact Us": "మమ్మల్ని సంప్రదించండి", "Explore technology, build meaningful projects and turn your skills into real-world impact with TRIVOX AI IMPACT.": "సాంకేతికతను అన్వేషించండి, ఉపయోగకరమైన ప్రాజెక్టులు నిర్మించండి, TRIVOX AI IMPACTతో మీ నైపుణ్యాలను నిజమైన ప్రభావంగా మార్చుకోండి.", "Learn AI concepts, tools and real-world applications.": "AI భావనలు, సాధనాలు, వాస్తవ అనువర్తనాలను నేర్చుకోండి.", "Build strong coding and problem-solving skills.": "కోడింగ్, సమస్య పరిష్కార నైపుణ్యాలను పెంపొందించుకోండి.", "Build responsive modern websites.": "ఆధునిక రెస్పాన్సివ్ వెబ్‌సైట్లు నిర్మించండి.", "Learn modern application development.": "ఆధునిక యాప్ డెవలప్‌మెంట్ నేర్చుకోండి.", "Explore analytics and intelligent data.": "డేటా విశ్లేషణ, తెలివైన డేటాను అన్వేషించండి.", "Understand security concepts and practices.": "భద్రతా భావనలు, పద్ధతులను అర్థం చేసుకోండి."};
+ const toggle=document.querySelector('.trivox-language');
+ if(!toggle)return;
+ const nodes=[];
+ const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode(node){
+  if(!node.nodeValue.trim()||node.parentElement.closest('script,style,noscript,.trivox-language,[translate="no"],.notranslate'))return NodeFilter.FILTER_REJECT;
+  return NodeFilter.FILTER_ACCEPT;
+ }});
+ while(walker.nextNode()){
+  const node=walker.currentNode, original=node.nodeValue, key=original.trim();
+  if(dictionary[key])nodes.push({node,original,translated:dictionary[key]});
+ }
+ function setLanguage(lang){
+  const telugu=lang==='te';
+  nodes.forEach(({node,original,translated})=>{node.nodeValue=telugu?original.replace(original.trim(),translated):original});
+  toggle.classList.toggle('is-telugu',telugu);
+  toggle.querySelectorAll('[data-lang]').forEach(btn=>{
+   const active=btn.dataset.lang===lang;btn.classList.toggle('active',active);btn.setAttribute('aria-pressed',String(active));
+  });
+  document.documentElement.lang=lang;
+  document.documentElement.classList.toggle('trivox-telugu',telugu);
+  try{localStorage.setItem('trivox-language',lang)}catch(e){}
+ }
+ toggle.querySelectorAll('[data-lang]').forEach(btn=>btn.addEventListener('click',()=>setLanguage(btn.dataset.lang)));
+ let saved='en';try{saved=localStorage.getItem('trivox-language')||'en'}catch(e){}
+ setLanguage(saved==='te'?'te':'en');
 })();
 </script>
 </body>
