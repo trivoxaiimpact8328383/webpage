@@ -6,494 +6,234 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TRIVOX AI IMPACT | Quiz</title>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
-<!-- Font Awesome for the requested icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
 <style>
-/* RESET */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box}
 
-html,
-body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #ffffff;
-    color: #171525;
-}
+html,body{width:100%;min-height:100%;font-family:Arial,Helvetica,sans-serif;color:#171525;background:#fff}
 
-body {
-    position: relative;
+.navbar{
+    position:fixed;top:0;left:0;width:100%;height:74px;
+    z-index:1000;display:flex;align-items:center;
+    justify-content:space-between;padding:0 6%;
+    background:#fff;border-bottom:1px solid #eeeeF3
 }
-
-a {
-    text-decoration: none;
-    color: inherit;
+.logo{display:inline-flex;align-items:center;white-space:nowrap;font-size:23px;font-weight:900;letter-spacing:-1px;text-decoration:none}
+.logo-main{
+    background:linear-gradient(180deg,#171525 0%,#171525 49%,#7653e8 50%,#7653e8 100%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent
 }
-
-/* FIXED HEADER */
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 74px;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 6%;
-    background: #ffffff;
-    border-bottom: 1px solid #eeeeF3;
+.logo-impact{
+    margin-left:7px;
+    background:linear-gradient(180deg,#7653e8 0%,#7653e8 49%,#171525 50%,#171525 100%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent
 }
+.nav-link{text-decoration:none;font-size:14px;font-weight:600;color:#33313f}
 
-/* LOGO */
-.logo {
-    display: inline-flex;
-    align-items: center;
-    white-space: nowrap;
-    font-size: 23px;
-    font-weight: 900;
-    letter-spacing: -1px;
-}
-
-.logo-main {
-    background: linear-gradient(
-        180deg,
-        #171525 0%,
-        #171525 49%,
-        #7653e8 50%,
-        #7653e8 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.logo-impact {
-    margin-left: 7px;
-    background: linear-gradient(
-        180deg,
-        #7653e8 0%,
-        #7653e8 49%,
-        #171525 50%,
-        #171525 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-/* HOME LINK */
-.nav-link {
-    font-size: 14px;
-    font-weight: 600;
-    color: #33313f;
-    transition: color 0.2s ease;
-}
-
-.nav-link:hover {
-    color: #7653e8;
-}
-
-/* MAIN AREA */
-.quiz-page {
-    background: #ffffff;
-    position: fixed;
-    top: 74px;
-    right: 0;
-    bottom: 54px;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    overflow: hidden;
-    text-align: center;
-}
-
-/* PURPLE MESH LINES */
-.quiz-page::before {
-    content: "";
-    position: absolute;
-    inset: 0;
+.page{
+    position:relative;
+    padding:105px 18px 75px;
+    min-height:100vh;
+    overflow:hidden;
     background-image:
-        linear-gradient(rgba(118, 83, 232, 0.07) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(118, 83, 232, 0.07) 1px, transparent 1px);
-    background-size: 35px 35px;
-    pointer-events: none;
+        linear-gradient(rgba(118,83,232,.045) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(118,83,232,.045) 1px,transparent 1px);
+    background-size:35px 35px
+}
+.text-icon-layer{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.text-fall-icon{position:absolute;left:var(--left);top:var(--top);font-size:var(--big);color:#7653e8;opacity:.08}
+
+.content{position:relative;z-index:1;max-width:760px;width:100%;margin:auto}
+h1{text-align:center;font-size:clamp(27px,4vw,36px);margin-bottom:10px}
+.subtitle{text-align:center;color:#777482;line-height:1.7;margin-bottom:28px}
+
+.question{
+    margin:0 0 20px;padding:19px 18px;
+    border:1px solid #e8e1f8;border-radius:10px;
+    background:rgba(255,255,255,.91)
+}
+.question h3{font-size:16px;line-height:1.6;margin-bottom:12px}
+.option{
+    display:block;padding:12px;margin-top:8px;
+    border:1px solid #ece7f8;border-radius:7px;
+    background:#fff;cursor:pointer;color:#3e3a4c
+}
+.option:hover{border-color:#7653e8}
+.option input{margin-right:9px;accent-color:#7653e8}
+
+.lock-area{
+    margin-top:30px;padding:25px 0 5px;text-align:center;
+    border-top:1px solid #eee8fb
+}
+.lock-icon{
+    width:58px;height:58px;margin:0 auto 15px;
+    display:flex;align-items:center;justify-content:center;
+    border-radius:50%;background:#f3efff;color:#7653e8;font-size:24px
+}
+.eyebrow{font-size:11px;font-weight:800;letter-spacing:2px;color:#7653e8;margin-bottom:10px}
+.lock-area h2{font-size:27px;margin-bottom:12px}
+.description{max-width:460px;margin:0 auto 18px;color:#777482;font-size:14px;line-height:1.8}
+
+.form-area{max-width:400px;margin:0 auto;text-align:left}
+.underline-input{
+    display:block;width:100%;height:47px;margin:10px 0 16px;
+    padding:10px 3px;border:0;border-bottom:1.5px solid #b9a8ed;
+    border-radius:0;outline:none;background:transparent;
+    color:#171525;font-size:16px
+}
+.underline-input:focus{border-bottom:2px solid #7653e8}
+.underline-input::placeholder{color:#9692a2}
+
+.primary-btn{
+    display:block;width:100%;min-height:49px;padding:14px 20px;
+    border:0;border-radius:7px;background:#7653e8;color:#fff;
+    font-size:14px;font-weight:700;cursor:pointer
+}
+.primary-btn:hover{background:#6240d0}
+.primary-btn:disabled{opacity:.7;cursor:not-allowed}
+
+.hidden{display:none!important}
+#message{text-align:center;min-height:20px;margin:13px auto 0;font-size:13px;line-height:1.6;overflow-wrap:anywhere}
+.secure-note{text-align:center;margin-top:15px;color:#9692a2;font-size:12px}
+
+.footer{
+    position:fixed;bottom:0;left:0;z-index:1000;width:100%;height:48px;
+    display:flex;align-items:center;justify-content:center;
+    padding:0 12px;background:#fff;border-top:1px solid #eeeeF3;
+    color:#9692a2;font-size:11px;text-align:center
 }
 
-.quiz-page > * {
-    position: relative;
-    z-index: 1;
-}
-
-/* REQUESTED FONT AWESOME ICON LAYER */
-.text-icon-layer {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    overflow: hidden;
-    z-index: 0;
-}
-
-.text-fall-icon {
-    position: absolute;
-    left: var(--left);
-    top: var(--top);
-    font-size: var(--big);
-    color: #7653e8;
-    opacity: 0.08;
-    animation: none !important;
-    transform: none !important;
-}
-
-@keyframes textIconFloat {
-    0%, 100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-12px);
-    }
-}
-
-/* CONTENT — NO CARD OR BOX */
-.quiz-content {
-    width: 100%;
-    max-width: 540px;
-    transform: translateY(-4px);
-    z-index: 2;
-}
-
-.lock-icon {
-    width: 68px;
-    height: 68px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 24px;
-    color: #7653e8;
-    background: #f3efff;
-    border-radius: 50%;
-}
-
-.lock-icon svg {
-    width: 30px;
-    height: 30px;
-    display: block;
-}
-
-.eyebrow {
-    margin-bottom: 13px;
-    color: #7653e8;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-
-h1 {
-    margin-bottom: 16px;
-    color: #171525;
-    font-size: clamp(29px, 4vw, 38px);
-    line-height: 1.2;
-    font-weight: 800;
-    letter-spacing: -1.1px;
-}
-
-.description {
-    max-width: 440px;
-    margin: 0 auto 29px;
-    color: #777482;
-    font-size: 15px;
-    line-height: 1.8;
-}
-
-/* UNLOCK BUTTON */
-.unlock-btn {
-    min-width: 190px;
-    min-height: 51px;
-    padding: 15px 27px;
-    border: none;
-    border-radius: 7px;
-    background: #7653e8;
-    color: #ffffff;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.1px;
-    cursor: pointer;
-    transition:
-        background 0.2s ease,
-        transform 0.2s ease,
-        opacity 0.2s ease;
-}
-
-.unlock-btn:hover {
-    background: #6240d0;
-    transform: translateY(-1px);
-}
-
-.unlock-btn:active {
-    transform: translateY(0);
-}
-
-.unlock-btn:disabled {
-    opacity: 0.65;
-    cursor: not-allowed;
-    transform: none;
-}
-
-.secure-note {
-    margin-top: 19px;
-    color: #9692a2;
-    font-size: 12px;
-}
-
-#message {
-    max-width: 480px;
-    margin: 14px auto 0;
-    font-size: 13px;
-    line-height: 1.6;
-    overflow-wrap: anywhere;
-}
-
-/* FIXED FOOTER */
-.footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: 1000;
-    width: 100%;
-    height: 54px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 12px;
-    background: #ffffff;
-    border-top: 1px solid #eeeeF3;
-    color: #9692a2;
-    font-size: 11px;
-    text-align: center;
-}
-
-/* MOBILE */
-@media (max-width: 600px) {
-    .navbar {
-        height: 65px;
-        padding: 0 20px;
-    }
-
-    .logo {
-        font-size: 20px;
-    }
-
-    .logo-impact {
-        margin-left: 5px;
-    }
-
-    .nav-link {
-        font-size: 13px;
-    }
-
-    .quiz-page {
-        top: 65px;
-        bottom: 48px;
-        padding: 20px;
-    }
-
-    .quiz-content {
-        transform: translateY(-2px);
-    }
-
-    .lock-icon {
-        width: 60px;
-        height: 60px;
-        margin-bottom: 21px;
-    }
-
-    .lock-icon svg {
-        width: 27px;
-        height: 27px;
-    }
-
-    .eyebrow {
-        font-size: 10px;
-        margin-bottom: 12px;
-    }
-
-    h1 {
-        font-size: 29px;
-        letter-spacing: -0.7px;
-        margin-bottom: 13px;
-    }
-
-    .description {
-        max-width: 340px;
-        font-size: 14px;
-        line-height: 1.75;
-        margin-bottom: 25px;
-    }
-
-    .unlock-btn {
-        width: 100%;
-        max-width: 280px;
-        min-height: 49px;
-    }
-
-    .secure-note {
-        margin-top: 16px;
-        font-size: 11px;
-    }
-
-    #message {
-        font-size: 12px;
-    }
-
-    .footer {
-        height: 48px;
-        font-size: 10px;
-    }
-
-    .text-fall-icon {
-        font-size: calc(var(--big) * 0.65);
-        opacity: 0.13;
-    }
-}
-
-/* SHORT MOBILE SCREENS */
-@media (max-height: 620px) {
-    .lock-icon {
-        width: 48px;
-        height: 48px;
-        margin-bottom: 12px;
-    }
-
-    .lock-icon svg {
-        width: 23px;
-        height: 23px;
-    }
-
-    .eyebrow {
-        margin-bottom: 8px;
-    }
-
-    h1 {
-        font-size: 27px;
-        margin-bottom: 10px;
-    }
-
-    .description {
-        margin-bottom: 17px;
-        line-height: 1.55;
-    }
-
-    .secure-note {
-        margin-top: 11px;
-    }
-
-    #message {
-        margin-top: 8px;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .text-fall-icon {
-        animation: none;
-    }
-}
-@media (max-width: 768px) {
-    .quiz-page::before {
-        background-image:
-            linear-gradient(rgba(118, 83, 232, 0.04) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(118, 83, 232, 0.04) 1px, transparent 1px);
-        background-size: 28px 28px;
-    }
-
-    .text-fall-icon {
-        opacity: 0.08;
-        animation: none !important;
-        transform: none !important;
-    }
+@media(max-width:600px){
+    .navbar{height:65px;padding:0 18px}
+    .logo{font-size:19px}.logo-impact{margin-left:5px}
+    .nav-link{font-size:13px}
+    .page{padding:88px 14px 68px;background-size:28px 28px}
+    .question{padding:15px 12px}
+    .question h3{font-size:15px}
+    .option{font-size:14px;padding:12px 9px}
+    .lock-area h2{font-size:25px}
+    .text-fall-icon{opacity:.06}
 }
 </style>
 </head>
 
 <body>
 
-<!-- HEADER: LOGO + HOME ONLY -->
 <header class="navbar">
-    <a href="index.html" class="logo" aria-label="TRIVOX AI IMPACT Home">
+    <a href="index.html" class="logo">
         <span class="logo-main">TRIVOX</span>
         <span class="logo-impact">AI IMPACT</span>
     </a>
-
     <a href="index.html" class="nav-link">Home</a>
 </header>
 
-<!-- QUIZ CONTENT -->
-<main class="quiz-page">
+<div class="text-icon-layer" aria-hidden="true">
+    <i class="fa-solid fa-code text-fall-icon" style="--big:54px;--left:7%;--top:58%"></i>
+    <i class="fa-solid fa-laptop-code text-fall-icon" style="--big:62px;--left:15%;--top:20%"></i>
+    <i class="fa-solid fa-brain text-fall-icon" style="--big:58px;--left:26%;--top:8%"></i>
+    <i class="fa-solid fa-microchip text-fall-icon" style="--big:50px;--left:35%;--top:70%"></i>
+    <i class="fa-solid fa-robot text-fall-icon" style="--big:66px;--left:60%;--top:7%"></i>
+    <i class="fa-solid fa-lightbulb text-fall-icon" style="--big:55px;--left:70%;--top:65%"></i>
+    <i class="fa-solid fa-gears text-fall-icon" style="--big:60px;--left:79%;--top:18%"></i>
+    <i class="fa-solid fa-database text-fall-icon" style="--big:52px;--left:90%;--top:58%"></i>
+    <i class="fa-solid fa-cloud text-fall-icon" style="--big:58px;--left:4%;--top:12%"></i>
+    <i class="fa-solid fa-terminal text-fall-icon" style="--big:53px;--left:88%;--top:5%"></i>
+</div>
 
-    <!-- ONLY THE REQUESTED ICONS ADDED HERE -->
-    <div class="text-icon-layer" aria-hidden="true">
-        <i class="fa-solid fa-code text-fall-icon" style="--big:54px;--left:7%;--top:58%;"></i>
-        <i class="fa-solid fa-laptop-code text-fall-icon" style="--big:62px;--left:15%;--top:20%;"></i>
-        <i class="fa-solid fa-brain text-fall-icon" style="--big:58px;--left:26%;--top:8%;"></i>
-        <i class="fa-solid fa-microchip text-fall-icon" style="--big:50px;--left:35%;--top:70%;"></i>
-        <i class="fa-solid fa-robot text-fall-icon" style="--big:66px;--left:60%;--top:7%;"></i>
-        <i class="fa-solid fa-lightbulb text-fall-icon" style="--big:55px;--left:70%;--top:65%;"></i>
-        <i class="fa-solid fa-gears text-fall-icon" style="--big:60px;--left:79%;--top:18%;"></i>
-        <i class="fa-solid fa-database text-fall-icon" style="--big:52px;--left:90%;--top:58%;"></i>
-        <i class="fa-solid fa-cloud text-fall-icon" style="--big:58px;--left:4%;--top:12%;"></i>
-        <i class="fa-solid fa-terminal text-fall-icon" style="--big:53px;--left:88%;--top:5%;"></i>
-    </div>
+<main class="page">
+<div class="content">
 
-    <section class="quiz-content">
+    <h1>TRIVOX Quiz</h1>
+    <p class="subtitle">
+        Select an answer to get started. Quiz access is locked until payment.
+    </p>
 
-        <div class="lock-icon" aria-hidden="true">
-            <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-            >
-                <rect x="4" y="10" width="16" height="11" rx="2"></rect>
-                <path d="M8 10V7a4 4 0 0 1 8 0v3"></path>
-                <path d="M12 14v3"></path>
-            </svg>
+    <!-- SAMPLE QUESTIONS: replace these with your original quiz questions -->
+
+    <section id="questions">
+
+        <div class="question">
+            <h3>1. Which language is primarily used to structure a web page?</h3>
+            <label class="option"><input type="radio" name="q1" value="A"> Python</label>
+            <label class="option"><input type="radio" name="q1" value="B"> HTML</label>
+            <label class="option"><input type="radio" name="q1" value="C"> SQL</label>
+            <label class="option"><input type="radio" name="q1" value="D"> C</label>
         </div>
 
-        <h1>Quiz is Locked</h1>
+        <div class="question">
+            <h3>2. Which of these is a relational database?</h3>
+            <label class="option"><input type="radio" name="q2" value="A"> MySQL</label>
+            <label class="option"><input type="radio" name="q2" value="B"> HTML</label>
+            <label class="option"><input type="radio" name="q2" value="C"> CSS</label>
+            <label class="option"><input type="radio" name="q2" value="D"> Photoshop</label>
+        </div>
 
-        <p class="description">
-            Unlock your quiz to access the questions
-            and begin your learning journey.
-        </p>
-
-        <button class="unlock-btn" id="unlockButton" type="button">
-            Please Unlock
-        </button>
-
-        <p class="secure-note">
-            Secure payment powered by Razorpay
-        </p>
-
-        <p id="message" role="status" aria-live="polite"></p>
+        <div class="question">
+            <h3>3. Which CSS property changes text colour?</h3>
+            <label class="option"><input type="radio" name="q3" value="A"> font-style</label>
+            <label class="option"><input type="radio" name="q3" value="B"> background</label>
+            <label class="option"><input type="radio" name="q3" value="C"> color</label>
+            <label class="option"><input type="radio" name="q3" value="D"> padding</label>
+        </div>
 
     </section>
+
+    <!-- LOCK + MOBILE + NAME + PAYMENT ON SAME PAGE -->
+    <section class="lock-area" id="lockArea">
+
+        <div class="lock-icon">
+            <i class="fa-solid fa-lock"></i>
+        </div>
+
+        <p class="eyebrow">ACCESS RESTRICTED</p>
+        <h2 id="lockTitle">Your Quiz Is Locked</h2>
+        <p class="description" id="lockDescription">
+            Unlock access to answer the quiz questions.
+        </p>
+
+        <div class="form-area">
+
+           
+<!-- MOBILE NUMBER -->
+<div>
+    <input
+        class="underline-input"
+        id="mobileNumber"
+        type="tel"
+        inputmode="numeric"
+        maxlength="10"
+        pattern="[6-9][0-9]{9}"
+        placeholder="Enter mobile number"
+        autocomplete="tel"
+        required>
+</div>
+
+<!-- NAME APPEARS AUTOMATICALLY BELOW MOBILE -->
+<div id="nameForm" class="hidden">
+    <input
+        class="underline-input"
+        id="fullName"
+        type="text"
+        maxlength="80"
+        placeholder="Enter your name"
+        autocomplete="name"
+        required>
+</div>
+
+<!-- PAYMENT BUTTON APPEARS AFTER NAME -->
+<div id="paymentArea" class="hidden">
+    <button class="primary-btn" id="unlockButton" type="button">
+        Please Unlock
+    </button>
+    <p class="secure-note">Secure payment powered by Razorpay</p>
+</div>
+
+        <p id="message" role="status" aria-live="polite"></p>
+    </section>
+
+</div>
 </main>
 
 <footer class="footer">
@@ -501,32 +241,93 @@ h1 {
 </footer>
 
 <script>
-/* RAZORPAY PAYMENT */
 const API_URL = "https://payment-czhd.onrender.com";
 
+const mobileForm = document.getElementById("mobileForm");
+const nameForm = document.getElementById("nameForm");
+const paymentArea = document.getElementById("paymentArea");
+const mobileInput = document.getElementById("mobileNumber");
+const nameInput = document.getElementById("fullName");
 const unlockButton = document.getElementById("unlockButton");
+const lockTitle = document.getElementById("lockTitle");
+const lockDescription = document.getElementById("lockDescription");
 const message = document.getElementById("message");
 
-function showMessage(text, color) {
-    message.textContent = text;
-    message.style.color = color;
-}
+let userMobile = "";
+let userName = "";
+let paymentInProgress = false;
 
-function resetButton() {
+/* ANSWERS CANNOT BE SELECTED.
+   Clicking any option shows the locked message. */
+document.querySelectorAll('#questions input[type="radio"]').forEach(function(input) {
+    input.addEventListener("click", function(event) {
+        event.preventDefault();
+        input.checked = false;
+
+        lockTitle.textContent = "Your Quiz Is Locked";
+        lockDescription.textContent =
+            "You need to unlock the quiz before answering questions.";
+
+        document.getElementById("lockArea").scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+        message.style.color = "#7653e8";
+        message.textContent = "Quiz locked! Enter your mobile number below to continue.";
+        mobileInput.focus({ preventScroll: true });
+    });
+});
+
+
+/* MOBILE NUMBER: NAME APPEARS AUTOMATICALLY */
+mobileInput.addEventListener("input", function () {
+    this.value = this.value.replace(/\D/g, "").slice(0, 10);
+
+    if (/^[6-9]\d{9}$/.test(this.value)) {
+        userMobile = this.value;
+        nameForm.classList.remove("hidden");
+        nameInput.focus();
+        message.textContent = "";
+    } else {
+        nameForm.classList.add("hidden");
+        paymentArea.classList.add("hidden");
+        nameInput.value = "";
+        userName = "";
+    }
+});
+
+/* NAME: PLEASE UNLOCK BUTTON APPEARS AUTOMATICALLY */
+nameInput.addEventListener("input", function () {
+    userName = this.value.trim();
+
+    if (userName.length > 0) {
+        paymentArea.classList.remove("hidden");
+        message.style.color = "#7653e8";
+        message.textContent = "Now click Please Unlock to continue to payment.";
+    } else {
+        paymentArea.classList.add("hidden");
+        message.textContent = "";
+    }
+});
+
+function resetPaymentButton() {
+    paymentInProgress = false;
     unlockButton.disabled = false;
     unlockButton.textContent = "Please Unlock";
 }
 
-unlockButton.addEventListener("click", async function () {
+/* RAZORPAY: EXISTING BACKEND ENDPOINTS */
+unlockButton.addEventListener("click", async function() {
+    if (paymentInProgress) return;
 
     if (typeof Razorpay === "undefined") {
-        showMessage(
-            "Payment checkout could not load. Refresh and try again.",
-            "#d93025"
-        );
+        message.style.color = "#d93025";
+        message.textContent = "Payment checkout could not load. Refresh and try again.";
         return;
     }
 
+    paymentInProgress = true;
     unlockButton.disabled = true;
     unlockButton.textContent = "Please wait...";
     message.textContent = "";
@@ -536,30 +337,24 @@ unlockButton.addEventListener("click", async function () {
             `${API_URL}/api/razorpay/quiz/create-order`,
             {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({})
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    name: userName,
+                    mobile: userMobile
+                })
             }
         );
 
         const order = await response.json();
 
-        if (!response.ok || !order.order_id) {
-            throw new Error(
-                order.message || "Unable to create payment order."
-            );
+        if (!response.ok || !order.order_id || !order.amount) {
+            throw new Error(order.message || "Unable to create payment order.");
         }
 
-        const key =
-            order.key_id ||
-            order.key ||
-            order.razorpay_key_id;
+        const key = order.key_id || order.key || order.razorpay_key_id;
 
-        if (!key || !order.amount) {
-            throw new Error(
-                "Payment configuration is missing. Please contact support."
-            );
+        if (!key) {
+            throw new Error("Payment key is missing from the server response.");
         }
 
         const checkout = new Razorpay({
@@ -570,29 +365,26 @@ unlockButton.addEventListener("click", async function () {
             description: "Quiz Unlock",
             order_id: order.order_id,
 
-            handler: async function (payment) {
-                unlockButton.textContent = "Verifying payment...";
+            prefill: {
+                name: userName,
+                contact: userMobile
+            },
 
-                showMessage(
-                    "Verifying your payment...",
-                    "#7653e8"
-                );
+            handler: async function(payment) {
+                unlockButton.textContent = "Verifying payment...";
+                message.style.color = "#7653e8";
+                message.textContent = "Verifying your payment...";
 
                 try {
                     const verifyResponse = await fetch(
                         `${API_URL}/api/razorpay/quiz/verify`,
                         {
                             method: "POST",
-                            headers: {
-                                "Content-Type": "application/json"
-                            },
+                            headers: {"Content-Type": "application/json"},
                             body: JSON.stringify({
-                                razorpay_order_id:
-                                    payment.razorpay_order_id,
-                                razorpay_payment_id:
-                                    payment.razorpay_payment_id,
-                                razorpay_signature:
-                                    payment.razorpay_signature
+                                razorpay_order_id: payment.razorpay_order_id,
+                                razorpay_payment_id: payment.razorpay_payment_id,
+                                razorpay_signature: payment.razorpay_signature
                             })
                         }
                     );
@@ -605,10 +397,8 @@ unlockButton.addEventListener("click", async function () {
                         result.status === "captured" &&
                         result.quiz_access === true
                     ) {
-                        showMessage(
-                            "Payment successful! Opening quiz...",
-                            "#16803c"
-                        );
+                        message.style.color = "#16803c";
+                        message.textContent = "Payment successful! Opening quiz...";
 
                         window.location.assign(
                             result.quiz_url || "quiz-questions.html"
@@ -617,54 +407,40 @@ unlockButton.addEventListener("click", async function () {
                     }
 
                     throw new Error(
-                        result.message ||
-                        "Payment could not be verified. Contact support if money was deducted."
+                        result.message || "Payment could not be verified."
                     );
 
                 } catch (error) {
-                    showMessage(
-                        error.message || "Payment verification failed.",
-                        "#d93025"
-                    );
-
-                    resetButton();
+                    message.style.color = "#d93025";
+                    message.textContent =
+                        error.message || "Payment verification failed.";
+                    resetPaymentButton();
                 }
             },
 
             modal: {
-                ondismiss: function () {
-                    resetButton();
-
-                    showMessage(
-                        "Payment cancelled. You can try again.",
-                        "#777482"
-                    );
+                ondismiss: function() {
+                    resetPaymentButton();
+                    message.style.color = "#777482";
+                    message.textContent = "Payment cancelled. You can try again.";
                 }
             },
 
-            theme: {
-                color: "#7653e8"
-            }
+            theme: {color: "#7653e8"}
         });
 
-        checkout.on("payment.failed", function () {
-            showMessage(
-                "Payment failed. Please try again.",
-                "#d93025"
-            );
-
-            resetButton();
+        checkout.on("payment.failed", function() {
+            message.style.color = "#d93025";
+            message.textContent = "Payment failed. Please try again.";
+            resetPaymentButton();
         });
 
         checkout.open();
 
     } catch (error) {
-        showMessage(
-            error.message || "Something went wrong. Please try again.",
-            "#d93025"
-        );
-
-        resetButton();
+        message.style.color = "#d93025";
+        message.textContent = error.message || "Something went wrong. Please try again.";
+        resetPaymentButton();
     }
 });
 </script>
