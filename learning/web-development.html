@@ -3421,6 +3421,65 @@ main{
 </style>
 
 <style id="trivox-app-language-style">.trivox-language{display:inline-flex;align-items:center;gap:3px;padding:4px;border:1px solid #e7e1f4;border-radius:10px;background:#f7f5ff;white-space:nowrap}.trivox-language button{border:0;background:transparent;padding:7px 9px;border-radius:7px;font-size:12px;font-weight:800;color:#6d6680;cursor:pointer}.trivox-language button.active{background:#7450e8;color:white}.trivox-telugu{font-family:Arial,Helvetica,sans-serif}@media(max-width:1000px){.nav-actions .trivox-language{display:inline-flex!important}.trivox-language button{padding:6px 7px;font-size:11px}}</style>
+<style>
+
+#trivoxStartQuizButton {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 99999;
+
+    width: 125px;
+    height: 36px;
+    padding: 0 5px 0 30px;
+
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #6c28d9b3;
+    color: #fff;
+    border: none;
+    border-radius: 0;
+    clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%);
+
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+#trivoxStartQuizButton::before {
+    content: "»";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+
+    background: #6d28d9;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 1px #6d28d9;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #fff;
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+#trivoxStartQuizButton:hover {
+    background: #6d28d9;
+}
+</style>
 </head>
 
 
