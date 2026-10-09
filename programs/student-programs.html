@@ -3463,6 +3463,67 @@ main{
 }
 </style>
 <style id="trivox-home-language-style">.trivox-language-switch{display:inline-flex;align-items:center;gap:4px;flex-shrink:0;margin-left:4px;padding:4px;background:#f7f5ff;border:1px solid #e5e0f5;border-radius:13px;white-space:nowrap}.trivox-language-switch button{border:0;background:transparent;border-radius:9px;padding:9px 15px;cursor:pointer;font:600 12px Arial,sans-serif;color:#34313f;white-space:nowrap}.trivox-language-switch button.active{background:#7156e8;color:#fff;font-weight:700}@media(max-width:1000px){.trivox-language-switch{margin-left:auto;margin-right:8px}.trivox-language-switch button{padding:8px 11px}}@media(max-width:380px){.trivox-language-switch{gap:2px;margin-right:3px}.trivox-language-switch button{padding:7px 8px;font-size:11px}}</style>
+<style>
+
+#trivoxStartQuizButton {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 99999;
+
+    width: 125px;
+    height: 36px;
+    padding: 0 5px 0 30px;
+
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #6c28d9b3;
+    color: #fff;
+    border: none;
+    border-radius: 0;
+    clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%);
+
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+#trivoxStartQuizButton::before {
+    content: "»";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+
+    background: #6d28d9;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 1px #6d28d9;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #fff;
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+#trivoxStartQuizButton:hover {
+    background: #6d28d9;
+}
+</style>
+
+
 </head>
 
 
