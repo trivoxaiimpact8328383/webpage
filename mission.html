@@ -3803,6 +3803,68 @@ body{
 @media(max-width:1050px){.trivox-language-switch{margin-left:auto;margin-right:8px}.trivox-language-switch button{padding:8px 11px}}
 @media(max-width:380px){.trivox-language-switch{gap:2px;margin-right:3px}.trivox-language-switch button{padding:7px 8px;font-size:11px}}
 </style>
+  /*--start a quiz buton--*/
+
+<style>
+
+#trivoxStartQuizButton {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 99999;
+
+    width: 125px;
+    height: 36px;
+    padding: 0 5px 0 30px;
+
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #6c28d9b3;
+    color: #fff;
+    border: none;
+    border-radius: 0;
+    clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%);
+
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+#trivoxStartQuizButton::before {
+    content: "»";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+
+    background: #6d28d9;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 1px #6d28d9;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #fff;
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+#trivoxStartQuizButton:hover {
+    background: #6d28d9;
+}
+</style>
+
 </head>
 
 
@@ -5680,5 +5742,10 @@ document.querySelectorAll("[data-trivox-lang]").forEach(b=>b.addEventListener("c
 let saved="en";try{saved=localStorage.getItem("trivox-language")||"en"}catch(e){}setLanguage(saved);
 new MutationObserver(records=>{if(current!=="te")return;records.forEach(r=>r.addedNodes.forEach(n=>translateTree(n)));}).observe(document.body,{childList:true,subtree:true});
 })();</script>
+
+  <button type="button" id="trivoxStartQuizButton">
+  Start a Quiz
+</button>
+<script src="quizbtn.js"></script>
 </body>
 </html>
