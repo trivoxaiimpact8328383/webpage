@@ -2309,6 +2309,69 @@ body{
 .trivox-telugu .lt-mini-footer-banner::before{content:"ప్రభావాన్ని సృష్టించే నాయకత్వం"}
 @media(max-width:1000px){.trivox-language{margin-left:auto}.trivox-language button{padding:7px 8px;font-size:10px}}
 </style>
+
+  /*--start a quiz buton--*/
+
+<style>
+
+#trivoxStartQuizButton {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 99999;
+
+    width: 125px;
+    height: 36px;
+    padding: 0 5px 0 30px;
+
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #6c28d9b3;
+    color: #fff;
+    border: none;
+    border-radius: 0;
+    clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%);
+
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+#trivoxStartQuizButton::before {
+    content: "»";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+
+    background: #6d28d9;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 1px #6d28d9;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #fff;
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+#trivoxStartQuizButton:hover {
+    background: #6d28d9;
+}
+</style>
+
 </head>
 <body>
 
@@ -3198,5 +3261,12 @@ observer.observe(document.body,{subtree:true,childList:true,characterData:true})
 let saved='en';try{saved=localStorage.getItem('trivox-language')||'en'}catch(e){}setLanguage(saved);
 })();
 </script>
+
+  <button type="button" id="trivoxStartQuizButton">
+  Start a Quiz
+</button>
+<script src="quizbtn.js"></script>
+
+</body>
 </body>
 </html>
