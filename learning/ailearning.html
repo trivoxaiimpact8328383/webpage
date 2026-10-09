@@ -9626,6 +9626,68 @@ html.trivox-telugu .hero-title,html.trivox-telugu .model-head h2,html.trivox-tel
 @media(max-width:600px){html.trivox-telugu .hero-title,html.trivox-telugu .model-head h2,html.trivox-telugu .learning-copy h2,html.trivox-telugu .take-forward h2{font-size:clamp(24px,7vw,34px);line-height:1.4}}
 
 </style>
+
+/*--start a quiz buton--*/
+
+<style>
+
+#trivoxStartQuizButton {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 99999;
+
+    width: 125px;
+    height: 36px;
+    padding: 0 5px 0 30px;
+
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #6c28d9b3;
+    color: #fff;
+    border: none;
+    border-radius: 0;
+    clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%);
+
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+#trivoxStartQuizButton::before {
+    content: "»";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+
+    background: #6d28d9;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 1px #6d28d9;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #fff;
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+#trivoxStartQuizButton:hover {
+    background: #6d28d9;
+}
+</style>
 </head>
 
 <body>
@@ -11049,5 +11111,10 @@ document.addEventListener("DOMContentLoaded", function () {
  setLanguage(saved==='te'?'te':'en');
 })();
 </script>
+
+<button type="button" id="trivoxStartQuizButton">
+  Start a Quiz
+</button>
+<script src="quizbtn.js"></script>
 </body>
 </html>
