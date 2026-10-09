@@ -1386,5 +1386,12 @@ document.querySelectorAll("[data-trivox-lang]").forEach(b=>b.addEventListener("c
 let saved="te";try{saved=localStorage.getItem("trivox-language")||"te"}catch(e){}setLanguage(saved);
 new MutationObserver(records=>{if(current!=="te")return;records.forEach(r=>r.addedNodes.forEach(n=>translateTree(n)));}).observe(document.body,{childList:true,subtree:true});
 })();</script>
+
+  <button type="button" id="trivoxStartQuizButton">
+  Start a Quiz
+</button>
+<script src="quizbtn.js"></script>
+
+</body>
 </body>
 </html>
