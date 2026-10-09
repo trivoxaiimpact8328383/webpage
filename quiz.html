@@ -1,0 +1,673 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TRIVOX AI IMPACT | Quiz</title>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<!-- Font Awesome for the requested icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #ffffff;
+    color: #171525;
+}
+
+body {
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* FIXED HEADER */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 74px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6%;
+    background: #ffffff;
+    border-bottom: 1px solid #eeeeF3;
+}
+
+/* LOGO */
+.logo {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    font-size: 23px;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.logo-main {
+    background: linear-gradient(
+        180deg,
+        #171525 0%,
+        #171525 49%,
+        #7653e8 50%,
+        #7653e8 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.logo-impact {
+    margin-left: 7px;
+    background: linear-gradient(
+        180deg,
+        #7653e8 0%,
+        #7653e8 49%,
+        #171525 50%,
+        #171525 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* HOME LINK */
+.nav-link {
+    font-size: 14px;
+    font-weight: 600;
+    color: #33313f;
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+    color: #7653e8;
+}
+
+/* MAIN AREA */
+.quiz-page {
+    background: #ffffff;
+    position: fixed;
+    top: 74px;
+    right: 0;
+    bottom: 54px;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* PURPLE MESH LINES */
+.quiz-page::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(118, 83, 232, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(118, 83, 232, 0.07) 1px, transparent 1px);
+    background-size: 35px 35px;
+    pointer-events: none;
+}
+
+.quiz-page > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* REQUESTED FONT AWESOME ICON LAYER */
+.text-icon-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.text-fall-icon {
+    position: absolute;
+    left: var(--left);
+    top: var(--top);
+    font-size: var(--big);
+    color: #7653e8;
+    opacity: 0.08;
+    animation: none !important;
+    transform: none !important;
+}
+
+@keyframes textIconFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+/* CONTENT — NO CARD OR BOX */
+.quiz-content {
+    width: 100%;
+    max-width: 540px;
+    transform: translateY(-4px);
+    z-index: 2;
+}
+
+.lock-icon {
+    width: 68px;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    color: #7653e8;
+    background: #f3efff;
+    border-radius: 50%;
+}
+
+.lock-icon svg {
+    width: 30px;
+    height: 30px;
+    display: block;
+}
+
+.eyebrow {
+    margin-bottom: 13px;
+    color: #7653e8;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+h1 {
+    margin-bottom: 16px;
+    color: #171525;
+    font-size: clamp(29px, 4vw, 38px);
+    line-height: 1.2;
+    font-weight: 800;
+    letter-spacing: -1.1px;
+}
+
+.description {
+    max-width: 440px;
+    margin: 0 auto 29px;
+    color: #777482;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+/* UNLOCK BUTTON */
+.unlock-btn {
+    min-width: 190px;
+    min-height: 51px;
+    padding: 15px 27px;
+    border: none;
+    border-radius: 7px;
+    background: #7653e8;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.1px;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.unlock-btn:hover {
+    background: #6240d0;
+    transform: translateY(-1px);
+}
+
+.unlock-btn:active {
+    transform: translateY(0);
+}
+
+.unlock-btn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.secure-note {
+    margin-top: 19px;
+    color: #9692a2;
+    font-size: 12px;
+}
+
+#message {
+    max-width: 480px;
+    margin: 14px auto 0;
+    font-size: 13px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+/* FIXED FOOTER */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 12px;
+    background: #ffffff;
+    border-top: 1px solid #eeeeF3;
+    color: #9692a2;
+    font-size: 11px;
+    text-align: center;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .navbar {
+        height: 65px;
+        padding: 0 20px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .logo-impact {
+        margin-left: 5px;
+    }
+
+    .nav-link {
+        font-size: 13px;
+    }
+
+    .quiz-page {
+        top: 65px;
+        bottom: 48px;
+        padding: 20px;
+    }
+
+    .quiz-content {
+        transform: translateY(-2px);
+    }
+
+    .lock-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 21px;
+    }
+
+    .lock-icon svg {
+        width: 27px;
+        height: 27px;
+    }
+
+    .eyebrow {
+        font-size: 10px;
+        margin-bottom: 12px;
+    }
+
+    h1 {
+        font-size: 29px;
+        letter-spacing: -0.7px;
+        margin-bottom: 13px;
+    }
+
+    .description {
+        max-width: 340px;
+        font-size: 14px;
+        line-height: 1.75;
+        margin-bottom: 25px;
+    }
+
+    .unlock-btn {
+        width: 100%;
+        max-width: 280px;
+        min-height: 49px;
+    }
+
+    .secure-note {
+        margin-top: 16px;
+        font-size: 11px;
+    }
+
+    #message {
+        font-size: 12px;
+    }
+
+    .footer {
+        height: 48px;
+        font-size: 10px;
+    }
+
+    .text-fall-icon {
+        font-size: calc(var(--big) * 0.65);
+        opacity: 0.13;
+    }
+}
+
+/* SHORT MOBILE SCREENS */
+@media (max-height: 620px) {
+    .lock-icon {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 12px;
+    }
+
+    .lock-icon svg {
+        width: 23px;
+        height: 23px;
+    }
+
+    .eyebrow {
+        margin-bottom: 8px;
+    }
+
+    h1 {
+        font-size: 27px;
+        margin-bottom: 10px;
+    }
+
+    .description {
+        margin-bottom: 17px;
+        line-height: 1.55;
+    }
+
+    .secure-note {
+        margin-top: 11px;
+    }
+
+    #message {
+        margin-top: 8px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .text-fall-icon {
+        animation: none;
+    }
+}
+@media (max-width: 768px) {
+    .quiz-page::before {
+        background-image:
+            linear-gradient(rgba(118, 83, 232, 0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(118, 83, 232, 0.04) 1px, transparent 1px);
+        background-size: 28px 28px;
+    }
+
+    .text-fall-icon {
+        opacity: 0.08;
+        animation: none !important;
+        transform: none !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER: LOGO + HOME ONLY -->
+<header class="navbar">
+    <a href="index.html" class="logo" aria-label="TRIVOX AI IMPACT Home">
+        <span class="logo-main">TRIVOX</span>
+        <span class="logo-impact">AI IMPACT</span>
+    </a>
+
+    <a href="index.html" class="nav-link">Home</a>
+</header>
+
+<!-- QUIZ CONTENT -->
+<main class="quiz-page">
+
+    <!-- ONLY THE REQUESTED ICONS ADDED HERE -->
+    <div class="text-icon-layer" aria-hidden="true">
+        <i class="fa-solid fa-code text-fall-icon" style="--big:54px;--left:7%;--top:58%;"></i>
+        <i class="fa-solid fa-laptop-code text-fall-icon" style="--big:62px;--left:15%;--top:20%;"></i>
+        <i class="fa-solid fa-brain text-fall-icon" style="--big:58px;--left:26%;--top:8%;"></i>
+        <i class="fa-solid fa-microchip text-fall-icon" style="--big:50px;--left:35%;--top:70%;"></i>
+        <i class="fa-solid fa-robot text-fall-icon" style="--big:66px;--left:60%;--top:7%;"></i>
+        <i class="fa-solid fa-lightbulb text-fall-icon" style="--big:55px;--left:70%;--top:65%;"></i>
+        <i class="fa-solid fa-gears text-fall-icon" style="--big:60px;--left:79%;--top:18%;"></i>
+        <i class="fa-solid fa-database text-fall-icon" style="--big:52px;--left:90%;--top:58%;"></i>
+        <i class="fa-solid fa-cloud text-fall-icon" style="--big:58px;--left:4%;--top:12%;"></i>
+        <i class="fa-solid fa-terminal text-fall-icon" style="--big:53px;--left:88%;--top:5%;"></i>
+    </div>
+
+    <section class="quiz-content">
+
+        <div class="lock-icon" aria-hidden="true">
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+            >
+                <rect x="4" y="10" width="16" height="11" rx="2"></rect>
+                <path d="M8 10V7a4 4 0 0 1 8 0v3"></path>
+                <path d="M12 14v3"></path>
+            </svg>
+        </div>
+
+        <h1>Quiz is Locked</h1>
+
+        <p class="description">
+            Unlock your quiz to access the questions
+            and begin your learning journey.
+        </p>
+
+        <button class="unlock-btn" id="unlockButton" type="button">
+            Please Unlock
+        </button>
+
+        <p class="secure-note">
+            Secure payment powered by Razorpay
+        </p>
+
+        <p id="message" role="status" aria-live="polite"></p>
+
+    </section>
+</main>
+
+<footer class="footer">
+    © TRIVOX AI IMPACT. All rights reserved.
+</footer>
+
+<script>
+/* RAZORPAY PAYMENT */
+const API_URL = "https://payment-czhd.onrender.com";
+
+const unlockButton = document.getElementById("unlockButton");
+const message = document.getElementById("message");
+
+function showMessage(text, color) {
+    message.textContent = text;
+    message.style.color = color;
+}
+
+function resetButton() {
+    unlockButton.disabled = false;
+    unlockButton.textContent = "Please Unlock";
+}
+
+unlockButton.addEventListener("click", async function () {
+
+    if (typeof Razorpay === "undefined") {
+        showMessage(
+            "Payment checkout could not load. Refresh and try again.",
+            "#d93025"
+        );
+        return;
+    }
+
+    unlockButton.disabled = true;
+    unlockButton.textContent = "Please wait...";
+    message.textContent = "";
+
+    try {
+        const response = await fetch(
+            `${API_URL}/api/razorpay/quiz/create-order`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({})
+            }
+        );
+
+        const order = await response.json();
+
+        if (!response.ok || !order.order_id) {
+            throw new Error(
+                order.message || "Unable to create payment order."
+            );
+        }
+
+        const key =
+            order.key_id ||
+            order.key ||
+            order.razorpay_key_id;
+
+        if (!key || !order.amount) {
+            throw new Error(
+                "Payment configuration is missing. Please contact support."
+            );
+        }
+
+        const checkout = new Razorpay({
+            key: key,
+            amount: order.amount,
+            currency: order.currency || "INR",
+            name: "TRIVOX AI IMPACT",
+            description: "Quiz Unlock",
+            order_id: order.order_id,
+
+            handler: async function (payment) {
+                unlockButton.textContent = "Verifying payment...";
+
+                showMessage(
+                    "Verifying your payment...",
+                    "#7653e8"
+                );
+
+                try {
+                    const verifyResponse = await fetch(
+                        `${API_URL}/api/razorpay/quiz/verify`,
+                        {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({
+                                razorpay_order_id:
+                                    payment.razorpay_order_id,
+                                razorpay_payment_id:
+                                    payment.razorpay_payment_id,
+                                razorpay_signature:
+                                    payment.razorpay_signature
+                            })
+                        }
+                    );
+
+                    const result = await verifyResponse.json();
+
+                    if (
+                        verifyResponse.ok &&
+                        result.success === true &&
+                        result.status === "captured" &&
+                        result.quiz_access === true
+                    ) {
+                        showMessage(
+                            "Payment successful! Opening quiz...",
+                            "#16803c"
+                        );
+
+                        window.location.assign(
+                            result.quiz_url || "quiz-questions.html"
+                        );
+                        return;
+                    }
+
+                    throw new Error(
+                        result.message ||
+                        "Payment could not be verified. Contact support if money was deducted."
+                    );
+
+                } catch (error) {
+                    showMessage(
+                        error.message || "Payment verification failed.",
+                        "#d93025"
+                    );
+
+                    resetButton();
+                }
+            },
+
+            modal: {
+                ondismiss: function () {
+                    resetButton();
+
+                    showMessage(
+                        "Payment cancelled. You can try again.",
+                        "#777482"
+                    );
+                }
+            },
+
+            theme: {
+                color: "#7653e8"
+            }
+        });
+
+        checkout.on("payment.failed", function () {
+            showMessage(
+                "Payment failed. Please try again.",
+                "#d93025"
+            );
+
+            resetButton();
+        });
+
+        checkout.open();
+
+    } catch (error) {
+        showMessage(
+            error.message || "Something went wrong. Please try again.",
+            "#d93025"
+        );
+
+        resetButton();
+    }
+});
+</script>
+
+</body>
+</html>
