@@ -36,10 +36,14 @@ document.addEventListener("DOMContentLoaded", function () {
     quizButton.addEventListener("click", async function () {
 
         // Check login
-        if (localStorage.getItem("trivoxCourseLoggedIn") !== "true") {
-            window.location.href = "course.html";
-            return;
-        }
+if (localStorage.getItem("trivoxCourseLoggedIn") !== "true") {
+    window.location.href = "course.html";
+    return;
+}
+
+// Already logged in — open quiz page
+window.location.href = "quiz.html";
+return;
 
         const originalText = quizButton.textContent;
 
@@ -133,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                         // Payment verified: open quiz
                         window.location.href =
-                            result.quiz_url || "quiz.html";
+                            result.quiz_url || "course.html";
 
                     } catch (error) {
                         console.error("Payment verification error:", error);
