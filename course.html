@@ -8299,6 +8299,7 @@ async function loadCourseEnrollments(userId){
     currentEnrollmentData = [];
     currentEnrollmentMap = new Map();
     renderHomeEnrolledCourses();
+    throw error;
   }
 }
 
@@ -15727,22 +15728,30 @@ async function handleCourseEnroll(courseId, isFreeCourse, button) {
           // The backend MUST create the paid course enrollment after verifying
           // the Razorpay signature, captured amount, course and authenticated user.
           // Never grant course access based only on this browser callback.
+          // Never mark paid enrollment without a verified backend record.
+          // Retry the database read while the server finishes its transaction.
           let enrollmentConfirmed = false;
-          for (let attempt = 0; attempt < 6; attempt++) {
+          for (let attempt = 0; attempt < 10; attempt++) {
             await loadCourseEnrollments(activeUser.id);
             const latest = getCourseEnrollmentStatus("paid", courseId);
             if (latest === "enrolled" || latest === "completed") {
               enrollmentConfirmed = true;
               break;
             }
-            if (attempt < 5) await new Promise(resolve => setTimeout(resolve, 1200));
+            if (attempt < 9) await new Promise(resolve => setTimeout(resolve, 1500));
           }
           if (enrollmentConfirmed) {
             rerenderCourseCardsAfterEnrollment();
             closeCourseDetail();
             showToast("Payment verified! Course enrolled successfully.");
           } else {
-            showToast("Payment verified, but enrollment is still processing. Do not pay again. Contact support with payment ID: " + payment.razorpay_payment_id, "error");
+            console.error("Paid enrollment missing after captured payment", {
+              course_id: Number(courseId),
+              user_id: Number(activeUser.id),
+              payment_id: payment.razorpay_payment_id,
+              verify_result: result
+            });
+            showToast("Payment received, but course access is pending. Do not pay again. Contact support with payment ID: " + payment.razorpay_payment_id, "error");
           }
         } catch (error) {
           console.error("Trivox payment verification:", error);
