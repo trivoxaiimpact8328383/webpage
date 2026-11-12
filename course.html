@@ -11385,9 +11385,22 @@ async function originalHandleCourseEnroll(courseId, isFreeCourse, button){
 
     if(existing){
 
-      const existingStatus =
-        normalizeEnrollmentStatus(existing.enrollment_status) ||
-        (isFreeCourse ? "enrolled" : "pending");
+      let existingStatus =
+        normalizeEnrollmentStatus(existing.enrollment_status) || "enrolled";
+
+      // Existing pending enrollment: update this user's selected course.
+      if(existingStatus === "pending"){
+        const { error: statusUpdateError } = await db
+          .from("course_enrollments")
+          .update({ enrollment_status: "enrolled" })
+          .eq("id", existing.id)
+          .eq("user_id", Number(activeUser.id))
+          .eq("course_type", courseType)
+          .eq("course_id", Number(course.id));
+        if(statusUpdateError) throw statusUpdateError;
+        existingStatus = "enrolled";
+        existing.enrollment_status = "enrolled";
+      }
 
       currentEnrollmentMap.set(
         enrollmentKey(courseType, course.id),
@@ -11428,11 +11441,9 @@ async function originalHandleCourseEnroll(courseId, isFreeCourse, button){
       return;
     }
 
-    /* 2) SAVE ENROLLMENT FIRST
-       Free  -> enrolled
-       Paid  -> pending */
-    const enrollmentStatus =
-      isFreeCourse ? "enrolled" : "pending";
+    /* 2) SAVE BOTH FREE AND PAID AS ENROLLED
+       course_type distinguishes free and paid courses. */
+    const enrollmentStatus = "enrolled";
 
     const enrollmentPayload = {
       user_id:Number(activeUser.id),
@@ -11558,12 +11569,11 @@ async function originalHandleCourseEnroll(courseId, isFreeCourse, button){
         "Enroll Now";
     }
 
-    showToast(
-      error && error.message
-        ? error.message
-        : "Enrollment failed. Please try again.",
-      "error"
-    );
+    const enrollmentErrorMessage = error && error.message
+      ? error.message
+      : "Enrollment failed. Please try again.";
+    showToast(enrollmentErrorMessage, "error");
+    window.alert("Course enrollment error: " + enrollmentErrorMessage);
   }
 }
 
