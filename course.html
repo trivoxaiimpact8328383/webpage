@@ -15689,9 +15689,14 @@ async function handleCourseEnroll(courseId, isFreeCourse, button) {
     button.textContent = "Opening payment...";
   }
   try {
+    const { data: authData, error: authError } = await db.auth.getSession();
+    const accessToken = authData?.session?.access_token;
+    if (authError || !accessToken) {
+      throw new Error("Please sign in with Google to purchase paid courses.");
+    }
     const orderResponse = await fetch(TRIVOX_PAYMENT_API + "/api/razorpay/course/create-order", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", "Authorization": "Bearer " + accessToken },
       body: JSON.stringify({ course_id: Number(courseId) })
     });
     const order = await orderResponse.json();
