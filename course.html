@@ -5867,6 +5867,10 @@ html.trivox-telugu .dashboard-navbar{gap:8px}
 html.trivox-telugu .dashboard-brand{flex-shrink:0}
 @media(max-width:620px){html.trivox-telugu .dashboard-navbar>.trivox-language{margin-left:auto!important}html.trivox-telugu .dashboard-nav{width:100%;overflow-x:auto}}
 </style>
+<style id="hide-dashboard-language-toggle">
+/* Hide EN / Telugu selector after login; keep login selector unchanged. */
+#dashboardPage .trivox-language, .dashboard-navbar > .trivox-language { display:none !important; }
+</style>
 </head>
 
 <body>
