@@ -15714,10 +15714,26 @@ async function handleCourseEnroll(courseId, isFreeCourse, button) {
           if (!response.ok || !result.success || result.status !== "captured") {
             throw new Error(result.message || "Payment confirmation pending.");
           }
-          showToast("Payment successful! ₹" + result.amount);
-          // Server records verified payment in trivox_course_payments.
-          // Course access must be linked to an authenticated user server-side.
-          // Never mark enrollment as paid using browser-only identity.
+          // The backend MUST create the paid course enrollment after verifying
+          // the Razorpay signature, captured amount, course and authenticated user.
+          // Never grant course access based only on this browser callback.
+          let enrollmentConfirmed = false;
+          for (let attempt = 0; attempt < 6; attempt++) {
+            await loadCourseEnrollments(activeUser.id);
+            const latest = getCourseEnrollmentStatus("paid", courseId);
+            if (latest === "enrolled" || latest === "completed") {
+              enrollmentConfirmed = true;
+              break;
+            }
+            if (attempt < 5) await new Promise(resolve => setTimeout(resolve, 1200));
+          }
+          if (enrollmentConfirmed) {
+            rerenderCourseCardsAfterEnrollment();
+            closeCourseDetail();
+            showToast("Payment verified! Course enrolled successfully.");
+          } else {
+            showToast("Payment verified, but enrollment is still processing. Do not pay again. Contact support with payment ID: " + payment.razorpay_payment_id, "error");
+          }
         } catch (error) {
           console.error("Trivox payment verification:", error);
           showToast((error.message || "Payment verification pending.") +
